@@ -17,6 +17,7 @@ class PostTitles extends Migration
             $table->increments('id');
             $table->integer('postId')->unsigned();
             $table->string('titleText', 191);
+            $table->integer('order')->default(1);
             $table->timestamps();
         });
     }
