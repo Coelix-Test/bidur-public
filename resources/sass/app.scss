@@ -1,8 +1,18 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// font-family: 'Rubik', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap&subset=hebrew');
+// font-family: 'Playfair Display', serif;
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap');
+// font-family: 'Oswald', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+// font-family: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
 
 // Variables
 @import 'variables';
 
+@import 'header';
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
