@@ -1,0 +1,87 @@
+.big-news{
+    margin-bottom: 1000px;
+    .tab-item{
+        .row{
+            height: 630px;
+            & > div{
+                height: 100%;
+                &:not(.vertical-column){
+                    .news-item{
+                        display: block;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+    .news-item{
+        background-size: cover;
+        background-position: center;
+        .gradient{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px 18px;
+        }
+        .title{
+            font-family: 'Playfair Display';
+            font-size: 24px;
+            font-weight: 900;
+        }
+        .meta{
+            font-weight: 700;
+            font-size: 16px;
+        }
+    }
+    .big-col .news-item{
+        .title{
+            font-size: 36px;
+        }
+        .meta{
+            font-size: 24px;
+        }
+    }
+    .vertical-column{
+        display: flex;
+        flex-direction: column;
+        .news-item{
+            flex-grow: 1;
+        }
+        .news-item:nth-child(1){
+            margin-bottom: 7px;
+        }
+        .news-item:nth-child(2){
+            margin-top: 7px;
+        }
+    }
+
+    //big news gradients
+    .tab-item{
+        .row > div{
+            &:nth-child(3){
+                .gradient{
+                    background: linear-gradient(360deg, rgba(246,171,98,.5) 0%, rgba(182,62,142,.5) 40.1%, rgba(63,94,251,.5) 100%);
+                }
+            }
+            &:nth-child(2){
+                .gradient{
+                    background: linear-gradient(180deg, rgba(126,255,183,.5) 0%, rgba(0,137,255,.5) 100%);
+                }
+            }
+        }
+        .vertical-column .news-item{
+            &:nth-child(1) .gradient{
+                background: linear-gradient(180deg, rgba(255,131,131,.5) 0%, rgba(66,0,255,.5) 100%);
+            }
+            &:nth-child(2) .gradient{
+                background: linear-gradient(180deg, rgba(255,251,149,.5) 0%, rgba(255,0,77,.5) 100%);
+            }
+        }
+    }
+}

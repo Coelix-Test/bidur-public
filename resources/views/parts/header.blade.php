@@ -1,8 +1,8 @@
 <header id="header_main">
     <div class="top-row">
         <div class="auth-btns">
-            <a href="#" class="btn-common btn-border">כניסה</a>
-            <a href="#" class="btn-common btn-gradient-red">הרשמה</a>
+            <a href="#" class="btn-common btn-border-white">כניסה</a>
+            <a href="#" class="btn-common btn-red">הרשמה</a>
         </div>
 
         <div class="socials-wrap">
@@ -31,53 +31,82 @@
             <li><a href="#">צור קשר</a></li>
         </ul>
     </div><!-- top row end -->
-
     <div class="logo-row">
-        <div class="np-container">
-            <div class="news-item">
-                <div class="img-wrap">
-                    <img src="/img/header-news.png" alt="">
-                </div>
-                <div class="text-wrap">
-                    <div class="title">2019 Pride Month A-Z Guide: Everything </div>
-                    <div class="meta"><span class="author">by Helen Nova</span>|<span class="time">5 hours ago</span></div>
-                    <div class="stars">
-                        <div class="star"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
+        <div class="container">
+            <div class="row">
+                <div class="news-item col-3 offset-2">
+                    <div class="img-wrap">
+                        <img src="/img/header-news.png" alt="">
+                    </div>
+                    <div class="text-wrap">
+                        <div class="title">2019 Pride Month A-Z Guide: Everything </div>
+                        <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                        <div class="stars">
+                            <div class="star"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="logo-wrap">
-                <img src="/img/logo.png" alt="">
-            </div>
-            <div class="news-item">
-                <div class="img-wrap">
-                    <img src="/img/header-news.png" alt="">
+                <div class="logo-wrap col-2 offset-2">
+                    <img src="/img/logo.png" alt="">
                 </div>
-                <div class="text-wrap">
-                    <div class="title">2019 Pride Month A-Z Guide: Everything </div>
-                    <div class="meta"><span class="author">by Helen Nova</span>|<span class="time">5 hours ago</span></div>
-                    <div class="stars">
-                        <div class="star"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
-                        <div class="star star-active"></div>
+                <div class="news-item col-3">
+                    <div class="img-wrap">
+                        <img src="/img/header-news.png" alt="">
+                    </div>
+                    <div class="text-wrap">
+                        <div class="title">2019 Pride Month A-Z Guide: Everything </div>
+                        <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                        <div class="stars">
+                            <div class="star"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                            <div class="star star-active"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- logo row -->
-    <div class="persons-slider">
-        @for ($i = 0; $i < 30; $i++)
-            <div class="slide-item">
-                <div class="img-wrap">
-                    <img src="/img/abama/4.png" alt="">
+    </div><!-- logo row end-->
+    <div class="celebrities-container container">
+        <div class="row">
+            <div class="col-12">
+                <div class="celebrities-slider">
+                    @for ($i = 0; $i < 30; $i++)
+                        <a href="#" class="celebrity np-slide-item">
+                            <div class="img-wrap">
+                                <div class="image" style="background-image: url('/img/abama/4.png');"></div>
+                            </div>
+                            <div class="name">Barak Abama</div>
+                        </a>
+                    @endfor
                 </div>
             </div>
-        @endfor;
+        </div>
+    </div><!-- celebrities row end-->
+    <div class="run-stroke-wrap">
+        <ul class="run-stroke">
+            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum.</li>
+        </ul>
+        <ul class="run-stroke hidden">
+            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+            <li>Lorem ipsum.</li>
+        </ul>
     </div>
+
 </header>

@@ -1,0 +1,15 @@
+.btn-common{
+    display: inline-flex;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+    align-items: center;
+}
+.btn-border-white{
+    border: 2px solid #fff;
+    color: #fff;
+}
+.btn-red{
+    background: $red;
+    color: #fff;
+}

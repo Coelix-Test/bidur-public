@@ -7,17 +7,22 @@
 // font-family: 'Oswald', sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 // font-family: 'Roboto', sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
 
 // Variables
 @import 'variables';
 
-@import 'header';
-
 //libs
+// @import '~normalize.css/normalize.css';
+@import '~bootstrap/scss/bootstrap';
 @import '~magnific-popup/dist/magnific-popup.css';
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
-// Bootstrap
-//@import '~bootstrap/scss/bootstrap';
+
+
+//@import own styles
+@import 'common/common.scss';
+
+@import 'header';
+@import 'parts/big-news';

@@ -12585,15 +12585,18 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
 __webpack_require__(/*! magnific-popup/dist/jquery.magnific-popup.js */ "./node_modules/magnific-popup/dist/jquery.magnific-popup.js");
 
 __webpack_require__(/*! slick-carousel/slick/slick.min.js */ "./node_modules/slick-carousel/slick/slick.min.js");
 
-$('#header-main .persons-slider').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
+$('#header_main .persons-slider').slick({
+  slidesToShow: 13,
+  slidesToScroll: 13,
   dots: false,
-  arrows: true
+  arrows: true,
+  rtl: true
 });
 
 /***/ }),
