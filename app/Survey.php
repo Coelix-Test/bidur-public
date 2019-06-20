@@ -12,7 +12,7 @@ class Survey extends Model
         return $this->belongsTo(Post::class);
     }
 
-    public function variants(){
-        return $this->hasMany(SurveyAnswerVariant::class);
+    public function getAllVariants(){
+        return $this->hasMany(SurveyAnswerVariant::class, 'surveyId','id');
     }
 }

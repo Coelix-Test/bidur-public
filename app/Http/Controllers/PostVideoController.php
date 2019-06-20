@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PostVideo;
 use Illuminate\Http\Request;
 
 class PostVideoController extends Controller
@@ -13,9 +14,17 @@ class PostVideoController extends Controller
     }
 
 
-    public function create()
-    {
-        //
+    public function create($videoUrl, $postId, $order){
+        try{
+            PostVideo::create([
+                'url' => $videoUrl,
+                'postId' => $postId,
+                'order' => $order,
+            ]);
+        }catch (\Exception $e){
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+        return ['success' => true];
     }
 
 

@@ -14,6 +14,7 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('postId')->unsigned();
+            $table->integer('userId')->unsigned();
             $table->integer('rating')->unsigned();
             $table->timestamps();
 
