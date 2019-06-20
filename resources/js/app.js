@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//require('./bootstrap');
 
-window.Vue = require('vue');
+//window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,3 +32,28 @@ window.Vue = require('vue');
 });
 
 */
+
+window.$ = window.jQuery = require('jquery');
+require('magnific-popup/dist/jquery.magnific-popup.js');
+require('slick-carousel/slick/slick.min.js');
+
+
+$('#header_main .celebrities-slider').slick({
+  slidesToShow: 13,
+  slidesToScroll: 13,
+  dots: false,
+  arrows: true,
+  rtl: true,
+});
+
+//run stroke
+
+if($('.run-stroke').length){
+    //calculate width of stroke
+    var strokeWidth = $('.run-stroke').width();
+    var strokeSpeed = 70;//20px per second
+    var strokeAnimDuration = strokeWidth / strokeSpeed;
+
+    $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
+
+}

@@ -1,9 +1,12 @@
+window.$ = window.jQuery = require('jquery');
 require('magnific-popup/dist/jquery.magnific-popup.js');
 require('slick-carousel/slick/slick.min.js');
 
-$('#header-main .persons-slider').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
+
+$('#header_main .persons-slider').slick({
+  slidesToShow: 13,
+  slidesToScroll: 13,
   dots: false,
-  arrows: true
+  arrows: true,
+  rtl: true,
 });

@@ -1,0 +1,15 @@
+body{
+    background-color: $body-bg;
+    text-align: right;
+    color: $dark;
+}
+
+.np-container{
+    width: 1530px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+}
+
+@import 'buttons.scss';
+@import 'tab-switchers.scss';

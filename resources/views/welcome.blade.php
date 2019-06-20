@@ -6,9 +6,10 @@
     <body>
         @include('parts/header')
 
+        @include('parts/big-news')
+
         @include('parts/footer')
         <!-- Scripts -->
         <script src="/js/app.js" type="text/javascript"></script>
-        <script src="/js/main.js" type="text/javascript"></script>
     </body>
 </html>
