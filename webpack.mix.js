@@ -15,4 +15,16 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/main.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
+mix
+  .js('resources/assets/js/admin/admin.js', 'public/js')
+  .sass('resources/assets/scss/admin/admin.scss', 'public/css');
+
+mix.webpackConfig({
+	resolve: {
+		alias: {
+			'@': path.resolve('resources/assets/scss/admin'),
+		}
+	},
+});
+
 mix.browserSync('newspaper.test');

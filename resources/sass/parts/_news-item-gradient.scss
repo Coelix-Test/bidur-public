@@ -12,6 +12,21 @@
     }
     color: #fff;
     text-decoration: none;
+    .title{
+        font-family: 'Playfair Display';
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 48px;
+        margin-bottom: 15px;
+    }
+    .meta{
+        font-size: 16px;
+        font-weight: 300;
+    }
+    .excerpt{
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
     a{
         color: #fff;
         text-decoration: none;
