@@ -1,8 +1,14 @@
 <header id="header_main">
     <div class="top-row">
         <div class="auth-btns">
-            <a href="#" class="btn-common btn-border-white">כניסה</a>
-            <a href="#" class="btn-common btn-red">הרשמה</a>
+            @if(!Auth::check())
+                <a href="{{route('login')}}" class="btn-common btn-border-white">כניסה</a>
+                <a href="{{route('register')}}" class="btn-common btn-red">הרשמה</a>
+                @else
+                <a href="{{route('logout')}}" class="btn-common btn-red">logout</a>
+            @endif
+
+
         </div>
 
         <div class="socials-wrap">
@@ -31,44 +37,55 @@
             <li><a href="#">צור קשר</a></li>
         </ul>
     </div><!-- top row end -->
+    <?php
+    $postController = new \App\Http\Controllers\PostController();
+    $twoPosts = $postController->getTwoRandomPosts();
+
+    ?>
     <div class="logo-row">
         <div class="container">
             <div class="row">
-                <div class="news-item col-3 offset-2">
-                    <div class="img-wrap">
-                        <img src="/img/header-news.png" alt="">
-                    </div>
-                    <div class="text-wrap">
-                        <div class="title">2019 Pride Month A-Z Guide: Everything </div>
-                        <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                        <div class="stars">
-                            <div class="star"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
+                <?php
+                $info = $postController->getInfoOnPostForMain($twoPosts[0]->id);
+                ?>
+                    <div class="news-item col-3 offset-2">
+                        <div class="img-wrap">
+                            <img src="<?= $info['img']?>" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="title"><?= $info['title']?> </div>
+                            <div class="meta"><span class="author">by <?= $info['author']?></span> | <span class="time"><?= $info['time']?></span></div>
+                            <div class="stars">
+                                <div class="star"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div class="logo-wrap col-2 offset-2">
                     <img src="/img/logo.png" alt="">
                 </div>
-                <div class="news-item col-3">
-                    <div class="img-wrap">
-                        <img src="/img/header-news.png" alt="">
-                    </div>
-                    <div class="text-wrap">
-                        <div class="title">2019 Pride Month A-Z Guide: Everything </div>
-                        <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                        <div class="stars">
-                            <div class="star"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
-                            <div class="star star-active"></div>
+                <?php
+                $info = $postController->getInfoOnPostForMain($twoPosts[1]->id);
+                ?>
+                    <div class="news-item col-3">
+                        <div class="img-wrap">
+                            <img src="<?= $info['img']?>" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="title"><?= $info['title']?> </div>
+                            <div class="meta"><span class="author">by <?= $info['author']?></span> | <span class="time"><?= $info['time']?></span></div>
+                            <div class="stars">
+                                <div class="star"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                                <div class="star star-active"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div><!-- logo row end-->
@@ -76,36 +93,67 @@
         <div class="row">
             <div class="col-12">
                 <div class="celebrities-slider">
-                    @for ($i = 0; $i < 30; $i++)
-                        <a href="#" class="celebrity np-slide-item">
+                    <?php
+                    $hashtags = new \App\Http\Controllers\HashtagController();
+                    $hashtags = $hashtags->getAllHashtags();
+                    foreach ($hashtags as $hashtag) {
+                        ?>
+                        <a href="{{route('postByHashtag', ['id' => $hashtag['id']])}}" class="celebrity np-slide-item">
                             <div class="img-wrap">
-                                <div class="image" style="background-image: url('/img/abama/4.png');"></div>
+                                <div class="image" style="background-image: url('<?=$hashtag['img']?>');"></div>
                             </div>
-                            <div class="name">Barak Abama</div>
+                            <div class="name"><?=$hashtag['name']?></div>
                         </a>
-                    @endfor
+                        <?php
+                    }
+                    ?>
+{{--                    @for ($i = 0; $i < 30; $i++)--}}
+{{--                            <a href="#" class="celebrity np-slide-item">--}}
+{{--                                <div class="img-wrap">--}}
+{{--                                    <div class="image" style="background-image: url('/img/abama/4.png');"></div>--}}
+{{--                                </div>--}}
+{{--                                <div class="name">Barak Abama</div>--}}
+{{--                            </a>--}}
+{{--                    @endfor--}}
                 </div>
             </div>
         </div>
     </div><!-- celebrities row end-->
     <div class="run-stroke-wrap">
         <ul class="run-stroke">
-            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum.</li>
+            <?php
+            $post = new \App\Http\Controllers\PostController();
+            $postTitles = $post->getAllPostTitles();
+
+            foreach ($postTitles as $postTitle) {
+                ?>
+                <li><?= $postTitle['title']?></li>
+                <?php
+            }
+            ?>
+{{--            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>--}}
+{{--            <li>Lorem ipsum dolor.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum.</li>--}}
         </ul>
         <ul class="run-stroke hidden">
-            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            <li>Lorem ipsum.</li>
+            <?php
+            foreach ($postTitles as $postTitle) {
+            ?>
+            <li><?= $postTitle['title']?></li>
+            <?php
+            }
+            ?>
+{{--            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>--}}
+{{--            <li>Lorem ipsum dolor.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
+{{--            <li>Lorem ipsum.</li>--}}
         </ul>
     </div>
 

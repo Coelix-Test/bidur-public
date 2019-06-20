@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@getMainPage');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', 'RatingsController@create')->name('test');
+Route::get('/test', 'PostController@getInfoOnPostForMain')->name('test');
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return view('welcome');
+});
+
+Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('postByHashtag');
+Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');

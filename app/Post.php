@@ -39,4 +39,8 @@ class Post extends Model
     public function getAllImagesWithTexts(){
         return $this->hasMany(PostImageAndText::class, 'postId', 'id');
     }
+
+    public function getRating(){
+        return $this->hasMany(Rating::class, 'postId', 'id');
+    }
 }

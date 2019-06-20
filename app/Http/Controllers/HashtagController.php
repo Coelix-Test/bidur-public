@@ -2,48 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Hashtag;
 use Illuminate\Http\Request;
 
 class HashtagController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
-
-
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
+    public function getAllHashtags(){
+        $hashtags = Hashtag::all();
+        foreach ($hashtags as $key => $hashtag) {
+            $hashtagArray[$key]['name'] = $hashtag->text;
+            $hashtagArray[$key]['img'] = $hashtag->image;
+            $hashtagArray[$key]['id'] = $hashtag->id;
+        }
+//        dd($hashtagArray);
+        return $hashtagArray;
     }
 }

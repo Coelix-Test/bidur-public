@@ -1,3 +1,5 @@
+
+
 <section class="big-news">
     <div class="container">
         <div class="row">
@@ -34,11 +36,21 @@
         <div class="tab-item active">
             <div class="container">
                 <div class="row">
+                    {{--       HOT         --}}
+                    <?php
+                    $controller = new \App\Http\Controllers\PostController();
+                    ?>
+                    @foreach($allPosts['hot'] as $post)
+                        <?php
+                        $allInfoHot[] = $controller->getInfoOnPostForMain($post['post']->id);
+//                        dd($allInfoHot);
+                        ?>
+                    @endforeach
                     <div class="col-3 vertical-column">
-                        <a href="#" class="news-item" style="background-image: url('/img/big-news-1.png');">
+                        <a href="{{route('postView', ['id' => $allInfoHot[0]['id']])}}" class="news-item" style="background-image: url('<?= $allInfoHot[0]['img'] ?>');">
                             <div class="gradient">
-                                <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
-                                <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                                <div class="title"><?= $allInfoHot[0]['title'] ?></div>
+                                <div class="meta"><span class="author">by <?= $allInfoHot[0]['author'] ?></span> | <span class="time"><?= $allInfoHot[0]['time'] ?></span></div>
                                 <div class="stars">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
@@ -48,10 +60,10 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="news-item" style="background-image: url('/img/big-news-1.png');">
+                        <a href="{{route('postView', ['id' => $allInfoHot[1]['id']])}}" class="news-item" style="background-image: url('<?= $allInfoHot[1]['img'] ?>');">
                             <div class="gradient">
-                                <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
-                                <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                                <div class="title"><?= $allInfoHot[1]['title'] ?></div>
+                                <div class="meta"><span class="author">by <?= $allInfoHot[1]['author'] ?></span> | <span class="time"><?= $allInfoHot[1]['time'] ?></span></div>
                                 <div class="stars">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
@@ -63,10 +75,10 @@
                         </a>
                     </div>
                     <div class="col-6 big-col">
-                        <a href="#" class="news-item" style="background-image: url('/img/big-news-2.png');">
+                        <a href="{{route('postView', ['id' => $allInfoHot[2]['id']])}}" class="news-item" style="background-image: url('<?= $allInfoHot[2]['img'] ?>');">
                             <div class="gradient">
-                                <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
-                                <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                                <div class="title"><?= $allInfoHot[2]['title'] ?></div>
+                                <div class="meta"><span class="author">by <?= $allInfoHot[2]['author'] ?></span> | <span class="time"><?= $allInfoHot[2]['time'] ?></span></div>
                                 <div class="stars">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
@@ -78,10 +90,10 @@
                         </a>
                     </div>
                     <div class="col-3">
-                        <a href="#" class="news-item" style="background-image: url('/img/big-news-1.png');">
+                        <a href="{{route('postView', ['id' => $allInfoHot[3]['id']])}}" class="news-item" style="background-image: url('<?= $allInfoHot[3]['img'] ?>');">
                             <div class="gradient">
-                                <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
-                                <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
+                                <div class="title"><?= $allInfoHot[3]['title'] ?></div>
+                                <div class="meta"><span class="author">by <?= $allInfoHot[3]['author'] ?></span> | <span class="time"><?= $allInfoHot[3]['time'] ?></span></div>
                                 <div class="stars">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
