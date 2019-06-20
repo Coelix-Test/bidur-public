@@ -8,6 +8,20 @@
 
         @include('parts/big-news')
 
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    @include('parts/recent-sidebar')
+                </div>
+                <div class="col-6">
+                    @include('parts/main-news-list')
+                </div>
+                <div class="col-3">
+                    @include('parts/hot-sidebar')
+                </div>
+            </div>
+        </div>
+
         @include('parts/footer')
         <!-- Scripts -->
         <script src="/js/app.js" type="text/javascript"></script>

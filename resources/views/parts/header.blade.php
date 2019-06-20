@@ -79,7 +79,7 @@
                     @for ($i = 0; $i < 30; $i++)
                         <a href="#" class="celebrity np-slide-item">
                             <div class="img-wrap">
-                                <div class="image" style="background-image: url('/img/abama/4.png');"></div>
+                                <div class="image" style="background-image: url('/img/celebrity.png');"></div>
                             </div>
                             <div class="name">Barak Abama</div>
                         </a>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="tab-switchers tab-switchers-bg-type col-12">
+                <div class="tab-switchers tab-switchers-bg-type">
                     <div class="swithcer-item ico-hot active">
                         <span class="caption">חם</span>
                         <svg width="18" height="20" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +39,7 @@
                             <div class="gradient">
                                 <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
                                 <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -52,7 +52,7 @@
                             <div class="gradient">
                                 <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
                                 <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -67,7 +67,7 @@
                             <div class="gradient">
                                 <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
                                 <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -82,7 +82,7 @@
                             <div class="gradient">
                                 <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND</div>
                                 <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
