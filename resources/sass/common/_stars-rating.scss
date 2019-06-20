@@ -1,0 +1,16 @@
+.stars-rating-wrapper{
+    display: flex;
+    .star{
+        background: url('/img/icons/star.svg') no-repeat;
+        background-size: 17px 17px;
+        background-position: center;
+        width: 21px;
+        height: 17px;
+        padding: 0 2px;
+    }
+    .star-active{
+        background: url('/img/icons/star-active.svg') no-repeat;
+        background-size: 17px 17px;
+        background-position: center;
+    }
+}

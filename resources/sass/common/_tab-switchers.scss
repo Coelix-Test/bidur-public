@@ -1,19 +1,24 @@
-.tab-switchers-bg-type{
+.tab-switchers{
     display: flex;
     margin-bottom: 20px;
     .swithcer-item{
         display: inline-flex;
         align-items: center;
-        margin-left: 25px;
-        color: $gray;
-        height: 34px;
-        padding-right: 30px;
-        padding-left: 30px;
         font-family: 'Rubik';
         font-size: 24px;
         svg{
             margin-right: 5px;
         }
+    }
+}
+
+.tab-switchers-bg-type{
+    .swithcer-item{
+        margin-left: 25px;
+        height: 34px;
+        padding-right: 30px;
+        padding-left: 30px;
+        color: $gray;
         &.ico-hot{
             svg{
                 fill: $red;
@@ -46,6 +51,47 @@
             color: #fff;
             svg{
                 fill: #fff;
+            }
+        }
+    }
+}
+
+.tab-switchers-border-type{
+    border-bottom: 1px solid #BDBDBD;
+    .swithcer-item{
+        width: 125px;
+        padding-bottom: 3px;
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        color: $dark;
+        justify-content: center;
+        border-color: transparent;
+        margin-left: 16px;
+        &.ico-hot{
+            svg{
+                fill: $red;
+            }
+            &.active,
+            &:hover{
+                border-color: $red;
+            }
+        }
+        &.ico-liked{
+            svg{
+                fill: $yellow;
+            }
+            &.active,
+            &:hover{
+                border-color: $yellow;
+            }
+        }
+        &.ico-recent{
+            svg{
+                fill: $blue;
+            }
+            &.active,
+            &:hover{
+                border-color: $blue;
             }
         }
     }

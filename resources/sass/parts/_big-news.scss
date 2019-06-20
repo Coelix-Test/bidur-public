@@ -1,5 +1,5 @@
 .big-news{
-    margin-bottom: 1000px;
+    margin-bottom: 27px;
     .tab-item{
         .row{
             height: 630px;
@@ -37,6 +37,12 @@
         .meta{
             font-weight: 700;
             font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .star{
+            width: 23px;
+            height: 19px;
+            background-size: 19px 19px;
         }
     }
     .big-col .news-item{
@@ -45,6 +51,11 @@
         }
         .meta{
             font-size: 24px;
+        }
+        .star{
+            width: 29px;
+            height: 25px;
+            background-size: 25px 25px;
         }
     }
     .vertical-column{

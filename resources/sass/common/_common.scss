@@ -11,5 +11,13 @@ body{
     display: flex;
 }
 
-@import 'buttons.scss';
-@import 'tab-switchers.scss';
+.image-bg{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+@import 'buttons';
+@import 'tab-switchers';
+@import 'stars-rating';

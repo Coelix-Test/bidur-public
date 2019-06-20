@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="tab-switchers tab-switchers-bg-type col-12">
+                <div class="tab-switchers tab-switchers-bg-type">
                     <div class="swithcer-item ico-hot active">
                         <span class="caption">חם</span>
                         <svg width="18" height="20" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,7 @@
                             <div class="gradient">
                                 <div class="title"><?= $allInfoHot[0]['title'] ?></div>
                                 <div class="meta"><span class="author">by <?= $allInfoHot[0]['author'] ?></span> | <span class="time"><?= $allInfoHot[0]['time'] ?></span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -64,7 +64,7 @@
                             <div class="gradient">
                                 <div class="title"><?= $allInfoHot[1]['title'] ?></div>
                                 <div class="meta"><span class="author">by <?= $allInfoHot[1]['author'] ?></span> | <span class="time"><?= $allInfoHot[1]['time'] ?></span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -79,7 +79,7 @@
                             <div class="gradient">
                                 <div class="title"><?= $allInfoHot[2]['title'] ?></div>
                                 <div class="meta"><span class="author">by <?= $allInfoHot[2]['author'] ?></span> | <span class="time"><?= $allInfoHot[2]['time'] ?></span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>
@@ -94,7 +94,7 @@
                             <div class="gradient">
                                 <div class="title"><?= $allInfoHot[3]['title'] ?></div>
                                 <div class="meta"><span class="author">by <?= $allInfoHot[3]['author'] ?></span> | <span class="time"><?= $allInfoHot[3]['time'] ?></span></div>
-                                <div class="stars">
+                                <div class="stars-rating-wrapper">
                                     <div class="star"></div>
                                     <div class="star star-active"></div>
                                     <div class="star star-active"></div>

@@ -1,0 +1,32 @@
+.news-item-big{
+    display: flex;
+    color: $dark;
+    text-decoration: none;
+    margin-bottom: 20px;
+    a{
+        color: $dark;
+        text-decoration: none;
+    }
+
+    .img-wrap{
+        width: 261px;
+        height: 224px;
+        margin-left: 18px;
+        flex-shrink: 0;
+    }
+    .title{
+        font-family: 'Playfair Display';
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .meta{
+        font-family: 'Roboto';
+        font-size: 16px;
+        font-weight: 300;
+    }
+    .title,
+    .meta,
+    .excerpt{
+        margin-bottom: 3px;
+    }
+}

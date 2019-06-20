@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', 'PostController@getInfoOnPostForMain')->name('test');
+Route::get('/test', 'PostController@getAllPostsWithAllFilters')->name('test');
 Route::get('logout', 'Auth\LoginController@logout', function () {
     return view('welcome');
 });
