@@ -252,10 +252,7 @@ class PostController extends Controller
         return $titles;
     }
 
-    public function getRecentPosts($offset = 0, $take = 5){
-        $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
-        return json_encode($recentPosts);
-    }
+
 
 
     public function getTwoRandomPosts(){
