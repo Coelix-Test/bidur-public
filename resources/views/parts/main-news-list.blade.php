@@ -20,17 +20,58 @@
             </svg>
         </div>
     </div>
+    <?php
+    $controller = new \App\Http\Controllers\PostController();
+    ?>
+    @foreach($allPosts['hot'] as $post)
+        <?php
 
+        $allInfoHot[] = $controller->getInfoOnPostForMain($post['post']->id);
+        $GLOBALS['allInfoHotForMiddle'] = $allInfoHot;
+        ?>
+    @endforeach
+
+    <?php
+    global $allInfoHotForMiddle;
+    $first = $allInfoHot[0];
+    unset($allInfoHot[0]);
+    $split = array_chunk($allInfoHot, 3);
+
+    foreach ($split as $key => $item) {
+        $splitTwo[$key+1] = $split[$key];
+    }
+
+
+    $splitTwo[0][] = $first;
+    ksort($splitTwo);
+
+    ?>
     <div class="tabs-container">
         <div class="tab-item active">
-            @include('parts/news-item-big')
-            @include('parts/news-item-gradient')
-
-            @for($i = 0; $i < 2; $i++)
-                @include('parts/news-item-big')
-                @include('parts/news-item-big')
-                @include('parts/news-item-gradient')
-            @endfor
+        <?php
+//            dd($splitTwo);
+            $counterFirst = 0;
+//            dd($splitTwo);
+            foreach ($splitTwo as $array) {
+                $counterSecond = 0;
+                foreach ($array as $key => $innerArray) {
+                    if ($counterFirst == 0){
+                        ?> @include('parts/news-item-big',[$key]) <?php
+                        $counterFirst++;
+                    }else{
+                        if ($counterSecond == 0){
+                            ?> @include('parts/news-item-gradient', [$key]) <?php
+                            $counterSecond++;
+                        }elseif($counterSecond == 1){
+                            ?> @include('parts/news-item-big',[$key]) <?php
+                            $counterSecond++;
+                        }else{
+                            ?> @include('parts/news-item-big',[$key]) <?php
+                        }
+                    }
+                }
+            }
+        ?>
         </div>
     </div>
 </div>

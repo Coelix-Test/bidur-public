@@ -1,12 +1,18 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use App\Hashtag;
-use Illuminate\Http\Request;
 
-class HashtagController extends Controller
+use App\Hashtag;
+use App\Post;
+
+class AdminController extends Controller
 {
+    public function getRecentPosts($offset = 0, $take = 5){
+        $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
+        return json_encode($recentPosts);
+    }
 
     public function getAllHashtags(){
         $hashtags = Hashtag::all();
@@ -16,6 +22,6 @@ class HashtagController extends Controller
             $hashtagArray[$key]['id'] = $hashtag->id;
         }
 
-        return $hashtagArray;
+        return json_encode($hashtagArray);
     }
 }

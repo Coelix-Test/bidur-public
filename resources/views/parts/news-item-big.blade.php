@@ -1,17 +1,22 @@
-<div class="news-item news-item-big">
-    <div class="img-wrap">
-        <div class="image image-bg" style="background-image: url('/img/thumb-news-item-big.png');"></div>
-    </div>
-    <div class="text-wrap">
-        <div class="title">6 JOBS THAT PROBABLY WON’T BE AROUND IN 10 YEARS</div>
-        <div class="meta"><span class="author">by Helen Nova</span> | <span class="time">5 hours ago</span></div>
-        <div class="excerpt">Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...</div>
-        <div class="stars-rating-wrapper">
-            <div class="star"></div>
-            <div class="star star-active"></div>
-            <div class="star star-active"></div>
-            <div class="star star-active"></div>
-            <div class="star star-active"></div>
+
+
+@if(isset($key))
+
+    <div class="news-item news-item-big">
+        <div class="img-wrap">
+            <div class="image image-bg" style="background-image: url('<?= $allInfoHotForMiddle[$key]['img']?>');"></div>
+        </div>
+        <div class="text-wrap">
+            <div class="title"><?= $allInfoHotForMiddle[$key]['title'] ?></div>
+            <div class="meta"><span class="author">by <?= $allInfoHotForMiddle[$key]['author'] ?></span> | <span class="time"><?= $allInfoHotForMiddle[$key]['title'] ?></span></div>
+            <div class="excerpt"> <?= $allInfoHotForMiddle[$key]['excerpt'] ?></div>
+            <div class="stars-rating-wrapper">
+                <div class="star"></div>
+                <div class="star star-active"></div>
+                <div class="star star-active"></div>
+                <div class="star star-active"></div>
+                <div class="star star-active"></div>
+            </div>
         </div>
     </div>
-</div>
+@endif

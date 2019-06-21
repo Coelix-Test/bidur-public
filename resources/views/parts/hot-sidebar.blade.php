@@ -8,18 +8,37 @@
             </svg>
         </div>
     </div>
+    <?php
+    $controller = new \App\Http\Controllers\PostController();
+    ?>
+    @foreach($allPosts['hot'] as $post)
+        <?php
 
-    <div class="news-block wide-image-news">
-        @include('parts/news-item-small')
-    </div>
+        $allInfoHot[] = $controller->getInfoOnPostForMain($post['post']->id);
+        $GLOBALS['allInfoHot'] = $allInfoHot;
+        ?>
+    @endforeach
 
-    <div class="banner" style="background-image: url('https://via.placeholder.com/375x600');"></div>
+<?php
 
-    <div class="news-block wide-image-news">
+$first = $allInfoHot[0];
 
-        @for ($inner = 0; $inner < 3; $inner++)
-            @include('parts/news-item-small')
-        @endfor
-    </div>
+$split = array_chunk($allInfoHot, 3);
+    foreach ($split as $key => $item) {
+        $splitTwo[$key+1] = $split[$key];
+    }
+    $splitTwo[0][] = $first;
+    ksort($splitTwo);
+?>
+
+    @foreach($splitTwo as $array)
+        <div class="news-block wide-image-news">
+            @foreach($array as $key => $innerArray)
+                @include('parts/news-hot-item-small', [$key])
+            @endforeach
+        </div>
+        <div class="banner" style="background-image: url('https://via.placeholder.com/375x600');"></div>
+    @endforeach
+
 
 </div>
