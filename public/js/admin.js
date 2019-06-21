@@ -17263,7 +17263,7 @@ component.options.__file = "resources/assets/js/admin/views/Post.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
