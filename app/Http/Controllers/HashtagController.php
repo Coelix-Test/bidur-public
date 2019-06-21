@@ -15,7 +15,6 @@ class HashtagController extends Controller
             $hashtagArray[$key]['img'] = $hashtag->image;
             $hashtagArray[$key]['id'] = $hashtag->id;
         }
-
         return $hashtagArray;
     }
 }

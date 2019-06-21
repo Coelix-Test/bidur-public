@@ -24,4 +24,22 @@ class AdminController extends Controller
 
         return json_encode($hashtagArray);
     }
+
+    public function deleteHashtag($id){
+        Hashtag::where('id', $id)->delete();
+        return $this->getAllHashtags();
+    }
+
+    public function addHashtag($image = 'url', $name = 'name'){
+        $hashtag = Hashtag::create([
+            'text' => $name,
+            'image' => $image
+        ]);
+        return $this->getAllHashtags();
+    }
+
+    public function updateHashtag($id, $image = null, $name = null){
+        Hashtag::where('id', $id)->update(['image' => $image, 'text' => $name]);
+        return $this->getAllHashtags();
+    }
 }

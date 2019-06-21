@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', 'PostController@getAllPostsWithAllFilters')->name('test');
+Route::get('/test', 'AdminController@addHashtag')->name('test');
 Route::get('logout', 'Auth\LoginController@logout', function () {
     return view('welcome');
 });
@@ -31,4 +31,9 @@ Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 
 //admin
 Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
+
+//hashtags
 Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
+Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
+Route::post('/updateHashtag', 'AdminController@updateHashtag')->name('update-hashtag');
+Route::post('/deleteHashtag', 'AdminController@deleteHashtag')->name('delete-hashtag');
