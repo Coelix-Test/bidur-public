@@ -10,10 +10,16 @@ Vue.use(VueRouter);
  */
 
 import Post from './views/Post.vue';
+import Surveys from './views/Surveys.vue';
+import Tags from './views/Tags.vue';
+import Users from './views/Users.vue';
 
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'post', component: Post },
+    { path: '/surveys', name: 'surveys', component: Surveys },
+    { path: '/tags', name: 'tags', component: Tags },
+    { path: '/users', name: 'users', component: Users },
   ]
 });
 
@@ -28,7 +34,7 @@ Vue.config.performance = true;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Admin from './components/Admin.vue';
+import Admin from './Admin.vue';
 
 const app = new Vue({
   el: '#admin',
