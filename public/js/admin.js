@@ -1878,56 +1878,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       qwe: 'qweqweqwe',
-      tags: {
-        0: {
-          name: 'Tag 1',
-          img: '/img/abama/4.png',
-          id: 0
-        },
-        1: {
-          name: 'Tag 2',
-          img: '/img/abama/2.png',
-          id: 1
-        },
-        2: {
-          name: 'Tag 3',
-          img: '/img/abama/3.png',
-          id: 2
-        },
-        3: {
-          name: 'Tag 1',
-          img: '/img/abama/4.png',
-          id: 3
-        },
-        4: {
-          name: 'Tag 1',
-          img: '/img/abama/4.png',
-          id: 4
-        },
-        5: {
-          name: 'Tag 1',
-          img: '/img/abama/4.png',
-          id: 5
-        },
-        6: {
-          name: 'Tag 1',
-          img: '/img/abama/4.png',
-          id: 6
-        }
-      },
-      info: null
+      tags: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/getAllHashtags').then(function (response) {
-      return _this.info = response;
+    axios.post('/getAllHashtags').then(function (response) {
+      return _this.tags = response.data;
     });
+  },
+  methods: {
+    chooseImageFile: function chooseImageFile(e) {
+      e.target.parentNode.childNodes[0].click();
+    },
+    deleteTag: function deleteTag(e) {
+      e.preventDefault();
+      console.log(e.target.parentNode.parentNode.getAttribute('data-tag_id'));
+      var tagToDeleteId = e.target.parentNode.parentNode.getAttribute('data-tag_id');
+    }
   }
 });
 
@@ -1964,7 +1944,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.main-wrapper[data-v-21ed212c] {\n  max-width: 1440px;\n  margin:0 auto;\n  padding:32px 24px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: flex-start;\n          align-items: flex-start;\n}\n.tags-wrapper[data-v-21ed212c] {\n  width:100%;\n}\n.tags-list[data-v-21ed212c] {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap:wrap;\n          flex-wrap:wrap;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  width:100%;\n  padding: 0;\n  margin: 0;\n}\n.single-tag[data-v-21ed212c] {\n  -webkit-flex-basis:calc(16% - 8px);\n          flex-basis:calc(16% - 8px);\n  list-style-type: none;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: center;\n          align-items: center;\n  /* justify-content: flex-start; */\n  padding:16px 12px;\n  font-size: 20px;\n  margin: 0 auto 12px;\n  width:200px;\n  height:200px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n#add-new-tag.single-tag svg[data-v-21ed212c]{\n  margin-bottom: 16px;\n}\n.single-tag h3[data-v-21ed212c] {\n  font-size: 18px;\n  font-weight: 600;\n  color:#333333;\n}\n.single-tag input[data-v-21ed212c]::-webkit-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]:-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]::-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]::placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c] {\n  width:100%;\n  font-weight: 600;\n  text-align: center;\n  color: #333333;\n}\n.tag-img-wrapper[data-v-21ed212c] {\n  width:80px;\n  height:80px;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-bottom: 16px;\n  padding: 2px;\n  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);\n}\n.tag-img-wrapper img[data-v-21ed212c] {\n  width:76px;\n  height:76px;\n  object-fit: cover;\n  object-position: center;\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.main-wrapper[data-v-21ed212c] {\n  max-width: 1440px;\n  margin:0 auto;\n  padding:32px 24px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: flex-start;\n          align-items: flex-start;\n}\n.tags-wrapper[data-v-21ed212c] {\n  width:100%;\n}\n.tags-list[data-v-21ed212c] {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap:wrap;\n          flex-wrap:wrap;\n  -webkit-justify-content: center;\n          justify-content: center;\n  width:100%;\n  padding: 0;\n  margin: 0;\n}\n.single-tag[data-v-21ed212c] {\n  list-style-type: none;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  padding:16px 12px;\n  font-size: 20px;\n  margin: 0 8px 12px auto;\n  width:200px;\n  height:200px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n#add-new-tag.single-tag svg[data-v-21ed212c]{\n  margin-bottom: 16px;\n}\n.single-tag h3[data-v-21ed212c] {\n  font-size: 18px;\n  font-weight: 600;\n  color:#333333;\n}\n.single-tag input[data-v-21ed212c]::-webkit-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]:-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]::-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c]::placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input[data-v-21ed212c] {\n  width:100%;\n  font-weight: 600;\n  text-align: center;\n  color: #333333;\n  border-color:transparent;\n  outline: none;\n}\n.single-tag input[data-v-21ed212c]:focus {\n  border:1px solid #E0E0E0;\n}\n.tag-img-wrapper[data-v-21ed212c] {\n  width:80px;\n  height:80px;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-bottom: 16px;\n  padding: 2px;\n  cursor:pointer;\n  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);\n}\n.tag-img-wrapper img[data-v-21ed212c] {\n  width:76px;\n  height:76px;\n  object-fit: cover;\n  object-position: center;\n  border-radius: 50%;\n}\n.tag-img-wrapper input[type=\"file\"][data-v-21ed212c] {\n  display: none;\n}\n.delete-tag svg[data-v-21ed212c] {\n  pointer-events: none;\n}\n", ""]);
 
 // exports
 
@@ -3284,7 +3264,17 @@ var render = function() {
               { staticClass: "single-tag", attrs: { "data-tag_id": tag.id } },
               [
                 _c("div", { staticClass: "tag-img-wrapper" }, [
-                  _c("img", { attrs: { src: tag.img } })
+                  _c("input", {
+                    attrs: {
+                      type: "file",
+                      accept: "image/x-png,image/gif,image/jpeg"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    attrs: { src: tag.img },
+                    on: { click: _vm.chooseImageFile }
+                  })
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -3306,15 +3296,55 @@ var render = function() {
                       _vm.$set(tag, "name", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "events" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "delete-tag",
+                      attrs: { href: "#" },
+                      on: { click: _vm.deleteTag }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "14",
+                            height: "19",
+                            viewBox: "0 0 14 19",
+                            fill: "none"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M1.61637 17.5821C1.63722 18.0801 2.04694 18.473 2.54521 18.473H11.2241C11.7224 18.473 12.1321 18.0801 12.1529 17.5821L12.7727 4.49829H0.996582L1.61637 17.5821ZM8.84791 7.74809C8.84791 7.53961 9.01696 7.37052 9.22552 7.37052H9.82948C10.0379 7.37052 10.2071 7.53957 10.2071 7.74809V15.2232C10.2071 15.4317 10.0381 15.6008 9.82948 15.6008H9.22552C9.01705 15.6008 8.84791 15.4318 8.84791 15.2232V7.74809ZM6.2051 7.74809C6.2051 7.53961 6.37414 7.37052 6.58267 7.37052H7.18663C7.39506 7.37052 7.5642 7.53957 7.5642 7.74809V15.2232C7.5642 15.4317 7.3952 15.6008 7.18663 15.6008H6.58267C6.37419 15.6008 6.2051 15.4318 6.2051 15.2232V7.74809ZM3.5622 7.74809C3.5622 7.53961 3.73124 7.37052 3.93977 7.37052H4.54377C4.75225 7.37052 4.92134 7.53957 4.92134 7.74809V15.2232C4.92134 15.4317 4.7523 15.6008 4.54377 15.6008H3.93977C3.73129 15.6008 3.5622 15.4318 3.5622 15.2232V7.74809Z",
+                              fill: "#828282"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M13.1849 0.951636H9.18108V0.194687C9.18108 0.0871907 9.09393 0 8.98639 0H4.78192C4.67443 0 4.58728 0.0871907 4.58728 0.194687V0.951591H0.583382C0.261165 0.951591 0 1.2128 0 1.53502V3.36779H13.7683V1.53506C13.7683 1.21285 13.5071 0.951636 13.1849 0.951636Z",
+                              fill: "#828282"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ])
               ]
             )
           })
         ],
         2
-      ),
-      _vm._v(" "),
-      _c("div", [_vm._v("\n      " + _vm._s(_vm.info) + "\n    ")])
+      )
     ])
   ])
 }
