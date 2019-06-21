@@ -37,10 +37,10 @@ Vue.config.performance = true;
 import Admin from './Admin.vue';
 
 const app = new Vue({
-  el: '#admin',
+  //el: '#admin',
   router,
   components: {
     Admin
   },
   render: h => h(Admin)
-});
+}).$mount('#admin');
