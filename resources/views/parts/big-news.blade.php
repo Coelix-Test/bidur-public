@@ -43,7 +43,6 @@
                     @foreach($allPosts['hot'] as $post)
                         <?php
                         $allInfoHot[] = $controller->getInfoOnPostForMain($post['post']->id);
-//                        dd($allInfoHot);
                         ?>
                     @endforeach
                     <div class="col-3 vertical-column">

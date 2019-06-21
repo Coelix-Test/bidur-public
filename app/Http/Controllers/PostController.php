@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -197,6 +198,7 @@ class PostController extends Controller
     }
 
     public function getAllPostsWithAllFilters(){
+
         $posts = Post::all();
 
         $hotPosts = Post::where('hot', 'true')->get();
@@ -216,30 +218,25 @@ class PostController extends Controller
             $finalAllPosts[$key]['post'] = $post;
             $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
         }
-        $allTypesOfPosts['all'] = $finalAllPosts;
+        $allTypesOfPosts['trending'] = $finalAllPosts;
         $allTypesOfPosts['hot'] = $finalHotPosts;
         $allTypesOfPosts['recent'] = $finalRecentPosts;
-        foreach ($allTypesOfPosts['recent'] as $key => $allTypesOfPost) {
-            $postsToSort[$key] =  $allTypesOfPost['post'];
+
+        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
+
+            $allTrendingPosts[$key] = $trendingPost;
+            unset($allTypesOfPosts['trending'][$key]['post']);
+            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
         }
-        foreach ($allTypesOfPosts['recent'] as $key => $allTypesOfPost) {
-            unset($allTypesOfPosts['recent'][$key]['post']);
-            $allTypesOfPosts['recent'][$key] = $allTypesOfPost['rating'];
+        arsort($allTypesOfPosts['trending']);
+        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
+            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
+            $allTypesOfPosts['trending'][$outerKey] = $tmp;
         }
-        arsort($allTypesOfPosts['recent']);
-        foreach ($allTypesOfPosts['recent'] as $key => $rating) {
-            $array[$key] = $rating;
+
+        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
+            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
         }
-        foreach ($array as $outer => $item) {
-            foreach ($postsToSort as $inner => $post) {
-                if ($inner == $outer) {
-                    $final[$inner]['post'] = $post;
-                    $final[$inner]['rating'] = $item;
-                }
-            }
-        }
-        unset($allTypesOfPosts['recent']);
-        $allTypesOfPosts['recent'] = $final;
         return $allTypesOfPosts;
     }
 
@@ -254,6 +251,12 @@ class PostController extends Controller
         }
         return $titles;
     }
+
+    public function getRecentPosts($offset = 0, $take = 5){
+        $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
+        return json_encode($recentPosts);
+    }
+
 
     public function getTwoRandomPosts(){
         $posts = Post::all();

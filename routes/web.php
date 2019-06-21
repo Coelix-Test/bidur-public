@@ -28,3 +28,6 @@ Route::get('logout', 'Auth\LoginController@logout', function () {
 
 Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('postByHashtag');
 Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
+
+
+Route::post('/getRecentPostsWithOffset', 'PostController@getRecentPosts')->name('get-recent-posts');
