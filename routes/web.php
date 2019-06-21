@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@getMainPage');
 
 Route::get('/admin', function () {
     return view('admin');
@@ -22,3 +20,11 @@ Route::get('/admin', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', 'PostController@getAllPostsWithAllFilters')->name('test');
+Route::get('logout', 'Auth\LoginController@logout', function () {
+    return view('welcome');
+});
+
+Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('postByHashtag');
+Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');

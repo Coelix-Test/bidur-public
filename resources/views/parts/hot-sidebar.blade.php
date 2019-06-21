@@ -17,7 +17,7 @@
 
     <div class="news-block wide-image-news">
 
-        @for ($i = 0; $i < 3; $i++)
+        @for ($inner = 0; $inner < 3; $inner++)
             @include('parts/news-item-small')
         @endfor
     </div>
