@@ -252,10 +252,7 @@ class PostController extends Controller
         return $titles;
     }
 
-    public function getRecentPosts($offset = 0, $take = 5){
-        $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
-        return json_encode($recentPosts);
-    }
+
 
 
     public function getTwoRandomPosts(){
@@ -277,11 +274,12 @@ class PostController extends Controller
 
     public function getInfoOnPostForMain($id = 1){
         $post = Post::find($id);
+
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
         $title = $post->getAllTitles()->first();
-        $author = User::find($post->authorID)->first();
-        $author = $author->name;
+        $author = $post->author;
+
         if (!empty($content)){
             $excerpt = substr($content->contentText, 0, 200);
         }else{
