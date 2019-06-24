@@ -192,7 +192,7 @@ class PostController extends Controller
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
-        dd($fullPost);
+        //dd($fullPost);
 
         return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
     }
@@ -218,6 +218,7 @@ class PostController extends Controller
             $finalAllPosts[$key]['post'] = $post;
             $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
         }
+
         $allTypesOfPosts['trending'] = $finalAllPosts;
         $allTypesOfPosts['hot'] = $finalHotPosts;
         $allTypesOfPosts['recent'] = $finalRecentPosts;
@@ -237,7 +238,8 @@ class PostController extends Controller
         foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
             $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
         }
-        return $allTypesOfPosts;
+        //dd($allTypesOfPosts);
+        return $finalAllPosts;
     }
 
     public function getAllPostTitles(){
@@ -272,8 +274,8 @@ class PostController extends Controller
 
 
 
-    public function getInfoOnPostForMain($id = 1){
-        $post = Post::find($id);
+    public function getInfoOnPostForMain(Request $request){
+        $post = Post::find($request->get('id'));
 
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();

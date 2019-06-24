@@ -22,6 +22,10 @@ Route::get('/admin', function () {
 
 Auth::routes();
 
+Route::post('/getTwoRandomPosts', 'PostController@getTwoRandomPosts');
+Route::post('/getInfoOnPostForMain', 'PostController@getInfoOnPostForMain');
+Route::post('/getAllPosts', 'PostController@getAllPostsWithAllFilters');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('logout', 'Auth\LoginController@logout', function () {

@@ -11975,8 +11975,10 @@ body {
   height: 55px;
   display: -webkit-flex;
   display: flex;
-  padding: 10px 80px;
+  padding: 10px 24px;
   background: linear-gradient(270deg, #FF8383 0%, #4200FF 100%);
+  margin: 0 auto;
+  max-width: 1440px;
 }
 
 #header_main .top-row .auth-btns,
@@ -12032,7 +12034,7 @@ body {
 
 #header_main .top-row .menu-list a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
 }
 
 #header_main .logo-row {
@@ -12217,7 +12219,9 @@ body {
   font-family: "Oswald";
   font-size: 24px;
   color: #333;
-  padding: 0 80px;
+  max-width: 1440px;
+  padding: 0 24px;
+  margin: 0 auto;
 }
 
 #footer_main .contact-line .inner {
