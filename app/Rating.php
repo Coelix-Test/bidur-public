@@ -8,7 +8,7 @@ class Rating extends Model
 {
     protected $table = 'ratings';
 
-    protected $fillable = ['postId', 'userId', 'rating'];
+    protected $guarded = ['id'];
 
     public function post(){
         return $this->belongsTo(Post::class);

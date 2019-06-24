@@ -5,14 +5,74 @@ namespace App\Http\Controllers;
 
 
 use App\Hashtag;
+use App\HashtagPosts;
 use App\Post;
+use App\Survey;
+use App\SurveyAnswerVariant;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+//        $this->middleware('admin');
+    }
+
     public function getRecentPosts($offset = 0, $take = 5){
         $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
         return json_encode($recentPosts);
+    }
+
+    public function createFullPost(Request $request){
+        $metaTitle = $request->get('meta-title');
+        $hashtags = $request->get('celebrities'); //array
+        $hot = $request->get('hot'); //true-false
+        $author = $request->get('author');
+        $date = $request->get('date');
+
+        $headerMeta = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
+
+    }
+
+    public function createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date){
+        $post = Post::create([
+            'author' => $author,
+            'hot' => $hot,
+            'metaTitle' => $metaTitle,
+            'created_at' => $date,
+        ]);
+        foreach ($hashtags as $hashtag) {
+            HashtagPosts::create([
+                'hashtagId' => $hashtag,
+                'postId' => $post->id,
+            ]);
+        }
+        return $post;
+    }
+
+    public function createPostAllContent(){
+
+    }
+
+    public function createPostAddImage(){
+
+    }
+
+    public function createPostAddTitle(){
+
+    }
+
+    public function createPostAddImageWithText(){
+
+    }
+
+    public function createPostAddSurvey(){
+
+    }
+
+    public function createPostAddVideo(){
+
     }
 
     public function getAllHashtags(){
@@ -42,5 +102,37 @@ class AdminController extends Controller
     public function updateHashtag(Request $request){
         Hashtag::where('id', $request->get('id'))->update(['image' => $request->get('image'), 'text' => $request->get('text')]);
         return $this->getAllHashtags();
+    }
+
+
+    public function createSurvey(Request $request){
+        $vartiants = $request->get('answerVariants');
+        $title = $request->get('title');
+        $postId = $request->get('postId');
+        $order = $request->get('order');
+
+        $survey = Survey::create([
+            'postId' => $postId,
+            'authorId' => \Auth::id(),
+            'order' => $order,
+            'question' => $title
+        ]);
+
+        foreach ($vartiants as $vartiant) {
+            SurveyAnswerVariant::create([
+                'surveyId' => $survey->id,
+                'question' => $vartiant,
+            ]);
+        }
+    }
+
+    public function getAllSurveys(){
+        $allSurveys = Survey::all();
+
+        foreach ($allSurveys as $key => $survey) {
+            $all[$key]['survey'] = $survey;
+            $all[$key]['variants'] = $survey->getAllVariants();
+        }
+        return json_encode($all);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    protected $fillable = ['authorID', 'hot', 'id'];
+    protected $guarded = ['id'];
     protected $table = 'posts';
 
 
