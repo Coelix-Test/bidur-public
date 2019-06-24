@@ -32,6 +32,8 @@ class AdminController extends Controller
     }
 
     public function addHashtag($image = 'url', $name = 'name'){
+      // print_r($request);
+      // exit();
         $hashtag = Hashtag::create([
             'text' => $name,
             'image' => $image
