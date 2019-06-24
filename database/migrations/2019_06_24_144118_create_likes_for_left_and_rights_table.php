@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHappyBirthsdaysTable extends Migration
+class CreateLikesForLeftAndRightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('happyBirthday', function (Blueprint $table) {
+        Schema::create('likesForLeftAndRight', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('text', 191);
-            $table->longText('img');
+            $table->unsignedInteger('userId');
+            $table->unsignedInteger('serviceId');
+            $table->string('value', 191);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('happyBirthsday');
+        Schema::dropIfExists('likes_for_left_and_rights');
     }
 }

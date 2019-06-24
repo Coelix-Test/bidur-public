@@ -7,13 +7,16 @@ namespace App\Http\Controllers;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Post;
+use App\PostContent;
+use App\PostTitle;
+use App\PostVideo;
 use App\Survey;
 use App\SurveyAnswerVariant;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-
+    protected $post;
     public function __construct()
     {
 //        $this->middleware('admin');
@@ -34,21 +37,32 @@ class AdminController extends Controller
                 $hot        = $section['hot']; //true-false
                 $author     = $section['author'];
                 $date       = $section['date'];
-                $headerMeta = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
-            }elseif($section['type'] == 'content'){
-
+                $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
             }
-        }
-        //meta
-        $metaTitle = $request->get('meta-title');
-        $hashtags = $request->get('celebrities'); //array
-        $hot = $request->get('hot'); //true-false
-        $author = $request->get('author');
-        $date = $request->get('date');
+            elseif($section['type'] == 'content'){
+                $content = $section['content'];
+                $this->createPostAddContent($this->post->id, $content, $key);
+            }
+            elseif($section['type'] == 'title'){
+                $title = $section['title'];
+                $this->createPostAddTitle($this->post->id, $title, $key);
+            }
+            elseif($section['type'] == 'video'){
+                $url = $section['video'];
+                $this->createPostAddTitle($this->post->id, $url, $key);
+            }
+            elseif($section['type'] == 'survey'){
+                $title = $section['title'];
+                $this->createPostAddSurvey($section['variants'], $title, $this->post->id, $key);
+            }
+            elseif ($section['type'] == 'image'){
+                exit(0);
+            }
+            elseif ($section['type'] == 'imageWithText'){
+                exit(0);
+            }
 
-        //content
-        $content = $request->get('content');
-        $headerMeta = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
+        }
 
     }
 
@@ -69,16 +83,24 @@ class AdminController extends Controller
     }
 
 
-    public function createPostAllContent(){
-
+    public function createPostAddContent($postId, $content, $order){
+        PostContent::create([
+            'postId' =>  $postId,
+            'content' => $content,
+            'order' => $order
+        ]);
     }
 
     public function createPostAddImage(){
 
     }
 
-    public function createPostAddTitle(){
-
+    public function createPostAddTitle($postId, $title, $order){
+        PostTitle::create([
+            'postId' =>  $postId,
+            'titleText' => $title,
+            'order' => $order
+        ]);
     }
 
     public function createPostAddImageWithText(){
@@ -103,8 +125,12 @@ class AdminController extends Controller
         }
     }
 
-    public function createPostAddVideo(){
-
+    public function createPostAddVideo($postId, $url, $order){
+        PostVideo::create([
+            'postId' =>  $postId,
+            'titleText' => $url,
+            'order' => $order
+        ]);
     }
 
     public function getAllHashtags(){
