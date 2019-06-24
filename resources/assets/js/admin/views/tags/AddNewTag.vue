@@ -1,5 +1,5 @@
 <template >
-  <li class="add-new-tag">
+  <li class="add-new-tag single-tag">
 
     <div class="tag-img-wrapper">
       <!-- <input type="file" accept="image/x-png,image/gif,image/jpeg" /> -->
@@ -16,7 +16,7 @@
         buttonClass="ui button primary"
         :customStrings="{
         upload: '<h4>Upload it!</h4>',
-        drag: 'Drag and drop your image here'}">
+        drag: 'SELECT IMAGE'}">
       ></picture-input>
     </div>
     <input type="text" v-model="tagName" placeholder="Tag Name">
@@ -29,9 +29,7 @@
 </template>
 
 <script>
-// import TagImage from './TagImage.vue';
 import PictureInput from 'vue-picture-input';
-// import FormDataPost from '/upload';
 export default {
   props : {
     data : {
@@ -42,6 +40,7 @@ export default {
     return {
       tagName : null,
       tagImage : null,
+      tagImageUrl : null
     }
   },
   methods : {
@@ -50,7 +49,7 @@ export default {
       if (this.$refs.pictureInput.file) {
 
          this.tagImage = this.$refs.pictureInput.file;
-         console.log(this.tagImage);
+
        } else {
 
          console.log("Old browser. No support for Filereader API");
@@ -63,15 +62,16 @@ export default {
       if (this.tagImage && this.tagName){
 
         var data = new FormData();
-        data.append('img', this.tagImage);
-        data.append('name', this.tagName);
-        console.log('data', data);
+        data.append('image', this.tagImage);
+        data.append('text', this.tagName);
+
         axios
           .post('/addHashtag', data, {
             headers : {'Content-Type': 'multipart/form-data'}
           })
           .then((response) => {
             console.log(response);
+            this.$emit('addedNewTag', response.data)
           })
           .catch((error) => {
             console.log(error);
@@ -80,7 +80,6 @@ export default {
     }
   },
   components : {
-    // TagImage,
     PictureInput
   }
 }

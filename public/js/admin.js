@@ -1903,7 +1903,16 @@ __webpack_require__.r(__webpack_exports__);
     addNewTag: function addNewTag(e) {
       e.preventDefault();
       this.showAddNewTag = true;
-      console.log('addNew'); //let newElement = document.createElement('li');
+      console.log('addNew');
+    },
+    addedNewTag: function addedNewTag(data) {
+      this.tags = data;
+      this.showAddNewTag = false;
+    },
+    updateTag: function updateTag(data) {
+      this.tags = data;
+      this.showAddNewTag = false;
+      alert('tag saved!');
     }
   },
   components: {
@@ -1955,8 +1964,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import TagImage from './TagImage.vue';
- // import FormDataPost from '/upload';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1965,7 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tagName: null,
-      tagImage: null
+      tagImage: null,
+      tagImageUrl: null
     };
   },
   methods: {
@@ -1974,7 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$refs.pictureInput.file) {
         this.tagImage = this.$refs.pictureInput.file;
-        console.log(this.tagImage);
       } else {
         console.log("Old browser. No support for Filereader API");
       }
@@ -1983,17 +1990,20 @@ __webpack_require__.r(__webpack_exports__);
       console.log('removed');
     },
     addTag: function addTag() {
+      var _this = this;
+
       if (this.tagImage && this.tagName) {
         var data = new FormData();
-        data.append('img', this.tagImage);
-        data.append('name', this.tagName);
-        console.log('data', data);
+        data.append('image', this.tagImage);
+        data.append('text', this.tagName);
         axios.post('/addHashtag', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(function (response) {
           console.log(response);
+
+          _this.$emit('addedNewTag', response.data);
         })["catch"](function (error) {
           console.log(error);
         });
@@ -2001,7 +2011,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    // TagImage,
     PictureInput: vue_picture_input__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
@@ -2017,6 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_picture_input__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-picture-input */ "./node_modules/vue-picture-input/PictureInput.vue");
 //
 //
 //
@@ -2037,16 +2047,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
       requred: true
     }
   },
+  data: function data() {
+    return {
+      tagName: this.data.name,
+      tagImage: null,
+      tagImageUrl: null,
+      changed: false
+    };
+  },
   methods: {
-    chooseImageFile: function chooseImageFile(e) {
-      e.target.parentNode.childNodes[0].click();
+    nameChanging: function nameChanging() {
+      this.tagName = this.data.name;
     },
+    onChanged: function onChanged(e) {
+      this.changed = true;
+
+      if (this.$refs.pictureInput.file) {
+        this.tagImage = this.$refs.pictureInput.file;
+      } else {
+        console.log("Old browser. No support for Filereader API");
+      }
+    },
+    onRemoved: function onRemoved() {},
+    chooseImageFile: function chooseImageFile(e) {},
     deleteTag: function deleteTag(id, e) {
       var _this = this;
 
@@ -2054,14 +2099,32 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/deleteHashtag', {
         id: id
       }).then(function (response) {
-        console.log(response);
-        _this.tags = response.data;
-
         _this.$emit('delete', response.data);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    editTag: function editTag(id, e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var sendData = new FormData();
+      sendData.append('id', id);
+      sendData.append('image', this.tagImage);
+      sendData.append('text', this.tagName);
+      axios.post('/updateHashtag', sendData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        _this2.$emit('editTag', response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  components: {
+    PictureInput: vue_picture_input__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -2117,7 +2180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.main-wrapper {\n  max-width: 1440px;\n  margin:0 auto;\n  padding:32px 24px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: flex-start;\n          align-items: flex-start;\n}\n.tags-wrapper {\n  width:100%;\n}\n.tags-list {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap:wrap;\n          flex-wrap:wrap;\n  -webkit-justify-content: center;\n          justify-content: center;\n  width:100%;\n  padding: 0;\n  margin: 0;\n}\n#add-new-tag {\n  cursor:pointer;\n}\n.single-tag {\n  list-style-type: none;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  padding:16px 12px;\n  font-size: 20px;\n  margin: 0 8px 12px auto;\n  width:200px;\n  height:200px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n#add-new-tag.single-tag svg{\n  margin-bottom: 16px;\n}\n.single-tag h3 {\n  font-size: 18px;\n  font-weight: 600;\n  color:#333333;\n}\n.single-tag input::-webkit-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input:-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input::-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input::placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input {\n  width:100%;\n  font-weight: 600;\n  text-align: center;\n  color: #333333;\n  border-color:transparent;\n  outline: none;\n}\n.single-tag input:focus {\n  border:1px solid #E0E0E0;\n}\n.tag-img-wrapper {\n  width:80px;\n  height:80px;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-bottom: 16px;\n  padding: 2px;\n  cursor:pointer;\n  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);\n}\n.tag-img-wrapper img {\n  width:76px;\n  height:76px;\n  object-fit: cover;\n  object-position: center;\n  border-radius: 50%;\n}\n.tag-img-wrapper input[type=\"file\"] {\n  display: none;\n}\n.delete-tag svg {\n  pointer-events: none;\n}\n", ""]);
+exports.push([module.i, "\n.picture-input {\n  opacity: 0;\n  /* z-index:-1; */\n  position: absolute;\n}\n.picture-input.changed {\n  opacity: 1;\n}\n.main-wrapper {\n  max-width: 1440px;\n  margin:0 auto;\n  padding:32px 24px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: flex-start;\n          align-items: flex-start;\n}\n.tags-wrapper {\n  width:100%;\n}\n.tags-list {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap:wrap;\n          flex-wrap:wrap;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  width:100%;\n  padding: 0;\n  margin: 0;\n}\n#add-new-tag {\n  cursor:pointer;\n}\n.single-tag {\n  -webkit-flex-basis: calc(20% - 16px);\n          flex-basis: calc(20% - 16px);\n  list-style-type: none;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  padding:16px 12px;\n  font-size: 20px;\n  margin: 0 8px 12px 8px;\n  width:200px;\n  height:200px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n#add-new-tag.single-tag svg{\n  margin-bottom: 16px;\n}\n.single-tag h3 {\n  font-size: 18px;\n  font-weight: 600;\n  color:#333333;\n}\n.single-tag input::-webkit-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input:-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input::-ms-input-placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input::placeholder {\n  color:#BDBDBD;\n  font-weight: 600;\n  text-align: center;\n}\n.single-tag input {\n  width:100%;\n  font-weight: 600;\n  text-align: center;\n  color: #333333;\n  border-color:transparent;\n  outline: none;\n  border-width: 1px;\n}\n.single-tag input:focus {\n  border:1px solid #ccc;\n}\n.tag-img-wrapper {\n  width:80px;\n  height:80px;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-bottom: 16px;\n  padding: 2px;\n  cursor:pointer;\n  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);\n  position: relative;\n}\n.tag-img-wrapper img {\n  width:76px;\n  height:76px;\n  object-fit: cover;\n  object-position: center;\n  border-radius: 50%;\n  z-index:2;\n}\n.tag-img-wrapper input[type=\"file\"] {\n  display: none;\n}\n.delete-tag svg {\n  pointer-events: none;\n}\n.picture-inner {\n  border-width:0!important;\n}\n", ""]);
 
 // exports
 
@@ -4280,14 +4343,14 @@ var render = function() {
           ),
           _vm._v(" "),
           _vm.showAddNewTag
-            ? _c("AddNewTag", { on: { addNewTag: function($event) {} } })
+            ? _c("AddNewTag", { on: { addedNewTag: _vm.addedNewTag } })
             : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.tags, function(tag) {
             return _c("SingleTag", {
               key: tag.id,
               attrs: { data: tag },
-              on: { delete: _vm.deleteHashtag }
+              on: { delete: _vm.deleteHashtag, editTag: _vm.updateTag }
             })
           })
         ],
@@ -4329,7 +4392,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "add-new-tag" }, [
+  return _c("li", { staticClass: "add-new-tag single-tag" }, [
     _c(
       "div",
       { staticClass: "tag-img-wrapper" },
@@ -4347,7 +4410,7 @@ var render = function() {
               buttonClass: "ui button primary",
               customStrings: {
                 upload: "<h4>Upload it!</h4>",
-                drag: "Drag and drop your image here"
+                drag: "SELECT IMAGE"
               }
             },
             on: { change: _vm.onChanged, remove: _vm.onRemoved }
@@ -4422,16 +4485,44 @@ var render = function() {
     "li",
     { staticClass: "single-tag", attrs: { "data-tag_id": _vm.data.id } },
     [
-      _c("div", { staticClass: "tag-img-wrapper" }, [
-        _c("input", {
-          attrs: { type: "file", accept: "image/x-png,image/gif,image/jpeg" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: { src: _vm.data.img },
-          on: { click: _vm.chooseImageFile }
-        })
-      ]),
+      _c(
+        "div",
+        { staticClass: "tag-img-wrapper" },
+        [
+          _c(
+            "picture-input",
+            {
+              ref: "pictureInput",
+              class: { changed: _vm.changed },
+              attrs: {
+                width: 100,
+                removable: true,
+                removeButtonClass: "ui red button",
+                height: 100,
+                accept: "image/jpeg, image/png, image/gif",
+                buttonClass: "ui button primary",
+                customStrings: {
+                  upload: "<h4>Upload it!</h4>",
+                  drag: "SELECT IMAGE"
+                }
+              },
+              on: {
+                change: function($event) {
+                  return _vm.onChanged($event)
+                },
+                remove: _vm.onRemoved
+              }
+            },
+            [_vm._v("\n    >")]
+          ),
+          _vm._v(" "),
+          _c("img", {
+            attrs: { src: _vm.data.img },
+            on: { click: _vm.chooseImageFile }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("input", {
         directives: [
@@ -4445,12 +4536,15 @@ var render = function() {
         attrs: { type: "text", placeholder: "Tag Name" },
         domProps: { value: _vm.data.name },
         on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.data, "name", $event.target.value)
-          }
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.data, "name", $event.target.value)
+            },
+            _vm.nameChanging
+          ]
         }
       }),
       _vm._v(" "),
@@ -4502,6 +4596,20 @@ var render = function() {
               ]
             )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "edit-tag",
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                return _vm.editTag(_vm.data.id, $event)
+              }
+            }
+          },
+          [_vm._v("save tag")]
         )
       ])
     ]

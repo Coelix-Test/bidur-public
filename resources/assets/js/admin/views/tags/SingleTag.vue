@@ -2,10 +2,24 @@
   <li class="single-tag" :data-tag_id="data.id">
 
     <div class="tag-img-wrapper">
-      <input type="file" accept="image/x-png,image/gif,image/jpeg" />
+      <picture-input
+        ref="pictureInput"
+        @change="onChanged($event)"
+        @remove="onRemoved"
+        :width="100"
+        :removable="true"
+        removeButtonClass="ui red button"
+        :height="100"
+        :class="{ changed }"
+        accept="image/jpeg, image/png, image/gif"
+        buttonClass="ui button primary"
+        :customStrings="{
+        upload: '<h4>Upload it!</h4>',
+        drag: 'SELECT IMAGE'}">
+      ></picture-input>
       <img :src="data.img" @click="chooseImageFile" />
     </div>
-    <input type="text" v-model="data.name" placeholder="Tag Name">
+    <input type="text" v-model="data.name" @input="nameChanging" placeholder="Tag Name">
     <div class="events">
       <a class="delete-tag" href="#" @click="deleteTag(data.id, $event)">
         <input type="hidden" name="tag_id" :value="data.id">
@@ -14,20 +28,47 @@
           <path d="M13.1849 0.951636H9.18108V0.194687C9.18108 0.0871907 9.09393 0 8.98639 0H4.78192C4.67443 0 4.58728 0.0871907 4.58728 0.194687V0.951591H0.583382C0.261165 0.951591 0 1.2128 0 1.53502V3.36779H13.7683V1.53506C13.7683 1.21285 13.5071 0.951636 13.1849 0.951636Z" fill="#828282"/>
         </svg>
       </a>
+      <a class="edit-tag" href="#" @click="editTag(data.id, $event)">save tag</a>
     </div>
   </li>
 </template>
 
 <script>
+import PictureInput from 'vue-picture-input';
 export default {
   props: {
     data: {
       requred: true,
     }
   },
+  data() {
+    return{
+      tagName : this.data.name,
+      tagImage : null,
+      tagImageUrl : null,
+      changed : false
+    }
+
+  },
   methods : {
+    nameChanging() {
+      this.tagName = this.data.name;
+    },
+    onChanged(e) {
+      this.changed = true;
+      if (this.$refs.pictureInput.file) {
+
+         this.tagImage = this.$refs.pictureInput.file;
+
+       } else {
+
+         console.log("Old browser. No support for Filereader API");
+       }
+    },
+    onRemoved() {
+    },
     chooseImageFile : function (e) {
-      e.target.parentNode.childNodes[0].click();
+
     },
     deleteTag : function (id,e) {
       e.preventDefault();
@@ -36,17 +77,37 @@ export default {
           id: id,
         })
          .then((response) => {
-           console.log(response);
-           this.tags = response.data;
            this.$emit('delete', response.data)
          })
          .catch((error) => {
            console.log(error);
          });
     },
-    
+    editTag(id,e) {
+      e.preventDefault();
+
+      var sendData = new FormData();
+      sendData.append('id', id);
+      sendData.append('image', this.tagImage);
+      sendData.append('text', this.tagName);
+
+      axios
+        .post('/updateHashtag',sendData,{
+          headers : {'Content-Type': 'multipart/form-data'}
+        })
+        .then((response) => {
+          this.$emit('editTag', response.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
 
   },
+  components : {
+    PictureInput
+  }
 }
 </script>
 

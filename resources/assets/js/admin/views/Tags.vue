@@ -23,11 +23,11 @@
           </svg>
           <h3>Add new tag</h3>
         </li>
-        <AddNewTag @addNewTag=""  v-if="showAddNewTag" />
+        <AddNewTag @addedNewTag="addedNewTag"  v-if="showAddNewTag" />
 
 
 
-        <SingleTag v-for="tag in tags" @delete="deleteHashtag" :data="tag" :key="tag.id"/>
+        <SingleTag v-for="tag in tags" @delete="deleteHashtag" @editTag="updateTag" :data="tag" :key="tag.id"/>
       </ul>
 
     </div>
@@ -61,9 +61,15 @@ export default {
       e.preventDefault();
       this.showAddNewTag = true;
       console.log('addNew');
-      //let newElement = document.createElement('li');
-
-
+   },
+   addedNewTag(data) {
+     this.tags = data;
+     this.showAddNewTag = false;
+   },
+   updateTag(data) {
+     this.tags = data;
+     this.showAddNewTag = false;
+     alert('tag saved!');
    }
 
 
@@ -79,6 +85,14 @@ export default {
 </script>
 
 <style lang="css">
+  .picture-input {
+    opacity: 0;
+    /* z-index:-1; */
+    position: absolute;
+  }
+  .picture-input.changed {
+    opacity: 1;
+  }
   .main-wrapper {
     max-width: 1440px;
     margin:0 auto;
@@ -94,7 +108,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
-    justify-content: center;
+    justify-content: flex-start;
     width:100%;
     padding: 0;
     margin: 0;
@@ -103,6 +117,7 @@ export default {
     cursor:pointer;
   }
   .single-tag {
+    flex-basis: calc(20% - 16px);
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -110,7 +125,7 @@ export default {
     justify-content: center;
     padding:16px 12px;
     font-size: 20px;
-    margin: 0 8px 12px auto;
+    margin: 0 8px 12px 8px;
     width:200px;
     height:200px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -136,9 +151,10 @@ export default {
     color: #333333;
     border-color:transparent;
     outline: none;
+    border-width: 1px;
   }
   .single-tag input:focus {
-    border:1px solid #E0E0E0;
+    border:1px solid #ccc;
   }
   .tag-img-wrapper {
     width:80px;
@@ -149,6 +165,7 @@ export default {
     padding: 2px;
     cursor:pointer;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    position: relative;
   }
   .tag-img-wrapper img {
     width:76px;
@@ -156,11 +173,15 @@ export default {
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
+    z-index:2;
   }
   .tag-img-wrapper input[type="file"] {
     display: none;
   }
   .delete-tag svg {
     pointer-events: none;
+  }
+  .picture-inner {
+    border-width:0!important;
   }
 </style>
