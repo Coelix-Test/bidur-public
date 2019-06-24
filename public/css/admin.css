@@ -1,4 +1,9 @@
-.theme-input-text {
+body {
+  font-size: 18px;
+}
+
+input.theme-input-text,
+.theme-input-text input {
   width: 215px;
   height: 41px;
   border-radius: 3px;
@@ -8,5 +13,19 @@
 
 input {
   outline: none;
+}
+
+.theme-btn {
+  height: 40px;
+  padding: 0 30px;
+  border: none;
+  border-radius: 3px;
+  font-family: "Rubik";
+}
+
+.theme-ico-btn svg {
+  width: 15px;
+  height: 15px;
+  margin-left: 7px;
 }
 

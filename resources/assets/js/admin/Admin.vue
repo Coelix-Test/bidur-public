@@ -78,6 +78,7 @@
                 &:hover,
                 &.router-link-exact-active{
                     background: #EB5757;
+                    color: #fff;
                 }
             }
         }
