@@ -25,12 +25,15 @@ class AdminController extends Controller
     }
 
     public function createFullPost(Request $request){
+        //meta
         $metaTitle = $request->get('meta-title');
         $hashtags = $request->get('celebrities'); //array
         $hot = $request->get('hot'); //true-false
         $author = $request->get('author');
         $date = $request->get('date');
 
+        //content
+        $content = $request->get('content');
         $headerMeta = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
 
     }
@@ -51,6 +54,7 @@ class AdminController extends Controller
         return $post;
     }
 
+
     public function createPostAllContent(){
 
     }
@@ -67,8 +71,22 @@ class AdminController extends Controller
 
     }
 
-    public function createPostAddSurvey(){
+    public function createPostAddSurvey($variants, $title, $postId, $order){
 
+        $survey = Survey::create([
+            'postId' => $postId,
+            'authorId' => \Auth::id(),
+            'order' => $order,
+            'question' => $title
+        ]);
+
+        foreach ($variants as $key => $variant) {
+            SurveyAnswerVariant::create([
+                'surveyId' => $survey->id,
+                'question' => $variant,
+                'order' => $key
+            ]);
+        }
     }
 
     public function createPostAddVideo(){
@@ -124,33 +142,34 @@ class AdminController extends Controller
     }
 
 
-    public function createSurvey(Request $request){
-        $vartiants = $request->get('answerVariants');
-        $title = $request->get('title');
-        $postId = $request->get('postId');
-        $order = $request->get('order');
-
-        $survey = Survey::create([
-            'postId' => $postId,
-            'authorId' => \Auth::id(),
-            'order' => $order,
-            'question' => $title
-        ]);
-
-        foreach ($vartiants as $vartiant) {
-            SurveyAnswerVariant::create([
-                'surveyId' => $survey->id,
-                'question' => $vartiant,
-            ]);
-        }
-    }
+//    public function createSurvey(Request $request){
+//        $vartiants = $request->get('answerVariants');
+//        $title = $request->get('title');
+//        $postId = $request->get('postId');
+//        $order = $request->get('order');
+//
+//        $survey = Survey::create([
+//            'postId' => $postId,
+//            'authorId' => \Auth::id(),
+//            'order' => $order,
+//            'question' => $title
+//        ]);
+//
+//        foreach ($vartiants as $key => $vartiant) {
+//            SurveyAnswerVariant::create([
+//                'surveyId' => $survey->id,
+//                'question' => $vartiant,
+//                'order' => $key
+//            ]);
+//        }
+//    }
 
     public function getAllSurveys(){
         $allSurveys = Survey::all();
 
         foreach ($allSurveys as $key => $survey) {
             $all[$key]['survey'] = $survey;
-            $all[$key]['variants'] = $survey->getAllVariants();
+            $all[$key]['variants'] = $survey->getAllVariants()->orderBy('order');
         }
         return json_encode($all);
     }

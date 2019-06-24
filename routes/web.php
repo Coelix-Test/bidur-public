@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/test', 'TestController@test');
+
+
 Route::get('/', 'PostController@getMainPage');
 
 Route::get('/admin', function () {
@@ -21,7 +24,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/test', 'AdminController@addHashtag')->name('test');
 Route::get('logout', 'Auth\LoginController@logout', function () {
     return view('welcome');
 });
