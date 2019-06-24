@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Hashtag;
 use App\Post;
+use http\Env\Request;
 
 class AdminController extends Controller
 {
@@ -25,8 +26,8 @@ class AdminController extends Controller
         return json_encode($hashtagArray);
     }
 
-    public function deleteHashtag($id){
-        Hashtag::where('id', $id)->delete();
+    public function deleteHashtag(\Illuminate\Http\Request $request){
+        Hashtag::where('id', $request->get('id'))->delete();
         return $this->getAllHashtags();
     }
 
