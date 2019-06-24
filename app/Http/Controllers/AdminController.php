@@ -25,6 +25,20 @@ class AdminController extends Controller
     }
 
     public function createFullPost(Request $request){
+        $sections = $request->get('sections');
+
+        foreach ($sections as $key => $section) {
+            if ($section['type'] == 'metaTitle'){
+                $metaTitle  = $section['meta-title'];
+                $hashtags   = $section['celebrities']; //array
+                $hot        = $section['hot']; //true-false
+                $author     = $section['author'];
+                $date       = $section['date'];
+                $headerMeta = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
+            }elseif($section['type'] == 'content'){
+
+            }
+        }
         //meta
         $metaTitle = $request->get('meta-title');
         $hashtags = $request->get('celebrities'); //array

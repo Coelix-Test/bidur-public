@@ -22,9 +22,9 @@ class Admin
             if (!empty($user)){
                 return $next($request);
             }else{
-                return route('home');
+                return redirect(route('home'));
             }
         }
-        return route('home');
+        return redirect(route('home'));
     }
 }
