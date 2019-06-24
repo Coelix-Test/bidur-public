@@ -8,6 +8,8 @@ class SurveyAnswerVariant extends Model
 {
     protected $table = 'surveyAnswerVariants';
 
+    protected $guarded = ['id'];
+
     public function getTheSurvey(){
         return $this->belongsTo(Survey::class, 'surveyId', 'id');
     }
