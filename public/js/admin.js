@@ -1885,10 +1885,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      qwe: 'qweqweqwe',
       tags: null
     };
   },
@@ -1905,8 +1905,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTag: function deleteTag(e) {
       e.preventDefault();
-      console.log(e.target.parentNode.parentNode.getAttribute('data-tag_id'));
       var tagToDeleteId = e.target.parentNode.parentNode.getAttribute('data-tag_id');
+      console.log(tagToDeleteId);
+      axios.post('/deleteHashtag', tagToDeleteId).then(function (response) {
+        console.log('deleted');
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });

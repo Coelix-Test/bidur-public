@@ -43,13 +43,13 @@
 
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
   data() {
     return {
-      qwe: 'qweqweqwe',
       tags : null
 
     }
@@ -65,9 +65,18 @@ export default {
    },
    deleteTag : function (e) {
      e.preventDefault();
-     console.log(e.target.parentNode.parentNode.getAttribute('data-tag_id'));
+
      let tagToDeleteId = e.target.parentNode.parentNode.getAttribute('data-tag_id');
-     
+     console.log(tagToDeleteId);
+
+     axios
+     .post('/deleteHashtag',tagToDeleteId)
+      .then((response) => {
+        console.log('deleted');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
    }
 
  }
