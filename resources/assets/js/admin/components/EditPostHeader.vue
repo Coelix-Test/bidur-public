@@ -3,7 +3,7 @@
         <div class="inputs-row">
             <input type="text" class="main-post-title" name="title" placeholder="Add Title to the Post">
         </div>
-        <edit-post-celebrities class="d-flex w-100 inputs-row"></edit-post-celebrities>
+        <edit-post-celebrities @updateCelebreties="onUpdateCelebreties" @addCelebrity="onAddCelebrity" :celebrities="celebrities" class="d-flex w-100 inputs-row"></edit-post-celebrities>
         <div class="inputs-row w-100 d-flex">
             <div class="ico-input date-input d-inline-flex align-items-center">
                 <!-- <input type="date" name="date" placeholder="Add date"> -->
@@ -29,14 +29,36 @@ import EditPostCelebrities from './../components/EditPostCelebrities.vue';
 import Datepicker from 'vuejs-datepicker';
 
 export default {
-    // data: function(){
-    //     return {
-    //
-    //     }
-    // }
+    data: function(){
+        return {
+        }
+    },
+    props: {
+        title: {
+            type: String
+        },
+        author: {
+            type: String
+        },
+        date: {
+            type: String
+        },
+        celebrities: {
+            type: Array
+        }
+    },
     components: {
         EditPostCelebrities,
         Datepicker
+    },
+    methods: {
+        onUpdateCelebreties(data) {
+            this.celebreties = data;
+        },
+        onAddCelebrity(data){
+            console.log(data);
+            this.$emit('addCelebrity', data);
+        }
     }
 }
 </script>

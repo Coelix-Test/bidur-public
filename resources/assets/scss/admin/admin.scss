@@ -17,6 +17,10 @@ input{
 
 // buttons
 .theme-btn{
+    display: -webkit-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    align-items: center;
     height: 40px;
     padding: 0 30px;
     border: none;

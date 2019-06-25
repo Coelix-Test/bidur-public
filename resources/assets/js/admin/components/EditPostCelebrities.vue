@@ -1,17 +1,27 @@
 <template>
     <div class="edit-post-celebrities-wrapper">
-        <div class="searchable-input">
-            <input type="text" class="theme-input-text" placeholder="Add celebrity">
+
+
+        <div v-for="celebrity in celebrities" class="searchable-input">
+            <input type="text" class="theme-input-text" placeholder="Add celebrity"
+                v-model="celebrity.name"
+                @input="getMatchingCelebrities(celebrity)" required>
             <div class="search-results">
-                <div>Jenifer Aniston</div>
-                <div>Jenifer Aniston</div>
-                <div>Jenifer Aniston</div>
-                <div>Jenifer Dep</div>
-                <div>Jojo Jostar</div>
+                <template v-if="celebrity.name">
+                    <template v-for="matchingCelebrity in celebrity.matchingCelebrities">
+                        <div @click="selectCelebrity(matchingCelebrity, celebrity)">{{matchingCelebrity.name}}</div>
+                    </template>
+                </template>
+                <template v-else>
+                    <div v-for="matchingCelebrity in allCelebrities"
+                        @click="selectCelebrity(matchingCelebrity, celebrity)">
+                        {{matchingCelebrity.name}}
+                    </div>
+                </template>
             </div>
         </div>
 
-        <button class="theme-btn theme-ico-btn add-celebrity" type="button" name="button">
+        <button class="theme-btn theme-ico-btn add-celebrity" type="button" name="button" @click="addCelebrity()">
             <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.2115 0C6.73356 0 6.34611 0.387446 6.34611 0.865385V6.34607H0.865385C0.387446 6.34607 2.08929e-08 6.73351 0 7.21145C-2.08893e-08 7.68939 0.387447 8.07684 0.865386 8.07684H6.34611V14.1346C6.34611 14.6126 6.73356 15 7.2115 15C7.68944 15 8.07688 14.6126 8.07688 14.1346V8.07684H13.5577C14.0356 8.07684 14.4231 7.68939 14.4231 7.21145C14.4231 6.73352 14.0356 6.34607 13.5577 6.34607H8.07688V0.865385C8.07688 0.387446 7.68944 0 7.2115 0Z" fill="white"/>
             </svg>
@@ -27,9 +37,42 @@ export default {
             allCelebrities: []
         }
     },
+    props: {
+        celebrities: {
+            type: Array,
+            default: function(){
+                return [
+                    {id: '', name: ''}
+                ];
+            }
+        }
+    },
     methods: {
+        addCelebrity(){
+            const newCelebrities = this.celebrities.push(
+                {id: '', name: ''}
+            );
+            this.$emit('updateCelebreties', newCelebrities);
+        },
         getCelebrities: function(){
-            
+            axios.post('/getAllHashtags')
+                .then(response => {
+                    console.log(response.data);
+                    this.allCelebrities = response.data;
+                });
+        },
+        getMatchingCelebrities(celebrity){
+            celebrity.matchingCelebrities = this.allCelebrities.filter(celebrityToVerify => {
+                return celebrityToVerify.name.indexOf(celebrity.name) !== -1;
+            });
+        },
+        selectCelebrity(matchingCelebrity, celebrity){
+
+            celebrity.id = matchingCelebrity.id;
+            celebrity.name = matchingCelebrity.name;
+            //console.log(this.celebrities);
+
+            //this.$emit('updateCelebreties', 123);
         }
     },
     created() {
@@ -45,7 +88,9 @@ export default {
     position: relative;
     margin-left: 30px;
     .search-results{
-        display: none;
+        //display: none;
+        visibility: hidden;
+        transition: visibility 0s linear .15s;
         position: absolute;
         top: calc(100% - 2px);
         left: 0;
@@ -54,6 +99,8 @@ export default {
         border-radius: 3px;
         z-index: 5;
         background: #fff;
+        max-height: 250px;
+        overflow-y: scroll;
         &>div{
             height: 35px;
             color: $gray;
@@ -70,9 +117,14 @@ export default {
             }
         }
     }
+    input{
+        position: relative;
+        z-index: 10;
+    }
     input:focus+.search-results{
 
-        display: block;
+        // display: block;
+        visibility: visible;
     }
 }
 

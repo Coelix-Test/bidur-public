@@ -9,14 +9,26 @@ Vue.use(VueRouter);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Post from './views/Post.vue';
+import PostSingle from './views/PostSingle.vue';
+import Posts from './views/Posts.vue';
 import Surveys from './views/Surveys.vue';
 import Tags from './views/Tags.vue';
 import Users from './views/Users.vue';
 
 const router = new VueRouter({
   routes: [
-    { path: '/', name: 'post', component: Post },
+    { path: '/', name: 'posts', component: Posts, children: [
+        {
+            name: 'post-new',
+            path: 'post/new',
+            component: PostSingle,
+        },
+        {
+            name: 'post-single',
+            path: 'post/:id',
+            component: PostSingle,
+        },
+    ] },
     { path: '/surveys', name: 'surveys', component: Surveys },
     { path: '/tags', name: 'tags', component: Tags },
     { path: '/users', name: 'users', component: Users },

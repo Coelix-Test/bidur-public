@@ -4,7 +4,7 @@
             <div class="title">Admin Panel</div>
             <ul class="nav-menu">
                 <li>
-                    <router-link :to="{ name: 'post' }">כתבות</router-link>
+                    <router-link :to="{ name: 'post-new' }">כתבות</router-link>
                 </li>
                 <li>
                     <router-link :to="{ name: 'surveys' }">פרסומות</router-link>
