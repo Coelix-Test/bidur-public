@@ -3,13 +3,18 @@
 
 namespace App\Http\Controllers;
 use App\Admins;
+use App\DisLikesForSingleImage;
 use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
+use App\LikesForLeftAndRight;
+use App\LikesForSingleImage;
 use App\Post;
 use App\PostContent;
 use App\PostTitle;
 use App\PostVideo;
+use App\SelectOne;
+use App\SingleLikableImage;
 use App\Survey;
 use App\SurveyAnswerVariant;
 use App\User;
@@ -176,18 +181,50 @@ class AdminController extends Controller
         return $this->getAllHashtags();
     }
 
-    public function createHappyBirthday(Request $request){
+    public function addHappyBirthday(Request $request){
+        HappyBirthsday::truncate();
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/happyBirthday');
         $image->move($destinationPath, $name);
         HappyBirthsday::create([
             'text' => $request->get('text'),
-            'img' => '/images/tag-images/'.$name,
+            'img' => '/images/happyBirthday/'.$name,
         ]);
     }
 
     public function addNewComparison(Request $request){
+        SelectOne::truncate();
+        LikesForLeftAndRight::truncate();
+        $leftImage = $request->file('leftImage');
+        $leftName = time().'.'.$leftImage->getClientOriginalExtension();
+        $destinationPath = public_path('/images/happyBirthday');
+        $leftImage->move($destinationPath, $leftName);
+
+        $rightImage = $request->file('rightImage');
+        $rightName = time().'.'.$rightImage->getClientOriginalExtension();
+        $destinationPath = public_path('/images/happyBirthday');
+        $rightImage->move($destinationPath, $rightName);
+        
+        SelectOne::create([
+            'urlRight' => '/images/compare/'.$rightName,
+            'urlLeft' => '/images/compare/'.$leftName,
+        ]);
+    }
+
+    public function addSinglePhoto(Request $request){
+        SingleLikableImage::truncate();
+        DisLikesForSingleImage::truncate();
+        LikesForSingleImage::truncate();
+
+        $image = $request->file('image');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/happyBirthday');
+        $image->move($destinationPath, $name);
+
+        SelectOne::create([
+            'url' => '/images/singlePhoto/'.$name,
+        ]);
     }
 
     public function getAllSurveys(){
