@@ -12,7 +12,21 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/main.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
-mix.browserSync('newspaper.test');
+
+mix
+  .js('resources/assets/js/admin/admin.js', 'public/js')
+  .sass('resources/assets/scss/admin/admin.scss', 'public/css')
+  .js('resources/assets/js/home/home.js', 'public/js');
+
+mix.webpackConfig({
+	resolve: {
+		alias: {
+			'@': path.resolve('resources/assets/scss/admin'),
+      //'@': path.resolve('resources/assets/scss/home'),
+		}
+	},
+});
+
+mix.browserSync('newspaper');

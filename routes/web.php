@@ -21,7 +21,15 @@ Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
 
 Route::get('/', 'PostController@getMainPage');
 
+Route::get('/admin', function () {
+    return view('admin');
+});
+
 Auth::routes();
+
+Route::post('/getTwoRandomPosts', 'PostController@getTwoRandomPosts');
+Route::post('/getInfoOnPostForMain', 'PostController@getInfoOnPostForMain');
+Route::post('/getAllPosts', 'PostController@getAllPostsWithAllFilters');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
