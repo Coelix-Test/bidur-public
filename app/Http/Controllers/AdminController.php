@@ -4,6 +4,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Admins;
+use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Post;
@@ -12,7 +14,10 @@ use App\PostTitle;
 use App\PostVideo;
 use App\Survey;
 use App\SurveyAnswerVariant;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -53,7 +58,10 @@ class AdminController extends Controller
             }
             elseif($section['type'] == 'survey'){
                 $title = $section['title'];
-                $this->createPostAddSurvey($section['variants'], $title, $this->post->id, $key);
+                if ($section['right'] != null){
+                    $right = $section['right'];
+                }
+                $this->createPostAddSurvey($section['variants'], $title, $this->post->id, $key, $right);
             }
             elseif ($section['type'] == 'image'){
                 exit(0);
@@ -107,7 +115,7 @@ class AdminController extends Controller
 
     }
 
-    public function createPostAddSurvey($variants, $title, $postId, $order){
+    public function createPostAddSurvey($variants, $title, $postId, $order, $right){
 
         $survey = Survey::create([
             'postId' => $postId,
@@ -117,9 +125,14 @@ class AdminController extends Controller
         ]);
 
         foreach ($variants as $key => $variant) {
+            $status = false;
+            if ($survey == $key){
+                $status = true;
+            }
             SurveyAnswerVariant::create([
                 'surveyId' => $survey->id,
                 'question' => $variant,
+                'right' => $status,
                 'order' => $key
             ]);
         }
@@ -162,28 +175,18 @@ class AdminController extends Controller
         return $this->getAllHashtags();
     }
 
+    public function createHappyBirthday(Request $request){
+//        dd( $request->file('image'));
+        $upload = $request->file('image')->store('birthday');
+        
+        HappyBirthsday::create([
+            'text' => $request->get('text'),
+            'img' => $upload,
+        ]);
+    }
 
-//    public function createSurvey(Request $request){
-//        $vartiants = $request->get('answerVariants');
-//        $title = $request->get('title');
-//        $postId = $request->get('postId');
-//        $order = $request->get('order');
-//
-//        $survey = Survey::create([
-//            'postId' => $postId,
-//            'authorId' => \Auth::id(),
-//            'order' => $order,
-//            'question' => $title
-//        ]);
-//
-//        foreach ($vartiants as $key => $vartiant) {
-//            SurveyAnswerVariant::create([
-//                'surveyId' => $survey->id,
-//                'question' => $vartiant,
-//                'order' => $key
-//            ]);
-//        }
-//    }
+    public function addNewComparison(Request $request){
+    }
 
     public function getAllSurveys(){
         $allSurveys = Survey::all();
@@ -194,4 +197,69 @@ class AdminController extends Controller
         }
         return json_encode($all);
     }
+
+
+
+
+    public function showAllAdmins(){
+        $adminIds = Admins::all();
+
+        foreach ($adminIds as $adminId) {
+            if (!empty(User::where('id', $adminId->id)->first())){
+                $admin = User::where('id', $adminId->id)->first();
+//                dd($admin);
+                $allAdmins[$admin->id]['email'] = $admin->email;
+                $allAdmins[$admin->id]['name']  = $admin->email;
+                $allAdmins[$admin->id]['name'] = $admin->name;
+                $allAdmins[$admin->id]['phone'] = $admin->phone;
+                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
+                if ($admin->isOnline() == false){
+                    $allAdmins[$admin->id]['status'] = 'offline';
+                }else{
+                    $allAdmins[$admin->id]['status'] = 'online';
+                }
+            }
+        }
+        if (!empty($allAdmins)){
+//            dd($allAdmins);
+            return json_encode($allAdmins);
+        }else{
+            return json_encode([]);
+        }
+    }
+
+    public function editAdmin(Request $request){
+
+        $name   = $request->get('name');
+        $email  = $request->get('email');
+        $phone  = $request->get('phone');
+        $id     = $request->get('id');
+
+        $admin = User::find($id);
+        if (isset($name)){
+            $admin->name = $name;
+        }
+        if (isset($email)){
+            $admin->email = $email;
+        }
+        if (isset($phone)){
+            $admin->phone = $phone;
+        }
+        $admin->save();
+        return $this->showAllAdmins();
+    }
+
+    public function deleteAdmin(Request $request){
+        $id = $request->get('id');
+        Admins::find($id)->delete();
+        return $this->showAllAdmins();
+    }
+
+    public function makeUserAdmin(Request $request){
+        Admins::create([
+            'userId' => $request->get('id'),
+        ]);
+        return json_encode(['success' => true]);
+    }
+
 }

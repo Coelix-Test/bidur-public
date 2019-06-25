@@ -272,8 +272,8 @@ class PostController extends Controller
 
 
 
-    public function getInfoOnPostForMain($id = 1){
-        $post = Post::find($id);
+    public function getInfoOnPostForMain(Request $request){
+        $post = Post::find($request->get('id'));
 
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
