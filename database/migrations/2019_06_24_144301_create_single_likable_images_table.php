@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHappyBirthsdaysTable extends Migration
+class CreateSingleLikableImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('happyBirthday', function (Blueprint $table) {
+        Schema::create('singleLikableImage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('text', 191);
-            $table->longText('img');
+            $table->longText('url');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('happyBirthsday');
+        Schema::dropIfExists('single_likable_images');
     }
 }

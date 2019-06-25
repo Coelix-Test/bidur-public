@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/test', 'TestController@test');
+
+Route::get('/test', function (){
+    return view('test');
+});
+Route::get('/test2', 'TestController@test');
+Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
 
 
 Route::get('/', 'PostController@getMainPage');
@@ -33,9 +38,12 @@ Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 
 //admin
 Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
+Route::post('/showAllAdmins', 'AdminController@showAllAdmins')->name('show-all-admins');
+
 
 //hashtags
 Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
 Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
 Route::post('/updateHashtag', 'AdminController@updateHashtag')->name('update-hashtag');
 Route::post('/deleteHashtag', 'AdminController@deleteHashtag')->name('delete-hashtag');
+

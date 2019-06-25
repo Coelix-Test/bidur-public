@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admins;
+use App\HappyBirthsday;
 use App\Post;
 use App\Rating;
 
@@ -13,6 +14,8 @@ class TestController extends Controller
 {
 
     public function test(){
-        dd(Cache::has('online'));
+        $ass = HappyBirthsday::find(1);
+//        dd($ass);
+        return view('test2', ['img' => $ass->img]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHappyBirthsdaysTable extends Migration
+class CreateDisLikesForSingleImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('happyBirthday', function (Blueprint $table) {
+        Schema::create('dislikesForSingleImage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('text', 191);
-            $table->longText('img');
+            $table->unsignedInteger('userId');
+            $table->unsignedInteger('serviceId');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateHappyBirthsdaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('happyBirthsday');
+        Schema::dropIfExists('dis_likes_for_single_images');
     }
 }
