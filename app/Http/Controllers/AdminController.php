@@ -222,7 +222,7 @@ class AdminController extends Controller
         $destinationPath = public_path('/images/happyBirthday');
         $image->move($destinationPath, $name);
 
-        SelectOne::create([
+        SingleLikableImage::create([
             'url' => '/images/singlePhoto/'.$name,
         ]);
     }
