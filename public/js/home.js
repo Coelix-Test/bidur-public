@@ -1987,7 +1987,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.home[data-v-2c5762ed] {\n  max-width: 1440px;\n  margin:48px auto 32px;\n  padding:0 24px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap:nowrap;\n          flex-wrap:nowrap;\n  -webkit-align-items: flex-start;\n          align-items: flex-start;\n}\n@media (max-width:768px) {\n.home[data-v-2c5762ed] {\n    -webkit-flex-direction:column;\n            flex-direction:column;\n}\n}\n", ""]);
+exports.push([module.i, "\n.home[data-v-2c5762ed] {\n  max-width: 1440px;\n  margin:48px auto 32px;\n  padding:0 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap:nowrap;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n@media (max-width:768px) {\n.home[data-v-2c5762ed] {\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n            flex-direction:column;\n}\n}\n", ""]);
 
 // exports
 
@@ -2006,7 +2006,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.left-column[data-v-38943be8] {\n  -webkit-flex-basis:50%;\n          flex-basis:50%;\n  padding-right:8px;\n}\n.posts-column[data-v-38943be8] {\n  width:100%;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n}\n.posts-column article[data-v-38943be8] {\n  width:100%;\n  position: relative;\n  padding:256px 16px 48px;\n  margin-bottom: 16px;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  color:#fff;\n}\n.posts-column article img[data-v-38943be8] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width:100%;\n  height: 100%;\n  pointer-events: none;\n  z-index:-2;\n  object-fit: cover;\n}\n.posts-column article .overlay[data-v-38943be8] {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  opacity: .5;\n  background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%);\n}\n.posts-column article .overlay[data-v-38943be8]:last-child  {\n  background: linear-gradient(360deg, #F6AB62 0%, #B63E8E 40.1%, #3F5EFB 100%);\n}\n.posts-column article h2[data-v-38943be8] {\n  font-family: 'Playfair Display', sans-serif;\n  font-weight: 700;\n  font-size: 36px;\n  line-height: 48px;\n}\n.posts-column article p[data-v-38943be8] {\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  font-size: 20px;\n  font-weight: 600;\n}\n", ""]);
+exports.push([module.i, "\n.left-column[data-v-38943be8] {\n  flex-basis:50%;\n  padding-right:8px;\n}\n.posts-column[data-v-38943be8] {\n  width:100%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.posts-column article[data-v-38943be8] {\n  width:100%;\n  position: relative;\n  padding:256px 16px 48px;\n  margin-bottom: 16px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  color:#fff;\n}\n.posts-column article img[data-v-38943be8] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width:100%;\n  height: 100%;\n  pointer-events: none;\n  z-index:-2;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.posts-column article .overlay[data-v-38943be8] {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  opacity: .5;\n  background: -webkit-gradient(linear, left top, left bottom, from(#7EFFB7), to(#0089FF));\n  background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%);\n}\n.posts-column article .overlay[data-v-38943be8]:last-child  {\n  background: -webkit-gradient(linear, left bottom, left top, from(#F6AB62), color-stop(40.1%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(360deg, #F6AB62 0%, #B63E8E 40.1%, #3F5EFB 100%);\n}\n.posts-column article h2[data-v-38943be8] {\n  font-family: 'Playfair Display', sans-serif;\n  font-weight: 700;\n  font-size: 36px;\n  line-height: 48px;\n}\n.posts-column article p[data-v-38943be8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  font-size: 20px;\n  font-weight: 600;\n}\n", ""]);
 
 // exports
 
@@ -2025,7 +2025,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.right-column[data-v-09bcf553] {\n  -webkit-flex-basis:50%;\n          flex-basis:50%;\n  padding-left: 8px;\n}\n", ""]);
+exports.push([module.i, "\n.right-column[data-v-09bcf553] {\n  flex-basis:50%;\n  padding-left: 8px;\n}\n", ""]);
 
 // exports
 
@@ -18442,7 +18442,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

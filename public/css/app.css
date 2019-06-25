@@ -11948,6 +11948,7 @@ body {
   display: -webkit-box;
   display: flex;
   padding: 10px 24px;
+  background: -webkit-gradient(linear, right top, left top, from(#FF8383), to(#4200FF));
   background: linear-gradient(270deg, #FF8383 0%, #4200FF 100%);
   margin: 0 auto;
   max-width: 1440px;
@@ -12568,3 +12569,4 @@ body {
 .hot-sidebar .banner {
   margin-bottom: 21px;
 }
+
