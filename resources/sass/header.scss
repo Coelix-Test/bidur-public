@@ -191,6 +191,28 @@
     }
 }
 
+//profile header
+#header_main.profile-header{
+    .top-row{
+        max-width: 100%;
+        padding-right: 70px;
+        padding-left: 70px;
+        background: #000;
+        justify-content: space-between;
+        .menu-list,
+        .auth-btns{
+            width: auto;
+        }
+        .menu-list{
+            a{
+                color: #fff;
+            }
+        }
+        .auth-btns{
+            display: none;
+        }
+    }
+}
 
 //run stroke animation
 @keyframes animStroke {

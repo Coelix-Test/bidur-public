@@ -12161,6 +12161,28 @@ body {
   border-radius: 50%;
 }
 
+#header_main.profile-header .top-row {
+  max-width: 100%;
+  padding-right: 70px;
+  padding-left: 70px;
+  background: #000;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+#header_main.profile-header .top-row .menu-list,
+#header_main.profile-header .top-row .auth-btns {
+  width: auto;
+}
+
+#header_main.profile-header .top-row .menu-list a {
+  color: #fff;
+}
+
+#header_main.profile-header .top-row .auth-btns {
+  display: none;
+}
+
 @-webkit-keyframes animStroke {
   0% {
     -webkit-transform: translateX(0);

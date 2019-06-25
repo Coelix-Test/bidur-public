@@ -11,7 +11,7 @@
   <title>Admin panel</title>
 </head>
 <body>
-    <header id="header_main">
+    <header id="header_main" class="profile-header">
         @include('parts/header/top-line')
     </header>
     <div id="admin"></div>
