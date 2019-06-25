@@ -30,6 +30,7 @@
         "normalize.css": "^8.0.1",
         "slick-carousel": "^1.8.1",
         "vue-router": "^3.0.6",
-        "vuejs-datepicker": "^1.6.1"
+        "vuejs-datepicker": "^1.6.1",
+        "vue-picture-input": "^2.1.6",
     }
 }

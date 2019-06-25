@@ -163,15 +163,34 @@ class AdminController extends Controller
     }
 
     public function addHashtag(Request $request){
+
+      $image = $request->file('image');
+      $name = time().'.'.$image->getClientOriginalExtension();
+      $destinationPath = public_path('/images/tag-images');
+      $image->move($destinationPath, $name);
+
         $hashtag = Hashtag::create([
             'text' => $request->get('text'),
-            'image' => $request->get('image'),
+            'image' => '/images/tag-images/'.$name,
         ]);
         return $this->getAllHashtags();
     }
 
     public function updateHashtag(Request $request){
-        Hashtag::where('id', $request->get('id'))->update(['image' => $request->get('image'), 'text' => $request->get('text')]);
+
+
+      $image = $request->file('image');
+      $text = $request->get('text');
+      $tag_id = $request->get('id');
+      if($image) {
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/tag-images');
+        $image->move($destinationPath, $name);
+        Hashtag::where('id', $tag_id)->update(['image' => '/images/tag-images/'.$name]);
+      }
+      if(!empty($text) && $text != null) {
+        Hashtag::where('id', $tag_id)->update(['text' => $text]);
+      }
         return $this->getAllHashtags();
     }
 
