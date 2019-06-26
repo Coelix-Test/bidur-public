@@ -142,8 +142,11 @@ class AdminController extends Controller
             }
             elseif ($section['type'] == 'image'){
                 exit(0);
-            }
-            elseif ($section['type'] == 'imageWithText'){
+            }elseif ($section['type'] == 'imageWithText'){
+                exit(0);
+            }elseif ($section['type'] == 'selectOne'){
+                exit(0);
+            }elseif ($section['type'] == 'likablePhoto'){
                 exit(0);
             }
         }
@@ -311,7 +314,7 @@ class AdminController extends Controller
         }
         return json_encode($all);
     }
-    
+
 
     public function showAllAdmins(){
         $adminIds = Admins::all();
