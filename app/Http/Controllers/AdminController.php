@@ -7,6 +7,7 @@ use App\DisLikesForSingleImage;
 use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
+use App\Http\Middleware\Admin;
 use App\LikesForLeftAndRight;
 use App\LikesForSingleImage;
 use App\Post;
@@ -26,7 +27,82 @@ class AdminController extends Controller
     protected $post;
     public function __construct()
     {
-//        $this->middleware('admin');
+//        $this->middleware(Admin::class);
+    }
+
+    public function showAdmin(){
+        return view('admin');
+    }
+
+
+    public function getAllPosts(Request $request ){
+//        $offset = 3;
+
+        if (!empty($request->get('offset'))){
+            $offset = $request->get('offset');
+        }else{
+            $offset = 0;
+        }
+
+        $posts = Post::offset($offset)->limit(12)->get();
+
+        foreach ($posts as $key => $post) {
+            $allPosts[$key]['title'] = $post->metaTitle;
+            $allPosts[$key]['author'] = $post->author;
+
+            $time = $post->created_at;
+            $time = $time->timestamp;
+            $now = Carbon::now();
+            $now = $now->timestamp;
+            $diff = $now - $time;
+            $hours = 0;
+            $days = 0;
+            $weeks = 0;
+            $flag = false;
+            while ($diff > 3600){
+                $diff = $diff - 3600;
+                $hours++;
+                if ($hours == 23){
+                    $days++;
+                    $hours = 0;
+                }
+                if ($days == 7){
+                    $weeks++;
+                    $days = 0;
+                }
+                if ($weeks == 4 && $days > 1){
+                    $flag = true;
+                    break;
+                }
+            }
+            $time = $post->created_at;
+            if ($flag == true){
+                $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
+            }else{
+                if ($hours <= 23 && $days == 0 && $weeks == 0){
+                    if ($hours = 0){
+                        $createdAt = 'just now';
+                    }else{
+                        $createdAt = $hours.' hours ago';
+                    }
+                }else{
+                    if ($days <= 6 && $weeks == 0){
+                        $createdAt = $days.' days ago';
+                    }else{
+                        if ($weeks <= 4){
+                            if ($weeks == 1){
+                                $createdAt = $weeks.' week ago';
+                            }else{
+                                $createdAt = $weeks.' weeks ago';
+                            }
+                        }
+                    }
+                }
+            }
+
+            $allPosts[$key]['createdAt'] = $createdAt;
+        }
+        return json_encode($allPosts);
     }
 
     public function getRecentPosts($offset = 0, $take = 5){
@@ -235,6 +311,7 @@ class AdminController extends Controller
         }
         return json_encode($all);
     }
+    
 
     public function showAllAdmins(){
         $adminIds = Admins::all();
