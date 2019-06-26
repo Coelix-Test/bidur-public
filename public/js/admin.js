@@ -2141,6 +2141,36 @@ __webpack_require__.r(__webpack_exports__);
     },
     onUpdateAuthor: function onUpdateAuthor(data) {
       this.author = data;
+    },
+    submitPostData: function submitPostData() {
+      var postData = new FormData(); //append header
+
+      var sectionIndex = 0;
+      postData.append('sections[' + sectionIndex + ']["type"]', 'metaTitle');
+      postData.append('sections[' + sectionIndex + ']["title"]', this.title);
+      postData.append('sections[' + sectionIndex + ']["author"]', this.author);
+      postData.append('sections[' + sectionIndex + ']["date"]', this.date.getTime());
+      this.celebrities.forEach(function (celebrity) {
+        if (celebrity.id) {
+          postData.append('sections[' + sectionIndex + ']["celebrities"][]', celebrity.id);
+        }
+      });
+      sectionIndex++; //append sections
+      //send ajax
+
+      var url = '/createPost';
+      axios({
+        method: 'post',
+        url: url,
+        data: postData,
+        config: {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      }).then(function (response) {
+        console.log(response);
+      });
     }
   },
   created: function created() {
@@ -22679,7 +22709,15 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "form",
-        { staticClass: "col-8" },
+        {
+          staticClass: "col-8",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitPostData($event)
+            }
+          }
+        },
         [
           _c("edit-post-header", {
             attrs: { celebrities: _vm.celebrities, date: _vm.date },

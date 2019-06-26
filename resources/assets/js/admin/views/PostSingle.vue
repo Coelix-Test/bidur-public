@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <form class="col-8">
+            <form class="col-8" @submit.prevent="submitPostData">
                 <edit-post-header
                     :celebrities="celebrities"
                     :date="date"
@@ -51,6 +51,36 @@ export default {
         },
         onUpdateAuthor(data){
             this.author = data;
+        },
+        submitPostData(){
+            let postData = new FormData();
+
+            //append header
+            let sectionIndex = 0;
+            postData.append('sections['+sectionIndex+']["type"]', 'metaTitle');
+            postData.append('sections['+sectionIndex+']["title"]', this.title);
+            postData.append('sections['+sectionIndex+']["author"]', this.author);
+            postData.append('sections['+sectionIndex+']["date"]', this.date.getTime());
+            this.celebrities.forEach(celebrity => {
+                if(celebrity.id){
+                    postData.append('sections['+sectionIndex+']["celebrities"][]', celebrity.id);
+                }
+            });
+            sectionIndex++;
+
+            //append sections
+
+            //send ajax
+            let url = '/createPost';
+            axios({
+                    method: 'post',
+                    url: url,
+                    data: postData,
+                    config: { headers: {'Content-Type': 'multipart/form-data' }}
+                })
+                .then(response => {
+                    console.log(response);
+                });
         }
     },
     created() {
