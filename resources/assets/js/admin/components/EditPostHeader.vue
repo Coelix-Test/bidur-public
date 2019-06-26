@@ -1,10 +1,10 @@
 <template>
     <div class="edit-post-header-wrapper">
         <div class="inputs-row">
-            <input type="text" class="main-post-title" name="title" @input="$emit('updateTitle', $event.target.value)" placeholder="Add Title to the Post">
+            <input type="text" class="main-post-title" name="title" @input="$emit('updateTitle', $event.target.value)" placeholder="Add Title to the Post" required>
         </div>
         <edit-post-celebrities
-            @updateCelebreties="onUpdateCelebrities"
+            @updateCelebrities="onUpdateCelebrities"
             :celebrities="celebrities" class="d-flex w-100 inputs-row">
         </edit-post-celebrities>
         <div class="inputs-row w-100 d-flex">
@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         onUpdateCelebrities(data) {
-            this.$emit('updateCelebreties', data);
+            this.$emit('updateCelebrities', data);
         },
         updateDate(data){
             this.$emit('updateDate', data);

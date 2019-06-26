@@ -1,28 +1,27 @@
 <template>
-  <div class="container">
-      <div class="row">
-          <div class="col-8">
-              <edit-post-header
-                :celebrities="celebrities"
-                :date="date"
-                @updateTitle="onUpdateTitle"
-                @updateAuthor="onUpdateAuthor"
-                @updateDate="onUpdateDate"
-                @onUpdateCelebreties="onUpdateCelebreties">
-            </edit-post-header>
-          </div>
-          <div class="col-3" dir="ltr" style="direction: ltr;">
-              <template v-if="celebrities !== undefined">
-                  Title: {{title}} <br>
-                  author: {{author}} <br>
-                  date: {{date}} <br>
-                  Celebrities: {{celebrities}}
-              </template>
-
-          </div>
-      </div>
-
-  </div>
+    <div class="container">
+        <div class="row">
+            <form class="col-8">
+                <edit-post-header
+                    :celebrities="celebrities"
+                    :date="date"
+                    @updateTitle="onUpdateTitle"
+                    @updateAuthor="onUpdateAuthor"
+                    @updateDate="onUpdateDate"
+                    @updateCelebrities="onUpdateCelebrities">
+                </edit-post-header>
+                <button type="submit" class="theme-btn theme-btn-red submit-post">Save</button>
+            </form>
+            <div class="col-3" dir="ltr" style="direction: ltr;">
+                <template v-if="celebrities !== undefined">
+                    title: {{title}} <br>
+                    author: {{author}} <br>
+                    date: {{date}} <br>
+                    celebrities: {{celebrities}}
+                </template>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -41,7 +40,7 @@ export default {
         EditPostHeader
     },
     methods: {
-        onUpdateCelebreties(data){
+        onUpdateCelebrities(data){
             this.celebrities = data;
         },
         onUpdateTitle(data){
@@ -65,5 +64,13 @@ export default {
 <style lang="scss" scoped>
 .container{
     padding-top: 30px;
+}
+
+.submit-post{
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 0 150px;
+    height: 80px;
+    margin-top: 30px;
 }
 </style>

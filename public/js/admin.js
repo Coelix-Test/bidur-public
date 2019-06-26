@@ -1860,6 +1860,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1894,25 +1895,38 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addCelebrity: function addCelebrity() {
-      var newCelebrities = this.celebrities.push({
+      var index = 0;
+
+      if (this.celebrities.length) {
+        index = this.celebrities[this.celebrities.length - 1].index + 1;
+      }
+
+      var newCelebrities = this.celebrities;
+      newCelebrities.push({
         id: '',
         name: '',
-        index: this.celebrities.length
+        index: index
       });
+      console.log(this.celebrities);
       this.$emit('updateCelebrities', newCelebrities);
     },
     selectCelebrity: function selectCelebrity(celebrity, index) {
-      var newCelebrities = this.celebrities; //console.log(celebrity);
-
-      newCelebrities = newCelebrities.map(function (item) {
+      var newCelebrities = this.celebrities.map(function (item) {
         if (item.index === index) {
           item.id = celebrity.id;
           item.name = celebrity.name;
         }
 
         return item;
+      }); //console.log(newCelebrities);
+
+      this.$emit('updateCelebrities', newCelebrities);
+    },
+    deleteCelebrity: function deleteCelebrity(index) {
+      var newCelebrities = this.celebrities.filter(function (item) {
+        return item.index !== index;
       });
-      console.log(newCelebrities);
+      console.log('alex', newCelebrities);
       this.$emit('updateCelebrities', newCelebrities);
     }
   },
@@ -1993,7 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onUpdateCelebrities: function onUpdateCelebrities(data) {
-      this.$emit('updateCelebreties', data);
+      this.$emit('updateCelebrities', data);
     },
     updateDate: function updateDate(data) {
       this.$emit('updateDate', data);
@@ -2015,6 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2101,7 +2116,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2116,7 +2130,7 @@ __webpack_require__.r(__webpack_exports__);
     EditPostHeader: _components_EditPostHeader_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
-    onUpdateCelebreties: function onUpdateCelebreties(data) {
+    onUpdateCelebrities: function onUpdateCelebrities(data) {
       this.celebrities = data;
     },
     onUpdateTitle: function onUpdateTitle(data) {
@@ -2524,7 +2538,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".searchable-input[data-v-988e777e] {\n  position: relative;\n  margin-left: 30px;\n  margin-bottom: 15px;\n}\n.searchable-input .search-results[data-v-988e777e] {\n  visibility: hidden;\n  -webkit-transition: visibility 0s linear 0.15s;\n  transition: visibility 0s linear 0.15s;\n  position: absolute;\n  top: calc(100% - 2px);\n  left: 0;\n  width: 100%;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  z-index: 5;\n  background: #fff;\n  max-height: 250px;\n  overflow-y: scroll;\n}\n.searchable-input .search-results > div[data-v-988e777e] {\n  height: 35px;\n  color: #BDBDBD;\n  padding: 0 13px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n}\n.searchable-input .search-results > div[data-v-988e777e]:hover {\n  background: #EB5757;\n  color: #fff;\n}\n.searchable-input input[data-v-988e777e] {\n  position: relative;\n  z-index: 10;\n}\n.searchable-input input:focus + .search-results[data-v-988e777e] {\n  visibility: visible;\n}", ""]);
+exports.push([module.i, ".searchable-input[data-v-988e777e] {\n  position: relative;\n  margin-left: 30px;\n  margin-bottom: 15px;\n}\n.searchable-input .search-results[data-v-988e777e] {\n  visibility: hidden;\n  -webkit-transition: visibility 0s linear 0.15s;\n  transition: visibility 0s linear 0.15s;\n  position: absolute;\n  top: calc(100% - 2px);\n  left: 0;\n  width: 100%;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  z-index: 5;\n  background: #fff;\n  max-height: 250px;\n  overflow-y: scroll;\n}\n.searchable-input .search-results > div[data-v-988e777e] {\n  height: 35px;\n  color: #BDBDBD;\n  padding: 0 13px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n}\n.searchable-input .search-results > div[data-v-988e777e]:hover {\n  background: #EB5757;\n  color: #fff;\n}\n.searchable-input input[data-v-988e777e] {\n  position: relative;\n  z-index: 4;\n}\n.searchable-input input[data-v-988e777e]:focus {\n  z-index: 10;\n}\n.searchable-input input:focus + .search-results[data-v-988e777e] {\n  visibility: visible;\n}\n.searchable-input .delete-self[data-v-988e777e] {\n  position: absolute;\n  z-index: 4;\n  left: 1px;\n  top: 10px;\n  width: 30px;\n  height: 19px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 13px 18px;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -2543,7 +2557,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}", ""]);
+exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}\n.submit-post[data-v-e3f0f34a] {\n  font-size: 24px;\n  border-radius: 10px;\n  padding: 0 150px;\n  height: 80px;\n  margin-top: 30px;\n}", ""]);
 
 // exports
 
@@ -22402,7 +22416,7 @@ var render = function() {
         return _c("searchable-input", {
           key: celebrity.index,
           attrs: { index: celebrity.index, options: _vm.allCelebrities },
-          on: { select: _vm.selectCelebrity }
+          on: { select: _vm.selectCelebrity, deleteSelf: _vm.deleteCelebrity }
         })
       }),
       _vm._v(" "),
@@ -22478,7 +22492,8 @@ var render = function() {
           attrs: {
             type: "text",
             name: "title",
-            placeholder: "Add Title to the Post"
+            placeholder: "Add Title to the Post",
+            required: ""
           },
           on: {
             input: function($event) {
@@ -22491,7 +22506,7 @@ var render = function() {
       _c("edit-post-celebrities", {
         staticClass: "d-flex w-100 inputs-row",
         attrs: { celebrities: _vm.celebrities },
-        on: { updateCelebreties: _vm.onUpdateCelebrities }
+        on: { updateCelebrities: _vm.onUpdateCelebrities }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "inputs-row w-100 d-flex" }, [
@@ -22626,7 +22641,16 @@ var render = function() {
         )
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "delete-self",
+      on: {
+        click: function($event) {
+          return _vm.$emit("deleteSelf", _vm.index)
+        }
+      }
+    })
   ])
 }
 var staticRenderFns = []
@@ -22654,7 +22678,7 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c(
-        "div",
+        "form",
         { staticClass: "col-8" },
         [
           _c("edit-post-header", {
@@ -22663,9 +22687,18 @@ var render = function() {
               updateTitle: _vm.onUpdateTitle,
               updateAuthor: _vm.onUpdateAuthor,
               updateDate: _vm.onUpdateDate,
-              onUpdateCelebreties: _vm.onUpdateCelebreties
+              updateCelebrities: _vm.onUpdateCelebrities
             }
-          })
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "theme-btn theme-btn-red submit-post",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("Save")]
+          )
         ],
         1
       ),
@@ -22680,14 +22713,14 @@ var render = function() {
         [
           _vm.celebrities !== undefined
             ? [
-                _vm._v("\n                Title: " + _vm._s(_vm.title) + " "),
+                _vm._v("\n                title: " + _vm._s(_vm.title) + " "),
                 _c("br"),
                 _vm._v("\n                author: " + _vm._s(_vm.author) + " "),
                 _c("br"),
                 _vm._v("\n                date: " + _vm._s(_vm.date) + " "),
                 _c("br"),
                 _vm._v(
-                  "\n                Celebrities: " +
+                  "\n                celebrities: " +
                     _vm._s(_vm.celebrities) +
                     "\n            "
                 )

@@ -7,7 +7,8 @@
             :key="celebrity.index"
             :index="celebrity.index"
             :options="allCelebrities"
-            @select="selectCelebrity">
+            @select="selectCelebrity"
+            @deleteSelf="deleteCelebrity">
         </searchable-input>
 
         <button class="theme-btn theme-ico-btn add-celebrity" type="button" name="button" @click="addCelebrity()">
@@ -52,22 +53,32 @@ export default {
                 });
         },
         addCelebrity(){
-            const newCelebrities = this.celebrities.push(
-                {id: '', name: '', index: this.celebrities.length}
+            let index = 0;
+            if(this.celebrities.length){
+                index = this.celebrities[this.celebrities.length - 1].index + 1;
+            }
+            let newCelebrities = this.celebrities;
+            newCelebrities.push(
+                {id: '', name: '', index: index}
             );
+            console.log(this.celebrities);
             this.$emit('updateCelebrities', newCelebrities);
         },
         selectCelebrity(celebrity, index){
-            let newCelebrities = this.celebrities;
-            //console.log(celebrity);
-            newCelebrities = newCelebrities.map(item => {
+            let newCelebrities = this.celebrities.map(item => {
                 if(item.index === index){
                     item.id = celebrity.id;
                     item.name = celebrity.name;
                 }
                 return item;
             });
-            console.log(newCelebrities);
+            //console.log(newCelebrities);
+            this.$emit('updateCelebrities', newCelebrities);
+        },
+        deleteCelebrity(index){
+
+            let newCelebrities = this.celebrities.filter(item => item.index !== index);
+            console.log('alex', newCelebrities);
             this.$emit('updateCelebrities', newCelebrities);
         }
     },

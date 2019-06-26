@@ -1,5 +1,6 @@
 body {
   font-size: 18px;
+  font-family: "Rubik";
 }
 
 input.theme-input-text,
@@ -28,6 +29,11 @@ a {
   border: none;
   border-radius: 3px;
   font-family: "Rubik";
+}
+
+.theme-btn-red {
+  background-color: #EB5757;
+  color: #fff;
 }
 
 .theme-ico-btn svg {

@@ -7,6 +7,7 @@
                 {{matchingItem.name}}
             </div>
         </div>
+        <div class="delete-self" @click="$emit('deleteSelf', index)"></div>
     </div>
 </template>
 
@@ -84,12 +85,28 @@ export default {
     }
     input{
         position: relative;
-        z-index: 10;
+        z-index: 4;
+        &:focus{
+            z-index: 10;
+        }
     }
     input:focus+.search-results{
 
         // display: block;
         visibility: visible;
+    }
+
+    .delete-self{
+        position: absolute;
+        z-index: 4;
+        left: 1px;
+        top: 10px;
+        width: 30px;
+        height: 19px;
+        background: url('/img/icons/trash.svg') no-repeat center;
+        -webkit-background-size: 13px 18px;
+        background-size: 13px 18px;
+        cursor: pointer;
     }
 }
 
