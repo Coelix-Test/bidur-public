@@ -11,7 +11,9 @@ input.theme-input-text,
   padding: 0 12px;
 }
 
-input {
+input,
+button:focus,
+a {
   outline: none;
 }
 

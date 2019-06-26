@@ -2,24 +2,13 @@
     <div class="edit-post-celebrities-wrapper">
 
 
-        <div v-for="celebrity in celebrities" class="searchable-input">
-            <input type="text" class="theme-input-text" placeholder="Add celebrity"
-                v-model="celebrity.name"
-                @input="getMatchingCelebrities(celebrity)" required>
-            <div class="search-results">
-                <template v-if="celebrity.name">
-                    <template v-for="matchingCelebrity in celebrity.matchingCelebrities">
-                        <div @click="selectCelebrity(matchingCelebrity, celebrity)">{{matchingCelebrity.name}}</div>
-                    </template>
-                </template>
-                <template v-else>
-                    <div v-for="matchingCelebrity in allCelebrities"
-                        @click="selectCelebrity(matchingCelebrity, celebrity)">
-                        {{matchingCelebrity.name}}
-                    </div>
-                </template>
-            </div>
-        </div>
+        <searchable-input
+            v-for="celebrity in celebrities"
+            :key="celebrity.index"
+            :index="celebrity.index"
+            :options="allCelebrities"
+            @select="selectCelebrity">
+        </searchable-input>
 
         <button class="theme-btn theme-ico-btn add-celebrity" type="button" name="button" @click="addCelebrity()">
             <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,48 +20,55 @@
 </template>
 
 <script>
+import SearchableInput from './../components/SearchableInput.vue';
+
 export default {
     data: function(){
         return {
             allCelebrities: []
         }
     },
+    components: {
+        SearchableInput
+    },
     props: {
         celebrities: {
             type: Array,
             default: function(){
                 return [
-                    {id: '', name: ''}
+                    {id: '', name: '', index: 0}
                 ];
             }
         }
     },
     methods: {
-        addCelebrity(){
-            const newCelebrities = this.celebrities.push(
-                {id: '', name: ''}
-            );
-            this.$emit('updateCelebreties', newCelebrities);
-        },
         getCelebrities: function(){
             axios.post('/getAllHashtags')
                 .then(response => {
-                    console.log(response.data);
+                    response.data.forEach((item, i) => {
+                        delete item.img;
+                    });
                     this.allCelebrities = response.data;
                 });
         },
-        getMatchingCelebrities(celebrity){
-            celebrity.matchingCelebrities = this.allCelebrities.filter(celebrityToVerify => {
-                return celebrityToVerify.name.indexOf(celebrity.name) !== -1;
-            });
+        addCelebrity(){
+            const newCelebrities = this.celebrities.push(
+                {id: '', name: '', index: this.celebrities.length}
+            );
+            this.$emit('updateCelebrities', newCelebrities);
         },
-        selectCelebrity(matchingCelebrity, celebrity){
-
-            celebrity.id = matchingCelebrity.id;
-            celebrity.name = matchingCelebrity.name;
-            //console.log(this.celebrities);
-
-            //this.$emit('updateCelebreties', 123);
+        selectCelebrity(celebrity, index){
+            let newCelebrities = this.celebrities;
+            //console.log(celebrity);
+            newCelebrities = newCelebrities.map(item => {
+                if(item.index === index){
+                    item.id = celebrity.id;
+                    item.name = celebrity.name;
+                }
+                return item;
+            });
+            console.log(newCelebrities);
+            this.$emit('updateCelebrities', newCelebrities);
         }
     },
     created() {
@@ -82,52 +78,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/vars.scss";
-
-.searchable-input{
-    position: relative;
-    margin-left: 30px;
-    .search-results{
-        //display: none;
-        visibility: hidden;
-        transition: visibility 0s linear .15s;
-        position: absolute;
-        top: calc(100% - 2px);
-        left: 0;
-        width: 100%;
-        border: 1px solid #E0E0E0;
-        border-radius: 3px;
-        z-index: 5;
-        background: #fff;
-        max-height: 250px;
-        overflow-y: scroll;
-        &>div{
-            height: 35px;
-            color: $gray;
-            padding: 0 13px;
-            display: -webkit-flex;
-            display: -ms-flex;
-            display: flex;
-            -ms-align-items: center;
-            align-items: center;
-            cursor: pointer;
-            &:hover{
-                background: $red;
-                color: #fff;
-            }
-        }
-    }
-    input{
-        position: relative;
-        z-index: 10;
-    }
-    input:focus+.search-results{
-
-        // display: block;
-        visibility: visible;
-    }
+.edit-post-celebrities-wrapper{
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
-
 .add-celebrity{
     color: #fff;
     background: linear-gradient(270deg, #FF8383 0%, #4200FF 100%);
@@ -135,5 +93,4 @@ export default {
         fill: #fff;
     }
 }
-
 </style>

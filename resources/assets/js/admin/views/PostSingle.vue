@@ -2,10 +2,22 @@
   <div class="container">
       <div class="row">
           <div class="col-8">
-              <edit-post-header :celebrities="celebrities" @addCelebrity="onAddCelebrity(data)"></edit-post-header>
+              <edit-post-header
+                :celebrities="celebrities"
+                :date="date"
+                @updateTitle="onUpdateTitle"
+                @updateAuthor="onUpdateAuthor"
+                @updateDate="onUpdateDate"
+                @onUpdateCelebreties="onUpdateCelebreties">
+            </edit-post-header>
           </div>
           <div class="col-3" dir="ltr" style="direction: ltr;">
-              <template v-if="celebrities !== undefined"> {{celebrities}}</template>
+              <template v-if="celebrities !== undefined">
+                  Title: {{title}} <br>
+                  author: {{author}} <br>
+                  date: {{date}} <br>
+                  Celebrities: {{celebrities}}
+              </template>
 
           </div>
       </div>
@@ -22,15 +34,24 @@ export default {
             celebrities: [],
             title: '',
             author: '',
-            date: '',
+            date: new Date(),
         }
     },
     components: {
         EditPostHeader
     },
     methods: {
-        onAddCelebrity(celebrity){
-            celebrities.push(celebrity);
+        onUpdateCelebreties(data){
+            this.celebrities = data;
+        },
+        onUpdateTitle(data){
+            this.title = data;
+        },
+        onUpdateDate(data){
+            this.date = data;
+        },
+        onUpdateAuthor(data){
+            this.author = data;
         }
     },
     created() {
