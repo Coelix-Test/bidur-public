@@ -150,6 +150,7 @@ class AdminController extends Controller
                 exit(0);
             }
         }
+        return json_encode(['success' => true]);
     }
 
     public function createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date){
