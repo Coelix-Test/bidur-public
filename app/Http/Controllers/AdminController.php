@@ -157,7 +157,7 @@ class AdminController extends Controller
         $hot = false;
         $post = Post::create([
             'author' => $author,
-            'hot' => $hot,
+            'hot' => "false",
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);
@@ -286,7 +286,7 @@ class AdminController extends Controller
         $rightName = time().'.'.$rightImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/happyBirthday');
         $rightImage->move($destinationPath, $rightName);
-        
+
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
