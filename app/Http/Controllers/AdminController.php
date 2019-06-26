@@ -114,7 +114,7 @@ class AdminController extends Controller
         $sections = $request->get('sections');
         foreach ($sections as $key => $section) {
             if ($section['type'] == 'metaTitle'){
-                $metaTitle  = $section['meta-title'];
+                $metaTitle  = $section['title'];
                 $hashtags   = $section['celebrities']; //array
                 $hot        = $section['hot']; //true-false
                 $author     = $section['author'];
@@ -150,6 +150,7 @@ class AdminController extends Controller
                 exit(0);
             }
         }
+        return json_encode(['success' => true]);
     }
 
     public function createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date){
