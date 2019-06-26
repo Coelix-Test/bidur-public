@@ -116,10 +116,10 @@ class AdminController extends Controller
             if ($section['type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
                 $hashtags   = $section['celebrities']; //array
-                $hot        = $section['hot']; //true-false
+//                $hot        = $section['hot']; //true-false
                 $author     = $section['author'];
                 $date       = $section['date'];
-                $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date);
+                $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
             }
             elseif($section['type'] == 'content'){
                 $content = $section['content'];
@@ -153,7 +153,8 @@ class AdminController extends Controller
         return json_encode(['success' => true]);
     }
 
-    public function createPostHeaderMeta($metaTitle, $hashtags, $hot, $author, $date){
+    public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
+        $hot = false;
         $post = Post::create([
             'author' => $author,
             'hot' => $hot,
