@@ -2146,13 +2146,13 @@ __webpack_require__.r(__webpack_exports__);
       var postData = new FormData(); //append header
 
       var sectionIndex = 0;
-      postData.append('sections[' + sectionIndex + ']["type"]', 'metaTitle');
-      postData.append('sections[' + sectionIndex + ']["title"]', this.title);
-      postData.append('sections[' + sectionIndex + ']["author"]', this.author);
-      postData.append('sections[' + sectionIndex + ']["date"]', this.date.getTime());
+      postData.append('sections[' + sectionIndex + '][type]', 'metaTitle');
+      postData.append('sections[' + sectionIndex + '][title]', this.title);
+      postData.append('sections[' + sectionIndex + '][author]', this.author);
+      postData.append('sections[' + sectionIndex + '][date]', this.date.getTime());
       this.celebrities.forEach(function (celebrity) {
         if (celebrity.id) {
-          postData.append('sections[' + sectionIndex + ']["celebrities"][]', celebrity.id);
+          postData.append('sections[' + sectionIndex + '][celebrities][]', celebrity.id);
         }
       });
       sectionIndex++; //append sections
