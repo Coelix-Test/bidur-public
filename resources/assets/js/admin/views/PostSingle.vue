@@ -26,6 +26,14 @@
                             @deleteSection="deleteSection">
                         </post-text>
                     </template>
+                    <template v-else-if="section.type === 'image'">
+                        <post-image
+                            v-bind:value.sync="section.value"
+                            v-bind:description.sync="section.description"
+                            :index="index"
+                            @deleteSection="deleteSection">
+                        </post-image>
+                    </template>
                 </div>
 
                 <div class="add-section-buttons-line">
@@ -65,6 +73,7 @@
 import EditPostHeader from './../components/posts/EditPostHeader.vue';
 import PostTitle from './../components/posts/PostTitle.vue';
 import PostText from './../components/posts/PostText.vue';
+import PostImage from './../components/posts/PostImage.vue';
 
 export default {
     data: function(){
@@ -73,13 +82,16 @@ export default {
             title: '',
             author: '',
             date: new Date(),
-            sections: []
+            sections: [
+                { "type": "image", "value": "", "description": "" }
+            ]
         }
     },
     components: {
         EditPostHeader,
         PostTitle,
-        PostText
+        PostText,
+        PostImage
     },
     methods: {
         addSection(type){
@@ -92,7 +104,7 @@ export default {
                     sectionData = {type: 'text', value: ''};
                     break;
                 case 'image':
-
+                    sectionData = {type: 'image', value: '', description: ''};
                     break;
                 case 'imageWithText':
 
