@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import SearchableInput from './../components/SearchableInput.vue';
+import SearchableInput from './../SearchableInput.vue';
 
 export default {
     data: function(){

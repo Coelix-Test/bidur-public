@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import EditPostCelebrities from './../components/EditPostCelebrities.vue';
+import EditPostCelebrities from './EditPostCelebrities.vue';
 import Datepicker from 'vuejs-datepicker';
 
 export default {
