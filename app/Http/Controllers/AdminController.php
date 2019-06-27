@@ -154,7 +154,13 @@ class AdminController extends Controller
     }
 
     public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
-        $hot = false;
+//        $date = date('Y-m-d h:m:s', $date);
+//        dd($date);
+//        dd(date('Y', $date));
+        $date = $date/1000;
+        $date = Carbon::createFromTimestamp($date)->toDateTimeString();
+//        dd($date);
+
         $post = Post::create([
             'author' => $author,
             'hot' => "false",
@@ -283,7 +289,8 @@ class AdminController extends Controller
         $leftImage->move($destinationPath, $leftName);
 
         $rightImage = $request->file('rightImage');
-        $rightName = time().'.'.$rightImage->getClientOriginalExtension();
+
+                $rightName = time().'.'.$rightImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/happyBirthday');
         $rightImage->move($destinationPath, $rightName);
 
