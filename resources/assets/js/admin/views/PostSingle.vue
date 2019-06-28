@@ -14,25 +14,37 @@
                 <div class="post-section" v-for="(section, index) in sections">
                     <template v-if="section.type === 'title'">
                         <post-title
-                            v-bind:value.sync="section.value"
+                            :value.sync="section.value"
                             :index="index"
                             @deleteSection="deleteSection">
                         </post-title>
                     </template>
                     <template v-else-if="section.type === 'text'">
                         <post-text
-                            v-bind:value.sync="section.value"
+                            :value.sync="section.value"
                             :index="index"
                             @deleteSection="deleteSection">
                         </post-text>
                     </template>
                     <template v-else-if="section.type === 'image'">
                         <post-image
-                            v-bind:value.sync="section.value"
-                            v-bind:description.sync="section.description"
+                            :value.sync="section.value"
+                            :description.sync="section.description"
                             :index="index"
                             @deleteSection="deleteSection">
                         </post-image>
+                    </template>
+                    <template v-else-if="section.type === 'imageWithText'">
+                        <post-image-text
+                            v-bind.sync="section"
+                            @deleteSection="deleteSection">
+                        </post-image-text>
+                    </template>
+                    <template v-else-if="section.type === 'video'">
+                        <post-video
+                            v-bind.sync="section"
+                            @deleteSection="deleteSection">
+                        </post-video>
                     </template>
                 </div>
 
@@ -52,6 +64,22 @@
                     <div class="add-section add-image-text" @click="addSection('imageWithText')">
                         <img src="/img/icons/edit-post-image-text.svg" alt="">
                         <span>Image + Text</span>
+                    </div>
+                    <div class="add-section" @click="addSection('video')">
+                        <img src="/img/icons/edit-post-video.svg" alt="">
+                        <span>Video</span>
+                    </div>
+                    <div class="add-section" @click="addSection('survey')">
+                        <img src="/img/icons/edit-post-survey.svg" alt="">
+                        <span>Survey</span>
+                    </div>
+                    <div class="add-section add-image-text" @click="addSection('assessment')">
+                        <img src="/img/icons/edit-post-assessment.svg" alt="">
+                        <span>Assessment</span>
+                    </div>
+                    <div class="add-section add-image-text" @click="addSection('selection')">
+                        <img src="/img/icons/edit-post-selection.svg" alt="">
+                        <span>Selection</span>
                     </div>
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">Save</button>
@@ -74,6 +102,8 @@ import EditPostHeader from './../components/posts/EditPostHeader.vue';
 import PostTitle from './../components/posts/PostTitle.vue';
 import PostText from './../components/posts/PostText.vue';
 import PostImage from './../components/posts/PostImage.vue';
+import PostImageText from './../components/posts/PostImageText.vue';
+import PostVideo from './../components/posts/PostVideo.vue';
 
 export default {
     data: function(){
@@ -83,7 +113,7 @@ export default {
             author: '',
             date: new Date(),
             sections: [
-                { "type": "image", "value": "", "description": "" }
+                {type: 'video', value: '', description: ''}
             ]
         }
     },
@@ -91,7 +121,9 @@ export default {
         EditPostHeader,
         PostTitle,
         PostText,
-        PostImage
+        PostImage,
+        PostImageText,
+        PostVideo
     },
     methods: {
         addSection(type){
@@ -107,7 +139,10 @@ export default {
                     sectionData = {type: 'image', value: '', description: ''};
                     break;
                 case 'imageWithText':
-
+                    sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
+                    break;
+                case 'video':
+                    sectionData = {type: 'video', value: '', description: ''};
                     break;
             }
             this.sections.push(sectionData);

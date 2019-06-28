@@ -18,7 +18,8 @@ export default {
             default: ''
         },
         index: {
-            type: Number
+            type: Number,
+            default: 0
         }
     }
 }

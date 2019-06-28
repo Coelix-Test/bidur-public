@@ -2,11 +2,11 @@
     <div class="wrapper">
 
         <label v-if="value === ''">
-            <img src="/img/icons/edit-post-upload-image.svg" alt="">
+            <img class="video-ico" src="/img/icons/edit-post-video2.svg" alt="">
             <div class="theme-btn theme-btn-red upload-btn">Upload</div>
-            <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
+            <input type="file" accept="video/*" @change="onFileChange($event.target.files[0])">
         </label>
-        <img v-else :src="image" class="image" alt="">
+        <video  v-else :src="src" class="image"></video>
     </div>
 </template>
 
@@ -14,7 +14,7 @@
 export default {
     data: function(){
         return {
-            image: ''
+            src: ''
         }
     },
     props: {
@@ -27,11 +27,12 @@ export default {
     },
     methods: {
         onFileChange(file){
-            let reader = new FileReader();
-            reader.addEventListener('load', () => {
-                this.image = reader.result;
-            }, false);
-            reader.readAsDataURL(file);
+            // let reader = new FileReader();
+            // reader.addEventListener('load', () => {
+            //     this.src = reader.result;
+            // }, false);
+            // reader.readAsDataURL(file);
+            this.src = URL.createObjectURL(file);
             this.$emit('update:value', file);
         }
     }
@@ -67,11 +68,15 @@ export default {
             border-radius: 10px;
             justify-content: center;
             font-size: 24px;
-            margin-top: 20px;
+            margin-top: 40px;
             cursor: pointer;
         }
         .image{
             width: 100%;
+            height: auto;
+        }
+        .video-ico{
+            width: 160px;
             height: auto;
         }
     }

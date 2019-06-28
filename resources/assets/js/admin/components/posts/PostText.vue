@@ -1,11 +1,6 @@
 <template>
     <div class="wrapper">
-        <editor
-            api-key="tl9l4lbf7vc1pkaj7rcvtgcbsyymlwho2yesntfwtw1rjsw1"
-            :init="{statusbar: false, directionality: 'rtl',language: 'he_IL',language_url : '/js/tinymce/langs/he_IL.js'}"
-            :initial-value="value"
-            @onBlur="onBlur">
-        </editor>
+        <text-editor :value="value" @update:value="updateValue"></text-editor>
         <div class="delete-wrap">
             <div class="delete-self" @click="$emit('deleteSection', index)"></div>
         </div>
@@ -13,7 +8,7 @@
 </template>
 
 <script>
-import Editor from '@tinymce/tinymce-vue';
+import TextEditor from './../common/TextEditor.vue';
 
 export default {
     data: function(){
@@ -22,7 +17,7 @@ export default {
         }
     },
     components: {
-        Editor
+        TextEditor
     },
     props: {
         value : {
@@ -34,8 +29,8 @@ export default {
         }
     },
     methods: {
-        onBlur(event){
-            this.$emit('update:value', event.target.getContent());
+        updateValue(value){
+            this.$emit('update:value', value);
         }
     }
 }
