@@ -7,11 +7,6 @@
             <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
         </label>
         <img v-else :src="image" class="image" alt="">
-        <input type="text" name="description" class="theme-input-text"
-            placeholder="Add description"
-            @input="$emit('update:description', $event.target.value)"/>
-
-        <div class="delete-self" @click="$emit('deleteSection', index)"></div>
     </div>
 </template>
 
@@ -28,13 +23,6 @@ export default {
             default: function(){
                 return '';
             }
-        },
-        index: {
-            type: Number
-        },
-        description: {
-            type: String,
-            default: ''
         }
     },
     methods: {
@@ -52,6 +40,7 @@ export default {
 
 <style lang="scss">
     @import "~@/vars.scss";
+
     .wrapper{
         position: relative;
         input[type="file"]{
@@ -84,27 +73,6 @@ export default {
         .image{
             width: 100%;
             height: auto;
-        }
-        input[name="description"]{
-            font-size: 18px;
-            width: 50%;
-            margin-top: 15px;
-            &::placeholder{
-                font-style: italic;
-                color: $gray;
-            }
-        }
-
-        .delete-self{
-            cursor: pointer;
-            position: absolute;
-            left: 20px;
-            bottom: 10px;
-            width: 30px;
-            height: 30px;
-            background: url('/img/icons/trash.svg') no-repeat center;
-            -webkit-background-size: 20px 26px;
-            background-size: 20px 26px;
         }
     }
 </style>

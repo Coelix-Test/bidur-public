@@ -1,12 +1,7 @@
 <template>
     <div class="wrapper">
 
-        <label v-if="value === ''">
-            <img src="/img/icons/edit-post-upload-image.svg" alt="">
-            <div class="theme-btn theme-btn-red upload-btn">Upload</div>
-            <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
-        </label>
-        <img v-else :src="image" class="image" alt="">
+        <image-input :value="value" @update:value="updateValue"></image-input>
         <input type="text" name="description" class="theme-input-text"
             placeholder="Add description"
             @input="$emit('update:description', $event.target.value)"/>
@@ -16,11 +11,15 @@
 </template>
 
 <script>
+import ImageInput from './../common/ImageInput.vue';
 export default {
     data: function(){
         return {
-            image: ''
+
         }
+    },
+    components: {
+        ImageInput
     },
     props: {
         value : {
@@ -38,13 +37,9 @@ export default {
         }
     },
     methods: {
-        onFileChange(file){
-            let reader = new FileReader();
-            reader.addEventListener('load', () => {
-                this.image = reader.result;
-            }, false);
-            reader.readAsDataURL(file);
-            this.$emit('update:value', file);
+        updateValue(value){
+            console.log(value);
+            this.$emit('update:value', value);
         }
     }
 }
