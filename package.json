@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^2.1.0",
         "magnific-popup": "^1.1.0",
         "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
