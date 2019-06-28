@@ -2,14 +2,15 @@
   <div class="left-column posts-column">
 
     <article v-for="post in twoPosts" >
-      
-      <div class="overlay"></div>
-      <img :src="post.img" alt="">
-      <h2>{{post.title}}</h2>
-      <p>
-        <span class="author">{{post.author}}</span>
-        <span class="post-date">{{post.time}}</span>
-      </p>
+      <a :href="post.id">
+        <div class="overlay"></div>
+        <img :src="post.img" alt="">
+        <h2>{{post.title}}</h2>
+        <p>
+          <span class="author">by Author</span>
+          <span class="post-date">{{post.time}}</span>
+        </p>
+      </a>
     </article>
   </div>
 </template>
@@ -29,7 +30,7 @@ export default {
     }
   },
   mounted() {
-     console.log('randomPosts', this.randomPosts);
+     //console.log('randomPosts', this.randomPosts);
     // axios.post('/getTwoRandomPosts').then(response => {
     //   //this.twoPosts = (response.data);
     //   response.data.forEach( (el)=> {
@@ -61,11 +62,40 @@ export default {
   .posts-column article {
     width:100%;
     position: relative;
-    padding:256px 16px 48px;
     margin-bottom: 16px;
+    height:450px;
+    overflow: hidden;
+  }
+  .posts-column article:nth-child(1) a {
+    box-sizing: border-box;
+    border: 6px solid transparent;
+    position: relative;
+    z-index:5;
+  }
+  .posts-column article:nth-child(1):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+  .posts-column article a {
+    justify-content: flex-end;
+    width:100%;
+    height:100%;
     display: flex;
     flex-direction: column;
     color:#fff;
+    padding:0 24px 16px;
+    color:#fff;
+    transition: .2s;
+    text-decoration: none;
+    overflow:hidden;
   }
   .posts-column article img {
     position: absolute;
@@ -78,6 +108,7 @@ export default {
     pointer-events: none;
     z-index:-2;
     object-fit: cover;
+    transition:.3s;
   }
   .posts-column article .overlay {
     position: absolute;
@@ -90,21 +121,58 @@ export default {
     height: 100%;
     pointer-events: none;
     opacity: .5;
-    background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%);
+    transition: .3s;
+    /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */
   }
-  .posts-column article .overlay:last-child  {
-    background: linear-gradient(360deg, #F6AB62 0%, #B63E8E 40.1%, #3F5EFB 100%);
+  .posts-column article:nth-child(2) .overlay  {
+    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);
+  }
+  .posts-column article:hover img {
+    transform:scale(1.1);
+  }
+  .posts-column article:nth-child(1):hover a{
+    border-width:12px;
+  }
+  .posts-column article:hover .overlay {
+    background: rgba(0,0,0,0.6);
   }
   .posts-column article h2 {
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Assistant', sans-serif;
     font-weight: 700;
     font-size: 36px;
-    line-height: 48px;
+    line-height: 36px;
   }
   .posts-column article p {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
+    margin-bottom: 0;
   }
+  .posts-column article p .author {
+    border-right:1px solid #fff;
+    padding-right: 6px;
+  }
+  @media (max-width:768px) {
+    .posts-column {
+      padding-right: 0;
+    }
+    .left-column {
+      order:1;
+    }
+    .posts-column article {
+      height:200px;
+    }
+  }
+  @keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 </style>
