@@ -11,19 +11,18 @@
 |
 */
 
-
+//testing routes
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'TestController@test');
+Route::get('/test2', 'AdminController@getAllPosts');
 Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
 
 
+
+//user routes
 Route::get('/', 'PostController@getMainPage');
 
-Route::get('/admin', function () {
-    return view('admin');
-});
 
 Auth::routes();
 
@@ -40,14 +39,36 @@ Route::get('logout', 'Auth\LoginController@logout', function () {
 Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('postByHashtag');
 Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 
+
+
+
+
 //admin
-Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
-Route::post('/showAllAdmins', 'AdminController@showAllAdmins')->name('show-all-admins');
+Route::get('/admin', 'AdminController@showAdmin');
+
+    //posts
+    Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
+    Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
+
+    //services
+    Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday');
+    Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
+    Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
+
+    //hashtags
+    Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
+    Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
+    Route::post('/updateHashtag', 'AdminController@updateHashtag')->name('update-hashtag');
+    Route::post('/deleteHashtag', 'AdminController@deleteHashtag')->name('delete-hashtag');
+
+    //surveys
+    Route::post('/getAllSurveys', 'AdminController@getAllSurveys')->name('get-all-surveys');
+
+    //all admins page
+    Route::post('/showAllAdmins', 'AdminController@showAllAdmins')->name('show-all-admins');
+    Route::post('/editAdmin', 'AdminController@editAdmin')->name('edit-admin');
+    Route::post('/deleteAdmin', 'AdminController@deleteAdmin')->name('delete-admin');
+    Route::post('/makeUserAdmin', 'AdminController@makeUserAdmin')->name('make-user-admin');
 
 
-//hashtags
-Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
-Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
-Route::post('/updateHashtag', 'AdminController@updateHashtag')->name('update-hashtag');
-Route::post('/deleteHashtag', 'AdminController@deleteHashtag')->name('delete-hashtag');
-
+//Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');

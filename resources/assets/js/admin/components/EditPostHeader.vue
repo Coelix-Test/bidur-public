@@ -1,23 +1,30 @@
 <template>
     <div class="edit-post-header-wrapper">
         <div class="inputs-row">
-            <input type="text" class="main-post-title" name="title" placeholder="Add Title to the Post">
+            <input type="text" class="main-post-title" name="title" @input="$emit('updateTitle', $event.target.value)" placeholder="Add Title to the Post" required>
         </div>
-        <edit-post-celebrities @updateCelebreties="onUpdateCelebreties" @addCelebrity="onAddCelebrity" :celebrities="celebrities" class="d-flex w-100 inputs-row"></edit-post-celebrities>
+        <edit-post-celebrities
+            @updateCelebrities="onUpdateCelebrities"
+            :celebrities="celebrities" class="d-flex w-100 inputs-row">
+        </edit-post-celebrities>
         <div class="inputs-row w-100 d-flex">
             <div class="ico-input date-input d-inline-flex align-items-center">
                 <!-- <input type="date" name="date" placeholder="Add date"> -->
                 <div class="ico">
                     <img src="/img/icons/edit-post-calendar.svg" alt="">
                 </div>
-                <datepicker class="theme-input-text" placeholder="Add date"></datepicker>
+                <datepicker class="theme-input-text" placeholder="Add date"
+                    @selected="updateDate"
+                    :value="date"
+                    :format="formatDate">
+                </datepicker>
             </div>
 
             <div class="ico-input author-input d-inline-flex align-items-center">
                 <div class="ico">
                     <img src="/img/icons/edit-post-author.svg" alt="">
                 </div>
-                <input type="text" class="theme-input-text" name="author" placeholder="Add author">
+                <input type="text" class="theme-input-text" name="author" @input="$emit('updateAuthor', $event.target.value)" placeholder="Add author">
             </div>
         </div>
 
@@ -41,7 +48,7 @@ export default {
             type: String
         },
         date: {
-            type: String
+            type: Date
         },
         celebrities: {
             type: Array
@@ -52,12 +59,14 @@ export default {
         Datepicker
     },
     methods: {
-        onUpdateCelebreties(data) {
-            this.celebreties = data;
+        onUpdateCelebrities(data) {
+            this.$emit('updateCelebrities', data);
         },
-        onAddCelebrity(data){
-            console.log(data);
-            this.$emit('addCelebrity', data);
+        updateDate(data){
+            this.$emit('updateDate', data);
+        },
+        formatDate(date){
+            return moment(date).format('DD.MM.Y');
         }
     }
 }

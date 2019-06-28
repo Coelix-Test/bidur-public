@@ -1,5 +1,8 @@
+@import "~@/vars.scss";
+
 body{
     font-size: 18px;
+    font-family: 'Rubik';
 }
 
 input.theme-input-text,
@@ -11,7 +14,7 @@ input.theme-input-text,
     padding: 0 12px;
 }
 
-input{
+input, button:focus, a{
     outline: none;
 }
 
@@ -27,6 +30,11 @@ input{
     border-radius: 3px;
     font-family: 'Rubik';
 
+}
+
+.theme-btn-red{
+    background-color: $red;
+    color: #fff;
 }
 
 .theme-ico-btn{
