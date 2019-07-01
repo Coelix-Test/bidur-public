@@ -3,7 +3,7 @@
 
 
 
-    <right-column v-if="rightPosts.length" :data="rightPosts" />
+    <right-column class="wow fadeIn" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
     <right-column-bot />
@@ -34,6 +34,7 @@ export default {
 
   },
   mounted() {
+
    axios
      .post('/getAllPosts')
      .then(
@@ -49,26 +50,22 @@ export default {
            // this.latestPosts.push(el.post.id);
          });
          this.latestPosts = latestPostsId.reverse().slice(0,8);
-         postIds.sort(function compareRandom(a, b) {
+          postIds.sort(function compareRandom(a, b) {
           return Math.random() - 0.5;
         });
-        postIds.forEach( (el) => {
+      //  postIds.forEach( (el) => {
            //axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.randomPosts.push(response.data) });
 
-        });
+      //  });
         this.leftPosts = postIds.slice(0,2);
         this.rightPosts = postIds.slice(2,6);
         }
      );
+    //axios.post('/getAllPostsByHashtag',2).then(response => {console.log(response);})
 
  },
- watch : {
-   getAllPosts : function() {
-
-
-
-
-   },
+ created() {
+   new WOW().init();
  },
  components : {
    RightColumn,

@@ -3,7 +3,7 @@
     <h2>חדשות נוספות</h2>
     <ul ref="test" class="latest-post-slider">
       <li v-if="posts" v-for="post in posts">
-        <a :href="'/post/'+post.id">
+        <router-link :to="'/post/'+post.id">
 
           <img :src="post.img" alt="">
           <div class="content">
@@ -14,7 +14,7 @@
             </p>
           </div>
 
-        </a>
+        </router-link>
 
       </li>
     </ul>
@@ -132,9 +132,11 @@ export default {
     padding-right: 4px;
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
+    white-space:nowrap;
   }
   .latest-post-slider li a p .author {
     color:black;
+    white-space:nowrap;
   }
   .latest-post-slider li a h3 {
     font-size: 20px;

@@ -10,7 +10,7 @@
     </article>
     <ul v-if="posts" class="posts">
       <li v-for="post in posts">
-        <a class="post" :href="'/post/'+post.id">
+        <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
@@ -18,7 +18,7 @@
             <span class="author">by Author</span>
             <span class="post-date">{{post.time}}</span>
           </p>
-        </a>
+        </router-link>
       </li>
     </ul>
 
@@ -45,7 +45,7 @@ export default {
     this.data.forEach( (el)=> {
       axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
          this.posts.push(response.data);
-         
+
 
        });
     });

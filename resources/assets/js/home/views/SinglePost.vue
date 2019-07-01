@@ -2,7 +2,7 @@
   <div v-if="post" class="single-post">
     <h1>{{ postData[1].value }}</h1>
 
-    <pre style="direction:ltr;text-align:left;">{{postData}}</pre>
+    <pre style="direction:ltr;text-align:left;">{{post}}</pre>
 
   </div>
 
@@ -13,13 +13,13 @@ export default {
   data() {
     return {
       post : null,
-      //postId :
       postData : null
     }
   },
-  created() {
+  mounted() {
 
-    axios.post('/post/12'+this.$route.params.id).then(response => {
+    axios.post('/post/'+this.$route.params.id).then(response => {
+      console.log(response);
       this.post = response;
       this.postData = this.post.data.post;
     })
@@ -28,4 +28,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>

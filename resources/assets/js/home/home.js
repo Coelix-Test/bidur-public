@@ -5,6 +5,7 @@ require('./bootstrap');
 window.$ = window.jQuery = require('jquery');
 require('magnific-popup/dist/jquery.magnific-popup.js');
 require('slick-carousel/slick/slick.min.js');
+require('wowjs');
 
 Vue.config.devtools = true;
 Vue.config.performance = true;
@@ -16,7 +17,9 @@ import App from './App.vue';
 window.app = new Vue({
   router: router,
   render: h => h(App)
-}).$mount('#home'); 
+}).$mount('#home');
+
+
 
 $('#header_main .celebrities-slider').slick({
   slidesToShow: 13,
