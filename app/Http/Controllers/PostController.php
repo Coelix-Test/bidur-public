@@ -192,7 +192,6 @@ class PostController extends Controller
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
-        //dd($fullPost);
 
         return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
     }

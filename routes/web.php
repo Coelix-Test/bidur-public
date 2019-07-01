@@ -40,7 +40,12 @@ Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('pos
 Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 
 
+//main page
+Route::post('/getMainBday', 'AdminController@getMainBday')->name('get-main-birthday'); //bday
+Route::post('/getMainAdditionalSection', 'AdminController@getMainAdditionalSection')->name('get-main-additional-section'); //survey
+Route::post('/getMainInsta', 'AdminController@getMainInsta')->name('get-main-instagram'); //insta
 
+Route::post('/post/{id}', 'PostController@show')->name('get-post-contents');
 
 
 //admin
@@ -69,6 +74,9 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/editAdmin', 'AdminController@editAdmin')->name('edit-admin');
     Route::post('/deleteAdmin', 'AdminController@deleteAdmin')->name('delete-admin');
     Route::post('/makeUserAdmin', 'AdminController@makeUserAdmin')->name('make-user-admin');
+
+
+
 
 
 //Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
