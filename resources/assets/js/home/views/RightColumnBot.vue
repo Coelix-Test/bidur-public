@@ -96,7 +96,7 @@ export default {
   .vue-poll .ans-cnt .ans .bg {
     right:0;
     left:unset;
-    clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%);
+    /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */
   }
   .vue-poll .ans-cnt .ans-voted {
     display: flex;
