@@ -44446,7 +44446,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
