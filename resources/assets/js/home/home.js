@@ -16,7 +16,7 @@ import App from './App.vue';
 window.app = new Vue({
   router: router,
   render: h => h(App)
-}).$mount('#home'); 
+}).$mount('#home');
 
 $('#header_main .celebrities-slider').slick({
   slidesToShow: 13,
