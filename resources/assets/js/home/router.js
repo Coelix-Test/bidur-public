@@ -9,12 +9,18 @@ Vue.use(VueRouter);
 // import account from './account';
 
 import Index from './views/Index.vue';
+import All from './views/All.vue';
 
 const routes = [
   {
     path: '/',
     component: Index,
     name: 'index',
+  },
+  {
+    path: '/all',
+    component: All,
+    name: 'all',
   },
 ];
 
