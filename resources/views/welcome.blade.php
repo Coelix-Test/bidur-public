@@ -12,7 +12,7 @@
 </head>
 <body>
     <header id="header_main">
-        @include('parts/header/top-line')
+        @include('parts/header')
     </header>
     <div id="home"></div>
     @include('parts/footer')
