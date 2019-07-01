@@ -7,6 +7,9 @@ use App\HashtagPosts;
 use App\Insta;
 use App\Post;
 use App\Rating;
+use App\SelectOne;
+use App\SingleLikableImage;
+use App\Survey;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,9 +24,30 @@ class MainController extends Controller
     }
 
     public function showAdditionalSection(){
+        $likable = SingleLikableImage::where('postId', 0)->get();
+        $compare = SelectOne::where('postId', 0)->get();
+        $survey = Survey::where('postId', 0)->get();
 
+        if (!empty($likable)){
+            $data['image'] = $likable->url;
+            $likes = $likable->getLikes();
+            $dislikes = $likable->getDislikes();
+            $data['likes'] = $likes;
+            $data['dislikes'] = $dislikes;
+            return $data;
+        }
+        if (!empty($compare)){
+
+            return $data;
+        }
+        if (!empty($survey)){
+
+            return $data;
+        }
     }
-
+    public function getSelectedPosts(){
+        return Post::all()->take(6);
+    }
     public function getInfoOnPostForMain(Request $request){
         $post = Post::find($request->get('id'));
 
@@ -294,8 +318,10 @@ class MainController extends Controller
         $hashtagPosts = HashtagPosts::all();
 
         foreach ($hashtagPosts as $hashtagPost) {
+//            dd($hashtagId);
             if ($hashtagPost->hashtagId == $hashtagId){
                 $postIds[] = $hashtagPost->postId;
+
             }
         }
 
