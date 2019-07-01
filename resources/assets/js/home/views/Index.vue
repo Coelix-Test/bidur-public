@@ -65,7 +65,7 @@ export default {
 
  },
  created() {
-   new WOW().init();
+  // new WOW().init();
  },
  components : {
    RightColumn,
