@@ -58,6 +58,19 @@ export default {
       color: #4F4F4F;
     }
   }
+
+  @media(max-width: 450px) {
+    flex-direction: column;
+    border-bottom: 0;
+    .img {
+      height: 200px;
+      width: 100%;
+    }
+    .desc {
+      padding-right: 0;
+      padding-top: 10px;
+    }
+  }
 }
 
 </style>

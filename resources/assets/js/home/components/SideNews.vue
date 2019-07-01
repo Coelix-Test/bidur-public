@@ -50,6 +50,11 @@ export default {
     height: auto;
     margin-bottom: 30px;
   }
+
+  @media(max-width: 1200px) {
+    padding-right: 0;
+    width: 100%;
+  }
 }
 
 </style>
