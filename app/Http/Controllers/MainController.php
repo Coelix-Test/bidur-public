@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
+use App\LikesForLeftAndRight;
 use App\Post;
 use App\Rating;
 use App\SelectOne;
@@ -37,12 +38,33 @@ class MainController extends Controller
             return $data;
         }
         if (!empty($compare)){
-
+            $data['urlLeft'] = $compare->urlLeft;
+            $data['urlRight'] = $compare->urlRight;
+            $likes = LikesForLeftAndRight::where('serviceId', $compare->id)->get();
+            $left = 0;
+            $right = 0;
+            $total = 0;
+            foreach ($likes as $like) {
+                $total++;
+                if ($like->value == 'left'){
+                    $left++;
+                }else{
+                    $right++;
+                }
+            }
+            $right = (int)($right/$total) * 100;
+            $left = 100 - $right;
+            $data['left'] = $left;
+            $data['right'] = $right;
             return $data;
         }
         if (!empty($survey)){
-
-            return $data;
+            $variants = $survey->getAllVariants();
+            foreach ($variants as $variant) {
+                $answers = $variant->answers();
+                //тут надо каунтить вариатны и давать проценты но меня ебет
+            }
+            return 1312;
         }
     }
     public function getSelectedPosts(){

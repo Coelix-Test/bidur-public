@@ -48,13 +48,13 @@
                 <?php
             }
             ?>
-{{--            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>--}}
-{{--            <li>Lorem ipsum dolor.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum.</li>--}}
+<li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
+<li>Lorem ipsum dolor.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum.</li>--}}
         </ul>
         <ul class="run-stroke hidden">
             <?php
@@ -64,13 +64,13 @@
             <?php
             }
             ?>
-{{--            <li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>--}}
-{{--            <li>Lorem ipsum dolor.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>--}}
-{{--            <li>Lorem ipsum.</li>--}}
+<li>Wild Miley Cyrus Is Back & Naughtier Than Ever</li>
+<li>Lorem ipsum dolor.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+<li>Lorem ipsum.</li>
         </ul>
     </div>
 
