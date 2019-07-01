@@ -9,7 +9,9 @@ Vue.use(VueRouter);
 // import account from './account';
 
 import Index from './views/Index.vue';
-import SinglePost from './views/SinglePost.vue';
+import SinglePost from './views/SinglePost.vue'
+import All from './views/All.vue'
+
 
 const routes = [
   {
@@ -21,6 +23,11 @@ const routes = [
     path: '/post/:id',
     component: SinglePost,
     name: 'single-post',
+  },
+  {
+    path: '/all',
+    component: All,
+    name: 'all',
   },
 ];
 
