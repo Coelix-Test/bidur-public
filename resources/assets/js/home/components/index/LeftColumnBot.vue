@@ -3,7 +3,7 @@
     <h2>חדשות נוספות</h2>
     <ul ref="test" class="latest-post-slider">
       <li v-if="posts" v-for="post in posts">
-        <a href="#">
+        <router-link :to="'/post/'+post.id">
 
           <img :src="post.img" alt="">
           <div class="content">
@@ -14,7 +14,7 @@
             </p>
           </div>
 
-        </a>
+        </router-link>
 
       </li>
     </ul>
@@ -39,17 +39,15 @@ export default {
     }
   },
   created() {
-    console.log('lastPosts', this.posts);
+
     let getAllPosts = [];
     this.data.forEach( (el)=> {
       getAllPosts.push(axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-         this.posts.push(response.data) ;
-
+         this.posts.push(response.data);
        }));
     });
 
     Promise.all(getAllPosts).then(() => {
-      console.log('qweqwee');
       $(this.$refs.test).slick({
         rtl: true,
         dots: false,
@@ -134,9 +132,11 @@ export default {
     padding-right: 4px;
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
+    white-space:nowrap;
   }
   .latest-post-slider li a p .author {
     color:black;
+    white-space:nowrap;
   }
   .latest-post-slider li a h3 {
     font-size: 20px;
@@ -157,6 +157,14 @@ export default {
     }
     .latest-post-slider li {
       padding-left: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+    }
+  }
+  @media (max-width: 550px) {
+    .instagram-post {
+      margin-top: 8px;
     }
   }
 </style>

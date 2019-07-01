@@ -107,6 +107,7 @@ class PostController extends Controller
 
     public function show($id = null)
     {
+      // dd($id);
         try{
             $post = Post::findOrFail($id);
         }catch (\Exception $e){
@@ -160,17 +161,19 @@ class PostController extends Controller
         }
 
         $surveys = $post->getAllSurveys;
+
         if (isset($surveys[0])){
             foreach ($surveys as $survey) {
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
-
                 $questionsWithAnswers[$survey->order]['surveyTitle'] = $survey->question;
                 foreach ($questions as $question) {
                     $questionsWithAnswers[$survey->order]['answers'][$question->question] = count($question->answers);
                 }
             }
         }
+        // dd($questionsWithAnswers);
+
 
         foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
 
