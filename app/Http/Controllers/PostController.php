@@ -192,8 +192,8 @@ class PostController extends Controller
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
-
-        return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
+        return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
+//        return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
     }
 
     public function getAllPostsWithAllFilters(){
