@@ -8,6 +8,7 @@ use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Http\Middleware\Admin;
+use App\Insta;
 use App\LikesForLeftAndRight;
 use App\LikesForSingleImage;
 use App\Post;
@@ -285,13 +286,13 @@ class AdminController extends Controller
         LikesForLeftAndRight::truncate();
         $leftImage = $request->file('leftImage');
         $leftName = time().'.'.$leftImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/happyBirthday');
+        $destinationPath = public_path('/images/compare');
         $leftImage->move($destinationPath, $leftName);
 
         $rightImage = $request->file('rightImage');
 
                 $rightName = time().'.'.$rightImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/happyBirthday');
+        $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
         SelectOne::create([
@@ -307,7 +308,7 @@ class AdminController extends Controller
 
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/happyBirthday');
+        $destinationPath = public_path('/images/singlePhoto');
         $image->move($destinationPath, $name);
 
         SingleLikableImage::create([
@@ -381,5 +382,21 @@ class AdminController extends Controller
             'userId' => $request->get('id'),
         ]);
         return json_encode(['success' => true]);
+    }
+
+    public function createInsta(Request $request){
+        $image = $request->file('image');
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/insta');
+        $image->move($destinationPath, $name);
+
+        $link = $request->get('link');
+
+        $insta = Insta::create([
+            'linkToInsta' => $link,
+            'imageUrl' => '/images/insta/'.$image,
+        ]);
+
+        return json_encode(['success' => true, 'insta' => $insta]);
     }
 }
