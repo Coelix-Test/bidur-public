@@ -81,7 +81,7 @@ export default {
 <style lang="css" scoped>
   .home {
     max-width: 1440px;
-    margin:48px auto 32px;
+    margin:16px auto 32px;
     padding:0 24px;
     display: flex;
     flex-direction: row;

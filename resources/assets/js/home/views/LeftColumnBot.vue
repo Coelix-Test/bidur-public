@@ -3,7 +3,7 @@
     <h2>חדשות נוספות</h2>
     <ul ref="test" class="latest-post-slider">
       <li v-if="posts" v-for="post in posts">
-        <a href="#">
+        <a :href="'/post/'+post.id">
 
           <img :src="post.img" alt="">
           <div class="content">
@@ -39,17 +39,15 @@ export default {
     }
   },
   created() {
-    console.log('lastPosts', this.posts);
+
     let getAllPosts = [];
     this.data.forEach( (el)=> {
       getAllPosts.push(axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-         this.posts.push(response.data) ;
-
+         this.posts.push(response.data);
        }));
     });
 
     Promise.all(getAllPosts).then(() => {
-      console.log('qweqwee');
       $(this.$refs.test).slick({
         rtl: true,
         dots: false,
@@ -157,6 +155,14 @@ export default {
     }
     .latest-post-slider li {
       padding-left: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+    }
+  }
+  @media (max-width: 550px) {
+    .instagram-post {
+      margin-top: 8px;
     }
   }
 </style>

@@ -32,6 +32,9 @@ export default {
         addVote(obj){
             console.log('You voted ' + obj.value + '!');
         }
+    },
+    mounted() {
+      axios.post('/post/12').then(response => {console.log(response);})
     }
 }
 </script>
@@ -71,6 +74,7 @@ export default {
       order: 3;
       flex-basis:100%;
       padding-left: 0;
+      margin-bottom: 16px;
     }
   }
 </style>
@@ -96,6 +100,7 @@ export default {
   .vue-poll .ans-cnt .ans .bg {
     right:0;
     left:unset;
+    transition: 1s;
     /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */
   }
   .vue-poll .ans-cnt .ans-voted {
