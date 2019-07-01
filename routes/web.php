@@ -27,8 +27,6 @@ Route::get('/', 'PostController@getMainPage');
 Auth::routes();
 
 Route::post('/getTwoRandomPosts', 'PostController@getTwoRandomPosts');
-Route::post('/getInfoOnPostForMain', 'PostController@getInfoOnPostForMain');
-Route::post('/getAllPosts', 'PostController@getAllPostsWithAllFilters');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -40,8 +38,16 @@ Route::get('/postByHashtag/{id}', 'HashtagController@getAllHashtags')->name('pos
 Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 
 
+//main page
+Route::post('/getMainBday', 'AdminController@getMainBday')->name('get-main-birthday'); //bday
+Route::post('/getMainAdditionalSection', 'AdminController@getMainAdditionalSection')->name('get-main-additional-section'); //survey
+Route::post('/getMainInsta', 'InstaController@show')->name('get-main-instagram'); //insta
 
-
+Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
+Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
+Route::post('/post/{id}', 'PostController@show')->name('get-post-contents'); //3
+Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
+Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
@@ -54,6 +60,7 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday');
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
+    Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
 
     //hashtags
     Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
@@ -69,6 +76,9 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/editAdmin', 'AdminController@editAdmin')->name('edit-admin');
     Route::post('/deleteAdmin', 'AdminController@deleteAdmin')->name('delete-admin');
     Route::post('/makeUserAdmin', 'AdminController@makeUserAdmin')->name('make-user-admin');
+
+
+
 
 
 //Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');

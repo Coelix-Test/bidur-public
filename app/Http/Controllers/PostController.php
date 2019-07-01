@@ -108,7 +108,7 @@ class PostController extends Controller
     public function show($id = null)
     {
         try{
-            $post = Post::findOrFail(1);
+            $post = Post::findOrFail($id);
         }catch (\Exception $e){
             dd($e);
             return view();//not found
@@ -192,9 +192,8 @@ class PostController extends Controller
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
-        //dd($fullPost);
-
-        return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
+        return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
+//        return view('',['post' => $fullPost, 'previousPostId' => $previousPostId, 'nextPostId' => $nextPostId]);
     }
 
     public function getAllPostsWithAllFilters(){
