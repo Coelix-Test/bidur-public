@@ -303,6 +303,10 @@ export default {
     color:#828282;
     font-size: 16px;
   }
+  .share {
+    color:#BDBDBD;
+    text-decoration-color:#BDBDBD;
+  }
   @media (max-width:1024px) {
     .post-wrapper {
       flex-direction: column;
@@ -336,6 +340,20 @@ export default {
     }
     .post-wrapper {
       padding:0 8px;
+    }
+    .related-post-content {
+      padding:0 4px;
+    }
+    .related-post-content .excerpt {
+      text-align: center;
+    }
+    .related-post h3 {
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .post-content h1 {
+      font-size: 28px;
+      line-height: 28px;
     }
   }
 </style>
