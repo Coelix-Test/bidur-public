@@ -47,6 +47,7 @@ Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
 Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
 Route::post('/post/{id}', 'PostController@show')->name('get-post-contents'); //3
 Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
+Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
