@@ -46,7 +46,7 @@ Route::post('/getMainInsta', 'InstaController@show')->name('get-main-instagram')
 Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
 Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
 Route::post('/post/{id}', 'PostController@show')->name('get-post-contents'); //3
-Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag');
+Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
