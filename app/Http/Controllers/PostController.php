@@ -108,7 +108,7 @@ class PostController extends Controller
     public function show($id = null)
     {
         try{
-            $post = Post::findOrFail(1);
+            $post = Post::findOrFail($id);
         }catch (\Exception $e){
             dd($e);
             return view();//not found
