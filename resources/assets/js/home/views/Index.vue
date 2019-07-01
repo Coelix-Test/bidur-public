@@ -13,10 +13,11 @@
 </template>
 
 <script>
-import RightColumn from './views/RightColumn.vue';
-import LeftColumn from './views/LeftColumn.vue';
-import LeftColumnBot from './views/LeftColumnBot.vue';
-import RightColumnBot from './views/RightColumnBot.vue';
+import RightColumn from './../components/index/RightColumn.vue';
+import LeftColumn from './../components/index/LeftColumn.vue';
+import LeftColumnBot from './../components/index/LeftColumnBot.vue';
+import RightColumnBot from './../components/index/RightColumnBot.vue';
+
 export default {
   data() {
     return  {
