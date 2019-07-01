@@ -27,8 +27,6 @@ Route::get('/', 'PostController@getMainPage');
 Auth::routes();
 
 Route::post('/getTwoRandomPosts', 'PostController@getTwoRandomPosts');
-Route::post('/getInfoOnPostForMain', 'PostController@getInfoOnPostForMain');
-Route::post('/getAllPosts', 'PostController@getAllPostsWithAllFilters');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -43,10 +41,12 @@ Route::get('/post/{id}', 'HashtagController@getAllHashtags')->name('postView');
 //main page
 Route::post('/getMainBday', 'AdminController@getMainBday')->name('get-main-birthday'); //bday
 Route::post('/getMainAdditionalSection', 'AdminController@getMainAdditionalSection')->name('get-main-additional-section'); //survey
-Route::post('/getMainInsta', 'AdminController@getMainInsta')->name('get-main-instagram'); //insta
+Route::post('/getMainInsta', 'InstaController@show')->name('get-main-instagram'); //insta
 
-Route::post('/post/{id}', 'PostController@show')->name('get-post-contents');
-
+Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
+Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
+Route::post('/post/{id}', 'PostController@show')->name('get-post-contents'); //3
+Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
@@ -59,6 +59,7 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday');
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
+    Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
 
     //hashtags
     Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
