@@ -23,5 +23,5 @@ $('#header_main .celebrities-slider').slick({
   slidesToScroll: 13,
   dots: false,
   arrows: true,
-  rtl: true,
+  rtl: true, 
 });
