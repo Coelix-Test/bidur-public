@@ -11,6 +11,7 @@ use App\Http\Middleware\Admin;
 use App\Insta;
 use App\LikesForLeftAndRight;
 use App\LikesForSingleImage;
+use App\MainSection;
 use App\Post;
 use App\PostContent;
 use App\PostTitle;
@@ -398,5 +399,24 @@ class AdminController extends Controller
         ]);
 
         return json_encode(['success' => true, 'insta' => $insta]);
+    }
+
+
+    public function editMainPagePosts(Request $request){
+        $mainPostId = $request->get('mainPostId');
+        $secondPostId = $request->get('secondPostId');
+        $thirdPostId = $request->get('thirdPostId');
+        $fourthPostId = $request->get('fourthPostId');
+        $fifthPostId = $request->get('fifthPostId');
+        $sixthPostId = $request->get('sixthPostId');
+        MainSection::truncate();
+        MainSection::create([
+            'first' => $mainPostId,
+            'second' => $secondPostId,
+            'third' => $thirdPostId,
+            'fourth' => $fourthPostId,
+            'fifth' => $fifthPostId,
+            'sixth' => $sixthPostId,
+        ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
 use App\LikesForLeftAndRight;
+use App\MainSection;
 use App\Post;
 use App\Rating;
 use App\SelectOne;
@@ -67,9 +68,7 @@ class MainController extends Controller
             return 1312;
         }
     }
-    public function getSelectedPosts(){
-        return Post::all()->take(6);
-    }
+
     public function getInfoOnPostForMain(Request $request){
         $post = Post::find($request->get('id'));
 
@@ -453,5 +452,22 @@ class MainController extends Controller
 
 
         return $allInfo;
+    }
+
+    public function getSelectedPosts(){
+        $section = MainSection::where('id', 1)->first();
+        $first = Post::where('id', $section->first)->first();
+        $second = Post::where('id', $section->second)->first();
+        $third = Post::where('id', $section->third)->first();
+        $fourth = Post::where('id', $section->fourth)->first();
+        $fifth = Post::where('id', $section->fifth)->first();
+        $sixth = Post::where('id', $section->sixth)->first();
+        $data['first'] = $this->getContent($first);
+        $data['$second'] = $this->getContent($second);
+        $data['$third'] = $this->getContent($third);
+        $data['$fourth'] = $this->getContent($fourth);
+        $data['$fifth'] = $this->getContent($fifth);
+        $data['$sixth'] = $this->getContent($sixth);
+        return $data;
     }
 }
