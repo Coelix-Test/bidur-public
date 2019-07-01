@@ -37,14 +37,24 @@
                     <template v-else-if="section.type === 'imageWithText'">
                         <post-image-text
                             v-bind.sync="section"
+                            :index="index"
                             @deleteSection="deleteSection">
                         </post-image-text>
                     </template>
                     <template v-else-if="section.type === 'video'">
                         <post-video
                             v-bind.sync="section"
+                            :index="index"
                             @deleteSection="deleteSection">
                         </post-video>
+                    </template>
+                    <template v-else-if="section.type === 'survey'">
+                        <post-survey
+                            class="survey-section"
+                            v-bind.sync="section"
+                            :index="index"
+                            @deleteSection="deleteSection">
+                        </post-survey>
                     </template>
                 </div>
 
@@ -104,6 +114,7 @@ import PostText from './../components/posts/PostText.vue';
 import PostImage from './../components/posts/PostImage.vue';
 import PostImageText from './../components/posts/PostImageText.vue';
 import PostVideo from './../components/posts/PostVideo.vue';
+import PostSurvey from './../components/posts/PostSurvey.vue';
 
 export default {
     data: function(){
@@ -113,7 +124,7 @@ export default {
             author: '',
             date: new Date(),
             sections: [
-                {type: 'video', value: '', description: ''}
+                {type: 'survey', image: '', title: '', answers: []}
             ]
         }
     },
@@ -123,7 +134,8 @@ export default {
         PostText,
         PostImage,
         PostImageText,
-        PostVideo
+        PostVideo,
+        PostSurvey
     },
     methods: {
         addSection(type){
@@ -143,6 +155,9 @@ export default {
                     break;
                 case 'video':
                     sectionData = {type: 'video', value: '', description: ''};
+                    break;
+                case 'survey':
+                    sectionData = {type: 'survey', image: '', title: '', answers: [] };
                     break;
             }
             this.sections.push(sectionData);
@@ -244,5 +259,8 @@ export default {
             padding-left: 10px;
         }
     }
+}
+.survey-section{
+    width: 75%;
 }
 </style>
