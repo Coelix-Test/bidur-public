@@ -2,7 +2,7 @@
   <div class="left-column posts-column">
 
     <article v-for="post in twoPosts" >
-      <a :href="'/post/'+post.id">
+      <router-link :to="'/post/'+post.id">
         <div class="overlay"></div>
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
@@ -10,7 +10,7 @@
           <span class="author">by Author</span>
           <span class="post-date">{{post.time}}</span>
         </p>
-      </a>
+      </router-link>
     </article>
   </div>
 </template>

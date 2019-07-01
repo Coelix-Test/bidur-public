@@ -33,9 +33,9 @@ export default {
             console.log('You voted ' + obj.value + '!');
         }
     },
-    mounted() {
-      axios.post('/post/12').then(response => {console.log(response);})
-    }
+    // mounted() {
+    //
+    // }
 }
 </script>
 
