@@ -29,6 +29,11 @@ const routes = [
     component: All,
     name: 'all',
   },
+  {
+    path: '/all/:id',
+    component: All,
+    name: 'all-tags',
+  },
 ];
 
 // routes.push(auth);

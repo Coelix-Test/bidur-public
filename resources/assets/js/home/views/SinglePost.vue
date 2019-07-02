@@ -3,20 +3,47 @@
     <div class="post-wrapper">
       <div class="post-content">
         <nav>
-          <a href="#">Next Post</a>
-          <a href="#">Prev Post</a>
+          <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
+          <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
         </nav>
-        <!-- <h1>{{ postData[1].value }}</h1> -->
 
-        <!-- <section :class="section.type" v-for="section in postData">
-          {{section}}
-        </section> -->
-        <h1>La La Anthony Says Kim Kardashian and Son Psalm Are ‘Doing Good’ 3 Weeks After Birth</h1>
+        <h1>{{ postTitle }}</h1>
+        <section :class="post.type" v-for="post in postData" >
+
+          <!-- title -->
+          <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
+
+          <!-- content -->
+          <p v-if="post.type == 'content'">{{ post.value }}</p>
+
+          <!-- fullscreen image -->
+          <img v-if="post.type == 'image'" :src="post.value" alt="">
+
+          <!-- survey -->
+          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, 1)"/>
+
+          <!-- video -->
+          <iframe
+            v-if="post.type == 'video'"
+            id="ytplayer"
+            type="text/html"
+            src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com"
+            frameborder="0"
+          />
+
+          <!-- imageWithText -->
+          <div v-if="post.type == 'imageWithText'">
+            <img v-if="post.url" :class="post.imagePosition" :src="post.url" alt="">
+            <h2 v-if="post.title">{{ post.title }}</h2>
+            <p v-if="post.content">{{post.content}}</p>
+          </div>
+
+        </section>
         <div class="post-meta">
 
           <div class="info">
-            <span class="author">by Helen Nilova</span>
-            <span class="date">5 hours ago</span>
+            <span class="author">{{ post.data.post.author }}</span>
+            <span class="date">{{ post.data.post.date }}</span>
           </div>
           <a href="#" class="share">share</a>
 
@@ -79,7 +106,7 @@
 
 
       <carousel :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="i in 6" class="related-post">
+        <slide v-for="i in 6" class="related-post" :key="i">
             <img src="/img/relatedPostPrev.png" alt="">
             <div class="related-post-content">
               <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
@@ -101,6 +128,7 @@
 
 <script>
 import VuePoll from 'vue-poll'
+// import contentSection from './../components/contentSection.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
 export default {
@@ -108,6 +136,10 @@ export default {
     return {
       post : true,
       postData : null,
+      prevPostId : null,
+      nextPostId : null,
+      postTitle : null,
+      postContentSections : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
           answers: [
@@ -125,15 +157,22 @@ export default {
   mounted() {
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
-    // axios.post('/post/'+this.$route.params.id).then(response => {
-    //   //console.log(response);
-    //   this.post = response;
-    //   this.postData = this.post.data.post;
-    // })
+    axios.post('/post/'+this.$route.params.id).then(response => {
+      console.log(response);
+      this.post = response;
+      this.postData = this.post.data.post.sections;
+      this.postTitle = this.postData[1].value;
+      // this.postContentSections = this.postData.slice(1);
+      delete this.postData[1];
+      console.log(this.postData);
+      this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+      this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+    })
   },
   methods: {
-      addVote(obj){
-          console.log('You voted ' + obj.value + '!');
+      addVote(obj, id){
+          console.log(obj);
+          console.log(id);
       }
   },
   components : {
@@ -152,6 +191,8 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 24px;
+    max-width:1440px;
+    margin:32px auto 0;
   }
   .post-content {
     flex-grow:2;
@@ -205,13 +246,21 @@ export default {
     object-fit: cover;
     margin-bottom: 12px;
   }
-  section.image.side-image.left img {
+  section.imageWithText img.right {
+    float:right;
+    margin-left: 16px;
+  }
+  section.imageWithText img.left {
     float:left;
     margin-right: 16px;
   }
-  section.image.side-image h2 {
+  section.imageWithText h2 {
     color:#333;
     margin-bottom: 16px;
+  }
+  section.video iframe {
+    width:100%;
+    height:450px;
   }
   section.image p {
     font-size: 16px;

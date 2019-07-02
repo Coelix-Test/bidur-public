@@ -2,7 +2,9 @@
     <div class="top-row-inner">
         <div class="menu-col-wrap">
             <div class="logo-wrap">
-                <img src="/img/logo-yellow.png" alt="">
+                <a href="/">
+                    <img src="/img/logo-yellow.png" alt="">
+                </a>
             </div>
             <ul class="menu-list menu">
                 <li><a href="#">דף בית</a></li>
@@ -67,7 +69,9 @@
 
         </div>
         <div class="logo-wrap">
-            <img src="/img/logo-yellow.png" alt="">
+            <a href="newspaper.test">
+                <img src="/img/logo-yellow.png" alt="">
+            </a>
         </div>
         <div class="socials-wrap">
             <a href="#" class="youtube">

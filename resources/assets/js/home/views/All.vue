@@ -1,6 +1,7 @@
 <template>
   <main>
     <div class="main-content">
+
       <DefaultPost/>
       <QuadPost/>
       <DefaultPost/>
@@ -26,7 +27,7 @@ export default {
   },
   created() {
     axios.post('/getAllPostsByHashtag', {
-      hashtag_id: 3,
+      hashtag_id: this.$route.params.id,
     }).then(res => {
       console.log(res.data);
     });
@@ -42,6 +43,8 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 30px;
+  margin:32px auto 0;
+  max-width:1440px;
   .main-content {
     flex-grow: 1;
     display: flex;

@@ -139,11 +139,14 @@ export default {
     margin:0;
     text-align: left;
   }
+  .vue-poll .ans-cnt .ans .bg {
+    opacity: .3;
+  }
   .vue-poll .ans-cnt .ans:nth-child(1) .bg {
-    background: linear-gradient(270.03deg, #F6AB62 2.44%, #B63E8E 41.46%, #3F5EFB 100.08%);
+    background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
   }
   .vue-poll .ans-cnt .ans:nth-child(2) .bg {
-    background: linear-gradient(180deg, rgba(128, 241, 255, 0.66) 55.56%, #1389EF 100%);
+    background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);
   }
   .vue-poll .ans-cnt .ans:nth-child(3) .bg {
     background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);

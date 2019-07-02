@@ -16120,6 +16120,11 @@ body {
   max-width: 1440px;
 }
 
+#header_main .celebrities-slider a {
+  outline: none;
+  text-decoration: none;
+}
+
 #header_main .celebrities-slider .celebrity {
   text-align: center;
   display: -webkit-box;
@@ -16131,7 +16136,7 @@ body {
           align-items: center;
   text-decoration: none;
   color: #4F4F4F;
-  font-family: "Oswald";
+  font-family: "Assistant";
   font-size: 14px;
   letter-spacing: 0.03em;
 }
