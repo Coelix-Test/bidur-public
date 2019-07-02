@@ -42,15 +42,7 @@ export default {
     }
   },
   created() {
-    // console.log(this.data)
-    // this.data.forEach( (el)=> {
-    //   axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-    //      this.posts.push(response.data);
-    //
-    //
-    //    });
-    // });
-  //  console.log('this.posts', this.posts);
+    
   }
 }
 </script>

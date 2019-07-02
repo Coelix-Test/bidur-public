@@ -155,28 +155,31 @@ export default {
     }
   },
   methods : {
+    sync(id) {
+      axios.post('/post/'+id).then(response => {
+        console.log(response);
+        this.post = response;
+        this.postData = this.post.data.post.sections;
+        this.postTitle = this.postData[1].value;
+        // this.postContentSections = this.postData.slice(1);
+        delete this.postData[1];
+        console.log(this.postData);
+        this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+        this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+      })
+    },
+    addVote(obj, id){
+        console.log(obj);
+        console.log(id);
+    }
+  },
+  created() {
+
+    this.sync(this.$route.params.id);
 
   },
-  mounted() {
-
-    // axios.post('/getSelectedPosts').then(response => {console.log(response);})
-    axios.post('/post/'+this.$route.params.id).then(response => {
-      console.log(response);
-      this.post = response;
-      this.postData = this.post.data.post.sections;
-      this.postTitle = this.postData[1].value;
-      // this.postContentSections = this.postData.slice(1);
-      delete this.postData[1];
-      console.log(this.postData);
-      this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
-      this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
-    })
-  },
-  methods: {
-      addVote(obj, id){
-          console.log(obj);
-          console.log(id);
-      }
+  beforeRouteUpdate(to) {
+    this.sync(to.params.id);
   },
   components : {
     SideNews,
