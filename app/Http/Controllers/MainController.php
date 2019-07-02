@@ -186,31 +186,31 @@ class MainController extends Controller
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
             foreach ($titles as $title) {
-                $fullPost[$title->order]['type'] = 'title';
-                $fullPost[$title->order]['value'] = $title->titleText;
+                $fullPost['sections'][$title->order]['type'] = 'title';
+                $fullPost['sections'][$title->order]['value'] = $title->titleText;
             }
         }
         $contents = $post->getAllContents;
         if (isset($contents[0])){
             foreach ($contents as $content) {
-                $fullPost[$content->order]['type'] = 'content';
-                $fullPost[$content->order]['value'] = $content->contentText;
+                $fullPost['sections'][$content->order]['type'] = 'content';
+                $fullPost['sections'][$content->order]['value'] = $content->contentText;
             }
         }
 
         $images = $post->getAllImages;
         if (isset($images[0])){
             foreach ($images as $image) {
-                $fullPost[$image->order]['type'] = 'image';
-                $fullPost[$image->order]['value'] = $image->url;
+                $fullPost['sections'][$image->order]['type'] = 'image';
+                $fullPost['sections'][$image->order]['value'] = $image->url;
             }
         }
 
         $videos = $post->getAllVideos;
         if (isset($videos[0])){
             foreach ($videos as $video) {
-                $fullPost[$video->order]['type'] = 'video';
-                $fullPost[$video->order]['value'] = $video->url;
+                $fullPost['sections'][$video->order]['type'] = 'video';
+                $fullPost['sections'][$video->order]['value'] = $video->url;
             }
         }
 
@@ -219,13 +219,13 @@ class MainController extends Controller
             foreach ($imagesWithTexts as $section) {
                 $fullPost[$section->order]['type'] = 'imageWithText';
                 if (!empty($section->title)){
-                    $fullPost[$section->order]['title'] = $section->title;
+                    $fullPost['sections'][$section->order]['title'] = $section->title;
                 }else{
-                    $fullPost[$section->order]['title'] = null;
+                    $fullPost['sections'][$section->order]['title'] = null;
                 }
-                $fullPost[$section->order]['url'] = $section->url;
-                $fullPost[$section->order]['imagePosition'] = $section->imagePosition;
-                $fullPost[$section->order]['content'] = $section->content;
+                $fullPost['sections'][$section->order]['url'] = $section->url;
+                $fullPost['sections'][$section->order]['imagePosition'] = $section->imagePosition;
+                $fullPost['sections'][$section->order]['content'] = $section->content;
             }
         }
 
@@ -255,7 +255,7 @@ class MainController extends Controller
         }
 
         foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
-            $fullPost[$key] = $questionsWithAnswer;
+            $fullPost['sections'][$key] = $questionsWithAnswer;
         }
 
         $fullPost['author'] = User::find($post->author)->name;
