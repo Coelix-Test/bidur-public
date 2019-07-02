@@ -11,7 +11,7 @@
         <!-- <section :class="section.type" v-for="section in postData">
           {{section}}
         </section> -->
-        <h1>La La Anthony Says Kim Kardashian and Son Psalm Are ‘Doing Good’ 3 Weeks After Birth</h1>
+        <h1>{{postData[1].value}}</h1>
         <div class="post-meta">
 
           <div class="info">
@@ -125,11 +125,12 @@ export default {
   mounted() {
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
-    // axios.post('/post/'+this.$route.params.id).then(response => {
-    //   //console.log(response);
-    //   this.post = response;
-    //   this.postData = this.post.data.post;
-    // })
+    axios.post('/post/'+this.$route.params.id).then(response => {
+      //console.log(response);
+      this.post = response;
+      this.postData = this.post.data.post;
+      console.log(this.postData);
+    })
   },
   methods: {
       addVote(obj){
@@ -152,6 +153,8 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 24px;
+    max-width:1440px;
+    margin:32px auto 0;
   }
   .post-content {
     flex-grow:2;
