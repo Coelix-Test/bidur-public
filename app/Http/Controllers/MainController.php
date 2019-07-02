@@ -176,12 +176,11 @@ class MainController extends Controller
         return $hashtagArray;
     }
 
-    public function showSinglePost($id){
+    public function showSinglePost($id =1){
         try{
             $post = Post::findOrFail($id);
         }catch (\Exception $e){
-            dd($e);
-            return view();//not found
+            return ['success' => false, 'message' => 'no post found'];//not found
         }
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
@@ -235,25 +234,31 @@ class MainController extends Controller
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
 
-                $questionsWithAnswers[$survey->order]['surveyTitle'] = $survey->question;
+                $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
+                $i = 0;
+                $z = 0;
                 foreach ($questions as $question) {
-                    $questionsWithAnswers[$survey->order]['answers'][$question->question] = count($question->answers);
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
+                    $z++;
                 }
             }
         }
+//        dd($questionsWithAnswers);
 
-        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
-
-            $total = 0;
-
-            foreach ($questionsWithAnswer['answers'] as $innerKey => $answers){
-                $total = $answers + $total;
-            }
-            foreach ($questionsWithAnswer['answers'] as $innerKey => $answers) {
-                $questionsWithAnswers[$outerKey]['answers'][$innerKey] = round(($answers/$total) * 100, 1);
-            }
-        }
-
+//        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
+////            dd($questionsWithAnswer);
+//            $total = 0;
+//
+//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers){
+//                $total = $answers + $total;
+//            }
+//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers) {
+//                $questionsWithAnswers[$outerKey]['value']['answers'][$innerKey] = round(($answers/$total) * 100, 1);
+//            }
+//        }
+//        dd($questionsWithAnswers);
         foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
             $fullPost['sections'][$key] = $questionsWithAnswer;
         }

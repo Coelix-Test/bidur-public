@@ -15,7 +15,7 @@
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'AdminController@getAllPosts');
+Route::get('/test2', 'MainController@showSinglePost');
 Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
 
 
