@@ -334,9 +334,11 @@ class MainController extends Controller
 
     public function getAllPostsByHashtag(Request $request){
 //        $posts = Post::all();
+
         $hashtagId = $request->get('hashtag_id');
 
         $hashtagPosts = HashtagPosts::all();
+        dd($hashtagPosts);
 
         foreach ($hashtagPosts as $hashtagPost) {
 //            dd($hashtagId);
