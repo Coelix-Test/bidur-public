@@ -1,7 +1,7 @@
 <template>
   <div class="left-column posts-column">
 
-    <article v-for="post in posts" >
+    <article v-in-viewport.once v-for="post in posts" >
       <router-link :to="'/post/'+post.id">
         <div class="overlay"></div>
         <img :src="post.img" alt="">
@@ -65,6 +65,13 @@ export default {
     margin-bottom: 16px;
     height:450px;
     overflow: hidden;
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translateX(-100px);
+  }
+  .posts-column article.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   .posts-column article:nth-child(1) a {
     box-sizing: border-box;
@@ -97,6 +104,7 @@ export default {
     text-decoration: none;
     overflow:hidden;
   }
+
   .posts-column article img {
     position: absolute;
     top: 0;
@@ -170,14 +178,14 @@ export default {
     }
   }
   @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+  	0% {
+  		background-position: 0% 50%;
+  	}
+  	50% {
+  		background-position: 100% 50%;
+  	}
+  	100% {
+  		background-position: 0% 50%;
+  	}
+  }
 </style>
