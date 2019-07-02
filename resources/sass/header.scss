@@ -5,6 +5,9 @@
 @import 'menu.scss';
 
 #header_main {
+    a{
+        text-decoration: none;
+    }
     .top-row{
         background: transparent;
         border-bottom: 1px solid #E0E0E0;
