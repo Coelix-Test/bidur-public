@@ -246,6 +246,9 @@ class MainController extends Controller
                     $z++;
                 }
             }
+            foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
+                $fullPost['sections'][$key] = $questionsWithAnswer;
+            }
         }
 //        dd($questionsWithAnswers);
 
@@ -261,9 +264,7 @@ class MainController extends Controller
 //            }
 //        }
 //        dd($questionsWithAnswers);
-        foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
-            $fullPost['sections'][$key] = $questionsWithAnswer;
-        }
+
 
         $fullPost['author'] = User::find($post->author)->name;
         $fullPost['date'] = $this->getDate($post);
