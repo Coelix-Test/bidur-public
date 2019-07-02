@@ -217,7 +217,7 @@ class MainController extends Controller
         $imagesWithTexts = $post->getAllImagesWithTexts;
         if (isset($imagesWithTexts[0])){
             foreach ($imagesWithTexts as $section) {
-                $fullPost[$section->order]['type'] = 'imageWithText';
+                $fullPost['sections'][$section->order]['type'] = 'imageWithText';
                 if (!empty($section->title)){
                     $fullPost['sections'][$section->order]['title'] = $section->title;
                 }else{
