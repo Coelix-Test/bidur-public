@@ -2502,6 +2502,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ // import contentSection from './../components/contentSection.vue'
 
 
 
@@ -2512,6 +2537,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       postData: null,
       prevPostId: null,
       nextPostId: null,
+      postTitle: null,
+      postContentSections: null,
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
         answers: [{
@@ -2540,14 +2567,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
     axios.post('/post/' + this.$route.params.id).then(function (response) {
-      // console.log(response);
+      console.log(response);
       _this.post = response;
-      _this.postData = _this.post.data.post; // console.log(this.postData);
+      _this.postData = _this.post.data.post.sections;
+      _this.postTitle = _this.postData[1].value; // this.postContentSections = this.postData.slice(1);
 
+      delete _this.postData[1];
+      console.log(_this.postData);
       _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
       _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
-      console.log(_this.prevPostId);
-      console.log(_this.nextPostId);
     });
   }
 }, _defineProperty(_data$methods$mounted, "methods", {
@@ -2784,7 +2812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.image.side-image.left img[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.image.side-image h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#BDBDBD;\n  -webkit-text-decoration-color:#BDBDBD;\n          text-decoration-color:#BDBDBD;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.image.side-image.right img[data-v-3e64b357],\n  section.image.side-image.left img[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#BDBDBD;\n  -webkit-text-decoration-color:#BDBDBD;\n          text-decoration-color:#BDBDBD;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.image.side-image.right img[data-v-3e64b357],\n  section.image.side-image.left img[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -17361,19 +17389,97 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("h1", [_vm._v(_vm._s(_vm.postData[1].value))]),
+                _c("h1", [_vm._v(_vm._s(_vm.postTitle))]),
                 _vm._v(" "),
                 _vm._l(_vm.postData, function(post) {
-                  return _c("section", [_vm._v(_vm._s(post))])
+                  return _c(
+                    "section",
+                    {
+                      class: post.type,
+                      staticStyle: { "border-bottom": "2px solid black" }
+                    },
+                    [
+                      post.type == "title"
+                        ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.type == "content"
+                        ? _c("p", [_vm._v(_vm._s(post.value))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.type == "image"
+                        ? _c("img", { attrs: { src: post.value, alt: "" } })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.type == "survey"
+                        ? _c(
+                            "vue-poll",
+                            _vm._b(
+                              {
+                                staticClass: "poll",
+                                on: { addvote: _vm.addVote }
+                              },
+                              "vue-poll",
+                              _vm.options,
+                              false
+                            )
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.type == "video"
+                        ? _c("iframe", {
+                            attrs: {
+                              id: "ytplayer",
+                              type: "text/html",
+                              src:
+                                "http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com",
+                              frameborder: "0"
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.type == "imageWithText"
+                        ? _c("div", [
+                            post.url
+                              ? _c("img", { attrs: { src: post.url, alt: "" } })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            post.title
+                              ? _c("h2", [_vm._v(_vm._s(post.title))])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            post.content
+                              ? _c("p", [_vm._v(_vm._s(post.content))])
+                              : _vm._e()
+                          ])
+                        : _vm._e(),
+                      _vm._v("\n        " + _vm._s(post) + "\n      ")
+                    ],
+                    1
+                  )
                 }),
+                _vm._v(" "),
+                _c("div", { staticClass: "post-meta" }, [
+                  _c("div", { staticClass: "info" }, [
+                    _c("span", { staticClass: "author" }, [
+                      _vm._v(_vm._s(_vm.post.data.post.author))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v(_vm._s(_vm.post.data.post.date))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("a", { staticClass: "share", attrs: { href: "#" } }, [
+                    _vm._v("share")
+                  ])
+                ]),
                 _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
                 _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "section",
@@ -17392,9 +17498,9 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(4)
               ],
               2
             ),
@@ -17458,20 +17564,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-meta" }, [
-      _c("div", { staticClass: "info" }, [
-        _c("span", { staticClass: "author" }, [_vm._v("by Helen Nilova")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "date" }, [_vm._v("5 hours ago")])
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "share", attrs: { href: "#" } }, [_vm._v("share")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

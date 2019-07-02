@@ -7,13 +7,37 @@
           <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
         </nav>
 
-        <h1>{{postData[1].value}}</h1>
-        <section v-for="post in postData">{{post}}</section>
+        <h1>{{ postTitle }}</h1>
+        <section :class="post.type" v-for="post in postData" style="border-bottom:2px solid black;">
+
+          <!-- title -->
+          <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
+
+          <!-- content -->
+          <p v-if="post.type == 'content'">{{ post.value }}</p>
+
+          <!-- fullscreen image -->
+          <img v-if="post.type == 'image'" :src="post.value" alt="">
+
+          <!-- survey -->
+          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="options" @addvote="addVote"/>
+
+          <!-- video -->
+          <iframe v-if="post.type == 'video'" id="ytplayer" type="text/html" src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" frameborder="0"/>
+
+          <!-- imageWithText -->
+          <div v-if="post.type == 'imageWithText'">
+            <img v-if="post.url" :src="post.url" alt="">
+            <h2 v-if="post.title">{{ post.title }}</h2>
+            <p v-if="post.content">{{post.content}}</p>
+          </div>
+          {{post}}
+        </section>
         <div class="post-meta">
 
           <div class="info">
-            <span class="author">by Helen Nilova</span>
-            <span class="date">5 hours ago</span>
+            <span class="author">{{ post.data.post.author }}</span>
+            <span class="date">{{ post.data.post.date }}</span>
           </div>
           <a href="#" class="share">share</a>
 
@@ -98,6 +122,7 @@
 
 <script>
 import VuePoll from 'vue-poll'
+// import contentSection from './../components/contentSection.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
 export default {
@@ -107,6 +132,8 @@ export default {
       postData : null,
       prevPostId : null,
       nextPostId : null,
+      postTitle : null,
+      postContentSections : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
           answers: [
@@ -125,14 +152,15 @@ export default {
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
     axios.post('/post/'+this.$route.params.id).then(response => {
-      // console.log(response);
+      console.log(response);
       this.post = response;
-      this.postData = this.post.data.post;
-      // console.log(this.postData);
+      this.postData = this.post.data.post.sections;
+      this.postTitle = this.postData[1].value;
+      // this.postContentSections = this.postData.slice(1);
+      delete this.postData[1];
+      console.log(this.postData);
       this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
       this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
-      console.log(this.prevPostId);
-      console.log(this.nextPostId);
     })
   },
   methods: {
@@ -211,13 +239,17 @@ export default {
     object-fit: cover;
     margin-bottom: 12px;
   }
-  section.image.side-image.left img {
+  section.imageWithText img {
     float:left;
     margin-right: 16px;
   }
-  section.image.side-image h2 {
+  section.imageWithText h2 {
     color:#333;
     margin-bottom: 16px;
+  }
+  section.video iframe {
+    width:100%;
+    height:450px;
   }
   section.image p {
     font-size: 16px;
