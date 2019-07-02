@@ -1909,6 +1909,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/all/DefaultPost.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/all/DefaultPost.vue?vue&type=script&lang=js& ***!
@@ -2399,9 +2458,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
 /* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/SinglePostExample.vue */ "./resources/assets/js/home/components/SinglePostExample.vue");
+/* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -2493,58 +2553,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
- // import contentSection from './../components/contentSection.vue'
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: true,
+      post: null,
       postData: null,
       prevPostId: null,
       nextPostId: null,
       postTitle: null,
+      errorMessage: false,
       postContentSections: null,
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -2575,13 +2596,16 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/post/' + id).then(function (response) {
         console.log(response);
         _this.post = response;
+        _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
-        _this.postTitle = _this.postData[1].value; // this.postContentSections = this.postData.slice(1);
-
+        _this.postTitle = _this.postData[1].value;
         delete _this.postData[1];
-        console.log(_this.postData);
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
         _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
+      })["catch"](function (error) {
+        console.log('error');
+        _this.errorMessage = true;
+        _this.post = null;
       });
     },
     addVote: function addVote(obj, id) {
@@ -2596,10 +2620,11 @@ __webpack_require__.r(__webpack_exports__);
     this.sync(to.params.id);
   },
   components: {
-    SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a,
-    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
-    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"]
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_3__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_3__["Slide"],
+    SinglePostExample: _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -2700,6 +2725,25 @@ exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  dis
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.post-wrapper[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-ca107952] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-ca107952] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-ca107952] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-ca107952],\n.post-meta .info[data-v-ca107952] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-ca107952] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-ca107952] {\n  color:#333;\n}\nsection h2[data-v-ca107952] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-ca107952] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-ca107952] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-ca107952] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-ca107952] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-ca107952] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-ca107952] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-ca107952] {\n  font-size: 16px;\n}\nsection.image p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-ca107952] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-ca107952] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-ca107952] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-ca107952] {\n  max-width: 550px;\n}\n.opinion[data-v-ca107952] {\n}\n.post-content section[data-v-ca107952]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-ca107952] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-ca107952] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-ca107952] {\n  text-decoration: none;\n}\n.related-post a[data-v-ca107952] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-ca107952] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-ca107952] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-ca107952] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-ca107952] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-ca107952] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.imageWithText img.left[data-v-ca107952],\n  section.imageWithText img.right[data-v-ca107952] {\n    float:none;\n    margin-right: 0;\n    max-width: unset;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-ca107952] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-ca107952] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-ca107952] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-ca107952] {\n    padding:0 8px;\n}\n.related-post-content[data-v-ca107952] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n    text-align: center;\n}\n.related-post h3[data-v-ca107952] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-ca107952] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true& ***!
@@ -2731,7 +2775,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.left-column-bot[data-v-26735722] {\n  flex-basis:50%;\n  width:50%;\n  padding-right: 8px;\n}\n.instagram-post[data-v-26735722] {\n  /* max-height: 700px; */\n  margin-top: 16px;\n}\n.instagram-post a[data-v-26735722] {\n  width:100%;\n  height:100%;\n}\n.instagram-post img[data-v-26735722] {\n  width:100%;\n  height:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.latest-post-slider[data-v-26735722] {\n  width:100%;\n  margin:0;\n  padding:0;\n}\n.latest-post-slider li[data-v-26735722] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-slider li a[data-v-26735722] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-slider li a img[data-v-26735722] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-slider li a p[data-v-26735722] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-slider li a p .post-date[data-v-26735722] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-slider li a p .author[data-v-26735722] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-slider li a h3[data-v-26735722] {\n  font-size: 20px;\n  margin-bottom: 0;\n}\nh2[data-v-26735722] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-26735722] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-slider li[data-v-26735722] {\n    padding-left: 0;\n}\nh2[data-v-26735722] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 550px) {\n.instagram-post[data-v-26735722] {\n    margin-top: 8px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.left-column-bot[data-v-26735722] {\n  flex-basis:50%;\n  width:50%;\n  padding-right: 8px;\n}\n.instagram-post[data-v-26735722] {\n  /* max-height: 700px; */\n  margin-top: 16px;\n}\n.instagram-post a[data-v-26735722] {\n  width:100%;\n  height:100%;\n}\n.instagram-post img[data-v-26735722] {\n  width:100%;\n  height:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.latest-post-slider[data-v-26735722] {\n  width:100%;\n  margin:0;\n  padding:0;\n}\n.latest-post-slider li[data-v-26735722] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-slider li[data-v-26735722] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-slider li  img[data-v-26735722] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-slider li p[data-v-26735722] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-slider li p .post-date[data-v-26735722] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-slider li p .author[data-v-26735722] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-slider li h3[data-v-26735722] {\n  font-size: 20px;\n  margin-bottom: 0;\n  color:#333;\n}\n.latest-post-slider li a[data-v-26735722] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\nh2[data-v-26735722] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-26735722] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-slider li[data-v-26735722] {\n    padding-left: 0;\n}\nh2[data-v-26735722] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 550px) {\n.instagram-post[data-v-26735722] {\n    margin-top: 8px;\n}\n}\n", ""]);
 
 // exports
 
@@ -2826,7 +2870,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.image.side-image.right img[data-v-3e64b357],\n  section.image.side-image.left img[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: unset;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -15977,6 +16021,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--7-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true& ***!
@@ -16909,6 +16983,101 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "single-post-example" }, [
+      _c("section", { staticClass: "full-width image" }, [
+        _c("img", { attrs: { src: "/img/singlePREV.png", alt: "" } }),
+        _vm._v(" "),
+        _c("p", { staticClass: "img-subtext" }, [
+          _vm._v(
+            "\n      La La Anthony is seen arriving to the 2019 CFDA Fashion Awards on June 3, 2019 in New York City. Gilbert Carrasquillo/GC Images/Getty Images\n    "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "sub-title" }, [
+        _c("h2", [_vm._v("Live with Andy Cohen")])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "text" }, [
+        _c("p", [
+          _vm._v(
+            "\n      “Baby’s doing good,” the actress, 39, told Us Weekly exclusively on Monday, June 3, at the CFDA Fashion Awards. “Mom’s doing good. Everybody’s happy and healthy, which is always a beautiful thing.”\n    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n      Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.\n    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n      The Kardashian Family: Get to Know the Next Generation\n      “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”\n    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n      After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.\n    "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "image side-image left" }, [
+        _c("img", { attrs: { src: "/img/sideImagePrev.png", alt: "" } }),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Baby’s doing good")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n        Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.\n      "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n        The Kardashian Family: Get to Know the Next Generation\n        “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”\n      "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n        After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.\n      "
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/all/DefaultPost.vue?vue&type=template&id=fc0c3c30&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/all/DefaultPost.vue?vue&type=template&id=fc0c3c30&scoped=true& ***!
@@ -17068,29 +17237,30 @@ var render = function() {
       { ref: "test", staticClass: "latest-post-slider" },
       _vm._l(_vm.posts, function(post) {
         return _vm.posts
-          ? _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: "/post/" + post.id } }, [
-                  _c("img", { attrs: { src: post.img, alt: "" } }),
+          ? _c("li", [
+              _c("img", { attrs: { src: post.img, alt: "" } }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "content" },
+                [
+                  _c("router-link", { attrs: { to: "/post/" + post.id } }, [
+                    _c("h3", [_vm._v(_vm._s(post.title))])
+                  ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "content" }, [
-                    _c("h3", [_vm._v(_vm._s(post.title))]),
+                  _c("p", [
+                    _c("span", { staticClass: "author" }, [
+                      _vm._v("by " + _vm._s(post.author))
+                    ]),
                     _vm._v(" "),
-                    _c("p", [
-                      _c("span", { staticClass: "author" }, [
-                        _vm._v("by " + _vm._s(post.author))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "post-date" }, [
-                        _vm._v(_vm._s(post.time))
-                      ])
+                    _c("span", { staticClass: "post-date" }, [
+                      _vm._v(_vm._s(post.time))
                     ])
                   ])
-                ])
-              ],
-              1
-            )
+                ],
+                1
+              )
+            ])
           : _vm._e()
       }),
       0
@@ -17105,13 +17275,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "instagram-post" }, [
-      _c(
-        "a",
-        {
-          attrs: { href: "https://instagram.com/motowelove", target: "_blanc" }
-        },
-        [_c("img", { attrs: { src: "/img/leo.png", alt: "" } })]
-      )
+      _c("a", { attrs: { href: "https://instagram.com/", target: "_blanc" } }, [
+        _c("img", { attrs: { src: "/img/leo.png", alt: "" } })
+      ])
     ])
   }
 ]
@@ -17352,13 +17518,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.post
-    ? _c("div", { staticClass: "single-post" }, [
-        _c(
-          "div",
-          { staticClass: "post-wrapper" },
-          [
-            _c(
+  return _c("div", { staticClass: "single-post" }, [
+    _c(
+      "div",
+      { staticClass: "post-wrapper" },
+      [
+        _vm.errorMessage
+          ? _c("h1", [_vm._v("Post have no content!")])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.post
+          ? _c(
               "div",
               { staticClass: "post-content" },
               [
@@ -17381,6 +17551,20 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("h1", [_vm._v(_vm._s(_vm.postTitle))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "post-meta" }, [
+                  _c("div", { staticClass: "info" }, [
+                    _c("span", { staticClass: "author" }, [
+                      _vm._v(_vm._s(_vm.post.data.post.author))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v(_vm._s(_vm.post.data.post.date))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
                 _vm._v(" "),
                 _vm._l(_vm.postData, function(post) {
                   return _c(
@@ -17435,7 +17619,7 @@ var render = function() {
                             post.url
                               ? _c("img", {
                                   class: post.imagePosition,
-                                  attrs: { src: post.url, alt: "" }
+                                  attrs: { src: post.url, alt: post.title }
                                 })
                               : _vm._e(),
                             _vm._v(" "),
@@ -17453,107 +17637,63 @@ var render = function() {
                   )
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "post-meta" }, [
-                  _c("div", { staticClass: "info" }, [
-                    _c("span", { staticClass: "author" }, [
-                      _vm._v(_vm._s(_vm.post.data.post.author))
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "date" }, [
-                      _vm._v(_vm._s(_vm.post.data.post.date))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ]),
+                _c("single-post-example"),
                 _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _c(
-                  "section",
-                  { staticClass: "survey" },
-                  [
-                    _c(
-                      "vue-poll",
-                      _vm._b(
-                        { staticClass: "poll", on: { addvote: _vm.addVote } },
-                        "vue-poll",
-                        _vm.options,
-                        false
-                      )
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5)
+                _vm._m(1)
               ],
               2
-            ),
-            _vm._v(" "),
-            _c("side-news")
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "related-posts" },
-          [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  rtl: true,
-                  perPageCustom: [[320, 1], [768, 1], [769, 2]]
-                }
-              },
-              _vm._l(6, function(i) {
-                return _c("slide", { key: i, staticClass: "related-post" }, [
-                  _c("img", {
-                    attrs: { src: "/img/relatedPostPrev.png", alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "related-post-content" }, [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _c("h3", [
-                        _vm._v(
-                          "6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS"
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "related-post-meta" }, [
-                      _c("span", { staticClass: "date" }, [
-                        _vm._v("5 years ago")
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "author" }, [
-                        _vm._v("by Helen Nikova")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "excerpt" }, [
-                      _vm._v(
-                        "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
-                      )
-                    ])
-                  ])
-                ])
-              }),
-              1
             )
-          ],
+          : _vm._e(),
+        _vm._v(" "),
+        _c("side-news")
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "related-posts" },
+      [
+        _c(
+          "carousel",
+          {
+            attrs: { rtl: true, perPageCustom: [[320, 1], [768, 1], [769, 2]] }
+          },
+          _vm._l(6, function(i) {
+            return _c("slide", { key: i, staticClass: "related-post" }, [
+              _c("img", {
+                attrs: { src: "/img/relatedPostPrev.png", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "related-post-content" }, [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("h3", [
+                    _vm._v("6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "related-post-meta" }, [
+                  _c("span", { staticClass: "date" }, [_vm._v("5 years ago")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "author" }, [
+                    _vm._v("by Helen Nikova")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "excerpt" }, [
+                  _vm._v(
+                    "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
+                  )
+                ])
+              ])
+            ])
+          }),
           1
         )
-      ])
-    : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -17563,86 +17703,6 @@ var staticRenderFns = [
     return _c("a", { staticClass: "share", attrs: { href: "#" } }, [
       _vm._v("\n          ףתש\n          "),
       _c("img", { attrs: { src: "/img/shareArrow.svg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "full-width image" }, [
-      _c("img", { attrs: { src: "/img/singlePREV.png", alt: "" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "img-subtext" }, [
-        _vm._v(
-          "\n          La La Anthony is seen arriving to the 2019 CFDA Fashion Awards on June 3, 2019 in New York City. Gilbert Carrasquillo/GC Images/Getty Images\n        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "sub-title" }, [
-      _c("h2", [_vm._v("Live with Andy Cohen")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "text" }, [
-      _c("p", [
-        _vm._v(
-          "\n          “Baby’s doing good,” the actress, 39, told Us Weekly exclusively on Monday, June 3, at the CFDA Fashion Awards. “Mom’s doing good. Everybody’s happy and healthy, which is always a beautiful thing.”\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n          Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n          The Kardashian Family: Get to Know the Next Generation\n          “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n          After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.\n        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "image side-image left" }, [
-      _c("img", { attrs: { src: "/img/sideImagePrev.png", alt: "" } }),
-      _vm._v(" "),
-      _c("h2", [_vm._v("Baby’s doing good")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n            Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.\n          "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n            The Kardashian Family: Get to Know the Next Generation\n            “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”\n          "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "\n            After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.\n          "
-        )
-      ])
     ])
   },
   function() {
@@ -33250,6 +33310,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNewsPost_vue_vue_type_template_id_fff594f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SideNewsPost_vue_vue_type_template_id_fff594f6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/SinglePostExample.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/assets/js/home/components/SinglePostExample.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true&");
+/* harmony import */ var _SinglePostExample_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=script&lang=js& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _SinglePostExample_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "ca107952",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/home/components/SinglePostExample.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--7-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

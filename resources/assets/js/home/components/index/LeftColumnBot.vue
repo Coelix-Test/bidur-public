@@ -3,23 +3,23 @@
     <h2>חדשות נוספות</h2>
     <ul ref="test" class="latest-post-slider">
       <li v-if="posts" v-for="post in posts">
-        <router-link  :to="'/post/'+post.id">
 
           <img :src="post.img" alt="">
           <div class="content">
-            <h3>{{ post.title }}</h3>
+            <router-link :to="'/post/'+post.id">
+              <h3>{{ post.title }}</h3>
+            </router-link>
             <p>
               <span class="author">by {{post.author}}</span>
               <span class="post-date">{{post.time}}</span>
             </p>
           </div>
 
-        </router-link>
 
       </li>
     </ul>
     <div class="instagram-post">
-      <a href="https://instagram.com/motowelove" target="_blanc">
+      <a href="https://instagram.com/" target="_blanc">
         <img src="/img/leo.png" alt="">
       </a>
     </div>
@@ -104,7 +104,7 @@ export default {
     padding-left: 16px;
     outline: none;
   }
-  .latest-post-slider li a {
+  .latest-post-slider li {
     width:100%;
     height:100%;
     display: flex;
@@ -114,33 +114,38 @@ export default {
     color:#333333;
     text-decoration: none;
   }
-  .latest-post-slider li a img {
+  .latest-post-slider li  img {
     width:120px;
     height:120px;
     object-fit: cover;
     object-position: center;
     margin-left: 16px;
   }
-  .latest-post-slider li a p {
+  .latest-post-slider li p {
     font-size: 12px;
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
   }
-  .latest-post-slider li a p .post-date {
+  .latest-post-slider li p .post-date {
     color:#B3AAAA;
     padding-right: 4px;
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
     white-space:nowrap;
   }
-  .latest-post-slider li a p .author {
+  .latest-post-slider li p .author {
     color:black;
     white-space:nowrap;
   }
-  .latest-post-slider li a h3 {
+  .latest-post-slider li h3 {
     font-size: 20px;
     margin-bottom: 0;
+    color:#333;
+  }
+  .latest-post-slider li a {
+    color:#333;
+    text-decoration-color: #333;
   }
   h2 {
     color:#333333;

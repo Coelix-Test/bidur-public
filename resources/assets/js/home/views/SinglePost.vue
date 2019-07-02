@@ -1,13 +1,26 @@
 <template>
-  <div v-if="post" class="single-post">
+  <div class="single-post">
     <div class="post-wrapper">
-      <div class="post-content">
+      <h1 v-if="errorMessage">Post have no content!</h1>
+      <div v-if="post" class="post-content">
         <nav>
           <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
           <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
         </nav>
 
         <h1>{{ postTitle }}</h1>
+        <div class="post-meta">
+
+          <div class="info">
+            <span class="author">{{ post.data.post.author }}</span>
+            <span class="date">{{ post.data.post.date }}</span>
+          </div>
+          <a href="#" class="share">
+            ףתש
+            <img src="/img/shareArrow.svg" alt="">
+          </a>
+
+        </div>
         <section :class="post.type" v-for="post in postData" >
 
           <!-- title -->
@@ -33,68 +46,15 @@
 
           <!-- imageWithText -->
           <div v-if="post.type == 'imageWithText'">
-            <img v-if="post.url" :class="post.imagePosition" :src="post.url" alt="">
+            <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
             <h2 v-if="post.title">{{ post.title }}</h2>
             <p v-if="post.content">{{post.content}}</p>
           </div>
 
         </section>
-        <div class="post-meta">
 
-          <div class="info">
-            <span class="author">{{ post.data.post.author }}</span>
-            <span class="date">{{ post.data.post.date }}</span>
-          </div>
-          <a href="#" class="share">
-            ףתש
-            <img src="/img/shareArrow.svg" alt="">
-          </a>
 
-        </div>
-
-        <section class="full-width image">
-          <img src="/img/singlePREV.png" alt="">
-          <p class="img-subtext">
-            La La Anthony is seen arriving to the 2019 CFDA Fashion Awards on June 3, 2019 in New York City. Gilbert Carrasquillo/GC Images/Getty Images
-          </p>
-        </section>
-        <section class="sub-title">
-          <h2>Live with Andy Cohen</h2>
-        </section>
-        <section class="text">
-          <p>
-            “Baby’s doing good,” the actress, 39, told Us Weekly exclusively on Monday, June 3, at the CFDA Fashion Awards. “Mom’s doing good. Everybody’s happy and healthy, which is always a beautiful thing.”
-          </p>
-          <p>
-            Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-          </p>
-          <p>
-            The Kardashian Family: Get to Know the Next Generation
-            “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-          </p>
-          <p>
-            After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-          </p>
-        </section>
-        <section class="survey">
-          <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-        </section>
-        <section class="image side-image left">
-
-            <img src="/img/sideImagePrev.png" alt="">
-            <h2>Baby’s doing good</h2>
-            <p>
-              Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-            </p>
-            <p>
-              The Kardashian Family: Get to Know the Next Generation
-              “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-            </p>
-            <p>
-              After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-            </p>
-
-        </section>
+      <single-post-example />
         <div class="opinion">
           <h2>Your opinion</h2>
 
@@ -131,17 +91,18 @@
 
 <script>
 import VuePoll from 'vue-poll'
-// import contentSection from './../components/contentSection.vue'
+import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
 export default {
   data() {
     return {
-      post : true,
+      post : null,
       postData : null,
       prevPostId : null,
       nextPostId : null,
       postTitle : null,
+      errorMessage : false,
       postContentSections : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -156,17 +117,23 @@ export default {
   },
   methods : {
     sync(id) {
-      axios.post('/post/'+id).then(response => {
-        console.log(response);
-        this.post = response;
-        this.postData = this.post.data.post.sections;
-        this.postTitle = this.postData[1].value;
-        // this.postContentSections = this.postData.slice(1);
-        delete this.postData[1];
-        console.log(this.postData);
-        this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
-        this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
-      })
+      axios
+        .post('/post/'+id)
+          .then(response => {
+            console.log(response);
+            this.post = response;
+            this.errorMessage = false;
+            this.postData = this.post.data.post.sections;
+            this.postTitle = this.postData[1].value;
+            delete this.postData[1];
+            this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+            this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+          })
+          .catch(error => {
+            console.log('error');
+            this.errorMessage = true;
+            this.post = null;
+          });
     },
     addVote(obj, id){
         console.log(obj);
@@ -185,7 +152,8 @@ export default {
     SideNews,
     VuePoll,
     Carousel,
-    Slide
+    Slide,
+    SinglePostExample
   }
 }
 
@@ -251,6 +219,9 @@ export default {
     max-width: 100%;
     object-fit: cover;
     margin-bottom: 12px;
+  }
+  section.imageWithText img {
+    max-width:50%;
   }
   section.imageWithText img.right {
     float:right;
@@ -373,10 +344,11 @@ export default {
       font-size: 32px;
       line-height: 32px;
     }
-    section.image.side-image.right img,
-    section.image.side-image.left img {
+    section.imageWithText img.left,
+    section.imageWithText img.right {
       float:none;
       margin-right: 0;
+      max-width: unset;
     }
   }
   @media (max-width:550px) {
