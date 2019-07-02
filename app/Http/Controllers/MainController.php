@@ -375,6 +375,7 @@ class MainController extends Controller
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
         $title = $post->getAllTitles()->first();
+        // dd($title);
         $author = $post->author;
 
         if (!empty($content)){
