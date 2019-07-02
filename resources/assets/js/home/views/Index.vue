@@ -3,7 +3,7 @@
 
 
 
-    <right-column class="wow fadeIn" v-if="rightPosts.length" :data="rightPosts" />
+    <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
     <right-column-bot />
@@ -40,28 +40,25 @@ export default {
      .then(
        response => {
          this.getAllPosts = response.data;
-        // this.latestPosts = this.getAllPosts.reverse().slice(0,8);
-         let postIds = [];
          let latestPostsId = [];
-
          this.getAllPosts.forEach( (el) => {
-           postIds.push(el.post.id);
            latestPostsId.push(el.post.id);
-           // this.latestPosts.push(el.post.id);
          });
          this.latestPosts = latestPostsId.reverse().slice(0,8);
-          postIds.sort(function compareRandom(a, b) {
-          return Math.random() - 0.5;
-        });
-      //  postIds.forEach( (el) => {
-           //axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.randomPosts.push(response.data) });
 
-      //  });
-        this.leftPosts = postIds.slice(0,2);
-        this.rightPosts = postIds.slice(2,6);
         }
      );
-    //axios.post('/getAllPostsByHashtag',2).then(response => {console.log(response);})
+    axios
+      .post('/getSelectedPosts')
+        .then(response => {
+          console.log(response);
+          let postData = response.data;
+          this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
+          this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1])
+          // console.log( this.leftPosts);
+          // postData.length = 2;
+          // console.log(this.leftPosts);
+        })
 
  },
  created() {

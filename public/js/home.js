@@ -2024,7 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       twoPosts: [],
-      randomPosts: this.data
+      posts: this.data
     };
   },
   mounted: function mounted() {//console.log('randomPosts', this.randomPosts);
@@ -2037,16 +2037,9 @@ __webpack_require__.r(__webpack_exports__);
     //
     // });
   },
-  created: function created() {
-    var _this = this;
-
-    this.data.forEach(function (el) {
-      axios.post('/getInfoOnPostForMain', {
-        id: el
-      }).then(function (response) {
-        _this.twoPosts.push(response.data);
-      });
-    });
+  created: function created() {// this.data.forEach( (el)=> {
+    //   axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });
+    // } );
   }
 });
 
@@ -2172,6 +2165,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2181,22 +2175,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       randomPosts: [],
-      posts: [],
+      posts: this.data,
       birthdayPost: []
     };
   },
-  created: function created() {
-    var _this = this;
-
-    // console.log(this.data)
-    this.data.forEach(function (el) {
-      axios.post('/getInfoOnPostForMain', {
-        id: el
-      }).then(function (response) {
-        _this.posts.push(response.data);
-      });
-    }); //  console.log('this.posts', this.posts);
-  }
+  created: function created() {}
 });
 
 /***/ }),
@@ -2371,26 +2354,27 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getAllPosts').then(function (response) {
-      _this.getAllPosts = response.data; // this.latestPosts = this.getAllPosts.reverse().slice(0,8);
-
-      var postIds = [];
+      _this.getAllPosts = response.data;
       var latestPostsId = [];
 
       _this.getAllPosts.forEach(function (el) {
-        postIds.push(el.post.id);
-        latestPostsId.push(el.post.id); // this.latestPosts.push(el.post.id);
+        latestPostsId.push(el.post.id);
       });
 
       _this.latestPosts = latestPostsId.reverse().slice(0, 8);
-      postIds.sort(function compareRandom(a, b) {
-        return Math.random() - 0.5;
-      }); //  postIds.forEach( (el) => {
-      //axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.randomPosts.push(response.data) });
-      //  });
-
-      _this.leftPosts = postIds.slice(0, 2);
-      _this.rightPosts = postIds.slice(2, 6);
-    }); //axios.post('/getAllPostsByHashtag',2).then(response => {console.log(response);})
+    });
+    axios.post('/getSelectedPosts').then(function (response) {
+      console.log(response);
+      var postData = response.data;
+      _this.leftPosts = Object.entries(postData).slice(0, 2).map(function (entry) {
+        return entry[1];
+      });
+      _this.rightPosts = Object.entries(postData).slice(2, 6).map(function (entry) {
+        return entry[1];
+      }); // console.log( this.leftPosts);
+      // postData.length = 2;
+      // console.log(this.leftPosts);
+    });
   },
   created: function created() {// new WOW().init();
   },
@@ -2418,10 +2402,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
-var _data$methods$mounted;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
 //
 //
 //
@@ -2554,7 +2537,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_data$methods$mounted = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       post: true,
@@ -2585,34 +2568,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  methods: {},
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    sync: function sync(id) {
+      var _this = this;
 
-    // axios.post('/getSelectedPosts').then(response => {console.log(response);})
-    axios.post('/post/' + this.$route.params.id).then(function (response) {
-      console.log(response);
-      _this.post = response;
-      _this.postData = _this.post.data.post.sections;
-      _this.postTitle = _this.postData[1].value; // this.postContentSections = this.postData.slice(1);
+      axios.post('/post/' + id).then(function (response) {
+        console.log(response);
+        _this.post = response;
+        _this.postData = _this.post.data.post.sections;
+        _this.postTitle = _this.postData[1].value; // this.postContentSections = this.postData.slice(1);
 
-      delete _this.postData[1];
-      console.log(_this.postData);
-      _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
-      _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
-    });
+        delete _this.postData[1];
+        console.log(_this.postData);
+        _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
+        _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
+      });
+    },
+    addVote: function addVote(obj, id) {
+      console.log(obj);
+      console.log(id);
+    }
+  },
+  created: function created() {
+    this.sync(this.$route.params.id);
+  },
+  beforeRouteUpdate: function beforeRouteUpdate(to) {
+    this.sync(to.params.id);
+  },
+  components: {
+    SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a,
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"]
   }
-}, _defineProperty(_data$methods$mounted, "methods", {
-  addVote: function addVote(obj, id) {
-    console.log(obj);
-    console.log(id);
-  }
-}), _defineProperty(_data$methods$mounted, "components", {
-  SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-  VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a,
-  Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"],
-  Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_2__["Slide"]
-}), _data$methods$mounted);
+});
 
 /***/ }),
 
@@ -2723,7 +2712,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.left-column[data-v-a94489d6] {\n    flex-basis:50%;\n    padding-right:8px;\n}\n.posts-column[data-v-a94489d6] {\n    width:100%;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.posts-column article[data-v-a94489d6] {\n    width:100%;\n    position: relative;\n    margin-bottom: 16px;\n    height:450px;\n    overflow: hidden;\n}\n.posts-column article:nth-child(1) a[data-v-a94489d6] {\n    box-sizing: border-box;\n    border: 6px solid transparent;\n    position: relative;\n    z-index:5;\n}\n.posts-column article[data-v-a94489d6]:nth-child(1):after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);\n    z-index: -1;\n    -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n            animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n    background-size: 300% 300%;\n}\n.posts-column article a[data-v-a94489d6] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    width:100%;\n    height:100%;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    color:#fff;\n    padding:0 24px 16px;\n    color:#fff;\n    -webkit-transition: .2s;\n    transition: .2s;\n    text-decoration: none;\n    overflow:hidden;\n}\n.posts-column article img[data-v-a94489d6] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    width:100%;\n    height: 100%;\n    pointer-events: none;\n    z-index:-2;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -webkit-transition:.3s;\n    transition:.3s;\n}\n.posts-column article .overlay[data-v-a94489d6] {\n    position: absolute;\n    z-index: -1;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    pointer-events: none;\n    opacity: .5;\n    -webkit-transition: .3s;\n    transition: .3s;\n    /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */\n}\n.posts-column article:nth-child(2) .overlay[data-v-a94489d6]  {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n}\n.posts-column article:hover img[data-v-a94489d6] {\n    -webkit-transform:scale(1.1);\n            transform:scale(1.1);\n}\n.posts-column article:nth-child(1):hover a[data-v-a94489d6]{\n    border-width:12px;\n}\n.posts-column article:hover .overlay[data-v-a94489d6] {\n    background: rgba(0,0,0,0.6);\n}\n.posts-column article h2[data-v-a94489d6] {\n    font-family: 'Assistant', sans-serif;\n    font-weight: 700;\n    font-size: 36px;\n    line-height: 36px;\n}\n.posts-column article p[data-v-a94489d6] {\n    /* display: flex;\n    flex-direction: row; */\n    font-size: 20px;\n    font-weight: 400;\n    margin-bottom: 0;\n}\n.posts-column article p .author[data-v-a94489d6] {\n    border-right:1px solid #fff;\n    padding-right: 6px;\n}\n@media (max-width:768px) {\n.posts-column[data-v-a94489d6] {\n      padding-right: 0;\n}\n.left-column[data-v-a94489d6] {\n      -webkit-box-ordinal-group:2;\n              order:1;\n}\n.posts-column article[data-v-a94489d6] {\n      height:200px;\n}\n}\n@media (max-width:550px) {\n.posts-column article[data-v-a94489d6] {\n      margin-bottom: 8px;\n}\n}\n@-webkit-keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n@keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.left-column[data-v-a94489d6] {\n    flex-basis:50%;\n    padding-right:8px;\n}\n.posts-column[data-v-a94489d6] {\n    width:100%;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.posts-column article[data-v-a94489d6] {\n    width:100%;\n    position: relative;\n    margin-bottom: 16px;\n    height:450px;\n    overflow: hidden;\n}\n.posts-column article:nth-child(1) a[data-v-a94489d6] {\n    box-sizing: border-box;\n    border: 6px solid transparent;\n    position: relative;\n    z-index:5;\n}\n.posts-column article[data-v-a94489d6]:nth-child(1):after {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n    background: linear-gradient(60deg, #F2C94C, #F2C94C, #F2C94C, #F2C94C, #CD9E25, #CD9E25, #CD9E25, #CD9E25);\n    z-index: -1;\n    -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n            animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n    background-size: 300% 300%;\n}\n.posts-column article a[data-v-a94489d6] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    width:100%;\n    height:100%;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    color:#fff;\n    padding:0 24px 16px;\n    color:#fff;\n    -webkit-transition: .2s;\n    transition: .2s;\n    text-decoration: none;\n    overflow:hidden;\n}\n.posts-column article img[data-v-a94489d6] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    width:100%;\n    height: 100%;\n    pointer-events: none;\n    z-index:-2;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -webkit-transition:.3s;\n    transition:.3s;\n}\n.posts-column article .overlay[data-v-a94489d6] {\n    position: absolute;\n    z-index: -1;\n    top: 0;\n    right: 0;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    height: 100%;\n    pointer-events: none;\n    opacity: .5;\n    -webkit-transition: .3s;\n    transition: .3s;\n    /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */\n}\n.posts-column article:nth-child(2) .overlay[data-v-a94489d6]  {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n}\n.posts-column article:hover img[data-v-a94489d6] {\n    -webkit-transform:scale(1.1);\n            transform:scale(1.1);\n}\n.posts-column article:nth-child(1):hover a[data-v-a94489d6]{\n    border-width:12px;\n}\n.posts-column article:hover .overlay[data-v-a94489d6] {\n    background: rgba(0,0,0,0.6);\n}\n.posts-column article h2[data-v-a94489d6] {\n    font-family: 'Assistant', sans-serif;\n    font-weight: 700;\n    font-size: 36px;\n    line-height: 36px;\n}\n.posts-column article p[data-v-a94489d6] {\n    /* display: flex;\n    flex-direction: row; */\n    font-size: 20px;\n    font-weight: 400;\n    margin-bottom: 0;\n}\n.posts-column article p .author[data-v-a94489d6] {\n    border-right:1px solid #fff;\n    padding-right: 6px;\n}\n@media (max-width:768px) {\n.posts-column[data-v-a94489d6] {\n      padding-right: 0;\n}\n.left-column[data-v-a94489d6] {\n      -webkit-box-ordinal-group:2;\n              order:1;\n}\n.posts-column article[data-v-a94489d6] {\n      height:200px;\n}\n}\n@media (max-width:550px) {\n.posts-column article[data-v-a94489d6] {\n      margin-bottom: 8px;\n}\n}\n@-webkit-keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n@keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n", ""]);
 
 // exports
 
@@ -2837,7 +2826,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#BDBDBD;\n  -webkit-text-decoration-color:#BDBDBD;\n          text-decoration-color:#BDBDBD;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.image.side-image.right img[data-v-3e64b357],\n  section.image.side-image.left img[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-3e64b357] {\n  text-decoration: none;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.image.side-image.right img[data-v-3e64b357],\n  section.image.side-image.left img[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -17241,7 +17230,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "left-column posts-column" },
-    _vm._l(_vm.twoPosts, function(post) {
+    _vm._l(_vm.posts, function(post) {
       return _c(
         "article",
         [
@@ -17253,7 +17242,9 @@ var render = function() {
             _c("h2", [_vm._v(_vm._s(post.title))]),
             _vm._v(" "),
             _c("p", [
-              _c("span", { staticClass: "author" }, [_vm._v("by Author")]),
+              _c("span", { staticClass: "author" }, [
+                _vm._v("by " + _vm._s(post.author))
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "post-date" }, [
                 _vm._v(_vm._s(post.time))
@@ -17308,7 +17299,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _c("span", { staticClass: "author" }, [
-                        _vm._v("by Author")
+                        _vm._v("by " + _vm._s(post.author))
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "post-date" }, [
@@ -17388,7 +17379,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _c("span", { staticClass: "author" }, [
-                        _vm._v("by Author")
+                        _vm._v("by " + _vm._s(post.author))
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "post-date" }, [
@@ -17541,7 +17532,7 @@ var render = function() {
     [
       _vm.rightPosts.length
         ? _c("right-column", {
-            staticClass: "wow fadeIn",
+            staticClass: "v-in-viewport once",
             attrs: { data: _vm.rightPosts }
           })
         : _vm._e(),
@@ -17693,16 +17684,14 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("a", { staticClass: "share", attrs: { href: "#" } }, [
-                    _vm._v("share")
-                  ])
+                  _vm._m(0)
                 ]),
-                _vm._v(" "),
-                _vm._m(0),
                 _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
                 _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "section",
@@ -17721,9 +17710,9 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(4),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(5)
               ],
               2
             ),
@@ -17787,6 +17776,15 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "share", attrs: { href: "#" } }, [
+      _vm._v("\n          ףתש\n          "),
+      _c("img", { attrs: { src: "/img/shareArrow.svg", alt: "" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -34461,7 +34459,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

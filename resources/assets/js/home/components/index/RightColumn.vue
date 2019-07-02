@@ -12,11 +12,12 @@
       <li v-for="post in posts">
         <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
+          <!-- {{post}} -->
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
-            <span class="author">by Author</span>
-            <span class="post-date">{{post.time}}</span>
+            <span class="author">by {{ post.author }}</span>
+            <span class="post-date">{{ post.time }}</span>
           </p>
         </router-link>
       </li>
@@ -36,20 +37,12 @@ export default {
   data() {
     return {
       randomPosts : [],
-      posts : [],
+      posts : this.data,
       birthdayPost : []
     }
   },
   created() {
-    // console.log(this.data)
-    this.data.forEach( (el)=> {
-      axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-         this.posts.push(response.data);
-
-
-       });
-    });
-  //  console.log('this.posts', this.posts);
+    
   }
 }
 </script>
