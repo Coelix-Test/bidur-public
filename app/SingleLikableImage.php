@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SingleLikableImage extends Model
 {
-    protected $table = 'singleLikableImage';
+    protected $table = 'single_likable_image';
     protected $guarded = ['id'];
 
     public function getLikes(){

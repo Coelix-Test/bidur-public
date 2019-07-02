@@ -339,10 +339,8 @@ class MainController extends Controller
         $hashtagPosts = HashtagPosts::all();
 
         foreach ($hashtagPosts as $hashtagPost) {
-//            dd($hashtagId);
             if ($hashtagPost->hashtagId == $hashtagId){
                 $postIds[] = $hashtagPost->postId;
-
             }
         }
 

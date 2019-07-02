@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostImage extends Model
 {
-    protected $table = 'postImages';
+    protected $table = 'post_images';
     protected $guarded = ['id'];
 
     public function post(){
