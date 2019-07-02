@@ -33936,8 +33936,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/assets/js/home/router.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/assets/js/home/App.vue");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-in-viewport-directive'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/assets/js/home/router.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.vue */ "./resources/assets/js/home/App.vue");
+
 
 
 
@@ -33956,11 +33958,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.performance = true;
 
 
 window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  router: _router__WEBPACK_IMPORTED_MODULE_2__["default"],
+  router: _router__WEBPACK_IMPORTED_MODULE_3__["default"],
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
   }
 }).$mount('#home');
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('in-viewport', !(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-in-viewport-directive'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 $('#header_main .celebrities-slider').slick({
   slidesToShow: 12,
   slidesToScroll: 12,
