@@ -25,14 +25,9 @@ const routes = [
     name: 'single-post',
   },
   {
-    path: '/all',
+    path: '/hashtag/:id',
     component: All,
-    name: 'all',
-  },
-  {
-    path: '/all/:id',
-    component: All,
-    name: 'all-tags',
+    name: 'hashtag',
   },
 ];
 

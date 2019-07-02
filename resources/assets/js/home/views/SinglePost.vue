@@ -131,7 +131,7 @@ import VuePoll from 'vue-poll'
 // import contentSection from './../components/contentSection.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
-export default {
+export default {s
   data() {
     return {
       post : true,
