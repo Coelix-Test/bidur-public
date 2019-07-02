@@ -1,16 +1,15 @@
 <template>
   <div class="default-post">
-    <div class="image"></div>
+    <div class="image" :style="{ backgroundImage: `url(${data.img})` }"></div>
     <div class="desc">
       <div class="title">
-        6 JOBS THAT PROBABLY
-        WON’T BE AROUND IN 10 YEARS
+        {{ data.title }}
       </div>
       <div class="subtitle">
-        by Helen Nilova | 5 hours ago
+        by {{ data.author }} | 5 hours ago
       </div>
       <div class="text">
-        Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out, Boss Girl has the rundown on the 6 jobs that probably...
+        {{ data.excerpt }}
       </div>
     </div>
   </div>
@@ -18,6 +17,9 @@
 
 <script>
 export default {
+  props: {
+    data: {},
+  },
   computed: {
     text() {
       // 700 symbols
@@ -36,7 +38,7 @@ export default {
   align-items: stretch;
   margin-bottom: 30px;
   .image {
-    background-image: url(https://via.placeholder.com/380x600);
+    // background-image: url(https://via.placeholder.com/380x600);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
