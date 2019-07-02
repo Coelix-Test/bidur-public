@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import InViewportDirective from 'vue-in-viewport-directive'
 
 require('./bootstrap');
 window.$ = window.jQuery = require('jquery');
@@ -19,7 +20,7 @@ window.app = new Vue({
   render: h => h(App)
 }).$mount('#home');
 
-
+Vue.directive('in-viewport', InViewportDirective);
 
 $('#header_main .celebrities-slider').slick({
   slidesToShow: 12,
