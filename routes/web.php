@@ -49,6 +49,10 @@ Route::post('/post/{id}', 'MainController@showSinglePost')->name('get-post-conte
 Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
 Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
+Route::post('/getReaction', 'MainController@getEmojiReaction');
+Route::post('/addReaction', 'MainController@addEmojiReaction');
+    //->middleware('auth'); // пример ауса
+
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
 
