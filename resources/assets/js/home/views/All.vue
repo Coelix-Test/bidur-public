@@ -1,7 +1,6 @@
 <template>
   <main>
     <div class="main-content">
-
       <DefaultPost/>
       <QuadPost/>
       <DefaultPost/>
