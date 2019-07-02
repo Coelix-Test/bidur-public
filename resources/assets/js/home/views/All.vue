@@ -34,7 +34,7 @@ export default {
       return axios.post('/getAllPostsByHashtag', {
         hashtag_id: this.$route.params.id,
       }).then(res => {
-        this.data = res.data;
+        // this.data = res.data;
       });
     }
   },
