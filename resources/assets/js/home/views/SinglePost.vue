@@ -3,15 +3,12 @@
     <div class="post-wrapper">
       <div class="post-content">
         <nav>
-          <a href="#">Next Post</a>
-          <a href="#">Prev Post</a>
+          <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
+          <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
         </nav>
-        <!-- <h1>{{ postData[1].value }}</h1> -->
 
-        <!-- <section :class="section.type" v-for="section in postData">
-          {{section}}
-        </section> -->
         <h1>{{postData[1].value}}</h1>
+        <section v-for="post in postData">{{post}}</section>
         <div class="post-meta">
 
           <div class="info">
@@ -108,6 +105,8 @@ export default {
     return {
       post : true,
       postData : null,
+      prevPostId : null,
+      nextPostId : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
           answers: [
@@ -126,10 +125,14 @@ export default {
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
     axios.post('/post/'+this.$route.params.id).then(response => {
-      //console.log(response);
+      // console.log(response);
       this.post = response;
       this.postData = this.post.data.post;
-      console.log(this.postData);
+      // console.log(this.postData);
+      this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+      this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+      console.log(this.prevPostId);
+      console.log(this.nextPostId);
     })
   },
   methods: {

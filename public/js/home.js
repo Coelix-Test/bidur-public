@@ -2502,9 +2502,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2513,6 +2510,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       post: true,
       postData: null,
+      prevPostId: null,
+      nextPostId: null,
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
         answers: [{
@@ -2541,10 +2540,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     // axios.post('/getSelectedPosts').then(response => {console.log(response);})
     axios.post('/post/' + this.$route.params.id).then(function (response) {
-      //console.log(response);
+      // console.log(response);
       _this.post = response;
-      _this.postData = _this.post.data.post;
-      console.log(_this.postData);
+      _this.postData = _this.post.data.post; // console.log(this.postData);
+
+      _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
+      _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
+      console.log(_this.prevPostId);
+      console.log(_this.nextPostId);
     });
   }
 }, _defineProperty(_data$methods$mounted, "methods", {
@@ -17336,40 +17339,65 @@ var render = function() {
           "div",
           { staticClass: "post-wrapper" },
           [
-            _c("div", { staticClass: "post-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("h1", [_vm._v(_vm._s(_vm.postData[1].value))]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _c(
-                "section",
-                { staticClass: "survey" },
-                [
-                  _c(
-                    "vue-poll",
-                    _vm._b(
-                      { staticClass: "poll", on: { addvote: _vm.addVote } },
+            _c(
+              "div",
+              { staticClass: "post-content" },
+              [
+                _c(
+                  "nav",
+                  [
+                    _vm.nextPostId
+                      ? _c("router-link", { attrs: { to: _vm.nextPostId } }, [
+                          _vm._v("Next Post")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.prevPostId
+                      ? _c("router-link", { attrs: { to: _vm.prevPostId } }, [
+                          _vm._v("Prev Post")
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("h1", [_vm._v(_vm._s(_vm.postData[1].value))]),
+                _vm._v(" "),
+                _vm._l(_vm.postData, function(post) {
+                  return _c("section", [_vm._v(_vm._s(post))])
+                }),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "section",
+                  { staticClass: "survey" },
+                  [
+                    _c(
                       "vue-poll",
-                      _vm.options,
-                      false
+                      _vm._b(
+                        { staticClass: "poll", on: { addvote: _vm.addVote } },
+                        "vue-poll",
+                        _vm.options,
+                        false
+                      )
                     )
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _vm._m(6)
-            ]),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5)
+              ],
+              2
+            ),
             _vm._v(" "),
             _c("side-news")
           ],
@@ -17430,16 +17458,6 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Next Post")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Prev Post")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
