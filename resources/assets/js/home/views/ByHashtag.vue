@@ -1,6 +1,7 @@
 <template>
   <main>
     <div class="main-content">
+      <emoji/>
       <template v-for="(item, i) in data">
         <DefaultPost :data="item" v-if="!isQuad(i)"/>
         <QuadPost :data="item" v-else/>
@@ -14,6 +15,7 @@
 import SideNews from './../components/SideNews.vue';
 import DefaultPost from './../components/all/DefaultPost.vue';
 import QuadPost from './../components/all/QuadPost.vue';
+import Emoji from './../components/single-post/Emoji.vue';
 
 export default {
   data() {
@@ -25,6 +27,7 @@ export default {
     SideNews,
     DefaultPost,
     QuadPost,
+    Emoji,
   },
   methods: {
     isQuad(index) {
