@@ -9,13 +9,20 @@ Vue.use(VueRouter);
 // import account from './account';
 
 import Index from './views/Index.vue';
-import All from './views/All.vue';
+import SinglePost from './views/SinglePost.vue'
+import All from './views/All.vue'
+
 
 const routes = [
   {
     path: '/',
     component: Index,
     name: 'index',
+  },
+  {
+    path: '/post/:id',
+    component: SinglePost,
+    name: 'single-post',
   },
   {
     path: '/all',

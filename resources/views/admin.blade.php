@@ -11,9 +11,6 @@
   <title>Admin panel</title>
 </head>
 <body>
-    <header id="header_main" class="profile-header">
-        @include('parts/header/top-line')
-    </header>
     <div id="admin"></div>
     @include('parts/footer')
     <script src="/js/admin.js" charset="utf-8"></script>

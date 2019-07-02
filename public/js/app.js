@@ -12669,9 +12669,9 @@ if ($('.run-stroke').length) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/scss/admin/admin.scss */"./resources/assets/scss/admin/admin.scss");
+__webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/scss/admin/admin.scss */"./resources/assets/scss/admin/admin.scss");
 
 
 /***/ })

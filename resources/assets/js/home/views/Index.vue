@@ -3,7 +3,7 @@
 
 
 
-    <right-column v-if="rightPosts.length" :data="rightPosts" />
+    <right-column class="wow fadeIn" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
     <right-column-bot />
@@ -34,6 +34,7 @@ export default {
 
   },
   mounted() {
+
    axios
      .post('/getAllPosts')
      .then(
@@ -49,26 +50,22 @@ export default {
            // this.latestPosts.push(el.post.id);
          });
          this.latestPosts = latestPostsId.reverse().slice(0,8);
-         postIds.sort(function compareRandom(a, b) {
+          postIds.sort(function compareRandom(a, b) {
           return Math.random() - 0.5;
         });
-        postIds.forEach( (el) => {
+      //  postIds.forEach( (el) => {
            //axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.randomPosts.push(response.data) });
 
-        });
+      //  });
         this.leftPosts = postIds.slice(0,2);
         this.rightPosts = postIds.slice(2,6);
         }
      );
+    //axios.post('/getAllPostsByHashtag',2).then(response => {console.log(response);})
 
  },
- watch : {
-   getAllPosts : function() {
-
-
-
-
-   },
+ created() {
+  // new WOW().init();
  },
  components : {
    RightColumn,
@@ -82,7 +79,7 @@ export default {
 <style lang="css" scoped>
   .home {
     max-width: 1440px;
-    margin:48px auto 32px;
+    margin:16px auto 32px;
     padding:0 24px;
     display: flex;
     flex-direction: row;
@@ -95,5 +92,78 @@ export default {
       padding: 0 12px;
     }
 
+  }
+</style>
+
+
+<style>
+  .vue-poll .qst {
+    padding:0 12px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .vue-poll .ans-cnt {
+    margin:20px 12px;
+  }
+  .vue-poll .ans-cnt .ans-no-vote {
+    border-radius: 0;
+    border-color: #0E0E0E;
+  }
+  .vue-poll .ans-cnt .ans-no-vote:hover {
+    background-color: #0E0E0E;
+  }
+  .vue-poll .ans-cnt .ans-no-vote .txt {
+    color:#0E0E0E;
+  }
+  .vue-poll .ans-cnt .ans-no-vote:hover .txt {
+    color:#fff;
+  }
+
+  .vue-poll .ans-cnt .ans .bg {
+    right:0;
+    left:unset;
+    transition: 1s;
+    /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */
+  }
+  .vue-poll .ans-cnt .ans-voted {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    padding:12px 12px;
+  }
+  .vue-poll .ans-cnt .ans {
+    margin-top: 16px;
+  }
+  .vue-poll .ans-cnt .ans-voted .percent {
+    margin:0;
+    text-align: left;
+  }
+  .vue-poll .ans-cnt .ans:nth-child(1) .bg {
+    background: linear-gradient(270.03deg, #F6AB62 2.44%, #B63E8E 41.46%, #3F5EFB 100.08%);
+  }
+  .vue-poll .ans-cnt .ans:nth-child(2) .bg {
+    background: linear-gradient(180deg, rgba(128, 241, 255, 0.66) 55.56%, #1389EF 100%);
+  }
+  .vue-poll .ans-cnt .ans:nth-child(3) .bg {
+    background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);
+  }
+  .vue-poll .ans-cnt .ans:nth-child(4) .bg {
+    background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);
+  }
+  .vue-poll .ans-cnt .ans-voted.selected .txt:after {
+    content:'\2714';
+    margin-right: 10px;
+  }
+  @media (max-width:768px) {
+    .vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {
+      font-size: 16px;
+    }
+    .vue-poll .qst {
+      font-size: 24px;
+      line-height: 24px;
+      padding:0 12px;
+      text-align: center;
+    }
   }
 </style>

@@ -15,11 +15,24 @@
 
 //libs
 // @import '~normalize.css/normalize.css';
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1530px
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1500px
+);
 @import '~bootstrap/scss/bootstrap';
 @import '~magnific-popup/dist/magnific-popup.css';
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
-
+@import '~animate.css';
 
 //@import own styles
 @import 'common/common.scss';
