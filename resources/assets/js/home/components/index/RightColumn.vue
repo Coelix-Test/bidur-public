@@ -12,7 +12,7 @@
       <li v-for="post in posts">
         <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
-          {{post}}
+          <!-- {{post}} -->
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>

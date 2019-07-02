@@ -17161,7 +17161,7 @@ var render = function() {
                   { staticClass: "post", attrs: { to: "/post/" + post.id } },
                   [
                     _c("div", { staticClass: "overlay" }),
-                    _vm._v("\n        " + _vm._s(post) + "\n        "),
+                    _vm._v(" "),
                     _c("img", { attrs: { src: post.img, alt: "" } }),
                     _vm._v(" "),
                     _c("h2", [_vm._v(_vm._s(post.title))]),
