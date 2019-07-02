@@ -1,6 +1,6 @@
 <template>
   <div class="right-column">
-    <article class="birthdayPost">
+    <article v-in-viewport.once class="birthdayPost">
       <a href="#">
         <div class="overlay"></div>
         <img  alt="">
@@ -8,7 +8,7 @@
 
       </a>
     </article>
-    <ul v-if="posts" class="posts">
+    <ul v-in-viewport.once v-if="posts" class="posts">
       <li v-for="post in posts">
         <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
@@ -42,7 +42,7 @@ export default {
     }
   },
   created() {
-    
+
   }
 }
 </script>
@@ -67,6 +67,14 @@ export default {
     height:450px;
     overflow: hidden;
     background-color: rgba(100,100,100,0.7);
+
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(100px);
+  }
+  .birthdayPost.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   .birthdayPost a {
     color:#fff;
@@ -86,6 +94,14 @@ export default {
     margin: 0;
     padding: 0;
     height:450px;
+
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translateX(100px);
+  }
+  ul.posts.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   ul.posts li {
     list-style-type: none;

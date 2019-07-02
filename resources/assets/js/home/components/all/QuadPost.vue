@@ -1,6 +1,7 @@
 <template>
-  <div class="quad-post">
+  <router-link :to="'/post/' + data.id" class="quad-post">
     <img :src="data.img">
+    <div class="gradient"></div>
     <div class="content">
       <div class="title">
         {{ data.title }}
@@ -12,7 +13,7 @@
         {{ data.excerpt }}
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -39,9 +40,19 @@ export default {
   img {
     width: 100%;
     object-fit: cover;
+
+  }
+  .gradient {
+    background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
   }
   .content {
-    box-shadow: 0 0 500px rgba(0, 0, 0, 0.8) inset;
     position: absolute;
     left: 0;
     top: 0;

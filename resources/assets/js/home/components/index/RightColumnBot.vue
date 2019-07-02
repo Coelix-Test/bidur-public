@@ -1,5 +1,5 @@
 <template>
-  <div class="right-column-bot">
+  <div v-in-viewport.once class="right-column-bot">
     <div class="selected-poll">
 
       <img src="img/rihanna.png" alt="">
@@ -40,6 +40,8 @@ export default {
   .right-column-bot {
     flex-basis:50%;
     padding-left: 8px;
+
+
   }
   .selected-poll {
     display: flex;
@@ -49,6 +51,14 @@ export default {
     overflow: hidden;
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
+    /* opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: scale(0.8); */
+  }
+  .selected-poll.in-viewport {
+    /* transform: scale(1);
+    opacity: 1; */
   }
   .selected-poll img {
     width:100%;

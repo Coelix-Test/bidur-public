@@ -80,6 +80,14 @@ export default {
     flex-basis:50%;
     width:50%;
     padding-right: 8px;
+
+    /* opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translateY(100px); */
+  }
+  .left-column-bot.in-viewport {
+    transform: translateY(0);
+    opacity: 1;
   }
   .instagram-post {
     /* max-height: 700px; */

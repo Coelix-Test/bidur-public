@@ -1,10 +1,12 @@
 <template>
   <div class="default-post">
-    <div class="image" :style="{ backgroundImage: `url(${data.img})` }"></div>
+    <router-link :to="'/post/' + data.id" class="title">
+      <div class="image" :style="{ backgroundImage: `url(${data.img})` }"></div>
+    </router-link>
     <div class="desc">
-      <div class="title">
+      <router-link :to="'/post/' + data.id" class="title">
         {{ data.title }}
-      </div>
+      </router-link>
       <div class="subtitle">
         by {{ data.author }} | 5 hours ago
       </div>
@@ -44,6 +46,7 @@ export default {
     background-size: cover;
     width: 300px;
     min-width: 300px;
+    min-height: 200px;
   }
   .desc {
     display: flex;
