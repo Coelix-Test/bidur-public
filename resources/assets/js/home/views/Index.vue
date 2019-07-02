@@ -61,7 +61,11 @@ export default {
         this.rightPosts = postIds.slice(2,6);
         }
      );
-    //axios.post('/getAllPostsByHashtag',2).then(response => {console.log(response);})
+    axios
+      .post('/getSelectedPosts')
+        .then(response => {
+          console.log(response);
+        })
 
  },
  created() {

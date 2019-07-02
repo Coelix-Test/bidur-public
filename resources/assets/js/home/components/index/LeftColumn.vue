@@ -41,9 +41,9 @@ export default {
     // });
   },
   created() {
-    this.data.forEach( (el)=> {
-      axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });
-    } );
+    // this.data.forEach( (el)=> {
+    //   axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });
+    // } );
   }
 }
 </script>

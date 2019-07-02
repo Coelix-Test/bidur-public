@@ -45,7 +45,10 @@
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{ post.data.post.date }}</span>
           </div>
-          <a href="#" class="share">share</a>
+          <a href="#" class="share">
+            ףתש
+            <img src="/img/shareArrow.svg" alt="">
+          </a>
 
         </div>
 
@@ -353,8 +356,9 @@ export default {
     font-size: 16px;
   }
   .share {
-    color:#BDBDBD;
-    text-decoration-color:#BDBDBD;
+    color:#333333;
+    text-decoration-color:#333333;
+
   }
   @media (max-width:1024px) {
     .post-wrapper {
