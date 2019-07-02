@@ -26,11 +26,11 @@ export default {
     QuadPost,
   },
   created() {
-    // axios.post('/getAllPostsByHashtag', {
-    //   hashtag_id: this.$route.params.id,
-    // }).then(res => {
-    //   console.log(res.data);
-    // });
+    axios.post('/getAllPostsByHashtag', {
+      hashtag_id: this.$route.params.id,
+    }).then(res => {
+      console.log(res.data);
+    });
   }
 }
 </script>

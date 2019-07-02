@@ -8,7 +8,7 @@
         </nav>
 
         <h1>{{ postTitle }}</h1>
-        <section :class="post.type" v-for="post in postData" style="border-bottom:2px solid black;">
+        <section :class="post.type" v-for="post in postData" >
 
           <!-- title -->
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
@@ -20,18 +20,24 @@
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
           <!-- survey -->
-          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="options" @addvote="addVote"/>
+          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, 1)"/>
 
           <!-- video -->
-          <iframe v-if="post.type == 'video'" id="ytplayer" type="text/html" src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" frameborder="0"/>
+          <iframe
+            v-if="post.type == 'video'"
+            id="ytplayer"
+            type="text/html"
+            src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com"
+            frameborder="0"
+          />
 
           <!-- imageWithText -->
           <div v-if="post.type == 'imageWithText'">
-            <img v-if="post.url" :src="post.url" alt="">
+            <img v-if="post.url" :class="post.imagePosition" :src="post.url" alt="">
             <h2 v-if="post.title">{{ post.title }}</h2>
             <p v-if="post.content">{{post.content}}</p>
           </div>
-          {{post}}
+
         </section>
         <div class="post-meta">
 
@@ -100,7 +106,7 @@
 
 
       <carousel :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="i in 6" class="related-post">
+        <slide v-for="i in 6" class="related-post" :key="i">
             <img src="/img/relatedPostPrev.png" alt="">
             <div class="related-post-content">
               <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
@@ -164,8 +170,9 @@ export default {
     })
   },
   methods: {
-      addVote(obj){
-          console.log('You voted ' + obj.value + '!');
+      addVote(obj, id){
+          console.log(obj);
+          console.log(id);
       }
   },
   components : {
@@ -239,7 +246,11 @@ export default {
     object-fit: cover;
     margin-bottom: 12px;
   }
-  section.imageWithText img {
+  section.imageWithText img.right {
+    float:right;
+    margin-left: 16px;
+  }
+  section.imageWithText img.left {
     float:left;
     margin-right: 16px;
   }
