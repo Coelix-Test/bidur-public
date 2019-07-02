@@ -2021,7 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       twoPosts: [],
-      randomPosts: this.data
+      posts: this.data
     };
   },
   mounted: function mounted() {//console.log('randomPosts', this.randomPosts);
@@ -2162,6 +2162,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2171,7 +2172,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       randomPosts: [],
-      posts: [],
+      posts: this.data,
       birthdayPost: []
     };
   },
@@ -2345,28 +2346,26 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getAllPosts').then(function (response) {
-      _this.getAllPosts = response.data; // this.latestPosts = this.getAllPosts.reverse().slice(0,8);
-
-      var postIds = [];
+      _this.getAllPosts = response.data;
       var latestPostsId = [];
 
       _this.getAllPosts.forEach(function (el) {
-        postIds.push(el.post.id);
-        latestPostsId.push(el.post.id); // this.latestPosts.push(el.post.id);
+        latestPostsId.push(el.post.id);
       });
 
       _this.latestPosts = latestPostsId.reverse().slice(0, 8);
-      postIds.sort(function compareRandom(a, b) {
-        return Math.random() - 0.5;
-      }); //  postIds.forEach( (el) => {
-      //axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.randomPosts.push(response.data) });
-      //  });
-
-      _this.leftPosts = postIds.slice(0, 2);
-      _this.rightPosts = postIds.slice(2, 6);
     });
     axios.post('/getSelectedPosts').then(function (response) {
       console.log(response);
+      var postData = response.data;
+      _this.leftPosts = Object.entries(postData).slice(0, 2).map(function (entry) {
+        return entry[1];
+      });
+      _this.rightPosts = Object.entries(postData).slice(2, 6).map(function (entry) {
+        return entry[1];
+      }); // console.log( this.leftPosts);
+      // postData.length = 2;
+      // console.log(this.leftPosts);
     });
   },
   created: function created() {// new WOW().init();
@@ -17020,7 +17019,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "left-column posts-column" },
-    _vm._l(_vm.twoPosts, function(post) {
+    _vm._l(_vm.posts, function(post) {
       return _c(
         "article",
         [
@@ -17032,7 +17031,9 @@ var render = function() {
             _c("h2", [_vm._v(_vm._s(post.title))]),
             _vm._v(" "),
             _c("p", [
-              _c("span", { staticClass: "author" }, [_vm._v("by Author")]),
+              _c("span", { staticClass: "author" }, [
+                _vm._v("by " + _vm._s(post.author))
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "post-date" }, [
                 _vm._v(_vm._s(post.time))
@@ -17087,7 +17088,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", [
                       _c("span", { staticClass: "author" }, [
-                        _vm._v("by Author")
+                        _vm._v("by " + _vm._s(post.author))
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "post-date" }, [
@@ -17160,14 +17161,14 @@ var render = function() {
                   { staticClass: "post", attrs: { to: "/post/" + post.id } },
                   [
                     _c("div", { staticClass: "overlay" }),
-                    _vm._v(" "),
+                    _vm._v("\n        " + _vm._s(post) + "\n        "),
                     _c("img", { attrs: { src: post.img, alt: "" } }),
                     _vm._v(" "),
                     _c("h2", [_vm._v(_vm._s(post.title))]),
                     _vm._v(" "),
                     _c("p", [
                       _c("span", { staticClass: "author" }, [
-                        _vm._v("by Author")
+                        _vm._v("by " + _vm._s(post.author))
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "post-date" }, [

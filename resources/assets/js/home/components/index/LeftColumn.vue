@@ -1,14 +1,14 @@
 <template>
   <div class="left-column posts-column">
 
-    <article v-for="post in twoPosts" >
+    <article v-for="post in posts" >
       <router-link :to="'/post/'+post.id">
         <div class="overlay"></div>
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
         <p>
-          <span class="author">by Author</span>
-          <span class="post-date">{{post.time}}</span>
+          <span class="author">by {{ post.author }}</span>
+          <span class="post-date">{{ post.time }}</span>
         </p>
       </router-link>
     </article>
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       twoPosts : [],
-      randomPosts : this.data,
+      posts : this.data,
 
     }
   },

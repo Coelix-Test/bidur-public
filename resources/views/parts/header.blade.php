@@ -13,7 +13,7 @@
             $hashtags = $hashtags->getAllHashtags();
             foreach ($hashtags as $hashtag) {
                 ?>
-                <a href="{{route('postByHashtag', ['id' => $hashtag['id']])}}" class="np-slide-item">
+                <a href="/#/all/{{ $hashtag['id'] }}" class="np-slide-item">
                     <div class="celebrity">
                         <div class="img-wrap">
                             <div class="image" style="background-image: url('<?=$hashtag['img']?>');"></div>

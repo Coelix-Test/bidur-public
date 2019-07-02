@@ -3,13 +3,13 @@
     <h2>חדשות נוספות</h2>
     <ul ref="test" class="latest-post-slider">
       <li v-if="posts" v-for="post in posts">
-        <router-link :to="'/post/'+post.id">
+        <router-link  :to="'/post/'+post.id">
 
           <img :src="post.img" alt="">
           <div class="content">
             <h3>{{ post.title }}</h3>
             <p>
-              <span class="author">by Author</span>
+              <span class="author">by {{post.author}}</span>
               <span class="post-date">{{post.time}}</span>
             </p>
           </div>
