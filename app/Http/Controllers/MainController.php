@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Emoji;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
@@ -235,6 +236,7 @@ class MainController extends Controller
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
 
                 $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
+                $questionsWithAnswers[$survey->order]['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
                 foreach ($questions as $question) {
@@ -483,5 +485,32 @@ class MainController extends Controller
         $data['$fifth'] = $this->getContent($fifth);
         $data['$sixth'] = $this->getContent($sixth);
         return $data;
+    }
+
+    public function addEmojiReaction(Request $request){
+        $userId = \Auth::id();
+        $postId = $request->get('postId');
+        $reaction = $request->get('reaction');
+        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
+            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
+        }
+        Emoji::create([
+            'authorId' => $userId,
+            'reaction' => $reaction,
+            'postId' => $postId,
+        ]);
+        return ['success' => true, 'reaction' => $reaction];
+    }
+
+    public function getEmojiReaction(Request $request){
+        $userId = \Auth::id();
+        $postId = $request->get('postId');
+
+        $reaction = Emoji::where('postId', $postId)->where('authorId', $userId)->get();
+        if (!$reaction->isEmpty()){
+            return ['success' => true, 'reaction' => $reaction->reaction];
+        }else{
+            return ['success' => false];
+        }
     }
 }
