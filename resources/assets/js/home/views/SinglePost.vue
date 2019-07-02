@@ -1,7 +1,8 @@
 <template>
   <div class="single-post">
     <div class="post-wrapper">
-      <h1 v-if="errorMessage">Post have no content!</h1>
+
+      <single-post-example v-if="errorMessage" />
       <div v-if="post" class="post-content">
         <nav>
           <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
@@ -54,10 +55,12 @@
         </section>
 
 
-      <single-post-example />
+
         <div class="opinion">
           <h2>Your opinion</h2>
+          <div class="emoji-wrapper">
 
+          </div>
         </div>
       </div>
 
@@ -90,14 +93,17 @@
 </template>
 
 <script>
+
 import VuePoll from 'vue-poll'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
+import VueLikeDislikeButtons from 'vue-like-dislike-buttons'
+
 export default {
   data() {
     return {
-      post : null,
+      post : false,
       postData : null,
       prevPostId : null,
       nextPostId : null,
@@ -116,11 +122,14 @@ export default {
     }
   },
   methods : {
+    computeNumber(value) {
+      console.log(value);
+    },
     sync(id) {
       axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response);
+            // console.log(response);
             this.post = response;
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
@@ -132,7 +141,7 @@ export default {
           .catch(error => {
             console.log('error');
             this.errorMessage = true;
-            this.post = null;
+            this.post = false;
           });
     },
     addVote(obj, id){
@@ -153,7 +162,8 @@ export default {
     VuePoll,
     Carousel,
     Slide,
-    SinglePostExample
+    SinglePostExample,
+    VueLikeDislikeButtons
   }
 }
 

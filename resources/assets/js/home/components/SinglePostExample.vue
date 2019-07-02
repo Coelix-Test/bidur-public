@@ -1,5 +1,6 @@
 <template>
   <div class="single-post-example">
+    <h1>Post have no content!</h1>
     <section class="full-width image">
       <img src="/img/singlePREV.png" alt="">
       <p class="img-subtext">
@@ -24,7 +25,7 @@
         After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
       </p>
     </section>
-    
+
     <section class="image side-image left">
 
         <img src="/img/sideImagePrev.png" alt="">
