@@ -354,7 +354,6 @@ class MainController extends Controller
         $hashtagId = $request->get('hashtag_id');
 
         $hashtagPosts = HashtagPosts::all();
-        dd($hashtagPosts);
 
         foreach ($hashtagPosts as $hashtagPost) {
             if ($hashtagPost->hashtagId == $hashtagId){

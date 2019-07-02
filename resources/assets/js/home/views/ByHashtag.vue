@@ -2,8 +2,8 @@
   <main>
     <div class="main-content">
       <template v-for="(item, i) in data">
-        <DefaultPost v-if="!isQuad(i)"/>
-        <QuadPost v-else/>
+        <DefaultPost :data="item" v-if="!isQuad(i)"/>
+        <QuadPost :data="item" v-else/>
       </template>
     </div>
     <side-news/>
@@ -28,18 +28,21 @@ export default {
   },
   methods: {
     isQuad(index) {
-      return (index - 1) % 3 == 0;
+      return (index + 1) % 3 == 0;
     },
-    sync() {
+    sync(id) {
       return axios.post('/getAllPostsByHashtag', {
-        hashtag_id: this.$route.params.id,
+        hashtag_id: id,
       }).then(res => {
-        // this.data = res.data;
+        this.data = res.data;
       });
     }
   },
   created() {
-    this.sync();
+    this.sync(this.$route.params.id);
+  },
+  beforeRouteUpdate(to) {
+    this.sync(to.params.id);
   }
 }
 </script>

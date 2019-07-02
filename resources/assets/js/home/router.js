@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 
 import Index from './views/Index.vue';
 import SinglePost from './views/SinglePost.vue'
-import All from './views/All.vue'
+import ByHashtag from './views/ByHashtag.vue'
 
 
 const routes = [
@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: '/hashtag/:id',
-    component: All,
+    component: ByHashtag,
     name: 'hashtag',
   },
 ];
