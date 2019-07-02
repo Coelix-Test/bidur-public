@@ -5,8 +5,15 @@
       <single-post-example v-if="errorMessage" />
       <div v-if="post" class="post-content">
         <nav>
-          <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
-          <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
+
+          <a v-if="prevPostId" @click="changePost($event,prevPostId)" :href="prevPostId">
+            <img src="/img/arrow-right.svg">
+            Prev News {{ prevPostId }}
+          </a>
+          <a v-if="nextPostId" @click="changePost($event,nextPostId)" :href="nextPostId">
+            Next News {{ nextPostId }}
+            <img src="/img/arrow-left.svg">
+          </a>
         </nav>
 
         <h1>{{ postTitle }}</h1>
@@ -24,19 +31,14 @@
         </div>
         <section :class="post.type" v-for="post in postData" >
 
-          <!-- title -->
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <!-- content -->
           <p v-if="post.type == 'content'">{{ post.value }}</p>
 
-          <!-- fullscreen image -->
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
-          <!-- survey -->
           <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, 1)"/>
 
-          <!-- video -->
           <iframe
             v-if="post.type == 'video'"
             id="ytplayer"
@@ -45,7 +47,6 @@
             frameborder="0"
           />
 
-          <!-- imageWithText -->
           <div v-if="post.type == 'imageWithText'">
             <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
             <h2 v-if="post.title">{{ post.title }}</h2>
@@ -122,14 +123,19 @@ export default {
     }
   },
   methods : {
+    changePost($event, id) {
+      event.preventDefault()
+      this.sync(id);
+    },
     computeNumber(value) {
       console.log(value);
     },
     sync(id) {
-      axios
+      return axios
         .post('/post/'+id)
           .then(response => {
             // console.log(response);
+
             this.post = response;
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
@@ -274,7 +280,7 @@ export default {
     margin-bottom: 24px;
     padding:24px;
   }
-  section.survey > div {
+  section.survey {
     max-width: 550px;
   }
   .opinion {
@@ -358,7 +364,8 @@ export default {
     section.imageWithText img.right {
       float:none;
       margin-right: 0;
-      max-width: unset;
+      max-width: 100%;
+      margin-bottom: 8px;
     }
   }
   @media (max-width:550px) {
