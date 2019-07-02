@@ -12,6 +12,7 @@ use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -305,11 +306,67 @@ class MainController extends Controller
             $fullPost[$key] = $questionsWithAnswer;
         }
 
+        $fullPost['author'] = User::find($post->author)->name;
+        $fullPost['date'] = $this->getDate($post);
+
 
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
+    }
+
+    public function getDate($post){
+        $time = $post->created_at;
+        $time = $time->timestamp;
+        $now = Carbon::now();
+        $now = $now->timestamp;
+        $diff = $now - $time;
+        $hours = 0;
+        $days = 0;
+        $weeks = 0;
+        $flag = false;
+        while ($diff > 3600){
+            $diff = $diff - 3600;
+            $hours++;
+            if ($hours == 23){
+                $days++;
+                $hours = 0;
+            }
+            if ($days == 7){
+                $weeks++;
+                $days = 0;
+            }
+            if ($weeks == 4 && $days > 1){
+                $flag = true;
+                break;
+            }
+        }
+        $time = $post->created_at;
+        if ($flag == true){
+            $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
+        }else{
+            if ($hours <= 23 && $days == 0 && $weeks == 0){
+                if ($hours = 0){
+                    $createdAt = 'just now';
+                }else{
+                    $createdAt = $hours.' hours ago';
+                }
+            }else{
+                if ($days <= 6 && $weeks == 0){
+                    $createdAt = $days.' days ago';
+                }else{
+                    if ($weeks <= 4){
+                        if ($weeks == 1){
+                            $createdAt = $weeks.' week ago';
+                        }else{
+                            $createdAt = $weeks.' weeks ago';
+                        }
+                    }
+                }
+            }
+        }
+        return $createdAt;
     }
 
     public function showInsta(){
