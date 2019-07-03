@@ -235,11 +235,11 @@ class MainController extends Controller
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
             foreach ($surveys as $survey) {
-                $flag = false;
+                $flag = true;
                 if (\Auth::check()){
                     $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
                     if (empty($ass)){
-                        $flag = true;
+                        $flag = false;
                     }
                 }
                 $questions = $survey->getAllVariants;
