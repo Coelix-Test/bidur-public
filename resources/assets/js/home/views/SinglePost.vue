@@ -37,7 +37,11 @@
 
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
-          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          <div v-if="post.type == 'survey'" class="poll">
+            <img :src="post.img" alt="">
+            <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          </div>
+
 
           <iframe
             v-if="post.type == 'video'"

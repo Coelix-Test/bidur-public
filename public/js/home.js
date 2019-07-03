@@ -2278,7 +2278,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       options: {
-        // showResults : true,
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
         answers: [{
           value: 1,
@@ -2524,6 +2523,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_like_dislike_buttons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-like-dislike-buttons */ "./node_modules/vue-like-dislike-buttons/dist/vue-like-dislike-buttons.umd.js");
 /* harmony import */ var vue_like_dislike_buttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_like_dislike_buttons__WEBPACK_IMPORTED_MODULE_4__);
+//
+//
+//
+//
 //
 //
 //
@@ -19448,74 +19451,77 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._l(_vm.postData, function(post) {
-                  return _c(
-                    "section",
-                    { class: post.type },
-                    [
-                      post.type == "title"
-                        ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "content"
-                        ? _c("p", [_vm._v(_vm._s(post.value))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "image"
-                        ? _c("img", { attrs: { src: post.value, alt: "" } })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "survey"
-                        ? _c(
-                            "vue-poll",
-                            _vm._b(
-                              {
-                                staticClass: "poll",
-                                on: {
-                                  addvote: function($event) {
-                                    return _vm.addVote($event, post.id)
-                                  }
-                                }
-                              },
+                  return _c("section", { class: post.type }, [
+                    post.type == "title"
+                      ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    post.type == "content"
+                      ? _c("p", [_vm._v(_vm._s(post.value))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    post.type == "image"
+                      ? _c("img", { attrs: { src: post.value, alt: "" } })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    post.type == "survey"
+                      ? _c(
+                          "div",
+                          { staticClass: "poll" },
+                          [
+                            _c("img", { attrs: { src: post.img, alt: "" } }),
+                            _vm._v(" "),
+                            _c(
                               "vue-poll",
-                              post.value,
-                              false
+                              _vm._b(
+                                {
+                                  on: {
+                                    addvote: function($event) {
+                                      return _vm.addVote($event, post.id)
+                                    }
+                                  }
+                                },
+                                "vue-poll",
+                                post.value,
+                                false
+                              )
                             )
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "video"
-                        ? _c("iframe", {
-                            attrs: {
-                              id: "ytplayer",
-                              type: "text/html",
-                              src:
-                                "http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com",
-                              frameborder: "0"
-                            }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "imageWithText"
-                        ? _c("div", [
-                            post.url
-                              ? _c("img", {
-                                  class: post.imagePosition,
-                                  attrs: { src: post.url, alt: post.title }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            post.title
-                              ? _c("h2", [_vm._v(_vm._s(post.title))])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            post.content
-                              ? _c("p", [_vm._v(_vm._s(post.content))])
-                              : _vm._e()
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    post.type == "video"
+                      ? _c("iframe", {
+                          attrs: {
+                            id: "ytplayer",
+                            type: "text/html",
+                            src:
+                              "http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com",
+                            frameborder: "0"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    post.type == "imageWithText"
+                      ? _c("div", [
+                          post.url
+                            ? _c("img", {
+                                class: post.imagePosition,
+                                attrs: { src: post.url, alt: post.title }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          post.title
+                            ? _c("h2", [_vm._v(_vm._s(post.title))])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          post.content
+                            ? _c("p", [_vm._v(_vm._s(post.content))])
+                            : _vm._e()
+                        ])
+                      : _vm._e()
+                  ])
                 }),
                 _vm._v(" "),
                 _vm._m(1)
