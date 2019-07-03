@@ -15429,13 +15429,25 @@ body {
   color: #fff;
 }
 
+.btn-border-white:hover {
+  color: #fff;
+}
+
 .btn-border-dark {
   border: 2px solid #828282;
   color: #828282;
 }
 
+.btn-border-dark:hover {
+  color: #828282;
+}
+
 .btn-red {
   background: #EB5757;
+  color: #fff;
+}
+
+.btn-red:hover {
   color: #fff;
 }
 
@@ -15931,6 +15943,10 @@ body {
 .toggle-nav.active + .main-nav .modal-content .menu li:nth-child(9) {
   -webkit-transition-delay: 1.55s;
   transition-delay: 1.85s;
+}
+
+#header_main a {
+  text-decoration: none;
 }
 
 #header_main .top-row {

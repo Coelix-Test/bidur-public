@@ -8,12 +8,21 @@
 .btn-border-white{
     border: 2px solid #fff;
     color: #fff;
+    &:hover{
+        color: #fff;
+    }
 }
 .btn-border-dark{
     border: 2px solid #828282;
     color: #828282;
+    &:hover{
+        color: #828282;
+    }
 }
 .btn-red{
     background: $red;
     color: #fff;
+    &:hover{
+        color: #fff;
+    }
 }
