@@ -74,15 +74,15 @@
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
         <slide v-for="post in relevantPosts" class="related-post">
-            <img src="/img/relatedPostPrev.png" alt="">
+            <img :src="post.image" alt="">
             <div class="related-post-content">
-              <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
+              <a href="#"><h3>{{ post.title }}</h3></a>
               <p class="related-post-meta">
-                <span class="date">5 years ago</span>
-                <span class="author">by Helen Nikova</span>
+                <span class="date">{{post.date}}</span>
+                <span class="author">by {{post.author}}</span>
               </p>
               <p class="excerpt">
-                Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...
+                {{ post.excerpt }}
               </p>
             </div>
         </slide>

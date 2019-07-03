@@ -19564,32 +19564,28 @@ var render = function() {
               },
               _vm._l(_vm.relevantPosts, function(post) {
                 return _c("slide", { staticClass: "related-post" }, [
-                  _c("img", {
-                    attrs: { src: "/img/relatedPostPrev.png", alt: "" }
-                  }),
+                  _c("img", { attrs: { src: post.image, alt: "" } }),
                   _vm._v(" "),
                   _c("div", { staticClass: "related-post-content" }, [
                     _c("a", { attrs: { href: "#" } }, [
-                      _c("h3", [
-                        _vm._v(
-                          "6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS"
-                        )
-                      ])
+                      _c("h3", [_vm._v(_vm._s(post.title))])
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "related-post-meta" }, [
                       _c("span", { staticClass: "date" }, [
-                        _vm._v("5 years ago")
+                        _vm._v(_vm._s(post.date))
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "author" }, [
-                        _vm._v("by Helen Nikova")
+                        _vm._v("by " + _vm._s(post.author))
                       ])
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "excerpt" }, [
                       _vm._v(
-                        "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
+                        "\n              " +
+                          _vm._s(post.excerpt) +
+                          "\n            "
                       )
                     ])
                   ])
