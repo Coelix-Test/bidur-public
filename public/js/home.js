@@ -3246,24 +3246,48 @@ __webpack_require__.r(__webpack_exports__);
     postId: {}
   },
   data: function data() {
-    return {};
+    return {
+      emojis: null,
+      preventClick: false
+    };
+  },
+  watch: {
+    postId: function postId() {
+      this.preventClick = false;
+      this.sync(this.postId);
+    }
   },
   created: function created() {
-    axios.post('/getReaction', {
-      postId: this.postId
-    }).then(function (response) {
-      console.log(response);
-    });
+    this.preventClick = false;
+    this.sync(this.postId);
   },
   methods: {
     select: function select(item) {
-      var emote = item.target.id;
-      console.log(emote);
-      axios.post('/addReaction', {
-        reaction: emote,
-        postId: this.postId
+      var _this = this;
+
+      if (this.preventClick == false) {
+        var emote = item.target.id;
+        axios.post('/addReaction', {
+          reaction: emote,
+          postId: this.postId
+        }).then(function (response) {
+          axios.post('/getReaction', {
+            postId: _this.postId
+          }).then(function (response) {
+            _this.emojis = response.data;
+            _this.preventClick = true;
+            item.target.classList.add('is_active');
+          });
+        });
+      }
+    },
+    sync: function sync(postId) {
+      var _this2 = this;
+
+      axios.post('/getReaction', {
+        postId: postId
       }).then(function (response) {
-        console.log(response);
+        _this2.emojis = response.data;
       });
     }
   }
@@ -3390,8 +3414,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.sync(this.$route.params.id);
   },
-  beforeRouteUpdate: function beforeRouteUpdate(to) {
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
+    next();
   }
 });
 
@@ -3617,6 +3642,9 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       this.sync(id);
       this.postId = id;
+      this.$router.push({
+        path: "/post/".concat(id)
+      });
     },
     computeNumber: function computeNumber(value) {// console.log(value);
     },
@@ -3627,6 +3655,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
+        _this.postId = id;
         _this.postData = _this.post.data.post.sections;
         _this.postTitle = _this.postData[1].value;
         _this.hashtags = _this.post.data.post.hashtags;
@@ -3652,13 +3681,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addVote: function addVote(obj, id) {
-      console.log(obj);
-      console.log(id);
+      // console.log(obj);
+      // console.log(id);
       axios.post('/addSurveyVote', {
         surveyId: id,
         answer: obj.value
-      }).then(function (response) {
-        console.log(response);
+      }).then(function (response) {// console.log(response);
       });
     }
   },
@@ -3666,9 +3694,10 @@ __webpack_require__.r(__webpack_exports__);
     this.sync(this.$route.params.id);
     this.postId = this.$route.params.id;
   },
-  beforeRouteUpdate: function beforeRouteUpdate(to) {
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     this.postId = to.params.id;
+    next();
   },
   components: {
     SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -3771,7 +3800,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".quad-post[data-v-59ea66b0] {\n  height: 620px;\n  margin-bottom: 30px;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n}\n.quad-post img[data-v-59ea66b0] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.quad-post .gradient[data-v-59ea66b0] {\n  background: -webkit-gradient(linear, left top, right top, color-stop(0.91%, #F6AB62), color-stop(40.51%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.quad-post .content[data-v-59ea66b0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  padding-left: 50px;\n  padding-bottom: 110px;\n  color: #fff;\n}\n.quad-post .content .title[data-v-59ea66b0] {\n  text-align: left;\n  font-weight: bold;\n  font-size: 36px;\n  max-width: 600px;\n}\n.quad-post .content .subtitle[data-v-59ea66b0] {\n  font-weight: 300;\n  font-size: 24px;\n  text-align: left;\n  margin: 10px 0;\n}\n.quad-post .content .text[data-v-59ea66b0] {\n  font-size: 18px;\n  text-align: left;\n  max-width: 600px;\n}\n@media (max-width: 1200px) {\n.quad-post .content[data-v-59ea66b0] {\n    padding: 20px;\n}\n}\n@media (max-width: 800px) {\n.quad-post .content[data-v-59ea66b0] {\n    -webkit-box-pack: start;\n            justify-content: flex-start;\n    padding: 20px;\n}\n.quad-post .content .text[data-v-59ea66b0] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, ".quad-post[data-v-59ea66b0] {\n  height: 620px;\n  margin-bottom: 30px;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n}\n.quad-post img[data-v-59ea66b0] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.quad-post .gradient[data-v-59ea66b0] {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.quad-post .content[data-v-59ea66b0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  padding-left: 50px;\n  padding-bottom: 110px;\n  color: #fff;\n}\n.quad-post .content .title[data-v-59ea66b0] {\n  text-align: left;\n  font-weight: bold;\n  font-size: 36px;\n  max-width: 600px;\n}\n.quad-post .content .subtitle[data-v-59ea66b0] {\n  font-weight: 300;\n  font-size: 24px;\n  text-align: left;\n  margin: 10px 0;\n}\n.quad-post .content .text[data-v-59ea66b0] {\n  font-size: 18px;\n  text-align: left;\n  max-width: 600px;\n}\n@media (max-width: 1200px) {\n.quad-post .content[data-v-59ea66b0] {\n    padding: 20px;\n}\n}\n@media (max-width: 800px) {\n.quad-post .content[data-v-59ea66b0] {\n    -webkit-box-pack: start;\n            justify-content: flex-start;\n    padding: 20px;\n}\n.quad-post .content .text[data-v-59ea66b0] {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -3828,7 +3857,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".emoji[data-v-42aed3d1] {\n  width: 700px;\n  height: 120px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  background: #FFFFFF;\n  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);\n  border-radius: 3px;\n  padding: 15px 40px 15px 40px;\n  position: relative;\n}\n.emoji[data-v-42aed3d1]::before {\n  content: \"\";\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  bottom: 100%;\n  width: 0;\n  height: 0;\n  border-left: 15px solid transparent;\n  border-right: 15px solid transparent;\n  border-bottom: 15px solid #fff;\n  position: absolute;\n}\n.emoji .item[data-v-42aed3d1] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  background: transparent;\n  border: 0;\n}\n.emoji .item img[data-v-42aed3d1] {\n  height: 60px;\n  pointer-events: none;\n}\n.emoji .item .num[data-v-42aed3d1] {\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 100%;\n  pointer-events: none;\n}\n.emoji .item.selected .num[data-v-42aed3d1] {\n  background: -webkit-gradient(linear, left top, right top, color-stop(0.91%, #F6AB62), color-stop(40.51%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n  -webkit-background-clip: text;\n          background-clip: text;\n  -webkit-text-fill-color: transparent;\n}", ""]);
+exports.push([module.i, ".emoji[data-v-42aed3d1] {\n  width: 700px;\n  height: 120px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  background: #FFFFFF;\n  box-shadow: 0px -3px 20px rgba(0, 0, 0, 0.1);\n  border-radius: 3px;\n  padding: 15px 40px 15px 40px;\n  position: relative;\n}\n.emoji[data-v-42aed3d1]::before {\n  content: \"\";\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  bottom: 100%;\n  width: 0;\n  height: 0;\n  border-left: 15px solid transparent;\n  border-right: 15px solid transparent;\n  border-bottom: 15px solid #fff;\n  position: absolute;\n}\n.emoji .item[data-v-42aed3d1] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  background: transparent;\n  border: 0;\n}\n.emoji .item img[data-v-42aed3d1] {\n  height: 60px;\n  pointer-events: none;\n}\n.emoji .item .num[data-v-42aed3d1] {\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 100%;\n  pointer-events: none;\n}\n.emoji .item.is_active .num[data-v-42aed3d1] {\n  background: -webkit-gradient(linear, left top, right top, color-stop(0.91%, #F6AB62), color-stop(40.51%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n  -webkit-background-clip: text;\n          background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n@media (max-width: 768px) {\n.emoji[data-v-42aed3d1] {\n    width: 100%;\n    flex-wrap: wrap;\n    height: auto;\n}\n.emoji .item[data-v-42aed3d1] {\n    margin-bottom: 8px;\n}\n}", ""]);
 
 // exports
 
@@ -3999,7 +4028,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 24px;\n  line-height: 24px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  border-radius: 0;\n  border-color: #0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  background-color: #0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  color:#fff;\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
+exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 24px;\n  line-height: 24px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -4018,7 +4047,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 16px;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 16px;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -19380,89 +19409,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "emoji" }, [
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "dislike" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
+  return _vm.emojis
+    ? _c("div", { staticClass: "emoji" }, [
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "dislike" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.dislike))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "like" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "like" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.like))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "angry" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "angry" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.angry))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "cry" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "cry" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.cry))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "wow" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "wow" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.wow))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "laugh" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "laugh" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.laugh))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "love" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    )
-  ])
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "love" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.love))])
+          ]
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19719,45 +19772,41 @@ var render = function() {
               "div",
               { staticClass: "post-content" },
               [
-                _c("nav", [
-                  _vm.prevPostId
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "prev-post",
-                          attrs: { href: _vm.prevPostId },
-                          on: {
-                            click: function($event) {
-                              return _vm.changePost($event, _vm.prevPostId)
-                            }
-                          }
-                        },
-                        [
-                          _c("img", { attrs: { src: "/img/arrow-right.svg" } }),
-                          _vm._v("\n          Prev News\n        ")
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.nextPostId
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "next-post",
-                          attrs: { href: _vm.nextPostId },
-                          on: {
-                            click: function($event) {
-                              return _vm.changePost($event, _vm.nextPostId)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v("\n          Next News\n          "),
-                          _c("img", { attrs: { src: "/img/arrow-left.svg" } })
-                        ]
-                      )
-                    : _vm._e()
-                ]),
+                _c(
+                  "nav",
+                  [
+                    _vm.prevPostId
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "prev-post",
+                            attrs: { to: "/post/" + _vm.prevPostId }
+                          },
+                          [
+                            _c("img", {
+                              attrs: { src: "/img/arrow-right.svg" }
+                            }),
+                            _vm._v("\n          Prev News\n        ")
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.nextPostId
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "next-post",
+                            attrs: { to: "/post/" + _vm.nextPostId }
+                          },
+                          [
+                            _vm._v("\n          Next News\n          "),
+                            _c("img", { attrs: { src: "/img/arrow-left.svg" } })
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _vm.post.data.post.mainTitle
                   ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
@@ -19789,7 +19838,7 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "content"
-                      ? _c("p", [_vm._v(_vm._s(post.value))])
+                      ? _c("div", [_vm._v(_vm._s(post.value))])
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "image"
@@ -37549,6 +37598,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/home/env.js":
+/*!*****************************************!*\
+  !*** ./resources/assets/js/home/env.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  TEST: true
+});
+
+/***/ }),
+
 /***/ "./resources/assets/js/home/home.js":
 /*!******************************************!*\
   !*** ./resources/assets/js/home/home.js ***!
@@ -37572,6 +37636,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+window.env = __webpack_require__(/*! ./env */ "./resources/assets/js/home/env.js")["default"];
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('in-viewport', vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_2___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_3___default.a, {
   dynamic: true,
@@ -37747,7 +37812,7 @@ function () {
             //   store.state.user.loaded = true;
             // }
             // console.log(window.app, 'qweqweqwe');
-            if (window.app) {
+            if (window.app && !env.TEST) {
               _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('global/ad/open');
             }
 
@@ -37804,8 +37869,8 @@ __webpack_require__.r(__webpack_exports__);
     open: function open(context) {
       app.$modal.show(_components_modals_Ad_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
         adaptive: true,
-        width: 800,
-        height: 'auto'
+        width: '90%',
+        height: '90%'
       }, {
         'before-close': function beforeClose(e) {
           if (context.getters.canClose) {

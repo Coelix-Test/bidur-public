@@ -96,17 +96,33 @@ export default {
     margin:20px 12px;
   }
   .vue-poll .ans-cnt .ans-no-vote {
+    position: relative;
     border-radius: 0;
-    border-color: #0E0E0E;
+    border-color: transparent;
+    border-width:0;
+    padding:12px 24px 12px 12px;
+    text-align: right;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .vue-poll .ans-cnt .ans-no-vote:before {
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:10px;
+    height:100%;
+    background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);
   }
   .vue-poll .ans-cnt .ans-no-vote:hover {
-    background-color: #0E0E0E;
+    /* background-color: #0E0E0E; */
   }
   .vue-poll .ans-cnt .ans-no-vote .txt {
     color:#0E0E0E;
   }
   .vue-poll .ans-cnt .ans-no-vote:hover .txt {
-    color:#fff;
+    /* color:#fff; */
   }
 
   .vue-poll .ans-cnt .ans .bg {

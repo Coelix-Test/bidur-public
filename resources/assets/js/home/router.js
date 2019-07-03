@@ -61,10 +61,9 @@ router.beforeEach(async (to, from, next) => {
 
   // console.log(window.app, 'qweqweqwe');
 
-  if(window.app) {
+  if(window.app && !env.TEST) {
     store.dispatch('global/ad/open')
   }
-
 
   next();
 });
