@@ -2648,7 +2648,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        console.log(response);
+        console.log(response.data.post.sections[10]);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
@@ -2663,8 +2663,7 @@ __webpack_require__.r(__webpack_exports__);
             axios.post('/getAllPostsByHashtag', {
               hashtag_id: _this.hashtags[i]
             }).then(function (response) {
-              _this.relevantPosts = response.data;
-              console.log('response', _this.relevantPosts);
+              _this.relevantPosts = response.data; // console.log('response', this.relevantPosts);
             });
           }
         } // delete this.postData[1];
@@ -2682,7 +2681,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     addVote: function addVote(obj, id) {
       console.log(obj);
-      console.log(id);
+      console.log(id); // axios
+      //   .post('/submitSurvey',{ surveyId : id, answer : obj.value })
+      //     .then(response => {
+      //       console.log(response);
+      //     });
     }
   },
   created: function created() {

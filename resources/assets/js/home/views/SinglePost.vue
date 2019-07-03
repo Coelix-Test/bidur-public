@@ -127,7 +127,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response);
+            console.log(response.data.post.sections[10]);
 
             this.post = response;
             this.errorMessage = false;
@@ -142,7 +142,7 @@ export default {
                   .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
                     .then(response => {
                       this.relevantPosts = response.data;
-                      console.log('response', this.relevantPosts);
+                      // console.log('response', this.relevantPosts);
                     })
               }
 
@@ -162,6 +162,11 @@ export default {
     addVote(obj, id){
         console.log(obj);
         console.log(id);
+        // axios
+        //   .post('/submitSurvey',{ surveyId : id, answer : obj.value })
+        //     .then(response => {
+        //       console.log(response);
+        //     });
     }
   },
   created() {
