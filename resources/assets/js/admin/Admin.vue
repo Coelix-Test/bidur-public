@@ -65,7 +65,6 @@
             a{
                 display: flex;
                 text-decoration: none;
-                font-family: 'Rubik';
                 color: #333;
                 font-size: 18px;
                 width: 185px;
@@ -83,7 +82,6 @@
             }
         }
         .title{
-            font-family: 'Playfair Display';
             font-weight: bold;
             color: #fff;
             font-size: 80px;

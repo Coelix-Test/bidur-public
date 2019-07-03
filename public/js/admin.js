@@ -2793,6 +2793,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2825,6 +2835,30 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateImage: function updateImage(image) {
       this.$emit('update:image', image);
+    },
+    addAnswer: function addAnswer() {
+      var newAnswers = this.answers;
+      newAnswers.push('');
+      this.$emit('update:answers', newAnswers);
+    },
+    editAnswer: function editAnswer(index, value) {
+      var newAnswers = this.answers;
+      newAnswers = newAnswers.map(function (answer, i) {
+        if (i === index) {
+          answer = value;
+        }
+
+        return answer;
+      });
+      this.$emit('update:answers', newAnswers);
+    },
+    deleteAnswer: function deleteAnswer(index) {
+      var newAnswers = this.answers;
+      console.log(index);
+      newAnswers = newAnswers.filter(function (answer, i) {
+        return i !== index;
+      });
+      this.$emit('update:answers', newAnswers);
     }
   }
 });
@@ -2981,6 +3015,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_posts_PostImageText_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/posts/PostImageText.vue */ "./resources/assets/js/admin/components/posts/PostImageText.vue");
 /* harmony import */ var _components_posts_PostVideo_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../components/posts/PostVideo.vue */ "./resources/assets/js/admin/components/posts/PostVideo.vue");
 /* harmony import */ var _components_posts_PostSurvey_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../components/posts/PostSurvey.vue */ "./resources/assets/js/admin/components/posts/PostSurvey.vue");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 //
 //
 //
@@ -3209,7 +3251,28 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
       sectionIndex++; //append sections
-      //send ajax
+
+      this.sections.forEach(function (section) {
+        var _loop = function _loop() {
+          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+              key = _Object$entries$_i[0],
+              value = _Object$entries$_i[1];
+
+          if (Array.isArray(value)) {
+            value.forEach(function (item) {
+              postData.append('sections[' + sectionIndex + '][' + key + '][]', item);
+            });
+          } else {
+            postData.append('sections[' + sectionIndex + '][' + key + ']', value);
+          }
+        };
+
+        for (var _i = 0, _Object$entries = Object.entries(section); _i < _Object$entries.length; _i++) {
+          _loop();
+        }
+
+        sectionIndex++;
+      }); //send ajax
 
       var url = '/createPost';
       axios({
@@ -3564,7 +3627,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".admin-nav {\n  height: 415px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  background: url(\"/img/admin-nav.png\") no-repeat center;\n  background-size: cover;\n}\n.admin-nav .nav-menu {\n  display: -webkit-box;\n  display: flex;\n  list-style-type: none;\n  background-color: #fff;\n  border-radius: 10px;\n  padding: 0;\n  margin: 0;\n  overflow: hidden;\n}\n.admin-nav .nav-menu li {\n  position: relative;\n  border-left: 1px solid transparent;\n}\n.admin-nav .nav-menu li:after {\n  content: \"\";\n  display: block;\n  width: 1px;\n  height: 34px;\n  background: #333;\n  position: absolute;\n  top: 7px;\n  left: -1px;\n}\n.admin-nav .nav-menu li:last-child {\n  border: none;\n}\n.admin-nav .nav-menu li:last-child:after {\n  display: none;\n}\n.admin-nav .nav-menu a {\n  display: -webkit-box;\n  display: flex;\n  text-decoration: none;\n  font-family: \"Rubik\";\n  color: #333;\n  font-size: 18px;\n  width: 185px;\n  height: 50px;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  text-align: center;\n}\n.admin-nav .nav-menu a:hover, .admin-nav .nav-menu a.router-link-exact-active {\n  background: #EB5757;\n  color: #fff;\n}\n.admin-nav .title {\n  font-family: \"Playfair Display\";\n  font-weight: bold;\n  color: #fff;\n  font-size: 80px;\n}", ""]);
+exports.push([module.i, ".admin-nav {\n  height: 415px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  background: url(\"/img/admin-nav.png\") no-repeat center;\n  background-size: cover;\n}\n.admin-nav .nav-menu {\n  display: -webkit-box;\n  display: flex;\n  list-style-type: none;\n  background-color: #fff;\n  border-radius: 10px;\n  padding: 0;\n  margin: 0;\n  overflow: hidden;\n}\n.admin-nav .nav-menu li {\n  position: relative;\n  border-left: 1px solid transparent;\n}\n.admin-nav .nav-menu li:after {\n  content: \"\";\n  display: block;\n  width: 1px;\n  height: 34px;\n  background: #333;\n  position: absolute;\n  top: 7px;\n  left: -1px;\n}\n.admin-nav .nav-menu li:last-child {\n  border: none;\n}\n.admin-nav .nav-menu li:last-child:after {\n  display: none;\n}\n.admin-nav .nav-menu a {\n  display: -webkit-box;\n  display: flex;\n  text-decoration: none;\n  color: #333;\n  font-size: 18px;\n  width: 185px;\n  height: 50px;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  text-align: center;\n}\n.admin-nav .nav-menu a:hover, .admin-nav .nav-menu a.router-link-exact-active {\n  background: #EB5757;\n  color: #fff;\n}\n.admin-nav .title {\n  font-weight: bold;\n  color: #fff;\n  font-size: 80px;\n}", ""]);
 
 // exports
 
@@ -3735,7 +3798,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".survey-container[data-v-28322bcd] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image[data-v-28322bcd] {\n  margin-bottom: 50px;\n}", ""]);
+exports.push([module.i, ".survey-component-container[data-v-28322bcd] {\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  padding-bottom: 100px;\n  position: relative;\n}\n.survey-container[data-v-28322bcd] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image[data-v-28322bcd] {\n  margin-bottom: 50px;\n}\n.survey-title[data-v-28322bcd] {\n  width: 100%;\n  padding: 8px 8px;\n  color: #333333;\n  font-size: 36px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n}\n.answers-list[data-v-28322bcd] {\n  margin-top: 20px;\n}\n.delete-btn[data-v-28322bcd] {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n  cursor: pointer;\n}\n.answer-item[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  position: relative;\n  width: 85%;\n  height: 58px;\n  overflow: hidden;\n  padding-left: 50px;\n  margin: 20px 0;\n  border-bottom-left-radius: 50px;\n  border-top-left-radius: 50px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  background: #FFFFFF;\n}\n.answer-item input[data-v-28322bcd] {\n  height: 100%;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border: none;\n}\n.answer-item .delete-answer[data-v-28322bcd] {\n  left: 20px;\n  top: 14px;\n}\n.answer-item[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 14px;\n  margin-left: 20px;\n  height: 100%;\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+1):before {\n  background: url(\"/img/icons/answer-gradient-1.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+2):before {\n  background: url(\"/img/icons/answer-gradient-2.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+3):before {\n  background: url(\"/img/icons/answer-gradient-3.svg\");\n}\n.add-new-answer[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n  margin-top: 30px;\n}\n.add-new-answer[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 38px;\n  height: 38px;\n  background: url(\"/img/icons/plus-in-red-circle.svg\") no-repeat center;\n  background-size: cover;\n  margin-left: 12px;\n}\n.delete-self[data-v-28322bcd] {\n  bottom: 25px;\n  left: 25px;\n}", ""]);
 
 // exports
 
@@ -24463,7 +24526,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "wrapper" },
+    { staticClass: "wrapper survey-component-container" },
     [
       _c("image-input", {
         staticClass: "image",
@@ -24471,7 +24534,62 @@ var render = function() {
         on: { "update:value": _vm.updateImage }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "survey-container" })
+      _c("div", { staticClass: "survey-container" }, [
+        _c("input", {
+          staticClass: "survey-title",
+          attrs: { type: "text", placeholder: "Survey title" },
+          on: {
+            input: function($event) {
+              return _vm.$emit("update:title", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "answers-list" },
+          [
+            _vm._l(_vm.answers, function(answer, index) {
+              return _c("div", { staticClass: "answer-item" }, [
+                _c("input", {
+                  staticClass: "answer-title",
+                  attrs: { type: "text", placeholder: "Answer" },
+                  on: {
+                    input: function($event) {
+                      return _vm.editAnswer(index, $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "delete-answer delete-btn",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteAnswer(index)
+                    }
+                  }
+                })
+              ])
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "add-new-answer", on: { click: _vm.addAnswer } },
+              [_vm._v("\n                Add answer\n            ")]
+            )
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "delete-self delete-btn",
+        on: {
+          click: function($event) {
+            return _vm.$emit("deleteSection", _vm.index)
+          }
+        }
+      })
     ],
     1
   )
@@ -44446,7 +44564,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
