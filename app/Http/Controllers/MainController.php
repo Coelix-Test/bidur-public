@@ -368,7 +368,7 @@ class MainController extends Controller
 
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
-        $title = $post->getAllTitles()->first();
+//        $title = $post->getAllTitles()->first();
         $author = $post->author;
 
         if (!empty($content)){
@@ -437,11 +437,12 @@ class MainController extends Controller
         }else{
             $allInfo['author'] = '';
         }
-        if (!empty($title)){
-            $allInfo['title'] = $title->titleText;
-        }else{
-            $allInfo['title'] = '';
-        }
+        $allInfo['title'] = $post->metaTitle;
+//        if (!empty($title)){
+//            $allInfo['title'] = $title->titleText;
+//        }else{
+//            $allInfo['title'] = '';
+//        }
         if (!empty($excerpt)){
             $allInfo['excerpt'] = $excerpt.'...';
         }else{
