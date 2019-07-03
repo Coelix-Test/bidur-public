@@ -235,16 +235,16 @@ class MainController extends Controller
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
             foreach ($surveys as $survey) {
-                $flag = true;
-                if (\Auth::check()){
-                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
-                    if (empty($ass)){
-                        $flag = false;
-                    }
-                }
+//                $flag = true;
+//                if (\Auth::check()){
+//                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
+//                    if (empty($ass)){
+//                        $flag = false;
+//                    }
+//                }
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
-                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
+//                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
                 $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
                 $questionsWithAnswers[$survey->order]['id'] = $survey->id;
                 $i = 0;
@@ -500,14 +500,14 @@ class MainController extends Controller
     }
 
     public function addEmojiReaction(Request $request){
-        $userId = \Auth::id();
+//        $userId = \Auth::id();
         $postId = $request->get('postId');
         $reaction = $request->get('reaction');
-        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
-            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
-        }
+//        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
+//            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
+//        }
         Emoji::create([
-            'authorId' => $userId,
+//            'authorId' => $userId,
             'reaction' => $reaction,
             'postId' => $postId,
         ]);
@@ -515,10 +515,12 @@ class MainController extends Controller
     }
 
     public function getEmojiReaction(Request $request){
-        $userId = \Auth::id();
+//        $userId = \Auth::id();
         $postId = $request->get('postId');
 
-        $reaction = Emoji::where('postId', $postId)->where('authorId', $userId)->get();
+        $reaction = Emoji::where('postId', $postId)
+//                            ->where('authorId', $userId)
+                            ->get();
         if (!$reaction->isEmpty()){
             return ['success' => true, 'reaction' => $reaction->reaction];
         }else{
@@ -531,18 +533,18 @@ class MainController extends Controller
         $answerNumber = $request->get('answer');
 
         $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber+1)->first();
-
-        $answer = SurveyAnswers::where('answer', $variant->id)->where('userId', \Auth::id())->first();
-//        dd($answer);
-        if (empty($answer)){
+//
+//        $answer = SurveyAnswers::where('answer', $variant->id)->where('userId', \Auth::id())->first();
+////        dd($answer);
+//        if (empty($answer)){
             SurveyAnswers::create([
                 'answer' => $variant->id,
-                'userId' => \Auth::id(),
+//                'userId' => \Auth::id(),
                 'surveyId' => $surveyId,
             ]);
             return json_encode(['success' => true]);
-        }else{
-            return json_encode(['success' => false]);
-        }
+//        }else{
+//            return json_encode(['success' => false]);
+//        }
     }
 }
