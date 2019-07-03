@@ -1967,6 +1967,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2647,7 +2648,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        // console.log(response);
+        console.log(response);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
@@ -18784,6 +18785,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "single-post-example" }, [
+      _c("a", { attrs: { href: "", onclick: "history.back()" } }, [
+        _vm._v("BACK")
+      ]),
+      _vm._v(" "),
       _c("h1", [_vm._v("Post have no content!")]),
       _vm._v(" "),
       _c("section", { staticClass: "full-width image" }, [
@@ -19411,7 +19416,7 @@ var render = function() {
                           }
                         },
                         [
-                          _vm._v("\n          Next News \n          "),
+                          _vm._v("\n          Next News\n          "),
                           _c("img", { attrs: { src: "/img/arrow-left.svg" } })
                         ]
                       )
@@ -19461,7 +19466,7 @@ var render = function() {
                                 staticClass: "poll",
                                 on: {
                                   addvote: function($event) {
-                                    return _vm.addVote($event, 1)
+                                    return _vm.addVote($event, post.id)
                                   }
                                 }
                               },

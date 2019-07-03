@@ -11,7 +11,7 @@
             Prev News
           </a>
           <a v-if="nextPostId" class="next-post" @click="changePost($event,nextPostId)" :href="nextPostId">
-            Next News 
+            Next News
             <img src="/img/arrow-left.svg">
           </a>
         </nav>
@@ -37,7 +37,7 @@
 
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
-          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, 1)"/>
+          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
 
           <iframe
             v-if="post.type == 'video'"
@@ -127,7 +127,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response);
+            console.log(response);
 
             this.post = response;
             this.errorMessage = false;
