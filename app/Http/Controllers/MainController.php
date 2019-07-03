@@ -355,11 +355,17 @@ class MainController extends Controller
                 $postIds[] = $hashtagPost->postId;
             }
         }
+        if (!isset($postId) && !empty($postId)){
+            foreach ($postIds as $postId) {
+                $postsWithContent[$postId] = $this->getContent($postId);
+            }
+            return json_encode($postsWithContent);
 
-        foreach ($postIds as $postId) {
-            $postsWithContent[$postId] = $this->getContent($postId);
         }
-        return json_encode($postsWithContent);
+        else{
+            return json_encode(['success' => false]);
+        }
+
 
     }
 
@@ -368,8 +374,7 @@ class MainController extends Controller
 
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
-        $title = $post->getAllTitles()->first();
-        // dd($title);
+//        $title = $post->getAllTitles()->first();
         $author = $post->author;
 
         if (!empty($content)){
@@ -438,11 +443,12 @@ class MainController extends Controller
         }else{
             $allInfo['author'] = '';
         }
-        if (!empty($title)){
-            $allInfo['title'] = $title->titleText;
-        }else{
-            $allInfo['title'] = '';
-        }
+        $allInfo['title'] = $post->metaTitle;
+//        if (!empty($title)){
+//            $allInfo['title'] = $title->titleText;
+//        }else{
+//            $allInfo['title'] = '';
+//        }
         if (!empty($excerpt)){
             $allInfo['excerpt'] = $excerpt.'...';
         }else{
