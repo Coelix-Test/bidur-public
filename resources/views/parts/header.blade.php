@@ -35,7 +35,7 @@
 
               foreach ($postTitles as $postTitle) {
                   ?>
-                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing.<?= $postTitle['title']?></li>
+                  <li><?= $postTitle['title']?></li>
                   <?php
               }
               ?>
@@ -44,7 +44,7 @@
               <?php
               foreach ($postTitles as $postTitle) {
               ?>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing.<?= $postTitle['title']?></li>
+              <li><?= $postTitle['title']?></li>
               <?php
               }
               ?>

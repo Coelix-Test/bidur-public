@@ -42,11 +42,11 @@
                         </post-image-text>
                     </template>
                     <template v-else-if="section.type === 'video'">
-                        <post-video
+                        <post-video-link
                             v-bind.sync="section"
                             :index="index"
                             @deleteSection="deleteSection">
-                        </post-video>
+                        </post-video-link>
                     </template>
                     <template v-else-if="section.type === 'survey'">
                         <post-survey
@@ -113,7 +113,8 @@ import PostTitle from './../components/posts/PostTitle.vue';
 import PostText from './../components/posts/PostText.vue';
 import PostImage from './../components/posts/PostImage.vue';
 import PostImageText from './../components/posts/PostImageText.vue';
-import PostVideo from './../components/posts/PostVideo.vue';
+// import PostVideo from './../components/posts/PostVideo.vue';
+import PostVideoLink from './../components/posts/PostVideoLink.vue';
 import PostSurvey from './../components/posts/PostSurvey.vue';
 
 export default {
@@ -124,6 +125,7 @@ export default {
             author: '',
             date: new Date(),
             sections: [
+                {type: 'video', value: ''},
                 {type: 'survey', image: '', title: '', answers: []}
             ]
         }
@@ -134,7 +136,7 @@ export default {
         PostText,
         PostImage,
         PostImageText,
-        PostVideo,
+        PostVideoLink,
         PostSurvey
     },
     methods: {
@@ -154,7 +156,8 @@ export default {
                     sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
                     break;
                 case 'video':
-                    sectionData = {type: 'video', value: '', description: ''};
+                    // sectionData = {type: 'video', value: '', description: ''};
+                    sectionData = {type: 'video', value: ''};
                     break;
                 case 'survey':
                     sectionData = {type: 'survey', image: '', title: '', answers: [] };
@@ -194,6 +197,19 @@ export default {
             sectionIndex++;
 
             //append sections
+            this.sections.forEach((section) => {
+                for (const [key, value] of Object.entries(section)) {
+                    if(Array.isArray(value)){
+                        value.forEach(item => {
+                            postData.append('sections['+sectionIndex+']['+key+'][]', item);
+                        });
+                    }
+                    else{
+                        postData.append('sections['+sectionIndex+']['+key+']', value);
+                    }
+                }
+                sectionIndex++;
+            });
 
             //send ajax
             let url = '/createPost';
