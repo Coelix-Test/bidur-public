@@ -1,5 +1,6 @@
 <template>
   <div class="single-post-example">
+    <a href="" onclick="history.back()">BACK</a>
     <h1>Post have no content!</h1>
     <section class="full-width image">
       <img src="/img/singlePREV.png" alt="">

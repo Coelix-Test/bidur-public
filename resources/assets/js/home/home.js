@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
+import VueModal from 'vue-js-modal'
+
+Vue.directive('in-viewport', InViewportDirective);
+Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 
 require('./bootstrap');
 window.$ = window.jQuery = require('jquery');
@@ -12,15 +16,15 @@ Vue.config.devtools = true;
 Vue.config.performance = true;
 
 import router from './router';
+import store from './store';
 
 import App from './App.vue';
 
 window.app = new Vue({
   router: router,
+  store: store,
   render: h => h(App)
 }).$mount('#home');
-
-Vue.directive('in-viewport', InViewportDirective);
 
 $('#header_main .celebrities-slider').slick({
   slidesToShow: 12,

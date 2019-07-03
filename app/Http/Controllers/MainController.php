@@ -13,6 +13,8 @@ use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\SurveyAnswers;
+use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -183,6 +185,7 @@ class MainController extends Controller
         }catch (\Exception $e){
             return ['success' => false, 'message' => 'no post found'];//not found
         }
+        $fullPost['mainTitle'] = $post->metaTitle;
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
             foreach ($titles as $title) {
@@ -232,9 +235,17 @@ class MainController extends Controller
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
             foreach ($surveys as $survey) {
+//                $flag = true;
+//                if (\Auth::check()){
+//                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
+//                    if (empty($ass)){
+//                        $flag = false;
+//                    }
+//                }
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
-
+                $questionsWithAnswers[$survey->order]['img'] = $survey->image;
+//                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
                 $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
                 $questionsWithAnswers[$survey->order]['id'] = $survey->id;
                 $i = 0;
@@ -243,6 +254,7 @@ class MainController extends Controller
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
                     $z++;
                 }
             }
@@ -250,29 +262,22 @@ class MainController extends Controller
                 $fullPost['sections'][$key] = $questionsWithAnswer;
             }
         }
-//        dd($questionsWithAnswers);
-
-//        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
-////            dd($questionsWithAnswer);
-//            $total = 0;
-//
-//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers){
-//                $total = $answers + $total;
-//            }
-//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers) {
-//                $questionsWithAnswers[$outerKey]['value']['answers'][$innerKey] = round(($answers/$total) * 100, 1);
-//            }
-//        }
-//        dd($questionsWithAnswers);
 
 
-        $fullPost['author'] = User::find($post->author)->name;
+        $fullPost['author'] = $post->author;
         $fullPost['date'] = $this->getDate($post);
 
+        $hashtags = HashtagPosts::where('postId', $post->id)->get();
 
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
+        if (!$hashtags->isEmpty()){
+            foreach ($hashtags as $hashtag) {
+                $fullPost['hashtags'][] = $hashtag->hashtagId;
+            }
+        }
+
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
     }
 
@@ -361,11 +366,18 @@ class MainController extends Controller
                 $postIds[] = $hashtagPost->postId;
             }
         }
+//        dd($postIds);
+        if (isset($postIds) && !empty($postIds)){
+            foreach ($postIds as $postId) {
+                $postsWithContent[$postId] = $this->getContent($postId);
+            }
+            return json_encode($postsWithContent);
 
-        foreach ($postIds as $postId) {
-            $postsWithContent[$postId] = $this->getContent($postId);
         }
-        return json_encode($postsWithContent);
+        else{
+            return json_encode(['success' => false]);
+        }
+
 
     }
 
@@ -374,7 +386,7 @@ class MainController extends Controller
 
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
-        $title = $post->getAllTitles()->first();
+//        $title = $post->getAllTitles()->first();
         $author = $post->author;
 
         if (!empty($content)){
@@ -443,11 +455,12 @@ class MainController extends Controller
         }else{
             $allInfo['author'] = '';
         }
-        if (!empty($title)){
-            $allInfo['title'] = $title->titleText;
-        }else{
-            $allInfo['title'] = '';
-        }
+        $allInfo['title'] = $post->metaTitle;
+//        if (!empty($title)){
+//            $allInfo['title'] = $title->titleText;
+//        }else{
+//            $allInfo['title'] = '';
+//        }
         if (!empty($excerpt)){
             $allInfo['excerpt'] = $excerpt.'...';
         }else{
@@ -488,14 +501,14 @@ class MainController extends Controller
     }
 
     public function addEmojiReaction(Request $request){
-        $userId = \Auth::id();
+//        $userId = \Auth::id();
         $postId = $request->get('postId');
         $reaction = $request->get('reaction');
-        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
-            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
-        }
+//        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
+//            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
+//        }
         Emoji::create([
-            'authorId' => $userId,
+//            'authorId' => $userId,
             'reaction' => $reaction,
             'postId' => $postId,
         ]);
@@ -503,14 +516,76 @@ class MainController extends Controller
     }
 
     public function getEmojiReaction(Request $request){
-        $userId = \Auth::id();
+//        $userId = \Auth::id();
         $postId = $request->get('postId');
 
-        $reaction = Emoji::where('postId', $postId)->where('authorId', $userId)->get();
-        if (!$reaction->isEmpty()){
-            return ['success' => true, 'reaction' => $reaction->reaction];
-        }else{
-            return ['success' => false];
+        $reaction = Emoji::where('postId', $postId);
+//                            ->where('authorId', $userId);
+
+        $reactions['love']      = 0;
+        $reactions['laugh']     = 0;
+        $reactions['wow']       = 0;
+        $reactions['cry']       = 0;
+        $reactions['angry']     = 0;
+        $reactions['like']      = 0;
+        $reactions['dislike']   = 0;
+
+        $love   = $reaction->where('reaction', 'love')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $laugh  = $reaction->where('reaction', 'laugh')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $wow    = $reaction->where('reaction', 'wow')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $cry    = $reaction->where('reaction', 'cry')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $angry  = $reaction->where('reaction', 'angry')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $like   = $reaction->where('reaction', 'like')->get();
+        $reaction = Emoji::where('postId', $postId);
+        $dislike = $reaction->where('reaction', 'dislike')->get();
+
+        if (!$love->isEmpty()){
+            $reactions['love'] = $love->count();
         }
+        if (!$laugh->isEmpty()){
+            $reactions['laugh'] = $laugh->count();
+        }
+        if (!$wow->isEmpty()){
+            $reactions['wow'] = $wow->count();
+        }
+        if (!$cry->isEmpty()){
+            $reactions['cry'] = $cry->count();
+        }
+        if (!$angry->isEmpty()){
+            $reactions['angry'] = $angry->count();
+        }
+        if (!$like->isEmpty()){
+            $reactions['like'] = $like->count();
+        }
+        if (!$dislike->isEmpty()){
+            $reactions['dislike'] = $dislike->count();
+        }
+
+        return json_encode($reactions);
+    }
+
+    public function addSurveyVote(Request $request){
+        $surveyId = $request->get('surveyId');
+        $answerNumber = $request->get('answer');
+
+        $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber+1)->first();
+//
+//        $answer = SurveyAnswers::where('answer', $variant->id)->where('userId', \Auth::id())->first();
+////        dd($answer);
+//        if (empty($answer)){
+            SurveyAnswers::create([
+                'answer' => $variant->id,
+//                'userId' => \Auth::id(),
+                'surveyId' => $surveyId,
+            ]);
+            return json_encode(['success' => true]);
+//        }else{
+//            return json_encode(['success' => false]);
+//        }
     }
 }
