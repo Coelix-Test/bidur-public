@@ -241,9 +241,9 @@ class MainController extends Controller
                 $i = 0;
                 $z = 0;
                 foreach ($questions as $question) {
-                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
-                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
-                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$question->id]['value'] = $i++;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$question->id]['text'] = $question->question;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$question->id]['votes'] = count($question->answers);
                     $z++;
                 }
             }
