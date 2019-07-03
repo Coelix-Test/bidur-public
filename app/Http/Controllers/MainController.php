@@ -540,14 +540,26 @@ class MainController extends Controller
         if (!$love->isEmpty()){
             $reactions['love'] = $love->count();
         }
-
-        dd($reactions);
-
-        if (!$reaction->isEmpty()){
-            return ['success' => true, 'reaction' => $reaction->reaction];
-        }else{
-            return ['success' => false];
+        if (!$laugh->isEmpty()){
+            $reactions['laugh'] = $laugh->count();
         }
+        if (!$wow->isEmpty()){
+            $reactions['wow'] = $wow->count();
+        }
+        if (!$cry->isEmpty()){
+            $reactions['cry'] = $cry->count();
+        }
+        if (!$angry->isEmpty()){
+            $reactions['angry'] = $angry->count();
+        }
+        if (!$like->isEmpty()){
+            $reactions['like'] = $like->count();
+        }
+        if (!$dislike->isEmpty()){
+            $reactions['dislike'] = $dislike->count();
+        }
+
+        return json_encode($reactions);
     }
 
     public function addSurveyVote(Request $request){
