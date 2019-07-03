@@ -1,36 +1,36 @@
 <template>
   <div class="emoji">
-    <button @click="select" class="item">
+    <button @click="select" class="item love">
       <img src="/img/emoji-7.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item">
+    <button @click="select" class="item laugh">
       <img src="/img/emoji-6.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item selected">
+    <button @click="select" class="item wow">
       <img src="/img/emoji-5.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item">
+    <button @click="select" class="item cry">
       <img src="/img/emoji-4.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item">
+    <button @click="select" class="item angry">
       <img src="/img/emoji-3.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item">
+    <button @click="select" class="item like">
       <img src="/img/emoji-2.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item">
+    <button @click="select" class="item dislike">
       <img src="/img/emoji-1.svg">
       <div class="num">12</div>
     </button>
@@ -39,6 +39,12 @@
 
 <script>
 export default {
+  props : {
+    postId : {}
+  },
+  created() {
+    console.log(this.postId);
+  },
   methods: {
     select(item) {
 

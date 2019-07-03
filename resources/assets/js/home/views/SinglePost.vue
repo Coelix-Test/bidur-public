@@ -23,10 +23,11 @@
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{ post.data.post.date }}</span>
           </div>
-          <a href="#" class="share">
+          <!-- <a href="#" class="share">
             ףתש
             <img src="/img/shareArrow.svg" alt="">
-          </a>
+          </a> -->
+          <share />
 
         </div>
         <section :class="post.type" v-for="post in postData" >
@@ -64,7 +65,7 @@
         <div class="opinion">
           <h2>Your opinion</h2>
           <div class="emoji-wrapper">
-
+            <emoji v-if="postId" :postId="postId" />
           </div>
         </div>
       </div>
@@ -76,7 +77,7 @@
     <div class="related-posts">
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="post in relevantPosts" class="related-post">
+        <slide v-for="post in relevantPosts" class="related-post" :key="post.id">
             <img :src="post.img" alt="">
             <div class="related-post-content">
               <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
@@ -100,10 +101,11 @@
 <script>
 
 import VuePoll from 'vue-poll'
+import Share from './../components/single-post/Share.vue'
+import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
-import VueLikeDislikeButtons from 'vue-like-dislike-buttons'
 
 export default {
   data() {
@@ -117,12 +119,14 @@ export default {
       hashtags : null,
       relevantPosts : [],
       postContentSections : null,
+      postId : null,
     }
   },
   methods : {
     changePost($event, id) {
       event.preventDefault()
       this.sync(id);
+      this.postId = id;
     },
     computeNumber(value) {
       // console.log(value);
@@ -131,9 +135,10 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response.data.post.sections);
-
+            // console.log(response.data);
+            // this.postId = id;
             this.post = response;
+            // this.postId = response.
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
@@ -176,10 +181,11 @@ export default {
   created() {
 
     this.sync(this.$route.params.id);
-
+    this.postId = this.$route.params.id;
   },
   beforeRouteUpdate(to) {
     this.sync(to.params.id);
+    this.postId = to.params.id;
   },
   components : {
     SideNews,
@@ -187,7 +193,8 @@ export default {
     Carousel,
     Slide,
     SinglePostExample,
-    VueLikeDislikeButtons
+    Share,
+    Emoji
   }
 }
 

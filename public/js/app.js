@@ -12589,6 +12589,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./resources/assets/scss/home/home.scss":
+/*!**********************************************!*\
+  !*** ./resources/assets/scss/home/home.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -12663,15 +12674,16 @@ if ($('.run-stroke').length) {
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/assets/scss/admin/admin.scss ***!
-  \******************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/assets/scss/admin/admin.scss ./resources/assets/scss/home/home.scss ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\scss\admin\admin.scss */"./resources/assets/scss/admin/admin.scss");
+__webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\scss\admin\admin.scss */"./resources/assets/scss/admin/admin.scss");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\scss\home\home.scss */"./resources/assets/scss/home/home.scss");
 
 
 /***/ })
