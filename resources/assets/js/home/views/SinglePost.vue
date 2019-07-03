@@ -16,7 +16,7 @@
           </a>
         </nav>
 
-        <h1>{{ post.data.post.mainTitle }}</h1>
+        <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <div class="post-meta">
 
           <div class="info">
@@ -136,7 +136,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response);
+            console.log(response);
 
             this.post = response;
             this.errorMessage = false;

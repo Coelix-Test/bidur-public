@@ -2673,7 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        // console.log(response);
+        console.log(response);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
@@ -19449,7 +19449,9 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))]),
+                _vm.post.data.post.mainTitle
+                  ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "post-meta" }, [
                   _c("div", { staticClass: "info" }, [
