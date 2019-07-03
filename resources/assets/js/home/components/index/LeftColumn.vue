@@ -31,6 +31,7 @@ export default {
     }
   },
   mounted() {
+    console.log(posts);
      //console.log('randomPosts', this.randomPosts);
     // axios.post('/getTwoRandomPosts').then(response => {
     //   //this.twoPosts = (response.data);
