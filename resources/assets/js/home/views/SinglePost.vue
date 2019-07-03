@@ -6,12 +6,12 @@
       <div v-if="post" class="post-content">
         <nav>
 
-          <a v-if="prevPostId" @click="changePost($event,prevPostId)" :href="prevPostId">
+          <a v-if="prevPostId" class="prev-post" @click="changePost($event,prevPostId)" :href="prevPostId">
             <img src="/img/arrow-right.svg">
-            Prev News {{ prevPostId }}
+            Prev News
           </a>
-          <a v-if="nextPostId" @click="changePost($event,nextPostId)" :href="nextPostId">
-            Next News {{ nextPostId }}
+          <a v-if="nextPostId" class="next-post" @click="changePost($event,nextPostId)" :href="nextPostId">
+            Next News 
             <img src="/img/arrow-left.svg">
           </a>
         </nav>
@@ -71,7 +71,6 @@
     </div>
     <div class="related-posts">
 
-
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
         <slide v-for="post in relevantPosts" class="related-post">
             <img :src="post.img" alt="">
@@ -87,6 +86,7 @@
             </div>
         </slide>
       </carousel>
+
     </div>
   </div>
 
@@ -113,15 +113,6 @@ export default {
       hashtags : null,
       relevantPosts : [],
       postContentSections : null,
-      options: { //delete
-          question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
-          answers: [
-              { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
-              { value: 2, text: 'Normal, i know it', votes: 35 },
-              { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
-              { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
-          ]
-      }
     }
   },
   methods : {
@@ -217,6 +208,10 @@ export default {
   .post-content nav a {
     color:#BDBDBD;
     font-size: 18px;
+  }
+  .post-content nav .next-post {
+    flex-grow:2;
+    text-align: left;
   }
   .post-content h1 {
     color:#333333;
