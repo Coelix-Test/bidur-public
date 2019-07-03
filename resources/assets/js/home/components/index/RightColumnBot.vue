@@ -15,6 +15,7 @@ export default {
     data() {
         return {
             options: {
+                // showResults : true,
                 question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
                 answers: [
                     { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
@@ -30,7 +31,7 @@ export default {
     },
     methods: {
         addVote(obj){
-            console.log('You voted ' + obj.value + '!');
+            console.log(obj);
         }
     },
 }

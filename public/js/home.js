@@ -2278,6 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       options: {
+        // showResults : true,
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
         answers: [{
           value: 1,
@@ -2304,7 +2305,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addVote: function addVote(obj) {
-      console.log('You voted ' + obj.value + '!');
+      console.log(obj);
     }
   }
 });
