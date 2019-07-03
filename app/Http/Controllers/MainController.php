@@ -531,12 +531,19 @@ class MainController extends Controller
         $reactions['dislike']   = 0;
 
         $love   = $reaction->where('reaction', 'love')->get();
+        $reaction = Emoji::where('postId', $postId);
         $laugh  = $reaction->where('reaction', 'laugh')->get();
+        $reaction = Emoji::where('postId', $postId);
         $wow    = $reaction->where('reaction', 'wow')->get();
+        $reaction = Emoji::where('postId', $postId);
         $cry    = $reaction->where('reaction', 'cry')->get();
+        $reaction = Emoji::where('postId', $postId);
         $angry  = $reaction->where('reaction', 'angry')->get();
+        $reaction = Emoji::where('postId', $postId);
         $like   = $reaction->where('reaction', 'like')->get();
+        $reaction = Emoji::where('postId', $postId);
         $dislike = $reaction->where('reaction', 'dislike')->get();
+
         if (!$love->isEmpty()){
             $reactions['love'] = $love->count();
         }
