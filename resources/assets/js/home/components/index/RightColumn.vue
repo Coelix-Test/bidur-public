@@ -1,6 +1,6 @@
 <template>
   <div class="right-column">
-    <article class="birthdayPost">
+    <article v-in-viewport.once class="birthdayPost">
       <a href="#">
         <div class="overlay"></div>
         <img  alt="">
@@ -8,15 +8,16 @@
 
       </a>
     </article>
-    <ul v-if="posts" class="posts">
+    <ul v-in-viewport.once v-if="posts" class="posts">
       <li v-for="post in posts">
         <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
+          <!-- {{post}} -->
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
-            <span class="author">by Author</span>
-            <span class="post-date">{{post.time}}</span>
+            <span class="author">by {{ post.author }}</span>
+            <span class="post-date">{{ post.time }}</span>
           </p>
         </router-link>
       </li>
@@ -36,20 +37,12 @@ export default {
   data() {
     return {
       randomPosts : [],
-      posts : [],
+      posts : this.data,
       birthdayPost : []
     }
   },
   created() {
-    // console.log(this.data)
-    this.data.forEach( (el)=> {
-      axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-         this.posts.push(response.data);
 
-
-       });
-    });
-  //  console.log('this.posts', this.posts);
   }
 }
 </script>
@@ -74,6 +67,14 @@ export default {
     height:450px;
     overflow: hidden;
     background-color: rgba(100,100,100,0.7);
+
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(100px);
+  }
+  .birthdayPost.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   .birthdayPost a {
     color:#fff;
@@ -93,6 +94,14 @@ export default {
     margin: 0;
     padding: 0;
     height:450px;
+
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translateX(100px);
+  }
+  ul.posts.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   ul.posts li {
     list-style-type: none;

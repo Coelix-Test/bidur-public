@@ -5,6 +5,7 @@
 /vendor
 /public/images
 .env
+package-lock.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

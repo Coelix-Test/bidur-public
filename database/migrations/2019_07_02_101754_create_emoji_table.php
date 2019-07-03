@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PostImages extends Migration
+class CreateEmojiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class PostImages extends Migration
      */
     public function up()
     {
-        Schema::create('postImages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('postId')->unsigned();
-            $table->string('url', 191);
-            $table->string('description', 191);
-            $table->integer('order')->default(1);
+        Schema::create('emoji', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('authorId');
+            $table->string('reaction', 191);
+            $table->unsignedInteger('postId');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class PostImages extends Migration
      */
     public function down()
     {
-        Schema::drop('postImages');
+        Schema::dropIfExists('emoji');
     }
 }

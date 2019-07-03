@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PostVideo extends Model
 {
     protected $guarded = ['id'];
-    protected $table = 'postVideos';
+    protected $table = 'post_videos';
     public function post(){
         return $this->belongsTo(Post::class);
     }

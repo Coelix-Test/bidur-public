@@ -1,13 +1,11 @@
 <template>
   <main>
     <div class="main-content">
-      <DefaultPost/>
-      <QuadPost/>
-      <DefaultPost/>
-      <DefaultPost/>
-      <QuadPost/>
-      <DefaultPost/>
-      <DefaultPost/>
+      <emoji/>
+      <template v-for="(item, i) in data">
+        <DefaultPost :data="item" v-if="!isQuad(i)"/>
+        <QuadPost :data="item" v-else/>
+      </template>
     </div>
     <side-news/>
   </main>
@@ -17,19 +15,37 @@
 import SideNews from './../components/SideNews.vue';
 import DefaultPost from './../components/all/DefaultPost.vue';
 import QuadPost from './../components/all/QuadPost.vue';
+import Emoji from './../components/single-post/Emoji.vue';
 
 export default {
+  data() {
+    return {
+      data: [],
+    };
+  },
   components: {
     SideNews,
     DefaultPost,
     QuadPost,
+    Emoji,
+  },
+  methods: {
+    isQuad(index) {
+      return (index + 1) % 3 == 0;
+    },
+    sync(id) {
+      return axios.post('/getAllPostsByHashtag', {
+        hashtag_id: id,
+      }).then(res => {
+        this.data = res.data;
+      });
+    }
   },
   created() {
-    axios.post('/getAllPostsByHashtag', {
-      hashtag_id: 3,
-    }).then(res => {
-      console.log(res.data);
-    });
+    this.sync(this.$route.params.id);
+  },
+  beforeRouteUpdate(to) {
+    this.sync(to.params.id);
   }
 }
 </script>
@@ -42,6 +58,8 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 30px;
+  margin:32px auto 0;
+  max-width:1440px;
   .main-content {
     flex-grow: 1;
     display: flex;

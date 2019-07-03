@@ -43,4 +43,16 @@ class Post extends Model
     public function getRating(){
         return $this->hasMany(Rating::class, 'postId', 'id');
     }
+
+    public function getLikableImage(){
+        return $this->hasMany(SingleLikableImage::class, 'postId', 'id');
+    }
+
+    public function getCompare(){
+        return $this->hasMany(SelectOne::class, 'postId', 'id');
+    }
+
+    public function getEmoji(){
+        return $this->hasMany(Emoji::class, 'postId', 'id');
+    }
 }

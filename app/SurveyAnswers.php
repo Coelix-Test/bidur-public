@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SurveyAnswers extends Model
 {
-    protected $table = 'surveyAnswers';
+    protected $table = 'survey_answers';
     protected $guarded = ['id'];
 
     public function variant(){

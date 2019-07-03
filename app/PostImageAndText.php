@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostImageAndText extends Model
 {
-    protected $table = 'imageAndText';
+    protected $table = 'image_and_text';
     protected $guarded = ['id'];
 
     public function getPost(){

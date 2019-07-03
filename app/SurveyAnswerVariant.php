@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SurveyAnswerVariant extends Model
 {
-    protected $table = 'surveyAnswerVariants';
+    protected $table = 'survey_answer_variants';
 
     protected $guarded = ['id'];
 

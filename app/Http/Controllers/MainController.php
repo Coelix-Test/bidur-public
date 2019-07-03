@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Emoji;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
@@ -12,6 +13,7 @@ use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -83,55 +85,7 @@ class MainController extends Controller
             $excerpt = '';
         }
         $rating = (int)$post->getRating()->avg('rating');
-        $time = $post->created_at;
-        $time = $time->timestamp;
-        $now = Carbon::now();
-        $now = $now->timestamp;
-        $diff = $now - $time;
-        $hours = 0;
-        $days = 0;
-        $weeks = 0;
-        $flag = false;
-        while ($diff > 3600){
-            $diff = $diff - 3600;
-            $hours++;
-            if ($hours == 23){
-                $days++;
-                $hours = 0;
-            }
-            if ($days == 7){
-                $weeks++;
-                $days = 0;
-            }
-            if ($weeks == 4 && $days > 1){
-                $flag = true;
-                break;
-            }
-        }
-        $time = $post->created_at;
-        if ($flag == true){
-            $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
-        }else{
-            if ($hours <= 23 && $days == 0 && $weeks == 0){
-                if ($hours = 0){
-                    $createdAt = 'just now';
-                }else{
-                    $createdAt = $hours.' hours ago';
-                }
-            }else{
-                if ($days <= 6 && $weeks == 0){
-                    $createdAt = $days.' days ago';
-                }else{
-                    if ($weeks <= 4){
-                        if ($weeks == 1){
-                            $createdAt = $weeks.' week ago';
-                        }else{
-                            $createdAt = $weeks.' weeks ago';
-                        }
-                    }
-                }
-            }
-        }
+        $createdAt = $this->getDate($post);
 
         if (!empty($thumbnail)){
             $allInfo['img'] = $thumbnail->url;
@@ -223,56 +177,55 @@ class MainController extends Controller
         return $hashtagArray;
     }
 
-    public function showSinglePost($id){
+    public function showSinglePost($id =1){
         try{
             $post = Post::findOrFail($id);
         }catch (\Exception $e){
-            dd($e);
-            return view();//not found
+            return ['success' => false, 'message' => 'no post found'];//not found
         }
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
             foreach ($titles as $title) {
-                $fullPost[$title->order]['type'] = 'title';
-                $fullPost[$title->order]['value'] = $title->titleText;
+                $fullPost['sections'][$title->order]['type'] = 'title';
+                $fullPost['sections'][$title->order]['value'] = $title->titleText;
             }
         }
         $contents = $post->getAllContents;
         if (isset($contents[0])){
             foreach ($contents as $content) {
-                $fullPost[$content->order]['type'] = 'content';
-                $fullPost[$content->order]['value'] = $content->contentText;
+                $fullPost['sections'][$content->order]['type'] = 'content';
+                $fullPost['sections'][$content->order]['value'] = $content->contentText;
             }
         }
 
         $images = $post->getAllImages;
         if (isset($images[0])){
             foreach ($images as $image) {
-                $fullPost[$image->order]['type'] = 'image';
-                $fullPost[$image->order]['value'] = $image->url;
+                $fullPost['sections'][$image->order]['type'] = 'image';
+                $fullPost['sections'][$image->order]['value'] = $image->url;
             }
         }
 
         $videos = $post->getAllVideos;
         if (isset($videos[0])){
             foreach ($videos as $video) {
-                $fullPost[$video->order]['type'] = 'video';
-                $fullPost[$video->order]['value'] = $video->url;
+                $fullPost['sections'][$video->order]['type'] = 'video';
+                $fullPost['sections'][$video->order]['value'] = $video->url;
             }
         }
 
         $imagesWithTexts = $post->getAllImagesWithTexts;
         if (isset($imagesWithTexts[0])){
             foreach ($imagesWithTexts as $section) {
-                $fullPost[$section->order]['type'] = 'imageWithText';
+                $fullPost['sections'][$section->order]['type'] = 'imageWithText';
                 if (!empty($section->title)){
-                    $fullPost[$section->order]['title'] = $section->title;
+                    $fullPost['sections'][$section->order]['title'] = $section->title;
                 }else{
-                    $fullPost[$section->order]['title'] = null;
+                    $fullPost['sections'][$section->order]['title'] = null;
                 }
-                $fullPost[$section->order]['url'] = $section->url;
-                $fullPost[$section->order]['imagePosition'] = $section->imagePosition;
-                $fullPost[$section->order]['content'] = $section->content;
+                $fullPost['sections'][$section->order]['url'] = $section->url;
+                $fullPost['sections'][$section->order]['imagePosition'] = $section->imagePosition;
+                $fullPost['sections'][$section->order]['content'] = $section->content;
             }
         }
 
@@ -282,34 +235,98 @@ class MainController extends Controller
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
 
-                $questionsWithAnswers[$survey->order]['surveyTitle'] = $survey->question;
+                $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
+                $questionsWithAnswers[$survey->order]['id'] = $survey->id;
+                $i = 0;
+                $z = 0;
                 foreach ($questions as $question) {
-                    $questionsWithAnswers[$survey->order]['answers'][$question->question] = count($question->answers);
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
+                    $z++;
                 }
             }
-        }
-
-        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
-
-            $total = 0;
-
-            foreach ($questionsWithAnswer['answers'] as $innerKey => $answers){
-                $total = $answers + $total;
-            }
-            foreach ($questionsWithAnswer['answers'] as $innerKey => $answers) {
-                $questionsWithAnswers[$outerKey]['answers'][$innerKey] = round(($answers/$total) * 100, 1);
+            foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
+                $fullPost['sections'][$key] = $questionsWithAnswer;
             }
         }
+//        dd($questionsWithAnswers);
 
-        foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
-            $fullPost[$key] = $questionsWithAnswer;
-        }
+//        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
+////            dd($questionsWithAnswer);
+//            $total = 0;
+//
+//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers){
+//                $total = $answers + $total;
+//            }
+//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers) {
+//                $questionsWithAnswers[$outerKey]['value']['answers'][$innerKey] = round(($answers/$total) * 100, 1);
+//            }
+//        }
+//        dd($questionsWithAnswers);
+
+
+        $fullPost['author'] = User::find($post->author)->name;
+        $fullPost['date'] = $this->getDate($post);
 
 
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
+    }
+
+    public function getDate($post){
+        $time = $post->created_at;
+        $time = $time->timestamp;
+        $now = Carbon::now();
+        $now = $now->timestamp;
+        $diff = $now - $time;
+        $hours = 0;
+        $days = 0;
+        $weeks = 0;
+        $flag = false;
+        while ($diff > 3600){
+            $diff = $diff - 3600;
+            $hours++;
+            if ($hours == 23){
+                $days++;
+                $hours = 0;
+            }
+            if ($days == 7){
+                $weeks++;
+                $days = 0;
+            }
+            if ($weeks == 4 && $days > 1){
+                $flag = true;
+                break;
+            }
+        }
+        $time = $post->created_at;
+        if ($flag == true){
+            $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
+        }else{
+            if ($hours <= 23 && $days == 0 && $weeks == 0){
+                if ($hours = 0){
+                    $createdAt = 'just now';
+                }else{
+                    $createdAt = $hours.' hours ago';
+                }
+            }else{
+                if ($days <= 6 && $weeks == 0){
+                    $createdAt = $days.' days ago';
+                }else{
+                    if ($weeks <= 4){
+                        if ($weeks == 1){
+                            $createdAt = $weeks.' week ago';
+                        }else{
+                            $createdAt = $weeks.' weeks ago';
+                        }
+                    }
+                }
+            }
+        }
+        return $createdAt;
     }
 
     public function showInsta(){
@@ -334,15 +351,14 @@ class MainController extends Controller
 
     public function getAllPostsByHashtag(Request $request){
 //        $posts = Post::all();
+
         $hashtagId = $request->get('hashtag_id');
 
         $hashtagPosts = HashtagPosts::all();
 
         foreach ($hashtagPosts as $hashtagPost) {
-//            dd($hashtagId);
             if ($hashtagPost->hashtagId == $hashtagId){
                 $postIds[] = $hashtagPost->postId;
-
             }
         }
 
@@ -462,12 +478,39 @@ class MainController extends Controller
         $fourth = Post::where('id', $section->fourth)->first();
         $fifth = Post::where('id', $section->fifth)->first();
         $sixth = Post::where('id', $section->sixth)->first();
-        $data['first'] = $this->getContent($first);
-        $data['$second'] = $this->getContent($second);
-        $data['$third'] = $this->getContent($third);
-        $data['$fourth'] = $this->getContent($fourth);
-        $data['$fifth'] = $this->getContent($fifth);
-        $data['$sixth'] = $this->getContent($sixth);
+        $data['1'] = $this->getContent($first->id);
+        $data['2'] = $this->getContent($second->id);
+        $data['3'] = $this->getContent($third->id);
+        $data['4'] = $this->getContent($fourth->id);
+        $data['5'] = $this->getContent($fifth->id);
+        $data['6'] = $this->getContent($sixth->id);
         return $data;
+    }
+
+    public function addEmojiReaction(Request $request){
+        $userId = \Auth::id();
+        $postId = $request->get('postId');
+        $reaction = $request->get('reaction');
+        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
+            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
+        }
+        Emoji::create([
+            'authorId' => $userId,
+            'reaction' => $reaction,
+            'postId' => $postId,
+        ]);
+        return ['success' => true, 'reaction' => $reaction];
+    }
+
+    public function getEmojiReaction(Request $request){
+        $userId = \Auth::id();
+        $postId = $request->get('postId');
+
+        $reaction = Emoji::where('postId', $postId)->where('authorId', $userId)->get();
+        if (!$reaction->isEmpty()){
+            return ['success' => true, 'reaction' => $reaction->reaction];
+        }else{
+            return ['success' => false];
+        }
     }
 }

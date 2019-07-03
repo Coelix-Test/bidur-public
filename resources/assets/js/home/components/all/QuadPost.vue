@@ -1,25 +1,25 @@
 <template>
-  <div class="quad-post">
-    <img src="https://via.placeholder.com/1140x620">
+  <router-link :to="'/post/' + data.id" class="quad-post">
+    <img :src="data.img">
+    <div class="gradient"></div>
     <div class="content">
       <div class="title">
-        6 JOBS THAT PROBABLY
-        WON’T BE AROUND IN 10 YEARS
+        {{ data.title }}
       </div>
       <div class="subtitle">
-        by Helen Nilova | 5 hours ago
+        by {{ data.author }} | 5 hours ago
       </div>
       <div class="text">
-        Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...Whether you’re trying to figure out, Boss Girl has the rundown on the 6 jobs that probably...
+        {{ data.excerpt }}
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   props: {
-
+    data: {},
   },
   computed: {
     text() {
@@ -40,6 +40,17 @@ export default {
   img {
     width: 100%;
     object-fit: cover;
+
+  }
+  .gradient {
+    background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
   }
   .content {
     position: absolute;
@@ -53,25 +64,22 @@ export default {
     align-items: flex-end;
     padding-left: 50px;
     padding-bottom: 110px;
-
+    color: #fff;
     .title {
       text-align: left;
       font-weight: bold;
       font-size: 36px;
-      color: #333333;
       max-width: 600px;
     }
     .subtitle {
       font-weight: 300;
       font-size: 24px;
       text-align: left;
-      color: #333333;
       margin: 10px 0;
     }
     .text {
       font-size: 18px;
       text-align: left;
-      color: #828282;
       max-width: 600px;
     }
   }

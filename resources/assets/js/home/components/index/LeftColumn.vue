@@ -1,14 +1,14 @@
 <template>
   <div class="left-column posts-column">
 
-    <article v-for="post in twoPosts" >
+    <article v-in-viewport.once v-for="post in posts" >
       <router-link :to="'/post/'+post.id">
         <div class="overlay"></div>
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
         <p>
-          <span class="author">by Author</span>
-          <span class="post-date">{{post.time}}</span>
+          <span class="author">by {{ post.author }}</span>
+          <span class="post-date">{{ post.time }}</span>
         </p>
       </router-link>
     </article>
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       twoPosts : [],
-      randomPosts : this.data,
+      posts : this.data,
 
     }
   },
@@ -41,9 +41,9 @@ export default {
     // });
   },
   created() {
-    this.data.forEach( (el)=> {
-      axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });
-    } );
+    // this.data.forEach( (el)=> {
+    //   axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });
+    // } );
   }
 }
 </script>
@@ -65,6 +65,13 @@ export default {
     margin-bottom: 16px;
     height:450px;
     overflow: hidden;
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translateX(-100px);
+  }
+  .posts-column article.in-viewport {
+    transform: translateX(0);
+    opacity: 1;
   }
   .posts-column article:nth-child(1) a {
     box-sizing: border-box;
@@ -79,7 +86,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    background: linear-gradient(60deg, #F2C94C, #F2C94C, #F2C94C, #F2C94C, #CD9E25, #CD9E25, #CD9E25, #CD9E25);
     z-index: -1;
     animation: animatedgradient 3s ease alternate infinite;
     background-size: 300% 300%;
@@ -97,6 +104,7 @@ export default {
     text-decoration: none;
     overflow:hidden;
   }
+
   .posts-column article img {
     position: absolute;
     top: 0;
@@ -170,14 +178,14 @@ export default {
     }
   }
   @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+  	0% {
+  		background-position: 0% 50%;
+  	}
+  	50% {
+  		background-position: 100% 50%;
+  	}
+  	100% {
+  		background-position: 0% 50%;
+  	}
+  }
 </style>
