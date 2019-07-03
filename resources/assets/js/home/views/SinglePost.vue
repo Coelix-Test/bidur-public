@@ -23,10 +23,11 @@
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{ post.data.post.date }}</span>
           </div>
-          <a href="#" class="share">
+          <!-- <a href="#" class="share">
             ףתש
             <img src="/img/shareArrow.svg" alt="">
-          </a>
+          </a> -->
+          <share />
 
         </div>
         <section :class="post.type" v-for="post in postData" >
@@ -37,7 +38,11 @@
 
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
-          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          <div v-if="post.type == 'survey'" class="poll">
+            <img :src="post.img" alt="">
+            <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          </div>
+
 
           <iframe
             v-if="post.type == 'video'"
@@ -60,7 +65,7 @@
         <div class="opinion">
           <h2>Your opinion</h2>
           <div class="emoji-wrapper">
-
+            <emoji v-if="postId" :postId="postId" />
           </div>
         </div>
       </div>
@@ -72,7 +77,7 @@
     <div class="related-posts">
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="post in relevantPosts" class="related-post">
+        <slide v-for="post in relevantPosts" class="related-post" :key="post.id">
             <img :src="post.img" alt="">
             <div class="related-post-content">
               <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
@@ -96,10 +101,11 @@
 <script>
 
 import VuePoll from 'vue-poll'
+import Share from './../components/single-post/Share.vue'
+import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
-import VueLikeDislikeButtons from 'vue-like-dislike-buttons'
 
 export default {
   data() {
@@ -113,12 +119,14 @@ export default {
       hashtags : null,
       relevantPosts : [],
       postContentSections : null,
+      postId : null,
     }
   },
   methods : {
     changePost($event, id) {
       event.preventDefault()
       this.sync(id);
+      this.postId = id;
     },
     computeNumber(value) {
       // console.log(value);
@@ -127,7 +135,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response.data.post.sections[10]);
+            // console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
@@ -137,7 +145,6 @@ export default {
              if(this.hashtags != null) {
                var relevantPosts = [];
               for(let i =0;i < this.hashtags.length;i++) {
-                // console.log(this.hashtags[i]);
                 axios
                   .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
                     .then(response => {
@@ -147,9 +154,6 @@ export default {
               }
 
             }
-            // delete this.postData[1];
-            // this.relevantPosts = relevantPosts;
-            // console.log(this.relevantPosts);
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
           })
@@ -172,10 +176,11 @@ export default {
   created() {
 
     this.sync(this.$route.params.id);
-
+    this.postId = this.$route.params.id;
   },
   beforeRouteUpdate(to) {
     this.sync(to.params.id);
+    this.postId = to.params.id;
   },
   components : {
     SideNews,
@@ -183,7 +188,8 @@ export default {
     Carousel,
     Slide,
     SinglePostExample,
-    VueLikeDislikeButtons
+    Share,
+    Emoji
   }
 }
 
@@ -228,6 +234,11 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+  .poll img {
+    width:100%;
+    object-fit: cover;
+    margin-bottom: 16px;
   }
   .post-meta .info a,
   .post-meta .info {

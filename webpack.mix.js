@@ -18,7 +18,8 @@ mix.js('resources/js/app.js', 'public/js')
 mix
   .js('resources/assets/js/admin/admin.js', 'public/js')
   .sass('resources/assets/scss/admin/admin.scss', 'public/css')
-  .js('resources/assets/js/home/home.js', 'public/js');
+  .js('resources/assets/js/home/home.js', 'public/js')
+  .sass('resources/assets/scss/home/home.scss', 'public/css')
 
 mix.webpackConfig({
 	resolve: {
@@ -29,4 +30,4 @@ mix.webpackConfig({
 	},
 });
 
-mix.browserSync('newspaper');
+mix.browserSync('newspaper.test');

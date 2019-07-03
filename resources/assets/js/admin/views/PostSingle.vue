@@ -194,6 +194,19 @@ export default {
             sectionIndex++;
 
             //append sections
+            this.sections.forEach((section) => {
+                for (const [key, value] of Object.entries(section)) {
+                    if(Array.isArray(value)){
+                        value.forEach(item => {
+                            postData.append('sections['+sectionIndex+']['+key+'][]', item);
+                        });
+                    }
+                    else{
+                        postData.append('sections['+sectionIndex+']['+key+']', value);
+                    }
+                }
+                sectionIndex++;
+            });
 
             //send ajax
             let url = '/createPost';

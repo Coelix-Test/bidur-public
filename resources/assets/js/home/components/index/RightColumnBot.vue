@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         addVote(obj){
-            console.log('You voted ' + obj.value + '!');
+            console.log(obj);
         }
     },
 }

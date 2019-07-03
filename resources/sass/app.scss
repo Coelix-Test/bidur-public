@@ -1,5 +1,7 @@
 // Fonts
 
+// font-family: 'Assistant', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Assistant:300,400,600,700&display=swap&subset=hebrew');
 // font-family: 'Rubik', sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap&subset=hebrew');
 // font-family: 'Playfair Display', serif;
@@ -28,6 +30,7 @@ $container-max-widths: (
   lg: 960px,
   xl: 1500px
 );
+@import '~normalize.css';
 @import '~bootstrap/scss/bootstrap';
 @import '~magnific-popup/dist/magnific-popup.css';
 @import '~slick-carousel/slick/slick.css';
