@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
 
+window.env = require('./env').default;
+
 Vue.directive('in-viewport', InViewportDirective);
 Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 

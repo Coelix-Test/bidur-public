@@ -24,8 +24,8 @@ export default {
     open(context) {
       app.$modal.show(Ad, {}, {
         adaptive: true,
-        width: 800,
-        height: 'auto',
+        width: '90%',
+        height: '90%',
       }, {
         'before-close': e => {
           if(context.getters.canClose) {
