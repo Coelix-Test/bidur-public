@@ -245,7 +245,6 @@ class AdminController extends Controller
             'order' => $order
         ]);
     }
-
     public function createPostAddSurvey($variants, $title, $postId, $order, $image){
         if($image) {
             $name = time().'.'.$image->getClientOriginalExtension();
