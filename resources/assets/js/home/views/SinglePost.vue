@@ -74,11 +74,11 @@
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
         <slide v-for="post in relevantPosts" class="related-post">
-            <img :src="post.image" alt="">
+            <img :src="post.img" alt="">
             <div class="related-post-content">
-              <a href="#"><h3>{{ post.title }}</h3></a>
+              <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
               <p class="related-post-meta">
-                <span class="date">{{post.date}}</span>
+                <span class="date">{{post.time}}</span>
                 <span class="author">by {{post.author}}</span>
               </p>
               <p class="excerpt">
@@ -113,7 +113,7 @@ export default {
       hashtags : null,
       relevantPosts : [],
       postContentSections : null,
-      options: {
+      options: { //delete
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
           answers: [
               { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
@@ -144,18 +144,21 @@ export default {
             this.postTitle = this.postData[1].value;
             this.hashtags = this.post.data.post.hashtags;
              if(this.hashtags != null) {
+               var relevantPosts = [];
               for(let i =0;i < this.hashtags.length;i++) {
                 // console.log(this.hashtags[i]);
                 axios
                   .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
                     .then(response => {
-                      this.relevantPosts.push(response);
-                      console.log('response', response);
+                      this.relevantPosts = response.data;
+                      console.log('response', this.relevantPosts);
                     })
               }
-              console.log(this.relevantPosts);
+
             }
             // delete this.postData[1];
+            // this.relevantPosts = relevantPosts;
+            // console.log(this.relevantPosts);
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
           })
@@ -322,9 +325,12 @@ export default {
     align-items: flex-start;
     justify-content: flex-start;
     margin-top: 24px;
-  }
-  .related-post {
     text-decoration: none;
+  }
+  .related-post img {
+    width: 220px;
+    height: 180px;
+    object-fit: cover;
   }
   .related-post a {
     text-decoration-color: #333;
@@ -352,8 +358,8 @@ export default {
     margin-bottom: 8px;
   }
   .related-post-meta .author {
-    padding-right: 4px;
-    margin-right: 4px;
+    padding-right: 6px;
+    margin-right: 6px;
     border-right: 1px solid #333;
   }
   .related-post-content .excerpt {
