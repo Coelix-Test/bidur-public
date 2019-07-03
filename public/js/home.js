@@ -2636,6 +2636,7 @@ __webpack_require__.r(__webpack_exports__);
       nextPostId: null,
       postTitle: null,
       errorMessage: false,
+      hashtag: null,
       postContentSections: null,
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -2675,8 +2676,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
-        _this.postTitle = _this.postData[1].value;
-        delete _this.postData[1];
+        _this.postTitle = _this.postData[1].value; // this.hashtag = this.post.data.hashtags;
+        // delete this.postData[1];
+
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
         _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
       })["catch"](function (error) {
@@ -36371,7 +36373,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

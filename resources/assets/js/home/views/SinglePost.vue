@@ -110,6 +110,7 @@ export default {
       nextPostId : null,
       postTitle : null,
       errorMessage : false,
+      hashtag : null,
       postContentSections : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -140,7 +141,8 @@ export default {
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
-            delete this.postData[1];
+            // this.hashtag = this.post.data.hashtags;
+            // delete this.postData[1];
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
           })
