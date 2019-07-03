@@ -1,36 +1,36 @@
 <template>
   <div class="emoji">
-    <button @click="select" class="item love">
+    <button @click="select" class="item" id="love">
       <img src="/img/emoji-7.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item laugh">
+    <button @click="select" class="item" id="laugh">
       <img src="/img/emoji-6.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item wow">
+    <button @click="select" class="item" id="wow">
       <img src="/img/emoji-5.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item cry">
+    <button @click="select" class="item" id="cry">
       <img src="/img/emoji-4.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item angry">
+    <button @click="select" class="item" id="angry">
       <img src="/img/emoji-3.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item like">
+    <button @click="select" class="item" id="like">
       <img src="/img/emoji-2.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item dislike">
+    <button @click="select" class="item" id="dislike">
       <img src="/img/emoji-1.svg">
       <div class="num">12</div>
     </button>
@@ -43,11 +43,22 @@ export default {
     postId : {}
   },
   created() {
-    console.log(this.postId);
+    axios
+      .post('/getReaction',this.postId)
+        .then(response => {
+          console.log(response);
+        });
   },
   methods: {
     select(item) {
 
+      let emote = item.target.id
+      console.log(emote);
+      axios
+        .post('/addReaction',{ emote : emote })
+          .then(response => {
+            console.log(response);
+          });
     }
   }
 }
@@ -88,11 +99,13 @@ export default {
     border: 0;
     img {
       height: 60px;
+      pointer-events: none;
     }
     .num {
       font-weight: bold;
       font-size: 24px;
       line-height: 100%;
+      pointer-events: none;
     }
     &.selected {
       .num {

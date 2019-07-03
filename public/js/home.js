@@ -3246,10 +3246,20 @@ __webpack_require__.r(__webpack_exports__);
     postId: {}
   },
   created: function created() {
-    console.log(this.postId);
+    axios.post('/getReaction', this.postId).then(function (response) {
+      console.log(response);
+    });
   },
   methods: {
-    select: function select(item) {}
+    select: function select(item) {
+      var emote = item.target.id;
+      console.log(emote);
+      axios.post('/addReaction', {
+        emote: emote
+      }).then(function (response) {
+        console.log(response);
+      });
+    }
   }
 });
 
@@ -3609,9 +3619,7 @@ __webpack_require__.r(__webpack_exports__);
 
       return axios.post('/post/' + id).then(function (response) {
         // console.log(response.data);
-        // this.postId = id;
-        _this.post = response; // this.postId = response.
-
+        _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
         _this.postTitle = _this.postData[1].value;
@@ -3621,17 +3629,13 @@ __webpack_require__.r(__webpack_exports__);
           var relevantPosts = [];
 
           for (var i = 0; i < _this.hashtags.length; i++) {
-            // console.log(this.hashtags[i]);
             axios.post('/getAllPostsByHashtag', {
               hashtag_id: _this.hashtags[i]
             }).then(function (response) {
               _this.relevantPosts = response.data; // console.log('response', this.relevantPosts);
             });
           }
-        } // delete this.postData[1];
-        // this.relevantPosts = relevantPosts;
-        // console.log(this.relevantPosts);
-
+        }
 
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
         _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
@@ -3818,7 +3822,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".emoji[data-v-42aed3d1] {\n  width: 700px;\n  height: 120px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  background: #FFFFFF;\n  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);\n  border-radius: 3px;\n  padding: 15px 40px 15px 40px;\n  position: relative;\n}\n.emoji[data-v-42aed3d1]::before {\n  content: \"\";\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  bottom: 100%;\n  width: 0;\n  height: 0;\n  border-left: 15px solid transparent;\n  border-right: 15px solid transparent;\n  border-bottom: 15px solid #fff;\n  position: absolute;\n}\n.emoji .item[data-v-42aed3d1] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  background: transparent;\n  border: 0;\n}\n.emoji .item img[data-v-42aed3d1] {\n  height: 60px;\n}\n.emoji .item .num[data-v-42aed3d1] {\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 100%;\n}\n.emoji .item.selected .num[data-v-42aed3d1] {\n  background: -webkit-gradient(linear, left top, right top, color-stop(0.91%, #F6AB62), color-stop(40.51%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n  -webkit-background-clip: text;\n          background-clip: text;\n  -webkit-text-fill-color: transparent;\n}", ""]);
+exports.push([module.i, ".emoji[data-v-42aed3d1] {\n  width: 700px;\n  height: 120px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  background: #FFFFFF;\n  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);\n  border-radius: 3px;\n  padding: 15px 40px 15px 40px;\n  position: relative;\n}\n.emoji[data-v-42aed3d1]::before {\n  content: \"\";\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  bottom: 100%;\n  width: 0;\n  height: 0;\n  border-left: 15px solid transparent;\n  border-right: 15px solid transparent;\n  border-bottom: 15px solid #fff;\n  position: absolute;\n}\n.emoji .item[data-v-42aed3d1] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  background: transparent;\n  border: 0;\n}\n.emoji .item img[data-v-42aed3d1] {\n  height: 60px;\n  pointer-events: none;\n}\n.emoji .item .num[data-v-42aed3d1] {\n  font-weight: bold;\n  font-size: 24px;\n  line-height: 100%;\n  pointer-events: none;\n}\n.emoji .item.selected .num[data-v-42aed3d1] {\n  background: -webkit-gradient(linear, left top, right top, color-stop(0.91%, #F6AB62), color-stop(40.51%, #B63E8E), to(#3F5EFB));\n  background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n  -webkit-background-clip: text;\n          background-clip: text;\n  -webkit-text-fill-color: transparent;\n}", ""]);
 
 // exports
 
@@ -19371,47 +19375,87 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "emoji" }, [
-    _c("button", { staticClass: "item love", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      { staticClass: "item", attrs: { id: "love" }, on: { click: _vm.select } },
+      [
+        _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item laugh", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      {
+        staticClass: "item",
+        attrs: { id: "laugh" },
+        on: { click: _vm.select }
+      },
+      [
+        _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item wow", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      { staticClass: "item", attrs: { id: "wow" }, on: { click: _vm.select } },
+      [
+        _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item cry", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      { staticClass: "item", attrs: { id: "cry" }, on: { click: _vm.select } },
+      [
+        _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item angry", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      {
+        staticClass: "item",
+        attrs: { id: "angry" },
+        on: { click: _vm.select }
+      },
+      [
+        _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item like", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ]),
+    _c(
+      "button",
+      { staticClass: "item", attrs: { id: "like" }, on: { click: _vm.select } },
+      [
+        _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    ),
     _vm._v(" "),
-    _c("button", { staticClass: "item dislike", on: { click: _vm.select } }, [
-      _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "num" }, [_vm._v("12")])
-    ])
+    _c(
+      "button",
+      {
+        staticClass: "item",
+        attrs: { id: "dislike" },
+        on: { click: _vm.select }
+      },
+      [
+        _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "num" }, [_vm._v("12")])
+      ]
+    )
   ])
 }
 var staticRenderFns = []

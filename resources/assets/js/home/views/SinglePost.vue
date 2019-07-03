@@ -136,9 +136,8 @@ export default {
         .post('/post/'+id)
           .then(response => {
             // console.log(response.data);
-            // this.postId = id;
+
             this.post = response;
-            // this.postId = response.
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
@@ -146,7 +145,6 @@ export default {
              if(this.hashtags != null) {
                var relevantPosts = [];
               for(let i =0;i < this.hashtags.length;i++) {
-                // console.log(this.hashtags[i]);
                 axios
                   .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
                     .then(response => {
@@ -156,9 +154,6 @@ export default {
               }
 
             }
-            // delete this.postData[1];
-            // this.relevantPosts = relevantPosts;
-            // console.log(this.relevantPosts);
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
           })
