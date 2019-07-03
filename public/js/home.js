@@ -2673,7 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        console.log(response);
+        // console.log(response);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
@@ -19563,41 +19563,37 @@ var render = function() {
                 }
               },
               _vm._l(_vm.relevantPosts, function(post) {
-                return _c(
-                  "slide",
-                  { key: _vm.i, staticClass: "related-post" },
-                  [
-                    _c("img", {
-                      attrs: { src: "/img/relatedPostPrev.png", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "related-post-content" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("h3", [
-                          _vm._v(
-                            "6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS"
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "related-post-meta" }, [
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("5 years ago")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "author" }, [
-                          _vm._v("by Helen Nikova")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "excerpt" }, [
+                return _c("slide", { staticClass: "related-post" }, [
+                  _c("img", {
+                    attrs: { src: "/img/relatedPostPrev.png", alt: "" }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "related-post-content" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("h3", [
                         _vm._v(
-                          "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
+                          "6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS"
                         )
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "related-post-meta" }, [
+                      _c("span", { staticClass: "date" }, [
+                        _vm._v("5 years ago")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "author" }, [
+                        _vm._v("by Helen Nikova")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "excerpt" }, [
+                      _vm._v(
+                        "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
+                      )
                     ])
-                  ]
-                )
+                  ])
+                ])
               }),
               1
             )

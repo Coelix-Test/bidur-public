@@ -73,7 +73,7 @@
 
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="post in relevantPosts" class="related-post" :key="i">
+        <slide v-for="post in relevantPosts" class="related-post">
             <img src="/img/relatedPostPrev.png" alt="">
             <div class="related-post-content">
               <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
@@ -136,7 +136,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response);
+            // console.log(response);
 
             this.post = response;
             this.errorMessage = false;
