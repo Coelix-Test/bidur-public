@@ -3245,6 +3245,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     postId: {}
   },
+  data: function data() {
+    return {};
+  },
   created: function created() {
     axios.post('/getReaction', {
       postId: this.postId
@@ -3257,7 +3260,8 @@ __webpack_require__.r(__webpack_exports__);
       var emote = item.target.id;
       console.log(emote);
       axios.post('/addReaction', {
-        emote: emote
+        reaction: emote,
+        postId: this.postId
       }).then(function (response) {
         console.log(response);
       });
@@ -19379,7 +19383,11 @@ var render = function() {
   return _c("div", { staticClass: "emoji" }, [
     _c(
       "button",
-      { staticClass: "item", attrs: { id: "love" }, on: { click: _vm.select } },
+      {
+        staticClass: "item",
+        attrs: { id: "dislike" },
+        on: { click: _vm.select }
+      },
       [
         _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
         _vm._v(" "),
@@ -19389,11 +19397,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      {
-        staticClass: "item",
-        attrs: { id: "laugh" },
-        on: { click: _vm.select }
-      },
+      { staticClass: "item", attrs: { id: "like" }, on: { click: _vm.select } },
       [
         _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
         _vm._v(" "),
@@ -19403,7 +19407,11 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "item", attrs: { id: "wow" }, on: { click: _vm.select } },
+      {
+        staticClass: "item",
+        attrs: { id: "angry" },
+        on: { click: _vm.select }
+      },
       [
         _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
         _vm._v(" "),
@@ -19423,11 +19431,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      {
-        staticClass: "item",
-        attrs: { id: "angry" },
-        on: { click: _vm.select }
-      },
+      { staticClass: "item", attrs: { id: "wow" }, on: { click: _vm.select } },
       [
         _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
         _vm._v(" "),
@@ -19437,7 +19441,11 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "item", attrs: { id: "like" }, on: { click: _vm.select } },
+      {
+        staticClass: "item",
+        attrs: { id: "laugh" },
+        on: { click: _vm.select }
+      },
       [
         _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
         _vm._v(" "),
@@ -19447,11 +19455,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      {
-        staticClass: "item",
-        attrs: { id: "dislike" },
-        on: { click: _vm.select }
-      },
+      { staticClass: "item", attrs: { id: "love" }, on: { click: _vm.select } },
       [
         _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
         _vm._v(" "),

@@ -1,16 +1,16 @@
 <template>
   <div class="emoji">
-    <button @click="select" class="item" id="love">
+    <button @click="select" class="item" id="dislike">
       <img src="/img/emoji-7.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item" id="laugh">
+    <button @click="select" class="item" id="like" >
       <img src="/img/emoji-6.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item" id="wow">
+    <button @click="select" class="item" id="angry">
       <img src="/img/emoji-5.svg">
       <div class="num">12</div>
     </button>
@@ -20,17 +20,17 @@
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item" id="angry">
+    <button @click="select" class="item" id="wow" >
       <img src="/img/emoji-3.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item" id="like">
+    <button @click="select" class="item" id="laugh">
       <img src="/img/emoji-2.svg">
       <div class="num">12</div>
     </button>
 
-    <button @click="select" class="item" id="dislike">
+    <button @click="select" class="item" id="love">
       <img src="/img/emoji-1.svg">
       <div class="num">12</div>
     </button>
@@ -41,6 +41,11 @@
 export default {
   props : {
     postId : {}
+  },
+  data() {
+    return {
+
+    }
   },
   created() {
     axios
@@ -55,7 +60,7 @@ export default {
       let emote = item.target.id
       console.log(emote);
       axios
-        .post('/addReaction',{ emote : emote })
+        .post('/addReaction',{ reaction : emote , postId : this.postId })
           .then(response => {
             console.log(response);
           });
