@@ -13,6 +13,8 @@ use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\SurveyAnswers;
+use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -514,6 +516,23 @@ class MainController extends Controller
             return ['success' => true, 'reaction' => $reaction->reaction];
         }else{
             return ['success' => false];
+        }
+    }
+
+    public function addSurveyVote(Request $request){
+        $surveyId = $request->get('surveyId');
+        $answerNumber = $request->get('answer');
+
+        $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber+1)->first();
+        $answer = SurveyAnswers::where('answer', $variant->id)->first();
+        if (empty($answer)){
+            SurveyAnswers::create([
+                'answer' => $variant->id,
+                'userId' => \Auth::id(),
+            ]);
+            return json_encode(['success' => true]);
+        }else{
+            return json_encode(['success' => false]);
         }
     }
 }

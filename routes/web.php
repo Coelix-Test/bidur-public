@@ -51,6 +51,8 @@ Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
 Route::post('/getReaction', 'MainController@getEmojiReaction');
 Route::post('/addReaction', 'MainController@addEmojiReaction');
+
+Route::post('/addSurveyVote', 'MainController@addSurveyVote');
     //->middleware('auth'); // пример ауса
 
 //admin
