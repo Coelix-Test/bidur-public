@@ -519,9 +519,30 @@ class MainController extends Controller
 //        $userId = \Auth::id();
         $postId = $request->get('postId');
 
-        $reaction = Emoji::where('postId', $postId)
-//                            ->where('authorId', $userId)
-                            ->get();
+        $reaction = Emoji::where('postId', $postId);
+//                            ->where('authorId', $userId);
+
+        $reactions['love']      = 0;
+        $reactions['laugh']     = 0;
+        $reactions['wow']       = 0;
+        $reactions['cry']       = 0;
+        $reactions['angry']     = 0;
+        $reactions['like']      = 0;
+        $reactions['dislike']   = 0;
+
+        $love   = $reaction->where('reaction', 'love')->get;
+        $laugh  = $reaction->where('reaction', 'laugh')->get;
+        $wow    = $reaction->where('reaction', 'wow')->get;
+        $cry    = $reaction->where('reaction', 'cry')->get;
+        $angry  = $reaction->where('reaction', 'angry')->get;
+        $like   = $reaction->where('reaction', 'like')->get;
+        $dislike = $reaction->where('reaction', 'dislike')->get;
+        if (!$love->isEmpty()){
+            $reactions['love'] = $love->count();
+        }
+
+        dd($reactions);
+
         if (!$reaction->isEmpty()){
             return ['success' => true, 'reaction' => $reaction->reaction];
         }else{
