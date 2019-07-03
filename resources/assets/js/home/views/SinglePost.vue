@@ -233,6 +233,11 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
+  .poll img {
+    width:100%;
+    object-fit: cover;
+    margin-bottom: 16px;
+  }
   .post-meta .info a,
   .post-meta .info {
     color:#333;
