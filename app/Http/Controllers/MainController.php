@@ -355,11 +355,17 @@ class MainController extends Controller
                 $postIds[] = $hashtagPost->postId;
             }
         }
+        if (!isset($postId) && !empty($postId)){
+            foreach ($postIds as $postId) {
+                $postsWithContent[$postId] = $this->getContent($postId);
+            }
+            return json_encode($postsWithContent);
 
-        foreach ($postIds as $postId) {
-            $postsWithContent[$postId] = $this->getContent($postId);
         }
-        return json_encode($postsWithContent);
+        else{
+            return json_encode(['success' => false]);
+        }
+
 
     }
 
