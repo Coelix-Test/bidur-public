@@ -355,7 +355,8 @@ class MainController extends Controller
                 $postIds[] = $hashtagPost->postId;
             }
         }
-        if (!isset($postId) && !empty($postId)){
+//        dd($postIds);
+        if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
                 $postsWithContent[$postId] = $this->getContent($postId);
             }
