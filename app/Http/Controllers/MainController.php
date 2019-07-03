@@ -183,6 +183,7 @@ class MainController extends Controller
         }catch (\Exception $e){
             return ['success' => false, 'message' => 'no post found'];//not found
         }
+        $fullPost['mainTitle'] = $post->metaTitle;
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
             foreach ($titles as $title) {
@@ -250,29 +251,22 @@ class MainController extends Controller
                 $fullPost['sections'][$key] = $questionsWithAnswer;
             }
         }
-//        dd($questionsWithAnswers);
-
-//        foreach ($questionsWithAnswers as $outerKey => $questionsWithAnswer) {
-////            dd($questionsWithAnswer);
-//            $total = 0;
-//
-//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers){
-//                $total = $answers + $total;
-//            }
-//            foreach ($questionsWithAnswer['value']['answers'] as $innerKey => $answers) {
-//                $questionsWithAnswers[$outerKey]['value']['answers'][$innerKey] = round(($answers/$total) * 100, 1);
-//            }
-//        }
-//        dd($questionsWithAnswers);
 
 
         $fullPost['author'] = User::find($post->author)->name;
         $fullPost['date'] = $this->getDate($post);
 
+        $hashtags = HashtagPosts::where('postId', $post->id)->get();
 
         ksort($fullPost);
         $previousPostId = Post::where('id', '<', $post->id)->max('id');
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
+        if (!$hashtags->isEmpty()){
+            foreach ($hashtags as $hashtag) {
+                $fullPost['hashtags'][] = $hashtag->id;
+            }
+        }
+
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
     }
 
