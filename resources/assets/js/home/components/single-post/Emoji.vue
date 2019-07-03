@@ -1,38 +1,38 @@
 <template>
-  <div class="emoji">
+  <div v-if="emojis" class="emoji">
     <button @click="select" class="item" id="dislike">
       <img src="/img/emoji-7.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.dislike }}</div>
     </button>
 
     <button @click="select" class="item" id="like" >
       <img src="/img/emoji-6.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.like }}</div>
     </button>
 
     <button @click="select" class="item" id="angry">
       <img src="/img/emoji-5.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.angry }}</div>
     </button>
 
     <button @click="select" class="item" id="cry">
       <img src="/img/emoji-4.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.cry }}</div>
     </button>
 
     <button @click="select" class="item" id="wow" >
       <img src="/img/emoji-3.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.wow }}</div>
     </button>
 
     <button @click="select" class="item" id="laugh">
       <img src="/img/emoji-2.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.laugh }}</div>
     </button>
 
     <button @click="select" class="item" id="love">
       <img src="/img/emoji-1.svg">
-      <div class="num">12</div>
+      <div class="num">{{ emojis.love }}</div>
     </button>
   </div>
 </template>
@@ -44,25 +44,41 @@ export default {
   },
   data() {
     return {
-
+      emojis : null,
+      preventClick : false,
+    }
+  },
+  watch : {
+    postId : function() {
+      this.preventClick = false;
+      this.sync(this.postId);
     }
   },
   created() {
-    axios
-      .post('/getReaction',{ postId : this.postId})
-        .then(response => {
-          console.log(response);
-        });
+    this.preventClick = false;
+    this.sync(this.postId);
   },
   methods: {
     select(item) {
-
-      let emote = item.target.id
-      console.log(emote);
+      if(this.preventClick == false) {
+        let emote = item.target.id
+        axios
+          .post('/addReaction',{ reaction : emote , postId : this.postId })
+            .then(response => {
+              axios
+                .post('/getReaction',{ postId : this.postId})
+                  .then(response => {
+                    this.emojis = response.data;
+                    this.preventClick = true;
+                  });
+            });
+      }
+    },
+    sync(postId) {
       axios
-        .post('/addReaction',{ reaction : emote , postId : this.postId })
+        .post('/getReaction',{ postId : postId})
           .then(response => {
-            console.log(response);
+            this.emojis = response.data;
           });
     }
   }

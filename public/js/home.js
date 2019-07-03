@@ -3246,24 +3246,47 @@ __webpack_require__.r(__webpack_exports__);
     postId: {}
   },
   data: function data() {
-    return {};
+    return {
+      emojis: null,
+      preventClick: false
+    };
+  },
+  watch: {
+    postId: function postId() {
+      this.preventClick = false;
+      this.sync(this.postId);
+    }
   },
   created: function created() {
-    axios.post('/getReaction', {
-      postId: this.postId
-    }).then(function (response) {
-      console.log(response);
-    });
+    this.preventClick = false;
+    this.sync(this.postId);
   },
   methods: {
     select: function select(item) {
-      var emote = item.target.id;
-      console.log(emote);
-      axios.post('/addReaction', {
-        reaction: emote,
-        postId: this.postId
+      var _this = this;
+
+      if (this.preventClick == false) {
+        var emote = item.target.id;
+        axios.post('/addReaction', {
+          reaction: emote,
+          postId: this.postId
+        }).then(function (response) {
+          axios.post('/getReaction', {
+            postId: _this.postId
+          }).then(function (response) {
+            _this.emojis = response.data;
+            _this.preventClick = true;
+          });
+        });
+      }
+    },
+    sync: function sync(postId) {
+      var _this2 = this;
+
+      axios.post('/getReaction', {
+        postId: postId
       }).then(function (response) {
-        console.log(response);
+        _this2.emojis = response.data;
       });
     }
   }
@@ -3390,8 +3413,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.sync(this.$route.params.id);
   },
-  beforeRouteUpdate: function beforeRouteUpdate(to) {
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
+    next();
   }
 });
 
@@ -3617,6 +3641,9 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       this.sync(id);
       this.postId = id;
+      this.$router.push({
+        path: "/post/".concat(id)
+      });
     },
     computeNumber: function computeNumber(value) {// console.log(value);
     },
@@ -3627,6 +3654,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
+        _this.postId = id;
         _this.postData = _this.post.data.post.sections;
         _this.postTitle = _this.postData[1].value;
         _this.hashtags = _this.post.data.post.hashtags;
@@ -3652,8 +3680,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addVote: function addVote(obj, id) {
-      console.log(obj);
-      console.log(id);
+      // console.log(obj);
+      // console.log(id);
       axios.post('/addSurveyVote', {
         surveyId: id,
         answer: obj.value
@@ -3666,9 +3694,10 @@ __webpack_require__.r(__webpack_exports__);
     this.sync(this.$route.params.id);
     this.postId = this.$route.params.id;
   },
-  beforeRouteUpdate: function beforeRouteUpdate(to) {
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     this.postId = to.params.id;
+    next();
   },
   components: {
     SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -19380,89 +19409,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "emoji" }, [
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "dislike" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
+  return _vm.emojis
+    ? _c("div", { staticClass: "emoji" }, [
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "dislike" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-7.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.dislike))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "like" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "like" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-6.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.like))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "angry" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "angry" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-5.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.angry))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "cry" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "cry" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-4.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.cry))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "wow" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "wow" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-3.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.wow))])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "item",
-        attrs: { id: "laugh" },
-        on: { click: _vm.select }
-      },
-      [
-        _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "laugh" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-2.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.emojis.laugh))
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "item", attrs: { id: "love" }, on: { click: _vm.select } },
-      [
-        _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "num" }, [_vm._v("12")])
-      ]
-    )
-  ])
+        _c(
+          "button",
+          {
+            staticClass: "item",
+            attrs: { id: "love" },
+            on: { click: _vm.select }
+          },
+          [
+            _c("img", { attrs: { src: "/img/emoji-1.svg" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "num" }, [_vm._v(_vm._s(_vm.emojis.love))])
+          ]
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19719,45 +19772,41 @@ var render = function() {
               "div",
               { staticClass: "post-content" },
               [
-                _c("nav", [
-                  _vm.prevPostId
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "prev-post",
-                          attrs: { href: _vm.prevPostId },
-                          on: {
-                            click: function($event) {
-                              return _vm.changePost($event, _vm.prevPostId)
-                            }
-                          }
-                        },
-                        [
-                          _c("img", { attrs: { src: "/img/arrow-right.svg" } }),
-                          _vm._v("\n          Prev News\n        ")
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.nextPostId
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "next-post",
-                          attrs: { href: _vm.nextPostId },
-                          on: {
-                            click: function($event) {
-                              return _vm.changePost($event, _vm.nextPostId)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v("\n          Next News\n          "),
-                          _c("img", { attrs: { src: "/img/arrow-left.svg" } })
-                        ]
-                      )
-                    : _vm._e()
-                ]),
+                _c(
+                  "nav",
+                  [
+                    _vm.prevPostId
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "prev-post",
+                            attrs: { to: "/post/" + _vm.prevPostId }
+                          },
+                          [
+                            _c("img", {
+                              attrs: { src: "/img/arrow-right.svg" }
+                            }),
+                            _vm._v("\n          Prev News\n        ")
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.nextPostId
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "next-post",
+                            attrs: { to: "/post/" + _vm.nextPostId }
+                          },
+                          [
+                            _vm._v("\n          Next News\n          "),
+                            _c("img", { attrs: { src: "/img/arrow-left.svg" } })
+                          ]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _vm.post.data.post.mainTitle
                   ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
@@ -19789,7 +19838,7 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "content"
-                      ? _c("p", [_vm._v(_vm._s(post.value))])
+                      ? _c("div", [_vm._v(_vm._s(post.value))])
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "image"
@@ -37751,9 +37800,10 @@ function () {
               _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('global/ad/open');
             }
 
+            console.log(to);
             next();
 
-          case 2:
+          case 3:
           case "end":
             return _context.stop();
         }

@@ -65,7 +65,7 @@ router.beforeEach(async (to, from, next) => {
     store.dispatch('global/ad/open')
   }
 
-
+  console.log(to);
   next();
 });
 

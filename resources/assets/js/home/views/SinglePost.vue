@@ -6,14 +6,14 @@
       <div v-if="post" class="post-content">
         <nav>
 
-          <a v-if="prevPostId" class="prev-post" @click="changePost($event,prevPostId)" :href="prevPostId">
+          <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
             <img src="/img/arrow-right.svg">
             Prev News
-          </a>
-          <a v-if="nextPostId" class="next-post" @click="changePost($event,nextPostId)" :href="nextPostId">
+          </router-link>
+          <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
             Next News
             <img src="/img/arrow-left.svg">
-          </a>
+          </router-link>
         </nav>
 
         <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
@@ -34,7 +34,7 @@
 
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <p v-if="post.type == 'content'">{{ post.value }}</p>
+          <div v-if="post.type == 'content'">{{ post.value }}</div>
 
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
@@ -127,6 +127,7 @@ export default {
       event.preventDefault()
       this.sync(id);
       this.postId = id;
+      this.$router.push({path : `/post/${id}`});
     },
     computeNumber(value) {
       // console.log(value);
@@ -139,6 +140,7 @@ export default {
 
             this.post = response;
             this.errorMessage = false;
+            this.postId = id;
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
             this.hashtags = this.post.data.post.hashtags;
@@ -164,8 +166,8 @@ export default {
           });
     },
     addVote(obj, id){
-        console.log(obj);
-        console.log(id);
+        // console.log(obj);
+        // console.log(id);
         axios
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
@@ -178,9 +180,10 @@ export default {
     this.sync(this.$route.params.id);
     this.postId = this.$route.params.id;
   },
-  beforeRouteUpdate(to) {
+  beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     this.postId = to.params.id;
+    next();
   },
   components : {
     SideNews,
