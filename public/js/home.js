@@ -2652,7 +2652,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        console.log(response.data.post.sections[10]);
+        console.log(response.data.post.sections);
         _this.post = response;
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;

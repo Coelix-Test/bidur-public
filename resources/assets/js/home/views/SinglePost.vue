@@ -131,7 +131,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response.data.post.sections[10]);
+            console.log(response.data.post.sections);
 
             this.post = response;
             this.errorMessage = false;
