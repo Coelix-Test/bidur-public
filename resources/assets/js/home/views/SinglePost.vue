@@ -16,7 +16,7 @@
           </a>
         </nav>
 
-        <h1>{{ postTitle }}</h1>
+        <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <div class="post-meta">
 
           <div class="info">
@@ -72,8 +72,8 @@
     <div class="related-posts">
 
 
-      <carousel :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="i in 6" class="related-post" :key="i">
+      <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
+        <slide v-for="post in relevantPosts" class="related-post">
             <img src="/img/relatedPostPrev.png" alt="">
             <div class="related-post-content">
               <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
@@ -110,6 +110,8 @@ export default {
       nextPostId : null,
       postTitle : null,
       errorMessage : false,
+      hashtags : null,
+      relevantPosts : [],
       postContentSections : null,
       options: {
           question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -128,7 +130,7 @@ export default {
       this.sync(id);
     },
     computeNumber(value) {
-      console.log(value);
+      // console.log(value);
     },
     sync(id) {
       return axios
@@ -140,7 +142,20 @@ export default {
             this.errorMessage = false;
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
-            delete this.postData[1];
+            this.hashtags = this.post.data.post.hashtags;
+             if(this.hashtags != null) {
+              for(let i =0;i < this.hashtags.length;i++) {
+                // console.log(this.hashtags[i]);
+                axios
+                  .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
+                    .then(response => {
+                      this.relevantPosts.push(response);
+                      console.log('response', response);
+                    })
+              }
+              console.log(this.relevantPosts);
+            }
+            // delete this.postData[1];
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
           })

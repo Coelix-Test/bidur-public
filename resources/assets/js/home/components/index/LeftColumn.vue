@@ -3,6 +3,7 @@
 
     <article v-in-viewport.once v-for="post in posts" >
       <router-link :to="'/post/'+post.id">
+        <!-- {{post}} -->
         <div class="overlay"></div>
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
@@ -30,6 +31,7 @@ export default {
     }
   },
   mounted() {
+    console.log(posts);
      //console.log('randomPosts', this.randomPosts);
     // axios.post('/getTwoRandomPosts').then(response => {
     //   //this.twoPosts = (response.data);

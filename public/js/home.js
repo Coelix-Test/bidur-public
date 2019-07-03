@@ -2080,6 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2092,7 +2093,8 @@ __webpack_require__.r(__webpack_exports__);
       posts: this.data
     };
   },
-  mounted: function mounted() {//console.log('randomPosts', this.randomPosts);
+  mounted: function mounted() {
+    console.log(posts); //console.log('randomPosts', this.randomPosts);
     // axios.post('/getTwoRandomPosts').then(response => {
     //   //this.twoPosts = (response.data);
     //   response.data.forEach( (el)=> {
@@ -2635,6 +2637,8 @@ __webpack_require__.r(__webpack_exports__);
       nextPostId: null,
       postTitle: null,
       errorMessage: false,
+      hashtags: null,
+      relevantPosts: [],
       postContentSections: null,
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
@@ -2663,8 +2667,7 @@ __webpack_require__.r(__webpack_exports__);
       event.preventDefault();
       this.sync(id);
     },
-    computeNumber: function computeNumber(value) {
-      console.log(value);
+    computeNumber: function computeNumber(value) {// console.log(value);
     },
     sync: function sync(id) {
       var _this = this;
@@ -2675,7 +2678,24 @@ __webpack_require__.r(__webpack_exports__);
         _this.errorMessage = false;
         _this.postData = _this.post.data.post.sections;
         _this.postTitle = _this.postData[1].value;
-        delete _this.postData[1];
+        _this.hashtags = _this.post.data.post.hashtags;
+
+        if (_this.hashtags != null) {
+          for (var i = 0; i < _this.hashtags.length; i++) {
+            // console.log(this.hashtags[i]);
+            axios.post('/getAllPostsByHashtag', {
+              hashtag_id: _this.hashtags[i]
+            }).then(function (response) {
+              _this.relevantPosts.push(response);
+
+              console.log('response', response);
+            });
+          }
+
+          console.log(_this.relevantPosts);
+        } // delete this.postData[1];
+
+
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
         _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
       })["catch"](function (error) {
@@ -19429,7 +19449,9 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _c("h1", [_vm._v(_vm._s(_vm.postTitle))]),
+                _vm.post.data.post.mainTitle
+                  ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "post-meta" }, [
                   _c("div", { staticClass: "info" }, [
@@ -19531,42 +19553,51 @@ var render = function() {
       "div",
       { staticClass: "related-posts" },
       [
-        _c(
-          "carousel",
-          {
-            attrs: { rtl: true, perPageCustom: [[320, 1], [768, 1], [769, 2]] }
-          },
-          _vm._l(6, function(i) {
-            return _c("slide", { key: i, staticClass: "related-post" }, [
-              _c("img", {
-                attrs: { src: "/img/relatedPostPrev.png", alt: "" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "related-post-content" }, [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("h3", [
-                    _vm._v("6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "related-post-meta" }, [
-                  _c("span", { staticClass: "date" }, [_vm._v("5 years ago")]),
+        _vm.relevantPosts
+          ? _c(
+              "carousel",
+              {
+                attrs: {
+                  rtl: true,
+                  perPageCustom: [[320, 1], [768, 1], [769, 2]]
+                }
+              },
+              _vm._l(_vm.relevantPosts, function(post) {
+                return _c("slide", { staticClass: "related-post" }, [
+                  _c("img", {
+                    attrs: { src: "/img/relatedPostPrev.png", alt: "" }
+                  }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "author" }, [
-                    _vm._v("by Helen Nikova")
+                  _c("div", { staticClass: "related-post-content" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("h3", [
+                        _vm._v(
+                          "6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS"
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "related-post-meta" }, [
+                      _c("span", { staticClass: "date" }, [
+                        _vm._v("5 years ago")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "author" }, [
+                        _vm._v("by Helen Nikova")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "excerpt" }, [
+                      _vm._v(
+                        "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
+                      )
+                    ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "excerpt" }, [
-                  _vm._v(
-                    "\n              Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...\n            "
-                  )
                 ])
-              ])
-            ])
-          }),
-          1
-        )
+              }),
+              1
+            )
+          : _vm._e()
       ],
       1
     )
