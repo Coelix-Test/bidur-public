@@ -70,6 +70,7 @@ export default {
                   .then(response => {
                     this.emojis = response.data;
                     this.preventClick = true;
+                    item.target.classList.add('is_active');
                   });
             });
       }
@@ -95,7 +96,7 @@ export default {
   align-items: stretch;
   justify-content: space-between;
   background: #FFFFFF;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -3px 20px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   padding: 15px 40px 15px 40px;
   position: relative;
@@ -128,7 +129,7 @@ export default {
       line-height: 100%;
       pointer-events: none;
     }
-    &.selected {
+    &.is_active {
       .num {
         background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
         background-clip: text;
@@ -137,5 +138,14 @@ export default {
     }
   }
 }
-
+@media (max-width:768px) {
+  .emoji {
+    width:100%;
+    flex-wrap:wrap;
+    height:auto;
+      .item {
+        margin-bottom: 8px;
+      }
+  }
+}
 </style>

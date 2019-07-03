@@ -171,7 +171,7 @@ export default {
         axios
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
-              console.log(response);
+              // console.log(response);
             });
     }
   },
@@ -395,12 +395,17 @@ export default {
       font-size: 32px;
       line-height: 32px;
     }
+    .opinion h2 {
+      text-align: center;
+    }
     section.imageWithText img.left,
     section.imageWithText img.right {
       float:none;
       margin-right: 0;
       max-width: 100%;
       margin-bottom: 8px;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   @media (max-width:550px) {

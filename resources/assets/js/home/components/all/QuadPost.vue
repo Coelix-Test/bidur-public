@@ -37,13 +37,18 @@ export default {
   margin-bottom: 30px;
   position: relative;
   display: flex;
+  // &:nth-child(1) {
+  //   .gradient {
+  //     background-color:black;
+  //   }
+  // }
   img {
     width: 100%;
     object-fit: cover;
 
   }
   .gradient {
-    background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+    background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);
     opacity: 0.5;
     width: 100%;
     height: 100%;
@@ -82,7 +87,9 @@ export default {
       text-align: left;
       max-width: 600px;
     }
+
   }
+
   @media(max-width: 1200px) {
     .content {
       padding: 20px;
