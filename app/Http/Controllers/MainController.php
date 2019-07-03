@@ -530,13 +530,13 @@ class MainController extends Controller
         $reactions['like']      = 0;
         $reactions['dislike']   = 0;
 
-        $love   = $reaction->where('reaction', 'love')->get;
-        $laugh  = $reaction->where('reaction', 'laugh')->get;
-        $wow    = $reaction->where('reaction', 'wow')->get;
-        $cry    = $reaction->where('reaction', 'cry')->get;
-        $angry  = $reaction->where('reaction', 'angry')->get;
-        $like   = $reaction->where('reaction', 'like')->get;
-        $dislike = $reaction->where('reaction', 'dislike')->get;
+        $love   = $reaction->where('reaction', 'love')->get();
+        $laugh  = $reaction->where('reaction', 'laugh')->get();
+        $wow    = $reaction->where('reaction', 'wow')->get();
+        $cry    = $reaction->where('reaction', 'cry')->get();
+        $angry  = $reaction->where('reaction', 'angry')->get();
+        $like   = $reaction->where('reaction', 'like')->get();
+        $dislike = $reaction->where('reaction', 'dislike')->get();
         if (!$love->isEmpty()){
             $reactions['love'] = $love->count();
         }
