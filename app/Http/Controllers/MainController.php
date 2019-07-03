@@ -253,7 +253,7 @@ class MainController extends Controller
         }
 
 
-        $fullPost['author'] = User::find($post->author)->name;
+        $fullPost['author'] = $post->author;
         $fullPost['date'] = $this->getDate($post);
 
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
