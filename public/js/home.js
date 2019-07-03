@@ -2681,11 +2681,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     addVote: function addVote(obj, id) {
       console.log(obj);
-      console.log(id); // axios
-      //   .post('/submitSurvey',{ surveyId : id, answer : obj.value })
-      //     .then(response => {
-      //       console.log(response);
-      //     });
+      console.log(id);
+      axios.post('/addSurveyVote', {
+        surveyId: id,
+        answer: obj.value
+      }).then(function (response) {
+        console.log(response);
+      });
     }
   },
   created: function created() {

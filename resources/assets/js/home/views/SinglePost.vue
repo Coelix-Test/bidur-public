@@ -162,11 +162,11 @@ export default {
     addVote(obj, id){
         console.log(obj);
         console.log(id);
-        // axios
-        //   .post('/submitSurvey',{ surveyId : id, answer : obj.value })
-        //     .then(response => {
-        //       console.log(response);
-        //     });
+        axios
+          .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+            .then(response => {
+              console.log(response);
+            });
     }
   },
   created() {
