@@ -3246,7 +3246,9 @@ __webpack_require__.r(__webpack_exports__);
     postId: {}
   },
   created: function created() {
-    axios.post('/getReaction', this.postId).then(function (response) {
+    axios.post('/getReaction', {
+      postId: this.postId
+    }).then(function (response) {
       console.log(response);
     });
   },

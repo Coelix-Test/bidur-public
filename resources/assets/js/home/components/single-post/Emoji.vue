@@ -44,7 +44,7 @@ export default {
   },
   created() {
     axios
-      .post('/getReaction',this.postId)
+      .post('/getReaction',{ postId : this.postId})
         .then(response => {
           console.log(response);
         });
