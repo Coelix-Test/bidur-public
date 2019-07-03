@@ -244,7 +244,7 @@ class MainController extends Controller
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
                     $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
-                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['id'] = $question->id;
+                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
                     $z++;
                 }
             }
