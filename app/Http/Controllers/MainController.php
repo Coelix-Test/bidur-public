@@ -508,7 +508,7 @@ class MainController extends Controller
 //            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
 //        }
         Emoji::create([
-//            'authorId' => $userId,
+            'authorId' => 1,
             'reaction' => $reaction,
             'postId' => $postId,
         ]);
