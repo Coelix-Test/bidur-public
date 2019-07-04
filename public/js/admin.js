@@ -3690,13 +3690,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteUser: function deleteUser(id) {
       console.log(id);
-      axios.post('/deleteAdmin', id).then(function (res) {
+      axios.post('/deleteAdmin', {
+        userId: id
+      }).then(function (res) {
         console.log(res);
       });
     },
     makeUserAdmin: function makeUserAdmin(id) {
       console.log(id);
-      axios.post('/').then(function (res) {
+      axios.post('/makeUserAdmin', {
+        userId: id
+      }).then(function (res) {
         console.log(res);
       });
     }

@@ -50,7 +50,7 @@ export default {
     deleteUser(id) {
       console.log(id);
       axios
-        .post('/deleteAdmin', id)
+        .post('/deleteAdmin', { userId : id})
           .then(res => {
             console.log(res);
           });
@@ -58,7 +58,7 @@ export default {
     makeUserAdmin(id) {
       console.log(id);
       axios
-        .post('/')
+        .post('/makeUserAdmin', { userId : id})
           .then(res => {
             console.log(res);
           });
