@@ -6,7 +6,7 @@
     </div>
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
-      <ul ref="test" class="latest-post-slider">
+      <!-- <ul ref="test" class="latest-post-slider">
         <li v-if="posts" v-for="post in posts">
 
             <img :src="post.img" alt="">
@@ -20,13 +20,37 @@
               </p>
             </div>
         </li>
-      </ul>
+      </ul> -->
+      <carousel
+        v-if="posts"
+        class="latest-post-slider"
+        :rtl="true"
+        :autoplay="true"
+        :autoplayTimeout="2000"
+        :paginationEnabled="false"
+        :navigationEnabled="true"
+        :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
+      >
+        <slide v-for="post in posts" class="latest-post-item" :key="post.id">
+            <img :src="post.img" alt="">
+            <div class="content">
+              <router-link :to="'/post/'+post.id">
+                <h3>{{ post.title }}</h3>
+              </router-link>
+              <p>
+                <span class="author">by {{post.author}}</span>
+                <span class="post-date">{{post.time}}</span>
+              </p>
+            </div>
+        </slide>
+      </carousel>
     </div>
 
   </div>
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue-carousel';
 import VuePoll from 'vue-poll'
 export default {
   props : {
@@ -49,15 +73,12 @@ export default {
         }
     },
     created() {
-      let getAllPosts = [];
-      if(this.data) {
-        this.data.forEach( (el)=> {
-          getAllPosts.push(axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
-             this.posts.push(response.data);
-             // console.log(getAllPosts);
-           }));
-        });
-      }
+       let getAllPosts = [];
+        axios.post('/getRecentPosts').then(response => {
+
+           getAllPosts = response.data;
+           this.posts = getAllPosts;
+         });
 
 
       Promise.all(getAllPosts).then(() => {
@@ -83,7 +104,9 @@ export default {
       })
     },
     components: {
-        VuePoll
+        VuePoll,
+        Carousel,
+        Slide
     },
     methods: {
         addVote(obj){
@@ -148,11 +171,11 @@ export default {
     padding:0;
     max-width: 600px;
   }
-  .latest-post-slider li {
+  .latest-post-item {
     padding-left: 16px;
     outline: none;
   }
-  .latest-post-slider li {
+  .latest-post-item {
     width:100%;
     height:100%;
     display: flex;
@@ -162,36 +185,36 @@ export default {
     color:#333333;
     text-decoration: none;
   }
-  .latest-post-slider li  img {
+  .latest-post-item  img {
     width:120px;
     height:120px;
     object-fit: cover;
     object-position: center;
     margin-left: 16px;
   }
-  .latest-post-slider li p {
+  .latest-post-item p {
     font-size: 12px;
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
   }
-  .latest-post-slider li p .post-date {
+  .latest-post-item p .post-date {
     color:#B3AAAA;
     padding-right: 4px;
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
     white-space:nowrap;
   }
-  .latest-post-slider li p .author {
+  .latest-post-item p .author {
     color:black;
     white-space:nowrap;
   }
-  .latest-post-slider li h3 {
+  .latest-post-item h3 {
     font-size: 20px;
     margin-bottom: 0;
     color:#333;
   }
-  .latest-post-slider li a {
+  .latest-post-item a {
     color:#333;
     text-decoration-color: #333;
   }
@@ -208,7 +231,7 @@ export default {
       width:100%;
       padding-right: 0;
     }
-    .latest-post-slider li {
+    .latest-post-item {
       padding-left: 0;
     }
     h2 {

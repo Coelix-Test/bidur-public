@@ -2971,8 +2971,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
-/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
+/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -3001,6 +3003,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3037,18 +3063,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var getAllPosts = [];
-
-    if (this.data) {
-      this.data.forEach(function (el) {
-        getAllPosts.push(axios.post('/getInfoOnPostForMain', {
-          id: el
-        }).then(function (response) {
-          _this.posts.push(response.data); // console.log(getAllPosts);
-
-        }));
-      });
-    }
-
+    axios.post('/getRecentPosts').then(function (response) {
+      getAllPosts = response.data;
+      _this.posts = getAllPosts;
+    });
     Promise.all(getAllPosts).then(function () {
       $(_this.$refs.test).slick({
         rtl: true,
@@ -3069,7 +3087,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   components: {
-    VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a
+    VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_1___default.a,
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
   },
   methods: {
     addVote: function addVote(obj) {
@@ -4010,7 +4030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.right-column-bot[data-v-3e7f8ea6] {\n  flex-basis:50%;\n  padding-left: 8px;\n  /* max-width: 500px; */\n}\n.selected-poll[data-v-3e7f8ea6] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-sizing: border-box;\n  border:4px solid #E4A913;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: scale(0.8); */\n}\n.selected-poll.in-viewport[data-v-3e7f8ea6] {\n  /* transform: scale(1);\n  opacity: 1; */\n}\n.selected-poll img[data-v-3e7f8ea6] {\n  width:100%;\n  height:auto;\n  max-width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.poll[data-v-3e7f8ea6] {\n  width:100%;\n}\n.selected-poll h3[data-v-3e7f8ea6] {\n  padding-top: 32px;\n  font-size: 32px;\n  color:#0E0E0E;\n  margin:0;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.latest-posts[data-v-3e7f8ea6] {\n  width:100%;\n  max-width: 100%;\n  overflow: hidden;\n}\n.latest-post-slider[data-v-3e7f8ea6] {\n  width:100%;\n  margin:0;\n  padding:0;\n  max-width: 600px;\n}\n.latest-post-slider li[data-v-3e7f8ea6] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-slider li[data-v-3e7f8ea6] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-slider li  img[data-v-3e7f8ea6] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-slider li p[data-v-3e7f8ea6] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-slider li p .post-date[data-v-3e7f8ea6] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-slider li p .author[data-v-3e7f8ea6] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-slider li h3[data-v-3e7f8ea6] {\n  font-size: 20px;\n  margin-bottom: 0;\n  color:#333;\n}\n.latest-post-slider li a[data-v-3e7f8ea6] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.latest-posts h2[data-v-3e7f8ea6] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-slider li[data-v-3e7f8ea6] {\n    padding-left: 0;\n}\nh2[data-v-3e7f8ea6] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width:768px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 4;\n            order: 3;\n    flex-basis:100%;\n    padding-left: 0;\n    margin-bottom: 16px;\n    margin-top: 8px;\n}\n}\n@media (max-width:550px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    margin-top: 0;\n}\n}\n", ""]);
+exports.push([module.i, "\n.right-column-bot[data-v-3e7f8ea6] {\n  flex-basis:50%;\n  padding-left: 8px;\n  /* max-width: 500px; */\n}\n.selected-poll[data-v-3e7f8ea6] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-sizing: border-box;\n  border:4px solid #E4A913;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: scale(0.8); */\n}\n.selected-poll.in-viewport[data-v-3e7f8ea6] {\n  /* transform: scale(1);\n  opacity: 1; */\n}\n.selected-poll img[data-v-3e7f8ea6] {\n  width:100%;\n  height:auto;\n  max-width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.poll[data-v-3e7f8ea6] {\n  width:100%;\n}\n.selected-poll h3[data-v-3e7f8ea6] {\n  padding-top: 32px;\n  font-size: 32px;\n  color:#0E0E0E;\n  margin:0;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.latest-posts[data-v-3e7f8ea6] {\n  width:100%;\n  max-width: 100%;\n  overflow: hidden;\n}\n.latest-post-slider[data-v-3e7f8ea6] {\n  width:100%;\n  margin:0;\n  padding:0;\n  max-width: 600px;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-item  img[data-v-3e7f8ea6] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-item p[data-v-3e7f8ea6] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-item p .post-date[data-v-3e7f8ea6] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-item p .author[data-v-3e7f8ea6] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-item h3[data-v-3e7f8ea6] {\n  font-size: 20px;\n  margin-bottom: 0;\n  color:#333;\n}\n.latest-post-item a[data-v-3e7f8ea6] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.latest-posts h2[data-v-3e7f8ea6] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n    padding-left: 0;\n}\nh2[data-v-3e7f8ea6] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width:768px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 4;\n            order: 3;\n    flex-basis:100%;\n    padding-left: 0;\n    margin-bottom: 16px;\n    margin-top: 8px;\n}\n}\n@media (max-width:550px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    margin-top: 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -4048,7 +4068,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 32px;\n  line-height: 32px;\n  padding-top: 32px;\n  color:#fff;\n  margin:0;\n  text-align: center;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
+exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 32px;\n  line-height: 32px;\n  padding-top: 32px;\n  font-weight: 600;\n  color:#fff;\n  margin:0;\n  text-align: center;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -19038,43 +19058,64 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "latest-posts" }, [
-      _c("h2", [_vm._v("חדשות נוספות")]),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { ref: "test", staticClass: "latest-post-slider" },
-        _vm._l(_vm.posts, function(post) {
-          return _vm.posts
-            ? _c("li", [
-                _c("img", { attrs: { src: post.img, alt: "" } }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "content" },
+    _c(
+      "div",
+      { staticClass: "latest-posts" },
+      [
+        _c("h2", [_vm._v("חדשות נוספות")]),
+        _vm._v(" "),
+        _vm.posts
+          ? _c(
+              "carousel",
+              {
+                staticClass: "latest-post-slider",
+                attrs: {
+                  rtl: true,
+                  autoplay: true,
+                  autoplayTimeout: 2000,
+                  paginationEnabled: false,
+                  navigationEnabled: true,
+                  perPageCustom: [[320, 1], [768, 1], [769, 2]]
+                }
+              },
+              _vm._l(_vm.posts, function(post) {
+                return _c(
+                  "slide",
+                  { key: post.id, staticClass: "latest-post-item" },
                   [
-                    _c("router-link", { attrs: { to: "/post/" + post.id } }, [
-                      _c("h3", [_vm._v(_vm._s(post.title))])
-                    ]),
+                    _c("img", { attrs: { src: post.img, alt: "" } }),
                     _vm._v(" "),
-                    _c("p", [
-                      _c("span", { staticClass: "author" }, [
-                        _vm._v("by " + _vm._s(post.author))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "post-date" }, [
-                        _vm._v(_vm._s(post.time))
-                      ])
-                    ])
-                  ],
-                  1
+                    _c(
+                      "div",
+                      { staticClass: "content" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/post/" + post.id } },
+                          [_c("h3", [_vm._v(_vm._s(post.title))])]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("span", { staticClass: "author" }, [
+                            _vm._v("by " + _vm._s(post.author))
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "post-date" }, [
+                            _vm._v(_vm._s(post.time))
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  ]
                 )
-              ])
-            : _vm._e()
-        }),
-        0
-      )
-    ])
+              }),
+              1
+            )
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []

@@ -93,6 +93,7 @@ export default {
     font-size: 32px;
     line-height: 32px;
     padding-top: 32px;
+    font-weight: 600;
     color:#fff;
     margin:0;
     text-align: center;
