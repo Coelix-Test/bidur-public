@@ -37722,10 +37722,19 @@ if ($('.run-stroke').length) {
   $('.run-stroke').css('animation', 'animStroke ' + strokeAnimDuration + 's linear infinite');
 }
 
-jQuery(document).ready(jQuery(".toggle-mnu").click(function () {
-  jQuery(this).toggleClass("active");
+$(document).ready($(".toggle-mnu").click(function () {
+  $(this).toggleClass("active");
   return false;
-}));
+})); //auth buttons
+
+$('.register-popup-trigger').on('click', function (e) {
+  e.preventDefault();
+  app.openReg();
+});
+$('.login-popup-trigger').on('click', function (e) {
+  e.preventDefault();
+  app.openLogin();
+});
 
 /***/ }),
 
@@ -38278,7 +38287,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

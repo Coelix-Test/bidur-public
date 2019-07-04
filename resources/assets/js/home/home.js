@@ -92,7 +92,17 @@ if($('.run-stroke').length){
     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
 }
 
-jQuery(document).ready(jQuery(".toggle-mnu").click(function() {
-  jQuery(this).toggleClass("active");
+$(document).ready($(".toggle-mnu").click(function() {
+  $(this).toggleClass("active");
   return false;
 }));
+//auth buttons
+$('.register-popup-trigger').on('click', function(e){
+    e.preventDefault();
+    app.openReg();
+});
+
+$('.login-popup-trigger').on('click', function(e){
+    e.preventDefault();
+    app.openLogin();
+});

@@ -57,3 +57,14 @@ if($('.run-stroke').length){
     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
 
 }
+
+//auth buttons
+$('.register-popup-trigger').on('click', function(e){
+    e.preventDefault();
+    app.openReg();
+});
+
+$('.register-popup-trigger').on('click', function(e){
+    e.preventDefault();
+    app.openLogin();
+});

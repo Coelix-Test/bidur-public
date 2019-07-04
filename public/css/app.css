@@ -16491,6 +16491,11 @@ body {
   max-width: 1440px;
 }
 
+#header_main .celebrities-slider {
+  display: -webkit-box;
+  display: flex;
+}
+
 #header_main .celebrities-slider a {
   outline: none;
   text-decoration: none;

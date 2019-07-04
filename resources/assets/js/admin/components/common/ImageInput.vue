@@ -67,6 +67,7 @@ export default {
             border-radius: 10px;
             justify-content: center;
             font-size: 24px;
+            font-weight: 600;
             margin-top: 20px;
             cursor: pointer;
         }
