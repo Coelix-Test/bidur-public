@@ -14,7 +14,7 @@
         autocomplete="name"
       >
       <input
-        type="text"
+        type="email"
         required
         class="th-input"
         v-model="email"
@@ -38,6 +38,7 @@
         </template>
       </text-input>
       <text-input
+        ref="repeat"
         :type="hide.repeat ? 'password' : 'text'"
         required
         v-model="repeat"
@@ -47,13 +48,15 @@
         </template>
       </text-input>
 
-      <label class="checkbox">
-        <input class="th-checkbox" type="checkbox">
+      <div v-if="err.length" class="err">{{ err }}</div>
+
+      <label ref="agreement" class="checkbox">
+        <input v-model="agreement" class="th-checkbox" type="checkbox">
         <div class="label">
           רתאב שומישה יאנתל םיכסמ ינא
         </div>
       </label>
-      <button class="a-row-center button" type="submit">המשרה</button>
+      <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
         ?רתאב שמתשמ רבכ ךל שי
         <button class="link" @click="login">
@@ -81,7 +84,9 @@ export default {
       hide: {
         pass: true,
         repeat: true,
-      }
+      },
+      err: '',
+      agreement: false,
     };
   },
   components: {
@@ -91,6 +96,25 @@ export default {
   },
   methods: {
     submit(e) {
+
+      this.$refs.agreement.classList.remove('shake', 'animated');
+      this.$refs.repeat.$el.classList.remove('shake', 'animated');
+
+      if(!this.agreement) {
+        setImmediate(() => {
+          this.$refs.agreement.classList.add('shake', 'animated');
+        });
+        return;
+      }
+
+      if(!this.pass !== this.repeat) {
+        this.err = 'הסיסמה חוזרת כראוי';
+        setImmediate(() => {
+          this.$refs.repeat.$el.classList.add('shake', 'animated');
+        });
+        return;
+      }
+
       axios.post('/register', {
         name: this.name,
         email: this.email,
@@ -99,6 +123,7 @@ export default {
         password_confirmation: this.repeat,
       }).then(res => {
         this.$emit('close');
+        document.location.reload();
       });
       e.preventDefault();
     },
@@ -171,6 +196,10 @@ export default {
       input {
         margin-left: 10px;
       }
+    }
+    .err {
+      color: #EB5757;
+      font-size: 16px;
     }
   }
 }

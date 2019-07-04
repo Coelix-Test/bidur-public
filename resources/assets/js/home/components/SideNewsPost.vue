@@ -1,19 +1,18 @@
 <template>
-  <div class="side-news-post">
-    <div class="img">
-
-    </div>
+  <router-link :to="'/post/' + data.id" class="side-news-post">
+    <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
     <div class="desc">
-      <div class="title">2019 Pride Month A-Z Guide: Everything You Need to Know...</div>
-      <div class="subtitle">5 hours ago | by Helen Nilova</div>
+      <div class="title">{{ data.title }}</div>
+      <div class="subtitle">{{ data.time }} | by {{ data.author }}</div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
-import Reg from './modals/Reg.vue';
-
 export default {
+  props: {
+    data: {}
+  },
   methods: {
 
   }
@@ -36,7 +35,7 @@ export default {
     margin-bottom: 0;
   }
   .img {
-    width: 300px;
+    width: 120px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
