@@ -83,6 +83,7 @@ class MainController extends Controller
 
         if (!empty($content)){
             $excerpt = substr($content->contentText, 0, 200);
+            $excerpt = strip_tags($excerpt);
         }else{
             $excerpt = '';
         }
@@ -392,6 +393,7 @@ class MainController extends Controller
 
         if (!empty($content)){
             $excerpt = substr($content->contentText, 0, 200);
+            $excerpt = strip_tags($excerpt);
         }else{
             $excerpt = '';
         }
@@ -588,5 +590,13 @@ class MainController extends Controller
 //        }else{
 //            return json_encode(['success' => false]);
 //        }
+    }
+
+    public function getRecentPosts(){
+        $recentPosts = Post::orderBy('created_at', 'desc')->get();
+        foreach ($recentPosts as $recentPost) {
+            $postsForView[] = $this->getContent($recentPost->id);
+        }
+        return json_encode($postsForView);
     }
 }
