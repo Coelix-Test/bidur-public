@@ -27,7 +27,6 @@
 </template>
 
 <script>
-// import User from './tags/User.vue';
 export default {
   data() {
     return {

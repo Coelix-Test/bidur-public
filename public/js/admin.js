@@ -3669,7 +3669,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import User from './tags/User.vue';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
