@@ -49,7 +49,6 @@ export default {
         }
     },
     created() {
-      console.log(this.data);
       let getAllPosts = [];
       if(this.data) {
         this.data.forEach( (el)=> {
