@@ -342,9 +342,14 @@ class AdminController extends Controller
         ]);
     }
 
+    public function getMainBday(){
+        $happy = HappyBirthsday::find(1);
+        $data['img'] = $happy->img;
+        $data['text'] = $happy->text;
+        return json_encode($data);
+    }
+
     public function addNewComparison(Request $request){
-        SelectOne::truncate();
-        LikesForLeftAndRight::truncate();
         $leftImage = $request->file('leftImage');
         $leftName = time().'.'.$leftImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/compare');
@@ -352,29 +357,45 @@ class AdminController extends Controller
 
         $rightImage = $request->file('rightImage');
 
-                $rightName = time().'.'.$rightImage->getClientOriginalExtension();
+        $rightName = time().'.'.$rightImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
+            'postId' => 0,
+            'order' => 0,
         ]);
+        return ['success' => true];
     }
 
     public function addSinglePhoto(Request $request){
-        SingleLikableImage::truncate();
-        DisLikesForSingleImage::truncate();
-        LikesForSingleImage::truncate();
-
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/singlePhoto');
         $image->move($destinationPath, $name);
 
+        $image = SingleLikableImage::where('postId', 0)->first();
+
+        if (!empty($image)){
+            $deletableId = $image->id;
+            $image->delete();
+            LikesForSingleImage::where('serviceId', $deletableId)->delete();
+            DisLikesForSingleImage::where('serviceId', $deletableId)->delete();
+        }
         SingleLikableImage::create([
             'url' => '/images/singlePhoto/'.$name,
+            'postId' => 0,
+            'order' => 0,
         ]);
+        return ['success' => true];
     }
 
     public function getAllSurveys(){
@@ -388,36 +409,66 @@ class AdminController extends Controller
 
 
     public function showAllAdmins(){
-        $adminIds = Admins::all();
-        foreach ($adminIds as $adminId) {
-            if (!empty(User::where('id', $adminId->id)->first())){
-                $admin = User::where('id', $adminId->id)->first();
-//                dd($admin);
-                $allAdmins[$admin->id]['email'] = $admin->email;
-                $allAdmins[$admin->id]['name']  = $admin->email;
-                $allAdmins[$admin->id]['name'] = $admin->name;
-                $allAdmins[$admin->id]['phone'] = $admin->phone;
-                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
-                if ($admin->isOnline() == false){
-                    $allAdmins[$admin->id]['status'] = 'offline';
-                }else{
-                    $allAdmins[$admin->id]['status'] = 'online';
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $allUsers[$user->id]['email'] = $user->email;
+            $allUsers[$user->id]['name']  = $user->email;
+            $allUsers[$user->id]['name'] = $user->name;
+            $allUsers[$user->id]['phone'] = $user->phone;
+            $allUsers[$user->id]['id'] = $user->id;
+            if ($user->isOnline() == false){
+                $allUsers[$user->id]['status'] = 'offline';
+            }else{
+                $allUsers[$user->id]['status'] = 'online';
+            }
+            $admins = Admins::all();
+            foreach ($allUsers as $key => $allUser) {
+                foreach ($admins as $admin) {
+                    if ($allUser['id'] == $admin->userId){
+                        $allUsers[$key]['is_admin'] = true;
+                    }else{
+                        $allUsers[$key]['is_admin'] = false;
+                    }
                 }
             }
         }
-        if (!empty($allAdmins)){
-//            dd($allAdmins);
-            return json_encode($allAdmins);
-        }else{
-            return json_encode([]);
+        if (empty($allUsers)){
+            $allUsers = [];
         }
+        return json_encode($allUsers);
+        
+        
+//        $adminIds = Admins::all();
+//        foreach ($adminIds as $adminId) {
+//            if (!empty(User::where('id', $adminId->id)->first())){
+//                $admin = User::where('id', $adminId->id)->first();
+////                dd($admin);
+//                $allAdmins[$admin->id]['email'] = $admin->email;
+//                $allAdmins[$admin->id]['name']  = $admin->email;
+//                $allAdmins[$admin->id]['name'] = $admin->name;
+//                $allAdmins[$admin->id]['phone'] = $admin->phone;
+//                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
+//                if ($admin->isOnline() == false){
+//                    $allAdmins[$admin->id]['status'] = 'offline';
+//                }else{
+//                    $allAdmins[$admin->id]['status'] = 'online';
+//                }
+//            }
+//        }
+//        if (!empty($allAdmins)){
+////            dd($allAdmins);
+//            return json_encode($allAdmins);
+//        }else{
+//            return json_encode([]);
+//        }
     }
 
     public function editAdmin(Request $request){
         $name   = $request->get('name');
         $email  = $request->get('email');
         $phone  = $request->get('phone');
-        $id     = $request->get('id');
+        $id     = $request->get('userId');
         $admin = User::find($id);
         if (isset($name)){
             $admin->name = $name;
@@ -433,16 +484,22 @@ class AdminController extends Controller
     }
 
     public function deleteAdmin(Request $request){
-        $id = $request->get('id');
-        Admins::find($id)->delete();
+        $id = $request->get('userId');
+        User::find($id)->delete();
         return $this->showAllAdmins();
     }
 
     public function makeUserAdmin(Request $request){
-        Admins::create([
-            'userId' => $request->get('id'),
-        ]);
-        return json_encode(['success' => true]);
+
+        $admin = Admins::where('userId', $request->get('userId'))->first();
+        if (empty($admin)){
+            Admins::create([
+                'userId' => $request->get('userId'),
+            ]);
+        }else{
+            Admins::where('userId', $request->get('userId'))->delete();
+        }
+        return $this->showAllAdmins();
     }
 
     public function createInsta(Request $request){
@@ -478,5 +535,18 @@ class AdminController extends Controller
             'fifth' => $fifthPostId,
             'sixth' => $sixthPostId,
         ]);
+    }
+
+    public function showSinglePhotoFromMain(){
+        $image = SingleLikableImage::where('postId', 0)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMain(){
+        $section = SelectOne::where('postId', 0)->ifrst();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
     }
 }

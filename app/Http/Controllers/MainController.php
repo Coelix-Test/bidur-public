@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DisLikesForSingleImage;
 use App\Emoji;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
 use App\LikesForLeftAndRight;
+use App\LikesForSingleImage;
 use App\MainSection;
 use App\Post;
 use App\Rating;
@@ -375,7 +377,7 @@ class MainController extends Controller
 //        dd($postIds);
         if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
-                $postsWithContent[$postId] = $this->getContent($postId);
+                $postsWithContent['data'][$postId] = $this->getContent($postId);
             }
             return json_encode($postsWithContent);
 
@@ -383,8 +385,20 @@ class MainController extends Controller
         else{
             return json_encode(['success' => false]);
         }
+    }
 
+    public function getAllRelevantPosts(Request $request){
+        $hashtagId = $request->get('hashtag_id');
+        $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->orderBy('created_at')->take(6)->get();
 
+        foreach ($hashtagPosts as $hashtagPost) {
+            $posts[] = Post::find($hashtagPost->postId);
+        }
+        foreach ($posts as $post) {
+//            dd($posts);
+            $postsWithContent[] = $this->getContent($post->id);
+        }
+        return json_encode($postsWithContent);
     }
 
     public function getContent($id){
@@ -604,5 +618,43 @@ class MainController extends Controller
         return json_encode($postsForView);
     }
 
-//    public function getMainSection
+
+    public function getSingleLikablePhoto(){
+        $photo = SingleLikableImage::where('postId', 0)->first();
+
+        $likes = LikesForSingleImage::where('serviceId', $photo->id)->get();
+
+        $dislikes = DisLikesForSingleImage::where('serviceId', $photo->id)->get();
+
+        $data['image'] = $photo->url;
+        $data['likes'] = $likes->count();
+        $data['dislikes'] = $dislikes->count();
+        return json_encode($data);
+    }
+
+    public function likeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        LikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
+
+    public function dislikeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        DisLikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
+
+    public function likeForSelectOne(Request $request){
+        $serviceId = $request->get('serviceId');
+        $position = $request->get('position');
+
+        LikesForLeftAndRight::create([
+            'serviceId' => $serviceId,
+            'value' => $position,
+        ]);
+    }
 }
