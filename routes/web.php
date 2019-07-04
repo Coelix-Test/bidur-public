@@ -87,4 +87,4 @@ Route::get('/admin', 'AdminController@showAdmin');
 
 
 
-//Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
+Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
