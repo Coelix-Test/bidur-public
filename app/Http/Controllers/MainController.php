@@ -206,6 +206,7 @@ class MainController extends Controller
             foreach ($images as $image) {
                 $fullPost['sections'][$image->order]['type'] = 'image';
                 $fullPost['sections'][$image->order]['value'] = $image->url;
+                $fullPost['sections'][$image->order]['description'] = $image->description;
             }
         }
 
@@ -508,7 +509,7 @@ class MainController extends Controller
 //            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
 //        }
         Emoji::create([
-//            'authorId' => $userId,
+            'authorId' => 1,
             'reaction' => $reaction,
             'postId' => $postId,
         ]);
