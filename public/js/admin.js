@@ -3664,6 +3664,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3671,9 +3672,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     axios.post('/showAllAdmins').then(function (response) {
-      console.log(response);
+      console.log(response.data);
+      _this.users = response.data;
     });
+  },
+  methods: {
+    updateUser: function updateUser() {
+      console.log('update');
+    },
+    deleteUser: function deleteUser() {
+      console.log('delete');
+    },
+    makeUserAdmin: function makeUserAdmin() {
+      console.log('make user admin');
+    }
   }
 });
 
@@ -4220,7 +4235,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n}", ""]);
+exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .usersTable[data-v-d40a25f6] {\n  border: 1px solid #F2F2F2;\n  box-sizing: border-box;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n  padding: 6px 12px;\n  color: #BDBDBD;\n}\n.users .usersTable .heading > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .heading > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  padding: 6px 12px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .content .user > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .content .user > div.phone input[data-v-d40a25f6] {\n  text-align: right;\n}\n.users .usersTable .content .user > div.status span[data-v-d40a25f6] {\n  background: #BDBDBD;\n  color: #fff;\n  border-radius: 10px;\n  padding: 4px 12px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div.status.online span[data-v-d40a25f6] {\n  background: #EB5757;\n  color: #fff;\n  padding: 4px 12px;\n  border-radius: 10px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n  padding-top: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6] {\n  border-color: transparent;\n  border-style: solid;\n  padding: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6]:hover {\n  border-color: #eee;\n}", ""]);
 
 // exports
 
@@ -25948,41 +25963,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "users" }, [
+    _c("div", { staticClass: "usersTable" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "content" },
+        _vm._l(_vm.users, function(user) {
+          return _vm.users
+            ? _c("div", { staticClass: "user" }, [
+                _c("div", { staticClass: "name" }, [
+                  _c("input", {
+                    attrs: { name: "username" },
+                    domProps: { value: user.name }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mail" }, [
+                  _c("input", {
+                    attrs: { name: "mail" },
+                    domProps: { value: user.email }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "phone" }, [
+                  _c("input", {
+                    attrs: { name: "phone" },
+                    domProps: { value: user.phone }
+                  })
+                ]),
+                _vm._v(" "),
+                user.status == "online"
+                  ? _c("div", { staticClass: "status online" }, [
+                      _c("span", [_vm._v(_vm._s(user.status))])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                user.status == "offline"
+                  ? _c("div", { staticClass: "status offline" }, [
+                      _c("span", [_vm._v(_vm._s(user.status))])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "action" }, [_vm._v("Action")])
+              ])
+            : _vm._e()
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "users" }, [
-      _c("div", { staticClass: "usersTable" }, [
-        _c("div", { staticClass: "heading" }, [
-          _c("div", { staticClass: "name" }, [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mail" }, [_vm._v("Mail")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "phone" }, [_vm._v("Phone")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "status" }, [_vm._v("Status")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "action" }, [_vm._v("Action")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [
-          _c("div", { staticClass: "user" }, [
-            _c("div", { staticClass: "name" }, [_vm._v("Name")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mail" }, [_vm._v("Mail")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "phone" }, [_vm._v("Phone")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "status" }, [_vm._v("Status")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "action" }, [_vm._v("Action")])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "heading" }, [
+      _c("div", { staticClass: "name" }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mail" }, [_vm._v("Mail")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "phone" }, [_vm._v("Phone")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "status" }, [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "action" }, [_vm._v("Actions")])
     ])
   }
 ]

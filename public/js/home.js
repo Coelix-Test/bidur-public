@@ -4068,7 +4068,7 @@ __webpack_require__.r(__webpack_exports__);
           var relevantPosts = [];
 
           for (var i = 0; i < _this.hashtags.length; i++) {
-            axios.post('/getAllPostsByHashtag', {
+            axios.post('/getAllRelevantPosts', {
               hashtag_id: _this.hashtags[i]
             }).then(function (response) {
               _this.relevantPosts = response.data; // console.log('response', this.relevantPosts);
