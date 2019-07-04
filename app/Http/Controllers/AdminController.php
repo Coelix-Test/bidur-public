@@ -14,6 +14,8 @@ use App\LikesForSingleImage;
 use App\MainSection;
 use App\Post;
 use App\PostContent;
+use App\PostImage;
+use App\PostImageAndText;
 use App\PostTitle;
 use App\PostVideo;
 use App\SelectOne;
@@ -114,21 +116,28 @@ class AdminController extends Controller
 
     public function createFullPost(Request $request){
         $sections = $request->get('sections');
+        $files = $request->allFiles();
+
         foreach ($sections as $key => $section) {
+//            dd($section);
             if ($section['type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
-                $hashtags   = $section['celebrities']; //array
-//                $hot        = $section['hot']; //true-false
+                $hashtags = null;
+                if (isset($section['celebrities'])){
+                    $hashtags   = $section['celebrities']; //array
+                }
                 $author     = $section['author'];
                 $date       = $section['date'];
                 $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
+
             }
-            elseif($section['type'] == 'content'){
-                $content = $section['content'];
+            elseif($section['type'] == 'text'){
+                $content = $section['value'];
+//                dd($content);
                 $this->createPostAddContent($this->post->id, $content, $key);
             }
             elseif($section['type'] == 'title'){
-                $title = $section['title'];
+                $title = $section['value'];
                 $this->createPostAddTitle($this->post->id, $title, $key);
             }
             elseif($section['type'] == 'video'){
@@ -136,16 +145,23 @@ class AdminController extends Controller
                 $this->createPostAddTitle($this->post->id, $url, $key);
             }
             elseif($section['type'] == 'survey'){
+//                dd($files);
                 $title = $section['title'];
-                if ($section['right'] != null){
-                    $right = $section['right'];
-                }
-                $this->createPostAddSurvey($section['variants'], $title, $this->post->id, $key, $right);
+                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
             }
             elseif ($section['type'] == 'image'){
-                exit(0);
+                dd($files);
+                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
             }elseif ($section['type'] == 'imageWithText'){
-                exit(0);
+                $this->createPostAddImageWithText(
+                    $this->post->id,
+                    $files['sections'][$key]['image'],
+                    $section['title'],
+                    $section['text'],
+                    $section['imagePosition'],
+                    $key
+                );
+//                dd($files);
             }elseif ($section['type'] == 'selectOne'){
                 exit(0);
             }elseif ($section['type'] == 'likablePhoto'){
@@ -155,7 +171,7 @@ class AdminController extends Controller
         return json_encode(['success' => true]);
     }
 
-    public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
+    public function createPostHeaderMeta($metaTitle, $hashtags = null,  $author, $date){
 //        $date = date('Y-m-d h:m:s', $date);
 //        dd($date);
 //        dd(date('Y', $date));
@@ -169,23 +185,41 @@ class AdminController extends Controller
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);
-        foreach ($hashtags as $hashtag) {
-            HashtagPosts::create([
-                'hashtagId' => $hashtag,
-                'postId' => $post->id,
-            ]);
+        if (isset($hashtags)){
+            foreach ($hashtags as $hashtag) {
+                HashtagPosts::create([
+                    'hashtagId' => $hashtag,
+                    'postId' => $post->id,
+                ]);
+            }
         }
+
         return $post;
     }
 
     public function createPostAddContent($postId, $content, $order){
         PostContent::create([
             'postId' =>  $postId,
-            'content' => $content,
+            'contentText' => $content,
             'order' => $order
         ]);
     }
-    public function createPostAddImage(){
+    public function createPostAddImage($postId, $file, $description, $order){
+        $image = $file;
+        $text = $description;
+        if($image) {
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
+        $img = PostImage::create([
+            'postId' => $postId,
+            'url' => '/images/postImages/'.$name,
+            'description' => $text,
+            'order' => $order
+        ]);
+        dd($img);
+
     }
 
     public function createPostAddTitle($postId, $title, $order){
@@ -195,26 +229,52 @@ class AdminController extends Controller
             'order' => $order
         ]);
     }
-    public function createPostAddImageWithText(){
-    }
-
-    public function createPostAddSurvey($variants, $title, $postId, $order, $right){
-        $survey = Survey::create([
+    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order){
+        $image = $file;
+        if($image) {
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
+        PostImageAndText::create([
             'postId' => $postId,
-            'authorId' => \Auth::id(),
-            'order' => $order,
-            'question' => $title
+            'url' => '/images/postImages/'.$name,
+            'title' => $title,
+            'imagePosition' => $imagePosition,
+            'content' => $text,
+            'order' => $order
         ]);
+    }
+    public function createPostAddSurvey($variants, $title, $postId, $order, $image){
+        if($image) {
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
+        if (\Auth::check() == false){
+            $survey = Survey::create([
+                'postId' => $postId,
+                'authorId' => 1,
+                'order' => $order,
+                'question' => $title,
+                'image' => '/images/postImages/'.$name,
+            ]);
+        }else{
+            $survey = Survey::create([
+                'postId' => $postId,
+                'authorId' => \Auth::id(),
+                'order' => $order,
+                'question' => $title,
+                'image' => '/images/postImages/'.$name,
+            ]);
+        }
+
         foreach ($variants as $key => $variant) {
-            $status = false;
-            if ($survey == $key){
-                $status = true;
-            }
+
             SurveyAnswerVariant::create([
                 'surveyId' => $survey->id,
                 'question' => $variant,
-                'right' => $status,
-                'order' => $key
+                'order' => $key+1
             ]);
         }
     }

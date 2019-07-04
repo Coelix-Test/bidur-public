@@ -15,8 +15,8 @@
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'MainController@showSinglePost');
-Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
+Route::get('/test2', 'MainController@getRecentPosts');
+Route::post('/test', 'MainController@getRecentPosts')->name('test');
 
 
 
@@ -51,6 +51,8 @@ Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
 Route::post('/getReaction', 'MainController@getEmojiReaction');
 Route::post('/addReaction', 'MainController@addEmojiReaction');
+
+Route::post('/addSurveyVote', 'MainController@addSurveyVote');
     //->middleware('auth'); // пример ауса
 
 //admin

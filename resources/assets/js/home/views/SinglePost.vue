@@ -1,28 +1,49 @@
 <template>
-  <div v-if="post" class="single-post">
+  <div class="single-post">
     <div class="post-wrapper">
-      <div class="post-content">
+
+      <single-post-example v-if="errorMessage" />
+      <div v-if="post" class="post-content">
         <nav>
-          <router-link v-if="nextPostId" :to="nextPostId">Next Post</router-link>
-          <router-link v-if="prevPostId" :to="prevPostId">Prev Post</router-link>
+
+          <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
+            <img src="/img/arrow-right.svg">
+            Prev News
+          </router-link>
+          <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
+            Next News
+            <img src="/img/arrow-left.svg">
+          </router-link>
         </nav>
 
-        <h1>{{ postTitle }}</h1>
+        <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
+        <div class="post-meta">
+
+          <div class="info">
+            <span class="author">{{ post.data.post.author }}</span>
+            <span class="date">{{ post.data.post.date }}</span>
+          </div>
+          <!-- <a href="#" class="share">
+            ףתש
+            <img src="/img/shareArrow.svg" alt="">
+          </a> -->
+          <share />
+
+        </div>
         <section :class="post.type" v-for="post in postData" >
 
-          <!-- title -->
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <!-- content -->
-          <p v-if="post.type == 'content'">{{ post.value }}</p>
+          <div v-if="post.type == 'content'">{{ post.value }}</div>
 
-          <!-- fullscreen image -->
           <img v-if="post.type == 'image'" :src="post.value" alt="">
 
-          <!-- survey -->
-          <vue-poll v-if="post.type == 'survey'" class="poll" v-bind="post.value" @addvote="addVote($event, 1)"/>
+          <div v-if="post.type == 'survey'" class="poll">
+            <img :src="post.img" alt="">
+            <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          </div>
 
-          <!-- video -->
+
           <iframe
             v-if="post.type == 'video'"
             id="ytplayer"
@@ -31,73 +52,21 @@
             frameborder="0"
           />
 
-          <!-- imageWithText -->
           <div v-if="post.type == 'imageWithText'">
-            <img v-if="post.url" :class="post.imagePosition" :src="post.url" alt="">
+            <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
             <h2 v-if="post.title">{{ post.title }}</h2>
             <p v-if="post.content">{{post.content}}</p>
           </div>
 
         </section>
-        <div class="post-meta">
 
-          <div class="info">
-            <span class="author">{{ post.data.post.author }}</span>
-            <span class="date">{{ post.data.post.date }}</span>
-          </div>
-          <a href="#" class="share">
-            ףתש
-            <img src="/img/shareArrow.svg" alt="">
-          </a>
 
-        </div>
 
-        <section class="full-width image">
-          <img src="/img/singlePREV.png" alt="">
-          <p class="img-subtext">
-            La La Anthony is seen arriving to the 2019 CFDA Fashion Awards on June 3, 2019 in New York City. Gilbert Carrasquillo/GC Images/Getty Images
-          </p>
-        </section>
-        <section class="sub-title">
-          <h2>Live with Andy Cohen</h2>
-        </section>
-        <section class="text">
-          <p>
-            “Baby’s doing good,” the actress, 39, told Us Weekly exclusively on Monday, June 3, at the CFDA Fashion Awards. “Mom’s doing good. Everybody’s happy and healthy, which is always a beautiful thing.”
-          </p>
-          <p>
-            Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-          </p>
-          <p>
-            The Kardashian Family: Get to Know the Next Generation
-            “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-          </p>
-          <p>
-            After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-          </p>
-        </section>
-        <section class="survey">
-          <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-        </section>
-        <section class="image side-image left">
-
-            <img src="/img/sideImagePrev.png" alt="">
-            <h2>Baby’s doing good</h2>
-            <p>
-              Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-            </p>
-            <p>
-              The Kardashian Family: Get to Know the Next Generation
-              “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-            </p>
-            <p>
-              After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-            </p>
-
-        </section>
         <div class="opinion">
           <h2>Your opinion</h2>
-
+          <div class="emoji-wrapper">
+            <emoji v-if="postId" :postId="postId" />
+          </div>
         </div>
       </div>
 
@@ -107,22 +76,22 @@
     </div>
     <div class="related-posts">
 
-
-      <carousel :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="i in 6" class="related-post" :key="i">
-            <img src="/img/relatedPostPrev.png" alt="">
+      <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
+        <slide v-for="post in relevantPosts" class="related-post" :key="post.id">
+            <img :src="post.img" alt="">
             <div class="related-post-content">
-              <a href="#"><h3>6 JOBS THAT PROBABLYWON’T BE AROUND IN 10 YEARS</h3></a>
+              <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
               <p class="related-post-meta">
-                <span class="date">5 years ago</span>
-                <span class="author">by Helen Nikova</span>
+                <span class="date">{{post.time}}</span>
+                <span class="author">by {{post.author}}</span>
               </p>
               <p class="excerpt">
-                Whether you’re trying to figure out a career path tailored to your abilities, or just curious of the kinds of jobs that society is slowly fading out, Boss Girl has the rundown on the 6 jobs that probably...
+                {{ post.excerpt }}
               </p>
             </div>
         </slide>
       </carousel>
+
     </div>
   </div>
 
@@ -130,62 +99,100 @@
 </template>
 
 <script>
+
 import VuePoll from 'vue-poll'
-// import contentSection from './../components/contentSection.vue'
+import Share from './../components/single-post/Share.vue'
+import Emoji from './../components/single-post/Emoji.vue'
+import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel';
+
 export default {
   data() {
     return {
-      post : true,
+      post : false,
       postData : null,
       prevPostId : null,
       nextPostId : null,
       postTitle : null,
+      errorMessage : false,
+      hashtags : null,
+      relevantPosts : [],
       postContentSections : null,
-      options: {
-          question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
-          answers: [
-              { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
-              { value: 2, text: 'Normal, i know it', votes: 35 },
-              { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
-              { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
-          ]
-      }
+      postId : null,
     }
   },
   methods : {
+    changePost($event, id) {
+      event.preventDefault()
+      this.sync(id);
+      this.postId = id;
+      this.$router.push({path : `/post/${id}`});
+    },
+    computeNumber(value) {
+      // console.log(value);
+    },
     sync(id) {
-      axios.post('/post/'+id).then(response => {
-        console.log(response);
-        this.post = response;
-        this.postData = this.post.data.post.sections;
-        this.postTitle = this.postData[1].value;
-        // this.postContentSections = this.postData.slice(1);
-        delete this.postData[1];
-        console.log(this.postData);
-        this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
-        this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
-      })
+      return axios
+        .post('/post/'+id)
+          .then(response => {
+            // console.log(response.data);
+
+            this.post = response;
+            this.errorMessage = false;
+            this.postId = id;
+            this.postData = this.post.data.post.sections;
+            this.postTitle = this.postData[1].value;
+            this.hashtags = this.post.data.post.hashtags;
+             if(this.hashtags != null) {
+               var relevantPosts = [];
+              for(let i =0;i < this.hashtags.length;i++) {
+                axios
+                  .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
+                    .then(response => {
+                      this.relevantPosts = response.data;
+                      // console.log('response', this.relevantPosts);
+                    })
+              }
+
+            }
+            this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+            this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+          })
+          .catch(error => {
+            console.log('error');
+            this.errorMessage = true;
+            this.post = false;
+          });
     },
     addVote(obj, id){
-        console.log(obj);
-        console.log(id);
+        // console.log(obj);
+        // console.log(id);
+        axios
+          .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+            .then(response => {
+              // console.log(response);
+            });
     }
   },
   created() {
 
     this.sync(this.$route.params.id);
-
+    this.postId = this.$route.params.id;
   },
-  beforeRouteUpdate(to) {
+  beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
+    this.postId = to.params.id;
+    next();
   },
   components : {
     SideNews,
     VuePoll,
     Carousel,
-    Slide
+    Slide,
+    SinglePostExample,
+    Share,
+    Emoji
   }
 }
 
@@ -216,6 +223,10 @@ export default {
     color:#BDBDBD;
     font-size: 18px;
   }
+  .post-content nav .next-post {
+    flex-grow:2;
+    text-align: left;
+  }
   .post-content h1 {
     color:#333333;
     margin-bottom: 16px;
@@ -226,6 +237,11 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+  .poll img {
+    width:100%;
+    object-fit: cover;
+    margin-bottom: 16px;
   }
   .post-meta .info a,
   .post-meta .info {
@@ -251,6 +267,9 @@ export default {
     max-width: 100%;
     object-fit: cover;
     margin-bottom: 12px;
+  }
+  section.imageWithText img {
+    max-width:50%;
   }
   section.imageWithText img.right {
     float:right;
@@ -293,7 +312,7 @@ export default {
     margin-bottom: 24px;
     padding:24px;
   }
-  section.survey > div {
+  section.survey {
     max-width: 550px;
   }
   .opinion {
@@ -320,9 +339,12 @@ export default {
     align-items: flex-start;
     justify-content: flex-start;
     margin-top: 24px;
-  }
-  .related-post {
     text-decoration: none;
+  }
+  .related-post img {
+    width: 220px;
+    height: 180px;
+    object-fit: cover;
   }
   .related-post a {
     text-decoration-color: #333;
@@ -350,8 +372,8 @@ export default {
     margin-bottom: 8px;
   }
   .related-post-meta .author {
-    padding-right: 4px;
-    margin-right: 4px;
+    padding-right: 6px;
+    margin-right: 6px;
     border-right: 1px solid #333;
   }
   .related-post-content .excerpt {
@@ -373,9 +395,16 @@ export default {
       font-size: 32px;
       line-height: 32px;
     }
-    section.image.side-image.right img,
-    section.image.side-image.left img {
+    .opinion h2 {
+      text-align: center;
+    }
+    section.imageWithText img.left,
+    section.imageWithText img.right {
       float:none;
+      margin-right: 0;
+      max-width: 100%;
+      margin-bottom: 8px;
+      margin-left: 0;
       margin-right: 0;
     }
   }

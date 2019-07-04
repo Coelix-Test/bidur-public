@@ -13,7 +13,7 @@
             $hashtags = $hashtags->getAllHashtags();
             foreach ($hashtags as $hashtag) {
                 ?>
-                <a href="/#/all/{{ $hashtag['id'] }}" class="np-slide-item">
+                <a href="/#/hashtag/{{ $hashtag['id'] }}" class="np-slide-item">
                     <div class="celebrity">
                         <div class="img-wrap">
                             <div class="image" style="background-image: url('<?=$hashtag['img']?>');"></div>
@@ -35,7 +35,7 @@
 
               foreach ($postTitles as $postTitle) {
                   ?>
-                  <li>Lorem ipsum dolor sit amet, consectetur adipisicing.<?= $postTitle['title']?></li>
+                  <li><?= $postTitle['title']?></li>
                   <?php
               }
               ?>
@@ -44,7 +44,7 @@
               <?php
               foreach ($postTitles as $postTitle) {
               ?>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing.<?= $postTitle['title']?></li>
+              <li><?= $postTitle['title']?></li>
               <?php
               }
               ?>

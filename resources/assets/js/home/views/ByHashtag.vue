@@ -41,8 +41,9 @@ export default {
   created() {
     this.sync(this.$route.params.id);
   },
-  beforeRouteUpdate(to) {
+  beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
+    next();
   }
 }
 </script>
