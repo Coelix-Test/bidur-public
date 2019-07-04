@@ -362,6 +362,10 @@ class MainController extends Controller
         $hashtagId = $request->get('hashtag_id');
 
         $hashtagPosts = HashtagPosts::all();
+        $hashtag = Hashtag::find($hashtagId);
+
+        $postsWithContent['hashtagImg'] = $hashtag->image;
+        $postsWithContent['name'] = $hashtag->text;
 
         foreach ($hashtagPosts as $hashtagPost) {
             if ($hashtagPost->hashtagId == $hashtagId){
@@ -593,10 +597,12 @@ class MainController extends Controller
     }
 
     public function getRecentPosts(){
-        $recentPosts = Post::orderBy('created_at', 'desc')->get();
+        $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
         }
         return json_encode($postsForView);
     }
+
+//    public function getMainSection
 }
