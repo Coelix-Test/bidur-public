@@ -56,6 +56,22 @@
                             @deleteSection="deleteSection">
                         </post-survey>
                     </template>
+                    <template v-else-if="section.type === 'assessment'">
+                        <post-assessment
+                            class="assessment-section"
+                            v-bind.sync="section"
+                            :index="index"
+                            @deleteSection="deleteSection">
+                        </post-assessment>
+                    </template>
+                    <template v-else-if="section.type === 'selection'">
+                        <post-selection
+                            class="selection-section"
+                            v-bind.sync="section"
+                            :index="index"
+                            @deleteSection="deleteSection">
+                        </post-selection>
+                    </template>
                 </div>
 
                 <div class="add-section-buttons-line">
@@ -116,6 +132,8 @@ import PostImageText from './../components/posts/PostImageText.vue';
 // import PostVideo from './../components/posts/PostVideo.vue';
 import PostVideoLink from './../components/posts/PostVideoLink.vue';
 import PostSurvey from './../components/posts/PostSurvey.vue';
+import PostAssessment from './../components/posts/PostAssessment.vue';
+import PostSelection from './../components/posts/PostSelection.vue';
 
 export default {
     data: function(){
@@ -126,7 +144,9 @@ export default {
             date: new Date(),
             sections: [
                 {type: 'video', value: ''},
-                {type: 'survey', image: '', title: '', answers: []}
+                {type: 'survey', image: '', title: '', answers: []},
+                {type: 'assessment', image: '', title: '' },
+                {type: 'selection', image1: '', image2: '', title: '' }
             ]
         }
     },
@@ -137,7 +157,9 @@ export default {
         PostImage,
         PostImageText,
         PostVideoLink,
-        PostSurvey
+        PostSurvey,
+        PostAssessment,
+        PostSelection
     },
     methods: {
         addSection(type){
@@ -161,6 +183,12 @@ export default {
                     break;
                 case 'survey':
                     sectionData = {type: 'survey', image: '', title: '', answers: [] };
+                    break;
+                case 'assessment':
+                    sectionData = {type: 'assessment', image: '', title: '' };
+                    break;
+                case 'selection':
+                    sectionData = {type: 'selection', image1: '', image2: '', title: '' };
                     break;
             }
             this.sections.push(sectionData);
@@ -276,7 +304,9 @@ export default {
         }
     }
 }
-.survey-section{
+.survey-section,
+.assessment-section,
+.selection-section{
     width: 75%;
 }
 </style>

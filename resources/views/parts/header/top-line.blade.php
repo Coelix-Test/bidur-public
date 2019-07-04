@@ -21,8 +21,8 @@
 
         <div class="auth-btns">
             @if(!Auth::check())
-                <a href="{{route('register')}}" class="btn-common btn-red">הרשמה</a>
-                <a href="{{route('login')}}" class="btn-common btn-border-dark">כניסה</a>
+                <a href="{{route('register')}}" class="btn-common btn-red register-popup-trigger">הרשמה</a>
+                <a href="{{route('login')}}" class="btn-common btn-border-dark login-popup-trigger">כניסה</a>
                 @else
                 <a href="{{route('logout')}}" class="btn-common btn-red">logout</a>
             @endif
