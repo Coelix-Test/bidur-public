@@ -21,11 +21,31 @@ import router from './router';
 import store from './store';
 
 import App from './App.vue';
+import Login from './components/modals/Login.vue';
+import Reg from './components/modals/Reg.vue';
 
 window.app = new Vue({
   router: router,
   store: store,
-  render: h => h(App)
+  render: h => h(App),
+  methods: {
+    openReg() {
+      this.$modal.show(Reg, {}, {
+        adaptive: true,
+        width: 600,
+        height: 'auto',
+        scrollable: true,
+      })
+    },
+    openLogin() {
+      this.$modal.show(Login, {}, {
+        adaptive: true,
+        width: 600,
+        height: 'auto',
+        scrollable: true,
+      })
+    }
+  }
 }).$mount('#home');
 
 $('#header_main .celebrities-slider').slick({

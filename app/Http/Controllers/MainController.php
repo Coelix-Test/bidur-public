@@ -7,6 +7,7 @@ use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
 use App\LikesForLeftAndRight;
+use App\LikesForSingleImage;
 use App\MainSection;
 use App\Post;
 use App\Rating;
@@ -375,7 +376,7 @@ class MainController extends Controller
 //        dd($postIds);
         if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
-                $postsWithContent[$postId] = $this->getContent($postId);
+                $postsWithContent['data'][$postId] = $this->getContent($postId);
             }
             return json_encode($postsWithContent);
 
@@ -604,5 +605,14 @@ class MainController extends Controller
         return json_encode($postsForView);
     }
 
-//    public function getMainSection
+
+    public function getSingleLikablePhoto(){
+        $photo = SingleLikableImage::where('postId', 0)->first();
+
+        $likes = $photo->getLikes();
+        $dislikes = $photo->getDislikes;
+
+        dd($likes);
+
+    }
 }

@@ -11,7 +11,12 @@
 </template>
 
 <script>
+import Reg from './modals/Reg.vue';
+
 export default {
+  methods: {
+
+  }
 }
 </script>
 
