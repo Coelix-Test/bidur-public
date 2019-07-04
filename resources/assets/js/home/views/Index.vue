@@ -6,8 +6,8 @@
     <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
-    <right-column-bot />
-    <left-column-bot v-if="latestPosts.length" :data="latestPosts" />
+    <right-column-bot v-if="latestPosts.length" :data="latestPosts" />
+    <left-column-bot  />
 
   </div>
 </template>
@@ -75,6 +75,7 @@ export default {
     flex-direction: row;
     flex-wrap:wrap;
     align-items: flex-start;
+    overflow:hidden;
   }
   @media (max-width:768px) {
     .home {
@@ -89,11 +90,18 @@ export default {
 <style>
   .vue-poll .qst {
     padding:0 12px;
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 32px;
+    line-height: 32px;
+    padding-top: 32px;
+    color:#fff;
+    margin:0;
+    text-align: center;
+    background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
+    padding-bottom: 32px;
   }
   .vue-poll .ans-cnt {
     margin:20px 12px;
+
   }
   .vue-poll .ans-cnt .ans-no-vote {
     position: relative;

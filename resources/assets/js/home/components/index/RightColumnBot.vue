@@ -1,19 +1,42 @@
 <template>
-  <div v-in-viewport.once class="right-column-bot">
+  <div class="right-column-bot">
     <div class="selected-poll">
-
       <img src="img/rihanna.png" alt="">
       <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-
     </div>
+    <div class="latest-posts">
+      <h2>חדשות נוספות</h2>
+      <ul ref="test" class="latest-post-slider">
+        <li v-if="posts" v-for="post in posts">
+
+            <img :src="post.img" alt="">
+            <div class="content">
+              <router-link :to="'/post/'+post.id">
+                <h3>{{ post.title }}</h3>
+              </router-link>
+              <p>
+                <span class="author">by {{post.author}}</span>
+                <span class="post-date">{{post.time}}</span>
+              </p>
+            </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
 <script>
 import VuePoll from 'vue-poll'
 export default {
+  props : {
+    data : {
+      requred: true,
+    }
+  },
     data() {
         return {
+            posts : [],
             options: {
                 question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
                 answers: [
@@ -24,6 +47,41 @@ export default {
                 ]
             }
         }
+    },
+    created() {
+      console.log(this.data);
+      let getAllPosts = [];
+      if(this.data) {
+        this.data.forEach( (el)=> {
+          getAllPosts.push(axios.post('/getInfoOnPostForMain', {id : el} ).then(response => {
+             this.posts.push(response.data);
+             // console.log(getAllPosts);
+           }));
+        });
+      }
+
+
+      Promise.all(getAllPosts).then(() => {
+        $(this.$refs.test).slick({
+          rtl: true,
+          dots: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows : false,
+          autoplay : true,
+          autoplaySpeed : 4000,
+          responsive: [
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            },
+          ]
+
+        });
+      })
     },
     components: {
         VuePoll
@@ -40,7 +98,7 @@ export default {
   .right-column-bot {
     flex-basis:50%;
     padding-left: 8px;
-
+    /* max-width: 500px; */
 
   }
   .selected-poll {
@@ -50,6 +108,8 @@ export default {
     justify-content: flex-start;
     overflow: hidden;
     background: #FFFFFF;
+    box-sizing: border-box;
+    border:4px solid #E4A913;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
     /* opacity: 0;
@@ -65,16 +125,96 @@ export default {
     height:auto;
     max-width:100%;
     object-fit: cover;
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
   .poll {
-
+    width:100%;
   }
-  h2 {
-    margin-top: 32px;
+  .selected-poll h3 {
+    padding-top: 32px;
     font-size: 32px;
     color:#0E0E0E;
+    margin:0;
+    background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
+    padding-bottom: 32px;
+  }
+  .latest-posts {
+    width:100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .latest-post-slider {
+    width:100%;
+    margin:0;
+    padding:0;
+    max-width: 600px;
+  }
+  .latest-post-slider li {
+    padding-left: 16px;
+    outline: none;
+  }
+  .latest-post-slider li {
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color:#333333;
+    text-decoration: none;
+  }
+  .latest-post-slider li  img {
+    width:120px;
+    height:120px;
+    object-fit: cover;
+    object-position: center;
+    margin-left: 16px;
+  }
+  .latest-post-slider li p {
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+  }
+  .latest-post-slider li p .post-date {
+    color:#B3AAAA;
+    padding-right: 4px;
+    border-right: 1px solid #B3AAAA;
+    margin-right: 4px;
+    white-space:nowrap;
+  }
+  .latest-post-slider li p .author {
+    color:black;
+    white-space:nowrap;
+  }
+  .latest-post-slider li h3 {
+    font-size: 20px;
+    margin-bottom: 0;
+    color:#333;
+  }
+  .latest-post-slider li a {
+    color:#333;
+    text-decoration-color: #333;
+  }
+  .latest-posts h2 {
+    color:#333333;
+    font-size: 30px;
+    font-weight: bold;
     margin-bottom: 32px;
+  }
+  @media (max-width:768px) {
+    .left-column-bot {
+      order: 4;
+      flex-basis:100%;
+      width:100%;
+      padding-right: 0;
+    }
+    .latest-post-slider li {
+      padding-left: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+    }
   }
   @media (max-width:768px) {
     .right-column-bot {
