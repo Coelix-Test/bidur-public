@@ -342,9 +342,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function getMainBday(){
+        $happy = HappyBirthsday::find(1);
+        $data['img'] = $happy->img;
+        $data['text'] = $happy->text;
+        return json_encode($data);
+    }
+
     public function addNewComparison(Request $request){
-        SelectOne::truncate();
-        LikesForLeftAndRight::truncate();
+//        SelectOne::truncate();
+//        LikesForLeftAndRight::truncate();
         $leftImage = $request->file('leftImage');
         $leftName = time().'.'.$leftImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/compare');

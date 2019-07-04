@@ -64,7 +64,7 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
 
     //services
-    Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday');
+    Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
     Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
