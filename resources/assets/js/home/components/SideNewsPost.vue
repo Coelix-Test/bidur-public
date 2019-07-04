@@ -1,5 +1,5 @@
 <template>
-  <div class="side-news-post">
+  <div class="side-news-post" @click="reg">
     <div class="img">
 
     </div>
@@ -11,7 +11,19 @@
 </template>
 
 <script>
+import Reg from './modals/Reg.vue';
+
 export default {
+  methods: {
+    reg() {
+      this.$modal.show(Reg, {}, {
+        adaptive: true,
+        width: 600,
+        height: 'auto',
+        scrollable: true,
+      })
+    }
+  }
 }
 </script>
 
