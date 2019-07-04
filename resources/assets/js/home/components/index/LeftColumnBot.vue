@@ -9,9 +9,9 @@
       <h2>תמונת האינסטגרם המנצחת של היום</h2>
 
     </div>
-    <div class="instagram-post">
-      <a href="https://instagram.com/" target="_blanc">
-        <img src="/img/leo.png" alt="">
+    <div v-if="instagramData" class="instagram-post">
+      <a :href="instagramData.link" target="_blank">
+        <img :src="instagramData.img" alt="">
       </a>
     </div>
   </div>
@@ -21,15 +21,22 @@
 export default {
   props : {
     data : {
-      requred: true,
+      requred : true,
+
     }
   },
   data() {
     return {
       posts : [],
+      instagramData : null,
     }
   },
   created() {
+    axios
+      .post('/getMainInsta')
+        .then(res => {
+          this.instagramData = res.data;
+        });
   },
   mounted() {
 
@@ -90,6 +97,12 @@ export default {
   @media (max-width:768px) {
     h2 {
       margin-bottom: 16px;
+    }
+    .left-column-bot {
+      order: 4;
+      width:100%;
+      flex-basis:100%;
+      margin-right: 0;
     }
   }
   @media (max-width: 550px) {

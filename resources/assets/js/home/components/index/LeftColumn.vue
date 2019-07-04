@@ -64,7 +64,7 @@ export default {
     width:100%;
     position: relative;
     margin-bottom: 16px;
-    height:450px;
+    height:500px;
     overflow: hidden;
     opacity: 0;
     transition: transform 1s ease, opacity 1s ease;

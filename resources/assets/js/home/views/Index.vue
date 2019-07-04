@@ -6,7 +6,7 @@
     <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
-    <right-column-bot v-if="latestPosts.length" :data="latestPosts" />
+    <right-column-bot />
     <left-column-bot  />
 
   </div>
@@ -35,26 +35,20 @@ export default {
   },
   mounted() {
 
-   axios
-     .post('/getAllPosts')
-     .then(
-       response => {
-         this.getAllPosts = response.data;
-         let latestPostsId = [];
-         this.getAllPosts.forEach( (el) => {
-           latestPostsId.push(el.post.id);
-         });
-         this.latestPosts = latestPostsId.reverse().slice(0,8);
-
-        }
-     );
+    //get pinned posts
     axios
       .post('/getSelectedPosts')
         .then(response => {
           let postData = response.data;
           this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
           this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1])
-        })
+        });
+    //get pinned survey
+    // axios
+    //   .post('//')
+    //     .then(res => {
+    //
+    //     });
 
  },
  components : {
@@ -183,7 +177,7 @@ export default {
     .vue-poll .qst {
       font-size: 24px;
       line-height: 24px;
-      padding:0 12px;
+      padding:8px 12px;
       text-align: center;
     }
   }
