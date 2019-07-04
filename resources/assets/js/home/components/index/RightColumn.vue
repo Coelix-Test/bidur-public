@@ -1,13 +1,11 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <div class="bdayInner" href="#">
-        <div class="overlay">
-          <img src="img/happyBdayOverlay.svg" alt="">
-        </div>
+      <img src="img/happyBdayOverlay.svg" alt="">
+      <h2>{{birthdayPost.text}}</h2>
+      <div class="bdayInner">
+        <div class="overlay"></div>
         <img :src="birthdayPost.img" alt="">
-        <h2>{{birthdayPost.text}}</h2>
-
       </div>
     </article>
     <ul v-in-viewport.once v-if="posts" class="posts">
@@ -93,6 +91,13 @@ export default {
     font-size: 2em;
     text-align: center;
     margin-bottom: 0;
+    position: absolute;
+    right:32px;
+    top:0;
+    color:#F2C94C;
+    text-align: right;
+    z-index:5;
+    font-family: 'Levin','Assistant',sans-serif;
   }
   .birthdayPost .overlay {
     position: absolute;
@@ -108,6 +113,12 @@ export default {
     width:100%;
     max-height: 100%;
     object-fit: cover;
+  }
+  .birthdayPost > img {
+    object-fit: contain;
+    position: absolute;
+    z-index:2;
+    pointer-events: none;
   }
   .birthdayPost .overlay img {
     object-fit: cover;
@@ -245,8 +256,24 @@ export default {
       padding-left: 0;
       order:2;
     }
+    ul.posts li:nth-child(2),
+    ul.posts li:nth-child(3) {
+      margin-top: 0;
+    }
+    ul.posts li:nth-child(4) {
+      margin-top: 8px;
+    }
+    ul.posts li .background-square {
+      background-color: transparent;
+      display: none;
+    }
     .birthdayPost h2 {
+      right:8px;
+      top:8px;
       font-size: 1.6em;
+    }
+    .birthdayPost {
+      padding: 0;
     }
   }
   @media (max-width:550px) {

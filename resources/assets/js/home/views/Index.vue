@@ -177,7 +177,7 @@ export default {
     .vue-poll .qst {
       font-size: 24px;
       line-height: 24px;
-      padding:0 12px;
+      padding:8px 12px;
       text-align: center;
     }
   }

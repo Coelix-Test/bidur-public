@@ -98,6 +98,12 @@ export default {
     h2 {
       margin-bottom: 16px;
     }
+    .left-column-bot {
+      order: 4;
+      width:100%;
+      flex-basis:100%;
+      margin-right: 0;
+    }
   }
   @media (max-width: 550px) {
     .instagram-post {

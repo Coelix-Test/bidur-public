@@ -220,6 +220,9 @@ export default {
     .latest-post-item {
       padding-left: 0;
     }
+    .selected-poll {
+      margin-bottom: 8px;
+    }
     h2 {
       margin-bottom: 16px;
     }
@@ -228,6 +231,7 @@ export default {
     .right-column-bot {
       order: 3;
       flex-basis:100%;
+      width:100%;
       padding-left: 0;
       margin-bottom: 16px;
       margin-top: 8px;
