@@ -401,6 +401,16 @@ class AdminController extends Controller
             }else{
                 $allUsers[$user->id]['status'] = 'online';
             }
+            $admins = Admins::all();
+            foreach ($allUsers as $key => $allUser) {
+                foreach ($admins as $admin) {
+                    if ($allUser['id'] == $admin->userId){
+                        $allUsers[$key]['is_admin'] = true;
+                    }else{
+                        $allUsers[$key]['is_admin'] = false;
+                    }
+                }
+            }
         }
         if (empty($allUsers)){
             $allUsers = [];
@@ -437,7 +447,7 @@ class AdminController extends Controller
         $name   = $request->get('name');
         $email  = $request->get('email');
         $phone  = $request->get('phone');
-        $id     = $request->get('id');
+        $id     = $request->get('userId');
         $admin = User::find($id);
         if (isset($name)){
             $admin->name = $name;
@@ -453,8 +463,8 @@ class AdminController extends Controller
     }
 
     public function deleteAdmin(Request $request){
-        $id = $request->get('id');
-        Admins::find($id)->delete();
+        $id = $request->get('userId');
+        User::find($id)->delete();
         return $this->showAllAdmins();
     }
 
@@ -468,7 +478,7 @@ class AdminController extends Controller
         }else{
             Admins::where('userId', $request->get('userId'))->delete();
         }
-        return json_encode(['success' => true]);
+        return $this->showAllAdmins();
     }
 
     public function createInsta(Request $request){
