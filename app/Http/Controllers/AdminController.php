@@ -459,9 +459,15 @@ class AdminController extends Controller
     }
 
     public function makeUserAdmin(Request $request){
-        Admins::create([
-            'userId' => $request->get('id'),
-        ]);
+
+        $admin = Admins::where('userId', $request->get('userId'))->first();
+        if (empty($admin)){
+            Admins::create([
+                'userId' => $request->get('userId'),
+            ]);
+        }else{
+            Admins::where('userId', $request->get('userId'))->delete();
+        }
         return json_encode(['success' => true]);
     }
 
