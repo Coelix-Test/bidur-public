@@ -73,35 +73,35 @@ export default {
         }
     },
     created() {
-       let getAllPosts = [];
+       // let getAllPosts = [];
         axios.post('/getRecentPosts').then(response => {
 
-           getAllPosts = response.data;
-           this.posts = getAllPosts;
+           this.posts = response.data;
+           // this.posts = getAllPosts;
          });
 
 
-      Promise.all(getAllPosts).then(() => {
-        $(this.$refs.test).slick({
-          rtl: true,
-          dots: false,
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          arrows : false,
-          autoplay : true,
-          autoplaySpeed : 4000,
-          responsive: [
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              }
-            },
-          ]
-
-        });
-      })
+      // Promise.all(getAllPosts).then(() => {
+      //   $(this.$refs.test).slick({
+      //     rtl: true,
+      //     dots: false,
+      //     slidesToShow: 2,
+      //     slidesToScroll: 2,
+      //     arrows : false,
+      //     autoplay : true,
+      //     autoplaySpeed : 4000,
+      //     responsive: [
+      //       {
+      //         breakpoint: 600,
+      //         settings: {
+      //           slidesToShow: 1,
+      //           slidesToScroll: 1,
+      //         }
+      //       },
+      //     ]
+      //
+      //   });
+      // })
     },
     components: {
         VuePoll,

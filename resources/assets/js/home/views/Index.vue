@@ -115,6 +115,9 @@ export default {
     border-radius: 10px;
     overflow: hidden;
   }
+  .vue-poll .votes {
+    padding:0 12px;
+  }
   .vue-poll .ans-cnt .ans-no-vote:before {
     content:'';
     position: absolute;
