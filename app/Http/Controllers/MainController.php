@@ -629,6 +629,32 @@ class MainController extends Controller
         $data['image'] = $photo->url;
         $data['likes'] = $likes->count();
         $data['dislikes'] = $dislikes->count();
-        dd($data);
+        return json_encode($data);
+    }
+
+    public function likeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        LikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
+
+    public function dislikeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        DisLikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
+
+    public function likeForSelectOne(Request $request){
+        $serviceId = $request->get('serviceId');
+        $position = $request->get('position');
+
+        LikesForLeftAndRight::create([
+            'serviceId' => $serviceId,
+            'value' => $position,
+        ]);
     }
 }
