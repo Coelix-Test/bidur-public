@@ -150,7 +150,7 @@ class AdminController extends Controller
                 $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
             }
             elseif ($section['type'] == 'image'){
-                dd($files);
+                // dd($files);
                 $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
             }elseif ($section['type'] == 'imageWithText'){
                 $this->createPostAddImageWithText(
@@ -218,7 +218,7 @@ class AdminController extends Controller
             'description' => $text,
             'order' => $order
         ]);
-        dd($img);
+        // dd($img);
 
     }
 
@@ -423,8 +423,8 @@ class AdminController extends Controller
             $allUsers = [];
         }
         return json_encode($allUsers);
-        
-        
+
+
 //        $adminIds = Admins::all();
 //        foreach ($adminIds as $adminId) {
 //            if (!empty(User::where('id', $adminId->id)->first())){

@@ -6,21 +6,6 @@
     </div>
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
-      <!-- <ul ref="test" class="latest-post-slider">
-        <li v-if="posts" v-for="post in posts">
-
-            <img :src="post.img" alt="">
-            <div class="content">
-              <router-link :to="'/post/'+post.id">
-                <h3>{{ post.title }}</h3>
-              </router-link>
-              <p>
-                <span class="author">by {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
-              </p>
-            </div>
-        </li>
-      </ul> -->
       <carousel
         v-if="posts"
         class="latest-post-slider"
@@ -119,6 +104,7 @@ export default {
 <style lang="css" scoped>
   .right-column-bot {
     flex-basis:50%;
+    width:50%;
     padding-left: 8px;
     /* max-width: 500px; */
 
@@ -169,7 +155,7 @@ export default {
     width:100%;
     margin:0;
     padding:0;
-    max-width: 600px;
+    /* max-width: 600px; */
   }
   .latest-post-item {
     padding-left: 16px;

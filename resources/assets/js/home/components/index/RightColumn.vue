@@ -1,8 +1,10 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <div href="#">
-        <div class="overlay"></div>
+      <div class="bdayInner" href="#">
+        <div class="overlay">
+          <img src="img/happyBdayOverlay.svg" alt="">
+        </div>
         <img :src="birthdayPost.img" alt="">
         <h2>{{birthdayPost.text}}</h2>
 
@@ -14,7 +16,6 @@
         <router-link class="post" :to="'/post/'+post.id">
           <div class="overlay"></div>
 
-          <!-- {{post}} -->
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
@@ -61,7 +62,7 @@ export default {
   .birthdayPost {
     width: 100%;
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 48px;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -70,21 +71,23 @@ export default {
     justify-content: flex-end;
     color: #fff;
     height:500px;
-    overflow: hidden;
-    background-color: rgba(100,100,100,0.7);
+    /* overflow: hidden; */
+    /* background-color: rgba(100,100,100,0.7); */
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
     transform: translateX(100px);
+    padding:80px 32px 12px;
   }
   .birthdayPost.in-viewport {
     transform: translateX(0);
     opacity: 1;
   }
-  .birthdayPost > div {
+  .birthdayPost > div.bdayInner {
     color:#fff;
     text-decoration: none;
     width:100%;
     height: 100%;
+    position: relative;
   }
   .birthdayPost h2 {
     font-size: 2em;
@@ -97,10 +100,16 @@ export default {
     left:0;
     right:0;
     bottom:0;
+    border:4px solid #F2C94C;
+    transform:rotate(3deg);
   }
   .birthdayPost img {
     max-width:100%;
     width:100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .birthdayPost .overlay img {
     object-fit: cover;
   }
   ul.posts {
