@@ -56,9 +56,9 @@
       <button class="a-row-center button" type="submit">המשרה</button>
       <div class="bottom">
         ?רתאב שמתשמ רבכ ךל שי
-        <router-link class="link" to="/">
+        <button class="link" @click="login">
           ןאכ ץחל
-        </router-link>
+        </button>
       </div>
     </form>
   </div>
@@ -68,6 +68,7 @@
 import Eye from './../auth/Eye.vue';
 import TextInput from './../TextInput.vue';
 import Close from './../auth/Close.vue';
+import Login from './../modals/Login.vue';
 
 export default {
   data() {
@@ -90,8 +91,6 @@ export default {
   },
   methods: {
     submit(e) {
-      console.log('qweqweqwe');
-      console.log('12312312312312');
       axios.post('/register', {
         name: this.name,
         email: this.email,
@@ -99,9 +98,18 @@ export default {
         password: this.pass,
         password_confirmation: this.repeat,
       }).then(res => {
-        console.log(res);
+        this.$emit('close');
       });
       e.preventDefault();
+    },
+    login() {
+      this.$emit('close');
+      this.$modal.show(Login, {}, {
+        adaptive: true,
+        width: 600,
+        height: 'auto',
+        scrollable: true,
+      });
     }
   }
 }
@@ -147,6 +155,8 @@ export default {
       .link {
         color: #FF1744;
         text-decoration: underline;
+        background: transparent;
+        border: 0;
       }
     }
     .checkbox {
