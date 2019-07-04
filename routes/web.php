@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test', 'MainController@getAllRelevantPosts')->name('test');
+Route::post('/test', 'AdminController@makeUserAdmin')->name('test');
 
 
 
