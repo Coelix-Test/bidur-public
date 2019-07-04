@@ -3510,16 +3510,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.post('/getAllPosts').then(function (response) {
-      _this.getAllPosts = response.data;
-      var latestPostsId = [];
-
-      _this.getAllPosts.forEach(function (el) {
-        latestPostsId.push(el.post.id);
-      });
-
-      _this.latestPosts = latestPostsId.reverse().slice(0, 8);
-    });
+    //get pinned posts
     axios.post('/getSelectedPosts').then(function (response) {
       var postData = response.data;
       _this.leftPosts = Object.entries(postData).slice(0, 2).map(function (entry) {
@@ -3528,7 +3519,12 @@ __webpack_require__.r(__webpack_exports__);
       _this.rightPosts = Object.entries(postData).slice(2, 6).map(function (entry) {
         return entry[1];
       });
-    });
+    }); //get pinned survey
+    // axios
+    //   .post('//')
+    //     .then(res => {
+    //
+    //     });
   },
   components: {
     RightColumn: _components_index_RightColumn_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -19812,9 +19808,7 @@ var render = function() {
         ? _c("left-column", { attrs: { data: _vm.leftPosts } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.latestPosts.length
-        ? _c("right-column-bot", { attrs: { data: _vm.latestPosts } })
-        : _vm._e(),
+      _c("right-column-bot"),
       _vm._v(" "),
       _c("left-column-bot")
     ],
