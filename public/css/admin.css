@@ -12,6 +12,14 @@ input.theme-input-text,
   padding: 0 12px;
 }
 
+.theme-textarea {
+  display: block;
+  resize: none;
+  border: 1px solid #E0E0E0;
+  border-radius: 3px;
+  padding: 8px 20px;
+}
+
 input,
 button:focus,
 a {
@@ -36,10 +44,32 @@ a {
   color: #fff;
 }
 
+.big-btn {
+  display: -ms-inline-flex;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 360px;
+  height: 79px;
+  font-size: 24px;
+  font-weight: 600;
+  max-width: 90%;
+  border-radius: 10px;
+}
+
 .theme-ico-btn svg {
   width: 15px;
   height: 15px;
   margin-left: 7px;
+}
+
+.heading {
+  font-size: 36px;
+  color: #4F4F4F;
+  font-weight: bold;
 }
 
 .shadow-section {

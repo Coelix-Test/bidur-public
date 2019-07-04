@@ -6,6 +6,7 @@
             v-for="celebrity in celebrities"
             :key="celebrity.index"
             :index="celebrity.index"
+            :placeholder="'Add celebrity'"
             :options="allCelebrities"
             @select="selectCelebrity"
             @deleteSelf="deleteCelebrity">
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-import SearchableInput from './../SearchableInput.vue';
+import SearchableInput from './../common/SearchableInput.vue';
 
 export default {
     data: function(){

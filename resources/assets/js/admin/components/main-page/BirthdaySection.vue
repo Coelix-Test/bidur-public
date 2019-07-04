@@ -1,0 +1,47 @@
+<template>
+    <div class="wrapper birthday-section">
+        <image-input :value.sync="image"></image-input>
+        <textarea v-model="text" name="description" class="text theme-textarea" placeholder="Enter Birthday text"></textarea>
+        <div class="btn-wrap">
+            <button class="theme-btn theme-btn-red big-btn">Save</button>
+        </div>
+    </div>
+</template>
+
+<script>
+import ImageInput from './../common/ImageInput.vue';
+export default {
+    data(){
+        return {
+            image: '',
+            text: ''
+        }
+    },
+    components: {
+        ImageInput
+    },
+    methods: {
+
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    @import "~@/vars.scss";
+    .birthday-section{
+        padding-bottom: 35px;
+    }
+    .text{
+        font-size: $fzTitle;
+        font-weight: 700;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .btn-wrap{
+        display: flex;
+        justify-content: center;
+    }
+</style>
