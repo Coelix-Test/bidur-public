@@ -2889,15 +2889,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2909,36 +2900,7 @@ __webpack_require__.r(__webpack_exports__);
       posts: []
     };
   },
-  created: function created() {
-    var _this = this;
-
-    var getAllPosts = [];
-    this.data.forEach(function (el) {
-      getAllPosts.push(axios.post('/getInfoOnPostForMain', {
-        id: el
-      }).then(function (response) {
-        _this.posts.push(response.data);
-      }));
-    });
-    Promise.all(getAllPosts).then(function () {
-      $(_this.$refs.test).slick({
-        rtl: true,
-        dots: false,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 4000,
-        responsive: [{
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }]
-      });
-    });
-  },
+  created: function created() {},
   mounted: function mounted() {}
 });
 
@@ -3009,8 +2971,50 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
-/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
+/* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3023,9 +3027,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    data: {
+      requred: true
+    }
+  },
   data: function data() {
     return {
+      posts: [],
       options: {
         question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
         answers: [{
@@ -3048,8 +3059,38 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  created: function created() {
+    var _this = this;
+
+    // let getAllPosts = [];
+    axios.post('/getRecentPosts').then(function (response) {
+      _this.posts = response.data; // this.posts = getAllPosts;
+    }); // Promise.all(getAllPosts).then(() => {
+    //   $(this.$refs.test).slick({
+    //     rtl: true,
+    //     dots: false,
+    //     slidesToShow: 2,
+    //     slidesToScroll: 2,
+    //     arrows : false,
+    //     autoplay : true,
+    //     autoplaySpeed : 4000,
+    //     responsive: [
+    //       {
+    //         breakpoint: 600,
+    //         settings: {
+    //           slidesToShow: 1,
+    //           slidesToScroll: 1,
+    //         }
+    //       },
+    //     ]
+    //
+    //   });
+    // })
+  },
   components: {
-    VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a
+    VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_1___default.a,
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
   },
   methods: {
     addVote: function addVote(obj) {
@@ -3616,6 +3657,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -3652,7 +3697,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        // console.log(response.data);
+        console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
         _this.postId = id;
@@ -3952,7 +3997,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.left-column-bot[data-v-26735722] {\n  flex-basis:50%;\n  width:50%;\n  padding-right: 8px;\n\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: translateY(100px); */\n}\n.left-column-bot.in-viewport[data-v-26735722] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n  opacity: 1;\n}\n.instagram-post[data-v-26735722] {\n  /* max-height: 700px; */\n  margin-top: 16px;\n}\n.instagram-post a[data-v-26735722] {\n  width:100%;\n  height:100%;\n}\n.instagram-post img[data-v-26735722] {\n  width:100%;\n  height:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.latest-post-slider[data-v-26735722] {\n  width:100%;\n  margin:0;\n  padding:0;\n}\n.latest-post-slider li[data-v-26735722] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-slider li[data-v-26735722] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-slider li  img[data-v-26735722] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-slider li p[data-v-26735722] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-slider li p .post-date[data-v-26735722] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-slider li p .author[data-v-26735722] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-slider li h3[data-v-26735722] {\n  font-size: 20px;\n  margin-bottom: 0;\n  color:#333;\n}\n.latest-post-slider li a[data-v-26735722] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\nh2[data-v-26735722] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-26735722] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-slider li[data-v-26735722] {\n    padding-left: 0;\n}\nh2[data-v-26735722] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 550px) {\n.instagram-post[data-v-26735722] {\n    margin-top: 8px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.left-column-bot[data-v-26735722] {\n  flex-basis:calc(50% - 8px);\n  width:50%;\n  margin-right: 8px;\n  padding:24px 12px;\n  background: linear-gradient(144.33deg, #F97B4A -1.22%, #C6278D 55.16%, #4200FF 97.95%);\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: translateY(100px); */\n}\n.left-column-bot.in-viewport[data-v-26735722] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n  opacity: 1;\n}\n.heading[data-v-26735722] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap:nowrap;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.heading button[data-v-26735722] {\n  border-width:0;\n  background-color: transparent;\n  padding:0 32px;\n  color:#fff;\n}\n.instagram-post[data-v-26735722] {\n  /* max-height: 700px; */\n  margin-top: 16px;\n}\n.instagram-post a[data-v-26735722] {\n  width:100%;\n  height:100%;\n}\n.instagram-post img[data-v-26735722] {\n  width:100%;\n  height:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\nh2[data-v-26735722] {\n  color:#fff;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 0;\n  text-align: center;\n}\n@media (max-width:768px) {\nh2[data-v-26735722] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 550px) {\n.instagram-post[data-v-26735722] {\n    margin-top: 8px;\n}\n}\n", ""]);
 
 // exports
 
@@ -3990,7 +4035,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.right-column-bot[data-v-3e7f8ea6] {\n  flex-basis:50%;\n  padding-left: 8px;\n}\n.selected-poll[data-v-3e7f8ea6] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: scale(0.8); */\n}\n.selected-poll.in-viewport[data-v-3e7f8ea6] {\n  /* transform: scale(1);\n  opacity: 1; */\n}\n.selected-poll img[data-v-3e7f8ea6] {\n  width:100%;\n  height:auto;\n  max-width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 24px;\n}\n.poll[data-v-3e7f8ea6] {\n}\nh2[data-v-3e7f8ea6] {\n  margin-top: 32px;\n  font-size: 32px;\n  color:#0E0E0E;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 4;\n            order: 3;\n    flex-basis:100%;\n    padding-left: 0;\n    margin-bottom: 16px;\n    margin-top: 8px;\n}\n}\n@media (max-width:550px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    margin-top: 0;\n}\n}\n", ""]);
+exports.push([module.i, "\n.right-column-bot[data-v-3e7f8ea6] {\n  flex-basis:50%;\n  padding-left: 8px;\n  /* max-width: 500px; */\n}\n.selected-poll[data-v-3e7f8ea6] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-sizing: border-box;\n  border:4px solid #E4A913;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n\n  /* opacity: 0;\n  transition: transform 1s ease, opacity 1s ease;\n  transform: scale(0.8); */\n}\n.selected-poll.in-viewport[data-v-3e7f8ea6] {\n  /* transform: scale(1);\n  opacity: 1; */\n}\n.selected-poll img[data-v-3e7f8ea6] {\n  width:100%;\n  height:auto;\n  max-width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.poll[data-v-3e7f8ea6] {\n  width:100%;\n}\n.selected-poll h3[data-v-3e7f8ea6] {\n  padding-top: 32px;\n  font-size: 32px;\n  color:#0E0E0E;\n  margin:0;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.latest-posts[data-v-3e7f8ea6] {\n  width:100%;\n  max-width: 100%;\n  overflow: hidden;\n}\n.latest-post-slider[data-v-3e7f8ea6] {\n  width:100%;\n  margin:0;\n  padding:0;\n  max-width: 600px;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color:#333333;\n  text-decoration: none;\n}\n.latest-post-item  img[data-v-3e7f8ea6] {\n  width:120px;\n  height:120px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 16px;\n}\n.latest-post-item p[data-v-3e7f8ea6] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.latest-post-item p .post-date[data-v-3e7f8ea6] {\n  color:#B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space:nowrap;\n}\n.latest-post-item p .author[data-v-3e7f8ea6] {\n  color:black;\n  white-space:nowrap;\n}\n.latest-post-item h3[data-v-3e7f8ea6] {\n  font-size: 20px;\n  margin-bottom: 0;\n  color:#333;\n}\n.latest-post-item a[data-v-3e7f8ea6] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.latest-posts h2[data-v-3e7f8ea6] {\n  color:#333333;\n  font-size: 30px;\n  font-weight: bold;\n  margin-bottom: 32px;\n}\n@media (max-width:768px) {\n.left-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 5;\n            order: 4;\n    flex-basis:100%;\n    width:100%;\n    padding-right: 0;\n}\n.latest-post-item[data-v-3e7f8ea6] {\n    padding-left: 0;\n}\nh2[data-v-3e7f8ea6] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width:768px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    -webkit-box-ordinal-group: 4;\n            order: 3;\n    flex-basis:100%;\n    padding-left: 0;\n    margin-bottom: 16px;\n    margin-top: 8px;\n}\n}\n@media (max-width:550px) {\n.right-column-bot[data-v-3e7f8ea6] {\n    margin-top: 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -4009,7 +4054,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.home[data-v-6717575a] {\n  max-width: 1440px;\n  margin:16px auto 32px;\n  padding:0 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap:wrap;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n@media (max-width:768px) {\n.home[data-v-6717575a] {\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n            flex-direction:column;\n    padding: 0 12px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.home[data-v-6717575a] {\n  max-width: 1440px;\n  margin:16px auto 32px;\n  padding:0 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap:wrap;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  overflow:hidden;\n}\n@media (max-width:768px) {\n.home[data-v-6717575a] {\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n            flex-direction:column;\n    padding: 0 12px;\n}\n}\n", ""]);
 
 // exports
 
@@ -4028,7 +4073,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 24px;\n  line-height: 24px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
+exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 32px;\n  line-height: 32px;\n  padding-top: 32px;\n  font-weight: 600;\n  color:#fff;\n  margin:0;\n  text-align: center;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .votes {\n  padding:0 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:0 12px;\n    text-align: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -4047,7 +4092,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 16px;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 16px;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 24px;\n  border:4px solid #E4A913;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -18836,41 +18881,33 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "left-column-bot" }, [
-    _c("h2", [_vm._v("חדשות נוספות")]),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { ref: "test", staticClass: "latest-post-slider" },
-      _vm._l(_vm.posts, function(post) {
-        return _vm.posts
-          ? _c("li", [
-              _c("img", { attrs: { src: post.img, alt: "" } }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "content" },
-                [
-                  _c("router-link", { attrs: { to: "/post/" + post.id } }, [
-                    _c("h3", [_vm._v(_vm._s(post.title))])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("span", { staticClass: "author" }, [
-                      _vm._v("by " + _vm._s(post.author))
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "post-date" }, [
-                      _vm._v(_vm._s(post.time))
-                    ])
-                  ])
-                ],
-                1
-              )
-            ])
-          : _vm._e()
-      }),
-      0
-    ),
+    _c("div", { staticClass: "heading" }, [
+      _c("button", [
+        _c(
+          "svg",
+          {
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "75",
+              height: "75",
+              viewBox: "0 0 75 75",
+              fill: "none"
+            }
+          },
+          [
+            _c("path", {
+              attrs: {
+                d:
+                  "M26.8799 11.7188C18.5577 11.7188 11.7188 18.5486 11.7188 26.8799V48.1201C11.7188 56.4423 18.5486 63.2812 26.8799 63.2812H48.1201C56.4423 63.2812 63.2812 56.4514 63.2812 48.1201V26.8799C63.2812 18.5577 56.4514 11.7188 48.1201 11.7188H26.8799ZM26.8799 16.4062H48.1201C53.9154 16.4062 58.5938 21.0846 58.5938 26.8799V48.1201C58.5938 53.9154 53.9154 58.5938 48.1201 58.5938H26.8799C21.0846 58.5938 16.4062 53.9154 16.4062 48.1201V26.8799C16.4062 21.0846 21.0846 16.4062 26.8799 16.4062ZM51.3428 21.5332C50.1617 21.5332 49.2188 22.4762 49.2188 23.6572C49.2188 24.8383 50.1617 25.7812 51.3428 25.7812C52.5238 25.7812 53.4668 24.8383 53.4668 23.6572C53.4668 22.4762 52.5238 21.5332 51.3428 21.5332ZM37.5 23.4375C29.7638 23.4375 23.4375 29.7638 23.4375 37.5C23.4375 45.2362 29.7638 51.5625 37.5 51.5625C45.2362 51.5625 51.5625 45.2362 51.5625 37.5C51.5625 29.7638 45.2362 23.4375 37.5 23.4375ZM37.5 28.125C42.7094 28.125 46.875 32.2906 46.875 37.5C46.875 42.7094 42.7094 46.875 37.5 46.875C32.2906 46.875 28.125 42.7094 28.125 37.5C28.125 32.2906 32.2906 28.125 37.5 28.125Z",
+                fill: "white"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("h2", [_vm._v("תמונת האינסטגרם המנצחת של היום")])
+    ]),
     _vm._v(" "),
     _vm._m(0)
   ])
@@ -19006,39 +19043,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "in-viewport",
-          rawName: "v-in-viewport.once",
-          modifiers: { once: true }
-        }
-      ],
-      staticClass: "right-column-bot"
-    },
-    [
-      _c(
-        "div",
-        { staticClass: "selected-poll" },
-        [
-          _c("img", { attrs: { src: "img/rihanna.png", alt: "" } }),
-          _vm._v(" "),
-          _c(
+  return _c("div", { staticClass: "right-column-bot" }, [
+    _c(
+      "div",
+      { staticClass: "selected-poll" },
+      [
+        _c("img", { attrs: { src: "img/rihanna.png", alt: "" } }),
+        _vm._v(" "),
+        _c(
+          "vue-poll",
+          _vm._b(
+            { staticClass: "poll", on: { addvote: _vm.addVote } },
             "vue-poll",
-            _vm._b(
-              { staticClass: "poll", on: { addvote: _vm.addVote } },
-              "vue-poll",
-              _vm.options,
-              false
-            )
+            _vm.options,
+            false
           )
-        ],
-        1
-      )
-    ]
-  )
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "latest-posts" },
+      [
+        _c("h2", [_vm._v("חדשות נוספות")]),
+        _vm._v(" "),
+        _vm.posts
+          ? _c(
+              "carousel",
+              {
+                staticClass: "latest-post-slider",
+                attrs: {
+                  rtl: true,
+                  autoplay: true,
+                  autoplayTimeout: 2000,
+                  paginationEnabled: false,
+                  navigationEnabled: true,
+                  perPageCustom: [[320, 1], [768, 1], [769, 2]]
+                }
+              },
+              _vm._l(_vm.posts, function(post) {
+                return _c(
+                  "slide",
+                  { key: post.id, staticClass: "latest-post-item" },
+                  [
+                    _c("img", { attrs: { src: post.img, alt: "" } }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "content" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/post/" + post.id } },
+                          [_c("h3", [_vm._v(_vm._s(post.title))])]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("span", { staticClass: "author" }, [
+                            _vm._v("by " + _vm._s(post.author))
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "post-date" }, [
+                            _vm._v(_vm._s(post.time))
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              1
+            )
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19729,11 +19812,11 @@ var render = function() {
         ? _c("left-column", { attrs: { data: _vm.leftPosts } })
         : _vm._e(),
       _vm._v(" "),
-      _c("right-column-bot"),
-      _vm._v(" "),
       _vm.latestPosts.length
-        ? _c("left-column-bot", { attrs: { data: _vm.latestPosts } })
-        : _vm._e()
+        ? _c("right-column-bot", { attrs: { data: _vm.latestPosts } })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("left-column-bot")
     ],
     1
   )
@@ -19842,7 +19925,11 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "image"
-                      ? _c("img", { attrs: { src: post.value, alt: "" } })
+                      ? _c("p", [
+                          _c("img", { attrs: { src: post.value, alt: "" } }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(post.description))])
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "survey"

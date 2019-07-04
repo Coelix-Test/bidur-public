@@ -36,7 +36,11 @@
 
           <div v-if="post.type == 'content'">{{ post.value }}</div>
 
-          <img v-if="post.type == 'image'" :src="post.value" alt="">
+          <p v-if="post.type == 'image'">
+            <img :src="post.value" alt="">
+            <span>{{post.description}}</span>
+          </p>
+
 
           <div v-if="post.type == 'survey'" class="poll">
             <img :src="post.img" alt="">
@@ -136,7 +140,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
@@ -262,11 +266,21 @@ export default {
   section h2 {
     padding-right: 6px;
     border-right: 5px solid #F2C94C;
+    font-weight: 600;
   }
   section.image img {
     max-width: 100%;
     object-fit: cover;
     margin-bottom: 12px;
+    display: block;
+  }
+  section.image span {
+    max-width:500px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color:#333;
   }
   section.imageWithText img {
     max-width:50%;
@@ -310,7 +324,8 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
-    padding:24px;
+    padding:0 0 24px;
+    border:4px solid #E4A913;
   }
   section.survey {
     max-width: 550px;
