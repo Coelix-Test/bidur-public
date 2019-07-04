@@ -9,13 +9,17 @@
         <div class="action">Actions</div>
       </div>
       <div class="content">
-        <div v-if="users" v-for="user in users" :key="" class="user">
-          <div class="name"><input name="username" :value="user.name"></div>
-          <div class="mail"><input name="mail" :value="user.email"></div>
-          <div class="phone"><input name="phone" :value="user.phone"></div>
+        <div v-if="users" v-for="user in users" :key="user.id" class="user">
+          <div class="name"><input type="text" name="username" v-model="user.name" minlength="2" required></div>
+          <div class="mail"><input type="email" name="mail" v-model="user.email" minlength="2" required></div>
+          <div class="phone"><input type="text" name="phone" v-model="user.phone" minlength="2" required></div>
           <div v-if="user.status == 'online'" class="status online"><span>{{user.status}}</span></div>
           <div v-if="user.status == 'offline'" class="status offline"><span>{{user.status}}</span></div>
-          <div class="action">Action</div>
+          <div class="action">
+            <button type="submit" @click="deleteUser(user.id)">D</button>
+            <button type="submit" @click="updateUser(user.id,user.name,user.email,user.phone)">S</button>
+            <button type="submit" @click="makeUserAdmin(user.id)">A</button>
+          </div>
         </div>
       </div>
     </div>
@@ -23,23 +27,26 @@
 </template>
 
 <script>
+// import User from './tags/User.vue';
 export default {
   data() {
     return {
-      users : null
+      users : null,
+      user : null
     }
   },
   mounted() {
     axios
       .post('/showAllAdmins')
         .then(response => {
-          console.log( response.data );
+          // console.log( response.data );
           this.users = response.data;
         })
   },
   methods : {
-    updateUser() {
-      console.log('update');
+    updateUser(id, name, email, phone) {
+      console.log(id, name, email, phone);
+
     },
     deleteUser() {
       console.log('delete');

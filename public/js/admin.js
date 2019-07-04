@@ -3665,23 +3665,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+// import User from './tags/User.vue';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: null
+      users: null,
+      user: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.post('/showAllAdmins').then(function (response) {
-      console.log(response.data);
+      // console.log( response.data );
       _this.users = response.data;
     });
   },
   methods: {
-    updateUser: function updateUser() {
-      console.log('update');
+    updateUser: function updateUser(id, name, email, phone) {
+      console.log(id, name, email, phone);
     },
     deleteUser: function deleteUser() {
       console.log('delete');
@@ -25972,25 +25978,88 @@ var render = function() {
         { staticClass: "content" },
         _vm._l(_vm.users, function(user) {
           return _vm.users
-            ? _c("div", { staticClass: "user" }, [
+            ? _c("div", { key: user.id, staticClass: "user" }, [
                 _c("div", { staticClass: "name" }, [
                   _c("input", {
-                    attrs: { name: "username" },
-                    domProps: { value: user.name }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: user.name,
+                        expression: "user.name"
+                      }
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "username",
+                      minlength: "2",
+                      required: ""
+                    },
+                    domProps: { value: user.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(user, "name", $event.target.value)
+                      }
+                    }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "mail" }, [
                   _c("input", {
-                    attrs: { name: "mail" },
-                    domProps: { value: user.email }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: user.email,
+                        expression: "user.email"
+                      }
+                    ],
+                    attrs: {
+                      type: "email",
+                      name: "mail",
+                      minlength: "2",
+                      required: ""
+                    },
+                    domProps: { value: user.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(user, "email", $event.target.value)
+                      }
+                    }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "phone" }, [
                   _c("input", {
-                    attrs: { name: "phone" },
-                    domProps: { value: user.phone }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: user.phone,
+                        expression: "user.phone"
+                      }
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "phone",
+                      minlength: "2",
+                      required: ""
+                    },
+                    domProps: { value: user.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(user, "phone", $event.target.value)
+                      }
+                    }
                   })
                 ]),
                 _vm._v(" "),
@@ -26006,7 +26075,51 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "action" }, [_vm._v("Action")])
+                _c("div", { staticClass: "action" }, [
+                  _c(
+                    "button",
+                    {
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteUser(user.id)
+                        }
+                      }
+                    },
+                    [_vm._v("D")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          return _vm.updateUser(
+                            user.id,
+                            user.name,
+                            user.email,
+                            user.phone
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("S")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          return _vm.makeUserAdmin(user.id)
+                        }
+                      }
+                    },
+                    [_vm._v("A")]
+                  )
+                ])
               ])
             : _vm._e()
         }),
