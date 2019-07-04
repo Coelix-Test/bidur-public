@@ -69,6 +69,9 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
     Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
 
+    Route::post('/showSinglePhotoFromMain', 'AdminController@showSinglePhotoFromMain');
+    Route::post('/showCompareFromMain', 'AdminController@showCompareFromMain');
+
     //hashtags
     Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
     Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');

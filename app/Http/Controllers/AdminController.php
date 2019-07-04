@@ -536,4 +536,17 @@ class AdminController extends Controller
             'sixth' => $sixthPostId,
         ]);
     }
+
+    public function showSinglePhotoFromMain(){
+        $image = SingleLikableImage::where('postId', 0)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMain(){
+        $section = SelectOne::where('postId', 0)->ifrst();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
+    }
 }
