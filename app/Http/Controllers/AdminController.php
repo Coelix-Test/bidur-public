@@ -388,29 +388,48 @@ class AdminController extends Controller
 
 
     public function showAllAdmins(){
-        $adminIds = Admins::all();
-        foreach ($adminIds as $adminId) {
-            if (!empty(User::where('id', $adminId->id)->first())){
-                $admin = User::where('id', $adminId->id)->first();
-//                dd($admin);
-                $allAdmins[$admin->id]['email'] = $admin->email;
-                $allAdmins[$admin->id]['name']  = $admin->email;
-                $allAdmins[$admin->id]['name'] = $admin->name;
-                $allAdmins[$admin->id]['phone'] = $admin->phone;
-                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
-                if ($admin->isOnline() == false){
-                    $allAdmins[$admin->id]['status'] = 'offline';
-                }else{
-                    $allAdmins[$admin->id]['status'] = 'online';
-                }
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $allUsers[$user->id]['email'] = $user->email;
+            $allUsers[$user->id]['name']  = $user->email;
+            $allUsers[$user->id]['name'] = $user->name;
+            $allUsers[$user->id]['phone'] = $user->phone;
+            if ($user->isOnline() == false){
+                $allUsers[$user->id]['status'] = 'offline';
+            }else{
+                $allUsers[$user->id]['status'] = 'online';
             }
         }
-        if (!empty($allAdmins)){
-//            dd($allAdmins);
-            return json_encode($allAdmins);
-        }else{
-            return json_encode([]);
+        if (empty($allUsers)){
+            $allUsers = [];
         }
+        return json_encode($allUsers);
+        
+        
+//        $adminIds = Admins::all();
+//        foreach ($adminIds as $adminId) {
+//            if (!empty(User::where('id', $adminId->id)->first())){
+//                $admin = User::where('id', $adminId->id)->first();
+////                dd($admin);
+//                $allAdmins[$admin->id]['email'] = $admin->email;
+//                $allAdmins[$admin->id]['name']  = $admin->email;
+//                $allAdmins[$admin->id]['name'] = $admin->name;
+//                $allAdmins[$admin->id]['phone'] = $admin->phone;
+//                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
+//                if ($admin->isOnline() == false){
+//                    $allAdmins[$admin->id]['status'] = 'offline';
+//                }else{
+//                    $allAdmins[$admin->id]['status'] = 'online';
+//                }
+//            }
+//        }
+//        if (!empty($allAdmins)){
+////            dd($allAdmins);
+//            return json_encode($allAdmins);
+//        }else{
+//            return json_encode([]);
+//        }
     }
 
     public function editAdmin(Request $request){

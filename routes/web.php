@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test', 'MainController@getRecentPosts')->name('test');
+Route::post('/test', 'MainController@getAllRelevantPosts')->name('test');
 
 
 
@@ -47,6 +47,7 @@ Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
 Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
 Route::post('/post/{id}', 'MainController@showSinglePost')->name('get-post-contents'); //3
 Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
+Route::post('/getAllRelevantPosts', 'MainController@getAllRelevantPosts');
 Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
 
 Route::post('/getReaction', 'MainController@getEmojiReaction');
