@@ -97,6 +97,7 @@ export default {
         email: this.email,
         phone: this.phone,
         password: this.pass,
+        password_confirmation: this.repeat,
       }).then(res => {
         console.log(res);
       });
