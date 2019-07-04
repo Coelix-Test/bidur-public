@@ -3688,11 +3688,17 @@ __webpack_require__.r(__webpack_exports__);
     updateUser: function updateUser(id, name, email, phone) {
       console.log(id, name, email, phone);
     },
-    deleteUser: function deleteUser() {
-      console.log('delete');
+    deleteUser: function deleteUser(id) {
+      console.log(id);
+      axios.post('/deleteAdmin', id).then(function (res) {
+        console.log(res);
+      });
     },
-    makeUserAdmin: function makeUserAdmin() {
-      console.log('make user admin');
+    makeUserAdmin: function makeUserAdmin(id) {
+      console.log(id);
+      axios.post('/').then(function (res) {
+        console.log(res);
+      });
     }
   }
 });
@@ -4240,7 +4246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .usersTable[data-v-d40a25f6] {\n  border: 1px solid #F2F2F2;\n  box-sizing: border-box;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n  padding: 6px 12px;\n  color: #BDBDBD;\n}\n.users .usersTable .heading > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .heading > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  padding: 6px 12px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .content .user > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .content .user > div.phone input[data-v-d40a25f6] {\n  text-align: right;\n}\n.users .usersTable .content .user > div.status span[data-v-d40a25f6] {\n  background: #BDBDBD;\n  color: #fff;\n  border-radius: 10px;\n  padding: 4px 12px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div.status.online span[data-v-d40a25f6] {\n  background: #EB5757;\n  color: #fff;\n  padding: 4px 12px;\n  border-radius: 10px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n  padding-top: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6] {\n  border-color: transparent;\n  border-style: solid;\n  padding: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6]:hover {\n  border-color: #eee;\n}", ""]);
+exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .usersTable[data-v-d40a25f6] {\n  border: 1px solid #F2F2F2;\n  box-sizing: border-box;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n  padding: 6px 12px;\n  color: #BDBDBD;\n}\n.users .usersTable .heading > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .heading > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  padding: 6px 12px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div.action[data-v-d40a25f6] {\n  flex-basis: 10%;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6] {\n  border-width: 0;\n  background-color: transparent;\n  color: #828282;\n  font-weight: 900;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6]:hover {\n  color: #EB5757;\n}\n.users .usersTable .content .user > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .content .user > div.phone input[data-v-d40a25f6] {\n  text-align: right;\n}\n.users .usersTable .content .user > div.status span[data-v-d40a25f6] {\n  background: #BDBDBD;\n  color: #fff;\n  border-radius: 10px;\n  padding: 4px 12px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div.status.online span[data-v-d40a25f6] {\n  background: #EB5757;\n  color: #fff;\n  padding: 4px 12px;\n  border-radius: 10px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 25%;\n  padding-left: 16px;\n  overflow: hidden;\n  padding-top: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6] {\n  border-color: transparent;\n  border-style: solid;\n  padding: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6]:hover {\n  border-color: #eee;\n}", ""]);
 
 // exports
 

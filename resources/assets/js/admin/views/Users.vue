@@ -47,11 +47,21 @@ export default {
       console.log(id, name, email, phone);
 
     },
-    deleteUser() {
-      console.log('delete');
+    deleteUser(id) {
+      console.log(id);
+      axios
+        .post('/deleteAdmin', id)
+          .then(res => {
+            console.log(res);
+          });
     },
-    makeUserAdmin() {
-      console.log('make user admin');
+    makeUserAdmin(id) {
+      console.log(id);
+      axios
+        .post('/')
+          .then(res => {
+            console.log(res);
+          });
     }
   }
 }
@@ -94,6 +104,15 @@ export default {
             flex-wrap:nowrap;
               > div.action {
                 flex-basis:10%;
+                  button {
+                    border-width:0;
+                    background-color: transparent;
+                    color:#828282;
+                    font-weight: 900;
+                      &:hover {
+                        color:#EB5757;
+                      }
+                  }
               }
               > div.phone {
                 direction: ltr;
