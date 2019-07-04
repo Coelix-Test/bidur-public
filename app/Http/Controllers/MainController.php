@@ -365,7 +365,7 @@ class MainController extends Controller
         $hashtag = Hashtag::find($hashtagId);
 
         $postsWithContent['hashtagImg'] = $hashtag->image;
-        $postsWithContent['name'] = $hashtag->text;
+        $postsWithContent['hashtagName'] = $hashtag->text;
 
         foreach ($hashtagPosts as $hashtagPost) {
             if ($hashtagPost->hashtagId == $hashtagId){
