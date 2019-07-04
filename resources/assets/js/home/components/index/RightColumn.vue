@@ -36,13 +36,16 @@ export default {
   },
   data() {
     return {
-      randomPosts : [],
       posts : this.data,
-      birthdayPost : []
+      birthdayPost : null
     }
   },
   created() {
-
+    axios
+      .post('/getMainBday')
+        .then(res => {
+          console.log(res);
+        });
   }
 }
 </script>

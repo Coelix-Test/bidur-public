@@ -3002,10 +3002,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      instagramData: null
     };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    axios.post('/getMainInsta').then(function (res) {
+      console.log(res);
+      _this.instagramData = res.data;
+    });
+  },
   mounted: function mounted() {}
 });
 
@@ -3057,12 +3065,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      randomPosts: [],
       posts: this.data,
-      birthdayPost: []
+      birthdayPost: null
     };
   },
-  created: function created() {}
+  created: function created() {
+    axios.post('/getMainBday').then(function (res) {
+      console.log(res);
+    });
+  }
 });
 
 /***/ }),
@@ -19765,21 +19776,18 @@ var render = function() {
       _c("h2", [_vm._v("תמונת האינסטגרם המנצחת של היום")])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _vm.instagramData
+      ? _c("div", { staticClass: "instagram-post" }, [
+          _c(
+            "a",
+            { attrs: { href: _vm.instagramData.link, target: "_blank" } },
+            [_c("img", { attrs: { src: _vm.instagramData.img, alt: "" } })]
+          )
+        ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "instagram-post" }, [
-      _c("a", { attrs: { href: "https://instagram.com/", target: "_blanc" } }, [
-        _c("img", { attrs: { src: "/img/leo.png", alt: "" } })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
