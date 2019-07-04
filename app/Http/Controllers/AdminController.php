@@ -395,6 +395,7 @@ class AdminController extends Controller
             $allUsers[$user->id]['name']  = $user->email;
             $allUsers[$user->id]['name'] = $user->name;
             $allUsers[$user->id]['phone'] = $user->phone;
+            $allUsers[$user->id]['id'] = $user->id;
             if ($user->isOnline() == false){
                 $allUsers[$user->id]['status'] = 'offline';
             }else{
