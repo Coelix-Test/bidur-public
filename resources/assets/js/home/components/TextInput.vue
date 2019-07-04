@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="text-input">
     <input
       @input="$emit('input', $event.target.value)"
@@ -7,6 +7,7 @@
       @blur="$emit('blur', $event)"
       :class="{ 'has-button': $slots['button'] }"
       :type="type"
+      :required="required"
       class="th-input"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
@@ -27,6 +28,10 @@ export default {
     },
     placeholder: String,
     autocomplete: String,
+    required: {
+      type: Boolean,
+      default: false,
+    }
   },
 }
 </script>
@@ -38,13 +43,13 @@ export default {
   position: relative;
   input {
     &.has-button {
-      padding-right: 50px;
+      padding-left: 50px;
     }
   }
   .button {
     top: 0;
     position: absolute;
-    right: 0;
+    left: 0;
     width: 50px;
     height: 100%;
     display: flex;

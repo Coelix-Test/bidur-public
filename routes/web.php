@@ -15,8 +15,8 @@
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'MainController@showSinglePost');
-Route::post('/test', 'AdminController@createHappyBirthday')->name('test');
+Route::get('/test2', 'MainController@getRecentPosts');
+Route::post('/test', 'MainController@getRecentPosts')->name('test');
 
 
 
@@ -87,4 +87,4 @@ Route::get('/admin', 'AdminController@showAdmin');
 
 
 
-//Route::post('/getRecentPostsWithOffset', 'AdminController@getRecentPosts')->name('get-recent-posts');
+Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');

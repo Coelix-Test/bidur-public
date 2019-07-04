@@ -1,6 +1,10 @@
 // @import "modal";
 @import "helpers";
+@import "theme";
 
 #modals-container {
   direction: ltr !important;
+  .v--modal {
+    direction: rtl !important;
+  }
 }
