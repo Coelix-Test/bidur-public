@@ -1,4 +1,4 @@
-``<template>
+<template>
   <div class="wrapper survey-component-container">
       <image-input class="image" :value="image" @update:value="updateImage"></image-input>
       <div class="survey-container">
@@ -81,7 +81,6 @@ export default {
 <style lang="scss" scoped>
     @import "~@/vars.scss";
     .survey-component-container{
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
         padding-bottom: 100px;
         position: relative;
     }

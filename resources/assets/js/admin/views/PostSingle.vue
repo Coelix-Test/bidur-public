@@ -50,7 +50,7 @@
                     </template>
                     <template v-else-if="section.type === 'survey'">
                         <post-survey
-                            class="survey-section"
+                            class="survey-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
                             @deleteSection="deleteSection">
@@ -58,7 +58,7 @@
                     </template>
                     <template v-else-if="section.type === 'assessment'">
                         <post-assessment
-                            class="assessment-section"
+                            class="assessment-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
                             @deleteSection="deleteSection">
@@ -66,7 +66,7 @@
                     </template>
                     <template v-else-if="section.type === 'selection'">
                         <post-selection
-                            class="selection-section"
+                            class="selection-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
                             @deleteSection="deleteSection">
