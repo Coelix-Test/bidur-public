@@ -350,8 +350,6 @@ class AdminController extends Controller
     }
 
     public function addNewComparison(Request $request){
-//        SelectOne::truncate();
-//        LikesForLeftAndRight::truncate();
         $leftImage = $request->file('leftImage');
         $leftName = time().'.'.$leftImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/compare');
@@ -359,29 +357,45 @@ class AdminController extends Controller
 
         $rightImage = $request->file('rightImage');
 
-                $rightName = time().'.'.$rightImage->getClientOriginalExtension();
+        $rightName = time().'.'.$rightImage->getClientOriginalExtension();
         $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
+            'postId' => 0,
+            'order' => 0,
         ]);
+        return ['success' => true];
     }
 
     public function addSinglePhoto(Request $request){
-        SingleLikableImage::truncate();
-        DisLikesForSingleImage::truncate();
-        LikesForSingleImage::truncate();
-
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/singlePhoto');
         $image->move($destinationPath, $name);
 
+        $image = SingleLikableImage::where('postId', 0)->first();
+
+        if (!empty($image)){
+            $deletableId = $image->id;
+            $image->delete();
+            LikesForSingleImage::where('serviceId', $deletableId)->delete();
+            DisLikesForSingleImage::where('serviceId', $deletableId)->delete();
+        }
         SingleLikableImage::create([
             'url' => '/images/singlePhoto/'.$name,
+            'postId' => 0,
+            'order' => 0,
         ]);
+        return ['success' => true];
     }
 
     public function getAllSurveys(){
@@ -521,5 +535,18 @@ class AdminController extends Controller
             'fifth' => $fifthPostId,
             'sixth' => $sixthPostId,
         ]);
+    }
+
+    public function showSinglePhotoFromMain(){
+        $image = SingleLikableImage::where('postId', 0)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMain(){
+        $section = SelectOne::where('postId', 0)->ifrst();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
     }
 }
