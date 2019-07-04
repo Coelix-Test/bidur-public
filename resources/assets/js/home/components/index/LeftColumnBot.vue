@@ -35,7 +35,6 @@ export default {
     axios
       .post('/getMainInsta')
         .then(res => {
-          console.log(res);
           this.instagramData = res.data;
         });
   },
