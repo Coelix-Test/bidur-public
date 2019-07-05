@@ -42,7 +42,6 @@ export default {
       axios
         .post('/deletePost',{id : id})
           .then(res => {
-            // console.log(res);
               this.posts = res.data;
               alert('Post Deleted!');
           });

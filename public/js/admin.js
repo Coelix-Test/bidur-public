@@ -3426,7 +3426,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/deletePost', {
         id: id
       }).then(function (res) {
-        // console.log(res);
         _this2.posts = res.data;
         alert('Post Deleted!');
       });
