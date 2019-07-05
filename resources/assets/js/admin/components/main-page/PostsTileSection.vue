@@ -40,13 +40,13 @@ export default {
         getAllPostTitles(){
             axios.post('/getAllPostTitles')
                 .then(response => {
-                    console.log(response.data);
-                    //this.posts = Object.keys(response.data).map();
+                    this.posts = response.data;
                 });
         },
         getSelectedPosts(){
             axios.post('/getSelectedPosts')
                 .then(response => {
+                    console.log(response.data);
                     // response.data.forEach((item, i) => {
                     //     delete item.img;
                     //  });
