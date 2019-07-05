@@ -668,6 +668,7 @@ class MainController extends Controller
         }
 
         if (!empty($section)){
+
             if ($section->getTable() == 'select_ones'){
                 $data['type'] = 'comparablePhotos';
                 $data['value']['id'] = $section->id;
@@ -678,6 +679,7 @@ class MainController extends Controller
                 $likesForRight = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'right')->count();
                 $data['value']['likesForLeft'] = $likesForLeft;
                 $data['value']['likesForLeft'] = $likesForRight;
+                return json_encode($data);
             }
             elseif ($section->getTable() == 'single_likable_image'){
                 $data['type'] = 'likableImage';
@@ -686,6 +688,7 @@ class MainController extends Controller
                 $data['value']['description'] = $section->description;
                 $data['value']['likes'] = LikesForSingleImage::where('serviceId', $section->id)->count();
                 $data['value']['dislikes'] = DisLikesForSingleImage::where('serviceId', $section->id)->count();
+                return json_encode($data);
             }
             elseif ($section->getTable() == 'surveys'){
                 $data['type'] = 'survey';
@@ -699,6 +702,7 @@ class MainController extends Controller
                     $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
                 }
                 $data['value']['answerVariants'] = $allVariants;
+                return json_encode($data);
             }
             else{
                 return json_encode(['success' => 'false']);
