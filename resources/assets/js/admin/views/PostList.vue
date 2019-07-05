@@ -9,7 +9,7 @@
           <span class="author">by {{post.post.author}}</span>
         </div>
         <div class="actions">
-          <router-link :to="'/post/'+post.post.id">view</router-link>
+          <a :href="'.#/post/'+post.post.id" target="_blank">view</a>
           <button @click="editPost(post.post.id)">edit</button>
           <button @click="deletePost(post.post.id)">delete</button>
         </div>
@@ -35,15 +35,17 @@ export default {
         });
   },
   methods : {
-    viewPost(id) {
-      console.log(id);
-      this.router.push('/post/'+id);
-    },
     editPost(id) {
       console.log(id);
     },
     deletePost(id) {
       console.log(id);
+      axios
+        .post('/deletePost',{id : id})
+          .then(res => {
+            // console.log(res);
+              this.posts = res.data;
+          });
     }
   }
 }

@@ -3415,15 +3415,19 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    viewPost: function viewPost(id) {
-      console.log(id);
-      this.router.push('/post/' + id);
-    },
     editPost: function editPost(id) {
       console.log(id);
     },
     deletePost: function deletePost(id) {
+      var _this2 = this;
+
       console.log(id);
+      axios.post('/deletePost', {
+        id: id
+      }).then(function (res) {
+        // console.log(res);
+        _this2.posts = res.data;
+      });
     }
   }
 });
@@ -26333,42 +26337,39 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "actions" },
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/post/" + post.post.id } },
-                    [_vm._v("view")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.editPost(post.post.id)
-                        }
+              _c("div", { staticClass: "actions" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: ".#/post/" + post.post.id, target: "_blank" }
+                  },
+                  [_vm._v("view")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.editPost(post.post.id)
                       }
-                    },
-                    [_vm._v("edit")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.deletePost(post.post.id)
-                        }
+                    }
+                  },
+                  [_vm._v("edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.deletePost(post.post.id)
                       }
-                    },
-                    [_vm._v("delete")]
-                  )
-                ],
-                1
-              )
+                    }
+                  },
+                  [_vm._v("delete")]
+                )
+              ])
             ])
           : _vm._e()
       }),
