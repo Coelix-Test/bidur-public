@@ -491,6 +491,8 @@ class AdminController extends Controller
             $v->question = $variant['variant'];
             $v->save();
         }
+
+        return $this->getAllSurveys();
     }
 
 
