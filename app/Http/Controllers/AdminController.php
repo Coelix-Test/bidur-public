@@ -21,6 +21,7 @@ use App\PostVideo;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\SurveyAnswers;
 use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
@@ -439,8 +440,15 @@ class AdminController extends Controller
     public function getAllSurveys(){
         $allSurveys = Survey::all();
         foreach ($allSurveys as $key => $survey) {
+            $variants = $survey->getAllVariants()->orderBy('order')->get();
+            foreach ($variants as $variant) {
+                $allVariants['id'] =  $variant->id;
+                $allVariants['variant'] =  $variant->question;
+                $allVariants['order'] =  $variant->order;
+                $allVariants['votes'] = SurveyAnswers::where('question', $variant->id)->count();
+            }
             $all[$key]['survey'] = $survey;
-            $all[$key]['variants'] = $survey->getAllVariants()->orderBy('order');
+            $all[$key]['variants'] = $allVariants;
         }
         return json_encode($all);
     }
