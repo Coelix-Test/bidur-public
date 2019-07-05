@@ -1,82 +1,100 @@
 <template>
   <div class="right-column-bot">
-    <div class="selected-poll">
-      <img src="img/rihanna.png" alt="">
-      <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-    </div>
-    <div class="latest-posts">
-      <div class="heading">
-        <h2>חדשות נוספות</h2>
-        <button>לכל כתבות</button>
-      </div>
-      <carousel
-        v-if="posts"
-        class="latest-post-slider"
-        :rtl="true"
-        :autoplay="true"
-        :autoplayTimeout="2000"
-        :paginationEnabled="false"
-        :navigationEnabled="true"
-        :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
-      >
-        <slide v-for="post in posts" class="latest-post-item" :key="post.id">
-            <img :src="post.img" alt="">
-            <div class="content">
-              <router-link :to="'/post/'+post.id">
-                <h3>{{ post.title }}</h3>
-              </router-link>
-              <p>
-                <span class="author">by {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
-              </p>
-            </div>
-        </slide>
-      </carousel>
-    </div>
 
+    <template v-if="true">
+      <div class="selected-poll">
+        <img src="img/rihanna.png" alt="">
+        <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
+      </div>
+      <div class="latest-posts">
+        <h2>חדשות נוספות</h2>
+        <!-- <ul ref="test" class="latest-post-slider">
+          <li v-if="posts" v-for="post in posts">
+
+              <img :src="post.img" alt="">
+              <div class="content">
+                <router-link :to="'/post/'+post.id">
+                  <h3>{{ post.title }}</h3>
+                </router-link>
+                <p>
+                  <span class="author">by {{post.author}}</span>
+                  <span class="post-date">{{post.time}}</span>
+                </p>
+              </div>
+          </li>
+        </ul> -->
+        <carousel
+          v-if="posts"
+          class="latest-post-slider"
+          :rtl="true"
+          :autoplay="true"
+          :autoplayTimeout="2000"
+          :paginationEnabled="false"
+          :navigationEnabled="true"
+          :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
+        >
+          <slide v-for="post in posts" class="latest-post-item" :key="post.id">
+              <img :src="post.img" alt="">
+              <div class="content">
+                <router-link :to="'/post/'+post.id">
+                  <h3>{{ post.title }}</h3>
+                </router-link>
+                <p>
+                  <span class="author">by {{post.author}}</span>
+                  <span class="post-date">{{post.time}}</span>
+                </p>
+              </div>
+          </slide>
+        </carousel>
+      </div>
+    </template>
+    <one-survey v-else-if="false"/>
+    <like-survey v-else/>
   </div>
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 import VuePoll from 'vue-poll'
+import LikeSurvey from './LikeSurvey'
+import OneSurvey from './OneSurvey'
 export default {
   props : {
     data : {
       requred: true,
     }
   },
-    data() {
-        return {
-            posts : [],
-            options: {
-                question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
-                answers: [
-                    { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
-                    { value: 2, text: 'Normal, i know it', votes: 35 },
-                    { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
-                    { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
-                ]
-            }
-        }
-    },
-    created() {
-        axios
-          .post('/getRecentPosts')
-            .then(response => {
-               this.posts = response.data;
-             });
-    },
-    components: {
-        VuePoll,
-        Carousel,
-        Slide
-    },
-    methods: {
-        addVote(obj){
-            console.log(obj);
-        }
-    },
+  data() {
+    return {
+      posts : [],
+      options: {
+        question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
+        answers: [
+          { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
+          { value: 2, text: 'Normal, i know it', votes: 35 },
+          { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
+          { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
+        ]
+      }
+    }
+  },
+  created() {
+    axios.post('/getServiceForMainPage').then(res => {
+      this.posts = res.data;
+    });
+  },
+  components: {
+    VuePoll,
+    Carousel,
+    Slide,
+    LikeSurvey,
+    OneSurvey,
+  },
+  methods: {
+    addVote(obj){
+      console.log(obj);
+    }
+  },
 }
 </script>
 
@@ -132,9 +150,7 @@ export default {
     background: rgba(196, 196, 196, 0.1);
     border-right: 6px solid #F2C94C;
     margin-top: 24px;
-    padding-top: 24px;
-    padding-right: 8px;
-    padding-left: 8px;
+    padding:24px 8px;
   }
   .latest-posts .heading {
     display: flex;

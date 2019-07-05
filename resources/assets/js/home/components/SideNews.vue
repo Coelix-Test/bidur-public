@@ -1,18 +1,24 @@
 <template>
   <section class="side-news">
     <div class="block">
-      <side-news-post/>
-      <side-news-post/>
-      <side-news-post/>
+      <side-news-post
+        v-for="(item, i) in data"
+        :key="item.id"
+        :data="item"
+        v-if="i <= 6"
+      />
     </div>
     <img
       class="banner"
       src="https://via.placeholder.com/380x600"
     >
     <div class="block">
-      <side-news-post/>
-      <side-news-post/>
-      <side-news-post/>
+      <side-news-post
+        v-for="(item, i) in data"
+        :key="item.id"
+        :data="item"
+        v-if="i > 6"
+      />
     </div>
   </section>
 </template>
@@ -21,8 +27,18 @@
 import SideNewsPost from './SideNewsPost.vue'
 
 export default {
+  data() {
+    return {
+      data: []
+    };
+  },
   components: {
     SideNewsPost,
+  },
+  created() {
+    axios.post('/getRecentPosts').then(res => {
+      this.data = res.data;
+    });
   }
 }
 </script>
@@ -34,6 +50,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   width: 380px;
+  min-width: 380px;
   padding-right: 30px;
   .block {
     background: #FFFFFF;

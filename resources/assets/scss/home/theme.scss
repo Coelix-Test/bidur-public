@@ -6,9 +6,30 @@
   width: 100%;
 }
 
+.th-btn {
+  @extend .a-row-center ;
+  width: 360px;
+  height: 80px;
+  font-weight: bold;
+  font-size: 28px;
+  border: 0;
+}
+
+.th-btn-gold {
+  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
+  border-radius: 5px;
+  color: #fff;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .th-checkbox {
   appearance: none;
-  background: #80B516;
+  transition: background 0.3s ease;
+  background: transparent;
+  border: 2px solid #80B516;
   border-radius: 5px;
   width: 30px;
   height: 30px;
@@ -29,6 +50,7 @@
   }
 
   &:checked {
+    background: #80B516;
     &::before {
       opacity: 1;
       transform: rotate(45deg) translate(-120%, -30%);

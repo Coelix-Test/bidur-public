@@ -46,7 +46,7 @@ export default {
       .post('/getMainBday')
         .then(res => {
           this.birthdayPost = res.data;
-          console.log(this.birthdayPost);
+          // console.log(this.birthdayPost);
         });
   }
 }
@@ -107,7 +107,7 @@ export default {
     bottom:0;
     border:4px solid #F2C94C;
     transform:rotate(3deg);
-    
+
   }
   .birthdayPost img {
     max-width:100%;
@@ -260,9 +260,10 @@ export default {
     ul.posts li:nth-child(2),
     ul.posts li:nth-child(3) {
       margin-top: 0;
+      margin-bottom: 8px;
     }
     ul.posts li:nth-child(4) {
-      margin-top: 8px;
+      margin-top: 0;
     }
     ul.posts li .background-square {
       background-color: transparent;

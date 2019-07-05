@@ -24,16 +24,18 @@
         </template>
       </text-input>
 
-      <label class="checkbox">
-        <input class="th-checkbox" type="checkbox">
+      <div v-if="err.length" class="err">{{ err }}</div>
+
+      <label ref="agreement" class="checkbox">
+        <input v-model="agreement" class="th-checkbox" type="checkbox">
         <div class="label">
           רתאב שומישה יאנתל םיכסמ ינא
         </div>
       </label>
-      <button class="a-row-center button" type="submit">המשרה</button>
+      <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
         ?רתאב שמתשמ רבכ ךל שי
-        <button class="link">
+        <button class="link" @click="reg">
           ןאכ ץחל
         </button>
       </div>
@@ -54,7 +56,10 @@ export default {
       pass: '',
       hide: {
         pass: true,
-      }
+      },
+      timeout: false,
+      agreement: false,
+      err: '',
     };
   },
   components: {
@@ -64,15 +69,28 @@ export default {
   },
   methods: {
     submit(e) {
+
+      this.$refs.agreement.classList.remove('shake', 'animated');
+
+      if(!this.agreement) {
+        setImmediate(() => {
+          this.$refs.agreement.classList.add('shake', 'animated');
+        });
+        return;
+      }
+
       axios.post('/login', {
         email: this.email,
         password: this.pass,
       }).then(res => {
         this.$emit('close');
+        document.location.reload();
+      }).catch(err => {
+        this.err = 'Invalid email or password';
       });
       e.preventDefault();
     },
-    login() {
+    reg() {
       this.$emit('close');
       this.$modal.show(Reg, {}, {
         adaptive: true,
@@ -106,15 +124,7 @@ export default {
       color: #000000;
     }
     .button {
-      background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-      width: 360px;
-      height: 80px;
-      font-weight: bold;
-      font-size: 28px;
-      border: 0;
-      color: #fff;
-      border-radius: 5px;
+
     }
     .bottom {
       padding-top: 20px;
@@ -141,6 +151,11 @@ export default {
       input {
         margin-left: 10px;
       }
+    }
+
+    .err {
+      color: #EB5757;
+      font-size: 16px;
     }
   }
 }

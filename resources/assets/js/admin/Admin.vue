@@ -7,7 +7,10 @@
                     <router-link :to="{ name: 'edit-main-page' }">Main Page</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'post-new' }">Posts</router-link>
+                    <router-link :to="{ name: 'post-new' }">New Post</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'post-list' }">All Posts</router-link>
                 </li>
                 <li>
                     <router-link :to="{ name: 'surveys' }">Surveys</router-link>

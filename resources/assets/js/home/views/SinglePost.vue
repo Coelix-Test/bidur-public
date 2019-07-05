@@ -62,6 +62,8 @@
             <p v-if="post.content">{{post.content}}</p>
           </div>
 
+          <!-- <div v-if="post.type == ''"></div> -->
+
         </section>
 
 
@@ -140,7 +142,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
