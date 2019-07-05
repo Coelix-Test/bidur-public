@@ -267,6 +267,30 @@ class MainController extends Controller
             }
         }
 
+        $compares = $post->getCompare();
+        if (isset($compares[0])){
+            foreach ($compares as $compare) {
+                $data['id'] = $compare->id;
+                $data['imageLeft'] = $compare->urlLeft;
+                $data['imageRight'] = $compare->urlRight;
+                $data['description'] = $compare->description;
+
+                $fullPost['sections'][$compare->order]['type'] = 'compare';
+                $fullPost['sections'][$compare->order]['value'] = $data;
+            }
+        }
+
+        $likableImages = $post->getLikableImage();
+        if (isset($likableImages[0])){
+            foreach ($likableImages as $likableImage) {
+                $data['id'] = $likableImage->id;
+                $data['image'] = $likableImage->url;
+                $data['description'] = $likableImage->description;
+
+                $fullPost['sections'][$likableImage->order]['type'] = 'compare';
+                $fullPost['sections'][$likableImage->order]['value'] = $data;
+            }
+        }
 
         $fullPost['author'] = $post->author;
         $fullPost['date'] = $this->getDate($post);
