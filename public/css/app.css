@@ -16414,7 +16414,6 @@ body {
   list-style-type: none;
   display: -webkit-box;
   display: flex;
-  font-family: "Rubik";
   font-weight: 500;
   -webkit-box-align: center;
           align-items: center;
@@ -16455,13 +16454,11 @@ body {
 }
 
 #header_main .logo-row .news-item .title {
-  font-family: "Playfair Display";
   font-size: 18px;
   font-weight: 700;
 }
 
 #header_main .logo-row .news-item .meta {
-  font-family: "Roboto";
   font-weight: 300;
   font-size: 12px;
   margin-bottom: 5px;
@@ -16677,7 +16674,7 @@ body {
   }
 
   #header_main .top-row-inner-mob {
-    height: 42px;
+    height: 45px;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -16689,14 +16686,14 @@ body {
   }
 
   #header_main .top-row-inner-mob .socials-wrap {
-    width: calc(50% - 27px);
+    width: calc(50% - 35px);
     display: -webkit-box;
     display: flex;
   }
 
   #header_main .top-row-inner-mob .socials-wrap a {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
   }
 
@@ -16705,11 +16702,11 @@ body {
   }
 
   #header_main .top-row-inner-mob .menu-wrap {
-    width: calc(50% - 27px);
+    width: calc(50% - 35px);
   }
 
   #header_main .top-row-inner-mob .logo-wrap {
-    width: 54px;
+    width: 70px;
   }
 
   #header_main .top-row-inner-mob .logo-wrap img {
@@ -16743,6 +16740,25 @@ body {
   #header_main .celebrities-slider .celebrity {
     padding-right: 15px;
     padding-left: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  #footer_main .contact-line .inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  #footer_main .contact-line .socials-wrap {
+    display: -ms-flex;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+            justify-content: center;
+    margin-bottom: 10px;
   }
 }
 

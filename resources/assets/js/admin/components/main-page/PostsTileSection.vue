@@ -37,9 +37,28 @@ export default {
         SearchableInput
     },
     methods: {
+        getAllPostTitles(){
+            axios.post('/getAllPostTitles')
+                .then(response => {
+                    console.log(response.data);
+
+                });
+        },
+        getSelectedPosts(){
+            axios.post('/getSelectedPosts')
+                .then(response => {
+                    // response.data.forEach((item, i) => {
+                    //     delete item.img;
+                    //  });
+                });
+        },
         selectPost(post){
 
         }
+    },
+    created() {
+        this.getAllPostTitles();
+        this.getSelectedPosts();
     }
 }
 </script>
