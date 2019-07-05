@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test', 'AdminController@makeUserAdmin')->name('test');
+Route::post('/test', 'MainController@getServiceForMainPage')->name('test');
 
 
 
@@ -55,6 +55,14 @@ Route::post('/addReaction', 'MainController@addEmojiReaction');
 
 Route::post('/addSurveyVote', 'MainController@addSurveyVote');
     //->middleware('auth'); // пример ауса
+
+
+Route::post('/likeSinglePhoto',         'MainController@likeSinglePhoto');
+Route::post('/dislikeSinglePhoto',      'MainController@dislikeSinglePhoto');
+Route::post('/likeForSelectOne',        'MainController@likeForSelectOne');
+Route::post('/getServiceForMainPage',   'MainController@getServiceForMainPage');
+
+
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
