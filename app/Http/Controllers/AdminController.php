@@ -467,7 +467,9 @@ class AdminController extends Controller
                 $allVariants[] = $data;
             }
             $all[$key]['survey'] = $survey;
-            $all[$key]['variants'] = $allVariants;
+            if (isset($allVariants)){
+                $all[$key]['variants'] = $allVariants;
+            }
             unset($data);
             unset($allVariants);
         }
