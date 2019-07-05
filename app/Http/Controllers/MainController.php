@@ -182,7 +182,7 @@ class MainController extends Controller
         return $hashtagArray;
     }
 
-    public function showSinglePost($id =1){
+    public function showSinglePost($id){
         try{
             $post = Post::findOrFail($id);
         }catch (\Exception $e){
@@ -266,8 +266,7 @@ class MainController extends Controller
                 $fullPost['sections'][$key] = $questionsWithAnswer;
             }
         }
-
-        $compares = $post->getCompare();
+        $compares = $post->getCompare;
         if (isset($compares[0])){
             foreach ($compares as $compare) {
                 $data['id'] = $compare->id;
@@ -280,14 +279,14 @@ class MainController extends Controller
             }
         }
 
-        $likableImages = $post->getLikableImage();
+        $likableImages = $post->getLikableImage;
         if (isset($likableImages[0])){
             foreach ($likableImages as $likableImage) {
                 $data['id'] = $likableImage->id;
                 $data['image'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
 
-                $fullPost['sections'][$likableImage->order]['type'] = 'compare';
+                $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
                 $fullPost['sections'][$likableImage->order]['value'] = $data;
             }
         }
@@ -733,5 +732,10 @@ class MainController extends Controller
             }
         }
 
+    }
+
+    public function test(){
+        $post = Post::find(86);
+        dd($post->getCompare()->get());
     }
 }
