@@ -2251,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -2274,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateSurvey: function updateSurvey() {
       console.log(this.survey); // axios
-      //   .post('/')
+      //   .post('/',{survey : this.survey})
       //     .then(res => {
       //       console.log(res);
       //     });
@@ -25186,9 +25187,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actions" }, [
-            _c("button", { on: { click: _vm.deleteSurvey } }, [_vm._v("D")]),
-            _vm._v(" "),
-            _c("button", { on: { click: _vm.updateSurvey } }, [_vm._v("S")])
+            _c("button", { on: { click: _vm.updateSurvey } }, [_vm._v("Save")])
           ])
         ]),
         _vm._v(" "),

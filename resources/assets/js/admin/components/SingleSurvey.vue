@@ -4,8 +4,8 @@
     <div class="heading">
       <div class="date">{{ survey.survey.created_at }}</div>
       <div class="actions">
-        <button @click="deleteSurvey">D</button>
-        <button @click="updateSurvey">S</button>
+        <!-- <button @click="deleteSurvey">D</button> -->
+        <button @click="updateSurvey">Save</button>
       </div>
     </div>
     <div class="content">
@@ -16,6 +16,7 @@
           <!-- {{variant}} -->
           <input type="text" :name="variant.id" v-model="variant.variant">
           <span>Votes : {{variant.votes}}</span>
+          <!-- {{variant.variant}} -->
         </div>
       </div>
     </div>
@@ -48,7 +49,7 @@ export default {
     updateSurvey() {
       console.log(this.survey);
       // axios
-      //   .post('/')
+      //   .post('/',{survey : this.survey})
       //     .then(res => {
       //       console.log(res);
       //     });
