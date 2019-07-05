@@ -40972,10 +40972,15 @@ if ($('.run-stroke').length) {
   $('.run-stroke').css('animation', 'animStroke ' + strokeAnimDuration + 's linear infinite');
 }
 
-$(document).ready($(".toggle-mnu").click(function () {
-  $(this).toggleClass("active");
-  return false;
-})); //auth buttons
+$(document).ready(function () {
+  $(".toggle-mnu").click(function () {
+    $(this).toggleClass("active");
+    return false;
+  });
+  $(".toggle-mnu+.main-nav a").on('click', function () {
+    $(".toggle-mnu").toggleClass("active");
+  });
+}); //auth buttons
 
 $('.register-popup-trigger').on('click', function (e) {
   e.preventDefault();

@@ -2599,12 +2599,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getAllPostTitles: function getAllPostTitles() {
+      var _this = this;
+
       axios.post('/getAllPostTitles').then(function (response) {
-        console.log(response.data); //this.posts = Object.keys(response.data).map();
+        _this.posts = response.data;
       });
     },
     getSelectedPosts: function getSelectedPosts() {
-      axios.post('/getSelectedPosts').then(function (response) {// response.data.forEach((item, i) => {
+      axios.post('/getSelectedPosts').then(function (response) {
+        console.log(response.data); // response.data.forEach((item, i) => {
         //     delete item.img;
         //  });
       });
