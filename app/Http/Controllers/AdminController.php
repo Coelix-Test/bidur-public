@@ -480,6 +480,7 @@ class AdminController extends Controller
     public function editSurvey(Request $request){
         $survey = $request->get('survey');
 
+        Survey::where()
 
     }
 
