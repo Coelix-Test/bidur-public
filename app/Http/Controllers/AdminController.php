@@ -491,6 +491,8 @@ class AdminController extends Controller
             $v->question = $variant['variant'];
             $v->save();
         }
+
+        return $this->getAllSurveys();
     }
 
 
@@ -589,6 +591,7 @@ class AdminController extends Controller
     }
 
     public function createInsta(Request $request){
+        Insta::truncate();
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/insta');
@@ -597,6 +600,7 @@ class AdminController extends Controller
         $link = $request->get('link');
 
         $insta = Insta::create([
+            'id' => 1,
             'linkToInsta' => $link,
             'imageUrl' => '/images/insta/'.$image,
         ]);
