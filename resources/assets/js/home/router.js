@@ -11,6 +11,8 @@ Vue.use(VueRouter);
 import Index from './views/Index.vue';
 import SinglePost from './views/SinglePost.vue'
 import ByHashtag from './views/ByHashtag.vue'
+import AboutUs from './views/AboutUs.vue'
+import ContactUs from './views/ContactUs.vue'
 
 const routes = [
   {
@@ -27,6 +29,16 @@ const routes = [
     path: '/hashtag/:id',
     component: ByHashtag,
     name: 'hashtag',
+  },
+  {
+    path: '/contact-us',
+    component: ContactUs,
+    name: 'contact-us',
+  },
+  {
+    path: '/about-us',
+    component: AboutUs,
+    name: 'about-us',
   },
 ];
 
