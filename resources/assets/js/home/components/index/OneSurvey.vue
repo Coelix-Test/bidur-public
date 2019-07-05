@@ -42,7 +42,7 @@ export default {
     right() {
       if(this.popped) return;
       let el = this.$refs.left;
-      this.$refs.left.classList.add('selected');
+      this.$refs.right.classList.add('selected');
       el.classList.add('fade');
       this.popped = true;
       setTimeout(() => {
