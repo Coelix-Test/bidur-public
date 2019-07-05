@@ -39,6 +39,10 @@ class AdminController extends Controller
         return view('admin');
     }
 
+    public function deletePost(Request $request){
+        Post::find($request->get('id'))->delete();
+    }
+
 
     public function getAllPosts(Request $request ){
 //        $offset = 3;
@@ -113,6 +117,18 @@ class AdminController extends Controller
     public function getRecentPosts($offset = 0, $take = 5){
         $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
         return json_encode($recentPosts);
+    }
+
+    public function getAllPostTitles(){
+        $posts = Post::all();
+        foreach ($posts as $key => $post) {
+            $titleObject =  $post->getAllTitles()->first();
+            if (!empty($titleObject)){
+                $titles[$key]['title'] = $titleObject->titleText;
+                $titles[$key]['postId'] = $post->id;
+            }
+        }
+        return $titles;
     }
 
     public function createFullPost(Request $request){
