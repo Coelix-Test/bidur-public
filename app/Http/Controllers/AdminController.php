@@ -461,7 +461,7 @@ class AdminController extends Controller
                 $allVariants['id'] =  $variant->id;
                 $allVariants['variant'] =  $variant->question;
                 $allVariants['order'] =  $variant->order;
-                $allVariants['votes'] = SurveyAnswers::where('question', $variant->id)->count();
+                $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
             }
             $all[$key]['survey'] = $survey;
             $all[$key]['variants'] = $allVariants;
