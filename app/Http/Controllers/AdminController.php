@@ -21,6 +21,7 @@ use App\PostVideo;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
+use App\SurveyAnswers;
 use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
@@ -36,6 +37,10 @@ class AdminController extends Controller
 
     public function showAdmin(){
         return view('admin');
+    }
+
+    public function deletePost(Request $request){
+        Post::find($request->get('id'))->delete();
     }
 
 
@@ -112,6 +117,18 @@ class AdminController extends Controller
     public function getRecentPosts($offset = 0, $take = 5){
         $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
         return json_encode($recentPosts);
+    }
+
+    public function getAllPostTitles(){
+        $posts = Post::all();
+        foreach ($posts as $key => $post) {
+            $titleObject =  $post->getAllTitles()->first();
+            if (!empty($titleObject)){
+                $titles[$key]['title'] = $titleObject->titleText;
+                $titles[$key]['postId'] = $post->id;
+            }
+        }
+        return $titles;
     }
 
     public function createFullPost(Request $request){
@@ -439,8 +456,15 @@ class AdminController extends Controller
     public function getAllSurveys(){
         $allSurveys = Survey::all();
         foreach ($allSurveys as $key => $survey) {
+            $variants = $survey->getAllVariants()->orderBy('order')->get();
+            foreach ($variants as $variant) {
+                $allVariants['id'] =  $variant->id;
+                $allVariants['variant'] =  $variant->question;
+                $allVariants['order'] =  $variant->order;
+                $allVariants['votes'] = SurveyAnswers::where('question', $variant->id)->count();
+            }
             $all[$key]['survey'] = $survey;
-            $all[$key]['variants'] = $survey->getAllVariants()->orderBy('order');
+            $all[$key]['variants'] = $allVariants;
         }
         return json_encode($all);
     }

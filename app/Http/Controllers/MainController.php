@@ -75,6 +75,8 @@ class MainController extends Controller
         }
     }
 
+
+
     public function getInfoOnPostForMain(Request $request){
         $post = Post::find($request->get('id'));
 

@@ -95,8 +95,8 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/deleteAdmin', 'AdminController@deleteAdmin')->name('delete-admin');
     Route::post('/makeUserAdmin', 'AdminController@makeUserAdmin')->name('make-user-admin');
 
-
-
+    Route::post('/getAllPostTitles', 'AdminController@getAllPostTitles');
+    Route::post('/deletePost', 'AdminController@deletePost');
 
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
