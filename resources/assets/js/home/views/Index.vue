@@ -64,7 +64,7 @@ export default {
   .home {
     max-width: 1440px;
     margin:16px auto 32px;
-    padding:0 24px;
+    padding:0 24px 24px;
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
@@ -74,7 +74,7 @@ export default {
   @media (max-width:768px) {
     .home {
       flex-direction:column;
-      padding: 0 12px;
+      padding: 0 12px 48px;
     }
 
   }

@@ -132,9 +132,7 @@ export default {
     background: rgba(196, 196, 196, 0.1);
     border-right: 6px solid #F2C94C;
     margin-top: 24px;
-    padding-top: 24px;
-    padding-right: 8px;
-    padding-left: 8px;
+    padding:24px 8px;
   }
   .latest-posts .heading {
     display: flex;
