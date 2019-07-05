@@ -41,6 +41,8 @@ class AdminController extends Controller
 
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
+        $c = new MainController();
+        return $c->getAllPostsWithAllFilters();
     }
 
 
@@ -122,13 +124,13 @@ class AdminController extends Controller
     public function getAllPostTitles(){
         $posts = Post::all();
         foreach ($posts as $key => $post) {
-            $titleObject =  $post->getAllTitles()->first();
+            $titleObject = $post->metaTitle;
             if (!empty($titleObject)){
-                $titles[$key]['title'] = $titleObject->titleText;
-                $titles[$key]['postId'] = $post->id;
+                $titles[(int)$key]['title'] = $titleObject;
+                $titles[(int)$key]['id'] = $post->id;
             }
         }
-        return $titles;
+        return json_encode($titles);
     }
 
     public function createFullPost(Request $request){
@@ -456,17 +458,30 @@ class AdminController extends Controller
     public function getAllSurveys(){
         $allSurveys = Survey::all();
         foreach ($allSurveys as $key => $survey) {
-            $variants = $survey->getAllVariants()->orderBy('order')->get();
+            $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
-                $allVariants['id'] =  $variant->id;
-                $allVariants['variant'] =  $variant->question;
-                $allVariants['order'] =  $variant->order;
-                $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                $data['id'] = $variant->id;
+                $data['variant'] = $variant->question;
+                $data['order'] = $variant->order;
+                $data['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                $allVariants[] = $data;
             }
             $all[$key]['survey'] = $survey;
-            $all[$key]['variants'] = $allVariants;
+            if (isset($allVariants)){
+                $all[$key]['variants'] = $allVariants;
+            }
+            unset($data);
+            unset($allVariants);
         }
         return json_encode($all);
+    }
+
+
+    public function editSurvey(Request $request){
+        $survey = $request->get('survey');
+
+        Survey::where()
+
     }
 
 

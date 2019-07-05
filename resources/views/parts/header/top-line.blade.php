@@ -7,9 +7,9 @@
                 </a>
             </div>
             <ul class="menu-list menu">
-                <li><a href="#">דף בית</a></li>
-                <li><a href="#">אודות</a></li>
-                <li><a href="#">צור קשר</a></li>
+                <li><a href="/">דף בית</a></li>
+                <li><a href="/contact-us">אודות</a></li>
+                <li><a href="/about-us">צור קשר</a></li>
             </ul>
         </div>
 
@@ -44,22 +44,13 @@
     				<div class="main-nav-content">
     					<ul id="menu-primary-menu" class="menu">
     						<li class="menu-item menu-item-has-children">
-    							<a>Test</a>
+    							<a href="/">דף בית</a>
     						</li>
     						<li class="menu-item">
-    							<a>Test link</a>
+    							<a href="/contact-us">אודות</a>
     						</li>
     						<li class="menu-item">
-    							<a>Test</a>
-    						</li>
-    						<li class="menu-item">
-    							<a>Test link</a>
-    						</li>
-    						<li class="menu-item">
-    							<a>Test</a>
-    						</li>
-    						<li class="menu-item">
-    							<a>Test link</a>
+    							<a href="/about-us">צור קשר</a>
     						</li>
     					</ul>
     				</div>
@@ -68,11 +59,9 @@
 
 
         </div>
-        <div class="logo-wrap">
-            <a href="newspaper.test">
-                <img src="/img/logo-yellow.png" alt="">
-            </a>
-        </div>
+        <a href="/" class="logo-wrap">
+            <img src="/img/logo-yellow.png" alt="">
+        </a>
         <div class="socials-wrap">
             <a href="#" class="youtube"></a>
             <a href="#" class="instagram"></a>

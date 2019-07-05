@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test/{id}', 'MainController@showSinglePost')->name('test');
+Route::post('/test', 'AdminController@getAllSurveys')->name('test');
 
 
 
