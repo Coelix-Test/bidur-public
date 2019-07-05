@@ -458,7 +458,7 @@ class AdminController extends Controller
     public function getAllSurveys(){
         $allSurveys = Survey::all();
         foreach ($allSurveys as $key => $survey) {
-            $variants = $survey->getAllVariants()->orderBy('order')->get();
+            $variants = $survey->getAllVariants()->where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
                 $data['id'] = $variant->id;
                 $data['variant'] = $variant->question;
