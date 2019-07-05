@@ -5,7 +5,10 @@
       <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
     </div>
     <div class="latest-posts">
-      <h2>חדשות נוספות</h2>
+      <div class="heading">
+        <h2>חדשות נוספות</h2>
+        <button>לכל כתבות</button>
+      </div>
       <carousel
         v-if="posts"
         class="latest-post-slider"
@@ -58,35 +61,11 @@ export default {
         }
     },
     created() {
-       // let getAllPosts = [];
-        axios.post('/getRecentPosts').then(response => {
-
-           this.posts = response.data;
-           // this.posts = getAllPosts;
-         });
-
-
-      // Promise.all(getAllPosts).then(() => {
-      //   $(this.$refs.test).slick({
-      //     rtl: true,
-      //     dots: false,
-      //     slidesToShow: 2,
-      //     slidesToScroll: 2,
-      //     arrows : false,
-      //     autoplay : true,
-      //     autoplaySpeed : 4000,
-      //     responsive: [
-      //       {
-      //         breakpoint: 600,
-      //         settings: {
-      //           slidesToShow: 1,
-      //           slidesToScroll: 1,
-      //         }
-      //       },
-      //     ]
-      //
-      //   });
-      // })
+        axios
+          .post('/getRecentPosts')
+            .then(response => {
+               this.posts = response.data;
+             });
     },
     components: {
         VuePoll,
@@ -150,6 +129,38 @@ export default {
     width:100%;
     max-width: 100%;
     overflow: hidden;
+    background: rgba(196, 196, 196, 0.1);
+    border-right: 6px solid #F2C94C;
+    margin-top: 24px;
+    padding-top: 24px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  .latest-posts .heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 0 32px;
+  }
+  .latest-posts .heading button {
+    font-size: 20px;
+    padding:4px 16px;
+    color:#fff;
+    /* border-color:transparent; */
+    border-style: hidden;
+    border-width:2px;
+    background: linear-gradient(290.47deg, #D3A01D 1.57%, #F2C94C 98.82%);
+    border-radius: 5px;
+    font-weight: 600;
+    background-clip: border-box;
+    box-sizing: border-box;
+  }
+  .latest-posts .heading button:hover {
+    color:#F2C94C;
+    background: rgba(196, 196, 196, 0.1);
+    border-style:solid;
+    border-color: #F2C94C;
   }
   .latest-post-slider {
     width:100%;
@@ -206,9 +217,10 @@ export default {
   }
   .latest-posts h2 {
     color:#333333;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    margin-bottom: 32px;
+    margin-bottom: 0;
+    margin-top: 0;
   }
   @media (max-width:768px) {
     .left-column-bot {

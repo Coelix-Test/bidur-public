@@ -107,6 +107,7 @@ export default {
     bottom:0;
     border:4px solid #F2C94C;
     transform:rotate(3deg);
+    
   }
   .birthdayPost img {
     max-width:100%;

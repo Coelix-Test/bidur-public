@@ -10,9 +10,12 @@
 
     </div>
     <div v-if="instagramData" class="instagram-post">
-      <a :href="instagramData.link" target="_blank">
+      <div :href="instagramData.link" target="_blank">
+        <div class="insta-logo">
+          <img src="img/insta-full-logo.svg" alt="">
+        </div>
         <img :src="instagramData.img" alt="">
-      </a>
+      </div>
     </div>
   </div>
 </template>
