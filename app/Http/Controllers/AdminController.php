@@ -41,6 +41,8 @@ class AdminController extends Controller
 
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
+        $c = new MainController();
+        return $c->getAllPostsWithAllFilters();
     }
 
 
