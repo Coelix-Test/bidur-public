@@ -535,12 +535,12 @@ class MainController extends Controller
         $fourth = Post::where('id', $section->fourth)->first();
         $fifth = Post::where('id', $section->fifth)->first();
         $sixth = Post::where('id', $section->sixth)->first();
-        $data['1'] = $this->getContent($first->id);
-        $data['2'] = $this->getContent($second->id);
-        $data['3'] = $this->getContent($third->id);
-        $data['4'] = $this->getContent($fourth->id);
-        $data['5'] = $this->getContent($fifth->id);
-        $data['6'] = $this->getContent($sixth->id);
+        $data[1] = $this->getContent($first->id);
+        $data[2] = $this->getContent($second->id);
+        $data[3] = $this->getContent($third->id);
+        $data[4] = $this->getContent($fourth->id);
+        $data[5] = $this->getContent($fifth->id);
+        $data[6] = $this->getContent($sixth->id);
         return $data;
     }
 
