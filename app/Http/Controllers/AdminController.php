@@ -117,9 +117,9 @@ class AdminController extends Controller
     public function createFullPost(Request $request){
         $sections = $request->get('sections');
         $files = $request->allFiles();
-
+//        dd($sections);
         foreach ($sections as $key => $section) {
-//            dd($section);
+
             if ($section['type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
                 $hashtags = null;
@@ -162,19 +162,19 @@ class AdminController extends Controller
                     $key
                 );
 //                dd($files);
-            }elseif ($section['type'] == 'selectOne'){
-                exit(0);
-            }elseif ($section['type'] == 'likablePhoto'){
-                exit(0);
+            }elseif ($section['type'] == 'selection'){
+                $leftFile = $files['sections'][$key]['image1'];
+                $rightFile = $files['sections'][$key]['image2'];
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+            }elseif ($section['type'] == 'assessment'){
+                $file = $files['sections'][$key]['image'];
+                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
             }
         }
         return json_encode(['success' => true]);
     }
 
     public function createPostHeaderMeta($metaTitle, $hashtags = null,  $author, $date){
-//        $date = date('Y-m-d h:m:s', $date);
-//        dd($date);
-//        dd(date('Y', $date));
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
 //        dd($date);
@@ -287,6 +287,42 @@ class AdminController extends Controller
         ]);
     }
 
+    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order){
+        if($leftFile) {
+            $leftName = time().'.'.$leftFile->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $leftFile->move($destinationPath, $leftName);
+        }
+        if($rightFile) {
+            $rightName = time().'.'.$rightFile->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $rightFile->move($destinationPath, $rightName);
+        }
+        SelectOne::create([
+            'postId' => $postId,
+            'description' => $description,
+            'urlLeft' => '/images/postImages/'.$leftName,
+            'urlRight' => '/images/postImages/'.$rightName,
+            'order' => $order,
+        ]);
+    }
+
+    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order){
+
+        if($file) {
+            $name = time().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $file->move($destinationPath, $name);
+        }
+
+        SingleLikableImage::create([
+            'postId' => $postId,
+            'description' => $description,
+            'url' => '/images/postImages/'.$name,
+            'order' => $order,
+        ]);
+    }
+
     public function getAllHashtags(){
         $hashtags = Hashtag::all();
         foreach ($hashtags as $key => $hashtag) {
@@ -296,6 +332,8 @@ class AdminController extends Controller
         }
         return json_encode($hashtagArray);
     }
+
+
 
     public function deleteHashtag(Request $request){
         Hashtag::where('id', $request->get('id'))->delete();
