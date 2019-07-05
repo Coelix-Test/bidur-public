@@ -7,7 +7,7 @@
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
     <right-column-bot />
-    <left-column-bot  />
+    <left-column-bot />
 
   </div>
 </template>

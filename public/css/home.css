@@ -1,4 +1,5 @@
-.a-row-center {
+.a-row-center,
+.th-btn {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -18,11 +19,34 @@
   width: 100%;
 }
 
+.th-btn {
+  width: 360px;
+  height: 80px;
+  font-weight: bold;
+  font-size: 28px;
+  border: 0;
+}
+
+.th-btn-gold {
+  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
+  border-radius: 5px;
+  color: #fff;
+  -webkit-transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+}
+
+.th-btn-gold:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 .th-checkbox {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: #80B516;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+  background: transparent;
+  border: 2px solid #80B516;
   border-radius: 5px;
   width: 30px;
   height: 30px;
@@ -45,6 +69,10 @@
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.th-checkbox:checked {
+  background: #80B516;
 }
 
 .th-checkbox:checked::before {
