@@ -619,16 +619,91 @@ class MainController extends Controller
     }
 
 
-    public function getSingleLikablePhoto(){
-        $photo = SingleLikableImage::where('postId', 0)->first();
+//    public function getSingleLikablePhoto(){
+//        $photo = SingleLikableImage::where('postId', 0)->first();
+//
+//        $likes = LikesForSingleImage::where('serviceId', $photo->id)->get();
+//
+//        $dislikes = DisLikesForSingleImage::where('serviceId', $photo->id)->get();
+//
+//        $data['image'] = $photo->url;
+//        $data['likes'] = $likes->count();
+//        $data['dislikes'] = $dislikes->count();
+//        return json_encode($data);
+//    }
 
-        $likes = LikesForSingleImage::where('serviceId', $photo->id)->get();
+    public function likeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        LikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
 
-        $dislikes = DisLikesForSingleImage::where('serviceId', $photo->id)->get();
+    public function dislikeSinglePhoto(Request $request){
+//        $postId = $request->get('postId');
+        $serviceId = $request->get('serviceId');
+        DisLikesForSingleImage::create([
+            'serviceId' => $serviceId,
+        ]);
+    }
 
-        $data['image'] = $photo->url;
-        $data['likes'] = $likes->count();
-        $data['dislikes'] = $dislikes->count();
-        dd($data);
+    public function likeForSelectOne(Request $request){
+        $serviceId = $request->get('serviceId');
+        $position = $request->get('position');
+
+        LikesForLeftAndRight::create([
+            'serviceId' => $serviceId,
+            'value' => $position,
+        ]);
+    }
+
+    public function getServiceForMainPage(){
+        $section = SelectOne::where('postId', 0)->first();
+        if (empty($section)){
+            $section = SingleLikableImage::where('postId', 0)->first();
+        }
+        if (empty($section)){
+            $section = Survey::where('postId', 0)->first();
+        }
+
+        if (!empty($section)){
+            if ($section->getTable() == 'select_ones'){
+                $data['type'] = 'comparablePhotos';
+                $data['value']['id'] = $section->id;
+                $data['value']['description'] = $section->description;
+                $data['value']['imageLeft'] = $section->urlLeft;
+                $data['value']['imageRight'] = $section->urlRight;
+                $likesForLeft = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'left')->count();
+                $likesForRight = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'right')->count();
+                $data['value']['likesForLeft'] = $likesForLeft;
+                $data['value']['likesForLeft'] = $likesForRight;
+            }
+            elseif ($section->getTable() == 'single_likable_image'){
+                $data['type'] = 'likableImage';
+                $data['value']['id'] = $section->id;
+                $data['value']['imageUrl'] = $section->url;
+                $data['value']['description'] = $section->description;
+                $data['value']['likes'] = LikesForSingleImage::where('serviceId', $section->id)->count();
+                $data['value']['dislikes'] = DisLikesForSingleImage::where('serviceId', $section->id)->count();
+            }
+            elseif ($section->getTable() == 'surveys'){
+                $data['type'] = 'survey';
+                $data['value']['id'] = $section->id;
+                $data['value']['question'] = $section->question;
+                $variants = SurveyAnswerVariant::where('surveyId', $section->id)->get();
+                foreach ($variants as $variant) {
+                    $allVariants['answerId'] = $variant->id;
+                    $allVariants['answer'] = $variant->question;
+                    $allVariants['order'] = $variant->order;
+                    $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                }
+                $data['value']['answerVariants'] = $allVariants;
+            }
+            else{
+                return json_encode(['success' => 'false']);
+            }
+        }
+
     }
 }
