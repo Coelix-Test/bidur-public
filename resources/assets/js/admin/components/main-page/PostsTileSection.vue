@@ -41,7 +41,7 @@ export default {
             axios.post('/getAllPostTitles')
                 .then(response => {
                     console.log(response.data);
-
+                    //this.posts = Object.keys(response.data).map();
                 });
         },
         getSelectedPosts(){

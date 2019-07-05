@@ -2533,7 +2533,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getAllPostTitles: function getAllPostTitles() {
       axios.post('/getAllPostTitles').then(function (response) {
-        console.log(response.data);
+        console.log(response.data); //this.posts = Object.keys(response.data).map();
       });
     },
     getSelectedPosts: function getSelectedPosts() {
