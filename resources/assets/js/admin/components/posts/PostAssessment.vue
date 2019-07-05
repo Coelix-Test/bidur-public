@@ -66,7 +66,6 @@ export default {
 <style lang="scss" scoped>
     @import "~@/vars.scss";
     .survey-component-container{
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
         padding-bottom: 100px;
         position: relative;
     }

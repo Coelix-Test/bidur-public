@@ -1,13 +1,13 @@
 <template>
     <div class="searchable-input">
-        <input type="text" class="theme-input-text" placeholder="Add celebrity" v-model="query" required>
+        <input type="text" class="theme-input-text" :placeholder="placeholder" v-model="query" required>
         <div class="search-results">
             <div v-for="matchingItem in filtered"
                 @click="select(matchingItem)">
                 {{matchingItem.name}}
             </div>
         </div>
-        <div class="delete-self" @click="$emit('deleteSelf', index)"></div>
+        <div v-if="deletable" class="delete-self" @click="$emit('deleteSelf', index)"></div>
     </div>
 </template>
 
@@ -24,11 +24,19 @@ export default {
         },
         index: {
             type: Number
+        },
+        deletable: {
+            type: Boolean,
+            default: true
+        },
+        placeholder: {
+            type: String,
+            default: ''
         }
     },
     methods: {
         select(item){
-            console.log(this.index);
+            //console.log(this.index);
             this.query = item.name;
             this.$emit('select', item, this.index);
         }

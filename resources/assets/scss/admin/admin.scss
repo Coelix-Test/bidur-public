@@ -14,6 +14,14 @@ input.theme-input-text,
     padding: 0 12px;
 }
 
+.theme-textarea{
+    display: block;
+    resize: none;
+    border: 1px solid #E0E0E0;
+    border-radius: 3px;
+    padding: 8px 20px;
+}
+
 input, button:focus, a{
     outline: none;
 }
@@ -37,10 +45,33 @@ input, button:focus, a{
     color: #fff;
 }
 
+.big-btn{
+    display: -webkit-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    height: 79px;
+    font-size: 24px;
+    font-weight: 600;
+    max-width: 90%;
+    border-radius: 10px;
+}
+
 .theme-ico-btn{
     svg{
         width: 15px;
         height: 15px;
         margin-left: 7px;
     }
+}
+.heading{
+    font-size: $fzTitle;
+    color: $dark;
+    font-weight: bold;
+}
+.shadow-section{
+    background: #fff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }

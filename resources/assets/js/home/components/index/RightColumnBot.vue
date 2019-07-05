@@ -64,69 +64,44 @@ export default {
       requred: true,
     }
   },
-    data() {
-        return {
-            posts : [],
-            options: {
-                question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
-                answers: [
-                    { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
-                    { value: 2, text: 'Normal, i know it', votes: 35 },
-                    { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
-                    { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
-                ]
-            }
-        }
-    },
-    created() {
-       // let getAllPosts = [];
-        axios.post('/getRecentPosts').then(response => {
-
-           this.posts = response.data;
-           // this.posts = getAllPosts;
-         });
-
-
-      // Promise.all(getAllPosts).then(() => {
-      //   $(this.$refs.test).slick({
-      //     rtl: true,
-      //     dots: false,
-      //     slidesToShow: 2,
-      //     slidesToScroll: 2,
-      //     arrows : false,
-      //     autoplay : true,
-      //     autoplaySpeed : 4000,
-      //     responsive: [
-      //       {
-      //         breakpoint: 600,
-      //         settings: {
-      //           slidesToShow: 1,
-      //           slidesToScroll: 1,
-      //         }
-      //       },
-      //     ]
-      //
-      //   });
-      // })
-    },
-    components: {
-        VuePoll,
-        Carousel,
-        Slide,
-        LikeSurvey,
-        OneSurvey,
-    },
-    methods: {
-        addVote(obj){
-            console.log(obj);
-        }
-    },
+  data() {
+    return {
+      posts : [],
+      options: {
+        question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
+        answers: [
+          { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
+          { value: 2, text: 'Normal, i know it', votes: 35 },
+          { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
+          { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
+        ]
+      }
+    }
+  },
+  created() {
+    axios.post('/getServiceForMainPage').then(res => {
+      this.posts = res.data;
+    });
+  },
+  components: {
+    VuePoll,
+    Carousel,
+    Slide,
+    LikeSurvey,
+    OneSurvey,
+  },
+  methods: {
+    addVote(obj){
+      console.log(obj);
+    }
+  },
 }
 </script>
 
 <style lang="css" scoped>
   .right-column-bot {
     flex-basis:50%;
+    width:50%;
     padding-left: 8px;
     /* max-width: 500px; */
 
@@ -172,12 +147,42 @@ export default {
     width:100%;
     max-width: 100%;
     overflow: hidden;
+    background: rgba(196, 196, 196, 0.1);
+    border-right: 6px solid #F2C94C;
+    margin-top: 24px;
+    padding:24px 8px;
+  }
+  .latest-posts .heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 0 32px;
+  }
+  .latest-posts .heading button {
+    font-size: 20px;
+    padding:4px 16px;
+    color:#fff;
+    /* border-color:transparent; */
+    border-style: hidden;
+    border-width:2px;
+    background: linear-gradient(290.47deg, #D3A01D 1.57%, #F2C94C 98.82%);
+    border-radius: 5px;
+    font-weight: 600;
+    background-clip: border-box;
+    box-sizing: border-box;
+  }
+  .latest-posts .heading button:hover {
+    color:#F2C94C;
+    background: rgba(196, 196, 196, 0.1);
+    border-style:solid;
+    border-color: #F2C94C;
   }
   .latest-post-slider {
     width:100%;
     margin:0;
     padding:0;
-    max-width: 600px;
+    /* max-width: 600px; */
   }
   .latest-post-item {
     padding-left: 16px;
@@ -228,9 +233,10 @@ export default {
   }
   .latest-posts h2 {
     color:#333333;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    margin-bottom: 32px;
+    margin-bottom: 0;
+    margin-top: 0;
   }
   @media (max-width:768px) {
     .left-column-bot {
@@ -242,6 +248,9 @@ export default {
     .latest-post-item {
       padding-left: 0;
     }
+    .selected-poll {
+      margin-bottom: 8px;
+    }
     h2 {
       margin-bottom: 16px;
     }
@@ -250,6 +259,7 @@ export default {
     .right-column-bot {
       order: 3;
       flex-basis:100%;
+      width:100%;
       padding-left: 0;
       margin-bottom: 16px;
       margin-top: 8px;

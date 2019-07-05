@@ -1,18 +1,27 @@
 <template>
   <div class="left-column-bot">
-    <div class="heading">
-      <button>
-        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
-          <path d="M26.8799 11.7188C18.5577 11.7188 11.7188 18.5486 11.7188 26.8799V48.1201C11.7188 56.4423 18.5486 63.2812 26.8799 63.2812H48.1201C56.4423 63.2812 63.2812 56.4514 63.2812 48.1201V26.8799C63.2812 18.5577 56.4514 11.7188 48.1201 11.7188H26.8799ZM26.8799 16.4062H48.1201C53.9154 16.4062 58.5938 21.0846 58.5938 26.8799V48.1201C58.5938 53.9154 53.9154 58.5938 48.1201 58.5938H26.8799C21.0846 58.5938 16.4062 53.9154 16.4062 48.1201V26.8799C16.4062 21.0846 21.0846 16.4062 26.8799 16.4062ZM51.3428 21.5332C50.1617 21.5332 49.2188 22.4762 49.2188 23.6572C49.2188 24.8383 50.1617 25.7812 51.3428 25.7812C52.5238 25.7812 53.4668 24.8383 53.4668 23.6572C53.4668 22.4762 52.5238 21.5332 51.3428 21.5332ZM37.5 23.4375C29.7638 23.4375 23.4375 29.7638 23.4375 37.5C23.4375 45.2362 29.7638 51.5625 37.5 51.5625C45.2362 51.5625 51.5625 45.2362 51.5625 37.5C51.5625 29.7638 45.2362 23.4375 37.5 23.4375ZM37.5 28.125C42.7094 28.125 46.875 32.2906 46.875 37.5C46.875 42.7094 42.7094 46.875 37.5 46.875C32.2906 46.875 28.125 42.7094 28.125 37.5C28.125 32.2906 32.2906 28.125 37.5 28.125Z" fill="white"/>
-        </svg>
-      </button>
-      <h2>תמונת האינסטגרם המנצחת של היום</h2>
 
-    </div>
-    <div class="instagram-post">
-      <a href="https://instagram.com/" target="_blanc">
-        <img src="/img/leo.png" alt="">
-      </a>
+    <div v-if="instagramData" class="instagram-post">
+      <div class="heading">
+        <div class="insta-logo">
+          <img src="img/insta-full-logo.svg" alt="">
+        </div>
+        <h2>תמונת האינסטגרם המנצחת של היום</h2>
+      </div>
+
+        <img :src="instagramData.img" alt="">
+        <div class="insta-features">
+            <div class="right">
+              <img src="img/icons/save.svg" alt="">
+            </div>
+            <div class="left">
+              <img src="img/icons/direct.svg" alt="">
+              <img src="img/icons/comments.svg" alt="">
+              <img src="img/icons/insta-like.svg" alt="">
+            </div>
+        </div>
+        <a :href="instagramData.link" target="_blank">לעמוד האינסטגרם שלנו</a>
+
     </div>
   </div>
 </template>
@@ -21,15 +30,22 @@
 export default {
   props : {
     data : {
-      requred: true,
+      requred : true,
+
     }
   },
   data() {
     return {
       posts : [],
+      instagramData : null,
     }
   },
   created() {
+    axios
+      .post('/getMainInsta')
+        .then(res => {
+          this.instagramData = res.data;
+        });
   },
   mounted() {
 
@@ -42,11 +58,10 @@ export default {
     flex-basis:calc(50% - 8px);
     width:50%;
     margin-right: 8px;
-    padding:24px 12px;
-    background: linear-gradient(144.33deg, #F97B4A -1.22%, #C6278D 55.16%, #4200FF 97.95%);
-    /* opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
-    transform: translateY(100px); */
+    padding:24px 0 0;
+    border-radius: 48px;
+    box-shadow: 0 0 16px rgba(0,0,0,0.2);
+    transform: translateY(-64px);
   }
   .left-column-bot.in-viewport {
     transform: translateY(0);
@@ -54,47 +69,100 @@ export default {
   }
   .heading {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap:nowrap;
     align-items: center;
+    padding: 0 12px;
+  }
+  .heading h2 {
+    background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+  .heading img {
+    width:260px;
   }
   .heading button {
     border-width:0;
     background-color: transparent;
     padding:0 32px;
     color:#fff;
-
   }
   .instagram-post {
-    /* max-height: 700px; */
     margin-top: 16px;
+    position: relative;
   }
   .instagram-post a {
-    width:100%;
-    height:100%;
+    background: linear-gradient(90deg, #F97B4A 0%, #C6278D 54.18%, #4200FF 95.31%);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 8px 12px;
+    color:#fff;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    position: absolute;
+    bottom:0;
+    left:50%;
+    white-space: nowrap;
+    transform:translateX(-50%) translateY(50%);
   }
-  .instagram-post img {
+  .instagram-post > img {
     width:100%;
     height:100%;
     object-fit: cover;
     object-position: center;
   }
-
-  h2 {
-    color:#fff;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 0;
-    text-align: center;
+  .insta-features {
+    padding:24px 24px;
+    display: flex;
+    flex-direction: row;
+  }
+  .insta-features div {
+    flex-grow:2;
+    display: flex;
+    flex-direction: row;
+  }
+  .insta-features div.left img {
+    margin-right:12px;
+  }
+  .insta-features div.left {
+    justify-content: flex-end;
+  }
+  .insta-features div.right {
+    justify-content: flex-start;
   }
   @media (max-width:768px) {
-    h2 {
-      margin-bottom: 16px;
+    .heading h2 {
+      font-size: 32px;
+      margin: 12px 0;
+    }
+    .left-column-bot {
+      order: 4;
+      width:100%;
+      flex-basis:100%;
+      margin-right: 0;
+      transform:translateX(0);
+    }
+    .insta-features div img {
+      width:30px;
+    }
+    .insta-features {
+      padding:18px 24px 36px;
     }
   }
   @media (max-width: 550px) {
     .instagram-post {
       margin-top: 8px;
     }
+    .heading h2 {
+      font-size:24px;
+    }
+
   }
 </style>

@@ -140,7 +140,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
@@ -152,7 +152,7 @@ export default {
                var relevantPosts = [];
               for(let i =0;i < this.hashtags.length;i++) {
                 axios
-                  .post('/getAllPostsByHashtag', {hashtag_id: this.hashtags[i],})
+                  .post('/getAllRelevantPosts', {hashtag_id: this.hashtags[i],})
                     .then(response => {
                       this.relevantPosts = response.data;
                       // console.log('response', this.relevantPosts);

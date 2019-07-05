@@ -4,10 +4,13 @@
             <div class="title">Admin Panel</div>
             <ul class="nav-menu">
                 <li>
-                    <router-link :to="{ name: 'post-new' }">כתבות</router-link>
+                    <router-link :to="{ name: 'edit-main-page' }">Main Page</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'surveys' }">פרסומות</router-link>
+                    <router-link :to="{ name: 'post-new' }">Posts</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'surveys' }">Surveys</router-link>
                 </li>
                 <li>
                     <router-link :to="{ name: 'users' }">Users</router-link>

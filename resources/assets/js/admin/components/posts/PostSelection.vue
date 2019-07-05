@@ -79,7 +79,6 @@ export default {
 <style lang="scss" scoped>
     @import "~@/vars.scss";
     .selection-component-container{
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
         padding: 29px 20px 100px;
         position: relative;
     }
