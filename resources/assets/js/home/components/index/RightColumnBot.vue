@@ -7,7 +7,7 @@
         <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
       </div>
     </template>
-    <one-survey v-else-if="survey.type == 'comparablePhotos'"/>
+    <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
     <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
 
     <div class="latest-posts">

@@ -1,6 +1,6 @@
 <template>
   <div class="like-survey">
-    <img src="https://via.placeholder.com/1024">
+    <img :src="data.imgUrl">
     <div class="body">
       <div class="title">
         What do you think about it?
