@@ -182,7 +182,7 @@ class MainController extends Controller
         return $hashtagArray;
     }
 
-    public function showSinglePost($id =1){
+    public function showSinglePost($id){
         try{
             $post = Post::findOrFail($id);
         }catch (\Exception $e){
@@ -266,7 +266,30 @@ class MainController extends Controller
                 $fullPost['sections'][$key] = $questionsWithAnswer;
             }
         }
+        $compares = $post->getCompare;
+        if (isset($compares[0])){
+            foreach ($compares as $compare) {
+                $data['id'] = $compare->id;
+                $data['imageLeft'] = $compare->urlLeft;
+                $data['imageRight'] = $compare->urlRight;
+                $data['description'] = $compare->description;
 
+                $fullPost['sections'][$compare->order]['type'] = 'compare';
+                $fullPost['sections'][$compare->order]['value'] = $data;
+            }
+        }
+
+        $likableImages = $post->getLikableImage;
+        if (isset($likableImages[0])){
+            foreach ($likableImages as $likableImage) {
+                $data['id'] = $likableImage->id;
+                $data['image'] = $likableImage->url;
+                $data['description'] = $likableImage->description;
+
+                $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
+                $fullPost['sections'][$likableImage->order]['value'] = $data;
+            }
+        }
 
         $fullPost['author'] = $post->author;
         $fullPost['date'] = $this->getDate($post);
@@ -668,6 +691,7 @@ class MainController extends Controller
         }
 
         if (!empty($section)){
+
             if ($section->getTable() == 'select_ones'){
                 $data['type'] = 'comparablePhotos';
                 $data['value']['id'] = $section->id;
@@ -678,6 +702,7 @@ class MainController extends Controller
                 $likesForRight = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'right')->count();
                 $data['value']['likesForLeft'] = $likesForLeft;
                 $data['value']['likesForLeft'] = $likesForRight;
+                return json_encode($data);
             }
             elseif ($section->getTable() == 'single_likable_image'){
                 $data['type'] = 'likableImage';
@@ -686,6 +711,7 @@ class MainController extends Controller
                 $data['value']['description'] = $section->description;
                 $data['value']['likes'] = LikesForSingleImage::where('serviceId', $section->id)->count();
                 $data['value']['dislikes'] = DisLikesForSingleImage::where('serviceId', $section->id)->count();
+                return json_encode($data);
             }
             elseif ($section->getTable() == 'surveys'){
                 $data['type'] = 'survey';
@@ -699,11 +725,17 @@ class MainController extends Controller
                     $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
                 }
                 $data['value']['answerVariants'] = $allVariants;
+                return json_encode($data);
             }
             else{
                 return json_encode(['success' => 'false']);
             }
         }
 
+    }
+
+    public function test(){
+        $post = Post::find(86);
+        dd($post->getCompare()->get());
     }
 }
