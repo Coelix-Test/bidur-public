@@ -125,10 +125,10 @@ class AdminController extends Controller
             $titleObject =  $post->getAllTitles()->first();
             if (!empty($titleObject)){
                 $titles[$key]['title'] = $titleObject->titleText;
-                $titles[$key]['postId'] = $post->id;
+                $titles[$key]['id'] = $post->id;
             }
         }
-        return $titles;
+        return json_encode($titles);
     }
 
     public function createFullPost(Request $request){
@@ -458,10 +458,11 @@ class AdminController extends Controller
         foreach ($allSurveys as $key => $survey) {
             $variants = $survey->getAllVariants()->orderBy('order')->get();
             foreach ($variants as $variant) {
-                $allVariants[]['id'] =  $variant->id;
-                $allVariants[]['variant'] =  $variant->question;
-                $allVariants[]['order'] =  $variant->order;
-                $allVariants[]['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                $data['id'] = $variant->id;
+                $data['variant'] = $variant->question;
+                $data['order'] = $variant->order;
+                $data['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                $allVariants[] = $data;
             }
             $all[$key]['survey'] = $survey;
             $all[$key]['variants'] = $allVariants;
