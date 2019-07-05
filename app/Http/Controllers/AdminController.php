@@ -591,6 +591,7 @@ class AdminController extends Controller
     }
 
     public function createInsta(Request $request){
+        Insta::truncate();
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/insta');
