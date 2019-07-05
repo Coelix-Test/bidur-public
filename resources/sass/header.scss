@@ -74,15 +74,19 @@
                 text-decoration: none;
                 &.youtube{
                     background: url('/img/icons/social-youtube-colored.svg') no-repeat center;
-                    background-size: cover;
+                    background-size: contain;
                 }
                 &.facebook{
                     background: url('/img/icons/social-facebook-colored.svg') no-repeat center;
-                    background-size: cover;
+                    background-size: contain;
                 }
                 &.instagram{
                     background: url('/img/icons/social-instagram-colored.svg') no-repeat center;
-                    background-size: cover;
+                    background-size: contain;
+                }
+                &.telegram{
+                    background: url('/img/icons/social-telegram-colored.svg') no-repeat center;
+                    background-size: contain;
                 }
             }
 
@@ -322,7 +326,7 @@
             margin-right: 20px;
             margin-left: 15px;
             .socials-wrap{
-                width: calc(50% - 35px);
+                //width: calc(50% - 35px);
                 display: flex;
                 a{
                     width: 20px;
@@ -334,7 +338,7 @@
                 }
             }
             .menu-wrap{
-                width: calc(50% - 35px);
+                //width: calc(50% - 35px);
             }
             .logo-wrap{
                 width: 70px;

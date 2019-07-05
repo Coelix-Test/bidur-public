@@ -14,9 +14,10 @@
         </div>
 
         <div class="socials-wrap">
+            <a href="#" class="telegram"></a>
             <a href="#" class="youtube"></a>
-            <a href="#" class="instagram"></a>
             <a href="#" class="facebook"></a>
+            <a href="#" class="instagram"></a>
         </div>
 
         <div class="auth-btns">
@@ -63,9 +64,10 @@
             <img src="/img/logo-yellow.png" alt="">
         </a>
         <div class="socials-wrap">
-            <a href="#" class="youtube"></a>
-            <a href="#" class="instagram"></a>
-            <a href="#" class="facebook"></a>
+          <a href="#" class="telegram"></a>
+          <a href="#" class="youtube"></a>
+          <a href="#" class="facebook"></a>
+          <a href="#" class="instagram"></a>
         </div>
     </div>
 </div><!-- top row end -->
