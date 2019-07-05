@@ -21114,166 +21114,162 @@ var render = function() {
       [
         _vm.errorMessage ? _c("single-post-example") : _vm._e(),
         _vm._v(" "),
-        _vm.post
-          ? _c(
-              "div",
-              { staticClass: "post-content" },
+        _c(
+          "div",
+          { staticClass: "post-content" },
+          [
+            _c(
+              "nav",
               [
-                _c(
-                  "nav",
-                  [
-                    _vm.prevPostId
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "prev-post",
-                            attrs: { to: "/post/" + _vm.prevPostId }
-                          },
-                          [
-                            _c("img", {
-                              attrs: { src: "/img/arrow-right.svg" }
-                            }),
-                            _vm._v("\n          Prev News\n        ")
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.nextPostId
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "next-post",
-                            attrs: { to: "/post/" + _vm.nextPostId }
-                          },
-                          [
-                            _vm._v("\n          Next News\n          "),
-                            _c("img", { attrs: { src: "/img/arrow-left.svg" } })
-                          ]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm.post.data.post.mainTitle
-                  ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
+                _vm.prevPostId
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "prev-post",
+                        attrs: { to: "/post/" + _vm.prevPostId }
+                      },
+                      [
+                        _c("img", { attrs: { src: "/img/arrow-right.svg" } }),
+                        _vm._v("\n          Prev News\n        ")
+                      ]
+                    )
                   : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "post-meta" },
-                  [
-                    _c("div", { staticClass: "info" }, [
-                      _c("span", { staticClass: "author" }, [
-                        _vm._v(_vm._s(_vm.post.data.post.author))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "date" }, [
-                        _vm._v(_vm._s(_vm.post.data.post.date))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("share")
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.postData, function(post) {
-                  return _c("section", { class: post.type }, [
-                    post.type == "title"
-                      ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    post.type == "content"
-                      ? _c("div", [_vm._v(_vm._s(post.value))])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    post.type == "image"
-                      ? _c("p", [
-                          _c("img", { attrs: { src: post.value, alt: "" } }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v(_vm._s(post.description))])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    post.type == "survey"
-                      ? _c(
-                          "div",
-                          { staticClass: "poll" },
-                          [
-                            _c("img", { attrs: { src: post.img, alt: "" } }),
-                            _vm._v(" "),
-                            _c(
-                              "vue-poll",
-                              _vm._b(
-                                {
-                                  on: {
-                                    addvote: function($event) {
-                                      return _vm.addVote($event, post.id)
-                                    }
-                                  }
-                                },
-                                "vue-poll",
-                                post.value,
-                                false
-                              )
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    post.type == "video"
-                      ? _c("iframe", {
-                          attrs: {
-                            id: "ytplayer",
-                            type: "text/html",
-                            src:
-                              "http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com",
-                            frameborder: "0"
-                          }
-                        })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    post.type == "imageWithText"
-                      ? _c("div", [
-                          post.url
-                            ? _c("img", {
-                                class: post.imagePosition,
-                                attrs: { src: post.url, alt: post.title }
-                              })
-                            : _vm._e(),
-                          _vm._v(" "),
-                          post.title
-                            ? _c("h2", [_vm._v(_vm._s(post.title))])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          post.content
-                            ? _c("p", [_vm._v(_vm._s(post.content))])
-                            : _vm._e()
-                        ])
-                      : _vm._e()
-                  ])
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "opinion" }, [
-                  _c("h2", [_vm._v("Your opinion")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "emoji-wrapper" },
-                    [
-                      _vm.postId
-                        ? _c("emoji", { attrs: { postId: _vm.postId } })
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ])
+                _vm.nextPostId
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "next-post",
+                        attrs: { to: "/post/" + _vm.nextPostId }
+                      },
+                      [
+                        _vm._v("\n          Next News\n          "),
+                        _c("img", { attrs: { src: "/img/arrow-left.svg" } })
+                      ]
+                    )
+                  : _vm._e()
               ],
-              2
-            )
-          : _vm._e(),
+              1
+            ),
+            _vm._v(" "),
+            _vm.post.data.post.mainTitle
+              ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "post-meta" },
+              [
+                _c("div", { staticClass: "info" }, [
+                  _c("span", { staticClass: "author" }, [
+                    _vm._v(_vm._s(_vm.post.data.post.author))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "date" }, [
+                    _vm._v(_vm._s(_vm.post.data.post.date))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("share")
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.postData, function(post) {
+              return _c("section", { class: post.type }, [
+                post.type == "title"
+                  ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
+                  : _vm._e(),
+                _vm._v(" "),
+                post.type == "content"
+                  ? _c("div", [_vm._v(_vm._s(post.value))])
+                  : _vm._e(),
+                _vm._v(" "),
+                post.type == "image"
+                  ? _c("p", [
+                      _c("img", { attrs: { src: post.value, alt: "" } }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(post.description))])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                post.type == "survey"
+                  ? _c(
+                      "div",
+                      { staticClass: "poll" },
+                      [
+                        _c("img", { attrs: { src: post.img, alt: "" } }),
+                        _vm._v(" "),
+                        _c(
+                          "vue-poll",
+                          _vm._b(
+                            {
+                              on: {
+                                addvote: function($event) {
+                                  return _vm.addVote($event, post.id)
+                                }
+                              }
+                            },
+                            "vue-poll",
+                            post.value,
+                            false
+                          )
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                post.type == "video"
+                  ? _c("iframe", {
+                      attrs: {
+                        id: "ytplayer",
+                        type: "text/html",
+                        src:
+                          "http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com",
+                        frameborder: "0"
+                      }
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                post.type == "imageWithText"
+                  ? _c("div", [
+                      post.url
+                        ? _c("img", {
+                            class: post.imagePosition,
+                            attrs: { src: post.url, alt: post.title }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.title
+                        ? _c("h2", [_vm._v(_vm._s(post.title))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      post.content
+                        ? _c("p", [_vm._v(_vm._s(post.content))])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "opinion" }, [
+              _c("h2", [_vm._v("Your opinion")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "emoji-wrapper" },
+                [
+                  _vm.postId
+                    ? _c("emoji", { attrs: { postId: _vm.postId } })
+                    : _vm._e()
+                ],
+                1
+              )
+            ])
+          ],
+          2
+        ),
         _vm._v(" "),
         _c("side-news")
       ],

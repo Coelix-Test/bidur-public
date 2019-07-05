@@ -3,7 +3,7 @@
     <div class="post-wrapper">
 
       <single-post-example v-if="errorMessage" />
-      <div v-if="post" class="post-content">
+      <div class="post-content">
         <nav>
 
           <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
