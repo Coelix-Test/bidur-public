@@ -458,7 +458,7 @@ class AdminController extends Controller
     public function getAllSurveys(){
         $allSurveys = Survey::all();
         foreach ($allSurveys as $key => $survey) {
-            $variants = $survey->getAllVariants()->where('surveyId', $survey->id)->orderBy('order')->get();
+            $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
                 $data['id'] = $variant->id;
                 $data['variant'] = $variant->question;
@@ -468,6 +468,8 @@ class AdminController extends Controller
             }
             $all[$key]['survey'] = $survey;
             $all[$key]['variants'] = $allVariants;
+            unset($data);
+            unset($allVariants);
         }
         return json_encode($all);
     }
