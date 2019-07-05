@@ -126,8 +126,8 @@ class AdminController extends Controller
         foreach ($posts as $key => $post) {
             $titleObject = $post->metaTitle;
             if (!empty($titleObject)){
-                $titles[$key]['title'] = $titleObject;
-                $titles[$key]['id'] = $post->id;
+                $titles[(int)$key]['title'] = $titleObject;
+                $titles[(int)$key]['id'] = $post->id;
             }
         }
         return json_encode($titles);
