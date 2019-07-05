@@ -12,9 +12,10 @@
       <img class="thumbnail" :src="survey.survey.image">
       <div class="column">
         <textarea class="title" type="text" v-model="survey.survey.question"></textarea>
-        <!-- {{variants}} -->
-        <div class="variant" v-if="variants" v-for="variant in variants">
-          {{variant}}
+        <div class="variant" v-if="variants" v-for="variant in variants" :key="variant.id">
+          <!-- {{variant}} -->
+          <input type="text" :name="variant.id" v-model="variant.variant">
+          <span>Votes : {{variant.votes}}</span>
         </div>
       </div>
     </div>
@@ -97,6 +98,9 @@ export default {
               &:hover, &:focus {
                 border-color: #eee;
               }
+          }
+          .variant {
+            margin-bottom: 4px;
           }
       }
     }
