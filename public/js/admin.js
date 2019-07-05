@@ -25217,7 +25217,7 @@ var render = function() {
                   }
                 }
               }),
-              _vm._v("\n      " + _vm._s(_vm.survey) + "\n      "),
+              _vm._v("\n      " + _vm._s(_vm.variants) + "\n      "),
               _vm._l(_vm.variants, function(variant) {
                 return _vm.variants
                   ? _c("div", { staticClass: "variant" }, [
