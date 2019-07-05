@@ -3828,6 +3828,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.post('/getAllSurveys').then(function (res) {
       _this.surveys = res.data;
+      console.log(_this.surveys);
     });
   },
   components: {
@@ -25217,7 +25218,7 @@ var render = function() {
                   }
                 }
               }),
-              _vm._v("\n      " + _vm._s(_vm.variants) + "\n      "),
+              _vm._v(" "),
               _vm._l(_vm.variants, function(variant) {
                 return _vm.variants
                   ? _c("div", { staticClass: "variant" }, [

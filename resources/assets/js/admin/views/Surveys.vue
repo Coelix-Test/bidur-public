@@ -22,6 +22,7 @@ export default {
       .post('/getAllSurveys')
         .then(res => {
           this.surveys = res.data;
+          console.log(this.surveys);
         })
   },
   components : {
