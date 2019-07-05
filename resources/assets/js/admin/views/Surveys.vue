@@ -21,7 +21,6 @@ export default {
     axios
       .post('/getAllSurveys')
         .then(res => {
-          console.log(res.data);
           this.surveys = res.data;
         })
   },

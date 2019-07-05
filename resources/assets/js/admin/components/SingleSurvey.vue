@@ -12,7 +12,7 @@
       <img class="thumbnail" :src="survey.survey.image">
       <div class="column">
         <textarea class="title" type="text" v-model="survey.survey.question"></textarea>
-        <!-- {{variants}} -->
+        {{survey}}
         <div class="variant" v-if="variants" v-for="variant in variants">
           {{variant}}
         </div>
