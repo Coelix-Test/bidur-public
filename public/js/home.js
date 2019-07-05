@@ -4838,7 +4838,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 32px;\n  line-height: 32px;\n  padding-top: 32px;\n  font-weight: 600;\n  color:#fff;\n  margin:0;\n  text-align: center;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .votes {\n  padding:0 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: -webkit-gradient(linear, left bottom, left top, from(#403EC0), color-stop(85.58%, #3BB9FE), color-stop(107.76%, #00F0FF));\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n}\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: .3;\n}\n.vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(0.51%, #FFFB95), color-stop(99.32%, #FF004D));\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: -webkit-gradient(linear, right top, left top, color-stop(2.58%, #403EC0), color-stop(78.1%, #3BB9FE), color-stop(97.67%, #00F0FF));\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:8px 12px;\n    text-align: center;\n}\n}\n", ""]);
+exports.push([module.i, "\n.vue-poll .qst {\n  padding:0 12px;\n  font-size: 32px;\n  line-height: 32px;\n  padding-top: 32px;\n  font-weight: 600;\n  color:#fff;\n  margin:0;\n  text-align: center;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.vue-poll .ans-cnt {\n  margin:20px 12px;\n}\n.vue-poll .ans-cnt .ans-no-vote {\n  position: relative;\n  border-radius: 0;\n  border-color: transparent;\n  border-width:0;\n  padding:12px 24px 12px 12px;\n  text-align: right;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  overflow: hidden;\n}\n.vue-poll .votes {\n  padding:0 12px;\n}\n/* .vue-poll .ans-cnt .ans-no-vote:before {\n  content:'';\n  position: absolute;\n  top:0;\n  right:0;\n  width:10px;\n  height:100%;\n  background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);\n} */\n.vue-poll .ans-cnt .ans-no-vote:hover {\n  /* background-color: #0E0E0E; */\n}\n.vue-poll .ans-cnt .ans-no-vote .txt {\n  color:#0E0E0E;\n}\n.vue-poll .ans-cnt .ans-no-vote:hover .txt {\n  /* color:#fff; */\n}\n.vue-poll .ans-cnt .ans .bg {\n  right:0;\n  left:unset;\n  -webkit-transition: 1s;\n  transition: 1s;\n  /* clip-path: polygon(25px 0%, 100% 1%, 100% 100%, 25px 100%, 0% 50%); */\n}\n.vue-poll .ans-cnt .ans-voted {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  padding:12px 12px;\n}\n.vue-poll .ans-cnt .ans {\n  margin-top: 16px;\n}\n.vue-poll .ans-cnt .ans-voted .percent {\n  margin:0;\n  text-align: left;\n}\n.vue-poll .ans-cnt .ans .bg {\n  opacity: 1;\n  background: #F2F2F2;\n}\n.vue-poll .ans-cnt .ans .selected + .bg {\n  background: linear-gradient(296.58deg, #EDB72A 6.16%, #FDD55D 99.09%);\n}\n/* .vue-poll .ans-cnt .ans:nth-child(1) .bg {\n  background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);\n}\n.vue-poll .ans-cnt .ans:nth-child(2) .bg {\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n}\n.vue-poll .ans-cnt .ans:nth-child(3) .bg {\n  background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);\n}\n.vue-poll .ans-cnt .ans:nth-child(4) .bg {\n  background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);\n} */\n.vue-poll .ans-cnt .ans-voted.selected .txt:after {\n  content:'\\2714';\n  margin-right: 10px;\n}\n@media (max-width:768px) {\n.vue-poll .ans-cnt .ans-voted .percent, .vue-poll .ans-cnt .ans-voted .txt {\n    font-size: 16px;\n}\n.vue-poll .qst {\n    font-size: 24px;\n    line-height: 24px;\n    padding:8px 12px;\n    text-align: center;\n}\n}\n", ""]);
 
 // exports
 
@@ -20707,10 +20707,86 @@ var render = function() {
     "div",
     { staticClass: "right-column-bot" },
     [
-      false
-        ? undefined
-        : true
-        ? _c("one-survey")
+      true
+        ? [
+            _c(
+              "div",
+              { staticClass: "selected-poll" },
+              [
+                _c("img", { attrs: { src: "img/rihanna.png", alt: "" } }),
+                _vm._v(" "),
+                _c(
+                  "vue-poll",
+                  _vm._b(
+                    { staticClass: "poll", on: { addvote: _vm.addVote } },
+                    "vue-poll",
+                    _vm.options,
+                    false
+                  )
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "latest-posts" },
+              [
+                _c("h2", [_vm._v("חדשות נוספות")]),
+                _vm._v(" "),
+                _vm.posts
+                  ? _c(
+                      "carousel",
+                      {
+                        staticClass: "latest-post-slider",
+                        attrs: {
+                          rtl: true,
+                          autoplay: true,
+                          autoplayTimeout: 2000,
+                          paginationEnabled: false,
+                          navigationEnabled: true,
+                          perPageCustom: [[320, 1], [768, 1], [769, 2]]
+                        }
+                      },
+                      _vm._l(_vm.posts, function(post) {
+                        return _c(
+                          "slide",
+                          { key: post.id, staticClass: "latest-post-item" },
+                          [
+                            _c("img", { attrs: { src: post.img, alt: "" } }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "content" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: "/post/" + post.id } },
+                                  [_c("h3", [_vm._v(_vm._s(post.title))])]
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _c("span", { staticClass: "author" }, [
+                                    _vm._v("by " + _vm._s(post.author))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "post-date" }, [
+                                    _vm._v(_vm._s(post.time))
+                                  ])
+                                ])
+                              ],
+                              1
+                            )
+                          ]
+                        )
+                      }),
+                      1
+                    )
+                  : _vm._e()
+              ],
+              1
+            )
+          ]
         : undefined
     ],
     2

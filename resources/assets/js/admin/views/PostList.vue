@@ -7,6 +7,7 @@
         <div class="post-meta">
           <span class="date">{{post.post.created_at}}</span>
           <span class="author">by {{post.post.author}}</span>
+          <span class="id">#{{post.post.id}}</span>
         </div>
         <div class="actions">
           <a :href="'.#/post/'+post.post.id" target="_blank">view</a>
@@ -31,7 +32,6 @@ export default {
       .post('/getAllPosts')
         .then(res => {
           this.posts = res.data;
-          // console.log(res);
         });
   },
   methods : {
@@ -39,12 +39,12 @@ export default {
       console.log(id);
     },
     deletePost(id) {
-      console.log(id);
       axios
         .post('/deletePost',{id : id})
           .then(res => {
             // console.log(res);
               this.posts = res.data;
+              alert('Post Deleted!');
           });
     }
   }
@@ -76,7 +76,7 @@ export default {
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
-                align-items: center;
+                align-items: flex-end;
                 border-bottom: 1px solid #eee;
                 padding-bottom: 6px;
                 margin-bottom: 6px;
@@ -84,6 +84,10 @@ export default {
                     margin-right: 6px;
                     padding-right: 6px;
                     border-right: 1px solid #000;
+                  }
+                  .id {
+                    color:lightgrey;
+                    margin-right: 16px;
                   }
               }
               .actions {

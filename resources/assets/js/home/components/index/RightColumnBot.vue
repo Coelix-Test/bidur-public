@@ -1,7 +1,7 @@
 <template>
   <div class="right-column-bot">
 
-    <template v-if="false">
+    <template v-if="true">
       <div class="selected-poll">
         <img src="img/rihanna.png" alt="">
         <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
@@ -48,7 +48,7 @@
         </carousel>
       </div>
     </template>
-    <one-survey v-else-if="true"/>
+    <one-survey v-else-if="false"/>
     <like-survey v-else/>
   </div>
 </template>
