@@ -524,8 +524,6 @@ class MainController extends Controller
         }
         $allInfo['id'] = $post->id;
 
-
-
         return $allInfo;
     }
 
