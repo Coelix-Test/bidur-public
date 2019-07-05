@@ -660,6 +660,7 @@ class MainController extends Controller
         $serviceId = $request->get('serviceId');
         LikesForSingleImage::create([
             'serviceId' => $serviceId,
+            'userId' => 0,
         ]);
     }
 
@@ -668,6 +669,7 @@ class MainController extends Controller
         $serviceId = $request->get('serviceId');
         DisLikesForSingleImage::create([
             'serviceId' => $serviceId,
+            'userId' => 0,
         ]);
     }
 
@@ -678,6 +680,7 @@ class MainController extends Controller
         LikesForLeftAndRight::create([
             'serviceId' => $serviceId,
             'value' => $position,
+            'userId' => 0,
         ]);
     }
 
