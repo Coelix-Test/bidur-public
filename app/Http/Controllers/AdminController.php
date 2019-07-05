@@ -600,6 +600,7 @@ class AdminController extends Controller
         $link = $request->get('link');
 
         $insta = Insta::create([
+            'id' => 1,
             'linkToInsta' => $link,
             'imageUrl' => '/images/insta/'.$image,
         ]);
