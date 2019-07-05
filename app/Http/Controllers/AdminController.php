@@ -124,10 +124,10 @@ class AdminController extends Controller
     public function getAllPostTitles(){
         $posts = Post::all();
         foreach ($posts as $key => $post) {
-            $titleObject =  $post->getAllTitles()->first();
+            $titleObject = $post->metaTitle;
             if (!empty($titleObject)){
-                $titles[$key]['title'] = $titleObject->titleText;
-                $titles[$key]['id'] = $post->id;
+                $titles[(int)$key]['title'] = $titleObject;
+                $titles[(int)$key]['id'] = $post->id;
             }
         }
         return json_encode($titles);
@@ -474,6 +474,14 @@ class AdminController extends Controller
             unset($allVariants);
         }
         return json_encode($all);
+    }
+
+
+    public function editSurvey(Request $request){
+        $survey = $request->get('survey');
+
+        Survey::where()
+
     }
 
 

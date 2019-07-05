@@ -90,7 +90,6 @@
         .menu-list{
             list-style-type: none;
             display: flex;
-            font-family: 'Rubik';
             font-weight: 500;
             align-items: center;
             margin: 0;
@@ -120,12 +119,10 @@
                 margin-left: 35px;
             }
             .title{
-                font-family: 'Playfair Display';
                 font-size: 18px;
                 font-weight: 700;
             }
             .meta{
-                font-family: 'Roboto';
                 font-weight: 300;
                 font-size: 12px;
                 margin-bottom: 5px;
@@ -318,18 +315,18 @@
 
         .top-row-inner-mob{
 
-            height: 42px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-right: 20px;
             margin-left: 15px;
             .socials-wrap{
-                width: calc(50% - 27px);
+                width: calc(50% - 35px);
                 display: flex;
                 a{
-                    width: 16px;
-                    height: 16px;
+                    width: 20px;
+                    height: 20px;
                     flex-shrink: 0;
                     &:first-child{
                         margin-right: auto;
@@ -337,10 +334,10 @@
                 }
             }
             .menu-wrap{
-                width: calc(50% - 27px);
+                width: calc(50% - 35px);
             }
             .logo-wrap{
-                width: 54px;
+                width: 70px;
                 img{
                     width: 100%;
                     height: auto;
@@ -399,6 +396,25 @@
             .celebrity{
                 padding-right: 15px;
                 padding-left: 15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px){
+    #footer_main{
+        .contact-line{
+            .inner{
+                flex-direction: column;
+                text-align: center;
+                font-size: 18px;
+            }
+            .socials-wrap{
+                display: -webkit-flex;
+                display: -ms-flex;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
             }
         }
     }
