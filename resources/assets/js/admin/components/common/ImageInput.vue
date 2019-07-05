@@ -14,12 +14,12 @@
 export default {
     data: function(){
         return {
-            image: ''
+            image: '',
         }
     },
     props: {
         value : {
-            type: [String, File],
+            type: [ String, File ],
             default: function(){
                 return '';
             }
