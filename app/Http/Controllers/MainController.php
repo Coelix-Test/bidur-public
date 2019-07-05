@@ -535,13 +535,13 @@ class MainController extends Controller
         $fourth = Post::where('id', $section->fourth)->first();
         $fifth = Post::where('id', $section->fifth)->first();
         $sixth = Post::where('id', $section->sixth)->first();
-        $data[1] = $this->getContent($first->id);
-        $data[2] = $this->getContent($second->id);
-        $data[3] = $this->getContent($third->id);
-        $data[4] = $this->getContent($fourth->id);
-        $data[5] = $this->getContent($fifth->id);
-        $data[6] = $this->getContent($sixth->id);
-        return $data;
+        $data[(int)1] = $this->getContent($first->id);
+        $data[(int)2] = $this->getContent($second->id);
+        $data[(int)3] = $this->getContent($third->id);
+        $data[(int)4] = $this->getContent($fourth->id);
+        $data[(int)5] = $this->getContent($fifth->id);
+        $data[(int)6] = $this->getContent($sixth->id);
+        return json_encode($data);
     }
 
     public function addEmojiReaction(Request $request){
