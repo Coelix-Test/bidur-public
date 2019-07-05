@@ -2599,12 +2599,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getAllPostTitles: function getAllPostTitles() {
+      var _this = this;
+
       axios.post('/getAllPostTitles').then(function (response) {
-        console.log(response.data); //this.posts = Object.keys(response.data).map();
+        _this.posts = response.data;
       });
     },
     getSelectedPosts: function getSelectedPosts() {
-      axios.post('/getSelectedPosts').then(function (response) {// response.data.forEach((item, i) => {
+      axios.post('/getSelectedPosts').then(function (response) {
+        console.log(response.data); // response.data.forEach((item, i) => {
         //     delete item.img;
         //  });
       });
@@ -47289,7 +47292,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })

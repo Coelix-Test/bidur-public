@@ -276,6 +276,8 @@ export default {
     }
     .birthdayPost {
       padding: 0;
+      margin-top: 16px;
+      margin-bottom: 32px;
     }
   }
   @media (max-width:550px) {
@@ -284,7 +286,7 @@ export default {
     }
     .birthdayPost {
       height: 200px;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
     ul.posts li {
       flex-basis:100%;
