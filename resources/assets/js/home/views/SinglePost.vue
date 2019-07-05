@@ -3,7 +3,7 @@
     <div class="post-wrapper">
 
       <single-post-example v-if="errorMessage" />
-      <div class="post-content">
+      <div v-if="post" class="post-content">
         <nav>
 
           <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
@@ -61,6 +61,8 @@
             <h2 v-if="post.title">{{ post.title }}</h2>
             <p v-if="post.content">{{post.content}}</p>
           </div>
+
+          <!-- <div v-if="post.type == ''"></div> -->
 
         </section>
 
@@ -140,7 +142,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
