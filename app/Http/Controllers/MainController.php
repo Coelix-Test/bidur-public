@@ -541,7 +541,7 @@ class MainController extends Controller
         $data[(int)4] = $this->getContent($fourth->id);
         $data[(int)5] = $this->getContent($fifth->id);
         $data[(int)6] = $this->getContent($sixth->id);
-        return $data;
+        return json_encode($data);
     }
 
     public function addEmojiReaction(Request $request){
