@@ -1,57 +1,63 @@
 <template>
   <div class="right-column-bot">
-    <div class="selected-poll">
-      <img src="img/rihanna.png" alt="">
-      <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-    </div>
-    <div class="latest-posts">
-      <h2>חדשות נוספות</h2>
-      <!-- <ul ref="test" class="latest-post-slider">
-        <li v-if="posts" v-for="post in posts">
 
-            <img :src="post.img" alt="">
-            <div class="content">
-              <router-link :to="'/post/'+post.id">
-                <h3>{{ post.title }}</h3>
-              </router-link>
-              <p>
-                <span class="author">by {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
-              </p>
-            </div>
-        </li>
-      </ul> -->
-      <carousel
-        v-if="posts"
-        class="latest-post-slider"
-        :rtl="true"
-        :autoplay="true"
-        :autoplayTimeout="2000"
-        :paginationEnabled="false"
-        :navigationEnabled="true"
-        :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
-      >
-        <slide v-for="post in posts" class="latest-post-item" :key="post.id">
-            <img :src="post.img" alt="">
-            <div class="content">
-              <router-link :to="'/post/'+post.id">
-                <h3>{{ post.title }}</h3>
-              </router-link>
-              <p>
-                <span class="author">by {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
-              </p>
-            </div>
-        </slide>
-      </carousel>
-    </div>
+    <template v-if="false">
+      <div class="selected-poll">
+        <img src="img/rihanna.png" alt="">
+        <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
+      </div>
+      <div class="latest-posts">
+        <h2>חדשות נוספות</h2>
+        <!-- <ul ref="test" class="latest-post-slider">
+          <li v-if="posts" v-for="post in posts">
 
+              <img :src="post.img" alt="">
+              <div class="content">
+                <router-link :to="'/post/'+post.id">
+                  <h3>{{ post.title }}</h3>
+                </router-link>
+                <p>
+                  <span class="author">by {{post.author}}</span>
+                  <span class="post-date">{{post.time}}</span>
+                </p>
+              </div>
+          </li>
+        </ul> -->
+        <carousel
+          v-if="posts"
+          class="latest-post-slider"
+          :rtl="true"
+          :autoplay="true"
+          :autoplayTimeout="2000"
+          :paginationEnabled="false"
+          :navigationEnabled="true"
+          :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
+        >
+          <slide v-for="post in posts" class="latest-post-item" :key="post.id">
+              <img :src="post.img" alt="">
+              <div class="content">
+                <router-link :to="'/post/'+post.id">
+                  <h3>{{ post.title }}</h3>
+                </router-link>
+                <p>
+                  <span class="author">by {{post.author}}</span>
+                  <span class="post-date">{{post.time}}</span>
+                </p>
+              </div>
+          </slide>
+        </carousel>
+      </div>
+    </template>
+    <one-survey v-else-if="true"/>
+    <like-survey v-else/>
   </div>
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 import VuePoll from 'vue-poll'
+import LikeSurvey from './LikeSurvey'
+import OneSurvey from './OneSurvey'
 export default {
   props : {
     data : {
@@ -106,7 +112,9 @@ export default {
     components: {
         VuePoll,
         Carousel,
-        Slide
+        Slide,
+        LikeSurvey,
+        OneSurvey,
     },
     methods: {
         addVote(obj){
