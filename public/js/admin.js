@@ -4062,8 +4062,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/showAllAdmins').then(function (response) {
-      _this.users = response.data;
-      console.log(_this.users);
+      _this.users = response.data; // console.log(this.users);
     });
   },
   methods: {
@@ -27184,7 +27183,7 @@ var render = function() {
         "div",
         { staticClass: "content" },
         _vm._l(_vm.users, function(user) {
-          return _vm.users
+          return _vm.users && user.id != 1
             ? _c("div", { key: user.id, staticClass: "user" }, [
                 _c("div", { staticClass: "name" }, [
                   _c("input", {

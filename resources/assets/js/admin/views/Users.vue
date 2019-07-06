@@ -9,7 +9,7 @@
         <div class="action">Actions</div>
       </div>
       <div class="content">
-        <div v-if="users" v-for="user in users" :key="user.id" class="user">
+        <div v-if="users && user.id != 1" v-for="user in users" :key="user.id" class="user">
           <div class="name"><input type="text" name="username" v-model="user.name" minlength="2" required></div>
           <div class="mail"><input type="email" name="mail" v-model="user.email" minlength="2" required></div>
           <div class="phone"><input type="text" name="phone" v-model="user.phone" minlength="2" required></div>
@@ -45,7 +45,7 @@ export default {
       .post('/showAllAdmins')
         .then(response => {
           this.users = response.data;
-          console.log(this.users);
+          // console.log(this.users);
         })
   },
   methods : {

@@ -3414,7 +3414,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3599,14 +3598,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony import */ var _auth_Eye_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../auth/Eye.vue */ "./resources/assets/js/home/components/auth/Eye.vue");
+/* harmony import */ var _auth_Eye_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../auth/Eye.vue */ "./resources/assets/js/home/components/auth/Eye.vue");
 /* harmony import */ var _TextInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../TextInput.vue */ "./resources/assets/js/home/components/TextInput.vue");
 /* harmony import */ var _auth_Close_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../auth/Close.vue */ "./resources/assets/js/home/components/auth/Close.vue");
 /* harmony import */ var _modals_Reg_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../modals/Reg.vue */ "./resources/assets/js/home/components/modals/Reg.vue");
-//
-//
-//
-//
 //
 //
 //
@@ -3661,7 +3656,6 @@ __webpack_require__.r(__webpack_exports__);
         pass: true
       },
       timeout: false,
-      agreement: false,
       err: ''
     };
   },
@@ -3674,15 +3668,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit(e) {
       var _this = this;
 
-      this.$refs.agreement.classList.remove('shake', 'animated');
-
-      if (!this.agreement) {
-        setImmediate(function () {
-          _this.$refs.agreement.classList.add('shake', 'animated');
-        });
-        return;
-      }
-
+      e.preventDefault();
       axios.post('/login', {
         email: this.email,
         password: this.pass
@@ -3693,7 +3679,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         _this.err = 'Invalid email or password';
       });
-      e.preventDefault();
     },
     reg: function reg() {
       this.$emit('close');
@@ -3706,7 +3691,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../node_modules/timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate))
 
 /***/ }),
 
@@ -3723,6 +3707,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../TextInput.vue */ "./resources/assets/js/home/components/TextInput.vue");
 /* harmony import */ var _auth_Close_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../auth/Close.vue */ "./resources/assets/js/home/components/auth/Close.vue");
 /* harmony import */ var _modals_Login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../modals/Login.vue */ "./resources/assets/js/home/components/modals/Login.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3821,6 +3810,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit(e) {
       var _this = this;
 
+      e.preventDefault();
       this.$refs.agreement.classList.remove('shake', 'animated');
       this.$refs.repeat.$el.classList.remove('shake', 'animated');
 
@@ -3831,7 +3821,7 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      if (!this.pass !== this.repeat) {
+      if (this.pass !== this.repeat) {
         this.err = 'הסיסמה חוזרת כראוי';
         setImmediate(function () {
           _this.$refs.repeat.$el.classList.add('shake', 'animated');
@@ -3850,7 +3840,6 @@ __webpack_require__.r(__webpack_exports__);
 
         document.location.reload();
       });
-      e.preventDefault();
     },
     login: function login() {
       this.$emit('close');
@@ -4870,7 +4859,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding-top: 60px;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .checkbox[data-v-65da213b] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.a-modal .form .checkbox .label[data-v-65da213b] {\n  color: #828282;\n  font-size: 14px;\n}\n.a-modal .form .checkbox input[data-v-65da213b] {\n  margin-left: 10px;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}", ""]);
+exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n}\n.a-modal .form .th-btn[data-v-65da213b] {\n  margin-top: 10px;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}", ""]);
 
 // exports
 
@@ -21576,7 +21565,12 @@ var render = function() {
               }
             ],
             staticClass: "th-input",
-            attrs: { type: "text", required: "", autocomplete: "email" },
+            attrs: {
+              type: "text",
+              required: "",
+              autocomplete: "email",
+              placeholder: "מייל"
+            },
             domProps: { value: _vm.email },
             on: {
               input: function($event) {
@@ -21589,7 +21583,11 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("text-input", {
-            attrs: { type: _vm.hide.pass ? "password" : "text", required: "" },
+            attrs: {
+              type: _vm.hide.pass ? "password" : "text",
+              required: "",
+              placeholder: "סיסמה"
+            },
             scopedSlots: _vm._u([
               {
                 key: "button",
@@ -21622,51 +21620,6 @@ var render = function() {
             ? _c("div", { staticClass: "err" }, [_vm._v(_vm._s(_vm.err))])
             : _vm._e(),
           _vm._v(" "),
-          _c("label", { ref: "agreement", staticClass: "checkbox" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.agreement,
-                  expression: "agreement"
-                }
-              ],
-              staticClass: "th-checkbox",
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.agreement)
-                  ? _vm._i(_vm.agreement, null) > -1
-                  : _vm.agreement
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.agreement,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.agreement = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.agreement = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.agreement = $$c
-                  }
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "label" }, [
-              _vm._v("\n        רתאב שומישה יאנתל םיכסמ ינא\n      ")
-            ])
-          ]),
-          _vm._v(" "),
           _c(
             "button",
             { staticClass: "th-btn th-btn-gold", attrs: { type: "submit" } },
@@ -21674,9 +21627,9 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "bottom" }, [
-            _vm._v("\n      ?רתאב שמתשמ רבכ ךל שי\n      "),
-            _c("button", { staticClass: "link", on: { click: _vm.reg } }, [
-              _vm._v("\n        ןאכ ץחל\n      ")
+            _vm._v("\n      יש לך כבר משתמש באתר?\n      "),
+            _c("button", { staticClass: "link", on: { click: _vm.login } }, [
+              _vm._v("\n        לחץ כאן\n      ")
             ])
           ])
         ],
@@ -21724,7 +21677,9 @@ var render = function() {
         "form",
         { staticClass: "form", on: { submit: _vm.submit } },
         [
-          _c("div", { staticClass: "title" }, [_vm._v("\n      המשרה\n    ")]),
+          _c("div", { staticClass: "title" }, [
+            _vm._v("\n      התחברות\n    ")
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -21736,7 +21691,12 @@ var render = function() {
               }
             ],
             staticClass: "th-input",
-            attrs: { type: "text", required: "", autocomplete: "name" },
+            attrs: {
+              type: "text",
+              required: "",
+              autocomplete: "name",
+              placeholder: "שם"
+            },
             domProps: { value: _vm.name },
             on: {
               input: function($event) {
@@ -21758,7 +21718,12 @@ var render = function() {
               }
             ],
             staticClass: "th-input",
-            attrs: { type: "email", required: "", autocomplete: "email" },
+            attrs: {
+              type: "email",
+              required: "",
+              autocomplete: "email",
+              placeholder: "מייל"
+            },
             domProps: { value: _vm.email },
             on: {
               input: function($event) {
@@ -21780,7 +21745,12 @@ var render = function() {
               }
             ],
             staticClass: "th-input",
-            attrs: { type: "text", autocomplete: "tel", required: "" },
+            attrs: {
+              type: "text",
+              autocomplete: "tel",
+              required: "",
+              placeholder: "מכשיר טלפון"
+            },
             domProps: { value: _vm.phone },
             on: {
               input: function($event) {
@@ -21793,7 +21763,11 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("text-input", {
-            attrs: { type: _vm.hide.pass ? "password" : "text", required: "" },
+            attrs: {
+              type: _vm.hide.pass ? "password" : "text",
+              required: "",
+              placeholder: "סיסמה"
+            },
             scopedSlots: _vm._u([
               {
                 key: "button",
@@ -21826,7 +21800,8 @@ var render = function() {
             ref: "repeat",
             attrs: {
               type: _vm.hide.repeat ? "password" : "text",
-              required: ""
+              required: "",
+              placeholder: "חזור על הסיסמה"
             },
             scopedSlots: _vm._u([
               {
@@ -21912,9 +21887,9 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "bottom" }, [
-            _vm._v("\n      ?רתאב שמתשמ רבכ ךל שי\n      "),
+            _vm._v("\n      יש לך כבר משתמש באתר?\n      "),
             _c("button", { staticClass: "link", on: { click: _vm.login } }, [
-              _vm._v("\n        ןאכ ץחל\n      ")
+              _vm._v("\n        לחץ כאן\n      ")
             ])
           ])
         ],
