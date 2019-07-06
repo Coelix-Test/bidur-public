@@ -132,45 +132,64 @@ class MainController extends Controller
         return $allInfo;
     }
     public function getAllPostsWithAllFilters(){
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
-        $hotPosts = Post::where('hot', 'true')->get();
-        $recentPosts = Post::orderBy('created_at', 'desc')->get();
+//        $hotPosts = Post::where('hot', 'true')->get();
+//        $recentPosts = Post::orderBy('created_at', 'desc')->get();
 
-        foreach ($hotPosts as $key => $hotPost) {
-            $finalHotPosts[$key]['post'] = $hotPost;
-            $finalHotPosts[$key]['rating'] = round(Rating::where('id', $hotPost->id)->avg('rating'), 1);
-        }
-
-        foreach ($recentPosts as $key => $recentPost) {
-            $finalRecentPosts[$key]['post'] = $recentPost;
-            $finalRecentPosts[$key]['rating'] = round(Rating::where('id', $recentPost->id)->avg('rating'), 1);
-        }
+//        foreach ($hotPosts as $key => $hotPost) {
+//            $finalHotPosts[$key]['post'] = $hotPost;
+//            $finalHotPosts[$key]['rating'] = round(Rating::where('id', $hotPost->id)->avg('rating'), 1);
+//        }
+//
+//        foreach ($recentPosts as $key => $recentPost) {
+//            $finalRecentPosts[$key]['post'] = $recentPost;
+//            $finalRecentPosts[$key]['rating'] = round(Rating::where('id', $recentPost->id)->avg('rating'), 1);
+//        }
+        $mainSection = MainSection::find(1);
 
         foreach ($posts as $key => $post) {
             $finalAllPosts[$key]['post'] = $post;
             $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
+            if ($post->id == $mainSection->first){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
         }
 
-        $allTypesOfPosts['trending'] = $finalAllPosts;
-        $allTypesOfPosts['hot'] = $finalHotPosts;
-        $allTypesOfPosts['recent'] = $finalRecentPosts;
-
-        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
-
-            $allTrendingPosts[$key] = $trendingPost;
-            unset($allTypesOfPosts['trending'][$key]['post']);
-            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
-        }
-        arsort($allTypesOfPosts['trending']);
-        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
-            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
-            $allTypesOfPosts['trending'][$outerKey] = $tmp;
-        }
-
-        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
-            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
-        }
+//        $allTypesOfPosts['trending'] = $finalAllPosts;
+//        $allTypesOfPosts['hot'] = $finalHotPosts;
+//        $allTypesOfPosts['recent'] = $finalRecentPosts;
+//
+//        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
+//
+//            $allTrendingPosts[$key] = $trendingPost;
+//            unset($allTypesOfPosts['trending'][$key]['post']);
+//            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
+//        }
+//        arsort($allTypesOfPosts['trending']);
+//        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
+//            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
+//            $allTypesOfPosts['trending'][$outerKey] = $tmp;
+//        }
+//
+//        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
+//            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
+//        }
         //dd($allTypesOfPosts);
         return $finalAllPosts;
     }
