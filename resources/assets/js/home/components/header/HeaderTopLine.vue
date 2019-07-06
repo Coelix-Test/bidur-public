@@ -3,9 +3,9 @@
       <div class="top-row-inner">
           <div class="menu-col-wrap">
               <div class="logo-wrap">
-                  <a href="/">
+                  <router-link :to="{ name: 'index'}">
                       <img src="/img/logo-yellow.png" alt="">
-                  </a>
+                  </router-link>
               </div>
               <ul class="menu-list menu">
                   <li><router-link :to="{ name: 'index'}">תיב ףד</router-link></li>
@@ -70,9 +70,9 @@
 
 
           </div>
-          <a href="/" class="logo-wrap">
+          <router-link :to="{ name: 'index'}" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
-          </a>
+          </router-link>
 
       </div>
   </div><!-- top row end -->

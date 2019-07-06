@@ -6,14 +6,16 @@
         <!-- <slick
           ref="slick"
           :options="slickOptions"> -->
-          <a v-for="hashtag in hashtags" href="#" class="np-slide-item">
-            <div class="celebrity">
-              <div class="img-wrap">
-                <div class="image" :style="'background-image: url('+hashtag.img+');'"></div>
+          <div class="slide-wrap" v-for="hashtag in hashtags" :key="hashtag.id">
+            <router-link :to="{ name: 'hashtag', params: { id: hashtag.id }}" class="np-slide-item">
+              <div class="celebrity">
+                <div class="img-wrap">
+                  <div class="image" :style="'background-image: url('+hashtag.img+');'"></div>
+                </div>
+                <div class="name">{{hashtag.name}}</div>
               </div>
-              <div class="name">{{hashtag.name}}</div>
-            </div>
-          </a>
+            </router-link>
+          </div>
         <!-- </slick> -->
 
       </div>
@@ -168,7 +170,7 @@ export default {
             //not vue slick
             setTimeout(() => {
               this.initSlick();
-            },200);
+            },400);
 
           });
     },
