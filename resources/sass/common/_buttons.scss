@@ -4,6 +4,7 @@
     border-radius: 10px;
     text-decoration: none;
     align-items: center;
+    font-weight: 600;
 }
 .btn-border-white{
     border: 2px solid #fff;
@@ -25,4 +26,22 @@
     &:hover{
         color: #fff;
     }
+}
+
+.btn-gold-gradient{
+  color: #fff;
+  background: linear-gradient(285.95deg, #D3A01D 1.57%, #F2C94C 98.82%);
+  &:hover{
+    color: #fff;
+  }
+}
+
+.btn-gold-text{
+  background: rgba(196, 196, 196, 0.1);
+  span{
+    color: transparent;
+    background: linear-gradient(285.95deg, #D3A01D 1.57%, #F2C94C 98.82%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
 }

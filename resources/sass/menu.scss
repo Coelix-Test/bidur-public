@@ -52,7 +52,7 @@
 
 
 /*new------*/
-#header_main{
+.header-main{
     .menu-btn{
         width: 29px;
         height: 20px;
@@ -218,7 +218,7 @@
 .toggle-nav.active + .main-nav .modal-content {
     background-color: transparent;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
@@ -242,6 +242,15 @@
     -webkit-transform: translateY(36px);
     -ms-transform: translateY(36px);
     transform: translateY(36px);
+
+    a{
+      color: $dark;
+      font-size: 20px;
+      font-weight: 600;
+      &:hover{
+        color: $gold;
+      }
+    }
 }
 
 #menu-primary-menu{

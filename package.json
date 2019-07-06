@@ -40,6 +40,7 @@
         "vue-picture-input": "^2.1.6",
         "vue-poll": "^0.1.8",
         "vue-router": "^3.0.6",
+        "vue-slick": "^1.1.15",
         "vuejs-datepicker": "^1.6.1",
         "vuex": "^3.1.1",
         "wowjs": "^1.1.3"

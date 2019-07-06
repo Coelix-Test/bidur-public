@@ -1,4 +1,4 @@
-<header id="header_main">
+<header class="header-main">
     @include('parts/header/top-line')
     <?php
     $postController = new \App\Http\Controllers\PostController();

@@ -12,6 +12,7 @@
   <title>Main Page</title>
 </head>
 <body>
+    
     <div id="home"></div>
     @include('parts/footer')
     <script src="/js/home.js" charset="utf-8"></script>
