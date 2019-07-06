@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test', 'AdminController@getAllSurveys')->name('test');
+Route::post('/test/{id}', 'MainController@getRecentPosts')->name('test');
 
 
 
@@ -62,6 +62,8 @@ Route::post('/dislikeSinglePhoto',      'MainController@dislikeSinglePhoto');
 Route::post('/likeForSelectOne',        'MainController@likeForSelectOne');
 Route::post('/getServiceForMainPage',   'MainController@getServiceForMainPage');
 
+Route::post('/sendMail',   'MainController@sendMail');
+
 
 
 //admin
@@ -97,6 +99,8 @@ Route::get('/admin', 'AdminController@showAdmin');
 
     Route::post('/getAllPostTitles', 'AdminController@getAllPostTitles');
     Route::post('/deletePost', 'AdminController@deletePost');
+
+    Route::post('/getAllMails', 'AdminController@getAllMails');
 
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');

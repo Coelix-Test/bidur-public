@@ -11,6 +11,7 @@ use App\Http\Middleware\Admin;
 use App\Insta;
 use App\LikesForLeftAndRight;
 use App\LikesForSingleImage;
+use App\Mail;
 use App\MainSection;
 use App\Post;
 use App\PostContent;
@@ -491,6 +492,8 @@ class AdminController extends Controller
             $v->question = $variant['variant'];
             $v->save();
         }
+
+        return $this->getAllSurveys();
     }
 
 
@@ -513,8 +516,9 @@ class AdminController extends Controller
                 foreach ($admins as $admin) {
                     if ($allUser['id'] == $admin->userId){
                         $allUsers[$key]['is_admin'] = true;
-                    }else{
-                        $allUsers[$key]['is_admin'] = false;
+                        if(\Auth::id() == $allUser['id']){
+                            $allUsers[$key]['is_current_user'] = true;
+                        }
                     }
                 }
             }
@@ -589,6 +593,7 @@ class AdminController extends Controller
     }
 
     public function createInsta(Request $request){
+        Insta::truncate();
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/insta');
@@ -597,6 +602,7 @@ class AdminController extends Controller
         $link = $request->get('link');
 
         $insta = Insta::create([
+            'id' => 1,
             'linkToInsta' => $link,
             'imageUrl' => '/images/insta/'.$image,
         ]);
@@ -634,5 +640,29 @@ class AdminController extends Controller
         $data['leftImage'] = $section->urlLeft;
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);
+    }
+
+    public function getAllMails(){
+        $mails = Mail::all();
+
+        foreach ($mails as $mail) {
+            $id = $mail->id;
+            $name = $mail->name;
+            $email = $mail->email;
+            $phone = $mail->phone;
+            $message = $mail->message;
+            $data[] = [
+                'id' => $id,
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'message' => $message,
+            ];
+
+
+        }
+        if (!empty($data)){
+            return json_encode($data);
+        }
     }
 }

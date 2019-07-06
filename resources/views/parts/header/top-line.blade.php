@@ -7,9 +7,9 @@
                 </a>
             </div>
             <ul class="menu-list menu">
-                <li><a href="/">דף בית</a></li>
-                <li><a href="/about-us">אודות</a></li>
-                <li><a href="/contact-us">צור קשר</a></li>
+                <li><a href="./#">דף בית</a></li>
+                <li><a href="./#/about-us">אודות</a></li>
+                <li><a href="./#/contact-us">צור קשר</a></li>
             </ul>
         </div>
 
@@ -45,13 +45,13 @@
     				<div class="main-nav-content">
     					<ul id="menu-primary-menu" class="menu">
     						<li class="menu-item menu-item-has-children">
-    							<a href="/">דף בית</a>
+    							<a href="./#/">דף בית</a>
     						</li>
     						<li class="menu-item">
-    							<a href="/about-us">אודות</a>
+    							<a href="./#/about-us">אודות</a>
     						</li>
     						<li class="menu-item">
-    							<a href="/contact-us">צור קשר</a>
+    							<a href="./#/contact-us">צור קשר</a>
     						</li>
     					</ul>
     				</div>

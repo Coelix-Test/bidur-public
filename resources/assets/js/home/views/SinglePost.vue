@@ -23,10 +23,6 @@
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{ post.data.post.date }}</span>
           </div>
-          <!-- <a href="#" class="share">
-            ףתש
-            <img src="/img/shareArrow.svg" alt="">
-          </a> -->
           <share />
 
         </div>
@@ -34,7 +30,7 @@
 
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <div v-if="post.type == 'content'">{{ post.value }}</div>
+          <div v-if="post.type == 'content'" v-html="post.value"></div>
 
           <p v-if="post.type == 'image'">
             <img :src="post.value" alt="">
@@ -45,6 +41,12 @@
           <div v-if="post.type == 'survey'" class="poll">
             <img :src="post.img" alt="">
             <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          </div>
+          <div v-else-if="post.type == 'compare'" class="poll">
+            <one-survey :data="post.value"/>
+          </div>
+          <div v-else-if="post.type == 'likableImage'" class="poll">
+            <like-survey :data="post.value"/>
           </div>
 
 
@@ -111,7 +113,9 @@ import Share from './../components/single-post/Share.vue'
 import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
-import { Carousel, Slide } from 'vue-carousel';
+import { Carousel, Slide } from 'vue-carousel'
+import LikeSurvey from './../components/common/LikeSurvey'
+import OneSurvey from './../components/common/OneSurvey'
 
 export default {
   data() {
@@ -133,7 +137,7 @@ export default {
       event.preventDefault()
       this.sync(id);
       this.postId = id;
-      this.$router.push({path : `/post/${id}`});
+      this.$router.push({ path : `/post/${id}` });
     },
     computeNumber(value) {
       // console.log(value);
@@ -198,7 +202,9 @@ export default {
     Slide,
     SinglePostExample,
     Share,
-    Emoji
+    Emoji,
+    LikeSurvey,
+    OneSurvey,
   }
 }
 
@@ -247,7 +253,7 @@ export default {
   .poll img {
     width:100%;
     object-fit: cover;
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
   .post-meta .info a,
   .post-meta .info {
@@ -326,7 +332,7 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
-    padding:0 0 24px;
+    padding:0 0 0;
     border:4px solid #E4A913;
   }
   section.survey {
@@ -438,7 +444,7 @@ export default {
       margin-bottom: 8px;
     }
     section.survey {
-      padding:12px 4px;
+      padding:0;
     }
     .post-wrapper {
       padding:0 8px;

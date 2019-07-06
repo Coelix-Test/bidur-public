@@ -1,12 +1,12 @@
 <template>
   <div class="like-survey">
-    <img src="https://via.placeholder.com/1024">
+    <img :src="data.imgUrl">
     <div class="body">
       <div class="title">
         What do you think about it?
       </div>
       <div class="buttons">
-        <button type="button" class="dislike">
+        <button @click="dislike" type="button" class="dislike">
           <div class="yellow-star">
             <svg viewBox="0 0 151 143" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z" fill="#F2C94C"/>
@@ -23,7 +23,7 @@
             <path d="M47.6798 33.895C47.4068 33.9412 34.6272 33.895 34.6272 33.895L36.4122 38.7649C37.6439 42.1283 36.8464 47.2639 33.4289 49.0897C32.3162 49.6843 30.7615 49.9828 29.5081 49.6673C28.7892 49.4864 28.1575 49.0105 27.7809 48.3729C27.3479 47.6396 27.3926 46.7835 27.2384 45.9704C26.8473 43.908 25.8728 41.947 24.3636 40.4752C21.7324 37.9089 13.5586 30.5056 13.5586 30.5056V3.38931H41.8046C45.616 3.38708 48.1138 7.64335 46.234 10.968C48.4747 12.4031 49.2411 15.426 47.9288 17.747C50.1696 19.1821 50.9359 22.205 49.6236 24.526C53.4899 27.0022 52.1973 33.1309 47.6798 33.895Z" fill="white"/>
           </svg>
         </button>
-        <button type="button" class="like">
+        <button @click="like" type="button" class="like">
           <div class="yellow-star">
             <svg viewBox="0 0 151 143" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z" fill="#F2C94C"/>
@@ -46,19 +46,59 @@
 
 <script>
 export default {
+  props: {
+    data: {},
+  },
   data() {
     return {
       liked: 0,
       disliked: 0,
+      clicked: false,
     };
+  },
+  methods: {
+    like() {
+      if(this.clicked) return;
+      this.disliked = this.data.dislikes;
+      this.liked = this.data.likes;
+      this.liked++;
+      this.clicked = true;
+      axios.post('/likeSinglePhoto', {
+        serviceId: this.data.id
+      });
+    },
+    dislike() {
+      if(this.clicked) return;
+      this.disliked = this.data.dislikes;
+      this.liked = this.data.likes;
+      this.disliked++;
+      this.clicked = true;
+      axios.post('/dislikeSinglePhoto', {
+        serviceId: this.data.id
+      });
+    },
   },
   computed: {
     likeHeight() {
-      let k = (this.disliked / (this.disliked + this.liked)) * 100;
+      let sum = (this.disliked + this.liked);
+      if(sum > 0) {
+        var k = (this.disliked / sum) * 100;
+      } else {
+        var k = 100;
+      }
+
+      console.log(k);
       return k + '%';
     },
     dislikeHeight() {
-      let k = (this.liked / (this.disliked + this.liked)) * 100;
+      let sum = (this.disliked + this.liked);
+      if(sum > 0) {
+        var k = (this.liked / sum) * 100;
+      } else {
+        var k = 100;
+      }
+
+      console.log(k);
       return k + '%';
     },
   }
@@ -68,9 +108,7 @@ export default {
 <style lang="scss" scoped>
 
 .like-survey {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+  
   img {
     object-fit: cover;
     width: 100%;
