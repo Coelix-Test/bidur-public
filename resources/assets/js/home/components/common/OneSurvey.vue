@@ -91,6 +91,9 @@ export default {
   }
 
   .body {
+    > svg {
+      z-index: 5;
+    }
     flex-grow: 1;
     position: relative;
     display: flex;
