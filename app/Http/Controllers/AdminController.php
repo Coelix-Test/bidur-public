@@ -56,7 +56,7 @@ class AdminController extends Controller
             $offset = 0;
         }
 
-        $posts = Post::offset($offset)->limit(20)->get();
+        $posts = Post::offset($offset)->limit(20)->orderBy('created_at', 'desc')->get();
 
         foreach ($posts as $key => $post) {
             $allPosts[$key]['title'] = $post->metaTitle;
