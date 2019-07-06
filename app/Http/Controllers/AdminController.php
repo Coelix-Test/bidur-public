@@ -516,11 +516,12 @@ class AdminController extends Controller
                 foreach ($admins as $admin) {
                     if ($allUser['id'] == $admin->userId){
                         $allUsers[$key]['is_admin'] = true;
-                        $allUsers[$key]['is_current_user'] = true;
+                        if(\Auth::id() == $allUser['id']){
+                            $allUsers[$key]['is_current_user'] = true;
+                        }
                     }
                 }
             }
-            
         }
         if (empty($allUsers)){
             $allUsers = [];
