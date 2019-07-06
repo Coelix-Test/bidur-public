@@ -49,6 +49,7 @@ export default {
         label{
             width: 100%;
             height: 400px;
+            margin-bottom: 0;
             background-color: #E0E0E0;
             display: -webkit-flex;
             display: -ms-flex;
