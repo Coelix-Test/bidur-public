@@ -13,7 +13,7 @@
               </div>
           </div>
       </div>
-      <div class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
+      <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
   </div>
 </template>
 
@@ -28,6 +28,10 @@ export default {
         ImageInput
     },
     props: {
+        deletable: {
+          default: true,
+          type: Boolean,
+        },
         index: {
             type: Number
         },

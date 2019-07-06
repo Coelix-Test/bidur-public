@@ -31,7 +31,7 @@
       <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
         יש לך כבר משתמש באתר?
-        <button class="link" @click="login">
+        <button class="link" @click="reg">
           לחץ כאן
         </button>
       </div>

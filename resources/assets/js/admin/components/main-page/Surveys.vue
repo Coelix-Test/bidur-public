@@ -1,25 +1,46 @@
 <template>
-  <div class="wrapper instagram shadow-section">
-
+  <div class="surveys">
+    <div class="types">
+      <div class="add-section" @click="select('survey')">
+        <img src="/img/icons/edit-post-survey.svg" alt="">
+        <span>Survey</span>
+      </div>
+      <div class="add-section" @click="select('assessment')">
+        <img src="/img/icons/edit-post-assessment.svg" alt="">
+        <span>Assessment</span>
+      </div>
+      <div class="add-section" @click="select('selection')">
+        <img src="/img/icons/edit-post-selection.svg" alt="">
+        <span>Selection</span>
+      </div>
+    </div>
+    <PostSelection :deletable="false" v-if="selected == 'selection'"/>
+    <PostSurvey :deletable="false" v-else-if="selected == 'assessment'"/>
+    <PostAssessment :deletable="false" v-else-if="selected == 'survey'"/>
   </div>
 </template>
 
 <script>
 import PostSelection from './../posts/PostSelection.vue';
-import ImageInput from './../common/ImageInput.vue';
-import ImageInput from './../common/ImageInput.vue';
+import PostSurvey from './../posts/PostSurvey.vue';
+import PostAssessment from './../posts/PostAssessment.vue';
 
 export default {
   data(){
     return {
-      image: '',
-      link: '',
+      selected: 'selection',
+      survey: {},
     }
   },
   components: {
-    ImageInput
+    PostSelection,
+    PostSurvey,
+    PostAssessment,
   },
   methods: {
+    select(type) {
+      this.selected = type;
+    },
     save() {
       var data = new FormData();
       data.append('imageUrl', this.image);
@@ -41,7 +62,7 @@ export default {
 
 @import "~@/vars.scss";
 
-.instagram {
+.surveys {
   width: 49%;
   display: flex;
   flex-direction: column;
@@ -67,6 +88,32 @@ export default {
     padding: 50px 70px;
     input {
       width: 100%;
+    }
+  }
+  .types {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    .add-section{
+      background: #F2F2F2;
+      font-size: 14px;
+      color: #828282;
+      text-align: center;
+      padding: 8px 25px 2px 25px;
+      margin-left: 16px;
+      cursor: pointer;
+      span{
+        display: block;
+      }
+      img{
+        height: 24px;
+        width: auto;
+      }
+      &.add-image-text{
+        padding-right: 10px;
+        padding-left: 10px;
+      }
     }
   }
 }
