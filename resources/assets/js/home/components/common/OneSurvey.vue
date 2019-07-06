@@ -145,5 +145,17 @@ export default {
     }
   }
 }
-
+@media (max-width:768px) {
+  .one-survey {
+    .body {
+      > div {
+        width:50%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
 </style>

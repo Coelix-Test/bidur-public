@@ -60,7 +60,9 @@ export default {
   },
   methods: {
     select(item) {
+
       if(this.preventClick == false) {
+        this.preventClick = true;
         let emote = item.target.id
         axios
           .post('/addReaction',{ reaction : emote , postId : this.postId })
@@ -69,11 +71,11 @@ export default {
                 .post('/getReaction',{ postId : this.postId})
                   .then(response => {
                     this.emojis = response.data;
-                    this.preventClick = true;
                     item.target.classList.add('is_active');
                   });
             });
       }
+
     },
     sync(postId) {
       axios

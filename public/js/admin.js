@@ -2360,11 +2360,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      query: ''
-    };
-  },
   props: {
     options: {
       type: Array
@@ -2379,13 +2374,26 @@ __webpack_require__.r(__webpack_exports__);
     placeholder: {
       type: String,
       "default": ''
-    }
+    },
+    label: {
+      "default": 'name'
+    },
+    val: {
+      "default": 'id'
+    },
+    value: {}
+  },
+  data: function data() {
+    console.log(this.value);
+    return {
+      query: this.value ? this.value[this.label] : ''
+    };
   },
   methods: {
     select: function select(item) {
       //console.log(this.index);
-      this.query = item.name;
-      this.$emit('select', item, this.index);
+      this.query = item[this.label];
+      this.$emit('input', item);
     }
   },
   computed: {
@@ -2394,7 +2402,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.query.length) {
         return this.options.filter(function (n) {
-          return new RegExp(_this.query, 'i').test(n.name);
+          return new RegExp(_this.query, 'i').test(n[_this.label]);
         });
       } else {
         return this.options;
@@ -2530,7 +2538,20 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ImageInput: _common_ImageInput_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  methods: {}
+  methods: {
+    save: function save() {
+      var data = new FormData();
+      data.append('image', this.image);
+      data.append('text', this.text);
+      axios.post('/createHappyBirthday', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        console.log('saved');
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2619,35 +2640,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selectedPosts: [{
-        label: 'Main post',
-        id: '',
-        title: ''
-      }, {
-        label: 'Second post',
-        id: '',
-        title: ''
-      }, {
-        label: 'Third post',
-        id: '',
-        title: ''
-      }, {
-        label: 'Fourth post',
-        id: '',
-        title: ''
-      }, {
-        label: 'Fifth post',
-        id: '',
-        title: ''
-      }, {
-        label: 'Sixth post',
-        id: '',
-        title: ''
-      }],
+      selectedPosts: [],
+      values: [],
       posts: []
     };
   },
@@ -2658,18 +2657,33 @@ __webpack_require__.r(__webpack_exports__);
     getAllPostTitles: function getAllPostTitles() {
       var _this = this;
 
-      axios.post('/getAllPostTitles').then(function (response) {
-        _this.posts = response.data;
+      axios.post('/getAllPostTitles').then(function (res) {
+        _this.posts = res.data;
       });
     },
     getSelectedPosts: function getSelectedPosts() {
-      axios.post('/getSelectedPosts').then(function (response) {
-        console.log(response.data); // response.data.forEach((item, i) => {
-        //     delete item.img;
-        //  });
+      var _this2 = this;
+
+      axios.post('/getSelectedPosts').then(function (res) {
+        _this2.values = Object.values(res.data);
+        _this2.selectedPosts = Object.values(res.data);
       });
     },
-    selectPost: function selectPost(post) {}
+    selectPost: function selectPost(post) {
+      console.log(post);
+    },
+    save: function save() {
+      axios.post('/editMainPagePosts', {
+        mainPostId: this.values[0].id,
+        secondPostId: this.values[1].id,
+        thirdPostId: this.values[2].id,
+        fourthPostId: this.values[3].id,
+        fifthPostId: this.values[4].id,
+        sixthPostId: this.values[5].id
+      }).then(function (response) {
+        console.log('saved');
+      });
+    }
   },
   created: function created() {
     this.getAllPostTitles();
@@ -3420,6 +3434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_main_page_BirthdaySection_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../components/main-page/BirthdaySection.vue */ "./resources/assets/js/admin/components/main-page/BirthdaySection.vue");
 /* harmony import */ var _components_main_page_PostsTileSection_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/main-page/PostsTileSection.vue */ "./resources/assets/js/admin/components/main-page/PostsTileSection.vue");
 /* harmony import */ var _components_main_page_Instagram_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/main-page/Instagram.vue */ "./resources/assets/js/admin/components/main-page/Instagram.vue");
+//
+//
 //
 //
 //
@@ -25479,7 +25495,11 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n            " + _vm._s(matchingItem.name) + "\n        ")]
+          [
+            _vm._v(
+              "\n            " + _vm._s(matchingItem[_vm.label]) + "\n        "
+            )
+          ]
         )
       }),
       0
@@ -25643,23 +25663,21 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "btn-wrap" }, [
+        _c(
+          "button",
+          {
+            staticClass: "theme-btn theme-btn-red big-btn",
+            on: { click: _vm.save }
+          },
+          [_vm._v("Save")]
+        )
+      ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "btn-wrap" }, [
-      _c("button", { staticClass: "theme-btn theme-btn-red big-btn" }, [
-        _vm._v("Save")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -25775,18 +25793,30 @@ var render = function() {
                 attrs: {
                   deletable: false,
                   placeholder: "Type post name",
-                  options: _vm.posts
+                  options: _vm.posts,
+                  label: "title"
                 },
-                on: { select: _vm.selectPost }
+                model: {
+                  value: _vm.values[index],
+                  callback: function($$v) {
+                    _vm.$set(_vm.values, index, $$v)
+                  },
+                  expression: "values[index]"
+                }
               })
             ],
             1
           )
         }),
         _vm._v(" "),
-        _c("button", { staticClass: "theme-btn theme-btn-red big-btn" }, [
-          _vm._v("Save")
-        ])
+        _c(
+          "button",
+          {
+            staticClass: "theme-btn theme-btn-red big-btn",
+            on: { click: _vm.save }
+          },
+          [_vm._v("Save")]
+        )
       ],
       2
     )
@@ -26513,6 +26543,8 @@ var render = function() {
         ],
         1
       ),
+      _vm._v(" "),
+      _c("instagram"),
       _vm._v(" "),
       _c("instagram")
     ],
@@ -47469,7 +47501,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
