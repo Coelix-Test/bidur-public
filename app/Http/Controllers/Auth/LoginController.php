@@ -26,7 +26,8 @@ class LoginController extends Controller
 
         $this->clearLoginAttempts($request);
 
-        return json_encode(['status' => '200']);
+        return $this->authenticated($request, $this->guard()->user())
+            ?: [ 'status' =>  200 ];
     }
 
 
@@ -35,7 +36,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

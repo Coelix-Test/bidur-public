@@ -52,7 +52,6 @@
         </slide>
       </carousel>
     </div>
-
   </div>
 </template>
 
