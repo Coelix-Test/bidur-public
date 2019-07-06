@@ -12,12 +12,14 @@
         class="th-input"
         v-model="email"
         autocomplete="email"
+        placeholder="מייל"
       >
 
       <text-input
         :type="hide.pass ? 'password' : 'text'"
         required
         v-model="pass"
+        placeholder="סיסמה"
       >
         <template v-slot:button>
           <eye v-model="hide.pass"/>
@@ -26,12 +28,6 @@
 
       <div v-if="err.length" class="err">{{ err }}</div>
 
-      <label ref="agreement" class="checkbox">
-        <input v-model="agreement" class="th-checkbox" type="checkbox">
-        <div class="label">
-          רתאב שומישה יאנתל םיכסמ ינא
-        </div>
-      </label>
       <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
         ?רתאב שמתשמ רבכ ךל שי
@@ -58,7 +54,6 @@ export default {
         pass: true,
       },
       timeout: false,
-      agreement: false,
       err: '',
     };
   },
@@ -70,14 +65,7 @@ export default {
   methods: {
     submit(e) {
 
-      this.$refs.agreement.classList.remove('shake', 'animated');
-
-      if(!this.agreement) {
-        setImmediate(() => {
-          this.$refs.agreement.classList.add('shake', 'animated');
-        });
-        return;
-      }
+      e.preventDefault();
 
       axios.post('/login', {
         email: this.email,
@@ -88,7 +76,6 @@ export default {
       }).catch(err => {
         this.err = 'Invalid email or password';
       });
-      e.preventDefault();
     },
     reg() {
       this.$emit('close');
@@ -123,8 +110,8 @@ export default {
       text-align: center;
       color: #000000;
     }
-    .button {
-
+    .th-btn {
+      margin-top: 10px;
     }
     .bottom {
       padding-top: 20px;
@@ -137,19 +124,6 @@ export default {
         text-decoration: underline;
         background: transparent;
         border: 0;
-      }
-    }
-    .checkbox {
-      display: flex;
-      justify-content: flex-start;
-      flex-direction: row;
-      align-items: center;
-      .label {
-        color: #828282;
-        font-size: 14px;
-      }
-      input {
-        margin-left: 10px;
       }
     }
 

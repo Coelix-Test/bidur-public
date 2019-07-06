@@ -1,17 +1,12 @@
 <template>
   <div class="right-column-bot">
 
-<<<<<<< HEAD
     <template v-if="survey.type == 'survey'">
-=======
-    <template v-if="true">
->>>>>>> origin/dev-kirill
       <div class="selected-poll">
         <img src="img/rihanna.png" alt="">
         <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
       </div>
     </template>
-<<<<<<< HEAD
     <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
     <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
 
@@ -56,10 +51,6 @@
         </slide>
       </carousel>
     </div>
-=======
-    <one-survey v-else-if="false"/>
-    <like-survey v-else/>
->>>>>>> origin/dev-kirill
   </div>
 </template>
 
