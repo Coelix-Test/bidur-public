@@ -42,6 +42,7 @@ class AdminController extends Controller
 
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
+        HashtagPosts::where('postId', $request->get('id'))->delete();
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
@@ -451,9 +452,9 @@ class AdminController extends Controller
 
     public function editSurvey(Request $request){
         $survey = $request->get('survey');
-        if (isJson($survey)){
-            $survey = json_decode($survey);
-        }
+
+//            $survey = json_decode($survey);
+
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
         $surveyObject->question = $survey['survey']['question'];
         $surveyObject->save();
