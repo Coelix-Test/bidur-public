@@ -102,5 +102,7 @@ Route::get('/admin', 'AdminController@showAdmin');
 
     Route::post('/getAllMails', 'AdminController@getAllMails');
 
+    Route::post('/editMainPagePosts', 'AdminController@editMainPagePosts');
+
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
