@@ -31,6 +31,7 @@ export default {
     axios
       .post('/getAllPosts')
         .then(res => {
+          console.log(res.data);
           this.posts = res.data;
         });
   },

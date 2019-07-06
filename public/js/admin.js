@@ -3493,6 +3493,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getAllPosts').then(function (res) {
+      console.log(res.data);
       _this.posts = res.data;
     });
   },
