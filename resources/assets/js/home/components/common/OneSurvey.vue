@@ -75,9 +75,6 @@ export default {
 <style lang="scss" scoped>
 
 .one-survey {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
   height: 700px;
   padding: 0 20px;
   display: flex;
@@ -102,6 +99,7 @@ export default {
     img {
       width: 300px;
       height: 100%;
+      object-fit: cover;
     }
     .lightning {
 

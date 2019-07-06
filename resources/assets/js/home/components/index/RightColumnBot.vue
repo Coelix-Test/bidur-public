@@ -30,11 +30,11 @@
       <carousel
         v-if="posts"
         class="latest-post-slider"
-        :rtl="true"
-        :autoplay="true"
+        rtl
+        autoplay
+        navigationEnabled
         :autoplayTimeout="2000"
         :paginationEnabled="false"
-        :navigationEnabled="true"
         :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
@@ -57,8 +57,8 @@
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 import VuePoll from 'vue-poll'
-import LikeSurvey from './LikeSurvey'
-import OneSurvey from './OneSurvey'
+import LikeSurvey from './../common/LikeSurvey'
+import OneSurvey from './../common/OneSurvey'
 
 export default {
   props : {
@@ -275,5 +275,16 @@ export default {
     .right-column-bot {
       margin-top: 0;
     }
+  }
+
+  .like-survey {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+  }
+  .one-survey {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
   }
 </style>

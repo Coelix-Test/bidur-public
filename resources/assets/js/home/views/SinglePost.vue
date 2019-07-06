@@ -46,6 +46,12 @@
             <img :src="post.img" alt="">
             <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
           </div>
+          <div v-else-if="post.type == 'compare'" class="poll">
+            <one-survey :data="post.value"/>
+          </div>
+          <div v-else-if="post.type == 'likableImage'" class="poll">
+            <like-survey :data="post.value"/>
+          </div>
 
 
           <iframe
@@ -109,7 +115,9 @@ import Share from './../components/single-post/Share.vue'
 import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
-import { Carousel, Slide } from 'vue-carousel';
+import { Carousel, Slide } from 'vue-carousel'
+import LikeSurvey from './../components/common/LikeSurvey'
+import OneSurvey from './../components/common/OneSurvey'
 
 export default {
   data() {
@@ -131,7 +139,7 @@ export default {
       event.preventDefault()
       this.sync(id);
       this.postId = id;
-      this.$router.push({path : `/post/${id}`});
+      this.$router.push({ path : `/post/${id}` });
     },
     computeNumber(value) {
       // console.log(value);
@@ -196,7 +204,9 @@ export default {
     Slide,
     SinglePostExample,
     Share,
-    Emoji
+    Emoji,
+    LikeSurvey,
+    OneSurvey,
   }
 }
 

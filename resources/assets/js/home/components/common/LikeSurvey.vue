@@ -108,9 +108,7 @@ export default {
 <style lang="scss" scoped>
 
 .like-survey {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+  
   img {
     object-fit: cover;
     width: 100%;
