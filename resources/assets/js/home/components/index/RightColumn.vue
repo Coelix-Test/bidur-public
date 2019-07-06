@@ -17,8 +17,8 @@
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
-            <span class="author">by {{ post.author }}</span>
             <span class="post-date">{{ post.time }}</span>
+            <span class="author">מאת {{ post.author }}</span>
           </p>
         </router-link>
       </li>
@@ -236,6 +236,8 @@ export default {
   }
   ul.posts li a p {
     margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
   }
   ul.posts li a img {
     position: absolute;
@@ -253,11 +255,23 @@ export default {
   ul.posts li a p .author {
     border-right:1px solid #fff;
     padding-right: 6px;
+    margin-right: 4px;
+    white-space: nowrap;
   }
   @media (max-width:768px) {
     .right-column {
       padding-left: 0;
       order:2;
+    }
+    ul.posts li {
+      flex-basis: calc(50% - 4px);
+    }
+    ul.posts li a h2 {
+      font-size: 16px;
+      line-height: 16px;
+    }
+    ul.posts li a {
+      padding:80px 8px 8px;
     }
     ul.posts li:nth-child(2),
     ul.posts li:nth-child(3) {
@@ -280,17 +294,18 @@ export default {
       padding: 0;
       margin-top: 16px;
       margin-bottom: 32px;
+      padding-top: 120px;
+      box-sizing: content-box;
+    }
+    ul.posts li a p {
+      font-size: 13px;
+      line-height: 13px;
+      margin-top: 8px;
     }
   }
   @media (max-width:550px) {
-    ul.posts li a h2 {
-      font-size: 20px;
-      line-height: 20px;
-    }
-    ul.posts li a p {
-      font-size: 15px;
-      line-height: 15px;
-    }
+
+
     ul.posts {
       height:auto;
     }
@@ -299,8 +314,8 @@ export default {
       margin-bottom: 16px;
     }
     ul.posts li {
-      flex-basis:100%;
-      height:auto;
+      /* flex-basis:100%;
+      height:auto; */
       margin-bottom: 8px;
     }
   }

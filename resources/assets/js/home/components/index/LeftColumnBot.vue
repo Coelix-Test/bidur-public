@@ -59,7 +59,7 @@ export default {
     width:50%;
     margin-right: 8px;
     padding:24px 0 0;
-    border-radius: 48px;
+    border-radius: 20px;
     box-shadow: 0 0 16px rgba(0,0,0,0.2);
     transform: translateY(-64px);
   }
@@ -138,8 +138,12 @@ export default {
     justify-content: flex-start;
   }
   @media (max-width:768px) {
+    .heading img {
+      width: 200px;
+      margin:0 auto;
+    }
     .heading h2 {
-      font-size: 32px;
+      font-size: 24px;
       margin: 12px 0;
     }
     .left-column-bot {
@@ -161,7 +165,7 @@ export default {
       margin-top: 8px;
     }
     .heading h2 {
-      font-size:24px;
+      font-size:19px;
     }
 
   }

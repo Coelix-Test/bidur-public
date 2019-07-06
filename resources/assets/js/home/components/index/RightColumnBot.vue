@@ -31,7 +31,7 @@
                 <h3>{{ post.title }}</h3>
               </router-link>
               <p>
-                <span class="author">by {{post.author}}</span>
+                <span class="author">מאת {{post.author}}</span>
                 <span class="post-date">{{post.time}}</span>
               </p>
             </div>

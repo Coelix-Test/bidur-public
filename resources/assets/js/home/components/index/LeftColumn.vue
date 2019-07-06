@@ -8,7 +8,7 @@
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
         <p>
-          <span class="author">by {{ post.author }}</span>
+          <span class="author">מאת {{ post.author }}</span>
           <span class="post-date">{{ post.time }}</span>
         </p>
       </router-link>
