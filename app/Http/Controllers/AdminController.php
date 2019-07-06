@@ -576,7 +576,7 @@ class AdminController extends Controller
         $insta = Insta::create([
             'id' => 1,
             'linkToInsta' => $link,
-            'imageUrl' => '/images/insta/'.$image,
+            'imageUrl' => '/images/insta/'.$name,
         ]);
 
         return json_encode(['success' => true, 'insta' => $insta]);
@@ -584,12 +584,12 @@ class AdminController extends Controller
 
 
     public function editMainPagePosts(Request $request){
-        $mainPostId = $request->get('mainPostId');
-        $secondPostId = $request->get('secondPostId');
-        $thirdPostId = $request->get('thirdPostId');
-        $fourthPostId = $request->get('fourthPostId');
-        $fifthPostId = $request->get('fifthPostId');
-        $sixthPostId = $request->get('sixthPostId');
+        $mainPostId = $request->get(    'mainPostId');
+        $secondPostId = $request->get(  'secondPostId');
+        $thirdPostId = $request->get(   'thirdPostId');
+        $fourthPostId = $request->get(  'fourthPostId');
+        $fifthPostId = $request->get(   'fifthPostId');
+        $sixthPostId = $request->get(   'sixthPostId');
         MainSection::truncate();
         MainSection::create([
             'first' => $mainPostId,
