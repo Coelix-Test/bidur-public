@@ -177,12 +177,16 @@ export default {
     }
   }
   @media (max-width:550px) {
+    .posts-column article p {
+      font-size: 16px;
+      line-height: 16px;
+    }
     .posts-column article {
       margin-bottom: 8px;
     }
     .posts-column article h2 {
-      font-size: 28px;
-      line-height: 28px;
+      font-size: 20px;
+      line-height: 20px;
     }
   }
   @keyframes animatedgradient {

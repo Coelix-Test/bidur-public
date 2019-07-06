@@ -147,7 +147,13 @@ export default {
 }
 @media (max-width:768px) {
   .one-survey {
-    height: 550px;
+    height: 400px;
+    .title {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 24px;
+      line-height: 24px;
+    }
     .body {
       > svg {
         pointer-events: none;

@@ -182,6 +182,7 @@ export default {
     justify-content: flex-start;
     color:#333333;
     text-decoration: none;
+    padding:0 8px;
   }
   .latest-post-item  img {
     width:100%;

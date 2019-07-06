@@ -3,7 +3,7 @@
     <close @close="$emit('close')"/>
     <form @submit="submit" class="form">
       <div class="title">
-        תורבחתה
+        התחברות
       </div>
 
       <input
@@ -28,7 +28,7 @@
 
       <div v-if="err.length" class="err">{{ err }}</div>
 
-      <button class="th-btn th-btn-gold" type="submit">המשרה</button>
+      <button class="th-btn th-btn-gold" type="submit">התחברות</button>
       <div class="bottom">
         יש לך כבר משתמש באתר?
         <button class="link" @click="reg">

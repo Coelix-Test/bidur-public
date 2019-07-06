@@ -283,6 +283,14 @@ export default {
     }
   }
   @media (max-width:550px) {
+    ul.posts li a h2 {
+      font-size: 20px;
+      line-height: 20px;
+    }
+    ul.posts li a p {
+      font-size: 15px;
+      line-height: 15px;
+    }
     ul.posts {
       height:auto;
     }
