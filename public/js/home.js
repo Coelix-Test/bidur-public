@@ -21143,6 +21143,13 @@ var render = function() {
             ? [
                 _c(
                   "a",
+                  { staticClass: "btn-common btn-red", attrs: { href: "#" } },
+                  [_vm._v("logout")]
+                )
+              ]
+            : [
+                _c(
+                  "a",
                   {
                     staticClass: "btn-common btn-red register-popup-trigger",
                     attrs: { href: "#" }
@@ -21158,13 +21165,6 @@ var render = function() {
                     attrs: { href: "#" }
                   },
                   [_vm._v("כניסה")]
-                )
-              ]
-            : [
-                _c(
-                  "a",
-                  { staticClass: "btn-common btn-red", attrs: { href: "#" } },
-                  [_vm._v("logout")]
                 )
               ]
         ],

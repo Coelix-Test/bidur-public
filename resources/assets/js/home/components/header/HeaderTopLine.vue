@@ -23,11 +23,11 @@
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <a href="#" class="btn-common btn-red register-popup-trigger">הרשמה</a>
-                <a href="#" class="btn-common btn-border-dark login-popup-trigger">כניסה</a>
+                <a href="#" class="btn-common btn-red">logout</a>
               </template>
               <template v-else>
-                <a href="#" class="btn-common btn-red">logout</a>
+                <a href="#" class="btn-common btn-red register-popup-trigger">הרשמה</a>
+                <a href="#" class="btn-common btn-border-dark login-popup-trigger">כניסה</a>
               </template>
           </div>
 
@@ -61,7 +61,7 @@
 
           </div>
           <a href="/" class="logo-wrap">
-              <img src="/img/logo-yellow.png" alt="">
+            <img src="/img/logo-yellow.png" alt="">
           </a>
           <div class="socials-wrap">
             <a href="#" class="telegram"></a>
