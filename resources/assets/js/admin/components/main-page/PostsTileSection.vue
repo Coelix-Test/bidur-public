@@ -49,12 +49,12 @@ export default {
         },
         save() {
           axios.post('/editMainPagePosts', {
-            mainPostId: this.values[0],
-            secondPostId: this.values[1],
-            thirdPostId: this.values[2],
-            fourthPostId: this.values[3],
-            fifthPostId: this.values[4],
-            sixthPostId: this.values[5],
+            mainPostId: this.values[0].id,
+            secondPostId: this.values[1].id,
+            thirdPostId: this.values[2].id,
+            fourthPostId: this.values[3].id,
+            fifthPostId: this.values[4].id,
+            sixthPostId: this.values[5].id,
           }).then(response => {
             console.log('saved');
           });
