@@ -52,13 +52,13 @@
                     </router-link>
                   </li>
       						<li class="menu-item">
-      							<router-link :to="{ name: 'index'}"> תיבה ףד</router-link>
+      							<router-link :to="{ name: 'index'}">דף הבית</router-link>
       						</li>
       						<li class="menu-item">
-      							<router-link :to="{ name: 'about-us'}">תודוא</router-link>
+      							<router-link :to="{ name: 'about-us'}">אודות</router-link>
       						</li>
       						<li class="menu-item">
-      							<router-link :to="{ name: 'contact-us'}">רשק רוצ</router-link>
+      							<router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
       						</li>
                   <li class="menu-item">
                     <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
