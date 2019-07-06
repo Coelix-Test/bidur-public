@@ -9,6 +9,7 @@ use App\HashtagPosts;
 use App\Insta;
 use App\LikesForLeftAndRight;
 use App\LikesForSingleImage;
+use App\Mail;
 use App\MainSection;
 use App\Post;
 use App\Rating;
@@ -285,7 +286,7 @@ class MainController extends Controller
         if (isset($likableImages[0])){
             foreach ($likableImages as $likableImage) {
                 $data['id'] = $likableImage->id;
-                $data['image'] = $likableImage->url;
+                $data['imageUrl'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
 
                 $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
@@ -741,4 +742,20 @@ class MainController extends Controller
         $post = Post::find(86);
         dd($post->getCompare()->get());
     }
+
+    public function sendMail(Request $request){
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $phone = $request->get('phone');
+        $message = $request->get('message');
+
+        Mail::create([
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'message' => $message,
+        ]);
+    }
+
+
 }
