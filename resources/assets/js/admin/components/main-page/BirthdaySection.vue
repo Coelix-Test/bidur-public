@@ -3,7 +3,7 @@
         <image-input :value.sync="image"></image-input>
         <textarea v-model="text" name="description" class="text theme-textarea" placeholder="Enter Birthday text"></textarea>
         <div class="btn-wrap">
-            <button class="theme-btn theme-btn-red big-btn">Save</button>
+            <button @click="save" class="theme-btn theme-btn-red big-btn">Save</button>
         </div>
     </div>
 </template>
@@ -21,7 +21,18 @@ export default {
         ImageInput
     },
     methods: {
-
+      save() {
+        var data = new FormData();
+        data.append('image', this.image);
+        data.append('text', this.text);
+        axios.post('/createHappyBirthday', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('saved');
+        });
+      }
     }
 }
 </script>

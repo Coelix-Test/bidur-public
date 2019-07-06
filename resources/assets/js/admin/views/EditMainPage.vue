@@ -11,6 +11,8 @@
     </div>
 
     <instagram/>
+
+    <instagram/>
   </div>
 </template>
 
