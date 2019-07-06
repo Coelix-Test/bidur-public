@@ -3,7 +3,7 @@
     <close @close="$emit('close')"/>
     <form @submit="submit" class="form">
       <div class="title">
-        המשרה
+        התחברות
       </div>
 
       <input
@@ -63,9 +63,9 @@
       </label>
       <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
-        ?רתאב שמתשמ רבכ ךל שי
+        יש לך כבר משתמש באתר?
         <button class="link" @click="login">
-          ןאכ ץחל
+          לחץ כאן
         </button>
       </div>
     </form>

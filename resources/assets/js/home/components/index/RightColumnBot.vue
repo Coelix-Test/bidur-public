@@ -52,10 +52,6 @@
         </slide>
       </carousel>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev-alexey
   </div>
 </template>
 

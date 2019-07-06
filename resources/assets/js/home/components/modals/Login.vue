@@ -30,9 +30,9 @@
 
       <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
-        ?רתאב שמתשמ רבכ ךל שי
-        <button class="link" @click="reg">
-          ןאכ ץחל
+        יש לך כבר משתמש באתר?
+        <button class="link" @click="login">
+          לחץ כאן
         </button>
       </div>
     </form>
@@ -93,6 +93,7 @@ export default {
 <style lang="scss" scoped>
 
 .a-modal {
+  padding: 0 10px;
   padding-top: 60px;
   .form {
     max-width: 430px;
