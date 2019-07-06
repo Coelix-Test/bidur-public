@@ -16577,6 +16577,11 @@ body {
   max-width: 1440px;
 }
 
+.header-main .celebrities-slider {
+  display: -webkit-box;
+  display: flex;
+}
+
 .header-main .celebrities-slider a {
   outline: none;
   text-decoration: none;

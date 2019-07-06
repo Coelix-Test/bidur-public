@@ -26149,7 +26149,14 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "imagetext-actions" }, [
-      _c("div", { staticClass: "delete-self" }),
+      _c("div", {
+        staticClass: "delete-self",
+        on: {
+          click: function($event) {
+            return _vm.$emit("deleteSection", _vm.index)
+          }
+        }
+      }),
       _vm._v(" "),
       _c("div", {
         staticClass: "change-image-position",
