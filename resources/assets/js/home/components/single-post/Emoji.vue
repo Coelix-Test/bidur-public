@@ -52,11 +52,20 @@ export default {
     postId : function() {
       this.preventClick = false;
       this.sync(this.postId);
+
+      var buttons = document.querySelectorAll('.item');
+      console.log(buttons);
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('is_active');
+      }
     }
   },
   created() {
     this.preventClick = false;
     this.sync(this.postId);
+  },
+  mounted() {
+
   },
   methods: {
     select(item) {

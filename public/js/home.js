@@ -4071,12 +4071,19 @@ __webpack_require__.r(__webpack_exports__);
     postId: function postId() {
       this.preventClick = false;
       this.sync(this.postId);
+      var buttons = document.querySelectorAll('.item');
+      console.log(buttons);
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('is_active');
+      }
     }
   },
   created: function created() {
     this.preventClick = false;
     this.sync(this.postId);
   },
+  mounted: function mounted() {},
   methods: {
     select: function select(item) {
       var _this = this;
