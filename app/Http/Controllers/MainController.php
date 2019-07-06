@@ -132,45 +132,64 @@ class MainController extends Controller
         return $allInfo;
     }
     public function getAllPostsWithAllFilters(){
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
-        $hotPosts = Post::where('hot', 'true')->get();
-        $recentPosts = Post::orderBy('created_at', 'desc')->get();
+//        $hotPosts = Post::where('hot', 'true')->get();
+//        $recentPosts = Post::orderBy('created_at', 'desc')->get();
 
-        foreach ($hotPosts as $key => $hotPost) {
-            $finalHotPosts[$key]['post'] = $hotPost;
-            $finalHotPosts[$key]['rating'] = round(Rating::where('id', $hotPost->id)->avg('rating'), 1);
-        }
-
-        foreach ($recentPosts as $key => $recentPost) {
-            $finalRecentPosts[$key]['post'] = $recentPost;
-            $finalRecentPosts[$key]['rating'] = round(Rating::where('id', $recentPost->id)->avg('rating'), 1);
-        }
+//        foreach ($hotPosts as $key => $hotPost) {
+//            $finalHotPosts[$key]['post'] = $hotPost;
+//            $finalHotPosts[$key]['rating'] = round(Rating::where('id', $hotPost->id)->avg('rating'), 1);
+//        }
+//
+//        foreach ($recentPosts as $key => $recentPost) {
+//            $finalRecentPosts[$key]['post'] = $recentPost;
+//            $finalRecentPosts[$key]['rating'] = round(Rating::where('id', $recentPost->id)->avg('rating'), 1);
+//        }
+        $mainSection = MainSection::find(1);
 
         foreach ($posts as $key => $post) {
             $finalAllPosts[$key]['post'] = $post;
             $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
+            if ($post->id == $mainSection->first){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
         }
 
-        $allTypesOfPosts['trending'] = $finalAllPosts;
-        $allTypesOfPosts['hot'] = $finalHotPosts;
-        $allTypesOfPosts['recent'] = $finalRecentPosts;
-
-        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
-
-            $allTrendingPosts[$key] = $trendingPost;
-            unset($allTypesOfPosts['trending'][$key]['post']);
-            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
-        }
-        arsort($allTypesOfPosts['trending']);
-        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
-            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
-            $allTypesOfPosts['trending'][$outerKey] = $tmp;
-        }
-
-        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
-            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
-        }
+//        $allTypesOfPosts['trending'] = $finalAllPosts;
+//        $allTypesOfPosts['hot'] = $finalHotPosts;
+//        $allTypesOfPosts['recent'] = $finalRecentPosts;
+//
+//        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
+//
+//            $allTrendingPosts[$key] = $trendingPost;
+//            unset($allTypesOfPosts['trending'][$key]['post']);
+//            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
+//        }
+//        arsort($allTypesOfPosts['trending']);
+//        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
+//            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
+//            $allTypesOfPosts['trending'][$outerKey] = $tmp;
+//        }
+//
+//        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
+//            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
+//        }
         //dd($allTypesOfPosts);
         return $finalAllPosts;
     }
@@ -279,6 +298,7 @@ class MainController extends Controller
 
                 $fullPost['sections'][$compare->order]['type'] = 'compare';
                 $fullPost['sections'][$compare->order]['value'] = $data;
+                unset($data);
             }
         }
 
@@ -286,11 +306,12 @@ class MainController extends Controller
         if (isset($likableImages[0])){
             foreach ($likableImages as $likableImage) {
                 $data['id'] = $likableImage->id;
-                $data['imageUrl'] = $likableImage->url;
+                $data['imgUrl'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
 
                 $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
                 $fullPost['sections'][$likableImage->order]['value'] = $data;
+                unset($data);
             }
         }
 
@@ -304,7 +325,11 @@ class MainController extends Controller
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
         if (!$hashtags->isEmpty()){
             foreach ($hashtags as $hashtag) {
-                $fullPost['hashtags'][] = $hashtag->hashtagId;
+                $h = Hashtag::find($hashtag->hashtagId);
+                $data['id'] = $h->id;
+                $data['title'] = $h->text;
+                $fullPost['hashtags'][] = $data;
+                unset($data);
             }
         }
 
@@ -441,56 +466,11 @@ class MainController extends Controller
         }else{
             $excerpt = '';
         }
+
         $rating = (int)$post->getRating()->avg('rating');
         $time = $post->created_at;
+
         $time = $time->timestamp;
-        $now = Carbon::now();
-        $now = $now->timestamp;
-        $diff = $now - $time;
-        $hours = 0;
-        $days = 0;
-        $weeks = 0;
-        $flag = false;
-        while ($diff > 3600){
-            $diff = $diff - 3600;
-            $hours++;
-            if ($hours == 23){
-                $days++;
-                $hours = 0;
-            }
-            if ($days == 7){
-                $weeks++;
-                $days = 0;
-            }
-            if ($weeks == 4 && $days > 1){
-                $flag = true;
-                break;
-            }
-        }
-        $time = $post->created_at;
-        if ($flag == true){
-            $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
-        }else{
-            if ($hours <= 23 && $days == 0 && $weeks == 0){
-                if ($hours = 0){
-                    $createdAt = 'just now';
-                }else{
-                    $createdAt = $hours.' hours ago';
-                }
-            }else{
-                if ($days <= 6 && $weeks == 0){
-                    $createdAt = $days.' days ago';
-                }else{
-                    if ($weeks <= 4){
-                        if ($weeks == 1){
-                            $createdAt = $weeks.' week ago';
-                        }else{
-                            $createdAt = $weeks.' weeks ago';
-                        }
-                    }
-                }
-            }
-        }
 
         if (!empty($thumbnail)){
             $allInfo['img'] = $thumbnail->url;
@@ -513,8 +493,8 @@ class MainController extends Controller
         }else{
             $allInfo['excerpt'] = '';
         }
-        if (!empty($createdAt)){
-            $allInfo['time'] = $createdAt;
+        if (!empty($time)){
+            $allInfo['time'] = $time;
         }else{
             $allInfo['time'] = '';
         }
@@ -635,8 +615,8 @@ class MainController extends Controller
     }
 
     public function getRecentPosts(){
-        $recentPosts = Post::orderBy('created_at', 'desc')->get();
-        dd($recentPosts);
+        $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
+//        dd($recentPosts);
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
         }
@@ -749,14 +729,21 @@ class MainController extends Controller
         $email = $request->get('email');
         $phone = $request->get('phone');
         $message = $request->get('message');
+        try{
+            Mail::create([
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'message' => $message,
+            ]);
+            return ['success' => true];
+        }catch (\Exception $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
 
-        Mail::create([
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'message' => $message,
-        ]);
+
     }
+
 
 
 }

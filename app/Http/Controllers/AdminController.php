@@ -56,7 +56,7 @@ class AdminController extends Controller
             $offset = 0;
         }
 
-        $posts = Post::offset($offset)->limit(12)->get();
+        $posts = Post::offset($offset)->limit(20)->orderBy('created_at', 'desc')->get();
 
         foreach ($posts as $key => $post) {
             $allPosts[$key]['title'] = $post->metaTitle;
@@ -64,55 +64,26 @@ class AdminController extends Controller
 
             $time = $post->created_at;
             $time = $time->timestamp;
-            $now = Carbon::now();
-            $now = $now->timestamp;
-            $diff = $now - $time;
-            $hours = 0;
-            $days = 0;
-            $weeks = 0;
-            $flag = false;
-            while ($diff > 3600){
-                $diff = $diff - 3600;
-                $hours++;
-                if ($hours == 23){
-                    $days++;
-                    $hours = 0;
-                }
-                if ($days == 7){
-                    $weeks++;
-                    $days = 0;
-                }
-                if ($weeks == 4 && $days > 1){
-                    $flag = true;
-                    break;
-                }
+            $mainSection = MainSection::find(1);
+            if ($post->id == $mainSection->first){
+                $allPosts[$key]['is_in_main_section'] = true;
             }
-            $time = $post->created_at;
-            if ($flag == true){
-                $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
-            }else{
-                if ($hours <= 23 && $days == 0 && $weeks == 0){
-                    if ($hours = 0){
-                        $createdAt = 'just now';
-                    }else{
-                        $createdAt = $hours.' hours ago';
-                    }
-                }else{
-                    if ($days <= 6 && $weeks == 0){
-                        $createdAt = $days.' days ago';
-                    }else{
-                        if ($weeks <= 4){
-                            if ($weeks == 1){
-                                $createdAt = $weeks.' week ago';
-                            }else{
-                                $createdAt = $weeks.' weeks ago';
-                            }
-                        }
-                    }
-                }
+            if ($post->id == $mainSection->second){
+                $allPosts[$key]['is_in_main_section'] = true;
             }
-
-            $allPosts[$key]['createdAt'] = $createdAt;
+            if ($post->id == $mainSection->third){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $allPosts[$key]['is_in_main_section'] = true;
+            }
+            $allPosts[$key]['createdAt'] = $time;
         }
         return json_encode($allPosts);
     }
@@ -594,12 +565,12 @@ class AdminController extends Controller
 
     public function createInsta(Request $request){
         Insta::truncate();
-        $image = $request->file('image');
+        $image = $request->file('imageUrl');
         $name = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/insta');
         $image->move($destinationPath, $name);
 
-        $link = $request->get('link');
+        $link = $request->get('linkToInsta');
 
         $insta = Insta::create([
             'id' => 1,

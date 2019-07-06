@@ -2274,11 +2274,12 @@ __webpack_require__.r(__webpack_exports__);
       //     });
     },
     updateSurvey: function updateSurvey() {
-      console.log(this.survey); // axios
-      //   .post('/',{survey : this.survey})
-      //     .then(res => {
-      //       console.log(res);
-      //     });
+      console.log(this.survey);
+      axios.post('/', {
+        survey: this.survey
+      }).then(function (res) {
+        console.log(res);
+      });
     }
   }
 });
@@ -3493,6 +3494,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getAllPosts').then(function (res) {
+      console.log(res.data);
       _this.posts = res.data;
     });
   },
@@ -4339,7 +4341,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
+exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .heading .actions button[data-v-0bb88f39]:hover {\n  color: #EB5757;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
 
 // exports
 
@@ -4738,7 +4740,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".post-list[data-v-82f78b1e] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.post-list .posts-wrapper[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.post-list .posts-wrapper .post[data-v-82f78b1e] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n  border: 1px solid #eee;\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);\n  color: #000;\n}\n.post-list .posts-wrapper .post .post-meta[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  border-bottom: 1px solid #eee;\n  padding-bottom: 6px;\n  margin-bottom: 6px;\n}\n.post-list .posts-wrapper .post .post-meta .author[data-v-82f78b1e] {\n  margin-right: 6px;\n  padding-right: 6px;\n  border-right: 1px solid #000;\n}\n.post-list .posts-wrapper .post .post-meta .id[data-v-82f78b1e] {\n  color: lightgrey;\n  margin-right: 16px;\n}\n.post-list .posts-wrapper .post .actions[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e], .post-list .posts-wrapper .post .actions a[data-v-82f78b1e] {\n  border-width: 0;\n  background-color: transparent;\n  margin: 0 8px;\n  font-weight: 600;\n  display: block;\n  color: #000;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e]:hover, .post-list .posts-wrapper .post .actions a[data-v-82f78b1e]:hover {\n  color: #EB5757;\n}", ""]);
+exports.push([module.i, ".post-list[data-v-82f78b1e] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.post-list .posts-wrapper[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.post-list .posts-wrapper .post[data-v-82f78b1e] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n  border: 1px solid #eee;\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);\n  color: #000;\n}\n.post-list .posts-wrapper .post h2[data-v-82f78b1e] {\n  word-break: break-all;\n}\n.post-list .posts-wrapper .post .post-meta[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  border-bottom: 1px solid #eee;\n  padding-bottom: 6px;\n  margin-bottom: 6px;\n}\n.post-list .posts-wrapper .post .post-meta .author[data-v-82f78b1e] {\n  margin-right: 6px;\n  padding-right: 6px;\n  border-right: 1px solid #000;\n  word-break: break-all;\n}\n.post-list .posts-wrapper .post .post-meta .id[data-v-82f78b1e] {\n  color: lightgrey;\n  margin-right: 16px;\n}\n.post-list .posts-wrapper .post .actions[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e], .post-list .posts-wrapper .post .actions a[data-v-82f78b1e] {\n  border-width: 0;\n  background-color: transparent;\n  margin: 0 8px;\n  font-weight: 600;\n  display: block;\n  color: #000;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e]:hover, .post-list .posts-wrapper .post .actions a[data-v-82f78b1e]:hover {\n  color: #EB5757;\n}", ""]);
 
 // exports
 
@@ -26584,17 +26586,19 @@ var render = function() {
                   [_vm._v("edit")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.deletePost(post.post.id)
-                      }
-                    }
-                  },
-                  [_vm._v("delete")]
-                )
+                post.is_in_main_section == null
+                  ? _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.deletePost(post.post.id)
+                          }
+                        }
+                      },
+                      [_vm._v("delete")]
+                    )
+                  : _vm._e()
               ])
             ])
           : _vm._e()

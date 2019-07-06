@@ -12,7 +12,7 @@
         <div class="actions">
           <a :href="'.#/post/'+post.post.id" target="_blank">view</a>
           <button @click="editPost(post.post.id)">edit</button>
-          <button @click="deletePost(post.post.id)">delete</button>
+          <button v-if="post.is_in_main_section == null" @click="deletePost(post.post.id)">delete</button>
         </div>
 
       </div>
@@ -31,6 +31,7 @@ export default {
     axios
       .post('/getAllPosts')
         .then(res => {
+          console.log(res.data);
           this.posts = res.data;
         });
   },
@@ -69,7 +70,7 @@ export default {
             box-shadow:0 0 12px rgba(0,0,0,0.1);
             color:#000;
               h2 {
-
+                word-break: break-all;
               }
               .post-meta {
                 display: flex;
@@ -83,6 +84,7 @@ export default {
                     margin-right: 6px;
                     padding-right: 6px;
                     border-right: 1px solid #000;
+                    word-break: break-all;
                   }
                   .id {
                     color:lightgrey;
