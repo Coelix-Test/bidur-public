@@ -8,8 +8,8 @@
             </div>
             <ul class="menu-list menu">
                 <li><a href="/">דף בית</a></li>
-                <li><a href="/contact-us">אודות</a></li>
-                <li><a href="/about-us">צור קשר</a></li>
+                <li><a href="/about-us">אודות</a></li>
+                <li><a href="/contact-us">צור קשר</a></li>
             </ul>
         </div>
 
@@ -48,10 +48,10 @@
     							<a href="/">דף בית</a>
     						</li>
     						<li class="menu-item">
-    							<a href="/contact-us">אודות</a>
+    							<a href="/about-us">אודות</a>
     						</li>
     						<li class="menu-item">
-    							<a href="/about-us">צור קשר</a>
+    							<a href="/contact-us">צור קשר</a>
     						</li>
     					</ul>
     				</div>

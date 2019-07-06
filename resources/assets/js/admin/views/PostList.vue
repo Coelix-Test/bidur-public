@@ -36,7 +36,7 @@ export default {
   },
   methods : {
     editPost(id) {
-      console.log(id);
+      this.$router.push({ name: 'post-single', params: { id: id } });
     },
     deletePost(id) {
       axios
