@@ -46,8 +46,13 @@
       			<div class="modal-content">
       				<div class="main-nav-content">
       					<ul id="menu-primary-menu" class="menu">
-      						<li class="menu-item menu-item-has-children">
-      							<router-link :to="{ name: 'index'}">תיב ףד</router-link>
+                  <li class="menu-item">
+                    <router-link :to="{ name: 'index'}">
+                      <img src="/img/logo-gradient.png" width="124px" alt="">
+                    </router-link>
+                  </li>
+      						<li class="menu-item">
+      							<router-link :to="{ name: 'index'}"> תיבה ףד</router-link>
       						</li>
       						<li class="menu-item">
       							<router-link :to="{ name: 'about-us'}">תודוא</router-link>
@@ -55,7 +60,13 @@
       						<li class="menu-item">
       							<router-link :to="{ name: 'contact-us'}">רשק רוצ</router-link>
       						</li>
-                  <li>
+                  <li class="menu-item">
+                    <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
+                    <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
+                      <span>כניסה</span>
+                    </a>
+                  </li>
+                  <li class="menu-item">
                     <div class="socials-wrap">
                       <a href="#" class="telegram"></a>
                       <a href="#" class="youtube"></a>

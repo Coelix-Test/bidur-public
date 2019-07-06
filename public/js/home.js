@@ -3467,6 +3467,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3738,7 +3749,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.survey = res.data;
     });
     axios.post('/getRecentPosts').then(function (res) {
-      console.log(res.data); // this.posts = res.data;
+      console.log(res.data);
+      _this.posts = res.data;
     });
   },
   components: {
@@ -21422,12 +21434,33 @@ var render = function() {
                     [
                       _c(
                         "li",
-                        { staticClass: "menu-item menu-item-has-children" },
+                        { staticClass: "menu-item" },
                         [
                           _c(
                             "router-link",
                             { attrs: { to: { name: "index" } } },
-                            [_vm._v("תיב ףד")]
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: "/img/logo-gradient.png",
+                                  width: "124px",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        { staticClass: "menu-item" },
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "index" } } },
+                            [_vm._v(" תיבה ףד")]
                           )
                         ],
                         1
@@ -21458,6 +21491,28 @@ var render = function() {
                         ],
                         1
                       ),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "menu-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn-common btn-gold-gradient",
+                            attrs: { href: "#" },
+                            on: { click: _vm.$root.$root.openReg }
+                          },
+                          [_vm._v("הרשמה")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn-common btn-gold-text",
+                            attrs: { href: "#" },
+                            on: { click: _vm.$root.$root.openLogin }
+                          },
+                          [_c("span", [_vm._v("כניסה")])]
+                        )
+                      ]),
                       _vm._v(" "),
                       _vm._m(2)
                     ]
@@ -21507,7 +21562,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
+    return _c("li", { staticClass: "menu-item" }, [
       _c("div", { staticClass: "socials-wrap" }, [
         _c("a", { staticClass: "telegram", attrs: { href: "#" } }),
         _vm._v(" "),
@@ -46241,7 +46296,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

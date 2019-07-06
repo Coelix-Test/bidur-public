@@ -16077,6 +16077,8 @@ body {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
+  position: relative;
+  z-index: 30;
 }
 
 .header-main .menu-btn span:before,
@@ -16195,7 +16197,7 @@ body {
 .modal:before {
   content: "";
   position: absolute;
-  top: 42px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -16224,7 +16226,7 @@ body {
 
 .toggle-nav.active + .modal {
   z-index: 15;
-  top: 42px;
+  top: 0;
   overflow: hidden;
 }
 
@@ -16247,12 +16249,21 @@ body {
 .toggle-nav.active + .main-nav .modal-content {
   background-color: transparent;
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding-top: 0px;
   text-align: center;
+  height: 100%;
+  display: -ms-flex;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 .toggle-nav.active + .main-nav .modal-content .menu li {
@@ -16275,13 +16286,13 @@ body {
   transform: translateY(36px);
 }
 
-.main-nav .main-nav-content .menu li a {
+.main-nav .main-nav-content .menu li a:not(.btn-common) {
   color: #4F4F4F;
   font-size: 20px;
   font-weight: 600;
 }
 
-.main-nav .main-nav-content .menu li a:hover {
+.main-nav .main-nav-content .menu li a:not(.btn-common):hover {
   color: #FDC63A;
 }
 

@@ -60,6 +60,8 @@
         position: relative;
         align-items: center;
         justify-content: center;
+        position: relative;
+        z-index: 30;
 
         span:before,
         span:after{
@@ -165,7 +167,7 @@
 .modal:before {
     content: '';
     position: absolute;
-    top: 42px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -190,7 +192,7 @@
 }
 .toggle-nav.active + .modal {
     z-index: 15;
-    top: 42px;
+    top: 0;
     overflow: hidden;
 }
 .toggle-nav.active + .fade {
@@ -218,13 +220,19 @@
 .toggle-nav.active + .main-nav .modal-content {
     background-color: transparent;
     position: fixed;
-    top: 40%;
+    top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     padding-top: 0px;
     text-align: center;
+    height: 100%;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .toggle-nav.active + .main-nav .modal-content .menu li {
     padding: 15px 0;
@@ -243,7 +251,7 @@
     -ms-transform: translateY(36px);
     transform: translateY(36px);
 
-    a{
+    a:not(.btn-common){
       color: $dark;
       font-size: 20px;
       font-weight: 600;
