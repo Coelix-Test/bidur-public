@@ -3690,24 +3690,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       title: '',
       author: '',
       date: new Date(),
-      sections: [{
-        type: 'video',
-        value: ''
-      }, {
-        type: 'survey',
-        image: '',
-        title: '',
-        answers: []
-      }, {
-        type: 'assessment',
-        image: '',
-        title: ''
-      }, {
-        type: 'selection',
-        image1: '',
-        image2: '',
-        title: ''
-      }]
+      sections: []
     };
   },
   components: {

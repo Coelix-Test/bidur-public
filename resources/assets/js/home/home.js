@@ -48,69 +48,70 @@ window.app = new Vue({
   }
 }).$mount('#home');
 
-$('#header_main .celebrities-slider').slick({
-  slidesToShow: 12,
-  slidesToScroll: 12,
-  dots: false,
-  arrows: true,
-  rtl: true,
-  infinite: true,
-  initialSlide: 2,
-  responsive: [
-      {
-      breakpoint: 1500,
-      settings: {
-        slidesToShow: 10,
-        slidesToScroll: 10
-      }
-    },
-    {
-      breakpoint: 1367,
-      settings: {
-        slidesToShow: 9,
-        slidesToScroll: 9
-      }
-    },
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 8,
-        slidesToScroll: 8
-      }
-    },
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 7,
-        slidesToScroll: 7
-      }
-    },
-    {
-        breakpoint: 991,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            variableWidth: true,
-            slidesToShow: 1,
-            slidesToScroll: 3,
-        }
-    }
-
-    // {
-    //     breakpoint: 991,
-    //     settings: "unslick"
-    // }
-  ]
-});
+//TODO: DELETE AFTER HEADER REFACTOR
+// $('.header-main .celebrities-slider').slick({
+//   slidesToShow: 12,
+//   slidesToScroll: 12,
+//   dots: false,
+//   arrows: true,
+//   rtl: true,
+//   infinite: true,
+//   initialSlide: 2,
+//   responsive: [
+//       {
+//       breakpoint: 1500,
+//       settings: {
+//         slidesToShow: 10,
+//         slidesToScroll: 10
+//       }
+//     },
+//     {
+//       breakpoint: 1367,
+//       settings: {
+//         slidesToShow: 9,
+//         slidesToScroll: 9
+//       }
+//     },
+//     {
+//       breakpoint: 1200,
+//       settings: {
+//         slidesToShow: 8,
+//         slidesToScroll: 8
+//       }
+//     },
+//     {
+//       breakpoint: 1024,
+//       settings: {
+//         slidesToShow: 7,
+//         slidesToScroll: 7
+//       }
+//     },
+//     {
+//         breakpoint: 991,
+//         settings: {
+//             arrows: false,
+//             centerMode: true,
+//             variableWidth: true,
+//             slidesToShow: 1,
+//             slidesToScroll: 3,
+//         }
+//     }
+//
+//     // {
+//     //     breakpoint: 991,
+//     //     settings: "unslick"
+//     // }
+//   ]
+// });
 //run stroke
-if($('.run-stroke').length){
-    //calculate width of stroke
-    var strokeWidth = $('.run-stroke').width();
-    var strokeSpeed = 70;//20px per second
-    var strokeAnimDuration = strokeWidth / strokeSpeed;
-
-    $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
-}
+// if($('.run-stroke').length){
+//     //calculate width of stroke
+//     var strokeWidth = $('.run-stroke').width();
+//     var strokeSpeed = 70;//20px per second
+//     var strokeAnimDuration = strokeWidth / strokeSpeed;
+//
+//     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
+// }
 
 $(document).ready(function(){
   $(".toggle-mnu").click(function() {
@@ -121,13 +122,15 @@ $(document).ready(function(){
     $(".toggle-mnu").toggleClass("active");
   });
 });
-//auth buttons
-$('.register-popup-trigger').on('click', function(e){
-    e.preventDefault();
-    app.openReg();
-});
 
-$('.login-popup-trigger').on('click', function(e){
-    e.preventDefault();
-    app.openLogin();
-});
+//TODO: DELETE AFTER HEADER REFACTOR
+//auth buttons
+// $('.register-popup-trigger').on('click', function(e){
+//     e.preventDefault();
+//     app.openReg();
+// });
+//
+// $('.login-popup-trigger').on('click', function(e){
+//     e.preventDefault();
+//     app.openLogin();
+// });

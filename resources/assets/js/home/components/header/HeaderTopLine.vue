@@ -8,9 +8,9 @@
                   </a>
               </div>
               <ul class="menu-list menu">
-                  <li><a href="./#">דף בית</a></li>
-                  <li><a href="./#/about-us">אודות</a></li>
-                  <li><a href="./#/contact-us">צור קשר</a></li>
+                  <li><router-link :to="{ name: 'index'}">תיב ףד</router-link></li>
+                  <li><router-link :to="{ name: 'about-us'}">תודוא</router-link></li>
+                  <li><router-link :to="{ name: 'contact-us'}">רשק רוצ</router-link></li>
               </ul>
           </div>
 
@@ -26,8 +26,10 @@
                 <a href="#" class="btn-common btn-red">logout</a>
               </template>
               <template v-else>
-                <a href="#" class="btn-common btn-red register-popup-trigger">הרשמה</a>
-                <a href="#" class="btn-common btn-border-dark login-popup-trigger">כניסה</a>
+                <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
+                <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
+                  <span>כניסה</span>
+                </a>
               </template>
           </div>
 
@@ -45,14 +47,22 @@
       				<div class="main-nav-content">
       					<ul id="menu-primary-menu" class="menu">
       						<li class="menu-item menu-item-has-children">
-      							<a href="./#/">דף בית</a>
+      							<router-link :to="{ name: 'index'}">תיב ףד</router-link>
       						</li>
       						<li class="menu-item">
-      							<a href="./#/about-us">אודות</a>
+      							<router-link :to="{ name: 'about-us'}">תודוא</router-link>
       						</li>
       						<li class="menu-item">
-      							<a href="./#/contact-us">צור קשר</a>
+      							<router-link :to="{ name: 'contact-us'}">רשק רוצ</router-link>
       						</li>
+                  <li>
+                    <div class="socials-wrap">
+                      <a href="#" class="telegram"></a>
+                      <a href="#" class="youtube"></a>
+                      <a href="#" class="facebook"></a>
+                      <a href="#" class="instagram"></a>
+                    </div>
+                  </li>
       					</ul>
       				</div>
       			</div>
@@ -63,12 +73,7 @@
           <a href="/" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
           </a>
-          <div class="socials-wrap">
-            <a href="#" class="telegram"></a>
-            <a href="#" class="youtube"></a>
-            <a href="#" class="facebook"></a>
-            <a href="#" class="instagram"></a>
-          </div>
+
       </div>
   </div><!-- top row end -->
 </template>

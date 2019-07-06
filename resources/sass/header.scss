@@ -40,6 +40,8 @@
             display: -webkit-flex;
             display: -ms-flex;
             display: flex;
+            height: 100%;
+            align-items: center;
         }
         .socials-wrap{
             width: 180px;
@@ -98,15 +100,45 @@
             align-items: center;
             margin: 0;
             padding: 0;
+            height: 100%;
             li{
-                margin-right: 34px;
+                height: 100%;
                 &:first-child{
                     margin-right: auto;
                 }
             }
             a{
+                display: flex;
+                align-items: center;
+                padding-right: 17px;
+                padding-left: 17px;
+                height: 100%;
+                font-size: 20px;
+                font-weight: 700;
+                color: $gold;
                 text-decoration: none;
                 color: #4f4f4f;
+
+                position: relative;
+                transition: all .2s ease-in;
+                &:before{
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  height: 4px;
+                  background: $gold;
+                  width: 0%;
+                  transition: all .15s ease-out;
+                }
+                &:hover,
+                &.router-link-exact-active{
+                  color: $gold;
+                  &:before{
+                    width: 100%;
+                  }
+                }
             }
         }
     }
@@ -162,7 +194,7 @@
         max-width: 1440px;
     }
     .celebrities-slider{
-        display: flex;
+        //display: flex;
         a{
             outline: none;
             text-decoration: none;
@@ -305,12 +337,13 @@
             .socials-wrap{
                 //width: calc(50% - 35px);
                 display: flex;
+                justify-content: center;
                 a{
                     width: 20px;
                     height: 20px;
                     flex-shrink: 0;
                     &:first-child{
-                        margin-right: auto;
+                        //margin-right: auto;//style for socials in header, not in menu
                     }
                 }
             }
@@ -377,25 +410,6 @@
             .celebrity{
                 padding-right: 15px;
                 padding-left: 15px;
-            }
-        }
-    }
-}
-
-@media (max-width: 700px){
-    #footer_main{
-        .contact-line{
-            .inner{
-                flex-direction: column;
-                text-align: center;
-                font-size: 18px;
-            }
-            .socials-wrap{
-                display: -webkit-flex;
-                display: -ms-flex;
-                display: flex;
-                justify-content: center;
-                margin-bottom: 10px;
             }
         }
     }
