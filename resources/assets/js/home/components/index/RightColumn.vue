@@ -204,7 +204,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: .3;
+    /* opacity: .3; */
     transition: .3s;
   }
 
@@ -216,15 +216,17 @@ export default {
   }
   ul.posts li:nth-child(3) a .overlay {
     background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);
+    opacity: .5;
   }
   ul.posts li:nth-child(4) a .overlay {
     background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);
+    opacity: .5;
   }
   ul.posts li:hover img {
     transform:scale(1.1);
   }
   ul.posts li a:hover .overlay {
-    background: rgba(0,0,0,1);
+    background: rgba(0,0,0,0.2);
   }
   ul.posts li a h2 {
     font-weight: 700;

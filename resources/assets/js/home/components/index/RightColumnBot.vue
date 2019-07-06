@@ -13,30 +13,16 @@
 
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
-      <!-- <ul ref="test" class="latest-post-slider">
-        <li v-if="posts" v-for="post in posts">
 
-            <img :src="post.img" alt="">
-            <div class="content">
-              <router-link :to="'/post/'+post.id">
-                <h3>{{ post.title }}</h3>
-              </router-link>
-              <p>
-                <span class="author">by {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
-              </p>
-            </div>
-        </li>
-      </ul> -->
       <carousel
         v-if="posts"
         class="latest-post-slider"
         rtl
         autoplay
         navigationEnabled
-        :autoplayTimeout="2000"
+        :autoplayTimeout="4000"
         :paginationEnabled="false"
-        :perPageCustom="[[320, 1], [768, 1], [769, 2]]"
+        :perPageCustom="[[320, 2], [768, 2], [769, 4]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
             <img :src="post.img" alt="">
@@ -190,18 +176,18 @@ export default {
     width:100%;
     height:100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     color:#333333;
     text-decoration: none;
   }
   .latest-post-item  img {
-    width:120px;
+    width:100%;
     height:120px;
     object-fit: cover;
     object-position: center;
-    margin-left: 16px;
+    margin-left: 0;
   }
   .latest-post-item p {
     font-size: 12px;
@@ -221,9 +207,11 @@ export default {
     white-space:nowrap;
   }
   .latest-post-item h3 {
-    font-size: 20px;
-    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 16px;
+    margin-bottom: 4px;
     color:#333;
+    font-weight: 700;
   }
   .latest-post-item a {
     color:#333;
@@ -233,7 +221,7 @@ export default {
     color:#333333;
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 0;
+    margin-bottom: 32px;
     margin-top: 0;
   }
   @media (max-width:768px) {
