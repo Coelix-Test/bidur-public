@@ -11,6 +11,8 @@
     </div>
 
     <instagram/>
+
+    <Surveys/>
   </div>
 </template>
 
@@ -18,6 +20,7 @@
 import BirthdaySection from './../components/main-page/BirthdaySection.vue';
 import PostsTileSection from './../components/main-page/PostsTileSection.vue';
 import Instagram from './../components/main-page/Instagram.vue';
+import Surveys from './../components/main-page/Surveys.vue';
 
 export default {
   data(){
@@ -27,6 +30,7 @@ export default {
     BirthdaySection,
     PostsTileSection,
     Instagram,
+    Surveys,
   },
   methods: {
 

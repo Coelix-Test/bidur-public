@@ -3,7 +3,7 @@
     <close @close="$emit('close')"/>
     <form @submit="submit" class="form">
       <div class="title">
-        המשרה
+        התחברות
       </div>
 
       <input
@@ -12,6 +12,7 @@
         class="th-input"
         v-model="name"
         autocomplete="name"
+        placeholder="שם"
       >
       <input
         type="email"
@@ -19,6 +20,7 @@
         class="th-input"
         v-model="email"
         autocomplete="email"
+        placeholder="מייל"
       >
       <input
         type="text"
@@ -26,12 +28,14 @@
         required
         class="th-input"
         v-model="phone"
+        placeholder="מכשיר טלפון"
       >
 
       <text-input
         :type="hide.pass ? 'password' : 'text'"
         required
         v-model="pass"
+        placeholder="סיסמה"
       >
         <template v-slot:button>
           <eye v-model="hide.pass"/>
@@ -42,6 +46,7 @@
         :type="hide.repeat ? 'password' : 'text'"
         required
         v-model="repeat"
+        placeholder="חזור על הסיסמה"
       >
         <template v-slot:button>
           <eye v-model="hide.repeat"/>
@@ -58,9 +63,9 @@
       </label>
       <button class="th-btn th-btn-gold" type="submit">המשרה</button>
       <div class="bottom">
-        ?רתאב שמתשמ רבכ ךל שי
+        יש לך כבר משתמש באתר?
         <button class="link" @click="login">
-          ןאכ ץחל
+          לחץ כאן
         </button>
       </div>
     </form>
@@ -97,6 +102,8 @@ export default {
   methods: {
     submit(e) {
 
+      e.preventDefault();
+
       this.$refs.agreement.classList.remove('shake', 'animated');
       this.$refs.repeat.$el.classList.remove('shake', 'animated');
 
@@ -107,7 +114,7 @@ export default {
         return;
       }
 
-      if(!this.pass !== this.repeat) {
+      if(this.pass !== this.repeat) {
         this.err = 'הסיסמה חוזרת כראוי';
         setImmediate(() => {
           this.$refs.repeat.$el.classList.add('shake', 'animated');
@@ -125,7 +132,6 @@ export default {
         this.$emit('close');
         document.location.reload();
       });
-      e.preventDefault();
     },
     login() {
       this.$emit('close');
@@ -153,6 +159,9 @@ export default {
     padding-bottom: 60px;
     input, .text-input {
       margin: 7px 0;
+    }
+    button {
+      width:100%;
     }
     .title {
       font-weight: bold;

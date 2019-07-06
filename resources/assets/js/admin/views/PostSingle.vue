@@ -247,6 +247,9 @@ export default {
                 })
                 .then(response => {
                     console.log(response);
+                    // this.$router.push(window.location.'/admin#post/new');
+                    console.log(document.location.origin + "/admin#post");
+                    window.location.href= document.location.origin+"/admin#/";
                 });
         }
     },

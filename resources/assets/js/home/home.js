@@ -35,6 +35,7 @@ window.app = new Vue({
         width: 600,
         height: 'auto',
         scrollable: true,
+        transition: 'modal-anim',
       })
     },
     openLogin() {
@@ -43,6 +44,8 @@ window.app = new Vue({
         width: 600,
         height: 'auto',
         scrollable: true,
+        transition: 'modal-anim',
+        // overlayTransition: 'modal-bg-anim',
       })
     }
   }

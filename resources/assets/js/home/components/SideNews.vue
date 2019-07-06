@@ -5,7 +5,7 @@
         v-for="(item, i) in data"
         :key="item.id"
         :data="item"
-        v-if="i <= 6"
+        v-if="i <= 4"
       />
     </div>
     <img
@@ -17,7 +17,7 @@
         v-for="(item, i) in data"
         :key="item.id"
         :data="item"
-        v-if="i > 6"
+        v-if="i > 4 && i < 10"
       />
     </div>
   </section>
@@ -71,6 +71,7 @@ export default {
   @media(max-width: 1200px) {
     padding-right: 0;
     width: 100%;
+    min-width:unset;
   }
 }
 

@@ -9,7 +9,7 @@
         <div class="action">Actions</div>
       </div>
       <div class="content">
-        <div v-if="users" v-for="user in users" :key="user.id" class="user">
+        <div v-if="users && user.id != 1" v-for="user in users" :key="user.id" class="user">
           <div class="name"><input type="text" name="username" v-model="user.name" minlength="2" required></div>
           <div class="mail"><input type="email" name="mail" v-model="user.email" minlength="2" required></div>
           <div class="phone"><input type="text" name="phone" v-model="user.phone" minlength="2" required></div>
@@ -22,9 +22,9 @@
             <span>{{user.status}}</span>
           </div>
           <div class="action">
-            <button v-if="user.is_current_user == false" type="submit" @click="deleteUser(user.id)">D</button>
+            <button v-if="user.is_current_user == null" type="submit" @click="deleteUser(user.id)">D</button>
             <button type="submit" @click="updateUser(user.id,user.name,user.email,user.phone)">S</button>
-            <button v-if="user.is_current_user == false" type="submit" @click="makeUserAdmin(user.id)">A</button>
+            <button v-if="user.is_current_user == null" type="submit" @click="makeUserAdmin(user.id)">A</button>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default {
       .post('/showAllAdmins')
         .then(response => {
           this.users = response.data;
-          console.log(this.users);
+          // console.log(this.users);
         })
   },
   methods : {

@@ -143,7 +143,7 @@ export default {
     border-width:12px;
   }
   .posts-column article:hover .overlay {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,1);
   }
   .posts-column article h2 {
     font-family: 'Assistant', sans-serif;
@@ -179,6 +179,10 @@ export default {
   @media (max-width:550px) {
     .posts-column article {
       margin-bottom: 8px;
+    }
+    .posts-column article h2 {
+      font-size: 28px;
+      line-height: 28px;
     }
   }
   @keyframes animatedgradient {
