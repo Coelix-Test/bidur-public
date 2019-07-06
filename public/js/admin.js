@@ -3673,6 +3673,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
 
 
 
@@ -3848,7 +3850,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     }
   },
   created: function created() {
-    if (this.$route.params.id) {// TODO: get all post info by ajax
+    var _this = this;
+
+    if (this.$route.params.id) {
+      // TODO: get all post info by ajax
+      axios.post('/post/' + this.$route.params.id).then(function (response) {
+        _this.title = response.data.post.mainTitle;
+        _this.author = response.data.post.author; // this.date = new Date();
+        // celebrities: [],
+        // sections
+      });
     }
   }
 });
@@ -25889,6 +25900,7 @@ var render = function() {
             placeholder: "Add Title to the Post",
             required: ""
           },
+          domProps: { value: _vm.title },
           on: {
             input: function($event) {
               return _vm.$emit("updateTitle", $event.target.value)
@@ -25941,6 +25953,7 @@ var render = function() {
                 name: "author",
                 placeholder: "Add author"
               },
+              domProps: { value: _vm.author },
               on: {
                 input: function($event) {
                   return _vm.$emit("updateAuthor", $event.target.value)
@@ -26634,7 +26647,12 @@ var render = function() {
         },
         [
           _c("edit-post-header", {
-            attrs: { celebrities: _vm.celebrities, date: _vm.date },
+            attrs: {
+              title: _vm.title,
+              author: _vm.author,
+              celebrities: _vm.celebrities,
+              date: _vm.date
+            },
             on: {
               updateTitle: _vm.onUpdateTitle,
               updateAuthor: _vm.onUpdateAuthor,

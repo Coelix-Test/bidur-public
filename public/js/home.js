@@ -21354,7 +21354,7 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: { name: "index" } } }, [
-                _vm._v("תיב ףד")
+                _vm._v("דף הבית")
               ])
             ],
             1
@@ -21364,7 +21364,7 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: { name: "about-us" } } }, [
-                _vm._v("תודוא")
+                _vm._v("אודות")
               ])
             ],
             1
@@ -21374,7 +21374,7 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: { name: "contact-us" } } }, [
-                _vm._v("רשק רוצ")
+                _vm._v("צור קשר")
               ])
             ],
             1

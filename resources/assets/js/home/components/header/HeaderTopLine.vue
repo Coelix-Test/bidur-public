@@ -8,9 +8,9 @@
                   </router-link>
               </div>
               <ul class="menu-list menu">
-                  <li><router-link :to="{ name: 'index'}">תיב ףד</router-link></li>
-                  <li><router-link :to="{ name: 'about-us'}">תודוא</router-link></li>
-                  <li><router-link :to="{ name: 'contact-us'}">רשק רוצ</router-link></li>
+                  <li><router-link :to="{ name: 'index'}">דף הבית</router-link></li>
+                  <li><router-link :to="{ name: 'about-us'}">אודות</router-link></li>
+                  <li><router-link :to="{ name: 'contact-us'}">צור קשר</router-link></li>
               </ul>
           </div>
 
