@@ -7,6 +7,7 @@
         <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
       </div>
     </template>
+
     <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
     <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
 
@@ -51,6 +52,10 @@
         </slide>
       </carousel>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev-alexey
   </div>
 </template>
 
@@ -70,15 +75,6 @@ export default {
     return {
       posts : [],
       survey: [],
-      options: {
-        question: 'מה חשבתם על ההופעה האחרונה של ריהנה',
-        answers: [
-          { value: 1, text: 'Supper, it is wonder news!', votes: 53 },
-          { value: 2, text: 'Normal, i know it', votes: 35 },
-          { value: 3, text: 'Oh my God, what is it!!??', votes: 30 },
-          { value: 4, text: 'Oh my God, what is it!!??', votes: 10 }
-        ]
-      }
     }
   },
   created() {
