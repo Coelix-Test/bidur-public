@@ -744,18 +744,22 @@ class MainController extends Controller
     }
 
     public function sendMail(Request $request){
-        $name = $request->get('name');
-        $email = $request->get('email');
-        $phone = $request->get('phone');
-        $message = $request->get('message');
+      $name = $request->get('name');
+      $email = $request->get('email');
+      $phone = $request->get('phone');
+      $message = $request->get('message');
 
-        Mail::create([
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'message' => $message,
-        ]);
+      if (Mail::create([
+          'name' => $name,
+          'email' => $email,
+          'phone' => $phone,
+          'message' => $message,
+      ])){
+          return ['success' => true, 'message' => 'success'];
+      }
+      return ['success' => false, 'message' => 'error'];
     }
+
 
 
 }
