@@ -18,18 +18,10 @@ import Users from './views/Users.vue';
 
 const router = new VueRouter({
   routes: [
-    { path: '/', name: 'posts', component: PostList, children: [
-        {
-            name: 'post-new',
-            path: 'post/new',
-            component: PostSingle,
-        },
-        {
-            name: 'post-single',
-            path: 'post/:id',
-            component: PostSingle,
-        },
-    ] },
+    { path: '/', name: 'posts', component: PostList },
+    { name: 'post-new', path: 'post/new', component: PostSingle },
+    { name: 'post-single', path: 'post/:id', component: PostSingle },
+
     { path: '/surveys', name: 'surveys', component: Surveys },
     { path: '/tags', name: 'tags', component: Tags },
     { path: '/users', name: 'users', component: Users },

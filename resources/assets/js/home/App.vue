@@ -1,11 +1,19 @@
 <template>
-  <transition name="anim" mode="out-in">
-    <router-view></router-view>
-  </transition>
+  <div>
+    <header-main></header-main>
+    <transition name="anim" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
+import HeaderMain from './components/header/HeaderMain.vue';
+
 export default {
+  components: {
+    HeaderMain
+  }
 }
 </script>
 

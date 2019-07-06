@@ -4,7 +4,7 @@
 
 @import 'menu.scss';
 
-#header_main {
+.header-main {
     a{
         text-decoration: none;
     }
@@ -248,29 +248,6 @@
     }
 }
 
-//profile header
-#header_main.profile-header{
-    .top-row{
-        max-width: 100%;
-        padding-right: 70px;
-        padding-left: 70px;
-        background: #000;
-        justify-content: space-between;
-        .menu-list,
-        .auth-btns{
-            width: auto;
-        }
-        .menu-list{
-            a{
-                color: #fff;
-            }
-        }
-        .auth-btns{
-            display: none;
-        }
-    }
-}
-
 //run stroke animation
 @keyframes animStroke {
   0% {
@@ -284,7 +261,7 @@
 }
 
 @media (max-width: 1530px){
-    #header_main{
+    .header-main{
         .celebrities-container{
             max-width: 1350px;
         }
@@ -292,7 +269,7 @@
 }
 
 @media (max-width: 1440px){
-    #header_main{
+    .header-main{
         .celebrities-container{
             max-width: 1440px;
             width: 100%;
@@ -302,7 +279,7 @@
     }
 }
 @media (max-width: 991px){
-    #header_main{
+    .header-main{
         //fixed header
         .top-row{
             position: fixed;
