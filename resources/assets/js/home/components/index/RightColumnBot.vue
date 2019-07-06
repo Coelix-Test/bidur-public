@@ -64,7 +64,8 @@ export default {
       this.survey = res.data;
     });
     axios.post('/getRecentPosts').then(res => {
-      this.posts = res.data;
+      console.log(res.data);
+      // this.posts = res.data;
     });
   },
   components: {

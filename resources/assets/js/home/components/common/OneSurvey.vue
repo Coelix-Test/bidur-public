@@ -147,9 +147,14 @@ export default {
 }
 @media (max-width:768px) {
   .one-survey {
+    height: 550px;
     .body {
+      > svg {
+        pointer-events: none;
+        z-index:2;
+      }
       > div {
-        width:50%;
+        width:calc(50% - 8px);
         margin:0 4px;
         img {
           width: 100%;

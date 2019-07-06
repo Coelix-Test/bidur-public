@@ -105,6 +105,9 @@ export default {
     input, .text-input {
       margin: 7px 0;
     }
+    button {
+      width:100%;
+    }
     .title {
       font-weight: bold;
       font-size: 50px;
