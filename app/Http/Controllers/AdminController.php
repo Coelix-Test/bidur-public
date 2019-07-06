@@ -451,9 +451,9 @@ class AdminController extends Controller
 
     public function editSurvey(Request $request){
         $survey = $request->get('survey');
-        if (isJson($survey)){
-            $survey = json_decode($survey);
-        }
+        // if (isJson($survey)){
+            // $survey = json_decode($survey);
+        // }
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
         $surveyObject->question = $survey['survey']['question'];
         $surveyObject->save();
