@@ -70,7 +70,7 @@ export default {
             box-shadow:0 0 12px rgba(0,0,0,0.1);
             color:#000;
               h2 {
-
+                word-break: break-all;
               }
               .post-meta {
                 display: flex;
@@ -84,6 +84,7 @@ export default {
                     margin-right: 6px;
                     padding-right: 6px;
                     border-right: 1px solid #000;
+                    word-break: break-all;
                   }
                   .id {
                     color:lightgrey;
