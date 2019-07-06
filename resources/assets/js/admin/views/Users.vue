@@ -22,9 +22,9 @@
             <span>{{user.status}}</span>
           </div>
           <div class="action">
-            <button type="submit" @click="deleteUser(user.id)">D</button>
+            <button v-if="user.is_current_user == false" type="submit" @click="deleteUser(user.id)">D</button>
             <button type="submit" @click="updateUser(user.id,user.name,user.email,user.phone)">S</button>
-            <button type="submit" @click="makeUserAdmin(user.id)">A</button>
+            <button v-if="user.is_current_user == false" type="submit" @click="makeUserAdmin(user.id)">A</button>
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@ export default {
       .post('/showAllAdmins')
         .then(response => {
           this.users = response.data;
+          console.log(this.users);
         })
   },
   methods : {

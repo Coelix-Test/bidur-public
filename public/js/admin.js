@@ -4073,6 +4073,7 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.post('/showAllAdmins').then(function (response) {
       _this.users = response.data;
+      console.log(_this.users);
     });
   },
   methods: {
@@ -27326,18 +27327,20 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "action" }, [
-                  _c(
-                    "button",
-                    {
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteUser(user.id)
-                        }
-                      }
-                    },
-                    [_vm._v("D")]
-                  ),
+                  user.is_current_user == false
+                    ? _c(
+                        "button",
+                        {
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteUser(user.id)
+                            }
+                          }
+                        },
+                        [_vm._v("D")]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -27357,18 +27360,20 @@ var render = function() {
                     [_vm._v("S")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.makeUserAdmin(user.id)
-                        }
-                      }
-                    },
-                    [_vm._v("A")]
-                  )
+                  user.is_current_user == false
+                    ? _c(
+                        "button",
+                        {
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              return _vm.makeUserAdmin(user.id)
+                            }
+                          }
+                        },
+                        [_vm._v("A")]
+                      )
+                    : _vm._e()
                 ])
               ])
             : _vm._e()
