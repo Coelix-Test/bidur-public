@@ -109,7 +109,7 @@ class AdminController extends Controller
     public function createFullPost(Request $request){
         $sections = $request->get('sections');
         $files = $request->allFiles();
-//        dd($sections);
+       // dd($files);
         foreach ($sections as $key => $section) {
 
             if ($section['type'] == 'metaTitle'){

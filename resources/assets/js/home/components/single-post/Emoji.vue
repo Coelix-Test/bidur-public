@@ -54,7 +54,6 @@ export default {
       this.sync(this.postId);
 
       var buttons = document.querySelectorAll('.item');
-      console.log(buttons);
       for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('is_active');
       }
@@ -130,6 +129,7 @@ export default {
     align-items: center;
     background: transparent;
     border: 0;
+    transition: .3s;
     img {
       height: 60px;
       pointer-events: none;
@@ -141,11 +141,15 @@ export default {
       pointer-events: none;
     }
     &.is_active {
+      transform: scale(1.2);
       .num {
         background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+    }
+    &:hover {
+      transform: scale(1.2);
     }
   }
 }
