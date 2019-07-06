@@ -16394,19 +16394,25 @@ body {
 #header_main .top-row-inner .socials-wrap a.youtube,
 #header_main .top-row-inner-mob .socials-wrap a.youtube {
   background: url("/img/icons/social-youtube-colored.svg") no-repeat center;
-  background-size: cover;
+  background-size: contain;
 }
 
 #header_main .top-row-inner .socials-wrap a.facebook,
 #header_main .top-row-inner-mob .socials-wrap a.facebook {
   background: url("/img/icons/social-facebook-colored.svg") no-repeat center;
-  background-size: cover;
+  background-size: contain;
 }
 
 #header_main .top-row-inner .socials-wrap a.instagram,
 #header_main .top-row-inner-mob .socials-wrap a.instagram {
   background: url("/img/icons/social-instagram-colored.svg") no-repeat center;
-  background-size: cover;
+  background-size: contain;
+}
+
+#header_main .top-row-inner .socials-wrap a.telegram,
+#header_main .top-row-inner-mob .socials-wrap a.telegram {
+  background: url("/img/icons/social-telegram-colored.svg") no-repeat center;
+  background-size: contain;
 }
 
 #header_main .top-row-inner .menu-list,
@@ -16686,7 +16692,6 @@ body {
   }
 
   #header_main .top-row-inner-mob .socials-wrap {
-    width: calc(50% - 35px);
     display: -webkit-box;
     display: flex;
   }
@@ -16699,10 +16704,6 @@ body {
 
   #header_main .top-row-inner-mob .socials-wrap a:first-child {
     margin-right: auto;
-  }
-
-  #header_main .top-row-inner-mob .menu-wrap {
-    width: calc(50% - 35px);
   }
 
   #header_main .top-row-inner-mob .logo-wrap {
