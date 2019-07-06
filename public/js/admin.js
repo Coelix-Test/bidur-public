@@ -26585,17 +26585,19 @@ var render = function() {
                   [_vm._v("edit")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.deletePost(post.post.id)
-                      }
-                    }
-                  },
-                  [_vm._v("delete")]
-                )
+                post.post.is_in_main_section == null
+                  ? _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.deletePost(post.post.id)
+                          }
+                        }
+                      },
+                      [_vm._v("delete")]
+                    )
+                  : _vm._e()
               ])
             ])
           : _vm._e()

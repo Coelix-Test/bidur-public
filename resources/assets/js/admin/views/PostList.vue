@@ -12,7 +12,7 @@
         <div class="actions">
           <a :href="'.#/post/'+post.post.id" target="_blank">view</a>
           <button @click="editPost(post.post.id)">edit</button>
-          <button @click="deletePost(post.post.id)">delete</button>
+          <button v-if="post.post.is_in_main_section == null" @click="deletePost(post.post.id)">delete</button>
         </div>
 
       </div>
