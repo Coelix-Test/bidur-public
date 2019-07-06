@@ -4,7 +4,7 @@
         <div class="search-results">
             <div v-for="matchingItem in filtered"
                 @click="select(matchingItem)">
-                {{matchingItem.name}}
+                {{matchingItem[label]}}
             </div>
         </div>
         <div v-if="deletable" class="delete-self" @click="$emit('deleteSelf', index)"></div>
@@ -13,11 +13,6 @@
 
 <script>
 export default {
-    data: function(){
-        return {
-            query: '',
-        };
-    },
     props: {
         options: {
             type: Array
@@ -32,19 +27,34 @@ export default {
         placeholder: {
             type: String,
             default: ''
+        },
+        label: {
+          default: 'name'
+        },
+        val: {
+          default: 'id',
+        },
+        value: {
+
         }
+    },
+    data() {
+      console.log(this.value);
+      return {
+        query: this.value ? this.value[this.label] : '',
+      };
     },
     methods: {
         select(item){
             //console.log(this.index);
-            this.query = item.name;
-            this.$emit('select', item, this.index);
+            this.query = item[this.label];
+            this.$emit('input', item);
         }
     },
     computed: {
         filtered() {
             if(this.query.length) {
-                return this.options.filter(n => (new RegExp(this.query, 'i')).test(n.name));
+                return this.options.filter(n => (new RegExp(this.query, 'i')).test(n[this.label]));
             } else {
                 return this.options;
             }

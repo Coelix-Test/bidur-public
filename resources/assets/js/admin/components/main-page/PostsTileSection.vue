@@ -8,10 +8,11 @@
                     :deletable="false"
                     :placeholder="'Type post name'"
                     :options="posts"
-                    @select="selectPost">
-                </searchable-input>
+                    label="title"
+                    v-model="values[index]"
+                />
             </div>
-            <button class="theme-btn theme-btn-red big-btn">Save</button>
+            <button @click="save" class="theme-btn theme-btn-red big-btn">Save</button>
         </div>
     </div>
 </template>
@@ -22,15 +23,9 @@ import SearchableInput from './../common/SearchableInput.vue';
 export default {
     data(){
         return {
-            selectedPosts: [
-                {label:'Main post', id: '', title: ''},
-                {label:'Second post', id: '', title: ''},
-                {label:'Third post', id: '', title: ''},
-                {label:'Fourth post', id: '', title: ''},
-                {label:'Fifth post', id: '', title: ''},
-                {label:'Sixth post', id: '', title: ''},
-            ],
-            posts: []
+            selectedPosts: [],
+            values: [],
+            posts: [],
         };
     },
     components: {
@@ -38,22 +33,31 @@ export default {
     },
     methods: {
         getAllPostTitles(){
-            axios.post('/getAllPostTitles')
-                .then(response => {
-                    this.posts = response.data;
-                });
+            axios.post('/getAllPostTitles').then(res => {
+              this.posts = res.data;
+            });
         },
         getSelectedPosts(){
             axios.post('/getSelectedPosts')
-                .then(response => {
-                    console.log(response.data);
-                    // response.data.forEach((item, i) => {
-                    //     delete item.img;
-                    //  });
+                .then(res => {
+                  this.values = Object.values(res.data);
+                  this.selectedPosts = Object.values(res.data);
                 });
         },
         selectPost(post){
-
+          console.log(post);
+        },
+        save() {
+          axios.post('/editMainPagePosts', {
+            mainPostId: this.values[0],
+            secondPostId: this.values[1],
+            thirdPostId: this.values[2],
+            fourthPostId: this.values[3],
+            fifthPostId: this.values[4],
+            sixthPostId: this.values[5],
+          }).then(response => {
+            console.log('saved');
+          });
         }
     },
     created() {
