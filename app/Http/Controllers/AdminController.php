@@ -110,47 +110,47 @@ class AdminController extends Controller
         $sections = $request->get('sections');
         $files = $request->allFiles();
         foreach ($sections as $key => $section) {
-
             if ($section['type'] == 'metaTitle'){
-                $metaTitle  = $section['title'];
+                $metaTitle  = addslashes($section['title']);
+
                 $hashtags = null;
                 if (isset($section['celebrities'])){
                     $hashtags   = $section['celebrities']; //array
                 }
-                $author     = $section['author'];
+                $author     = addslashes($section['author']);
                 $date       = $section['date'];
                 $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
 
             }
             elseif($section['type'] == 'text'){
-                $content = $section['value'];
+                $content = addslashes($section['value']);
 //                dd($content);
                 $this->createPostAddContent($this->post->id, $content, $key);
             }
             elseif($section['type'] == 'title'){
-                $title = $section['value'];
+                $title = addslashes($section['value']);
                 $this->createPostAddTitle($this->post->id, $title, $key);
             }
             elseif($section['type'] == 'video'){
-                $url = $section['video'];
-                $this->createPostAddTitle($this->post->id, $url, $key);
+                $url = $section['value'];
+                $this->createPostAddVideo($this->post->id, $url, $key);
             }
             elseif($section['type'] == 'survey'){
 //                dd($files);
-                $title = $section['title'];
+                $title = addslashes($section['title']);
                 $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
             }
             elseif ($section['type'] == 'image'){
 //                    dd($files['sections'][$key]['value']);
 
-                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], addslashes($section['description']), $key);
             }
             elseif ($section['type'] == 'imageWithText'){
                 $this->createPostAddImageWithText(
                     $this->post->id,
                     $files['sections'][$key]['image'],
-                    $section['title'],
-                    $section['text'],
+                    addslashes($section['title']),
+                    addslashes($section['text']),
                     $section['imagePosition'],
                     $key
                 );
@@ -158,10 +158,10 @@ class AdminController extends Controller
             }elseif ($section['type'] == 'selection'){
                 $leftFile = $files['sections'][$key]['image1'];
                 $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, addslashes($section['title']), $key);
             }elseif ($section['type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
-                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                $this->createPostAddSingleLikablePhoto($this->post->id, $file, addslashes($section['title']), $key);
             }
         }
         return json_encode(['success' => true]);
@@ -269,7 +269,7 @@ class AdminController extends Controller
 
             SurveyAnswerVariant::create([
                 'surveyId' => $survey->id,
-                'question' => $variant,
+                'question' => addslashes($variant),
                 'order' => $key+1
             ]);
         }
@@ -278,7 +278,7 @@ class AdminController extends Controller
     public function createPostAddVideo($postId, $url, $order){
         PostVideo::create([
             'postId' =>  $postId,
-            'titleText' => $url,
+            'url' => $url,
             'order' => $order
         ]);
     }
