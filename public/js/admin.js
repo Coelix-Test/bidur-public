@@ -27295,7 +27295,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "action" }, [
-                  user.is_current_user == false
+                  user.is_current_user == null
                     ? _c(
                         "button",
                         {
@@ -27328,7 +27328,7 @@ var render = function() {
                     [_vm._v("S")]
                   ),
                   _vm._v(" "),
-                  user.is_current_user == false
+                  user.is_current_user == null
                     ? _c(
                         "button",
                         {
