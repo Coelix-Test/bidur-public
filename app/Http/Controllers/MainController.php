@@ -704,14 +704,19 @@ class MainController extends Controller
         $email = $request->get('email');
         $phone = $request->get('phone');
         $message = $request->get('message');
+        try{
+            Mail::create([
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'message' => $message,
+            ]);
+            return ['success' => true];
+        }catch (\Exception $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
 
-        Mail::create([
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'message' => $message,
-        ]);
-        return ['success' => true, 'message' => 'заебал блять тупая скотина нахуй'];
+
     }
 
 
