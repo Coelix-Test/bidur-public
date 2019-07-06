@@ -158,7 +158,7 @@ class AdminController extends Controller
             }elseif ($section['type'] == 'selection'){
                 $leftFile = $files['sections'][$key]['image1'];
                 $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title']), $key;
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
             }elseif ($section['type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
