@@ -152,22 +152,22 @@ class MainController extends Controller
             $finalAllPosts[$key]['post'] = $post;
             $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
             if ($post->id == $mainSection->first){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
             if ($post->id == $mainSection->second){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
             if ($post->id == $mainSection->third){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
             if ($post->id == $mainSection->fourth){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
             if ($post->id == $mainSection->fifth){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
             if ($post->id == $mainSection->sixth){
-                $allPosts[$key]['is_in_main_section'] = true;
+                $finalAllPosts[$key]['is_in_main_section'] = true;
             }
         }
 
