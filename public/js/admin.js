@@ -45085,16 +45085,15 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
     name: 'posts',
-    component: _views_PostList_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    children: [{
-      name: 'post-new',
-      path: 'post/new',
-      component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-    }, {
-      name: 'post-single',
-      path: 'post/:id',
-      component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-    }]
+    component: _views_PostList_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, {
+    name: 'post-new',
+    path: 'post/new',
+    component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    name: 'post-single',
+    path: 'post/:id',
+    component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     path: '/surveys',
     name: 'surveys',
@@ -47470,7 +47469,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
