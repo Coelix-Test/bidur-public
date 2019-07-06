@@ -150,9 +150,12 @@ export default {
     .body {
       > div {
         width:50%;
+        padding:0 4px;
         img {
           width: 100%;
-          height: auto;
+          height: 100%;
+          max-width: 100%;
+          padding:0;
         }
       }
     }
