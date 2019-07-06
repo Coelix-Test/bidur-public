@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="imagetext-actions">
-            <div class="delete-self"></div>
+            <div class="delete-self" @click="$emit('deleteSection', index)"></div>
             <div class="change-image-position" @click="updateImagePosition"></div>
         </div>
     </div>

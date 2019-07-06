@@ -3216,6 +3216,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3346,7 +3348,7 @@ __webpack_require__.r(__webpack_exports__);
 
         setTimeout(function () {
           _this2.initSlick();
-        }, 200);
+        }, 400);
       });
     },
     getAllPostTitles: function getAllPostTitles() {
@@ -21216,22 +21218,34 @@ var render = function() {
           { staticClass: "celebrities-slider" },
           _vm._l(_vm.hashtags, function(hashtag) {
             return _c(
-              "a",
-              { staticClass: "np-slide-item", attrs: { href: "#" } },
+              "div",
+              { key: hashtag.id, staticClass: "slide-wrap" },
               [
-                _c("div", { staticClass: "celebrity" }, [
-                  _c("div", { staticClass: "img-wrap" }, [
-                    _c("div", {
-                      staticClass: "image",
-                      style: "background-image: url(" + hashtag.img + ");"
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(_vm._s(hashtag.name))
-                  ])
-                ])
-              ]
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "np-slide-item",
+                    attrs: {
+                      to: { name: "hashtag", params: { id: hashtag.id } }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "celebrity" }, [
+                      _c("div", { staticClass: "img-wrap" }, [
+                        _c("div", {
+                          staticClass: "image",
+                          style: "background-image: url(" + hashtag.img + ");"
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "name" }, [
+                        _vm._v(_vm._s(hashtag.name))
+                      ])
+                    ])
+                  ]
+                )
+              ],
+              1
             )
           }),
           0
@@ -21306,14 +21320,23 @@ var render = function() {
   return _c("div", { staticClass: "top-row" }, [
     _c("div", { staticClass: "top-row-inner" }, [
       _c("div", { staticClass: "menu-col-wrap" }, [
-        _vm._m(0),
+        _c(
+          "div",
+          { staticClass: "logo-wrap" },
+          [
+            _c("router-link", { attrs: { to: { name: "index" } } }, [
+              _c("img", { attrs: { src: "/img/logo-yellow.png", alt: "" } })
+            ])
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("ul", { staticClass: "menu-list menu" }, [
           _c(
             "li",
             [
               _c("router-link", { attrs: { to: { name: "index" } } }, [
-                _vm._v("תיב ףד")
+                _vm._v("דף הבית")
               ])
             ],
             1
@@ -21323,7 +21346,7 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: { name: "about-us" } } }, [
-                _vm._v("תודוא")
+                _vm._v("אודות")
               ])
             ],
             1
@@ -21333,7 +21356,7 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: { name: "contact-us" } } }, [
-                _vm._v("רשק רוצ")
+                _vm._v("צור קשר")
               ])
             ],
             1
@@ -21341,7 +21364,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -21381,83 +21404,82 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "top-row-inner-mob" }, [
-      _c("div", { staticClass: "menu-wrap" }, [
-        _vm._m(2),
+    _c(
+      "div",
+      { staticClass: "top-row-inner-mob" },
+      [
+        _c("div", { staticClass: "menu-wrap" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "main-nav modal fade", attrs: { id: "nav-panel" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "main-nav-content" }, [
+                  _c(
+                    "ul",
+                    { staticClass: "menu", attrs: { id: "menu-primary-menu" } },
+                    [
+                      _c(
+                        "li",
+                        { staticClass: "menu-item menu-item-has-children" },
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "index" } } },
+                            [_vm._v("תיב ףד")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        { staticClass: "menu-item" },
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "about-us" } } },
+                            [_vm._v("תודוא")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        { staticClass: "menu-item" },
+                        [
+                          _c(
+                            "router-link",
+                            { attrs: { to: { name: "contact-us" } } },
+                            [_vm._v("רשק רוצ")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c(
-          "div",
-          { staticClass: "main-nav modal fade", attrs: { id: "nav-panel" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "main-nav-content" }, [
-                _c(
-                  "ul",
-                  { staticClass: "menu", attrs: { id: "menu-primary-menu" } },
-                  [
-                    _c(
-                      "li",
-                      { staticClass: "menu-item menu-item-has-children" },
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { name: "index" } } },
-                          [_vm._v("תיב ףד")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      { staticClass: "menu-item" },
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { name: "about-us" } } },
-                          [_vm._v("תודוא")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      { staticClass: "menu-item" },
-                      [
-                        _c(
-                          "router-link",
-                          { attrs: { to: { name: "contact-us" } } },
-                          [_vm._v("רשק רוצ")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]
-                )
-              ])
-            ])
-          ]
+          "router-link",
+          { staticClass: "logo-wrap", attrs: { to: { name: "index" } } },
+          [_c("img", { attrs: { src: "/img/logo-yellow.png", alt: "" } })]
         )
-      ]),
-      _vm._v(" "),
-      _vm._m(4)
-    ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "logo-wrap" }, [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("img", { attrs: { src: "/img/logo-yellow.png", alt: "" } })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -21496,14 +21518,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("a", { staticClass: "instagram", attrs: { href: "#" } })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "logo-wrap", attrs: { href: "/" } }, [
-      _c("img", { attrs: { src: "/img/logo-yellow.png", alt: "" } })
     ])
   }
 ]

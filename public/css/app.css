@@ -16577,6 +16577,11 @@ body {
   max-width: 1440px;
 }
 
+.header-main .celebrities-slider {
+  display: -webkit-box;
+  display: flex;
+}
+
 .header-main .celebrities-slider a {
   outline: none;
   text-decoration: none;
@@ -16796,7 +16801,6 @@ body {
 }
 
 #footer_main .contact-line {
-  font-family: "Oswald";
   font-size: 24px;
   color: #333;
   max-width: 1440px;
