@@ -23557,10 +23557,12 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     post.type == "image"
-                      ? _c("p", [
+                      ? _c("div", [
                           _c("img", { attrs: { src: post.value, alt: "" } }),
                           _vm._v(" "),
-                          _c("span", [_vm._v(_vm._s(post.description))])
+                          _c("span", {
+                            domProps: { innerHTML: _vm._s(post.description) }
+                          })
                         ])
                       : _vm._e(),
                     _vm._v(" "),
@@ -23630,7 +23632,9 @@ var render = function() {
                             : _vm._e(),
                           _vm._v(" "),
                           post.content
-                            ? _c("p", [_vm._v(_vm._s(post.content))])
+                            ? _c("div", {
+                                domProps: { innerHTML: _vm._s(post.content) }
+                              })
                             : _vm._e()
                         ])
                       : _vm._e()

@@ -32,10 +32,10 @@
 
           <div v-if="post.type == 'content'" v-html="post.value"></div>
 
-          <p v-if="post.type == 'image'">
+          <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span>{{post.description}}</span>
-          </p>
+            <span v-html="post.description"></span>
+          </div>
 
 
           <div v-if="post.type == 'survey'" class="poll">
@@ -61,7 +61,7 @@
           <div v-if="post.type == 'imageWithText'">
             <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
             <h2 v-if="post.title">{{ post.title }}</h2>
-            <p v-if="post.content">{{post.content}}</p>
+            <div v-if="post.content" v-html="post.content"></div>
           </div>
 
           <!-- <div v-if="post.type == ''"></div> -->
