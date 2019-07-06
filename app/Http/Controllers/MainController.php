@@ -455,16 +455,16 @@ class MainController extends Controller
     public function getContent($id){
         $post = Post::find($id);
         $thumbnail = $post->getAllImages()->first();
-        $content = $post->getAllContents()->first();
+//        $content = $post->getAllContents()->first();
 //        $title = $post->getAllTitles()->first();
         $author = $post->author;
 
-        if (!empty($content)){
-            $excerpt = substr($content->contentText, 0, 200);
-            $excerpt = strip_tags($excerpt);
-        }else{
-            $excerpt = '';
-        }
+//        if (!empty($content)){
+//            $excerpt = substr($content->contentText, 0, 200);
+//            $excerpt = strip_tags($excerpt);
+//        }else{
+//            $excerpt = '';
+//        }
 
         $rating = (int)$post->getRating()->avg('rating');
         $time = $post->created_at;
@@ -487,11 +487,11 @@ class MainController extends Controller
 //        }else{
 //            $allInfo['title'] = '';
 //        }
-        if (!empty($excerpt)){
-            $allInfo['excerpt'] = $excerpt.'...';
-        }else{
-            $allInfo['excerpt'] = '';
-        }
+//        if (!empty($excerpt)){
+//            $allInfo['excerpt'] = $excerpt.'...';
+//        }else{
+//            $allInfo['excerpt'] = '';
+//        }
         if (!empty($time)){
             $allInfo['time'] = $time;
         }else{
@@ -613,13 +613,19 @@ class MainController extends Controller
 //        }
     }
 
+//    public function getRecentPosts(){
+//        dd(123);
+//    }
+
     public function getRecentPosts(){
 
         $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
 //        dd($recentPosts);
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
+
         }
+//        dd($postsForView);
         return json_encode($postsForView);
     }
 
