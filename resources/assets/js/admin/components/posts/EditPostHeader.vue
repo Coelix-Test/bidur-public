@@ -1,7 +1,7 @@
 <template>
     <div class="edit-post-header-wrapper">
         <div class="inputs-row">
-            <input type="text" class="main-post-title" name="title" @input="$emit('updateTitle', $event.target.value)" placeholder="Add Title to the Post" required>
+            <input type="text" class="main-post-title" name="title" maxlength="150" @input="$emit('updateTitle', $event.target.value)" placeholder="Add Title to the Post" required>
         </div>
         <edit-post-celebrities
             @updateCelebrities="onUpdateCelebrities"
@@ -24,7 +24,7 @@
                 <div class="ico">
                     <img src="/img/icons/edit-post-author.svg" alt="">
                 </div>
-                <input type="text" class="theme-input-text" name="author" @input="$emit('updateAuthor', $event.target.value)" placeholder="Add author">
+                <input type="text" class="theme-input-text" name="author" maxlength="20" @input="$emit('updateAuthor', $event.target.value)" placeholder="Add author">
             </div>
         </div>
 

@@ -19,7 +19,7 @@ import Users from './views/Users.vue';
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'posts', component: PostList },
-    { name: 'post-new', path: 'post/new', component: PostSingle },
+    { name: 'post-new', path: '/post/new', component: PostSingle },
     { name: 'post-single', path: 'post/:id', component: PostSingle },
 
     { path: '/surveys', name: 'surveys', component: Surveys },

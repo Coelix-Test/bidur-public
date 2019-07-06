@@ -3944,10 +3944,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           }
         }
       }).then(function (response) {
-        console.log(response); // this.$router.push(window.location.'/admin#post/new');
-
-        console.log(document.location.origin + "/admin#post");
-        window.location.href = document.location.origin + "/admin#/";
+        // console.log(response);
+        // this.$route.push(document.location.origin+"/admin#/");
+        // window.location.href = document.location.origin+"/admin#/?refresh=1";
+        alert('Post was successfully added!');
+        document.location.reload(true);
+      })["catch"](function (error) {
+        return console.log(response);
       });
     }
   },
@@ -26148,6 +26151,7 @@ var render = function() {
           attrs: {
             type: "text",
             name: "title",
+            maxlength: "150",
             placeholder: "Add Title to the Post",
             required: ""
           },
@@ -26201,6 +26205,7 @@ var render = function() {
               attrs: {
                 type: "text",
                 name: "author",
+                maxlength: "20",
                 placeholder: "Add author"
               },
               on: {
@@ -26887,7 +26892,7 @@ var render = function() {
       _c(
         "form",
         {
-          staticClass: "col-8",
+          staticClass: "col-12",
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -27216,7 +27221,8 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px"
+            "font-size": "16px",
+            display: "none"
           },
           attrs: { dir: "ltr" }
         },
@@ -45342,7 +45348,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _views_PostList_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
     name: 'post-new',
-    path: 'post/new',
+    path: '/post/new',
     component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     name: 'post-single',
