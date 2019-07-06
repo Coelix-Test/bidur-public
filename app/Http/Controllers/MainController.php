@@ -441,56 +441,11 @@ class MainController extends Controller
         }else{
             $excerpt = '';
         }
+
         $rating = (int)$post->getRating()->avg('rating');
         $time = $post->created_at;
+
         $time = $time->timestamp;
-        $now = Carbon::now();
-        $now = $now->timestamp;
-        $diff = $now - $time;
-        $hours = 0;
-        $days = 0;
-        $weeks = 0;
-        $flag = false;
-        while ($diff > 3600){
-            $diff = $diff - 3600;
-            $hours++;
-            if ($hours == 23){
-                $days++;
-                $hours = 0;
-            }
-            if ($days == 7){
-                $weeks++;
-                $days = 0;
-            }
-            if ($weeks == 4 && $days > 1){
-                $flag = true;
-                break;
-            }
-        }
-        $time = $post->created_at;
-        if ($flag == true){
-            $createdAt = 'at '.$time->year.'-'.$time->month.'-'.$time->day;
-        }else{
-            if ($hours <= 23 && $days == 0 && $weeks == 0){
-                if ($hours = 0){
-                    $createdAt = 'just now';
-                }else{
-                    $createdAt = $hours.' hours ago';
-                }
-            }else{
-                if ($days <= 6 && $weeks == 0){
-                    $createdAt = $days.' days ago';
-                }else{
-                    if ($weeks <= 4){
-                        if ($weeks == 1){
-                            $createdAt = $weeks.' week ago';
-                        }else{
-                            $createdAt = $weeks.' weeks ago';
-                        }
-                    }
-                }
-            }
-        }
 
         if (!empty($thumbnail)){
             $allInfo['img'] = $thumbnail->url;
@@ -513,8 +468,8 @@ class MainController extends Controller
         }else{
             $allInfo['excerpt'] = '';
         }
-        if (!empty($createdAt)){
-            $allInfo['time'] = $createdAt;
+        if (!empty($time)){
+            $allInfo['time'] = $time;
         }else{
             $allInfo['time'] = '';
         }
@@ -635,8 +590,8 @@ class MainController extends Controller
     }
 
     public function getRecentPosts(){
-        $recentPosts = Post::orderBy('created_at', 'desc')->get();
-        dd($recentPosts);
+        $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
+//        dd($recentPosts);
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
         }
@@ -745,20 +700,23 @@ class MainController extends Controller
     }
 
     public function sendMail(Request $request){
-      $name = $request->get('name');
-      $email = $request->get('email');
-      $phone = $request->get('phone');
-      $message = $request->get('message');
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $phone = $request->get('phone');
+        $message = $request->get('message');
+        try{
+            Mail::create([
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'message' => $message,
+            ]);
+            return ['success' => true];
+        }catch (\Exception $exception){
+            return ['success' => false, 'message' => $exception->getMessage()];
+        }
 
-      if (Mail::create([
-          'name' => $name,
-          'email' => $email,
-          'phone' => $phone,
-          'message' => $message,
-      ])){
-          return ['success' => true, 'message' => 'success'];
-      }
-      return ['success' => false, 'message' => 'error'];
+
     }
 
 
