@@ -7,7 +7,7 @@
     <left-column v-if="leftPosts.length" :data="leftPosts" />
 
     <right-column-bot />
-    <left-column-bot  />
+    <left-column-bot />
 
   </div>
 </template>
@@ -112,7 +112,7 @@ export default {
   .vue-poll .votes {
     padding:0 12px;
   }
-  .vue-poll .ans-cnt .ans-no-vote:before {
+  /* .vue-poll .ans-cnt .ans-no-vote:before {
     content:'';
     position: absolute;
     top:0;
@@ -120,7 +120,7 @@ export default {
     width:10px;
     height:100%;
     background: linear-gradient(360deg, #403EC0 0%, #3BB9FE 85.58%, #00F0FF 107.76%);
-  }
+  } */
   .vue-poll .ans-cnt .ans-no-vote:hover {
     /* background-color: #0E0E0E; */
   }
@@ -152,9 +152,13 @@ export default {
     text-align: left;
   }
   .vue-poll .ans-cnt .ans .bg {
-    opacity: .3;
+    opacity: 1;
+    background: #F2F2F2;
   }
-  .vue-poll .ans-cnt .ans:nth-child(1) .bg {
+  .vue-poll .ans-cnt .ans .selected + .bg {
+    background: linear-gradient(296.58deg, #EDB72A 6.16%, #FDD55D 99.09%);
+  }
+  /* .vue-poll .ans-cnt .ans:nth-child(1) .bg {
     background: linear-gradient(90.01deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
   }
   .vue-poll .ans-cnt .ans:nth-child(2) .bg {
@@ -165,7 +169,7 @@ export default {
   }
   .vue-poll .ans-cnt .ans:nth-child(4) .bg {
     background: linear-gradient(270deg, #403EC0 2.58%, #3BB9FE 78.1%, #00F0FF 97.67%);
-  }
+  } */
   .vue-poll .ans-cnt .ans-voted.selected .txt:after {
     content:'\2714';
     margin-right: 10px;

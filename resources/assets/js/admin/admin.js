@@ -15,6 +15,7 @@ import Surveys from './views/Surveys.vue';
 import Tags from './views/Tags.vue';
 import EditMainPage from './views/EditMainPage.vue';
 import Users from './views/Users.vue';
+import PostList from './views/PostList.vue';
 
 const router = new VueRouter({
   routes: [
@@ -34,6 +35,7 @@ const router = new VueRouter({
     { path: '/tags', name: 'tags', component: Tags },
     { path: '/users', name: 'users', component: Users },
     { path: '/edit-main-page', name: 'edit-main-page', component: EditMainPage },
+    { path: '/post-list', name: 'post-list', component: PostList },
   ]
 });
 

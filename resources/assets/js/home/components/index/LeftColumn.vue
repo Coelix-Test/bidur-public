@@ -172,6 +172,9 @@ export default {
     .posts-column article {
       height:200px;
     }
+    .posts-column article:nth-child(1) {
+      height:250px;
+    }
   }
   @media (max-width:550px) {
     .posts-column article {

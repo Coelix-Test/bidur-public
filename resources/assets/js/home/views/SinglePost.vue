@@ -23,10 +23,6 @@
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{ post.data.post.date }}</span>
           </div>
-          <!-- <a href="#" class="share">
-            ףתש
-            <img src="/img/shareArrow.svg" alt="">
-          </a> -->
           <share />
 
         </div>
@@ -67,6 +63,8 @@
             <h2 v-if="post.title">{{ post.title }}</h2>
             <p v-if="post.content">{{post.content}}</p>
           </div>
+
+          <!-- <div v-if="post.type == ''"></div> -->
 
         </section>
 
@@ -148,7 +146,7 @@ export default {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
+            console.log(response.data);
 
             this.post = response;
             this.errorMessage = false;
@@ -255,7 +253,7 @@ export default {
   .poll img {
     width:100%;
     object-fit: cover;
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
   .post-meta .info a,
   .post-meta .info {
@@ -334,7 +332,7 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
-    padding:0 0 24px;
+    padding:0 0 0;
     border:4px solid #E4A913;
   }
   section.survey {
@@ -446,7 +444,7 @@ export default {
       margin-bottom: 8px;
     }
     section.survey {
-      padding:12px 4px;
+      padding:0;
     }
     .post-wrapper {
       padding:0 8px;
