@@ -454,7 +454,6 @@ class MainController extends Controller
 
     public function getContent($id){
         $post = Post::find($id);
-
         $thumbnail = $post->getAllImages()->first();
         $content = $post->getAllContents()->first();
 //        $title = $post->getAllTitles()->first();
