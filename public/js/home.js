@@ -4274,6 +4274,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4282,14 +4285,25 @@ __webpack_require__.r(__webpack_exports__);
         email: '',
         phone: '',
         message: ''
-      }
+      },
+      sendMessage: true
     };
   },
   methods: {
     sendMail: function sendMail(e) {
+      var _this = this;
+
       e.preventDefault();
       axios.post('/sendMail', this.mailContent).then(function (res) {
-        console.log(res);
+        // console.log(res);
+        if (res.data.success == true) {
+          // alert('Your message was successfully sent!');
+          _this.mailContent.name = null;
+          _this.mailContent.email = null;
+          _this.mailContent.phone = null;
+          _this.mailContent.message = null;
+          _this.sendMessage = false;
+        }
       });
     }
   }
@@ -4970,7 +4984,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info span[data-v-3884cfdf] {\n  color: #333;\n}\n.contact-us .column .info span .icon[data-v-3884cfdf] {\n  padding: 0 6px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n}\n}", ""]);
+exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n  width: 50%;\n}\n.contact-us .column.right[data-v-3884cfdf] {\n  padding-left: 12px;\n}\n.contact-us .column.left[data-v-3884cfdf] {\n  padding-right: 12px;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n  font-weight: 900;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n  color: #333;\n  padding-left: 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.contact-us .column .info > span .icon[data-v-3884cfdf] {\n  padding: 0 0 0 8px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n  font-weight: 700;\n  margin-bottom: 16px;\n  color: #333;\n  font-size: 40px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border-radius: 10px;\n  border: 1px solid #E0E0E0;\n  margin-bottom: 16px;\n  padding: 6px 12px;\n  -webkit-appearance: none;\n  -moz-appearance: textfield;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-inner-spin-button, .contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border: 1px solid #E0E0E0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n  min-height: 200px;\n  padding: 6px 12px;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form button[data-v-3884cfdf] {\n  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  align-self: flex-start;\n  padding: 16px 48px;\n  border-style: hidden;\n  color: #fff;\n  font-weight: 900;\n  font-size: 40px;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n    width: 100%;\n    padding-right: 0 !important;\n    padding-left: 0 !important;\n    margin-bottom: 16px;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: start;\n            align-items: flex-start;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n    padding-bottom: 8px;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n    font-size: 32px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -22436,7 +22450,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "contact-us" }, [
-    _c("div", { staticClass: "column" }, [
+    _c("div", { staticClass: "column right" }, [
       _c("h1", [_vm._v("Contact Us")]),
       _vm._v(" "),
       _vm._m(0),
@@ -22444,129 +22458,137 @@ var render = function() {
       _c("div", { staticClass: "contact-form" }, [
         _c("h2", [_vm._v("Send us message!")]),
         _vm._v(" "),
-        _c("form", { attrs: { action: "#" } }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mailContent.name,
-                expression: "mailContent.name"
-              }
-            ],
-            attrs: {
-              type: "text",
-              name: "name",
-              required: "",
-              maxlength: "40",
-              placeholder: "Your Name"
-            },
-            domProps: { value: _vm.mailContent.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _vm.sendMessage
+          ? _c("form", { attrs: { action: "#" } }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailContent.name,
+                    expression: "mailContent.name"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "name",
+                  required: "",
+                  maxlength: "40",
+                  placeholder: "Your Name"
+                },
+                domProps: { value: _vm.mailContent.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailContent, "name", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.mailContent, "name", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mailContent.email,
-                expression: "mailContent.email"
-              }
-            ],
-            attrs: {
-              type: "email",
-              name: "email",
-              required: "",
-              maxlength: "40",
-              placeholder: "Email"
-            },
-            domProps: { value: _vm.mailContent.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailContent.email,
+                    expression: "mailContent.email"
+                  }
+                ],
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  required: "",
+                  maxlength: "40",
+                  placeholder: "Email"
+                },
+                domProps: { value: _vm.mailContent.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailContent, "email", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.mailContent, "email", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mailContent.phone,
-                expression: "mailContent.phone"
-              }
-            ],
-            attrs: {
-              type: "number",
-              name: "phone",
-              required: "",
-              maxlength: "20",
-              placeholder: "Phone Number"
-            },
-            domProps: { value: _vm.mailContent.phone },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailContent.phone,
+                    expression: "mailContent.phone"
+                  }
+                ],
+                attrs: {
+                  type: "number",
+                  name: "phone",
+                  required: "",
+                  maxlength: "20",
+                  placeholder: "Phone Number"
+                },
+                domProps: { value: _vm.mailContent.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailContent, "phone", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.mailContent, "phone", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mailContent.message,
-                expression: "mailContent.message"
-              }
-            ],
-            attrs: {
-              name: "message",
-              rows: "8",
-              cols: "80",
-              required: "",
-              maxlength: "400",
-              placeholder: "Your Message"
-            },
-            domProps: { value: _vm.mailContent.message },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mailContent.message,
+                    expression: "mailContent.message"
+                  }
+                ],
+                attrs: {
+                  name: "message",
+                  rows: "8",
+                  cols: "80",
+                  required: "",
+                  maxlength: "400",
+                  placeholder: "Your Message"
+                },
+                domProps: { value: _vm.mailContent.message },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mailContent, "message", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.mailContent, "message", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  return _vm.sendMail($event)
-                }
-              }
-            },
-            [_vm._v("SEND")]
-          )
-        ])
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      return _vm.sendMail($event)
+                    }
+                  }
+                },
+                [_vm._v("SEND")]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.sendMessage == false
+          ? _c("div", { staticClass: "form-notice" }, [
+              _vm._v("\n        Your message was successfully sent!\n      ")
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -22580,17 +22602,23 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "info" }, [
       _c("span", [
-        _c("span", { staticClass: "icon" }, [_vm._v("l")]),
+        _c("span", { staticClass: "icon" }, [
+          _c("img", { attrs: { src: "img/icons/location.svg", alt: "" } })
+        ]),
         _vm._v("Lorem ipsum dolor sit")
       ]),
       _vm._v(" "),
       _c("span", [
-        _c("span", { staticClass: "icon" }, [_vm._v("m")]),
+        _c("span", { staticClass: "icon" }, [
+          _c("img", { attrs: { src: "img/icons/mail.svg", alt: "" } })
+        ]),
         _vm._v("example@gmail.com")
       ]),
       _vm._v(" "),
       _c("span", [
-        _c("span", { staticClass: "icon" }, [_vm._v("p")]),
+        _c("span", { staticClass: "icon" }, [
+          _c("img", { attrs: { src: "img/icons/phone.svg", alt: "" } })
+        ]),
         _vm._v("+380631189234")
       ])
     ])
@@ -22599,7 +22627,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column" }, [
+    return _c("div", { staticClass: "column left" }, [
       _c("img", {
         staticClass: "leftColImg",
         attrs: { src: "img/2471780.png", alt: "contact-us-girl" }
