@@ -279,6 +279,7 @@ class MainController extends Controller
 
                 $fullPost['sections'][$compare->order]['type'] = 'compare';
                 $fullPost['sections'][$compare->order]['value'] = $data;
+                unset($data);
             }
         }
 
@@ -286,11 +287,12 @@ class MainController extends Controller
         if (isset($likableImages[0])){
             foreach ($likableImages as $likableImage) {
                 $data['id'] = $likableImage->id;
-                $data['imageUrl'] = $likableImage->url;
+                $data['imgUrl'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
 
                 $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
                 $fullPost['sections'][$likableImage->order]['value'] = $data;
+                unset($data);
             }
         }
 
