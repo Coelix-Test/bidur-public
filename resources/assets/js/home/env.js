@@ -1,3 +1,3 @@
 export default {
-  TEST: true,
+  TEST: false,
 }

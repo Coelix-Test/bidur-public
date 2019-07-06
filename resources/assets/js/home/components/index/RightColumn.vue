@@ -256,7 +256,7 @@ export default {
     border-right:1px solid #fff;
     padding-right: 6px;
     margin-right: 4px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
   @media (max-width:768px) {
     .right-column {

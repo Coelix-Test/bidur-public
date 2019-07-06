@@ -182,7 +182,7 @@ export default {
                 border-style: hidden;
                 color:#fff;
                 font-weight: 900;
-                font-size: 32px;
+                font-size: 24px;
              }
           }
 
