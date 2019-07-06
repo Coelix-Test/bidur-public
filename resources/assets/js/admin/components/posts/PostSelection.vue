@@ -8,7 +8,7 @@
           <div class="delimiter"></div>
           <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
       </div>
-      <div class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
+      <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
   </div>
 </template>
 
@@ -23,6 +23,10 @@ export default {
         ImageInput
     },
     props: {
+        deletable: {
+          default: true,
+          type: Boolean,
+        },
         index: {
             type: Number
         },
