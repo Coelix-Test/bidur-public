@@ -2274,11 +2274,12 @@ __webpack_require__.r(__webpack_exports__);
       //     });
     },
     updateSurvey: function updateSurvey() {
-      console.log(this.survey); // axios
-      //   .post('/',{survey : this.survey})
-      //     .then(res => {
-      //       console.log(res);
-      //     });
+      console.log(this.survey);
+      axios.post('/', {
+        survey: this.survey
+      }).then(function (res) {
+        console.log(res);
+      });
     }
   }
 });
@@ -4340,7 +4341,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
+exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .heading .actions button[data-v-0bb88f39]:hover {\n  color: #EB5757;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
 
 // exports
 
@@ -26585,7 +26586,7 @@ var render = function() {
                   [_vm._v("edit")]
                 ),
                 _vm._v(" "),
-                post.post.is_in_main_section == null
+                post.is_in_main_section == null
                   ? _c(
                       "button",
                       {

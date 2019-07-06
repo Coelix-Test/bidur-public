@@ -48,11 +48,11 @@ export default {
     },
     updateSurvey() {
       console.log(this.survey);
-      // axios
-      //   .post('/',{survey : this.survey})
-      //     .then(res => {
-      //       console.log(res);
-      //     });
+      axios
+        .post('/',{survey : this.survey})
+          .then(res => {
+            console.log(res);
+          });
     }
   },
 }
@@ -77,6 +77,9 @@ export default {
             padding: 0;
             border-width:0;
             background-color:transparent;
+            &:hover {
+              color:#EB5757;
+            }
           }
         }
     }
