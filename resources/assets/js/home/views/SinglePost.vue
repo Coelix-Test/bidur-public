@@ -54,7 +54,7 @@
             v-if="post.type == 'video'"
             id="ytplayer"
             type="text/html"
-            src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=0&origin=http://example.com"
+            :src="post.value"
             frameborder="0"
           />
 

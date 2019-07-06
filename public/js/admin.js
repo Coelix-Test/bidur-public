@@ -3859,7 +3859,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           }
         }
       }).then(function (response) {
-        console.log(response);
+        console.log(response); // this.$router.push(window.location.'/admin#post/new');
+
+        console.log(document.location.origin + "/admin#post");
+        window.location.href = document.location.origin + "/admin#/";
       });
     }
   },

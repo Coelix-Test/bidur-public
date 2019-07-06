@@ -211,6 +211,7 @@ export default {
     line-height: 16px;
     margin-bottom: 4px;
     color:#333;
+    word-break: break-all;
     font-weight: 700;
   }
   .latest-post-item a {
