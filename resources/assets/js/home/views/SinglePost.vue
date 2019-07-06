@@ -30,7 +30,7 @@
 
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <div v-if="post.type == 'content'">{{ post.value }}</div>
+          <div v-if="post.type == 'content'" v-html="post.value"></div>
 
           <p v-if="post.type == 'image'">
             <img :src="post.value" alt="">
