@@ -306,7 +306,11 @@ class MainController extends Controller
         $nextPostId = Post::where('id', '>', $post->id)->min('id');
         if (!$hashtags->isEmpty()){
             foreach ($hashtags as $hashtag) {
-                $fullPost['hashtags'][] = $hashtag->hashtagId;
+                $h = Hashtag::find($hashtag->hashtagId);
+                $data['id'] = $h->id;
+                $data['title'] = $h->text;
+                $fullPost['hashtags'][] = $data;
+                unset($data);
             }
         }
 
