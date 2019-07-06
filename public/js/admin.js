@@ -2266,8 +2266,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    deleteSurvey: function deleteSurvey() {
-      console.log(this.surveyId); // axios
+    deleteSurvey: function deleteSurvey() {// console.log(this.surveyId);
+      // axios
       //   .post('/')
       //     .then(res => {
       //       console.log(res);
@@ -2275,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateSurvey: function updateSurvey() {
       console.log(this.survey);
-      axios.post('/', {
+      axios.post('/editSurvey', {
         survey: this.survey
       }).then(function (res) {
         console.log(res);

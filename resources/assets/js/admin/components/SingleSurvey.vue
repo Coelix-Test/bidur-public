@@ -39,7 +39,7 @@ export default {
   },
   methods : {
     deleteSurvey() {
-      console.log(this.surveyId);
+      // console.log(this.surveyId);
       // axios
       //   .post('/')
       //     .then(res => {
@@ -49,7 +49,7 @@ export default {
     updateSurvey() {
       console.log(this.survey);
       axios
-        .post('/',{survey : this.survey})
+        .post('/editSurvey',{survey : this.survey})
           .then(res => {
             console.log(res);
           });
