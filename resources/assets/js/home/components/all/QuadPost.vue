@@ -68,6 +68,7 @@ export default {
       font-weight: bold;
       font-size: 36px;
       max-width: 600px;
+      word-break: break-all;
     }
     .subtitle {
       font-weight: 300;
@@ -93,6 +94,10 @@ export default {
     .content {
       justify-content: flex-start;
       padding: 20px;
+      .title {
+        line-height: 28px;
+        font-size: 28px;
+      }
       .text {
         display: none;
       }

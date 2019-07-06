@@ -71,6 +71,7 @@ export default {
   @media(max-width: 1200px) {
     padding-right: 0;
     width: 100%;
+    min-width:unset;
   }
 }
 
