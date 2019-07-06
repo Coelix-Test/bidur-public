@@ -65,7 +65,7 @@ export default {
     });
     axios.post('/getRecentPosts').then(res => {
       console.log(res.data);
-      // this.posts = res.data;
+      this.posts = res.data;
     });
   },
   components: {
