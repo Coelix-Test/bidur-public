@@ -8,15 +8,16 @@
             </div>
             <ul class="menu-list menu">
                 <li><a href="./#">דף בית</a></li>
-                <li><a href="./#/contact-us">אודות</a></li>
-                <li><a href="./#/about-us">צור קשר</a></li>
+                <li><a href="./#/about-us">אודות</a></li>
+                <li><a href="./#/contact-us">צור קשר</a></li>
             </ul>
         </div>
 
         <div class="socials-wrap">
+            <a href="#" class="telegram"></a>
             <a href="#" class="youtube"></a>
-            <a href="#" class="instagram"></a>
             <a href="#" class="facebook"></a>
+            <a href="#" class="instagram"></a>
         </div>
 
         <div class="auth-btns">
@@ -47,10 +48,10 @@
     							<a href="./#/">דף בית</a>
     						</li>
     						<li class="menu-item">
-    							<a href="./#/contact-us">אודות</a>
+    							<a href="./#/about-us">אודות</a>
     						</li>
     						<li class="menu-item">
-    							<a href="./#/about-us">צור קשר</a>
+    							<a href="./#/contact-us">צור קשר</a>
     						</li>
     					</ul>
     				</div>
@@ -63,9 +64,10 @@
             <img src="/img/logo-yellow.png" alt="">
         </a>
         <div class="socials-wrap">
-            <a href="#" class="youtube"></a>
-            <a href="#" class="instagram"></a>
-            <a href="#" class="facebook"></a>
+          <a href="#" class="telegram"></a>
+          <a href="#" class="youtube"></a>
+          <a href="#" class="facebook"></a>
+          <a href="#" class="instagram"></a>
         </div>
     </div>
 </div><!-- top row end -->

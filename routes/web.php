@@ -90,6 +90,7 @@ Route::get('/admin', 'AdminController@showAdmin');
 
     //surveys
     Route::post('/getAllSurveys', 'AdminController@getAllSurveys')->name('get-all-surveys');
+    Route::post('/editSurvey', 'AdminController@editSurvey')->name('get-all-surveys');
 
     //all admins page
     Route::post('/showAllAdmins', 'AdminController@showAllAdmins')->name('show-all-admins');
@@ -101,6 +102,8 @@ Route::get('/admin', 'AdminController@showAdmin');
     Route::post('/deletePost', 'AdminController@deletePost');
 
     Route::post('/getAllMails', 'AdminController@getAllMails');
+
+    Route::post('/editMainPagePosts', 'AdminController@editMainPagePosts');
 
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');

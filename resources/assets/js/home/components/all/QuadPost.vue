@@ -33,19 +33,13 @@ export default {
 <style lang="scss" scoped>
 
 .quad-post {
-  height: 620px;
+  height: 500px;
   margin-bottom: 30px;
   position: relative;
   display: flex;
-  // &:nth-child(1) {
-  //   .gradient {
-  //     background-color:black;
-  //   }
-  // }
   img {
     width: 100%;
     object-fit: cover;
-
   }
   .gradient {
     background: linear-gradient(270deg, #FFFB95 0.51%, #FF004D 99.32%);
@@ -55,7 +49,6 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-
   }
   .content {
     position: absolute;
@@ -67,14 +60,15 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-left: 50px;
-    padding-bottom: 110px;
+    padding-left: 32px;
+    padding-bottom: 40px;
     color: #fff;
     .title {
       text-align: left;
       font-weight: bold;
       font-size: 36px;
       max-width: 600px;
+      word-break: break-all;
     }
     .subtitle {
       font-weight: 300;
@@ -100,6 +94,10 @@ export default {
     .content {
       justify-content: flex-start;
       padding: 20px;
+      .title {
+        line-height: 28px;
+        font-size: 28px;
+      }
       .text {
         display: none;
       }
