@@ -158,6 +158,10 @@ export default {
               // display:none;
               .preview-container {
                 max-width:100%!important;
+                .picture-preview {
+                  object-fit: cover;
+                  height:500px!important;
+                }
               }
             }
         }
