@@ -410,6 +410,33 @@ class AdminController extends Controller
         return ['success' => true];
     }
 
+    public function addNewComparisonSecond(Request $request){
+        $leftImage = $request->file('leftImage');
+        $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
+        $destinationPath = public_path('/images/compare');
+        $leftImage->move($destinationPath, $leftName);
+
+        $rightImage = $request->file('rightImage');
+
+        $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
+        $destinationPath = public_path('/images/compare');
+        $rightImage->move($destinationPath, $rightName);
+
+        $current = SelectOne::where('postId', -1)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        SelectOne::create([
+            'urlRight' => '/images/compare/'.$rightName,
+            'urlLeft' => '/images/compare/'.$leftName,
+            'postId' => 0,
+            'order' => 0,
+        ]);
+        return ['success' => true];
+    }
+
     public function addSinglePhoto(Request $request){
         $image = $request->file('image');
         $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
@@ -417,6 +444,28 @@ class AdminController extends Controller
         $image->move($destinationPath, $name);
 
         $image = SingleLikableImage::where('postId', 0)->first();
+
+        if (!empty($image)){
+            $deletableId = $image->id;
+            $image->delete();
+            LikesForSingleImage::where('serviceId', $deletableId)->delete();
+            DisLikesForSingleImage::where('serviceId', $deletableId)->delete();
+        }
+        SingleLikableImage::create([
+            'url' => '/images/singlePhoto/'.$name,
+            'postId' => 0,
+            'order' => 0,
+        ]);
+        return ['success' => true];
+    }
+
+    public function addSinglePhotoSecond(Request $request){
+        $image = $request->file('image');
+        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/singlePhoto');
+        $image->move($destinationPath, $name);
+
+        $image = SingleLikableImage::where('postId', -1)->first();
 
         if (!empty($image)){
             $deletableId = $image->id;
@@ -584,7 +633,9 @@ class AdminController extends Controller
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
             $admin = Admins::where('userId', $user->id)->first;
+
             empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
+
             return json_encode(['login' => true, 'data' => $data]);
         }else{
             return json_encode(['login' => false]);
@@ -618,6 +669,19 @@ class AdminController extends Controller
 
     public function showCompareFromMain(){
         $section = SelectOne::where('postId', 0)->first();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
+    }
+
+    public function showSinglePhotoFromMainSecond(){
+        $image = SingleLikableImage::where('postId', -1)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMainSecond(){
+        $section = SelectOne::where('postId', -1)->first();
         $data['leftImage'] = $section->urlLeft;
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);

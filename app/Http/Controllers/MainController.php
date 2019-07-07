@@ -316,7 +316,7 @@ class MainController extends Controller
         }
 
         $fullPost['author'] = $post->author;
-        $fullPost['date'] = $this->getDate($post);
+        $fullPost['date'] = $post->created_at->timestamp();
 
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
 
@@ -722,7 +722,58 @@ class MainController extends Controller
                 return json_encode(['success' => 'false']);
             }
         }
+    }
 
+    public function getServiceForMainPageSecond(){
+        $section = SelectOne::where('postId', -1)->first();
+        if (empty($section)){
+            $section = SingleLikableImage::where('postId', -1)->first();
+        }
+        if (empty($section)){
+            $section = Survey::where('postId', -1)->first();
+        }
+
+        if (!empty($section)){
+
+            if ($section->getTable() == 'select_ones'){
+                $data['type'] = 'comparablePhotos';
+                $data['value']['id'] = $section->id;
+                $data['value']['description'] = $section->description;
+                $data['value']['imageLeft'] = $section->urlLeft;
+                $data['value']['imageRight'] = $section->urlRight;
+                $likesForLeft = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'left')->count();
+                $likesForRight = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'right')->count();
+                $data['value']['likesForLeft'] = $likesForLeft;
+                $data['value']['likesForLeft'] = $likesForRight;
+                return json_encode($data);
+            }
+            elseif ($section->getTable() == 'single_likable_image'){
+                $data['type'] = 'likableImage';
+                $data['value']['id'] = $section->id;
+                $data['value']['imageUrl'] = $section->url;
+                $data['value']['description'] = $section->description;
+                $data['value']['likes'] = LikesForSingleImage::where('serviceId', $section->id)->count();
+                $data['value']['dislikes'] = DisLikesForSingleImage::where('serviceId', $section->id)->count();
+                return json_encode($data);
+            }
+            elseif ($section->getTable() == 'surveys'){
+                $data['type'] = 'survey';
+                $data['value']['id'] = $section->id;
+                $data['value']['question'] = $section->question;
+                $variants = SurveyAnswerVariant::where('surveyId', $section->id)->get();
+                foreach ($variants as $variant) {
+                    $allVariants['answerId'] = $variant->id;
+                    $allVariants['answer'] = $variant->question;
+                    $allVariants['order'] = $variant->order;
+                    $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                }
+                $data['value']['answerVariants'] = $allVariants;
+                return json_encode($data);
+            }
+            else{
+                return json_encode(['success' => 'false']);
+            }
+        }
     }
 
     public function test(){
