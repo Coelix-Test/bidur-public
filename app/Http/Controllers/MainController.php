@@ -93,7 +93,7 @@ class MainController extends Controller
             $excerpt = '';
         }
         $rating = (int)$post->getRating()->avg('rating');
-        $createdAt = $post->created_at->timestamp();
+        $createdAt = $post->created_at->timestamp;
 
         if (!empty($thumbnail)){
             $allInfo['img'] = $thumbnail->url;
