@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
   .picture-input {
     opacity: 0;
     /* z-index:-1; */

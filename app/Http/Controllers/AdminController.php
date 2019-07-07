@@ -455,6 +455,7 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
+      dd($request->files);
         $survey = $request->get('survey');
 
 //            $survey = json_decode($survey);
