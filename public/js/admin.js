@@ -3774,6 +3774,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
 
 
 
@@ -3952,7 +3954,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     }
   },
   created: function created() {
-    if (this.$route.params.id) {// TODO: get all post info by ajax
+    var _this = this;
+
+    if (this.$route.params.id) {
+      // TODO: get all post info by ajax
+      axios.post('/post/' + this.$route.params.id).then(function (response) {
+        _this.title = response.data.post.mainTitle;
+        _this.author = response.data.post.author; // this.date = new Date();
+        // celebrities: [],
+        // sections
+      });
     }
   }
 });
@@ -4446,7 +4457,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  width: 100%;\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  width: 100%;\n  height: 400px;\n  margin-bottom: 0;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
 
 // exports
 
@@ -26151,6 +26162,7 @@ var render = function() {
             placeholder: "Add Title to the Post",
             required: ""
           },
+          domProps: { value: _vm.title },
           on: {
             input: function($event) {
               return _vm.$emit("updateTitle", $event.target.value)
@@ -26203,6 +26215,7 @@ var render = function() {
                 name: "author",
                 placeholder: "Add author"
               },
+              domProps: { value: _vm.author },
               on: {
                 input: function($event) {
                   return _vm.$emit("updateAuthor", $event.target.value)
@@ -26413,7 +26426,14 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "imagetext-actions" }, [
-      _c("div", { staticClass: "delete-self" }),
+      _c("div", {
+        staticClass: "delete-self",
+        on: {
+          click: function($event) {
+            return _vm.$emit("deleteSection", _vm.index)
+          }
+        }
+      }),
       _vm._v(" "),
       _c("div", {
         staticClass: "change-image-position",
@@ -26897,7 +26917,12 @@ var render = function() {
         },
         [
           _c("edit-post-header", {
-            attrs: { celebrities: _vm.celebrities, date: _vm.date },
+            attrs: {
+              title: _vm.title,
+              author: _vm.author,
+              celebrities: _vm.celebrities,
+              date: _vm.date
+            },
             on: {
               updateTitle: _vm.onUpdateTitle,
               updateAuthor: _vm.onUpdateAuthor,
@@ -47810,7 +47835,7 @@ component.options.__file = "resources/assets/js/admin/views/tags/TagImage.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })

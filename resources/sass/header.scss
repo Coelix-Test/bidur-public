@@ -194,7 +194,7 @@
         max-width: 1440px;
     }
     .celebrities-slider{
-        //display: flex;
+        display: flex;
         a{
             outline: none;
             text-decoration: none;
@@ -318,7 +318,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 2;
+            z-index: 200;
             background: #fff;
         }
         .celebrities-container{

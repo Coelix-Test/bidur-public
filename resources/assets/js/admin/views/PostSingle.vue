@@ -3,6 +3,8 @@
         <div class="row">
             <form class="col-8" @submit.prevent="submitPostData">
                 <edit-post-header
+                    :title="title"
+                    :author="author"
                     :celebrities="celebrities"
                     :date="date"
                     @updateTitle="onUpdateTitle"
@@ -254,6 +256,14 @@ export default {
     created() {
         if(this.$route.params.id) {
             // TODO: get all post info by ajax
+            axios.post('/post/'+this.$route.params.id)
+              .then(response => {
+                this.title = response.data.post.mainTitle;
+                this.author = response.data.post.author;
+                // this.date = new Date();
+                // celebrities: [],
+                // sections
+              });
         }
     },
 }
