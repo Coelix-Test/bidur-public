@@ -711,7 +711,7 @@ class AdminController extends Controller
     }
 
     public function deleteMail(Request $request){
-        Mail::where('id', $request->get('id')->delete());
+        Mail::where('id', $request->get('id'))->delete();
         return $this->getAllMails();
     }
 
