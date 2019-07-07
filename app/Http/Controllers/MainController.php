@@ -93,6 +93,7 @@ class MainController extends Controller
             $excerpt = '';
         }
         $rating = (int)$post->getRating()->avg('rating');
+        //1231231232132323123123123123123
         $createdAt = $post->created_at->timestamp;
 
         if (!empty($thumbnail)){
@@ -316,7 +317,7 @@ class MainController extends Controller
         }
 
         $fullPost['author'] = $post->author;
-        $fullPost['date'] = $post->created_at->timestamp();
+        $fullPost['date'] = $post->created_at->timestamp;
 
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
 
