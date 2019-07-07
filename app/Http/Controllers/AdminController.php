@@ -158,7 +158,7 @@ class AdminController extends Controller
             }elseif ($section['type'] == 'selection'){
                 $leftFile = $files['sections'][$key]['image1'];
                 $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title']), $key;
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
             }elseif ($section['type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
@@ -167,7 +167,7 @@ class AdminController extends Controller
         return json_encode(['success' => true]);
     }
 
-    public function createPostHeaderMeta($metaTitle, $hashtags = null,  $author, $date){
+    public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
 //        dd($date);
@@ -455,12 +455,20 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
+        $files = $request->allFiles();
+        if(isset($files['image'])){
+            $image = $request->file('image');
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
         $survey = $request->get('survey');
-
-//            $survey = json_decode($survey);
 
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
         $surveyObject->question = $survey['survey']['question'];
+        if (isset($name)){
+            $surveyObject->image = '/images/postImages/'.$name;
+        }
         $surveyObject->save();
 
         foreach ($survey['variants'] as $variant) {
