@@ -58,7 +58,7 @@
       <label ref="agreement" class="checkbox">
         <input v-model="agreement" class="th-checkbox" type="checkbox">
         <div class="label">
-          רתאב שומישה יאנתל םיכסמ ינא
+          אני מסכים לתנאי השימוש באתר
         </div>
       </label>
       <button class="th-btn th-btn-gold" type="submit">הרשמה</button>
@@ -149,6 +149,7 @@ export default {
 <style lang="scss" scoped>
 
 .a-modal {
+  padding: 0 10px;
   padding-top: 60px;
   .form {
     max-width: 430px;
