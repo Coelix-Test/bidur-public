@@ -519,31 +519,6 @@ class AdminController extends Controller
             $allUsers = [];
         }
         return json_encode($allUsers);
-
-
-//        $adminIds = Admins::all();
-//        foreach ($adminIds as $adminId) {
-//            if (!empty(User::where('id', $adminId->id)->first())){
-//                $admin = User::where('id', $adminId->id)->first();
-////                dd($admin);
-//                $allAdmins[$admin->id]['email'] = $admin->email;
-//                $allAdmins[$admin->id]['name']  = $admin->email;
-//                $allAdmins[$admin->id]['name'] = $admin->name;
-//                $allAdmins[$admin->id]['phone'] = $admin->phone;
-//                $allAdmins[$admin->id]['password'] = 'нахуй он тут вообще нужен';
-//                if ($admin->isOnline() == false){
-//                    $allAdmins[$admin->id]['status'] = 'offline';
-//                }else{
-//                    $allAdmins[$admin->id]['status'] = 'online';
-//                }
-//            }
-//        }
-//        if (!empty($allAdmins)){
-////            dd($allAdmins);
-//            return json_encode($allAdmins);
-//        }else{
-//            return json_encode([]);
-//        }
     }
 
     public function editAdmin(Request $request){
@@ -608,7 +583,8 @@ class AdminController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
-
+            $admin = Admins::where('userId', $user->id)->first;
+            empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
             return json_encode(['login' => true, 'data' => $data]);
         }else{
             return json_encode(['login' => false]);
@@ -668,6 +644,10 @@ class AdminController extends Controller
         if (!empty($data)){
             return json_encode($data);
         }
+    }
+
+    public function editPost(Request $request){
+
     }
 
 }
