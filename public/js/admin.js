@@ -2296,13 +2296,10 @@ __webpack_require__.r(__webpack_exports__);
       //     });
     },
     updateSurvey: function updateSurvey() {
-      console.log(this.survey);
-
       if (this.surveyImage) {
         var sendData = new FormData();
         sendData.append('id', this.survey.survey.id);
         sendData.append('image', this.surveyImage);
-        sendData.append('survey', this.survey);
         axios.post('/editSurvey', sendData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -2310,18 +2307,15 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           console.log(res);
         });
-      } else {
-        var sendData = new FormData();
-        sendData.append('id', this.survey.survey.id); // sendData.append('image', this.surveyImage);
-
-        sendData.append('survey', this.survey);
-        axios.post('/editSurvey', sendData).then(function (res) {
-          console.log(res);
-        });
       }
+
+      axios.post('/editSurvey', {
+        survey: this.survey
+      }).then(function (res) {
+        console.log(res);
+      });
     },
     onChanged: function onChanged(e) {
-      console.log(this.$refs.pictureInput.file);
       this.changed = true;
 
       if (this.$refs.pictureInput.file) {
@@ -4565,7 +4559,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .heading .actions button[data-v-0bb88f39]:hover {\n  color: #EB5757;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .survey-img-wrapper[data-v-0bb88f39] #picture-input div .preview-container {\n  max-width: 100% !important;\n}\n.single-survey .content .survey-img-wrapper[data-v-0bb88f39] #picture-input div .preview-container .picture-preview {\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 500px !important;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
+exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.single-survey .heading[data-v-0bb88f39] {\n  font-weight: 400;\n  color: #000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n  margin-bottom: 8px;\n  padding: 4px 0;\n}\n.single-survey .heading .actions button[data-v-0bb88f39] {\n  padding: 0;\n  border-width: 0;\n  background-color: transparent;\n}\n.single-survey .heading .actions button[data-v-0bb88f39]:hover {\n  color: #EB5757;\n}\n.single-survey .content[data-v-0bb88f39] {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.single-survey .content .survey-img-wrapper[data-v-0bb88f39] #picture-input div .preview-container {\n  max-width: 100% !important;\n  height: 300px !important;\n}\n.single-survey .content .survey-img-wrapper[data-v-0bb88f39] #picture-input div .preview-container .picture-preview {\n  height: 300px !important;\n}\n.single-survey .content .survey-img-wrapper[data-v-0bb88f39] #picture-input div .preview-container .picture-inner {\n  top: -300px !important;\n}\n.single-survey .content .thumbnail[data-v-0bb88f39] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.single-survey .content .column[data-v-0bb88f39] {\n  padding: 8px 12px 0;\n}\n.single-survey .content .column .title[data-v-0bb88f39] {\n  border-color: transparent;\n  border-style: solid;\n  font-size: 24px;\n  color: #333;\n  width: 100%;\n  font-weight: 700;\n}\n.single-survey .content .column .title[data-v-0bb88f39]:hover, .single-survey .content .column .title[data-v-0bb88f39]:focus {\n  border-color: #eee;\n}\n.single-survey .content .column .variant[data-v-0bb88f39] {\n  margin-bottom: 4px;\n}", ""]);
 
 // exports
 
@@ -47476,15 +47470,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/assets/js/admin/views/EditPost.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditPost_vue_vue_type_template_id_561a1cdd_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPost.vue?vue&type=template&id=561a1cdd&scoped=true& */ "./resources/assets/js/admin/views/EditPost.vue?vue&type=template&id=561a1cdd&scoped=true&");
 /* harmony import */ var _EditPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPost.vue?vue&type=script&lang=js& */ "./resources/assets/js/admin/views/EditPost.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _EditPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _EditPost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _EditPost_vue_vue_type_style_index_0_id_561a1cdd_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditPost.vue?vue&type=style&index=0&id=561a1cdd&lang=scss&scoped=true& */ "./resources/assets/js/admin/views/EditPost.vue?vue&type=style&index=0&id=561a1cdd&lang=scss&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _EditPost_vue_vue_type_style_index_0_id_561a1cdd_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditPost.vue?vue&type=style&index=0&id=561a1cdd&lang=scss&scoped=true& */ "./resources/assets/js/admin/views/EditPost.vue?vue&type=style&index=0&id=561a1cdd&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -47516,7 +47509,7 @@ component.options.__file = "resources/assets/js/admin/views/EditPost.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/assets/js/admin/views/EditPost.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

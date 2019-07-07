@@ -69,13 +69,12 @@ export default {
       //     });
     },
     updateSurvey() {
-      console.log(this.survey);
+
       if(this.surveyImage){
 
         var sendData = new FormData();
         sendData.append('id', this.survey.survey.id);
         sendData.append('image', this.surveyImage);
-        sendData.append('survey', this.survey);
 
         axios
           .post('/editSurvey',sendData,{
@@ -84,21 +83,16 @@ export default {
           .then(res => {
             console.log(res);
           });
-      }else {
-        var sendData = new FormData();
-        sendData.append('id', this.survey.survey.id);
-        // sendData.append('image', this.surveyImage);
-        sendData.append('survey', this.survey);
+      }
         axios
-          .post('/editSurvey',sendData)
+          .post('/editSurvey',{survey : this.survey})
             .then(res => {
               console.log(res);
             });
-      }
+
 
     },
     onChanged(e) {
-      console.log(this.$refs.pictureInput.file);
       this.changed = true;
       if (this.$refs.pictureInput.file) {
 
@@ -158,9 +152,12 @@ export default {
               // display:none;
               .preview-container {
                 max-width:100%!important;
+                height:300px!important;
                 .picture-preview {
-                  object-fit: cover;
-                  height:500px!important;
+                  height:300px!important;
+                }
+                .picture-inner {
+                  top:-300px!important;
                 }
               }
             }
