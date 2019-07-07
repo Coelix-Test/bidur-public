@@ -77,11 +77,14 @@ Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
+    Route::post('/addNewComparisonSecond', 'AdminController@addNewComparisonSecond');
+    Route::post('/addSinglePhotoSecond', 'AdminController@addSinglePhotoSecond');
     Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
 
     Route::post('/showSinglePhotoFromMain', 'AdminController@showSinglePhotoFromMain');
     Route::post('/showCompareFromMain', 'AdminController@showCompareFromMain');
-
+    Route::post('/showSinglePhotoFromMainSecond', 'AdminController@showSinglePhotoFromMainSecond');
+    Route::post('/showCompareFromMainSecond', 'AdminController@showCompareFromMainSecond');
     //hashtags
     Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
     Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
