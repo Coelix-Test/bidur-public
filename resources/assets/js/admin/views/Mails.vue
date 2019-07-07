@@ -33,8 +33,9 @@ export default {
   },
   methods : {
     deleteMessage(id) {
+      console.log(id);
       axios
-        .post('/deleteMail')
+        .post('/deleteMail',{id : id})
           .then(res => {
             console.log(res.data);
             this.mails = res.data;
@@ -78,8 +79,14 @@ export default {
           top:12px;
           left:12px;
           color:#EB5757;
-          background-color: transparent;
-          border-width:0;
+          background-color: #fff;
+          border:1px solid #EB5757;
+          border-radius: 10px;
+          padding:2px 8px;
+          &:hover {
+            background-color: #EB5757;
+            color:#fff;
+          }
         }
       }
     }

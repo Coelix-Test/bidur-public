@@ -3717,7 +3717,10 @@ __webpack_require__.r(__webpack_exports__);
     deleteMessage: function deleteMessage(id) {
       var _this2 = this;
 
-      axios.post('/deleteMail').then(function (res) {
+      console.log(id);
+      axios.post('/deleteMail', {
+        id: id
+      }).then(function (res) {
         console.log(res.data);
         _this2.mails = res.data;
       });
@@ -5052,7 +5055,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".mails[data-v-6f5e2699] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n}\n.mails .mails-wrapper[data-v-6f5e2699] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n}\n.mails .mails-wrapper .single-mail[data-v-6f5e2699] {\n  flex-basis: calc(33% - 16px);\n  margin: 0 8px 16px;\n  border: 1px solid #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  padding: 12px;\n  position: relative;\n}\n.mails .mails-wrapper .single-mail .author span[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .message > div[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .deleteMessage[data-v-6f5e2699] {\n  position: absolute;\n  top: 12px;\n  left: 12px;\n  color: #EB5757;\n  background-color: transparent;\n  border-width: 0;\n}", ""]);
+exports.push([module.i, ".mails[data-v-6f5e2699] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n}\n.mails .mails-wrapper[data-v-6f5e2699] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n}\n.mails .mails-wrapper .single-mail[data-v-6f5e2699] {\n  flex-basis: calc(33% - 16px);\n  margin: 0 8px 16px;\n  border: 1px solid #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  padding: 12px;\n  position: relative;\n}\n.mails .mails-wrapper .single-mail .author span[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .message > div[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .deleteMessage[data-v-6f5e2699] {\n  position: absolute;\n  top: 12px;\n  left: 12px;\n  color: #EB5757;\n  background-color: #fff;\n  border: 1px solid #EB5757;\n  border-radius: 10px;\n  padding: 2px 8px;\n}\n.mails .mails-wrapper .single-mail .deleteMessage[data-v-6f5e2699]:hover {\n  background-color: #EB5757;\n  color: #fff;\n}", ""]);
 
 // exports
 
