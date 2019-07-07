@@ -3,9 +3,9 @@
     <div class="column right">
       <h1>צור קשר</h1>
       <p class="info">
-        <span><span class="icon"><img src="img/icons/location.svg" alt=""></span>Lorem ipsum dolor sit</span>
-        <span><span class="icon"><img src="img/icons/mail.svg" alt=""></span>example@gmail.com</span>
-        <span><span class="icon"><img src="img/icons/phone.svg" alt=""></span>+380631189234</span>
+        <a href="#"><span class="icon"><img src="img/icons/location.svg" alt=""></span>Lorem ipsum dolor sit</a>
+        <a href="mailto:example@gmail.com"><span class="icon"><img src="img/icons/mail.svg" alt=""></span>example@gmail.com</a>
+        <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>+380631189234</a>
       </p>
       <div class="contact-form">
         <h2>יש לכם שאלה? שלחו לנו הודעה!</h2>
@@ -122,12 +122,13 @@ export default {
             padding-bottom: 24px;
             margin-bottom: 24px;
             border-bottom: 1px solid #333;
-            > span {
+            > a {
               color:#333;
               padding-left: 24px;
               display: flex;
               flex-direction: row;
               align-items: center;
+              text-decoration-color: #333;
               .icon {
                 padding:0 0 0 8px;
               }

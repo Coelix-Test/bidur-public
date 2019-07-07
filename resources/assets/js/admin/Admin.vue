@@ -21,6 +21,9 @@
                 <li>
                     <router-link :to="{ name: 'tags' }">Tags</router-link>
                 </li>
+                <li>
+                    <router-link :to="{ name: 'mails' }">Mails</router-link>
+                </li>
             </ul>
         </nav>
 

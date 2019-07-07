@@ -36,7 +36,6 @@ export default {
 
   },
   created() {
-    console.log(document.documentElement.clientWidth);
     //get pinned posts
     axios
       .post('/getSelectedPosts')

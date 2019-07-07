@@ -64,7 +64,7 @@ export default {
   created() {
     axios.post('/getServiceForMainPage').then(res => {
       this.survey = res.data;
-      console.log(this.survey);
+      // console.log(this.survey);
     });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);

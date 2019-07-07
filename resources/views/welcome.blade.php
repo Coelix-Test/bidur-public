@@ -9,10 +9,10 @@
   <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Main Page</title>
+  <title>IsraelBidur</title>
 </head>
 <body>
-    
+
     <div id="home"></div>
     @include('parts/footer')
     <script src="/js/home.js" charset="utf-8"></script>

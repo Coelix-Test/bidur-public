@@ -6,7 +6,7 @@
         <!-- {{post}} -->
         <div class="overlay"></div>
         <img :src="post.img" alt="">
-        <h2>{{post.title}}</h2>
+        <h2 class="typewriter">{{post.title}}</h2>
         <p>
           <span class="author">{{ post.author }}</span>
           <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
@@ -32,15 +32,22 @@ export default {
     }
   },
   mounted() {
-     //console.log('randomPosts', this.randomPosts);
-    // axios.post('/getTwoRandomPosts').then(response => {
-    //   //this.twoPosts = (response.data);
-    //   response.data.forEach( (el)=> {
-    //     axios.post('/getInfoOnPostForMain', {id : el.id} ).then(response => { this.twoPosts.push(response.data) });
-    //     console.log('el.id', el.id);
-    //   } );
-    //
-    // });
+
+      let i = 0;
+      let firstPostTitle = this.posts[0].title;
+      let speed = 50;
+      document.getElementsByClassName('typewriter')[0].innerHTML = null;
+      function typeWriter() {
+
+        if (i < firstPostTitle.length) {
+          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      };
+      typeWriter();
+
+
   },
   created() {
     // this.data.forEach( (el)=> {
@@ -135,12 +142,15 @@ export default {
     /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */
   }
   .posts-column article:nth-child(2) .overlay  {
-    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+    opacity: 0.2;
   }
   .posts-column article:hover img {
     transform:scale(1.1);
   }
-  .posts-column article:nth-child(1):hover a{
+  .posts-column article:nth-child(1):hover a {
     border-width:12px;
   }
   .posts-column article:hover .overlay {
