@@ -455,21 +455,11 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
-      // dd($request);
-        $files = $request->allFiles();
-        if(isset($files['image'])){
-            $image = $request->file('image');
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
-        }
+
         $survey = $request->get('survey');
 
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
         $surveyObject->question = $survey['survey']['question'];
-        if (isset($name)){
-            $surveyObject->image = '/images/postImages/'.$name;
-        }
         $surveyObject->save();
 
         foreach ($survey['variants'] as $variant) {
@@ -479,6 +469,23 @@ class AdminController extends Controller
         }
 
         return $this->getAllSurveys();
+    }
+
+    public function editSurveyEditImage(Request $request){
+        $files = $request->allFiles();
+        if(isset($files['image'])){
+            $image = $request->file('image');
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
+        $id = $request->get('id');
+
+        $surveyObject = Survey::find($id);
+        if (isset($name)){
+            $surveyObject->image = '/images/postImages/'.$name;
+            $surveyObject->save();
+        }
     }
 
 
