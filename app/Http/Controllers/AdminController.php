@@ -167,7 +167,7 @@ class AdminController extends Controller
         return json_encode(['success' => true]);
     }
 
-    public function createPostHeaderMeta($metaTitle, $hashtags = null,  $author, $date){
+    public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
 //        dd($date);
@@ -455,13 +455,20 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
-      dd($request->files);
+        $files = $request->allFiles();
+        if(isset($files['image'])){
+            $image = $request->file('image');
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/postImages');
+            $image->move($destinationPath, $name);
+        }
         $survey = $request->get('survey');
-
-//            $survey = json_decode($survey);
 
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
         $surveyObject->question = $survey['survey']['question'];
+        if (isset($name)){
+            $surveyObject->image = '/images/postImages/'.$name;
+        }
         $surveyObject->save();
 
         foreach ($survey['variants'] as $variant) {
