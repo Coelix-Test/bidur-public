@@ -85,6 +85,8 @@ Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
     Route::post('/showCompareFromMain', 'AdminController@showCompareFromMain');
     Route::post('/showSinglePhotoFromMainSecond', 'AdminController@showSinglePhotoFromMainSecond');
     Route::post('/showCompareFromMainSecond', 'AdminController@showCompareFromMainSecond');
+
+
     //hashtags
     Route::post('/getAllHashtags', 'AdminController@getAllHashtags')->name('get-all-hashtags');
     Route::post('/addHashtag', 'AdminController@addHashtag')->name('add-hashtag');
@@ -106,6 +108,7 @@ Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
     Route::post('/deletePost', 'AdminController@deletePost');
 
     Route::post('/getAllMails', 'AdminController@getAllMails');
+    Route::post('/deleteMail', 'AdminController@deleteMail');
 
     Route::post('/editMainPagePosts', 'AdminController@editMainPagePosts');
 
