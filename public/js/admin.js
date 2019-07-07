@@ -2300,7 +2300,7 @@ __webpack_require__.r(__webpack_exports__);
         var sendData = new FormData();
         sendData.append('id', this.survey.survey.id);
         sendData.append('image', this.surveyImage);
-        axios.post('/editSurvey', sendData, {
+        axios.post('/editSurveyEditImage', sendData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
