@@ -4024,12 +4024,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     reg: function reg() {
       this.$emit('close');
-      this.$modal.show(_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_3__["default"], {}, {
-        adaptive: true,
-        width: 600,
-        height: 'auto',
-        scrollable: true
-      });
+      this.$root.openReg();
     }
   }
 });
@@ -4185,12 +4180,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     login: function login() {
       this.$emit('close');
-      this.$modal.show(_modals_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"], {}, {
-        adaptive: true,
-        width: 600,
-        height: 'auto',
-        scrollable: true
-      });
+      this.$root.openLogin();
     }
   }
 });
@@ -5074,7 +5064,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".close[data-v-3b138668] {\n  position: absolute;\n  left: 30px;\n  top: 30px;\n}", ""]);
+exports.push([module.i, ".close[data-v-3b138668] {\n  position: absolute;\n  left: 30px;\n  top: 30px;\n}\n@media (max-width: 992px) {\n.close[data-v-3b138668] {\n    left: 10px;\n    top: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -5226,7 +5216,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-65da213b] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n}\n.a-modal .form .th-btn[data-v-65da213b] {\n  margin-top: 10px;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}", ""]);
+exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-65da213b] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n  line-height: 100%;\n}\n.a-modal .form .th-btn[data-v-65da213b] {\n  margin-top: 10px;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}\n@media (max-width: 992px) {\n.a-modal[data-v-65da213b] {\n    padding-top: 40px;\n}\n.a-modal .form .title[data-v-65da213b] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -5245,7 +5235,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".a-modal[data-v-ff81f934] {\n  padding-top: 60px;\n}\n.a-modal .form[data-v-ff81f934] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-ff81f934], .a-modal .form .text-input[data-v-ff81f934] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-ff81f934] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-ff81f934] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n}\n.a-modal .form .button[data-v-ff81f934] {\n  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  width: 360px;\n  height: 80px;\n  font-weight: bold;\n  font-size: 28px;\n  border: 0;\n  color: #fff;\n  border-radius: 5px;\n}\n.a-modal .form .bottom[data-v-ff81f934] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-ff81f934] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .checkbox[data-v-ff81f934] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.a-modal .form .checkbox .label[data-v-ff81f934] {\n  color: #828282;\n  font-size: 14px;\n}\n.a-modal .form .checkbox input[data-v-ff81f934] {\n  margin-left: 10px;\n}\n.a-modal .form .err[data-v-ff81f934] {\n  color: #EB5757;\n  font-size: 16px;\n}", ""]);
+exports.push([module.i, ".a-modal[data-v-ff81f934] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .form[data-v-ff81f934] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-ff81f934], .a-modal .form .text-input[data-v-ff81f934] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-ff81f934] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-ff81f934] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n  line-height: 100%;\n}\n.a-modal .form .button[data-v-ff81f934] {\n  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  width: 360px;\n  height: 80px;\n  font-weight: bold;\n  font-size: 28px;\n  border: 0;\n  color: #fff;\n  border-radius: 5px;\n}\n.a-modal .form .bottom[data-v-ff81f934] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-ff81f934] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .checkbox[data-v-ff81f934] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.a-modal .form .checkbox .label[data-v-ff81f934] {\n  color: #828282;\n  font-size: 14px;\n}\n.a-modal .form .checkbox input[data-v-ff81f934] {\n  margin-left: 10px;\n}\n.a-modal .form .err[data-v-ff81f934] {\n  color: #EB5757;\n  font-size: 16px;\n}\n@media (max-width: 992px) {\n.a-modal[data-v-ff81f934] {\n    padding-top: 40px;\n}\n.a-modal .form .title[data-v-ff81f934] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -22490,9 +22480,15 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "bottom" }, [
             _vm._v("\n      יש לך כבר משתמש באתר?\n      "),
-            _c("button", { staticClass: "link", on: { click: _vm.reg } }, [
-              _vm._v("\n        לחץ כאן\n      ")
-            ])
+            _c(
+              "button",
+              {
+                staticClass: "link",
+                attrs: { type: "button" },
+                on: { click: _vm.reg }
+              },
+              [_vm._v("\n        לחץ כאן\n      ")]
+            )
           ])
         ],
         1
@@ -22736,7 +22732,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "label" }, [
-              _vm._v("\n        רתאב שומישה יאנתל םיכסמ ינא\n      ")
+              _vm._v("\n        אני מסכים לתנאי השימוש באתר\n      ")
             ])
           ]),
           _vm._v(" "),
@@ -22748,9 +22744,15 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "bottom" }, [
             _vm._v("\n      יש לך כבר משתמש באתר?\n      "),
-            _c("button", { staticClass: "link", on: { click: _vm.login } }, [
-              _vm._v("\n        לחץ כאן\n      ")
-            ])
+            _c(
+              "button",
+              {
+                staticClass: "link",
+                attrs: { type: "button" },
+                on: { click: _vm.login }
+              },
+              [_vm._v("\n        לחץ כאן\n      ")]
+            )
           ])
         ],
         1
@@ -45502,7 +45504,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  TEST: false
+  TEST: true,
+  mobile: typeof window.orientation !== "undefined" || navigator.userAgent.indexOf('IEMobile') !== -1
 });
 
 /***/ }),
@@ -45547,10 +45550,12 @@ __webpack_require__(/*! magnific-popup/dist/jquery.magnific-popup.js */ "./node_
 
 __webpack_require__(/*! slick-carousel/slick/slick.min.js */ "./node_modules/slick-carousel/slick/slick.min.js");
 
-__webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
+__webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js"); // this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
+
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.devtools = true;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.performance = true;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$env = env;
 
 
 
@@ -45566,8 +45571,8 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     openReg: function openReg() {
       this.$modal.show(_components_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_8__["default"], {}, {
         adaptive: true,
-        width: 600,
-        height: 'auto',
+        width: this.$env.mobile ? '90%' : 600,
+        height: this.$env.mobile ? '90%' : 'auto',
         scrollable: true,
         transition: 'modal-anim'
       });
@@ -45575,8 +45580,8 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     openLogin: function openLogin() {
       this.$modal.show(_components_modals_Login_vue__WEBPACK_IMPORTED_MODULE_7__["default"], {}, {
         adaptive: true,
-        width: 600,
-        height: 'auto',
+        width: this.$env.mobile ? '90%' : 600,
+        height: this.$env.mobile ? '90%' : 'auto',
         scrollable: true,
         transition: 'modal-anim' // overlayTransition: 'modal-bg-anim',
 

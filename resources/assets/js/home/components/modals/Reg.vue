@@ -64,7 +64,7 @@
       <button class="th-btn th-btn-gold" type="submit">הרשמה</button>
       <div class="bottom">
         יש לך כבר משתמש באתר?
-        <button class="link" @click="login">
+        <button class="link" type="button" @click="login">
           לחץ כאן
         </button>
       </div>
@@ -135,12 +135,7 @@ export default {
     },
     login() {
       this.$emit('close');
-      this.$modal.show(Login, {}, {
-        adaptive: true,
-        width: 600,
-        height: 'auto',
-        scrollable: true,
-      });
+      this.$root.openLogin();
     }
   }
 }
@@ -169,6 +164,7 @@ export default {
       font-size: 50px;
       text-align: center;
       color: #000000;
+      line-height: 100%;
     }
     .button {
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
@@ -210,6 +206,15 @@ export default {
     .err {
       color: #EB5757;
       font-size: 16px;
+    }
+  }
+
+  @media(max-width: 992px) {
+    padding-top: 40px;
+    .form {
+      .title {
+        font-size: 32px;
+      }
     }
   }
 }
