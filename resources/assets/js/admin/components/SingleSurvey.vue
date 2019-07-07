@@ -75,7 +75,7 @@ export default {
         var sendData = new FormData();
         sendData.append('id', this.survey.survey.id);
         sendData.append('image', this.surveyImage);
-        sendData.append('content', this.survey);
+        sendData.append('survey', this.survey);
 
         axios
           .post('/editSurvey',sendData,{
@@ -85,8 +85,12 @@ export default {
             console.log(res);
           });
       }else {
+        var sendData = new FormData();
+        sendData.append('id', this.survey.survey.id);
+        // sendData.append('image', this.surveyImage);
+        sendData.append('survey', this.survey);
         axios
-          .post('/editSurvey',{survey : this.survey})
+          .post('/editSurvey',sendData)
             .then(res => {
               console.log(res);
             });
@@ -153,7 +157,7 @@ export default {
             div {
               // display:none;
               .preview-container {
-                display: none;
+                max-width:100%!important;
               }
             }
         }

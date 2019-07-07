@@ -455,6 +455,7 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
+      // dd($request);
         $files = $request->allFiles();
         if(isset($files['image'])){
             $image = $request->file('image');
