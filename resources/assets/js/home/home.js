@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
+// import TimeAgo from 'javascript-time-ago'
+// import en from 'javascript-time-ago/locale/en'
+import moment from 'moment'
+
 
 window.env = require('./env').default;
 
@@ -13,8 +17,12 @@ window.$ = window.jQuery = require('jquery');
 require('magnific-popup/dist/jquery.magnific-popup.js');
 require('slick-carousel/slick/slick.min.js');
 require('wowjs');
-
+moment.locale('he');
+// TimeAgo.addLocale(en);
+// const timeAgo = new TimeAgo('en-US');
+// console.log(timeAgo.format(new Date()));
 // this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
+
 
 Vue.config.devtools = true;
 Vue.config.performance = true;
@@ -26,6 +34,12 @@ import store from './store';
 import App from './App.vue';
 import Login from './components/modals/Login.vue';
 import Reg from './components/modals/Reg.vue';
+
+Vue.filter('formatDate', function (value) {
+  if (value) {
+    return moment(String(value)).fromNow();
+  }
+})
 
 window.app = new Vue({
   router: router,

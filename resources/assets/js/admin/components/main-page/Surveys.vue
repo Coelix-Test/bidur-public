@@ -17,6 +17,7 @@
     <PostSelection :deletable="false" v-if="selected == 'selection'"/>
     <PostSurvey :deletable="false" v-else-if="selected == 'assessment'"/>
     <PostAssessment :deletable="false" v-else-if="selected == 'survey'"/>
+    <button class="theme-btn-red big-btn">SAVE</button>
   </div>
 </template>
 

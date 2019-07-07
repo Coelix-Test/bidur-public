@@ -32,7 +32,7 @@
               </router-link>
               <p>
                 <span class="author">מאת {{post.author}}</span>
-                <span class="post-date">{{post.time}}</span>
+                <span class="post-date">{{ new Date(post.time*1000) | formatDate }}</span>
               </p>
             </div>
         </slide>
@@ -62,9 +62,10 @@ export default {
   created() {
     axios.post('/getServiceForMainPage').then(res => {
       this.survey = res.data;
+      console.log(this.survey);
     });
     axios.post('/getRecentPosts').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.posts = res.data;
     });
   },

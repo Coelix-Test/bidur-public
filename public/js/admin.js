@@ -2779,6 +2779,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -26250,7 +26251,9 @@ var render = function() {
         ? _c("PostSurvey", { attrs: { deletable: false } })
         : _vm.selected == "survey"
         ? _c("PostAssessment", { attrs: { deletable: false } })
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("SAVE")])
     ],
     1
   )

@@ -1,37 +1,40 @@
 <template>
   <div v-if="emojis" class="emoji">
-    <button @click="select" class="item" id="dislike">
+    <!-- <button @click="select" class="item" id="dislike">
       <img src="/img/emoji-7.svg">
       <div class="num">{{ emojis.dislike }}</div>
-    </button>
+    </button> -->
 
-    <button @click="select" class="item" id="like" >
+    <!-- <button @click="select" class="item" id="like" >
       <img src="/img/emoji-6.svg">
       <div class="num">{{ emojis.like }}</div>
-    </button>
+    </button> -->
 
-    <button @click="select" class="item" id="angry">
+    <!-- <button @click="select" class="item" id="angry">
       <img src="/img/emoji-5.svg">
       <div class="num">{{ emojis.angry }}</div>
-    </button>
+    </button> -->
 
     <button @click="select" class="item" id="cry">
       <img src="/img/emoji-4.svg">
+      <span>מעפן</span>
       <div class="num">{{ emojis.cry }}</div>
     </button>
 
     <button @click="select" class="item" id="wow" >
       <img src="/img/emoji-3.svg">
+      <span>נחמד</span>
       <div class="num">{{ emojis.wow }}</div>
     </button>
 
-    <button @click="select" class="item" id="laugh">
+    <!-- <button @click="select" class="item" id="laugh">
       <img src="/img/emoji-2.svg">
       <div class="num">{{ emojis.laugh }}</div>
-    </button>
+    </button> -->
 
     <button @click="select" class="item" id="love">
       <img src="/img/emoji-1.svg">
+      <span>עפתי</span>
       <div class="num">{{ emojis.love }}</div>
     </button>
   </div>
@@ -150,6 +153,12 @@ export default {
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+      span {
+        font-weight: 700;
+        background: #F2C94C;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
     &:hover {
       transform: scale(1.2);
@@ -161,6 +170,7 @@ export default {
     width:100%;
     flex-wrap:wrap;
     height:auto;
+    padding:15px 8px;
       .item {
         margin-bottom: 8px;
       }

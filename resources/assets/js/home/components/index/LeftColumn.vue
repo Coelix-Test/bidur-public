@@ -9,7 +9,8 @@
         <h2>{{post.title}}</h2>
         <p>
           <span class="author">מאת {{ post.author }}</span>
-          <span class="post-date">{{ post.time }}</span>
+          <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
+
         </p>
       </router-link>
     </article>
@@ -158,9 +159,10 @@ export default {
     font-weight: 400;
     margin-bottom: 0;
   }
-  .posts-column article p .author {
+  .posts-column article p .post-date {
     border-right:1px solid #fff;
     padding-right: 6px;
+    margin-right: 6px;
   }
   @media (max-width:768px) {
     .posts-column {
@@ -172,9 +174,9 @@ export default {
     .posts-column article {
       height:200px;
     }
-    .posts-column article:nth-child(1) {
+    /* .posts-column article:nth-child(1) {
       height:250px;
-    }
+    } */
   }
   @media (max-width:550px) {
     .posts-column article p {

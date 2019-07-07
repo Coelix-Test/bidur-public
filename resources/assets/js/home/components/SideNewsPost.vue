@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 
 .side-news-post {
+  text-decoration-color: #333;
   min-height: 110px;
   border-bottom: 1px solid #E0E0E0;
   display: flex;
@@ -36,6 +37,8 @@ export default {
   }
   .img {
     width: 120px;
+    min-width: 120px;
+    max-width: 120px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

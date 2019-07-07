@@ -17,8 +17,8 @@
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
-            <span class="post-date">{{ post.time }}</span>
             <span class="author">מאת {{ post.author }}</span>
+            <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
           </p>
         </router-link>
       </li>
@@ -252,7 +252,7 @@ export default {
     z-index: -2;
     transition: .3s;
   }
-  ul.posts li a p .author {
+  ul.posts li a p .post-date {
     border-right:1px solid #fff;
     padding-right: 6px;
     margin-right: 4px;

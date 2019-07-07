@@ -164,7 +164,7 @@ export default {
     getAllHashtags(){
       axios.post('/getAllHashtags')
           .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.hashtags = response.data;
 
             //not vue slick
@@ -177,7 +177,7 @@ export default {
     getAllPostTitles(){
       axios.post('/getRecentPosts')
           .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.postTitles = response.data.map(post => post.title);
 
             //TODO REFACTOR

@@ -21,7 +21,7 @@
 
           <div class="info">
             <span class="author">{{ post.data.post.author }}</span>
-            <span class="date">{{ post.data.post.date }}</span>
+            <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
           </div>
           <share />
 
@@ -71,7 +71,7 @@
 
 
         <div class="opinion">
-          <h2>מה דעתכם על הכתבה?</h2>
+          <h2>מה חשבתם על הכתבה?</h2>
           <div class="emoji-wrapper">
             <emoji v-if="postId" :postId="postId" />
           </div>
@@ -90,7 +90,7 @@
             <div class="related-post-content">
               <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
               <p class="related-post-meta">
-                <span class="date">{{post.time}}</span>
+                <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
                 <span class="author">by {{post.author}}</span>
               </p>
               <p class="excerpt">
@@ -240,7 +240,7 @@ export default {
     text-align: left;
   }
   .post-content h1 {
-    color:#333333;
+    color:#F2C94C;
     margin-bottom: 16px;
     font-weight: 700;
   }

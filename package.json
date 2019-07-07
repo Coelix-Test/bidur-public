@@ -29,6 +29,7 @@
         "@chenfengyuan/vue-carousel": "^1.0.2",
         "@tinymce/tinymce-vue": "^2.1.0",
         "animate.css": "^3.7.2",
+        "javascript-time-ago": "^2.0.1",
         "magnific-popup": "^1.1.0",
         "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
