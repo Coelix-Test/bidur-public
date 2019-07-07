@@ -261,7 +261,7 @@ export default {
     color:#333;
     font-size: 16px;
   }
-  .post-meta .info .author {
+  .post-meta .info .date {
     padding-right: 4px;
     margin-right: 4px;
     border-right: 1px solid #333;

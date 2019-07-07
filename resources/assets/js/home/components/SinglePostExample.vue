@@ -2,47 +2,7 @@
   <div class="single-post-example">
     <a href="" onclick="history.back()">BACK</a>
     <h1>Post have no content!</h1>
-    <section class="full-width image">
-      <img src="/img/singlePREV.png" alt="">
-      <p class="img-subtext">
-        La La Anthony is seen arriving to the 2019 CFDA Fashion Awards on June 3, 2019 in New York City. Gilbert Carrasquillo/GC Images/Getty Images
-      </p>
-    </section>
-    <section class="sub-title">
-      <h2>Live with Andy Cohen</h2>
-    </section>
-    <section class="text">
-      <p>
-        “Baby’s doing good,” the actress, 39, told Us Weekly exclusively on Monday, June 3, at the CFDA Fashion Awards. “Mom’s doing good. Everybody’s happy and healthy, which is always a beautiful thing.”
-      </p>
-      <p>
-        Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-      </p>
-      <p>
-        The Kardashian Family: Get to Know the Next Generation
-        “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-      </p>
-      <p>
-        After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-      </p>
-    </section>
 
-    <section class="image side-image left">
-
-        <img src="/img/sideImagePrev.png" alt="">
-        <h2>Baby’s doing good</h2>
-        <p>
-          Us broke the news in January that the Keeping Up With the Kardashians star, 38, and her husband, Kanye West, were expecting a baby boy via surrogate in “very early May,” and the makeup mogul confirmed this later that month.
-        </p>
-        <p>
-          The Kardashian Family: Get to Know the Next Generation
-          “We do [have a due date],” the Selfish author said on an episode of Watch What Happens Live With Andy Cohen. While Kourtney Kardashian and Khloé Kardashian acted surprised when their sister went on to say that she was having a boy, Kim explained, “Well, it’s out there. … I got drunk at our Christmas Eve party and I told some people. I can’t remember who I told, because I never get drunk.”
-        </p>
-        <p>
-          After she and the rapper, 41, who already share North, 5, Saint, 3, and Chicago, 16 months, welcomed their son, the reality star tweeted about the newborn’s personality.
-        </p>
-
-    </section>
   </div>
 </template>
 

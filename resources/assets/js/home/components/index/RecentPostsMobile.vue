@@ -1,18 +1,6 @@
-
 <template>
-  <div class="right-column-bot">
-
-    <template v-if="survey.type == 'survey'">
-      <div class="selected-poll">
-        <img src="img/rihanna.png" alt="">
-        <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-      </div>
-    </template>
-
-    <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-    <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
-
-    <div class="latest-posts" v-if="windowWidth > 768" >
+  <div class="recent-posts-mobile">
+    <div class="latest-posts">
       <h2>חדשות נוספות</h2>
 
       <carousel
@@ -44,93 +32,28 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import VuePoll from 'vue-poll'
-import LikeSurvey from './../common/LikeSurvey'
-import OneSurvey from './../common/OneSurvey'
 
 export default {
-  props : {
-    data : {
-      requred: true,
-    }
-  },
   data() {
     return {
       posts : [],
-      survey: [],
       windowWidth : document.documentElement.clientWidth,
     }
   },
   created() {
-    axios.post('/getServiceForMainPage').then(res => {
-      this.survey = res.data;
-      console.log(this.survey);
-    });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);
       this.posts = res.data;
     });
   },
   components: {
-    VuePoll,
     Carousel,
     Slide,
-    LikeSurvey,
-    OneSurvey,
-  },
-  methods: {
-    addVote(obj){
-      console.log(obj);
-    }
   },
 }
 </script>
 
 <style lang="css" scoped>
-  .right-column-bot {
-    flex-basis:50%;
-    width:50%;
-    padding-left: 8px;
-    /* max-width: 500px; */
-
-  }
-  .selected-poll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-    background: #FFFFFF;
-    box-sizing: border-box;
-    border:4px solid #E4A913;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
-    /* opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
-    transform: scale(0.8); */
-  }
-  .selected-poll.in-viewport {
-    /* transform: scale(1);
-    opacity: 1; */
-  }
-  .selected-poll img {
-    width:100%;
-    height:auto;
-    max-width:100%;
-    object-fit: cover;
-    margin-bottom: 0;
-  }
-  .poll {
-    width:100%;
-  }
-  .selected-poll h3 {
-    padding-top: 32px;
-    font-size: 32px;
-    color:#0E0E0E;
-    margin:0;
-    background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
-    padding-bottom: 32px;
-  }
   .latest-posts {
     width:100%;
     max-width: 100%;
@@ -234,21 +157,18 @@ export default {
     .latest-post-item {
       padding-left: 0;
     }
-    .selected-poll {
-      margin-bottom: 8px;
-    }
     h2 {
       margin-bottom: 16px;
     }
   }
   @media (max-width:768px) {
-    .right-column-bot {
-      order: 2;
+    .recent-posts-mobile {
+      order: 6;
       flex-basis:100%;
       width:100%;
       padding-left: 0;
       margin-bottom: 16px;
-      margin-top: 8px;
+      margin-top: 24px;
     }
   }
   @media (max-width:550px) {

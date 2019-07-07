@@ -17,7 +17,7 @@
           <img :src="post.img" alt="">
           <h2>{{post.title}}</h2>
           <p>
-            <span class="author">מאת {{ post.author }}</span>
+            <span class="author">{{ post.author }}</span>
             <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
           </p>
         </router-link>
@@ -261,7 +261,9 @@ export default {
   @media (max-width:768px) {
     .right-column {
       padding-left: 0;
-      order:2;
+      order:3;
+      display: flex;
+      flex-direction: column-reverse;
     }
     ul.posts li {
       flex-basis: calc(50% - 4px);

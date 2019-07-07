@@ -8,7 +8,7 @@
         {{ data.title }}
       </router-link>
       <div class="subtitle">
-        by {{ data.author }} | 5 hours ago
+        by {{ data.author }} | {{  new Date(data.time*1000) | formatDate }}
       </div>
       <div class="text">
         {{ data.excerpt }}

@@ -3,7 +3,7 @@
     <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
     <div class="desc">
       <div class="title">{{ data.title }}</div>
-      <div class="subtitle">{{ data.time }} | by {{ data.author }}</div>
+      <div class="subtitle">{{ new Date(data.time*1000) | formatDate }} |  {{ data.author }}</div>
     </div>
   </router-link>
 </template>

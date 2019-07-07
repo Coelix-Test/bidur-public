@@ -84,13 +84,13 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-  .picture-input {
+<style lang="css">
+  .tags-list >>> .picture-input {
     opacity: 0;
     /* z-index:-1; */
     position: absolute;
   }
-  .picture-input.changed {
+  .tags-list >>> .picture-input.changed {
     opacity: 1;
   }
   .main-wrapper {
@@ -173,7 +173,9 @@ export default {
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
-    z-index:2;
+    z-index:5;
+    position: absolute;
+    top:1px;
   }
   .tag-img-wrapper input[type="file"] {
     display: none;

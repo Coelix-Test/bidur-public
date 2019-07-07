@@ -8,7 +8,7 @@
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
         <p>
-          <span class="author">מאת {{ post.author }}</span>
+          <span class="author">{{ post.author }}</span>
           <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
 
         </p>

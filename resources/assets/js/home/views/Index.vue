@@ -5,10 +5,10 @@
 
     <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
-
+    <!-- <right-column-bot v-if="windowWidth < 768" /> -->
     <right-column-bot />
     <left-column-bot />
-
+    <recent-posts-mobile v-if="windowWidth < 768" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import RightColumn from './../components/index/RightColumn.vue';
 import LeftColumn from './../components/index/LeftColumn.vue';
 import LeftColumnBot from './../components/index/LeftColumnBot.vue';
 import RightColumnBot from './../components/index/RightColumnBot.vue';
+import RecentPostsMobile from './../components/index/RecentPostsMobile.vue';
 
 export default {
   data() {
@@ -27,14 +28,15 @@ export default {
       randomPost : '',
       leftPosts : [],
       rightPosts : [],
-      latestPosts : []
+      latestPosts : [],
+      windowWidth : document.documentElement.clientWidth
     }
   },
   methods : {
 
   },
-  mounted() {
-
+  created() {
+    console.log(document.documentElement.clientWidth);
     //get pinned posts
     axios
       .post('/getSelectedPosts')
@@ -55,7 +57,8 @@ export default {
    RightColumn,
    LeftColumn,
    LeftColumnBot,
-   RightColumnBot
+   RightColumnBot,
+   RecentPostsMobile
  }
 }
 </script>
