@@ -3691,13 +3691,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mails: null
     };
   },
-  created: function created() {}
+  created: function created() {
+    var _this = this;
+
+    axios.post('/getAllMails').then(function (res) {
+      _this.mails = res.data;
+    });
+  },
+  methods: {
+    deleteMessage: function deleteMessage(id) {
+      var _this2 = this;
+
+      axios.post('/deleteMail').then(function (res) {
+        console.log(res.data);
+        _this2.mails = res.data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -5027,7 +5052,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".mails[data-v-6f5e2699] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n}\n.mails .mails-wrapper[data-v-6f5e2699] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}", ""]);
+exports.push([module.i, ".mails[data-v-6f5e2699] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n}\n.mails .mails-wrapper[data-v-6f5e2699] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n}\n.mails .mails-wrapper .single-mail[data-v-6f5e2699] {\n  flex-basis: calc(33% - 16px);\n  margin: 0 8px 16px;\n  border: 1px solid #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  padding: 12px;\n  position: relative;\n}\n.mails .mails-wrapper .single-mail .author span[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .message > div[data-v-6f5e2699] {\n  font-weight: 700;\n}\n.mails .mails-wrapper .single-mail .deleteMessage[data-v-6f5e2699] {\n  position: absolute;\n  top: 12px;\n  left: 12px;\n  color: #EB5757;\n  background-color: transparent;\n  border-width: 0;\n}", ""]);
 
 // exports
 
@@ -27144,22 +27169,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mails" }, [
-      _c("div", { staticClass: "mails-wrapper" }, [
-        _c("div", { staticClass: "single-mail" }, [
-          _vm._v("\n      asdasd\n    ")
+  return _c("div", { staticClass: "mails" }, [
+    _c(
+      "div",
+      { staticClass: "mails-wrapper" },
+      _vm._l(_vm.mails, function(mail) {
+        return _c("div", { key: mail.id, staticClass: "single-mail" }, [
+          _c(
+            "button",
+            {
+              staticClass: "deleteMessage",
+              on: {
+                click: function($event) {
+                  return _vm.deleteMessage(mail.id)
+                }
+              }
+            },
+            [_vm._v("למחוק")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "author" }, [
+            _c("div", { staticClass: "name" }, [
+              _c("span", [_vm._v("שם :")]),
+              _vm._v(" " + _vm._s(mail.name) + " ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "email" }, [
+              _c("span", [_vm._v('דוא"ל :')]),
+              _vm._v(" " + _vm._s(mail.email) + " ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "phone" }, [
+              _c("span", [_vm._v("מספר טלפון :")]),
+              _vm._v(" " + _vm._s(mail.phone) + " ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "message" }, [
+            _c("div", [_vm._v("הודעה :")]),
+            _vm._v(" "),
+            _c("p", [_vm._v(" " + _vm._s(mail.message) + " ")])
+          ])
         ])
-      ])
-    ])
-  }
-]
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
