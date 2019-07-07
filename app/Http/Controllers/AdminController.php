@@ -689,7 +689,7 @@ class AdminController extends Controller
 
 
     public function getAllMails(){
-        $mails = Mail::all();
+        $mails = Mail::orderBy('created_at', 'desc')->get();
 
         foreach ($mails as $mail) {
             $id = $mail->id;
@@ -708,6 +708,11 @@ class AdminController extends Controller
         if (!empty($data)){
             return json_encode($data);
         }
+    }
+
+    public function deleteMail(Request $request){
+        Mail::where('id', $request->get('id')->delete());
+        return $this->getAllMails();
     }
 
     public function editPost(Request $request){
