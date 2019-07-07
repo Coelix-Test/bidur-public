@@ -14,8 +14,11 @@ require('magnific-popup/dist/jquery.magnific-popup.js');
 require('slick-carousel/slick/slick.min.js');
 require('wowjs');
 
+// this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
+
 Vue.config.devtools = true;
 Vue.config.performance = true;
+Vue.prototype.$env = env;
 
 import router from './router';
 import store from './store';
@@ -32,8 +35,8 @@ window.app = new Vue({
     openReg() {
       this.$modal.show(Reg, {}, {
         adaptive: true,
-        width: 600,
-        height: 'auto',
+        width: this.$env.mobile ? '90%' : 600,
+        height: this.$env.mobile ? '90%' : 'auto',
         scrollable: true,
         transition: 'modal-anim',
       })
@@ -41,8 +44,8 @@ window.app = new Vue({
     openLogin() {
       this.$modal.show(Login, {}, {
         adaptive: true,
-        width: 600,
-        height: 'auto',
+        width: this.$env.mobile ? '90%' : 600,
+        height: this.$env.mobile ? '90%' : 'auto',
         scrollable: true,
         transition: 'modal-anim',
         // overlayTransition: 'modal-bg-anim',

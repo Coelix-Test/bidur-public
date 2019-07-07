@@ -18,6 +18,10 @@ export default {
   position: absolute;
   left: 30px;
   top: 30px;
+  @media(max-width: 992px) {
+    left: 10px;
+    top: 10px;
+  }
 }
 
 </style>

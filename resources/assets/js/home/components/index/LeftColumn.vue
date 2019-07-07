@@ -8,7 +8,7 @@
         <img :src="post.img" alt="">
         <h2>{{post.title}}</h2>
         <p>
-          <span class="author">by {{ post.author }}</span>
+          <span class="author">מאת {{ post.author }}</span>
           <span class="post-date">{{ post.time }}</span>
         </p>
       </router-link>
@@ -177,12 +177,16 @@ export default {
     }
   }
   @media (max-width:550px) {
+    .posts-column article p {
+      font-size: 16px;
+      line-height: 16px;
+    }
     .posts-column article {
       margin-bottom: 8px;
     }
     .posts-column article h2 {
-      font-size: 28px;
-      line-height: 28px;
+      font-size: 20px;
+      line-height: 20px;
     }
   }
   @keyframes animatedgradient {

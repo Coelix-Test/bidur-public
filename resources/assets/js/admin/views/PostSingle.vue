@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <form class="col-8" @submit.prevent="submitPostData">
+            <form class="col-12" @submit.prevent="submitPostData">
                 <edit-post-header
                     :title="title"
                     :author="author"
@@ -112,7 +112,7 @@
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">Save</button>
             </form>
-            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;">
+            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display:none;">
                 <template v-if="celebrities !== undefined">
                     title: {{title}} <br>
                     author: {{author}} <br>
@@ -246,11 +246,13 @@ export default {
                     config: { headers: {'Content-Type': 'multipart/form-data' }}
                 })
                 .then(response => {
-                    console.log(response);
-                    // this.$router.push(window.location.'/admin#post/new');
-                    console.log(document.location.origin + "/admin#post");
-                    window.location.href= document.location.origin+"/admin#/";
-                });
+                    // console.log(response);
+                    // this.$route.push(document.location.origin+"/admin#/");
+                    // window.location.href = document.location.origin+"/admin#/?refresh=1";
+                    alert('Post was successfully added!');
+                    document.location.reload(true);
+                })
+                .catch(error => console.log(response));
         }
     },
     created() {

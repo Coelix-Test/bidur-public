@@ -8,10 +8,10 @@
 
           <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
             <img src="/img/arrow-right.svg">
-            Prev News
+            לכתבה הקודמת
           </router-link>
           <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
-            Next News
+            לכתבה הבאה
             <img src="/img/arrow-left.svg">
           </router-link>
         </nav>
@@ -32,10 +32,10 @@
 
           <div v-if="post.type == 'content'" v-html="post.value"></div>
 
-          <p v-if="post.type == 'image'">
+          <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span>{{post.description}}</span>
-          </p>
+            <span v-html="post.description"></span>
+          </div>
 
 
           <div v-if="post.type == 'survey'" class="poll">
@@ -61,7 +61,7 @@
           <div v-if="post.type == 'imageWithText'">
             <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
             <h2 v-if="post.title">{{ post.title }}</h2>
-            <p v-if="post.content">{{post.content}}</p>
+            <div v-if="post.content" v-html="post.content"></div>
           </div>
 
           <!-- <div v-if="post.type == ''"></div> -->
@@ -71,7 +71,7 @@
 
 
         <div class="opinion">
-          <h2>Your opinion</h2>
+          <h2>מה דעתכם על הכתבה?</h2>
           <div class="emoji-wrapper">
             <emoji v-if="postId" :postId="postId" />
           </div>
@@ -242,6 +242,7 @@ export default {
   .post-content h1 {
     color:#333333;
     margin-bottom: 16px;
+    font-weight: 700;
   }
   .post-meta {
     display: flex;
@@ -340,6 +341,10 @@ export default {
   }
   .opinion {
 
+  }
+  .opinion h2 {
+    text-align: center;
+    font-weight: 700;
   }
   .post-content section:last-of-type {
     padding-bottom: 32px;

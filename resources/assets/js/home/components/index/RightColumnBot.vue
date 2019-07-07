@@ -31,7 +31,7 @@
                 <h3>{{ post.title }}</h3>
               </router-link>
               <p>
-                <span class="author">by {{post.author}}</span>
+                <span class="author">מאת {{post.author}}</span>
                 <span class="post-date">{{post.time}}</span>
               </p>
             </div>
@@ -182,6 +182,7 @@ export default {
     justify-content: flex-start;
     color:#333333;
     text-decoration: none;
+    padding:0 8px;
   }
   .latest-post-item  img {
     width:100%;

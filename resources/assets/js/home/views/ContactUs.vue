@@ -1,14 +1,14 @@
 <template>
   <div class="contact-us">
     <div class="column right">
-      <h1>Contact Us</h1>
+      <h1>צור קשר</h1>
       <p class="info">
         <span><span class="icon"><img src="img/icons/location.svg" alt=""></span>Lorem ipsum dolor sit</span>
         <span><span class="icon"><img src="img/icons/mail.svg" alt=""></span>example@gmail.com</span>
         <span><span class="icon"><img src="img/icons/phone.svg" alt=""></span>+380631189234</span>
       </p>
       <div class="contact-form">
-        <h2>Send us message!</h2>
+        <h2>יש לכם שאלה? שלחו לנו הודעה!</h2>
         <form v-if="sendMessage" action="#">
           <input
             type="text"
@@ -16,7 +16,7 @@
             v-model="mailContent.name"
             required
             maxlength="40"
-            placeholder="Your Name"
+            placeholder="שם מלא"
           />
           <input
             type="email"
@@ -24,7 +24,7 @@
             v-model="mailContent.email"
             required
             maxlength="40"
-            placeholder="Email"
+            placeholder="מייל"
           />
           <input
             type="number"
@@ -32,7 +32,7 @@
             v-model="mailContent.phone"
             required
             maxlength="20"
-            placeholder="Phone Number"
+            placeholder="טלפון"
           />
           <textarea
             name="message"
@@ -41,12 +41,12 @@
             required
             maxlength="400"
             v-model="mailContent.message"
-            placeholder="Your Message"
+            placeholder="תוכן ההודעה"
           /></textarea>
-          <button type="submit" @click="sendMail($event)">SEND</button>
+          <button type="submit" @click="sendMail($event)">שלח הודעה!</button>
         </form>
         <div v-if="sendMessage == false" class="form-notice">
-          Your message was successfully sent!
+          ההודעה שלך נשלחה בהצלחה!
         </div>
       </div>
     </div>
@@ -182,7 +182,7 @@ export default {
                 border-style: hidden;
                 color:#fff;
                 font-weight: 900;
-                font-size: 40px;
+                font-size: 24px;
              }
           }
 

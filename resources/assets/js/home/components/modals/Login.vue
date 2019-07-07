@@ -3,7 +3,7 @@
     <close @close="$emit('close')"/>
     <form @submit="submit" class="form">
       <div class="title">
-        תורבחתה
+        התחברות
       </div>
 
       <input
@@ -28,10 +28,10 @@
 
       <div v-if="err.length" class="err">{{ err }}</div>
 
-      <button class="th-btn th-btn-gold" type="submit">המשרה</button>
+      <button class="th-btn th-btn-gold" type="submit">התחברות</button>
       <div class="bottom">
         יש לך כבר משתמש באתר?
-        <button class="link" @click="reg">
+        <button class="link" type="button" @click="reg">
           לחץ כאן
         </button>
       </div>
@@ -79,12 +79,7 @@ export default {
     },
     reg() {
       this.$emit('close');
-      this.$modal.show(Reg, {}, {
-        adaptive: true,
-        width: 600,
-        height: 'auto',
-        scrollable: true,
-      });
+      this.$root.openReg();
     }
   }
 }
@@ -113,6 +108,7 @@ export default {
       font-size: 50px;
       text-align: center;
       color: #000000;
+      line-height: 100%;
     }
     .th-btn {
       margin-top: 10px;
@@ -134,6 +130,15 @@ export default {
     .err {
       color: #EB5757;
       font-size: 16px;
+    }
+  }
+
+  @media(max-width: 992px) {
+    padding-top: 40px;
+    .form {
+      .title {
+        font-size: 32px;
+      }
     }
   }
 }

@@ -106,10 +106,12 @@ export default {
   align-items: stretch;
   justify-content: space-between;
   background: #FFFFFF;
-  box-shadow: 0px -3px 20px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0px -3px 20px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   padding: 15px 40px 15px 40px;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
   &::before {
     content: '';
     left: 50%;
@@ -143,7 +145,8 @@ export default {
     &.is_active {
       transform: scale(1.2);
       .num {
-        background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+        // background: linear-gradient(90deg, #F6AB62 0.91%, #B63E8E 40.51%, #3F5EFB 100%);
+        background: #F2C94C;
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }

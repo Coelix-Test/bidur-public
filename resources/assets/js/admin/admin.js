@@ -15,16 +15,18 @@ import Surveys from './views/Surveys.vue';
 import Tags from './views/Tags.vue';
 import EditMainPage from './views/EditMainPage.vue';
 import Users from './views/Users.vue';
+import EditPost from './views/EditPost.vue';
 
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'posts', component: PostList },
-    { name: 'post-new', path: 'post/new', component: PostSingle },
+    { name: 'post-new', path: '/post/new', component: PostSingle },
     { name: 'post-single', path: 'post/:id', component: PostSingle },
 
     { path: '/surveys', name: 'surveys', component: Surveys },
     { path: '/tags', name: 'tags', component: Tags },
     { path: '/users', name: 'users', component: Users },
+    { path: '/editpost/:id', name: 'editpost', component: EditPost },
     { path: '/edit-main-page', name: 'edit-main-page', component: EditMainPage }
   ]
 });
