@@ -5066,7 +5066,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
         _this.postId = id;
