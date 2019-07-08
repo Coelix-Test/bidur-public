@@ -414,8 +414,15 @@ class MainController extends Controller
 //        $posts = Post::all();
 
         $hashtagId = $request->get('hashtag_id');
+        $page = $request->get('page');
+        if ($page == 0){
+            $hashtagPosts = HashtagPosts::offset(0)->take(24)->get();
+        }else{
+            $offset = $page * 12;
+            $hashtagPosts = HashtagPosts::offset($offset)->take(24)->get();
+        }
 
-        $hashtagPosts = HashtagPosts::all();
+
         $hashtag = Hashtag::find($hashtagId);
 
         $postsWithContent['hashtagImg'] = $hashtag->image;

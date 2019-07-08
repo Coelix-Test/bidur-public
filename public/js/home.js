@@ -4700,6 +4700,7 @@ __webpack_require__.r(__webpack_exports__);
       return axios.post('/getAllPostsByHashtag', {
         hashtag_id: id
       }).then(function (res) {
+        console.log(res);
         _this.data = res.data.data;
         _this.name = res.data.hashtagName;
         _this.img = res.data.hashtagImg;
@@ -38447,7 +38448,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "subtitle" }, [
             _vm._v(
-              "\n      by " +
+              "\n      מאת " +
                 _vm._s(_vm.data.author) +
                 " | " +
                 _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +
@@ -38502,7 +38503,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "subtitle" }, [
           _vm._v(
-            "\n      " +
+            "\n      מאת " +
               _vm._s(_vm.data.author) +
               " | " +
               _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +

@@ -51,6 +51,7 @@ export default {
       return axios.post('/getAllPostsByHashtag', {
         hashtag_id: id,
       }).then(res => {
+        console.log(res);
         this.data = res.data.data;
         this.name = res.data.hashtagName;
         this.img = res.data.hashtagImg;

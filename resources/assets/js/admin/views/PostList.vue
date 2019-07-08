@@ -12,8 +12,8 @@
         <div class="actions">
           <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
           <!-- <button @click="editPost(post.post.id)">edit</button> -->
-          <a :href="'./admin#/editpost/'+post.post.id" target="_blank">ערוך</a>
-          <button v-if="post.is_in_main_section == null" @click="deletePost(post.post.id)">מחק כתבה</button>
+          <router-link :to="'/post/' + post.post.id">ערוך</router-link>
+          <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>
         </div>
 
       </div>
@@ -38,7 +38,7 @@ export default {
   },
   methods : {
     editPost(id) {
-      this.$router.push({ name: 'post-single', params: { id: id } });
+      this.$router.push({ name: 'post-edit', params: { id: id } });
     },
     deletePost(id) {
       axios
