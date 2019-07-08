@@ -969,7 +969,7 @@ class AdminController extends Controller
                     $hashtags   = $section['celebrities']; //array
                 }
                 $author     = $section['author'];
-                $date       = $currentCreatedAt;
+                $date       = $section['date'];;
                 $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId);
 
             }
