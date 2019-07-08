@@ -2942,15 +2942,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addCelebrity: function addCelebrity() {
-      // let index = 0;
-      // if(this.celebrities.length){
-      //     index = this.celebrities[this.celebrities.length - 1].index + 1;
-      // }
-      // let newCelebrities = this.celebrities;
-      // newCelebrities.push(
-      //     {id: '', name: '', index: index}
-      // );
-      // console.log(this.celebrities);
       var newCelebrities = this.celebrities;
       newCelebrities.push({
         id: '',
@@ -4208,8 +4199,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         postSections = Object.keys(postSections).map(function (i) {
           return postSections[i];
         });
-        console.log(postSections); // this.sections = postSections;
-        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+        console.log(postSections);
+        _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
         // sections
