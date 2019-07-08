@@ -405,6 +405,7 @@ class AdminController extends Controller
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
+            'description' => $request->get('title'),
             'postId' => 0,
             'order' => 0,
         ]);
@@ -432,7 +433,8 @@ class AdminController extends Controller
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
-            'postId' => 0,
+            'postId' => -1,
+            'description' => $request->get('title'),
             'order' => 0,
         ]);
         return ['success' => true];
@@ -455,6 +457,7 @@ class AdminController extends Controller
         SingleLikableImage::create([
             'url' => '/images/singlePhoto/'.$name,
             'postId' => 0,
+            'description' => $request->get('title'),
             'order' => 0,
         ]);
         return ['success' => true];
@@ -476,7 +479,8 @@ class AdminController extends Controller
         }
         SingleLikableImage::create([
             'url' => '/images/singlePhoto/'.$name,
-            'postId' => 0,
+            'postId' => -1,
+            'description' => $request->get('title'),
             'order' => 0,
         ]);
         return ['success' => true];
