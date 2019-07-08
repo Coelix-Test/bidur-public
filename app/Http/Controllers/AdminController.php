@@ -801,7 +801,7 @@ class AdminController extends Controller
     }
 
     public function showEditablePostContent(Request $request){
-        dd($request);
+//        dd($request);
         $id = $request->get('id');
 
         $post = Post::find($id);
