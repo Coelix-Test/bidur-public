@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper selection-component-container">
       <div class="selection-title">
-          <input type="text" placeholder="Selection title" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
+          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
       </div>
       <div class="images-row">
           <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>

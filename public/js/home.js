@@ -3038,6 +3038,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       axios.post('/likeSinglePhoto', {
         serviceId: this.data.id
+      }).then(function (res) {
+        console.log(res);
       });
     },
     dislike: function dislike() {
@@ -3048,6 +3050,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       axios.post('/dislikeSinglePhoto', {
         serviceId: this.data.id
+      }).then(function (res) {
+        console.log(res);
       });
     }
   },
@@ -3059,9 +3063,9 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.disliked / sum * 100;
       } else {
         var k = 100;
-      }
+      } // console.log(k);
 
-      console.log(k);
+
       return k + '%';
     },
     dislikeHeight: function dislikeHeight() {
@@ -3071,9 +3075,9 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.liked / sum * 100;
       } else {
         var k = 100;
-      }
+      } // console.log(k);
 
-      console.log(k);
+
       return k + '%';
     }
   }
@@ -38675,7 +38679,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "body" }, [
       _c("div", { staticClass: "title" }, [
-        _vm._v("\n      What do you think about it?\n    ")
+        _vm._v("\n      " + _vm._s(_vm.data.description) + "\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "buttons" }, [
@@ -38887,7 +38891,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "one-survey" }, [
     _c("div", { staticClass: "title" }, [
-      _vm._v("\n    What do you think about it?\n  ")
+      _vm._v("\n    " + _vm._s(_vm.data.description) + "\n  ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "body" }, [

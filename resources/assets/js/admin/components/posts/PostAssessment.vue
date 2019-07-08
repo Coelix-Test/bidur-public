@@ -2,7 +2,7 @@
   <div class="wrapper survey-component-container">
       <image-input class="image" :value="image" @update:value="updateImage"></image-input>
       <div class="assessment-title">
-          <input type="text" placeholder="Assessment title" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
+          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
   </div>

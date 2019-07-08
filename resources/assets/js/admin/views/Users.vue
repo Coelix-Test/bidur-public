@@ -2,11 +2,11 @@
   <div class="users">
     <div class="usersTable">
       <div class="heading">
-        <div class="name">Name</div>
-        <div class="mail">Mail</div>
-        <div class="phone">Phone</div>
-        <div class="status">Status</div>
-        <div class="action">Actions</div>
+        <div class="name">שם משתמש</div>
+        <div class="mail">תאריך</div>
+        <div class="phone">טלפון</div>
+        <div class="status">סטטוס</div>
+        <div class="action">סוג משתמש</div>
       </div>
       <div class="content">
         <div v-if="users && user.id != 1" v-for="user in users" :key="user.id" class="user">
@@ -22,9 +22,9 @@
             <span>{{user.status}}</span>
           </div>
           <div class="action">
-            <button v-if="user.is_current_user == null" type="submit" @click="deleteUser(user.id)">D</button>
-            <button type="submit" @click="updateUser(user.id,user.name,user.email,user.phone)">S</button>
-            <button v-if="user.is_current_user == null" type="submit" @click="makeUserAdmin(user.id)">A</button>
+            <button v-if="user.is_current_user == null" type="submit" @click="deleteUser(user.id)">מחיקה</button>
+            <button type="submit" @click="updateUser(user.id,user.name,user.email,user.phone)">שמור</button>
+            <button v-if="user.is_current_user == null" type="submit" @click="makeUserAdmin(user.id)">הגדר כמנהל</button>
           </div>
         </div>
       </div>
@@ -90,16 +90,16 @@ export default {
           flex-direction: row;
           flex-wrap:nowrap;
           padding:6px 12px;
-          color:#BDBDBD;
+          color:#333;
             > div.action {
-              flex-basis:10%;
+              flex-basis:20%;
             }
             > div.phone {
               direction: ltr;
               text-align: right;
             }
             > div {
-              flex-basis:25%;
+              flex-basis:20%;
               padding-left: 16px;
               overflow:hidden;
             }
@@ -112,7 +112,7 @@ export default {
             flex-direction: row;
             flex-wrap:nowrap;
               > div.action {
-                flex-basis:10%;
+                flex-basis:20%;
                   button {
                     border-width:0;
                     background-color: transparent;
@@ -138,12 +138,12 @@ export default {
                     padding: 4px 12px;
                     text-transform: capitalize;
                       &.is_admin {
-                        background: limegreen!important;
+                        background: #0088cc!important;
                       }
                   }
                   &.online {
                     span {
-                      background:#EB5757;
+                      background:limegreen;
                       color:#fff;
                       padding: 4px 12px;
                       border-radius: 10px;
@@ -153,7 +153,7 @@ export default {
 
               }
               > div {
-                flex-basis:25%;
+                flex-basis:20%;
                 padding-left: 16px;
                 overflow:hidden;
                 padding-top: 4px;

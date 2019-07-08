@@ -4,13 +4,13 @@
 
     <div class="form">
       <div class="input-section">
-        <div class="heading">Insta link</div>
+        <div class="heading">קישור לאינסטגרם</div>
         <input v-model="link" class="theme-textarea" type="text">
       </div>
     </div>
 
     <div class="btn-wrap">
-      <button @click="save" class="theme-btn theme-btn-red big-btn">Save</button>
+      <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
     </div>
   </div>
 </template>

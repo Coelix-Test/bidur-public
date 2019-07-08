@@ -16,13 +16,13 @@
         buttonClass="ui button primary"
         :customStrings="{
         upload: '<h4>Upload it!</h4>',
-        drag: 'SELECT IMAGE'}">
+        drag: 'להעלות'}">
       ></picture-input>
     </div>
-    <input type="text" v-model="tagName" placeholder="Tag Name">
+    <input type="text" v-model="tagName" placeholder="תג שם">
     <div class="events">
       <a class="add-tag" href="#" @click="addTag($event)">
-        v-check
+        לשמור
       </a>
     </div>
   </li>
@@ -86,5 +86,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+  a {
+    color: #333;
+  }
 </style>

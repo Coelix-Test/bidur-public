@@ -1,28 +1,28 @@
 <template>
     <div id="admin-wrap">
         <nav class="admin-nav">
-            <div class="title">Admin Panel</div>
+            <div class="title">מערכת ניהול - ישראל בידור</div>
             <ul class="nav-menu">
                 <li>
-                    <router-link :to="{ name: 'edit-main-page' }">Main Page</router-link>
+                    <router-link :to="{ name: 'edit-main-page' }">עמוד ראשי</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'post-new' }">New Post</router-link>
+                    <router-link :to="{ name: 'post-new' }">פוסט חדש</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'posts' }">All Posts</router-link>
+                    <router-link :to="{ name: 'posts' }">כל הפוסטים</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'surveys' }">Surveys</router-link>
+                    <router-link :to="{ name: 'surveys' }">שאלונים</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'users' }">Users</router-link>
+                    <router-link :to="{ name: 'users' }">משתמשים</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'tags' }">Tags</router-link>
+                    <router-link :to="{ name: 'tags' }">תגים</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'mails' }">Mails</router-link>
+                    <router-link :to="{ name: 'mails' }">מיילים</router-link>
                 </li>
             </ul>
         </nav>

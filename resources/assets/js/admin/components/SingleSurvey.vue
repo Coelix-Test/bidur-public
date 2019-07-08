@@ -5,7 +5,7 @@
       <div class="date">{{ survey.survey.created_at }}</div>
       <div class="actions">
         <!-- <button @click="deleteSurvey">D</button> -->
-        <button @click="updateSurvey">Save</button>
+        <button @click="updateSurvey">שמור</button>
       </div>
     </div>
     <div class="content">
@@ -22,8 +22,8 @@
           accept="image/jpeg, image/png, image/gif"
           buttonClass="ui button primary"
           :customStrings="{
-          upload: '<h4>Upload it!</h4>',
-          drag: 'SELECT IMAGE'}">
+          upload: '<h4>להעלות את זה!</h4>',
+          drag: 'בחר תמונה'}">
         ></picture-input>
         <img v-if="surveyImage == null" class="thumbnail" :src="survey.survey.image">
       </div>
@@ -32,7 +32,7 @@
         <div class="variant" v-if="variants" v-for="variant in variants" :key="variant.id">
           <!-- {{variant}} -->
           <input type="text" :name="variant.id" v-model="variant.variant">
-          <span>Votes : {{variant.votes}}</span>
+          <span>הצבעות : {{variant.votes}}</span>
           <!-- {{variant.variant}} -->
         </div>
       </div>
@@ -145,6 +145,7 @@ export default {
       margin-left: -12px;
       margin-right: -12px;
       .survey-img-wrapper {
+        position: relative;
         &::v-deep {
           #picture-input {
           // display: none;
@@ -158,11 +159,22 @@ export default {
                 }
                 .picture-inner {
                   top:-300px!important;
+                  span {
+                    font-size: 16px;
+                  }
                 }
               }
             }
+          }
         }
-      }
+        > img {
+          position: absolute;
+          top:0;
+          right:0;
+          max-width: 100%;
+          height:300px;
+          object-fit: cover;
+        }
       }
       .thumbnail {
         width:100%;

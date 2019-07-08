@@ -1,12 +1,12 @@
 <template>
   <div class="edit-main-page">
     <div class="section">
-      <div class="heading">Birthday Category</div>
+      <div class="heading">סקשן יום הולדת</div>
       <birthday-section class="shadow-section"></birthday-section>
     </div>
 
     <div class="section">
-      <div class="heading">Posts</div>
+      <div class="heading">פוסטים נעוצים</div>
       <posts-tile-section class="shadow-section"></posts-tile-section>
     </div>
 
