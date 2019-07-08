@@ -1040,6 +1040,7 @@ class AdminController extends Controller
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);
+//        dd($post);
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
                 HashtagPosts::create([
