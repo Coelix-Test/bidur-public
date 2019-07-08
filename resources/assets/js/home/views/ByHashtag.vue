@@ -56,6 +56,10 @@ export default {
         page: this.page,
       }).then(res => {
         this.loading = false;
+        if(!res.data.data) {
+          this.end = true;
+          return;
+        }
         if(append) {
           this.data.push(...Object.values(res.data.data));
           console.log('appended');
@@ -63,9 +67,6 @@ export default {
           this.data = Object.values(res.data.data);
           this.name = res.data.hashtagName;
           this.img = res.data.hashtagImg;
-        }
-        if(!this.data.length) {
-          this.end = true;
         }
       });
     },
@@ -157,6 +158,7 @@ main {
   }
   @media(max-width: 992px) {
     flex-direction: column;
+    align-items: stretch;
     padding: 0 10px;
   }
 }
