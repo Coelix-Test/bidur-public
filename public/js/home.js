@@ -3038,6 +3038,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       axios.post('/likeSinglePhoto', {
         serviceId: this.data.id
+      }).then(function (res) {
+        console.log(res);
       });
     },
     dislike: function dislike() {
@@ -3048,6 +3050,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       axios.post('/dislikeSinglePhoto', {
         serviceId: this.data.id
+      }).then(function (res) {
+        console.log(res);
       });
     }
   },
@@ -3059,9 +3063,9 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.disliked / sum * 100;
       } else {
         var k = 100;
-      }
+      } // console.log(k);
 
-      console.log(k);
+
       return k + '%';
     },
     dislikeHeight: function dislikeHeight() {
@@ -3071,9 +3075,9 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.liked / sum * 100;
       } else {
         var k = 100;
-      }
+      } // console.log(k);
 
-      console.log(k);
+
       return k + '%';
     }
   }
@@ -38675,7 +38679,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "body" }, [
       _c("div", { staticClass: "title" }, [
-        _vm._v("\n      What do you think about it?\n    ")
+        _vm._v("\n      " + _vm._s(_vm.data.description) + "\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "buttons" }, [
@@ -38887,7 +38891,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "one-survey" }, [
     _c("div", { staticClass: "title" }, [
-      _vm._v("\n    What do you think about it?\n  ")
+      _vm._v("\n    " + _vm._s(_vm.data.description) + "\n  ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "body" }, [
@@ -62538,15 +62542,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************!*\
   !*** ./resources/assets/js/home/components/index/RecentPostsMobile.vue ***!
   \*************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RecentPostsMobile_vue_vue_type_template_id_068a545c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RecentPostsMobile.vue?vue&type=template&id=068a545c&scoped=true& */ "./resources/assets/js/home/components/index/RecentPostsMobile.vue?vue&type=template&id=068a545c&scoped=true&");
 /* harmony import */ var _RecentPostsMobile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecentPostsMobile.vue?vue&type=script&lang=js& */ "./resources/assets/js/home/components/index/RecentPostsMobile.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RecentPostsMobile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RecentPostsMobile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _RecentPostsMobile_vue_vue_type_style_index_0_id_068a545c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RecentPostsMobile.vue?vue&type=style&index=0&id=068a545c&lang=css&scoped=true& */ "./resources/assets/js/home/components/index/RecentPostsMobile.vue?vue&type=style&index=0&id=068a545c&lang=css&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _RecentPostsMobile_vue_vue_type_style_index_0_id_068a545c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RecentPostsMobile.vue?vue&type=style&index=0&id=068a545c&lang=css&scoped=true& */ "./resources/assets/js/home/components/index/RecentPostsMobile.vue?vue&type=style&index=0&id=068a545c&lang=css&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -62578,7 +62581,7 @@ component.options.__file = "resources/assets/js/home/components/index/RecentPost
 /*!**************************************************************************************************!*\
   !*** ./resources/assets/js/home/components/index/RecentPostsMobile.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

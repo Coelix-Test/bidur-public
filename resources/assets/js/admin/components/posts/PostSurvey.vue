@@ -2,14 +2,14 @@
   <div class="wrapper survey-component-container">
       <image-input class="image" :value="image" @update:value="updateImage"></image-input>
       <div class="survey-container">
-          <input type="text" placeholder="Survey title" :value="title" @input="$emit('update:title', $event.target.value)" class="survey-title">
+          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="survey-title">
           <div class="answers-list">
               <div v-for="(answer, index) in answers" class="answer-item">
-                  <input type="text" class="answer-title" :value="answer"  @input="editAnswer(index, $event.target.value)" placeholder="Answer">
+                  <input type="text" class="answer-title" :value="answer"  @input="editAnswer(index, $event.target.value)" placeholder="תשובה">
                   <div class="delete-answer delete-btn" @click="deleteAnswer(index)"></div>
               </div>
               <div class="add-new-answer" @click="addAnswer">
-                  Add answer
+                  הוסף תשובה
               </div>
           </div>
       </div>

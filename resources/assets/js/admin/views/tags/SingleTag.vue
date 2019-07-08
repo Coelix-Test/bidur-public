@@ -15,7 +15,7 @@
         buttonClass="ui button primary"
         :customStrings="{
         upload: '<h4>Upload it!</h4>',
-        drag: 'SELECT IMAGE'}">
+        drag: 'להעלות'}">
       ></picture-input>
       <img :src="data.img" @click="chooseImageFile" />
     </div>
@@ -28,7 +28,7 @@
           <path d="M13.1849 0.951636H9.18108V0.194687C9.18108 0.0871907 9.09393 0 8.98639 0H4.78192C4.67443 0 4.58728 0.0871907 4.58728 0.194687V0.951591H0.583382C0.261165 0.951591 0 1.2128 0 1.53502V3.36779H13.7683V1.53506C13.7683 1.21285 13.5071 0.951636 13.1849 0.951636Z" fill="#828282"/>
         </svg>
       </a>
-      <a class="edit-tag" href="#" @click="editTag(data.id, $event)">save tag</a>
+      <a class="edit-tag" href="#" @click="editTag(data.id, $event)">לשמור</a>
     </div>
   </li>
 </template>
@@ -112,4 +112,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  a {
+    color:#333;
+  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="one-survey">
     <div class="title">
-      What do you think about it?
+      {{data.description}}
     </div>
     <div class="body">
       <svg class="lightning" width="26" height="46" viewBox="0 0 26 46" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper birthday-section">
         <image-input :value.sync="image"></image-input>
-        <textarea v-model="text" name="description" class="text theme-textarea" placeholder="Enter Birthday text"></textarea>
+        <textarea v-model="text" name="description" class="text theme-textarea" placeholder="טקסט חופשי"></textarea>
         <div class="btn-wrap">
-            <button @click="save" class="theme-btn theme-btn-red big-btn">Save</button>
+            <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
         </div>
     </div>
 </template>

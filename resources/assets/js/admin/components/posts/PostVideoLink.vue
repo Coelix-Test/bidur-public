@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <input type="text" class="theme-input-text"
-            placeholder="Link of the video"
+            placeholder="קישור"
             :value="value"
             @input="$emit('update:value', $event.target.value)"/>
 

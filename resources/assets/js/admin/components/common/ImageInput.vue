@@ -3,7 +3,7 @@
 
         <label v-if="value === ''">
             <img src="/img/icons/edit-post-upload-image.svg" alt="">
-            <div class="theme-btn theme-btn-red upload-btn">Upload</div>
+            <div class="theme-btn theme-btn-red upload-btn">העלאת תמונה</div>
             <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
         </label>
         <img v-else :src="image" class="image" alt="">

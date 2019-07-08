@@ -38,7 +38,7 @@
 <script>
 import SingleTag from './tags/SingleTag.vue';
 import AddNewTag from './tags/AddNewTag.vue';
-import TagImage from './tags/TagImage.vue';
+// import TagImage from './tags/TagImage.vue';
 export default {
   data() {
     return {
@@ -77,12 +77,13 @@ export default {
  components : {
    SingleTag,
    AddNewTag,
-   TagImage
+   // TagImage
  }
 
 
 }
 </script>
+
 
 <style lang="css">
   .tags-list >>> .picture-input {
@@ -185,5 +186,11 @@ export default {
   }
   .picture-inner {
     border-width:0!important;
+  }
+  .tag-img-wrapper #picture-input .picture-inner-text {
+    font-size: 16px;
+    color:#fff;
+    font-weight: 600;
+    white-space: nowrap;
   }
 </style>

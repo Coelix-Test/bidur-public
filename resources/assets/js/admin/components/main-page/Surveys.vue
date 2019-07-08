@@ -3,21 +3,21 @@
     <div class="types">
       <div class="add-section" @click="select('survey')">
         <img src="/img/icons/edit-post-survey.svg" alt="">
-        <span>Survey</span>
+        <span>סקר</span>
       </div>
       <div class="add-section" @click="select('assessment')">
         <img src="/img/icons/edit-post-assessment.svg" alt="">
-        <span>Assessment</span>
+        <span>הערכה</span>
       </div>
       <div class="add-section" @click="select('selection')">
         <img src="/img/icons/edit-post-selection.svg" alt="">
-        <span>Selection</span>
+        <span>להשוות</span>
       </div>
     </div>
     <PostSelection :deletable="false" v-if="selected == 'selection'"/>
     <PostSurvey :deletable="false" v-else-if="selected == 'assessment'"/>
     <PostAssessment :deletable="false" v-else-if="selected == 'survey'"/>
-    <button class="theme-btn-red big-btn">SAVE</button>
+    <button class="theme-btn-red big-btn">לשמור</button>
   </div>
 </template>
 
