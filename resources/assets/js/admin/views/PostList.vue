@@ -5,7 +5,7 @@
 
         <h2>{{post.post.metaTitle}}</h2>
         <div class="post-meta">
-          <span class="date">{{post.post.created_at}}</span>
+          <span class="date">{{post.post.created_at | formatDate}}</span>
           <span class="author">מאת {{post.post.author}}</span>
           <span class="id">#{{post.post.id}}</span>
         </div>

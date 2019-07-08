@@ -25863,7 +25863,7 @@ var render = function() {
     ? _c("div", { staticClass: "single-survey" }, [
         _c("div", { staticClass: "heading" }, [
           _c("div", { staticClass: "date" }, [
-            _vm._v(_vm._s(_vm.survey.survey.created_at))
+            _vm._v(_vm._s(_vm._f("formatDate")(_vm.survey.survey.created_at)))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actions" }, [
@@ -27402,7 +27402,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "post-meta" }, [
                 _c("span", { staticClass: "date" }, [
-                  _vm._v(_vm._s(post.post.created_at))
+                  _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "author" }, [
@@ -27976,7 +27976,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("h3", [_vm._v("Add new tag")])
+              _c("h3", [_vm._v("הוסף תג חדש")])
             ]
           ),
           _vm._v(" "),

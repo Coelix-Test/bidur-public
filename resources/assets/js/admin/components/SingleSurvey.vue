@@ -2,7 +2,7 @@
   <div v-if="survey" class="single-survey">
 
     <div class="heading">
-      <div class="date">{{ survey.survey.created_at }}</div>
+      <div class="date">{{ survey.survey.created_at | formatDate }}</div>
       <div class="actions">
         <!-- <button @click="deleteSurvey">D</button> -->
         <button @click="updateSurvey">שמור</button>

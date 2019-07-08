@@ -94,7 +94,7 @@ export default {
   data(){
     return {
       isLoggedIn: false
-    };
+    }
   }
 }
 </script>
