@@ -2359,6 +2359,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2942,15 +2943,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addCelebrity: function addCelebrity() {
-      // let index = 0;
-      // if(this.celebrities.length){
-      //     index = this.celebrities[this.celebrities.length - 1].index + 1;
-      // }
-      // let newCelebrities = this.celebrities;
-      // newCelebrities.push(
-      //     {id: '', name: '', index: index}
-      // );
-      // console.log(this.celebrities);
       var newCelebrities = this.celebrities;
       newCelebrities.push({
         id: '',
@@ -4176,6 +4168,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }); //send ajax
 
       var url = '/createPost';
+      var successMessage = 'Post was successfully added!';
+
+      if (this.$route.params.id) {
+        url = 'editPostCreateAllSections';
+        successMessage = 'Post was successfully edited!';
+        postData.append('id', this.$route.params.id);
+      }
+
       axios({
         method: 'post',
         url: url,
@@ -4189,7 +4189,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         // console.log(response);
         // this.$route.push(document.location.origin+"/admin#/");
         // window.location.href = document.location.origin+"/admin#/?refresh=1";
-        alert('Post was successfully added!'); // document.location.reload(true);
+        alert(successMessage); // document.location.reload(true);
       })["catch"](function (error) {
         return console.log(response);
       });
@@ -4200,16 +4200,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
     if (this.$route.params.id) {
       // TODO: get all post info by ajax
-      axios.post('/post/' + this.$route.params.id).then(function (response) {
-        _this.title = response.data.post.mainTitle;
-        _this.author = response.data.post.author;
-        _this.date = new Date(response.data.post.date * 1000);
-        var postSections = response.data.post.sections;
+      axios.post('/showEditablePostContent', {
+        id: this.$route.params.id
+      }).then(function (response) {
+        _this.title = response.data.mainTitle;
+        _this.author = response.data.author;
+        _this.date = new Date(response.data.date * 1000);
+        var postSections = response.data.sections;
         postSections = Object.keys(postSections).map(function (i) {
           return postSections[i];
         });
-        console.log(postSections); // this.sections = postSections;
-        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+        console.log(postSections);
+        _this.celebrities = response.data.hashtags.map(function (i) {
+          return {
+            id: i.id,
+            name: i.title
+          };
+        });
+        _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
         // sections
@@ -25872,6 +25880,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("router-view", {
+        key: _vm.$route.path,
         staticClass: "admin-content",
         attrs: { id: "admin_content" }
       })
@@ -26058,6 +26067,8 @@ var render = function() {
             }
           })
         ])
+      : typeof _vm.value === "string"
+      ? _c("img", { staticClass: "image", attrs: { src: _vm.value, alt: "" } })
       : _c("img", { staticClass: "image", attrs: { src: _vm.image, alt: "" } })
   ])
 }
@@ -27252,6 +27263,7 @@ var render = function() {
   return _c("div", { staticClass: "wrapper" }, [
     _c("input", {
       attrs: { type: "text", placeholder: "כותרת" },
+      domProps: { value: _vm.value },
       on: {
         input: function($event) {
           return _vm.$emit("update:value", $event.target.value)
