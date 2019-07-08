@@ -11,6 +11,19 @@ Vue.use(VueRouter);
  */
 
 
+window.generateGuid = function () {
+var result, i, j;
+result = '';
+for(j=0; j<32; j++) {
+  if( j == 8 || j == 12 || j == 16 || j == 20)
+    result = result + '-';
+  i = Math.floor(Math.random()*16).toString(16).toUpperCase();
+  result = result + i;
+}
+return result;
+}
+
+
 import PostSingle from './views/PostSingle.vue';
 import PostList from './views/PostList.vue';
 import Surveys from './views/Surveys.vue';
@@ -24,13 +37,13 @@ const router = new VueRouter({
   routes: [
     { path: '/', name: 'posts', component: PostList },
     { name: 'post-new', path: '/post/new', component: PostSingle },
-    { name: 'post-single', path: 'post/:id', component: PostSingle },
+    { name: 'post-edit', path: '/post/:id', component: PostSingle },
 
     { path: '/surveys', name: 'surveys', component: Surveys },
     { name: 'mails', path: '/mails', component: Mails },
     { path: '/tags', name: 'tags', component: Tags },
     { path: '/users', name: 'users', component: Users },
-    { path: '/editpost/:id', name: 'editpost', component: EditPost },
+    //{ path: '/editpost/:id', name: 'editpost', component: EditPost },
     { path: '/edit-main-page', name: 'edit-main-page', component: EditMainPage }
   ]
 });

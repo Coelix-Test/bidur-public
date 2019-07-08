@@ -2411,6 +2411,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     options: {
@@ -2443,7 +2444,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     select: function select(item) {
-      //console.log(this.index);
+      // console.log(item);
       this.query = item[this.label];
       this.$emit('input', item);
     }
@@ -2907,7 +2908,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2922,10 +2922,10 @@ __webpack_require__.r(__webpack_exports__);
     celebrities: {
       type: Array,
       "default": function _default() {
-        return [{
+        return [// {id: '', name: '', index: 0}
+        {
           id: '',
-          name: '',
-          index: 0
+          name: ''
         }];
       }
     }
@@ -2942,19 +2942,21 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addCelebrity: function addCelebrity() {
-      var index = 0;
-
-      if (this.celebrities.length) {
-        index = this.celebrities[this.celebrities.length - 1].index + 1;
-      }
-
+      // let index = 0;
+      // if(this.celebrities.length){
+      //     index = this.celebrities[this.celebrities.length - 1].index + 1;
+      // }
+      // let newCelebrities = this.celebrities;
+      // newCelebrities.push(
+      //     {id: '', name: '', index: index}
+      // );
+      // console.log(this.celebrities);
       var newCelebrities = this.celebrities;
       newCelebrities.push({
         id: '',
         name: '',
-        index: index
+        uuid: generateGuid()
       });
-      console.log(this.celebrities);
       this.$emit('updateCelebrities', newCelebrities);
     },
     selectCelebrity: function selectCelebrity(celebrity, index) {
@@ -2970,10 +2972,11 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('updateCelebrities', newCelebrities);
     },
     deleteCelebrity: function deleteCelebrity(index) {
-      var newCelebrities = this.celebrities.filter(function (item) {
-        return item.index !== index;
+      console.log('alex 1', index);
+      var newCelebrities = this.celebrities.filter(function (item, i) {
+        return i !== index;
       });
-      console.log('alex', newCelebrities);
+      console.log('alex 2', newCelebrities);
       this.$emit('updateCelebrities', newCelebrities);
     }
   },
@@ -3157,6 +3160,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_ImageInput_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../common/ImageInput.vue */ "./resources/assets/js/admin/components/common/ImageInput.vue");
+//
 //
 //
 //
@@ -3838,7 +3842,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     editPost: function editPost(id) {
       this.$router.push({
-        name: 'post-single',
+        name: 'post-edit',
         params: {
           id: id
         }
@@ -4198,7 +4202,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       // TODO: get all post info by ajax
       axios.post('/post/' + this.$route.params.id).then(function (response) {
         _this.title = response.data.post.mainTitle;
-        _this.author = response.data.post.author; // this.date = new Date();
+        _this.author = response.data.post.author;
+        _this.date = new Date(response.data.post.date * 1000);
+        var postSections = response.data.post.sections;
+        postSections = Object.keys(postSections).map(function (i) {
+          return postSections[i];
+        });
+        console.log(postSections); // this.sections = postSections;
+        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+        // this.date = new Date();
         // celebrities: [],
         // sections
       });
@@ -26072,6 +26084,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "searchable-input" }, [
+    _vm._v("\n    " + _vm._s(_vm.index) + "\n    "),
     _c("input", {
       directives: [
         {
@@ -26122,7 +26135,7 @@ var render = function() {
           staticClass: "delete-self",
           on: {
             click: function($event) {
-              return _vm.$emit("deleteSelf", _vm.index)
+              return _vm.$emit("deleteSelf")
             }
           }
         })
@@ -26631,15 +26644,22 @@ var render = function() {
     "div",
     { staticClass: "edit-post-celebrities-wrapper" },
     [
-      _vm._l(_vm.celebrities, function(celebrity) {
+      _vm._l(_vm.celebrities, function(celebrity, i) {
         return _c("searchable-input", {
-          key: celebrity.index,
-          attrs: {
-            index: celebrity.index,
-            placeholder: "Add celebrity",
-            options: _vm.allCelebrities
+          key: celebrity.id ? celebrity.id : celebrity.uuid,
+          attrs: { placeholder: "Add celebrity", options: _vm.allCelebrities },
+          on: {
+            deleteSelf: function($event) {
+              return _vm.deleteCelebrity(i)
+            }
           },
-          on: { select: _vm.selectCelebrity, deleteSelf: _vm.deleteCelebrity }
+          model: {
+            value: _vm.celebrities[i],
+            callback: function($$v) {
+              _vm.$set(_vm.celebrities, i, $$v)
+            },
+            expression: "celebrities[i]"
+          }
         })
       }),
       _vm._v(" "),
@@ -26899,6 +26919,7 @@ var render = function() {
       _c("input", {
         staticClass: "theme-input-text",
         attrs: { type: "text", name: "description", placeholder: "תיאור" },
+        domProps: { value: _vm.description },
         on: {
           input: function($event) {
             return _vm.$emit("update:description", $event.target.value)
@@ -27490,40 +27511,44 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "actions" }, [
-                _c(
-                  "a",
-                  {
-                    attrs: { href: ".#/post/" + post.post.id, target: "_blank" }
-                  },
-                  [_vm._v("צפייה")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href: "./admin#/editpost/" + post.post.id,
-                      target: "_blank"
-                    }
-                  },
-                  [_vm._v("ערוך")]
-                ),
-                _vm._v(" "),
-                post.is_in_main_section == null
-                  ? _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            return _vm.deletePost(post.post.id)
+              _c(
+                "div",
+                { staticClass: "actions" },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: ".#/post/" + post.post.id,
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("צפייה")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/post/" + post.post.id } },
+                    [_vm._v("ערוך")]
+                  ),
+                  _vm._v(" "),
+                  post.is_in_main_section == null
+                    ? _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.deletePost(post.post.id)
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("מחק כתבה")]
-                    )
-                  : _vm._e()
-              ])
+                        },
+                        [_vm._v("מחק כתבה")]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
             ])
           : _vm._e()
       }),
@@ -27558,7 +27583,7 @@ var render = function() {
       _c(
         "form",
         {
-          staticClass: "col-12",
+          staticClass: "col-9",
           on: {
             submit: function($event) {
               $event.preventDefault()
@@ -27892,8 +27917,7 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px",
-            display: "none"
+            "font-size": "16px"
           },
           attrs: { dir: "ltr" }
         },
@@ -46011,6 +46035,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+window.generateGuid = function () {
+  var result, i, j;
+  result = '';
+
+  for (j = 0; j < 32; j++) {
+    if (j == 8 || j == 12 || j == 16 || j == 20) result = result + '-';
+    i = Math.floor(Math.random() * 16).toString(16).toUpperCase();
+    result = result + i;
+  }
+
+  return result;
+};
+
 
 
 
@@ -46029,8 +46066,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/post/new',
     component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    name: 'post-single',
-    path: 'post/:id',
+    name: 'post-edit',
+    path: '/post/:id',
     component: _views_PostSingle_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
     path: '/surveys',
@@ -46048,11 +46085,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/users',
     name: 'users',
     component: _views_Users_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }, {
-    path: '/editpost/:id',
-    name: 'editpost',
-    component: _views_EditPost_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }, {
+  }, //{ path: '/editpost/:id', name: 'editpost', component: EditPost },
+  {
     path: '/edit-main-page',
     name: 'edit-main-page',
     component: _views_EditMainPage_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -48686,7 +48720,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
