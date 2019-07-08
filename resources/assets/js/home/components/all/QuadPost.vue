@@ -7,7 +7,7 @@
         {{ data.title }}
       </div>
       <div class="subtitle">
-        {{ data.author }} | {{  new Date(data.time*1000) | formatDate }}
+        מאת {{ data.author }} | {{  new Date(data.time*1000) | formatDate }}
       </div>
       <div class="text">
         {{ data.excerpt }}

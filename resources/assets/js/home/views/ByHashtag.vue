@@ -6,7 +6,7 @@
           <svg width="25" height="18" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16.8449 0.270719C16.4924 -0.0902398 15.9376 -0.0902398 15.5851 0.270719C15.2446 0.619484 15.2446 1.19995 15.5851 1.5479L21.9727 8.08988H0.894592C0.40324 8.08988 0 8.48986 0 8.99309C0 9.49632 0.40324 9.90931 0.894592 9.90931H21.9727L15.5851 16.4391C15.2446 16.8001 15.2446 17.3813 15.5851 17.7293C15.9376 18.0902 16.4924 18.0902 16.8449 17.7293L24.7446 9.63859C25.0851 9.28983 25.0851 8.70936 24.7446 8.36141L16.8449 0.270719Z" fill="#BDBDBD"/>
           </svg>
-          Back
+          חזור
         </button>
         <div class="hashtag">
           <img :src="img" class="img">
@@ -50,6 +50,7 @@ export default {
       return axios.post('/getAllPostsByHashtag', {
         hashtag_id: id,
       }).then(res => {
+        console.log(res);
         this.data = res.data.data;
         this.name = res.data.hashtagName;
         this.img = res.data.hashtagImg;

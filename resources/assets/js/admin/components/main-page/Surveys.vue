@@ -1,9 +1,20 @@
 <template>
   <div class="surveys">
-    <div class="types">
-      <div class="add-section" @click="select('survey')">
-        <img src="/img/icons/edit-post-survey.svg" alt="">
-        <span>סקר</span>
+    <h2 class="heading">Surveys</h2>
+    <div class="plate shadow-section">
+      <div class="types">
+        <div class="add-section" @click="select('survey')">
+          <img src="/img/icons/edit-post-survey.svg" alt="">
+          <span>Survey</span>
+        </div>
+        <div class="add-section" @click="select('assessment')">
+          <img src="/img/icons/edit-post-assessment.svg" alt="">
+          <span>Assessment</span>
+        </div>
+        <div class="add-section" @click="select('selection')">
+          <img src="/img/icons/edit-post-selection.svg" alt="">
+          <span>Selection</span>
+        </div>
       </div>
       <div class="add-section" @click="select('assessment')">
         <img src="/img/icons/edit-post-assessment.svg" alt="">
@@ -14,9 +25,22 @@
         <span>להשוות</span>
       </div>
     </div>
-    <PostSelection :deletable="false" v-if="selected == 'selection'"/>
-    <PostSurvey :deletable="false" v-else-if="selected == 'assessment'"/>
-    <PostAssessment :deletable="false" v-else-if="selected == 'survey'"/>
+    <PostSelection
+      v-bind.sync="selection"
+      :deletable="false"
+      v-if="selected == 'selection'"
+    />
+    <PostSurvey
+      v-bind.sync="survey"
+      :deletable="false"
+      v-else-if="selected == 'survey'"
+    />
+    <PostAssessment
+      v-bind.sync="ass"
+      :deletable="false"
+      v-else-if="selected == 'assessment'"
+    />
+
     <button class="theme-btn-red big-btn">לשמור</button>
   </div>
 </template>
@@ -30,7 +54,20 @@ export default {
   data(){
     return {
       selected: 'selection',
-      survey: {},
+      selection: {
+        image1: '',
+        image2: '',
+        title: '',
+      },
+      survey: {
+        title: '',
+        answers: [],
+        image: '',
+      },
+      ass: {
+        title: '',
+        image: '',
+      }
     }
   },
   components: {
@@ -44,16 +81,37 @@ export default {
     },
     save() {
       var data = new FormData();
-      data.append('imageUrl', this.image);
-      data.append('linkToInsta', this.link);
 
-      axios.post('/createInsta', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(res => {
-        console.log(res);
-      });
+      if(this.selected == 'selection') {
+        data.append('title', this.selection.title);
+        data.append('leftImage', this.selection.image1);
+        data.append('rightImage', this.selection.image2);
+        axios.post('/createNewComparison', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showCompareFromMain');
+      }
+      else if(this.selected == 'assessment') {
+        data.append('title', this.ass.title);
+        data.append('image', this.ass.image);
+        axios.post('/createSinglePhoto', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showSinglePhotoFromMain');
+      }
+      // else if() {
+      //
+      // }
+
+
     }
   }
 }
@@ -64,6 +122,7 @@ export default {
 @import "~@/vars.scss";
 
 .surveys {
+  padding-top: 20px;
   width: 49%;
   display: flex;
   flex-direction: column;

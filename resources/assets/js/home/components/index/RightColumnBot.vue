@@ -2,15 +2,18 @@
 <template>
   <div class="right-column-bot">
 
-    <template v-if="survey.type == 'survey'">
-      <div class="selected-poll">
-        <img src="img/rihanna.png" alt="">
-        <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-      </div>
-    </template>
+    <div v-if="survey">
+      <template v-if="survey.type == 'survey'">
+        <div class="selected-poll">
+          <img src="img/rihanna.png" alt="">
+          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
+        </div>
+      </template>
 
-    <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-    <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
+      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+    </div>
+
 
     <div class="latest-posts" v-if="windowWidth > 768" >
       <h2>חדשות נוספות</h2>
@@ -64,7 +67,7 @@ export default {
   created() {
     axios.post('/getServiceForMainPage').then(res => {
       this.survey = res.data;
-      // console.log(this.survey);
+      console.log(this.survey);
     });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);
@@ -79,8 +82,13 @@ export default {
     OneSurvey,
   },
   methods: {
-    addVote(obj){
+    addVote(obj, id){
       console.log(obj);
+      axios
+        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+          .then(response => {
+            // console.log(response);
+          });
     }
   },
 }
@@ -104,14 +112,6 @@ export default {
     box-sizing: border-box;
     border:4px solid #E4A913;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
-    /* opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
-    transform: scale(0.8); */
-  }
-  .selected-poll.in-viewport {
-    /* transform: scale(1);
-    opacity: 1; */
   }
   .selected-poll img {
     width:100%;

@@ -250,7 +250,7 @@ export default {
                     // this.$route.push(document.location.origin+"/admin#/");
                     // window.location.href = document.location.origin+"/admin#/?refresh=1";
                     alert('Post was successfully added!');
-                    document.location.reload(true);
+                    // document.location.reload(true);
                 })
                 .catch(error => console.log(response));
         }

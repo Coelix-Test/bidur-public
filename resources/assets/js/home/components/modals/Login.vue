@@ -35,7 +35,11 @@
           לחץ כאן
         </button>
       </div>
+      <div class="lost-password">
+        <a href="./password/reset" target="_blank">סיסמה אבודה?</a>
+      </div>
     </form>
+
   </div>
 </template>
 
@@ -90,6 +94,22 @@ export default {
 .a-modal {
   padding: 0 10px;
   padding-top: 60px;
+  .lost-password {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding:12px 0 0 0;
+    a {
+      color: #F2C94C;
+      text-decoration: none;
+      font-size: 16px;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: #F2C94C;
+      }
+    }
+  }
   .form {
     max-width: 430px;
     margin: 0 auto;

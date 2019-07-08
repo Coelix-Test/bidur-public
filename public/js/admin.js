@@ -2635,6 +2635,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2780,6 +2783,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2787,7 +2814,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: 'selection',
-      survey: {}
+      selection: {
+        image1: '',
+        image2: '',
+        title: ''
+      },
+      survey: {
+        title: '',
+        answers: [],
+        image: ''
+      },
+      ass: {
+        title: '',
+        image: ''
+      }
     };
   },
   components: {
@@ -2801,15 +2841,34 @@ __webpack_require__.r(__webpack_exports__);
     },
     save: function save() {
       var data = new FormData();
-      data.append('imageUrl', this.image);
-      data.append('linkToInsta', this.link);
-      axios.post('/createInsta', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(function (res) {
-        console.log(res);
-      });
+
+      if (this.selected == 'selection') {
+        data.append('title', this.selection.title);
+        data.append('leftImage', this.selection.image1);
+        data.append('rightImage', this.selection.image2);
+        axios.post('/createNewComparison', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (res) {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showCompareFromMain');
+      } else if (this.selected == 'assessment') {
+        data.append('title', this.ass.title);
+        data.append('image', this.ass.image);
+        axios.post('/createSinglePhoto', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (res) {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showSinglePhotoFromMain');
+      } // else if() {
+      //
+      // }
+
     }
   }
 });
@@ -4126,8 +4185,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         // console.log(response);
         // this.$route.push(document.location.origin+"/admin#/");
         // window.location.href = document.location.origin+"/admin#/?refresh=1";
-        alert('Post was successfully added!');
-        document.location.reload(true);
+        alert('Post was successfully added!'); // document.location.reload(true);
       })["catch"](function (error) {
         return console.log(response);
       });
@@ -4712,7 +4770,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".instagram[data-v-206e099f] {\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.instagram .birthday-section[data-v-206e099f] {\n  padding-bottom: 35px;\n}\n.instagram .text[data-v-206e099f] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.instagram .btn-wrap[data-v-206e099f] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.instagram .form[data-v-206e099f] {\n  padding: 50px 70px;\n}\n.instagram .form input[data-v-206e099f] {\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".instagram[data-v-206e099f] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.instagram .birthday-section[data-v-206e099f] {\n  padding-bottom: 35px;\n}\n.instagram .text[data-v-206e099f] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.instagram .btn-wrap[data-v-206e099f] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.instagram .form[data-v-206e099f] {\n  padding: 50px 70px;\n}\n.instagram .form input[data-v-206e099f] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -4769,7 +4827,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
+exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
 
 // exports
 
@@ -25835,7 +25893,7 @@ var render = function() {
     ? _c("div", { staticClass: "single-survey" }, [
         _c("div", { staticClass: "heading" }, [
           _c("div", { staticClass: "date" }, [
-            _vm._v(_vm._s(_vm.survey.survey.created_at))
+            _vm._v(_vm._s(_vm._f("formatDate")(_vm.survey.survey.created_at)))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actions" }, [
@@ -26253,60 +26311,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "wrapper instagram shadow-section" },
-    [
-      _c("image-input", {
-        attrs: { value: _vm.image },
-        on: {
-          "update:value": function($event) {
-            _vm.image = $event
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form" }, [
-        _c("div", { staticClass: "input-section" }, [
-          _c("div", { staticClass: "heading" }, [_vm._v("קישור לאינסטגרם")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.link,
-                expression: "link"
-              }
-            ],
-            staticClass: "theme-textarea",
-            attrs: { type: "text" },
-            domProps: { value: _vm.link },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.link = $event.target.value
-              }
+  return _c("div", { staticClass: "instagram" }, [
+    _c("h2", { staticClass: "heading" }, [_vm._v("Instagram Post")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "plate shadow-section" },
+      [
+        _c("image-input", {
+          attrs: { value: _vm.image },
+          on: {
+            "update:value": function($event) {
+              _vm.image = $event
             }
-          })
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form" }, [
+          _c("div", { staticClass: "input-section" }, [
+            _c("div", { staticClass: "heading" }, [_vm._v("קישור לאינסטגרם")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.link,
+                  expression: "link"
+                }
+              ],
+              staticClass: "theme-textarea",
+              attrs: { type: "text" },
+              domProps: { value: _vm.link },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.link = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "btn-wrap" }, [
+          _c(
+            "button",
+            {
+              staticClass: "theme-btn theme-btn-red big-btn",
+              on: { click: _vm.save }
+            },
+            [_vm._v("לשמור")]
+          )
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "btn-wrap" }, [
-        _c(
-          "button",
-          {
-            staticClass: "theme-btn theme-btn-red big-btn",
-            on: { click: _vm.save }
-          },
-          [_vm._v("לשמור")]
-        )
-      ])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26402,25 +26464,67 @@ var render = function() {
     "div",
     { staticClass: "surveys" },
     [
-      _c("div", { staticClass: "types" }, [
-        _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("survey")
+      _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "plate shadow-section" }, [
+        _c("div", { staticClass: "types" }, [
+          _c(
+            "div",
+            {
+              staticClass: "add-section",
+              on: {
+                click: function($event) {
+                  return _vm.select("survey")
+                }
               }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-survey.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("סקר")])
-          ]
-        ),
+            },
+            [
+              _c("img", {
+                attrs: { src: "/img/icons/edit-post-survey.svg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Survey")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "add-section",
+              on: {
+                click: function($event) {
+                  return _vm.select("assessment")
+                }
+              }
+            },
+            [
+              _c("img", {
+                attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Assessment")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "add-section",
+              on: {
+                click: function($event) {
+                  return _vm.select("selection")
+                }
+              }
+            },
+            [
+              _c("img", {
+                attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Selection")])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -26462,11 +26566,38 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.selected == "selection"
-        ? _c("PostSelection", { attrs: { deletable: false } })
-        : _vm.selected == "assessment"
-        ? _c("PostSurvey", { attrs: { deletable: false } })
+        ? _c(
+            "PostSelection",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostSelection",
+              _vm.selection,
+              false,
+              true
+            )
+          )
         : _vm.selected == "survey"
-        ? _c("PostAssessment", { attrs: { deletable: false } })
+        ? _c(
+            "PostSurvey",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostSurvey",
+              _vm.survey,
+              false,
+              true
+            )
+          )
+        : _vm.selected == "assessment"
+        ? _c(
+            "PostAssessment",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostAssessment",
+              _vm.ass,
+              false,
+              true
+            )
+          )
         : _vm._e(),
       _vm._v(" "),
       _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("לשמור")])
@@ -27347,7 +27478,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "post-meta" }, [
                 _c("span", { staticClass: "date" }, [
-                  _vm._v(_vm._s(post.post.created_at))
+                  _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "author" }, [
@@ -27921,7 +28052,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("h3", [_vm._v("Add new tag")])
+              _c("h3", [_vm._v("הוסף תג חדש")])
             ]
           ),
           _vm._v(" "),
