@@ -44,12 +44,6 @@ export default {
           this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
           this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1])
         });
-    //get pinned survey
-    // axios
-    //   .post('//')
-    //     .then(res => {
-    //
-    //     });
 
  },
  components : {

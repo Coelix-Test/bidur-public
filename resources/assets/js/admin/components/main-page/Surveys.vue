@@ -1,9 +1,20 @@
 <template>
   <div class="surveys">
-    <div class="types">
-      <div class="add-section" @click="select('survey')">
-        <img src="/img/icons/edit-post-survey.svg" alt="">
-        <span>סקר</span>
+    <h2 class="heading">Surveys</h2>
+    <div class="plate shadow-section">
+      <div class="types">
+        <div class="add-section" @click="select('survey')">
+          <img src="/img/icons/edit-post-survey.svg" alt="">
+          <span>Survey</span>
+        </div>
+        <div class="add-section" @click="select('assessment')">
+          <img src="/img/icons/edit-post-assessment.svg" alt="">
+          <span>Assessment</span>
+        </div>
+        <div class="add-section" @click="select('selection')">
+          <img src="/img/icons/edit-post-selection.svg" alt="">
+          <span>Selection</span>
+        </div>
       </div>
       <div class="add-section" @click="select('assessment')">
         <img src="/img/icons/edit-post-assessment.svg" alt="">
@@ -69,19 +80,36 @@ export default {
       this.selected = type;
     },
     save() {
-      // var data = new FormData();
-      //
-      // if() {
-      //
-      // }
+      var data = new FormData();
+
+      if(this.selected == 'selection') {
+        data.append('title', this.selection.title);
+        data.append('leftImage', this.selection.image1);
+        data.append('rightImage', this.selection.image2);
+        axios.post('/createNewComparison', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showCompareFromMain');
+      }
+      else if(this.selected == 'assessment') {
+        data.append('title', this.ass.title);
+        data.append('image', this.ass.image);
+        axios.post('/createSinglePhoto', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showSinglePhotoFromMain');
+      }
       // else if() {
       //
       // }
-      // else if() {
-      //
-      // }
-      //
-      // data.append('imageUrl', this.image);
 
 
     }
@@ -94,6 +122,7 @@ export default {
 @import "~@/vars.scss";
 
 .surveys {
+  padding-top: 20px;
   width: 49%;
   display: flex;
   flex-direction: column;
