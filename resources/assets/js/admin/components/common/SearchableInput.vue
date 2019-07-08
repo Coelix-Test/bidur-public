@@ -1,5 +1,6 @@
 <template>
     <div class="searchable-input">
+        {{index}}
         <input type="text" class="theme-input-text" :placeholder="placeholder" v-model="query" required>
         <div class="search-results">
             <div v-for="matchingItem in filtered"
@@ -7,7 +8,7 @@
                 {{matchingItem[label]}}
             </div>
         </div>
-        <div v-if="deletable" class="delete-self" @click="$emit('deleteSelf', index)"></div>
+        <div v-if="deletable" class="delete-self" @click="$emit('deleteSelf')"></div>
     </div>
 </template>
 
@@ -46,7 +47,7 @@ export default {
     },
     methods: {
         select(item){
-            //console.log(this.index);
+            // console.log(item);
             this.query = item[this.label];
             this.$emit('input', item);
         }

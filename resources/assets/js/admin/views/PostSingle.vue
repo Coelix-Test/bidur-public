@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <form class="col-12" @submit.prevent="submitPostData">
+            <form class="col-9" @submit.prevent="submitPostData">
                 <edit-post-header
                     :title="title"
                     :author="author"
@@ -112,7 +112,7 @@
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
             </form>
-            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display:none;">
+            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;">
                 <template v-if="celebrities !== undefined">
                     title: {{title}} <br>
                     author: {{author}} <br>
@@ -262,6 +262,14 @@ export default {
               .then(response => {
                 this.title = response.data.post.mainTitle;
                 this.author = response.data.post.author;
+                this.date = new Date(response.data.post.date*1000);
+                let postSections = response.data.post.sections;
+                postSections = Object.keys(postSections).map(i => postSections[i]);
+                console.log(postSections);
+
+                // this.sections = postSections;
+                // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+
                 // this.date = new Date();
                 // celebrities: [],
                 // sections
