@@ -3486,11 +3486,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
+    var _this = this;
+
     axios.post('/getUserData').then(function (res) {
-      console.log(res); // if(res. ==) {
-      //   this.isLoggedIn = true;
-      // }
+      if (res.data.login == true) {
+        _this.isLoggedIn = true;
+      }
     });
+  },
+  methods: {
+    logout: function logout() {
+      axios.get('/logout').then(function (res) {
+        document.location.reload(true);
+      });
+    }
   }
 });
 
@@ -39171,8 +39180,12 @@ var render = function() {
             ? [
                 _c(
                   "a",
-                  { staticClass: "btn-common btn-red", attrs: { href: "#" } },
-                  [_vm._v("logout")]
+                  {
+                    staticClass: "btn-common btn-gold-gradient",
+                    attrs: { href: "#" },
+                    on: { click: _vm.logout }
+                  },
+                  [_vm._v("להתנתק")]
                 )
               ]
             : [

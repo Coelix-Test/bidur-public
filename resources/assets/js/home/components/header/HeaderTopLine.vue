@@ -23,7 +23,7 @@
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <a href="#" class="btn-common btn-red">logout</a>
+                <a href="#" @click="logout" class="btn-common btn-gold-gradient">להתנתק</a>
               </template>
               <template v-else>
                 <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
@@ -100,11 +100,19 @@ export default {
     axios
       .post('/getUserData')
         .then(res => {
-          console.log(res);
-          // if(res. ==) {
-          //   this.isLoggedIn = true;
-          // }
+          if(res.data.login == true) {
+            this.isLoggedIn = true;
+          }
         });
+  },
+  methods : {
+    logout() {
+      axios
+        .get('/logout')
+          .then(res => {
+            document.location.reload(true);
+          });
+    }
   }
 }
 </script>
