@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <input type="text" @input="$emit('update:value', $event.target.value)" placeholder="Title">
+        <input type="text" @input="$emit('update:value', $event.target.value)" placeholder="כותרת">
         <div class="delete-self" @click="$emit('deleteSection', index)"></div>
     </div>
 </template>

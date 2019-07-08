@@ -3,7 +3,7 @@
     <img :src="data.imgUrl">
     <div class="body">
       <div class="title">
-        What do you think about it?
+        {{data.description}}
       </div>
       <div class="buttons">
         <button @click="dislike" type="button" class="dislike">
@@ -63,9 +63,11 @@ export default {
       this.liked = this.data.likes;
       this.liked++;
       this.clicked = true;
-      axios.post('/likeSinglePhoto', {
-        serviceId: this.data.id
-      });
+      axios
+        .post('/likeSinglePhoto', {serviceId: this.data.id})
+          .then(res => {
+            console.log(res);
+          });
     },
     dislike() {
       if(this.clicked) return;
@@ -73,9 +75,11 @@ export default {
       this.liked = this.data.likes;
       this.disliked++;
       this.clicked = true;
-      axios.post('/dislikeSinglePhoto', {
-        serviceId: this.data.id
-      });
+      axios
+        .post('/dislikeSinglePhoto', {serviceId: this.data.id})
+          .then(res => {
+            console.log(res);
+          });
     },
   },
   computed: {
@@ -87,7 +91,7 @@ export default {
         var k = 100;
       }
 
-      console.log(k);
+      // console.log(k);
       return k + '%';
     },
     dislikeHeight() {
@@ -98,7 +102,7 @@ export default {
         var k = 100;
       }
 
-      console.log(k);
+      // console.log(k);
       return k + '%';
     },
   }
@@ -108,7 +112,7 @@ export default {
 <style lang="scss" scoped>
 
 .like-survey {
-  
+
   img {
     object-fit: cover;
     width: 100%;

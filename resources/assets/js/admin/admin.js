@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import moment from 'moment'
 
 Vue.use(VueRouter);
 
@@ -8,6 +9,7 @@ Vue.use(VueRouter);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 import PostSingle from './views/PostSingle.vue';
 import PostList from './views/PostList.vue';
@@ -34,10 +36,15 @@ const router = new VueRouter({
 });
 
 require('./bootstrap');
-
+moment.locale('he');
 Vue.config.devtools = true;
 Vue.config.performance = true;
 
+Vue.filter('formatDate', function (value) {
+  if (value) {
+    return moment(String(value)).fromNow();
+  }
+})
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

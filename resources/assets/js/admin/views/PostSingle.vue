@@ -79,38 +79,38 @@
                 <div class="add-section-buttons-line">
                     <div class="add-section" @click="addSection('title')">
                         <img src="/img/icons/edit-post-title.svg" alt="">
-                        <span>Title</span>
+                        <span>כותרת</span>
                     </div>
                     <div class="add-section" @click="addSection('text')">
                         <img src="/img/icons/edit-post-text.svg" alt="">
-                        <span>Text</span>
+                        <span>טקסט</span>
                     </div>
                     <div class="add-section" @click="addSection('image')">
                         <img src="/img/icons/edit-post-image.svg" alt="">
-                        <span>Image</span>
+                        <span>תמונה</span>
                     </div>
                     <div class="add-section add-image-text" @click="addSection('imageWithText')">
                         <img src="/img/icons/edit-post-image-text.svg" alt="">
-                        <span>Image + Text</span>
+                        <span>תמונה + טקסט</span>
                     </div>
                     <div class="add-section" @click="addSection('video')">
                         <img src="/img/icons/edit-post-video.svg" alt="">
-                        <span>Video</span>
+                        <span>וידאו</span>
                     </div>
                     <div class="add-section" @click="addSection('survey')">
                         <img src="/img/icons/edit-post-survey.svg" alt="">
-                        <span>Survey</span>
+                        <span>שאלון</span>
                     </div>
                     <div class="add-section add-image-text" @click="addSection('assessment')">
                         <img src="/img/icons/edit-post-assessment.svg" alt="">
-                        <span>Assessment</span>
+                        <span>שאלון אהבתי</span>
                     </div>
                     <div class="add-section add-image-text" @click="addSection('selection')">
                         <img src="/img/icons/edit-post-selection.svg" alt="">
-                        <span>Selection</span>
+                        <span>העדפה</span>
                     </div>
                 </div>
-                <button type="submit" class="theme-btn theme-btn-red submit-post">Save</button>
+                <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
             </form>
             <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display:none;">
                 <template v-if="celebrities !== undefined">
