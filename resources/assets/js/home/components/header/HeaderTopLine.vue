@@ -97,14 +97,14 @@ export default {
     }
   },
   created() {
-    // axios
-    //   .post('/')
-    //     .then(res => {
-    //       console.log(res);
-    //       if(res. ==) {
-    //         this.isLoggedIn = true;
-    //       }
-    //     });
+    axios
+      .post('/getUserData')
+        .then(res => {
+          console.log(res);
+          // if(res. ==) {
+          //   this.isLoggedIn = true;
+          // }
+        });
   }
 }
 </script>

@@ -3485,14 +3485,12 @@ __webpack_require__.r(__webpack_exports__);
       isLoggedIn: false
     };
   },
-  created: function created() {// axios
-    //   .post('/')
-    //     .then(res => {
-    //       console.log(res);
-    //       if(res. ==) {
-    //         this.isLoggedIn = true;
-    //       }
-    //     });
+  created: function created() {
+    axios.post('/getUserData').then(function (res) {
+      console.log(res); // if(res. ==) {
+      //   this.isLoggedIn = true;
+      // }
+    });
   }
 });
 
