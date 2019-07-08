@@ -942,4 +942,81 @@ class AdminController extends Controller
 
     }
 
+
+    public function editPostCreateAllSections(Request $request){
+        $currentId = $request->get('id');
+        $post = Post::find($currentId);
+        $currentCreatedAt = $post->created_at;
+
+        PostTitle::where('postId', $currentId)->delete();
+        PostContent::where('postId', $currentId)->delete();
+        PostImage::where('postId', $currentId)->delete();
+        PostImageAndText::where('postId', $currentId)->delete();
+        PostVideo::where('postId', $currentId)->delete();
+        SelectOne::where('postId', $currentId)->delete();
+        SingleLikableImage::where('postId', $currentId)->delete();
+        Survey::where('postId', $currentId)->delete();
+
+        $sections = $request->get('sections');
+        $files = $request->allFiles();
+
+        foreach ($sections as $key => $section) {
+            if ($section['type'] == 'metaTitle'){
+                $metaTitle  = $section['title'];
+
+                $hashtags = null;
+                if (isset($section['celebrities'])){
+                    $hashtags   = $section['celebrities']; //array
+                }
+                $author     = $section['author'];
+                $date       = $currentCreatedAt;
+                $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
+
+            }
+            elseif($section['type'] == 'text'){
+                $content = $section['value'];
+//                dd($content);
+                $this->createPostAddContent($this->post->id, $content, $key);
+            }
+            elseif($section['type'] == 'title'){
+                $title = $section['value'];
+                $this->createPostAddTitle($this->post->id, $title, $key);
+            }
+            elseif($section['type'] == 'video'){
+                $url = $section['value'];
+                $this->createPostAddVideo($this->post->id, $url, $key);
+            }
+            elseif($section['type'] == 'survey'){
+//                dd($files);
+                $title = $section['title'];
+                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+            }
+            elseif ($section['type'] == 'image'){
+//                    dd($files['sections'][$key]['value']);
+
+                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+            }
+            elseif ($section['type'] == 'imageWithText'){
+                $this->createPostAddImageWithText(
+                    $this->post->id,
+                    $files['sections'][$key]['image'],
+                    $section['title'],
+                    $section['text'],
+                    $section['imagePosition'],
+                    $key
+                );
+//                dd($files);
+            }elseif ($section['type'] == 'selection'){
+                $leftFile = $files['sections'][$key]['image1'];
+                $rightFile = $files['sections'][$key]['image2'];
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+            }elseif ($section['type'] == 'assessment'){
+                $file = $files['sections'][$key]['image'];
+                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+            }
+        }
+        return json_encode(['success' => true]);
+
+    }
+
 }

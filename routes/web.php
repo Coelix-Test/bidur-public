@@ -75,7 +75,7 @@ Route::post('/getUserData', 'AdminController@getUserData');
     Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
 
     Route::post('/showEditablePostContent', 'AdminController@showEditablePostContent');
-
+    Route::post('/editPostCreateAllSections', 'AdminController@editPostCreateAllSections');
     //services
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
