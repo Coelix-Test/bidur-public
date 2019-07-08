@@ -948,6 +948,7 @@ class AdminController extends Controller
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
 
+        Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
         PostContent::where('postId', $currentId)->delete();
         PostImage::where('postId', $currentId)->delete();
