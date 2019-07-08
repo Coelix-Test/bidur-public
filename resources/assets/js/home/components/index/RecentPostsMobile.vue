@@ -1,5 +1,16 @@
 <template>
   <div class="recent-posts-mobile">
+    <div v-if="survey" class="surveys">
+      <!-- <template v-if="survey.type == 'survey'">
+        <div class="selected-poll">
+          <img src="img/rihanna.png" alt="">
+          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote"/>
+        </div>
+      </template>
+      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
+      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/> -->
+
+    </div>
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
 
@@ -32,11 +43,15 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
+import VuePoll from 'vue-poll'
+import LikeSurvey from './../common/LikeSurvey'
+import OneSurvey from './../common/OneSurvey'
 
 export default {
   data() {
     return {
       posts : [],
+      survey : null,
       windowWidth : document.documentElement.clientWidth,
     }
   },
@@ -45,10 +60,18 @@ export default {
       // console.log(res.data);
       this.posts = res.data;
     });
+    axios.post('/getServiceForMainPage').then(res => {
+      this.survey = res.data;
+      console.log(res.data);
+      // console.log(this.survey);
+    });
   },
   components: {
     Carousel,
     Slide,
+    LikeSurvey,
+    OneSurvey,
+    VuePoll,
   },
 }
 </script>
@@ -168,7 +191,7 @@ export default {
       width:100%;
       padding-left: 0;
       margin-bottom: 16px;
-      margin-top: 24px;
+      margin-top: 46px;
     }
   }
   @media (max-width:550px) {

@@ -2,15 +2,18 @@
 <template>
   <div class="right-column-bot">
 
-    <template v-if="survey.type == 'survey'">
-      <div class="selected-poll">
-        <img src="img/rihanna.png" alt="">
-        <vue-poll class="poll" v-bind="options" @addvote="addVote"/>
-      </div>
-    </template>
+    <div v-if="survey">
+      <template v-if="survey.type == 'survey'">
+        <div class="selected-poll">
+          <img src="img/rihanna.png" alt="">
+          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote"/>
+        </div>
+      </template>
 
-    <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-    <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
+      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+    </div>
+
 
     <div class="latest-posts" v-if="windowWidth > 768" >
       <h2>חדשות נוספות</h2>
@@ -64,7 +67,7 @@ export default {
   created() {
     axios.post('/getServiceForMainPage').then(res => {
       this.survey = res.data;
-      // console.log(this.survey);
+      console.log(this.survey);
     });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);
