@@ -490,7 +490,7 @@ class AdminController extends Controller
         dd($request);
     }
     public function getAllSurveys(){
-        $allSurveys = Survey::all();
+        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
         foreach ($allSurveys as $key => $survey) {
             $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
