@@ -4168,6 +4168,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }); //send ajax
 
       var url = '/createPost';
+
+      if (this.$route.params.id) {
+        url = 'editPostCreateAllSections';
+        postData.append('id', this.$route.params.id);
+      }
+
       axios({
         method: 'post',
         url: url,

@@ -239,6 +239,10 @@ export default {
 
             //send ajax
             let url = '/createPost';
+            if(this.$route.params.id){
+              url = 'editPostCreateAllSections';
+              postData.append('id', this.$route.params.id);
+            }
             axios({
                     method: 'post',
                     url: url,
