@@ -4168,9 +4168,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }); //send ajax
 
       var url = '/createPost';
+      var successMessage = 'Post was successfully added!';
 
       if (this.$route.params.id) {
         url = 'editPostCreateAllSections';
+        successMessage = 'Post was successfully edited!';
         postData.append('id', this.$route.params.id);
       }
 
@@ -4187,7 +4189,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         // console.log(response);
         // this.$route.push(document.location.origin+"/admin#/");
         // window.location.href = document.location.origin+"/admin#/?refresh=1";
-        alert('Post was successfully added!'); // document.location.reload(true);
+        alert(successMessage); // document.location.reload(true);
       })["catch"](function (error) {
         return console.log(response);
       });

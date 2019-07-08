@@ -239,8 +239,10 @@ export default {
 
             //send ajax
             let url = '/createPost';
+            let successMessage = 'Post was successfully added!';
             if(this.$route.params.id){
               url = 'editPostCreateAllSections';
+              successMessage = 'Post was successfully edited!';
               postData.append('id', this.$route.params.id);
             }
             axios({
@@ -253,7 +255,7 @@ export default {
                     // console.log(response);
                     // this.$route.push(document.location.origin+"/admin#/");
                     // window.location.href = document.location.origin+"/admin#/?refresh=1";
-                    alert('Post was successfully added!');
+                    alert(successMessage);
                     // document.location.reload(true);
                 })
                 .catch(error => console.log(response));
