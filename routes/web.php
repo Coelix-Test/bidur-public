@@ -61,6 +61,7 @@ Route::post('/likeSinglePhoto',         'MainController@likeSinglePhoto');
 Route::post('/dislikeSinglePhoto',      'MainController@dislikeSinglePhoto');
 Route::post('/likeForSelectOne',        'MainController@likeForSelectOne');
 Route::post('/getServiceForMainPage',   'MainController@getServiceForMainPage');
+Route::post('/getServiceForMainPageSecond',   'MainController@getServiceForMainPageSecond');
 
 Route::post('/sendMail',   'MainController@sendMail');
 

@@ -402,6 +402,18 @@ class AdminController extends Controller
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
         SelectOne::create([
             'urlRight' => '/images/compare/'.$rightName,
             'urlLeft' => '/images/compare/'.$leftName,
