@@ -86,7 +86,7 @@ export default {
         }).then(res => {
           console.log('qweqweqwew');
         });
-        axios.post('/showCompareFromMain');
+        // axios.post('/showCompareFromMain');
       }
       else if(this.selected == 'assessment') {
         data.append('title', this.ass.title);
@@ -98,11 +98,11 @@ export default {
         }).then(res => {
           console.log('qweqweqwew');
         });
-        axios.post('/showSinglePhotoFromMain');
+        // axios.post('/showSinglePhotoFromMain');
       }
-      // else if() {
-      //
-      // }
+      else if(this.selected == 'survey') {
+        console.log(this.survey);
+      }
 
 
     }

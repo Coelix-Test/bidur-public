@@ -68,7 +68,7 @@ export default {
     margin-bottom: 30px;
   }
 
-  @media(max-width: 1200px) {
+  @media(max-width: 992px) {
     padding-right: 0;
     width: 100%;
     min-width:unset;
