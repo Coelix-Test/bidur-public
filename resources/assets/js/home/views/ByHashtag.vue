@@ -35,7 +35,9 @@ export default {
       data: [],
       name: '',
       img: '',
-      page: '',
+      page: 0,
+      loading: false,
+      end: false,
     };
   },
   components: {
@@ -47,18 +49,38 @@ export default {
     isQuad(index) {
       return (index + 1) % 3 == 0;
     },
-    sync(id) {
+    sync(id, append = false) {
+      this.loading = true;
       return axios.post('/getAllPostsByHashtag', {
         hashtag_id: id,
+        page: this.page,
       }).then(res => {
-        console.log(res);
-        this.data = res.data.data;
-        this.name = res.data.hashtagName;
-        this.img = res.data.hashtagImg;
+        this.loading = false;
+        if(append) {
+          this.data.push(...Object.values(res.data.data));
+          console.log('appended');
+        } else {
+          this.data = Object.values(res.data.data);
+          this.name = res.data.hashtagName;
+          this.img = res.data.hashtagImg;
+        }
+        if(!this.data.length) {
+          this.end = true;
+        }
       });
     },
     onScroll(e) {
-      console.log(e);
+      var doc = document.documentElement;
+      var screen = doc.clientHeight;
+      var top = ((window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0));
+
+      if(top >= doc.scrollHeight - (screen * 2) && !this.loading && !this.end) {
+        this.nextPage();
+      }
+    },
+    nextPage() {
+      this.page++;
+      this.sync(this.$route.params.id, true);
     }
   },
   created() {
