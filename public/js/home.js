@@ -3211,6 +3211,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3349,9 +3359,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/getRecentPosts').then(function (response) {
         // console.log(response.data);
-        _this3.postTitles = response.data.map(function (post) {
-          return post.title;
-        }); //TODO REFACTOR
+        _this3.postTitles = response.data; //TODO REFACTOR
 
         setTimeout(function () {
           var strokeWidth = $('.run-stroke').width();
@@ -3476,6 +3484,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isLoggedIn: false
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/getUserData').then(function (res) {
+      if (res.data.login == true) {
+        _this.isLoggedIn = true;
+      }
+    });
+  },
+  methods: {
+    logout: function logout() {
+      axios.get('/logout').then(function (res) {
+        document.location.reload(true);
+      });
+    }
   }
 });
 
@@ -3985,6 +4009,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../TextInput.vue */ "./resources/assets/js/home/components/TextInput.vue");
 /* harmony import */ var _auth_Close_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../auth/Close.vue */ "./resources/assets/js/home/components/auth/Close.vue");
 /* harmony import */ var _modals_Reg_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../modals/Reg.vue */ "./resources/assets/js/home/components/modals/Reg.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -5036,7 +5064,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
+exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -5169,7 +5197,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}", ""]);
+exports.push([module.i, ".like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}\n@media (max-width: 768px) {\n.like-survey img[data-v-df04116c] {\n    height: 300px;\n}\n}", ""]);
 
 // exports
 
@@ -5207,7 +5235,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".run-stroke a[data-v-e3042806] {\n  color: #333;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -5264,7 +5292,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-65da213b] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n  line-height: 100%;\n}\n.a-modal .form .th-btn[data-v-65da213b] {\n  margin-top: 10px;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}\n@media (max-width: 992px) {\n.a-modal[data-v-65da213b] {\n    padding-top: 40px;\n}\n.a-modal .form .title[data-v-65da213b] {\n    font-size: 32px;\n}\n}", ""]);
+exports.push([module.i, ".a-modal[data-v-65da213b] {\n  padding: 0 10px;\n  padding-top: 60px;\n}\n.a-modal .lost-password[data-v-65da213b] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding: 12px 0 0 0;\n}\n.a-modal .lost-password a[data-v-65da213b] {\n  color: #F2C94C;\n  text-decoration: none;\n  font-size: 16px;\n}\n.a-modal .lost-password a[data-v-65da213b]:hover {\n  text-decoration: underline;\n  -webkit-text-decoration-color: #F2C94C;\n          text-decoration-color: #F2C94C;\n}\n.a-modal .form[data-v-65da213b] {\n  max-width: 430px;\n  margin: 0 auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 60px;\n}\n.a-modal .form input[data-v-65da213b], .a-modal .form .text-input[data-v-65da213b] {\n  margin: 7px 0;\n}\n.a-modal .form button[data-v-65da213b] {\n  width: 100%;\n}\n.a-modal .form .title[data-v-65da213b] {\n  font-weight: bold;\n  font-size: 50px;\n  text-align: center;\n  color: #000000;\n  line-height: 100%;\n}\n.a-modal .form .th-btn[data-v-65da213b] {\n  margin-top: 10px;\n}\n.a-modal .form .bottom[data-v-65da213b] {\n  padding-top: 20px;\n  font-size: 14px;\n  text-align: center;\n  color: #828282;\n}\n.a-modal .form .bottom .link[data-v-65da213b] {\n  color: #FF1744;\n  text-decoration: underline;\n  background: transparent;\n  border: 0;\n}\n.a-modal .form .err[data-v-65da213b] {\n  color: #EB5757;\n  font-size: 16px;\n}\n@media (max-width: 992px) {\n.a-modal[data-v-65da213b] {\n    padding-top: 40px;\n}\n.a-modal .form .title[data-v-65da213b] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -39031,8 +39059,18 @@ var render = function() {
               _c(
                 "ul",
                 { staticClass: "run-stroke" },
-                _vm._l(_vm.postTitles, function(title) {
-                  return _c("li", [_vm._v(_vm._s(title))])
+                _vm._l(_vm.postTitles, function(post) {
+                  return _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "/post/" + post.id } }, [
+                        _vm._v(
+                          "\n            " + _vm._s(post.title) + "\n          "
+                        )
+                      ])
+                    ],
+                    1
+                  )
                 }),
                 0
               ),
@@ -39040,8 +39078,18 @@ var render = function() {
               _c(
                 "ul",
                 { staticClass: "run-stroke hidden" },
-                _vm._l(_vm.postTitles, function(title) {
-                  return _c("li", [_vm._v(_vm._s(title))])
+                _vm._l(_vm.postTitles, function(post) {
+                  return _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "/post/" + post.id } }, [
+                        _vm._v(
+                          "\n            " + _vm._s(post.title) + "\n          "
+                        )
+                      ])
+                    ],
+                    1
+                  )
                 }),
                 0
               )
@@ -39132,8 +39180,12 @@ var render = function() {
             ? [
                 _c(
                   "a",
-                  { staticClass: "btn-common btn-red", attrs: { href: "#" } },
-                  [_vm._v("logout")]
+                  {
+                    staticClass: "btn-common btn-gold-gradient",
+                    attrs: { href: "#" },
+                    on: { click: _vm.logout }
+                  },
+                  [_vm._v("להתנתק")]
                 )
               ]
             : [
@@ -40240,7 +40292,9 @@ var render = function() {
               },
               [_vm._v("\n        לחץ כאן\n      ")]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ],
         1
       )
@@ -40248,7 +40302,18 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lost-password" }, [
+      _c("a", { attrs: { href: "./password/reset", target: "_blank" } }, [
+        _vm._v("Reset password?")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -40930,7 +40995,7 @@ var render = function() {
                     })
                   ]
                 ),
-                _vm._v("\n        Back\n      ")
+                _vm._v("\n        חזור\n      ")
               ]
             ),
             _vm._v(" "),

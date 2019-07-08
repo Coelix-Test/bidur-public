@@ -26,6 +26,7 @@ use App\SurveyAnswers;
 use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Container\RewindableGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
@@ -481,8 +482,15 @@ class AdminController extends Controller
         return ['success' => true];
     }
 
+    public function addNewSurveyToMain(Request $request){
+        dd($request);
+    }
+
+    public function addNewSurveyToMainSecond(Request $request){
+        dd($request);
+    }
     public function getAllSurveys(){
-        $allSurveys = Survey::all();
+        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
         foreach ($allSurveys as $key => $survey) {
             $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
@@ -504,7 +512,6 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
-
         $survey = $request->get('survey');
 
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
@@ -632,7 +639,7 @@ class AdminController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
-            $admin = Admins::where('userId', $user->id)->first;
+            $admin = Admins::where('userId', $user->id)->first();
 
             empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
 
@@ -685,6 +692,14 @@ class AdminController extends Controller
         $data['leftImage'] = $section->urlLeft;
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);
+    }
+
+    public function showSurveyOnMain(){
+        return json_encode('work in progress');
+    }
+
+    public function showSurveyOnMainSecond(){
+        return json_encode('work in progress');
     }
 
 

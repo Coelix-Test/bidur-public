@@ -23,10 +23,20 @@
     <div class="run-stroke-wrap-wrap" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
       <div class="run-stroke-wrap" style="margin:0 auto;max-width:1440px;box-shadow:unset;">
         <ul class="run-stroke" >
-          <li v-for="title in postTitles">{{title}}</li>
+          <li v-for="post in postTitles">
+            <router-link :to="'/post/'+post.id">
+              {{post.title}}
+            </router-link>
+
+          </li>
         </ul>
         <ul class="run-stroke hidden">
-          <li v-for="title in postTitles">{{title}}</li>
+          <li v-for="post in postTitles">
+            <router-link :to="'/post/'+post.id">
+              {{post.title}}
+            </router-link>
+
+          </li>
         </ul>
       </div>
     </div>
@@ -178,7 +188,7 @@ export default {
       axios.post('/getRecentPosts')
           .then(response => {
             // console.log(response.data);
-            this.postTitles = response.data.map(post => post.title);
+            this.postTitles = response.data;
 
             //TODO REFACTOR
             setTimeout(() => {
@@ -202,4 +212,10 @@ export default {
 <style lang="scss" scoped>
   // @import '~slick-carousel/slick/slick.css';
   // @import '~slick-carousel/slick/slick-theme.css';
+  .run-stroke {
+    a {
+      color:#333;
+      text-decoration: none;
+    }
+  }
 </style>

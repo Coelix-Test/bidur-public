@@ -21,7 +21,7 @@
             </linearGradient>
             </defs>
           </svg>
-          <h3>Add new tag</h3>
+          <h3>הוסף תג חדש</h3>
         </li>
         <AddNewTag @addedNewTag="addedNewTag"  v-if="showAddNewTag" />
 

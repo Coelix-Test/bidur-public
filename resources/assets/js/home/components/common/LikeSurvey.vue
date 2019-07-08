@@ -185,5 +185,12 @@ export default {
 
 
 }
+@media(max-width:768px) {
+  .like-survey {
+    img {
+      height:300px;
+    }
+  }
+}
 
 </style>
