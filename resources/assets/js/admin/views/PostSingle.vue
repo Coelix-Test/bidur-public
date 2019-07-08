@@ -239,6 +239,12 @@ export default {
 
             //send ajax
             let url = '/createPost';
+            let successMessage = 'Post was successfully added!';
+            if(this.$route.params.id){
+              url = 'editPostCreateAllSections';
+              successMessage = 'Post was successfully edited!';
+              postData.append('id', this.$route.params.id);
+            }
             axios({
                     method: 'post',
                     url: url,
@@ -249,7 +255,7 @@ export default {
                     // console.log(response);
                     // this.$route.push(document.location.origin+"/admin#/");
                     // window.location.href = document.location.origin+"/admin#/?refresh=1";
-                    alert('Post was successfully added!');
+                    alert(successMessage);
                     // document.location.reload(true);
                 })
                 .catch(error => console.log(response));
@@ -258,16 +264,20 @@ export default {
     created() {
         if(this.$route.params.id) {
             // TODO: get all post info by ajax
-            axios.post('/post/'+this.$route.params.id)
+            axios.post('/showEditablePostContent', {id: this.$route.params.id})
               .then(response => {
-                this.title = response.data.post.mainTitle;
-                this.author = response.data.post.author;
-                this.date = new Date(response.data.post.date*1000);
-                let postSections = response.data.post.sections;
+                this.title = response.data.mainTitle;
+                this.author = response.data.author;
+                this.date = new Date(response.data.date*1000);
+                let postSections = response.data.sections;
                 postSections = Object.keys(postSections).map(i => postSections[i]);
                 console.log(postSections);
 
-                // this.sections = postSections;
+                this.celebrities = response.data.hashtags.map(i => {
+                  return {id: i.id, name: i.title};
+                });
+
+                this.sections = postSections;
                 // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
 
                 // this.date = new Date();

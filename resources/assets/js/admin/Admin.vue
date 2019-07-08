@@ -27,7 +27,7 @@
             </ul>
         </nav>
 
-        <router-view class="admin-content" id="admin_content"></router-view>
+        <router-view class="admin-content" id="admin_content" :key="$route.path"></router-view>
     </div>
 </template>
 

@@ -54,15 +54,7 @@ export default {
                 });
         },
         addCelebrity(){
-            // let index = 0;
-            // if(this.celebrities.length){
-            //     index = this.celebrities[this.celebrities.length - 1].index + 1;
-            // }
-            // let newCelebrities = this.celebrities;
-            // newCelebrities.push(
-            //     {id: '', name: '', index: index}
-            // );
-            // console.log(this.celebrities);
+
             let newCelebrities = this.celebrities;
             newCelebrities.push(
                 { id: '', name: '', uuid: generateGuid() }
