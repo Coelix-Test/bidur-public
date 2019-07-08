@@ -6,7 +6,7 @@
       <template v-if="survey.type == 'survey'">
         <div class="selected-poll">
           <img src="img/rihanna.png" alt="">
-          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote"/>
+          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
         </div>
       </template>
 
@@ -82,8 +82,13 @@ export default {
     OneSurvey,
   },
   methods: {
-    addVote(obj){
+    addVote(obj, id){
       console.log(obj);
+      axios
+        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+          .then(response => {
+            // console.log(response);
+          });
     }
   },
 }
@@ -107,14 +112,6 @@ export default {
     box-sizing: border-box;
     border:4px solid #E4A913;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
-    /* opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
-    transform: scale(0.8); */
-  }
-  .selected-poll.in-viewport {
-    /* transform: scale(1);
-    opacity: 1; */
   }
   .selected-poll img {
     width:100%;
