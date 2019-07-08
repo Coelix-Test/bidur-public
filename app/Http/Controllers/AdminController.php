@@ -807,13 +807,19 @@ class AdminController extends Controller
 
         $fullPost['mainTitle'] = $post->metaTitle;
         $titles = $post->getAllTitles;
+        $hashtags = HashtagPosts::where('postId', $id)->get();
+        foreach ($hashtags as $key => $hashtag) {
+            $ht = Hashtag::find($hashtag->hashtagId);
+            $hashtagData[$key]['id'] = $ht->id;
+            $hashtagData[$key]['title'] = $ht->text;
+        }
         if (isset($titles[0])){
             foreach ($titles as $title) {
                 $fullPost['sections'][$title->order]['type'] = 'title';
                 $fullPost['sections'][$title->order]['value'] = $title->titleText;
             }
         }
-
+        $fullPost['hashtags'] = $hashtagData;
         $contents = $post->getAllContents;
         if (isset($contents[0])){
             foreach ($contents as $content) {
