@@ -716,8 +716,9 @@ class MainController extends Controller
                     $allVariants['text'] = $variant->question;
                     $allVariants['value'] = $variant->order;
                     $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                    $all[] = $allVariants;
                 }
-                $data['value']['answers'] = $allVariants;
+                $data['value']['answers'] = $all;
                 return json_encode($data);
             }
             else{
