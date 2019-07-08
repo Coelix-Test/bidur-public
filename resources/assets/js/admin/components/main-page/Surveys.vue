@@ -14,9 +14,22 @@
         <span>Selection</span>
       </div>
     </div>
-    <PostSelection :deletable="false" v-if="selected == 'selection'"/>
-    <PostSurvey :deletable="false" v-else-if="selected == 'assessment'"/>
-    <PostAssessment :deletable="false" v-else-if="selected == 'survey'"/>
+    <PostSelection
+      v-bind.sync="selection"
+      :deletable="false"
+      v-if="selected == 'selection'"
+    />
+    <PostSurvey
+      v-bind.sync="survey"
+      :deletable="false"
+      v-else-if="selected == 'survey'"
+    />
+    <PostAssessment
+      v-bind.sync="ass"
+      :deletable="false"
+      v-else-if="selected == 'assessment'"
+    />
+
     <button class="theme-btn-red big-btn">SAVE</button>
   </div>
 </template>
@@ -30,7 +43,20 @@ export default {
   data(){
     return {
       selected: 'selection',
-      survey: {},
+      selection: {
+        image1: '',
+        image2: '',
+        title: '',
+      },
+      survey: {
+        title: '',
+        answers: [],
+        image: '',
+      },
+      ass: {
+        title: '',
+        image: '',
+      }
     }
   },
   components: {
@@ -44,16 +70,20 @@ export default {
     },
     save() {
       var data = new FormData();
-      data.append('imageUrl', this.image);
-      data.append('linkToInsta', this.link);
 
-      axios.post('/createInsta', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(res => {
-        console.log(res);
-      });
+      if() {
+
+      }
+      else if() {
+
+      }
+      else if() {
+        
+      }
+
+      data.append('imageUrl', this.image);
+
+
     }
   }
 }
