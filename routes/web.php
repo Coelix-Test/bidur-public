@@ -61,6 +61,7 @@ Route::post('/likeSinglePhoto',         'MainController@likeSinglePhoto');
 Route::post('/dislikeSinglePhoto',      'MainController@dislikeSinglePhoto');
 Route::post('/likeForSelectOne',        'MainController@likeForSelectOne');
 Route::post('/getServiceForMainPage',   'MainController@getServiceForMainPage');
+Route::post('/getServiceForMainPageSecond',   'MainController@getServiceForMainPageSecond');
 
 Route::post('/sendMail',   'MainController@sendMail');
 
@@ -72,6 +73,8 @@ Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
     Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
+
+    Route::post('/showEditablePostContent', 'AdminController@showEditablePostContent');
 
     //services
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
