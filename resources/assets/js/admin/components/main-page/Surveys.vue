@@ -1,7 +1,7 @@
 <template>
   <div class="surveys">
-    <h2></h2>
-    <div class="plate">
+    <h2 class="heading">Surveys</h2>
+    <div class="plate shadow-section">
       <div class="types">
         <div class="add-section" @click="select('survey')">
           <img src="/img/icons/edit-post-survey.svg" alt="">
@@ -33,7 +33,7 @@
         v-else-if="selected == 'assessment'"
       />
 
-      <button class="theme-btn-red big-btn">SAVE</button>
+      <button @click="save" class="theme-btn-red big-btn">SAVE</button>
     </div>
   </div>
 </template>
@@ -75,17 +75,34 @@ export default {
     save() {
       var data = new FormData();
 
-      if() {
-
+      if(this.selected == 'selection') {
+        data.append('title', this.selection.title);
+        data.append('leftImage', this.selection.image1);
+        data.append('rightImage', this.selection.image2);
+        axios.post('/createNewComparison', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showCompareFromMain');
       }
-      else if() {
-
+      else if(this.selected == 'assessment') {
+        data.append('title', this.ass.title);
+        data.append('image', this.ass.image);
+        axios.post('/createSinglePhoto', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+        axios.post('/showSinglePhotoFromMain');
       }
-      else if() {
-
-      }
-
-      data.append('imageUrl', this.image);
+      // else if() {
+      //
+      // }
 
 
     }
@@ -98,6 +115,7 @@ export default {
 @import "~@/vars.scss";
 
 .surveys {
+  padding-top: 20px;
   width: 49%;
   display: flex;
   flex-direction: column;
