@@ -110,7 +110,7 @@ class AdminController extends Controller
     public function createFullPost(Request $request){
         $sections = $request->get('sections');
         $files = $request->allFiles();
-        dd($request);
+
         foreach ($sections as $key => $section) {
             if ($section['type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
@@ -172,7 +172,6 @@ class AdminController extends Controller
     public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
-//        dd($date);
 
         $post = Post::create([
             'author' => $author,
