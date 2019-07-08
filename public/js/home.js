@@ -4647,6 +4647,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
 /* harmony import */ var _components_all_DefaultPost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/all/DefaultPost.vue */ "./resources/assets/js/home/components/all/DefaultPost.vue");
 /* harmony import */ var _components_all_QuadPost_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/all/QuadPost.vue */ "./resources/assets/js/home/components/all/QuadPost.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -4682,7 +4690,9 @@ __webpack_require__.r(__webpack_exports__);
       data: [],
       name: '',
       img: '',
-      page: ''
+      page: 0,
+      loading: false,
+      end: false
     };
   },
   components: {
@@ -4697,17 +4707,43 @@ __webpack_require__.r(__webpack_exports__);
     sync: function sync(id) {
       var _this = this;
 
+      var append = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      this.loading = true;
       return axios.post('/getAllPostsByHashtag', {
-        hashtag_id: id
+        hashtag_id: id,
+        page: this.page
       }).then(function (res) {
-        console.log(res);
-        _this.data = res.data.data;
-        _this.name = res.data.hashtagName;
-        _this.img = res.data.hashtagImg;
+        _this.loading = false;
+
+        if (append) {
+          var _this$data;
+
+          (_this$data = _this.data).push.apply(_this$data, _toConsumableArray(Object.values(res.data.data)));
+
+          console.log('appended');
+        } else {
+          _this.data = Object.values(res.data.data);
+          _this.name = res.data.hashtagName;
+          _this.img = res.data.hashtagImg;
+        }
+
+        if (!_this.data.length) {
+          _this.end = true;
+        }
       });
     },
     onScroll: function onScroll(e) {
-      console.log(e);
+      var doc = document.documentElement;
+      var screen = doc.clientHeight;
+      var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+
+      if (top >= doc.scrollHeight - screen * 2 && !this.loading && !this.end) {
+        this.nextPage();
+      }
+    },
+    nextPage: function nextPage() {
+      this.page++;
+      this.sync(this.$route.params.id, true);
     }
   },
   created: function created() {
