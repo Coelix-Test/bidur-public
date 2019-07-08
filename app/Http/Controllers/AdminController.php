@@ -436,7 +436,19 @@ class AdminController extends Controller
         $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
-        $current = SelectOne::where('postId', -1)->first();
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
@@ -460,6 +472,25 @@ class AdminController extends Controller
 
         $image = SingleLikableImage::where('postId', 0)->first();
 
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+
         if (!empty($image)){
             $deletableId = $image->id;
             $image->delete();
@@ -482,6 +513,25 @@ class AdminController extends Controller
         $image->move($destinationPath, $name);
 
         $image = SingleLikableImage::where('postId', -1)->first();
+
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
 
         if (!empty($image)){
             $deletableId = $image->id;
