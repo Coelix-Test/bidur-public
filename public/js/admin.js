@@ -4211,6 +4211,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           return postSections[i];
         });
         console.log(postSections);
+        _this.celebrities = response.data.hashtags.map(function (i) {
+          return {
+            id: i.id,
+            name: i.title
+          };
+        });
         _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
@@ -27257,6 +27263,7 @@ var render = function() {
   return _c("div", { staticClass: "wrapper" }, [
     _c("input", {
       attrs: { type: "text", placeholder: "כותרת" },
+      domProps: { value: _vm.value },
       on: {
         input: function($event) {
           return _vm.$emit("update:value", $event.target.value)

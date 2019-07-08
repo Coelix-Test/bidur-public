@@ -273,6 +273,10 @@ export default {
                 postSections = Object.keys(postSections).map(i => postSections[i]);
                 console.log(postSections);
 
+                this.celebrities = response.data.hashtags.map(i => {
+                  return {id: i.id, name: i.title};
+                });
+
                 this.sections = postSections;
                 // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
 
