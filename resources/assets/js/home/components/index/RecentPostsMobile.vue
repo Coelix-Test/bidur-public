@@ -1,5 +1,16 @@
 <template>
   <div class="recent-posts-mobile">
+    <div v-if="survey" class="surveys">
+      <template v-if="survey.type == 'survey'">
+        <div class="selected-poll">
+          <img src="img/rihanna.png" alt="">
+          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
+        </div>
+      </template>
+      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
+      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+
+    </div>
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
 
@@ -32,11 +43,15 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
+import VuePoll from 'vue-poll'
+import LikeSurvey from './../common/LikeSurvey'
+import OneSurvey from './../common/OneSurvey'
 
 export default {
   data() {
     return {
       posts : [],
+      survey : null,
       windowWidth : document.documentElement.clientWidth,
     }
   },
@@ -45,10 +60,28 @@ export default {
       // console.log(res.data);
       this.posts = res.data;
     });
+    axios.post('/getServiceForMainPage').then(res => {
+      this.survey = res.data;
+      console.log(res.data);
+      // console.log(this.survey);
+    });
+  },
+  methods : {
+    addVote(obj, id){
+      console.log(obj);
+      axios
+        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+          .then(response => {
+            // console.log(response);
+          });
+    }
   },
   components: {
     Carousel,
     Slide,
+    LikeSurvey,
+    OneSurvey,
+    VuePoll,
   },
 }
 </script>
@@ -153,7 +186,40 @@ export default {
     margin-bottom: 32px;
     margin-top: 0;
   }
+  .selected-poll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border:4px solid #E4A913;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  .selected-poll img {
+    width:100%;
+    height:auto;
+    max-width:100%;
+    object-fit: cover;
+    margin-bottom: 0;
+  }
+  .poll {
+    width:100%;
+  }
+  .selected-poll h3 {
+    padding-top: 32px;
+    font-size: 32px;
+    color:#0E0E0E;
+    margin:0;
+    background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
+    padding-bottom: 32px;
+  }
+
   @media (max-width:768px) {
+    .selected-poll {
+      margin-bottom: 8px;
+    }
     .latest-post-item {
       padding-left: 0;
     }
@@ -168,7 +234,7 @@ export default {
       width:100%;
       padding-left: 0;
       margin-bottom: 16px;
-      margin-top: 24px;
+      margin-top: 46px;
     }
   }
   @media (max-width:550px) {

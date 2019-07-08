@@ -2780,6 +2780,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2787,7 +2800,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selected: 'selection',
-      survey: {}
+      selection: {
+        image1: '',
+        image2: '',
+        title: ''
+      },
+      survey: {
+        title: '',
+        answers: [],
+        image: ''
+      },
+      ass: {
+        title: '',
+        image: ''
+      }
     };
   },
   components: {
@@ -2799,17 +2825,19 @@ __webpack_require__.r(__webpack_exports__);
     select: function select(type) {
       this.selected = type;
     },
-    save: function save() {
-      var data = new FormData();
-      data.append('imageUrl', this.image);
-      data.append('linkToInsta', this.link);
-      axios.post('/createInsta', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(function (res) {
-        console.log(res);
-      });
+    save: function save() {// var data = new FormData();
+      //
+      // if() {
+      //
+      // }
+      // else if() {
+      //
+      // }
+      // else if() {
+      //
+      // }
+      //
+      // data.append('imageUrl', this.image);
     }
   }
 });
@@ -25835,7 +25863,7 @@ var render = function() {
     ? _c("div", { staticClass: "single-survey" }, [
         _c("div", { staticClass: "heading" }, [
           _c("div", { staticClass: "date" }, [
-            _vm._v(_vm._s(_vm.survey.survey.created_at))
+            _vm._v(_vm._s(_vm._f("formatDate")(_vm.survey.survey.created_at)))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actions" }, [
@@ -26462,11 +26490,38 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.selected == "selection"
-        ? _c("PostSelection", { attrs: { deletable: false } })
-        : _vm.selected == "assessment"
-        ? _c("PostSurvey", { attrs: { deletable: false } })
+        ? _c(
+            "PostSelection",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostSelection",
+              _vm.selection,
+              false,
+              true
+            )
+          )
         : _vm.selected == "survey"
-        ? _c("PostAssessment", { attrs: { deletable: false } })
+        ? _c(
+            "PostSurvey",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostSurvey",
+              _vm.survey,
+              false,
+              true
+            )
+          )
+        : _vm.selected == "assessment"
+        ? _c(
+            "PostAssessment",
+            _vm._b(
+              { attrs: { deletable: false } },
+              "PostAssessment",
+              _vm.ass,
+              false,
+              true
+            )
+          )
         : _vm._e(),
       _vm._v(" "),
       _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("לשמור")])
@@ -27347,7 +27402,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "post-meta" }, [
                 _c("span", { staticClass: "date" }, [
-                  _vm._v(_vm._s(post.post.created_at))
+                  _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "author" }, [
@@ -27921,7 +27976,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("h3", [_vm._v("Add new tag")])
+              _c("h3", [_vm._v("הוסף תג חדש")])
             ]
           ),
           _vm._v(" "),

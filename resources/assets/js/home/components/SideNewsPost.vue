@@ -72,6 +72,7 @@ export default {
     .img {
       height: 200px;
       width: 100%;
+      max-width: unset;
     }
     .desc {
       padding-right: 0;
