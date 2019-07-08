@@ -1,16 +1,19 @@
 <template>
-  <div class="wrapper instagram shadow-section">
-    <image-input :value.sync="image"></image-input>
+  <div class="instagram">
+    <h2 class="heading">Instagram Post</h2>
+    <div class="plate shadow-section">
+      <image-input :value.sync="image"></image-input>
 
-    <div class="form">
-      <div class="input-section">
-        <div class="heading">קישור לאינסטגרם</div>
-        <input v-model="link" class="theme-textarea" type="text">
+      <div class="form">
+        <div class="input-section">
+          <div class="heading">קישור לאינסטגרם</div>
+          <input v-model="link" class="theme-textarea" type="text">
+        </div>
       </div>
-    </div>
 
-    <div class="btn-wrap">
-      <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
+      <div class="btn-wrap">
+        <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +53,7 @@ export default {
 @import "~@/vars.scss";
 
 .instagram {
+  padding-top: 20px;
   width: 49%;
   display: flex;
   flex-direction: column;
