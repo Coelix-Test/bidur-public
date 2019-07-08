@@ -1,10 +1,10 @@
 <template>
   <div class="one-survey">
     <div class="title">
-      {{data.description}}
+      {{ data.description }}
     </div>
     <div class="body">
-      <svg class="lightning" width="26" height="46" viewBox="0 0 26 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="lightning" ref="lightning" width="26" height="46" viewBox="0 0 26 46" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M25.9284 15.7765C25.803 15.5066 25.533 15.3334 25.2356 15.3334H16.1738L25.117 1.17687C25.2661 0.940756 25.2753 0.641755 25.1408 0.3972C25.0062 0.151836 24.7492 0 24.4708 0H12.2356C11.9458 0 11.6811 0.164055 11.5512 0.423974L0.0806353 23.424C-0.0379238 23.6609 -0.0249298 23.943 0.11424 24.1692C0.254217 24.3953 0.49967 24.5333 0.765016 24.5333H8.62845L0.0599343 44.9359C-0.0861363 45.2848 0.0438936 45.6895 0.365786 45.8873C0.489633 45.9633 0.627279 46 0.764209 46C0.983674 46 1.20009 45.9057 1.35002 45.7279L25.8206 16.5944C26.0125 16.3661 26.0538 16.0471 25.9284 15.7765Z" fill="#F2C94C"/>
       </svg>
 
@@ -23,34 +23,6 @@
 <script>
 import HearthButton from './HearthButton'
 
-async function makeItRain(n) {
-
-  var fallTime, rotateTime, delayTime, $fetti;
-  var colors = ['red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia'];
-
-  if (!n) { n = 20 }
-  var append_to = document.body;
-  $appendTo.css({ 'overflow': 'hidden' });
-
-  for (var i=0; i<n; i++) {
-    var el = document.createElement(el);
-
-    fallTime = ((Math.random() * 2) + 3);
-    rotateTime = ((Math.random() * 2) + 1);
-    delayTime = Math.random() * 4;
-
-    $fetti.css({
-      'left': Math.floor($(window).width() * Math.random()) + 'px',
-      'background-color': colors[Math.floor(Math.random() * colors.length)],
-      'animation': `fetti_fall ${fallTime}s linear infinite, fetti_rotate ${rotateTime}s linear infinite`,
-      'animation-delay': delayTime + 's',
-    })
-
-    $appendTo.append($fetti)
-  }
-
-}
-
 export default {
   props: {
     data: {},
@@ -64,6 +36,35 @@ export default {
     HearthButton,
   },
   methods: {
+    async makeItRain(n) {
+
+      var fallTime, rotateTime, delayTime;
+      var colors = [ 'red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia' ];
+
+      if (!n) { n = 20 }
+      let append_to = this.$el;
+      // append_to.style({ 'overflow': 'hidden' });
+
+      for (var i = 0; i < n; i++) {
+        let el = document.createElement('div');
+        el.classList.add('fetti');
+
+        fallTime = ((Math.random() * 10) + 3);
+        rotateTime = ((Math.random() * 2) + 1);
+
+        el.style.left = Math.floor(append_to.offsetWidth * Math.random()) + 'px';
+        el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        el.style.animation = `fettiFall ${fallTime}s linear, fettiRotate ${rotateTime}s infinite linear`;
+        // el.style.transition = `top ${delayTime}s linear`
+
+        setTimeout(() => {
+          append_to.removeChild(el);
+        }, fallTime * 1000);
+
+        append_to.appendChild(el);
+      }
+
+    },
     left() {
       if(this.popped) return;
       let el = this.$refs.right;
@@ -78,7 +79,10 @@ export default {
       axios.post('/likeForSelectOne', {
         position: 'left',
         serviceId: this.data.id,
-      })
+      });
+
+      this.$refs.lightning.style.zIndex = 1;
+      this.makeItRain(70);
     },
     right() {
       if(this.popped) return;
@@ -94,7 +98,10 @@ export default {
       axios.post('/likeForSelectOne', {
         position: 'right',
         serviceId: this.data.id,
-      })
+      });
+
+      this.$refs.lightning.style.zIndex = 1;
+      this.makeItRain(70);
     }
   }
 }
@@ -109,6 +116,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   padding-bottom: 50px;
+  position: relative;
   .title {
     font-weight: bold;
     font-size: 36px;

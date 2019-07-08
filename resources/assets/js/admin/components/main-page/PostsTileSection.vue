@@ -38,11 +38,10 @@ export default {
             });
         },
         getSelectedPosts(){
-            axios.post('/getSelectedPosts')
-                .then(res => {
-                  this.values = Object.values(res.data);
-                  this.selectedPosts = Object.values(res.data);
-                });
+            axios.post('/getSelectedPosts').then(res => {
+              this.values = Object.values(res.data);
+              this.selectedPosts = Object.values(res.data);
+            });
         },
         selectPost(post){
           console.log(post);

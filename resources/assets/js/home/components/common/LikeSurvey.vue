@@ -3,7 +3,7 @@
     <img :src="data.imgUrl">
     <div class="body">
       <div class="title">
-        {{data.description}}
+        {{ data.description }}
       </div>
       <div class="buttons">
         <button @click="dislike" type="button" class="dislike">
@@ -64,7 +64,7 @@ export default {
       this.liked++;
       this.clicked = true;
       axios
-        .post('/likeSinglePhoto', {serviceId: this.data.id})
+        .post('/likeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
             console.log(res);
           });
@@ -76,7 +76,7 @@ export default {
       this.disliked++;
       this.clicked = true;
       axios
-        .post('/dislikeSinglePhoto', {serviceId: this.data.id})
+        .post('/dislikeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
             console.log(res);
           });

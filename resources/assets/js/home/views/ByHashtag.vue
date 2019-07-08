@@ -35,6 +35,7 @@ export default {
       data: [],
       name: '',
       img: '',
+      page: '',
     };
   },
   components: {
@@ -55,6 +56,9 @@ export default {
         this.name = res.data.hashtagName;
         this.img = res.data.hashtagImg;
       });
+    },
+    onScroll(e) {
+      console.log(e);
     }
   },
   created() {
@@ -63,6 +67,12 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     next();
+  },
+  mounted() {
+    document.addEventListener('scroll', this.onScroll);
+  },
+  destroyed() {
+    document.removeEventListener('scroll', this.onScroll);
   }
 }
 </script>
