@@ -30,4 +30,4 @@ mix.webpackConfig({
 	},
 });
 
-mix.browserSync('newspaper');
+mix.browserSync('newspaper.test');
