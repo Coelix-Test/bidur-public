@@ -504,7 +504,7 @@ class AdminController extends Controller
 
 
     public function editSurvey(Request $request){
-
+        // dd($request);
         $survey = $request->get('survey');
 
         $surveyObject = Survey::where('id', $survey['survey']['id'])->first();
