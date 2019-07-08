@@ -639,7 +639,7 @@ class AdminController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
-            $admin = Admins::where('userId', $user->id)->first;
+            $admin = Admins::where('userId', $user->id)->first();
 
             empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
 
