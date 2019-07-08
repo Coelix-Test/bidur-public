@@ -4008,6 +4008,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
 
 
 
@@ -4206,22 +4207,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         _this.title = response.data.mainTitle;
         _this.author = response.data.author;
         _this.date = new Date(response.data.date * 1000);
-        var postSections = response.data.sections;
-        postSections = Object.keys(postSections).map(function (i) {
-          return postSections[i];
-        });
-        console.log(postSections);
-        _this.celebrities = response.data.hashtags.map(function (i) {
-          return {
-            id: i.id,
-            name: i.title
-          };
-        });
-        console.log(postSections);
-        _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+
+        if (response.data.sections) {
+          var postSections = response.data.sections;
+          postSections = Object.keys(postSections).map(function (i) {
+            return postSections[i];
+          });
+          _this.sections = postSections; // console.log(postSections);
+        }
+
+        if (response.data.hashtags) {
+          _this.celebrities = response.data.hashtags.map(function (i) {
+            return {
+              id: i.id,
+              name: i.title
+            };
+          });
+        } // console.log(postSections);
+        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
         // sections
+
       });
     }
   }
@@ -27674,6 +27681,7 @@ var render = function() {
                         "post-image-text",
                         _vm._b(
                           {
+                            staticClass: "shadow-section",
                             attrs: { index: index },
                             on: { deleteSection: _vm.deleteSection }
                           },

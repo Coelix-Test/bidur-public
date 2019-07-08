@@ -38,6 +38,7 @@
                     </template>
                     <template v-else-if="section.type === 'imageWithText'">
                         <post-image-text
+                            class="shadow-section"
                             v-bind.sync="section"
                             :index="index"
                             @deleteSection="deleteSection">
@@ -269,18 +270,23 @@ export default {
                 this.title = response.data.mainTitle;
                 this.author = response.data.author;
                 this.date = new Date(response.data.date*1000);
-                let postSections = response.data.sections;
-                postSections = Object.keys(postSections).map(i => postSections[i]);
-                console.log(postSections);
+                if(response.data.sections){
+                  let postSections = response.data.sections;
+                  postSections = Object.keys(postSections).map(i => postSections[i]);
+                  this.sections = postSections;
+                  // console.log(postSections);
+                }
 
-                this.celebrities = response.data.hashtags.map(i => {
-                  return {id: i.id, name: i.title};
-                });
+                if(response.data.hashtags){
+                  this.celebrities = response.data.hashtags.map(i => {
+                    return {id: i.id, name: i.title};
+                  });
+                }
 
 
-                console.log(postSections);
+                // console.log(postSections);
 
-                this.sections = postSections;
+
                 // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
 
                 // this.date = new Date();
