@@ -2359,6 +2359,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4194,10 +4195,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       axios.post('/showEditablePostContent', {
         id: this.$route.params.id
       }).then(function (response) {
-        _this.title = response.data.post.mainTitle;
-        _this.author = response.data.post.author;
-        _this.date = new Date(response.data.post.date * 1000);
-        var postSections = response.data.post.sections;
+        _this.title = response.data.mainTitle;
+        _this.author = response.data.author;
+        _this.date = new Date(response.data.date * 1000);
+        var postSections = response.data.sections;
         postSections = Object.keys(postSections).map(function (i) {
           return postSections[i];
         });
@@ -25865,6 +25866,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("router-view", {
+        key: _vm.$route.path,
         staticClass: "admin-content",
         attrs: { id: "admin_content" }
       })
@@ -26051,6 +26053,8 @@ var render = function() {
             }
           })
         ])
+      : typeof _vm.value === "string"
+      ? _c("img", { staticClass: "image", attrs: { src: _vm.value, alt: "" } })
       : _c("img", { staticClass: "image", attrs: { src: _vm.image, alt: "" } })
   ])
 }

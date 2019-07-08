@@ -260,10 +260,10 @@ export default {
             // TODO: get all post info by ajax
             axios.post('/showEditablePostContent', {id: this.$route.params.id})
               .then(response => {
-                this.title = response.data.post.mainTitle;
-                this.author = response.data.post.author;
-                this.date = new Date(response.data.post.date*1000);
-                let postSections = response.data.post.sections;
+                this.title = response.data.mainTitle;
+                this.author = response.data.author;
+                this.date = new Date(response.data.date*1000);
+                let postSections = response.data.sections;
                 postSections = Object.keys(postSections).map(i => postSections[i]);
                 console.log(postSections);
 
