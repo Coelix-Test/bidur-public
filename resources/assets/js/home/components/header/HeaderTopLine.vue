@@ -95,6 +95,16 @@ export default {
     return {
       isLoggedIn: false
     }
+  },
+  created() {
+    // axios
+    //   .post('/')
+    //     .then(res => {
+    //       console.log(res);
+    //       if(res. ==) {
+    //         this.isLoggedIn = true;
+    //       }
+    //     });
   }
 }
 </script>

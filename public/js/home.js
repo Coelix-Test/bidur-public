@@ -3484,6 +3484,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isLoggedIn: false
     };
+  },
+  created: function created() {// axios
+    //   .post('/')
+    //     .then(res => {
+    //       console.log(res);
+    //       if(res. ==) {
+    //         this.isLoggedIn = true;
+    //       }
+    //     });
   }
 });
 
