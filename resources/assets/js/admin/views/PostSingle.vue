@@ -113,7 +113,7 @@
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
             </form>
-            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;">
+            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display:none;">
                 <template v-if="celebrities !== undefined">
                     title: {{title}} <br>
                     author: {{author}} <br>

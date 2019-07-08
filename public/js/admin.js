@@ -27938,7 +27938,8 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px"
+            "font-size": "16px",
+            display: "none"
           },
           attrs: { dir: "ltr" }
         },
