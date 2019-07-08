@@ -67,7 +67,7 @@ Route::post('/sendMail',   'MainController@sendMail');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
+Route::get('/admin', 'AdminController@showAdmin');
 
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
