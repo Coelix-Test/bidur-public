@@ -4191,7 +4191,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
     if (this.$route.params.id) {
       // TODO: get all post info by ajax
-      axios.post('/post/' + this.$route.params.id).then(function (response) {
+      axios.post('/showEditablePostContent', {
+        id: this.$route.params.id
+      }).then(function (response) {
         _this.title = response.data.post.mainTitle;
         _this.author = response.data.post.author;
         _this.date = new Date(response.data.post.date * 1000);

@@ -258,7 +258,7 @@ export default {
     created() {
         if(this.$route.params.id) {
             // TODO: get all post info by ajax
-            axios.post('/post/'+this.$route.params.id)
+            axios.post('/showEditablePostContent', {id: this.$route.params.id})
               .then(response => {
                 this.title = response.data.post.mainTitle;
                 this.author = response.data.post.author;
