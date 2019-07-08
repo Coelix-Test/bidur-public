@@ -4,6 +4,7 @@
         <image-input :value="value" @update:value="updateValue"></image-input>
         <input type="text" name="description" class="theme-input-text"
             placeholder="תיאור"
+            :value="description"
             @input="$emit('update:description', $event.target.value)"/>
 
         <div class="delete-self" @click="$emit('deleteSection', index)"></div>

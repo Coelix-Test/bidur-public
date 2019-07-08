@@ -3,13 +3,12 @@
 
 
         <searchable-input
-            v-for="celebrity in celebrities"
-            :key="celebrity.index"
-            :index="celebrity.index"
+            v-for="(celebrity, i) in celebrities"
             :placeholder="'Add celebrity'"
+            :key="celebrity.id ? celebrity.id : celebrity.uuid"
             :options="allCelebrities"
-            @select="selectCelebrity"
-            @deleteSelf="deleteCelebrity">
+            v-model="celebrities[i]"
+            @deleteSelf="deleteCelebrity(i)">
         </searchable-input>
 
         <button class="theme-btn theme-ico-btn add-celebrity" type="button" name="button" @click="addCelebrity()">
@@ -38,7 +37,8 @@ export default {
             type: Array,
             default: function(){
                 return [
-                    {id: '', name: '', index: 0}
+                    // {id: '', name: '', index: 0}
+                    { id: '', name: '' }
                 ];
             }
         }
@@ -54,15 +54,19 @@ export default {
                 });
         },
         addCelebrity(){
-            let index = 0;
-            if(this.celebrities.length){
-                index = this.celebrities[this.celebrities.length - 1].index + 1;
-            }
+            // let index = 0;
+            // if(this.celebrities.length){
+            //     index = this.celebrities[this.celebrities.length - 1].index + 1;
+            // }
+            // let newCelebrities = this.celebrities;
+            // newCelebrities.push(
+            //     {id: '', name: '', index: index}
+            // );
+            // console.log(this.celebrities);
             let newCelebrities = this.celebrities;
             newCelebrities.push(
-                {id: '', name: '', index: index}
+                { id: '', name: '', uuid: generateGuid() }
             );
-            console.log(this.celebrities);
             this.$emit('updateCelebrities', newCelebrities);
         },
         selectCelebrity(celebrity, index){
@@ -78,8 +82,9 @@ export default {
         },
         deleteCelebrity(index){
 
-            let newCelebrities = this.celebrities.filter(item => item.index !== index);
-            console.log('alex', newCelebrities);
+            console.log('alex 1', index);
+            let newCelebrities = this.celebrities.filter((item, i) => i !== index);
+            console.log('alex 2', newCelebrities);
             this.$emit('updateCelebrities', newCelebrities);
         }
     },
