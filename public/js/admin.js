@@ -2847,8 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
-        });
-        axios.post('/showCompareFromMain');
+        }); // axios.post('/showCompareFromMain');
       } else if (this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
@@ -2858,12 +2857,10 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
-        });
-        axios.post('/showSinglePhotoFromMain');
-      } // else if() {
-      //
-      // }
-
+        }); // axios.post('/showSinglePhotoFromMain');
+      } else if (this.selected == 'survey') {
+        console.log(this.survey);
+      }
     }
   }
 });
