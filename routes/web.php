@@ -67,8 +67,8 @@ Route::post('/sendMail',   'MainController@sendMail');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
-
+Route::get('/admin', 'AdminController@showAdmin');
+Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
     Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
@@ -77,14 +77,18 @@ Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
     Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
     Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
     Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
+    Route::post('/addNewSurveyToMain', 'AdminController@addNewSurveyToMain');
     Route::post('/addNewComparisonSecond', 'AdminController@addNewComparisonSecond');
     Route::post('/addSinglePhotoSecond', 'AdminController@addSinglePhotoSecond');
+    Route::post('/addNewSurveyToMainSecond', 'AdminController@addNewSurveyToMainSecond');
     Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
 
     Route::post('/showSinglePhotoFromMain', 'AdminController@showSinglePhotoFromMain');
     Route::post('/showCompareFromMain', 'AdminController@showCompareFromMain');
+    Route::post('/showSurveyOnMain', 'AdminController@showSurveyOnMain');
     Route::post('/showSinglePhotoFromMainSecond', 'AdminController@showSinglePhotoFromMainSecond');
     Route::post('/showCompareFromMainSecond', 'AdminController@showCompareFromMainSecond');
+    Route::post('/showSurveyOnMainSecond', 'AdminController@showSurveyOnMainSecond');
 
 
     //hashtags
