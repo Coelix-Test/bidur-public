@@ -4210,6 +4210,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             name: i.title
           };
         });
+        console.log(postSections);
         _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],

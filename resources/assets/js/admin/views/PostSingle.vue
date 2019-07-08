@@ -277,6 +277,9 @@ export default {
                   return {id: i.id, name: i.title};
                 });
 
+
+                console.log(postSections);
+
                 this.sections = postSections;
                 // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
 
