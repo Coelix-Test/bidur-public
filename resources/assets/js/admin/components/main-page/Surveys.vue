@@ -1,36 +1,40 @@
 <template>
   <div class="surveys">
-    <div class="types">
-      <div class="add-section" @click="select('survey')">
-        <img src="/img/icons/edit-post-survey.svg" alt="">
-        <span>Survey</span>
+    <h2></h2>
+    <div class="plate">
+      <div class="types">
+        <div class="add-section" @click="select('survey')">
+          <img src="/img/icons/edit-post-survey.svg" alt="">
+          <span>Survey</span>
+        </div>
+        <div class="add-section" @click="select('assessment')">
+          <img src="/img/icons/edit-post-assessment.svg" alt="">
+          <span>Assessment</span>
+        </div>
+        <div class="add-section" @click="select('selection')">
+          <img src="/img/icons/edit-post-selection.svg" alt="">
+          <span>Selection</span>
+        </div>
       </div>
-      <div class="add-section" @click="select('assessment')">
-        <img src="/img/icons/edit-post-assessment.svg" alt="">
-        <span>Assessment</span>
-      </div>
-      <div class="add-section" @click="select('selection')">
-        <img src="/img/icons/edit-post-selection.svg" alt="">
-        <span>Selection</span>
-      </div>
-    </div>
-    <PostSelection
-      v-bind.sync="selection"
-      :deletable="false"
-      v-if="selected == 'selection'"
-    />
-    <PostSurvey
-      v-bind.sync="survey"
-      :deletable="false"
-      v-else-if="selected == 'survey'"
-    />
-    <PostAssessment
-      v-bind.sync="ass"
-      :deletable="false"
-      v-else-if="selected == 'assessment'"
-    />
 
-    <button class="theme-btn-red big-btn">SAVE</button>
+      <PostSelection
+        v-bind.sync="selection"
+        :deletable="false"
+        v-if="selected == 'selection'"
+      />
+      <PostSurvey
+        v-bind.sync="survey"
+        :deletable="false"
+        v-else-if="selected == 'survey'"
+      />
+      <PostAssessment
+        v-bind.sync="ass"
+        :deletable="false"
+        v-else-if="selected == 'assessment'"
+      />
+
+      <button class="theme-btn-red big-btn">SAVE</button>
+    </div>
   </div>
 </template>
 
@@ -78,7 +82,7 @@ export default {
 
       }
       else if() {
-        
+
       }
 
       data.append('imageUrl', this.image);
