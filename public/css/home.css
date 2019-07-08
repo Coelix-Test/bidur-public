@@ -129,3 +129,68 @@
           transform: rotate(45deg) translate(-120%, -30%);
 }
 
+.fetti {
+  top: -100px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  z-index: 999;
+}
+
+@-webkit-keyframes fettiFall {
+  0% {
+    top: 0px;
+  }
+
+  100% {
+    top: 100vh;
+  }
+}
+
+@keyframes fettiFall {
+  0% {
+    top: 0px;
+  }
+
+  100% {
+    top: 100vh;
+  }
+}
+
+@-webkit-keyframes fettiRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    width: 10px;
+  }
+
+  50% {
+    width: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    width: 10px;
+  }
+}
+
+@keyframes fettiRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    width: 10px;
+  }
+
+  50% {
+    width: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    width: 10px;
+  }
+}
+

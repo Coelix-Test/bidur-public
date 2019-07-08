@@ -2802,13 +2802,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -26484,13 +26477,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "surveys" },
-    [
-      _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "plate shadow-section" }, [
+  return _c("div", { staticClass: "surveys" }, [
+    _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "plate shadow-section" },
+      [
         _c("div", { staticClass: "types" }, [
           _c(
             "div",
@@ -26526,7 +26519,7 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Assessment")])
+              _c("span", [_vm._v("הערכה")])
             ]
           ),
           _vm._v(" "),
@@ -26545,89 +26538,55 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Selection")])
+              _c("span", [_vm._v("להשוות")])
             ]
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("assessment")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("הערכה")])
-          ]
-        ),
+        _vm.selected == "selection"
+          ? _c(
+              "PostSelection",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSelection",
+                _vm.selection,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "survey"
+          ? _c(
+              "PostSurvey",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSurvey",
+                _vm.survey,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "assessment"
+          ? _c(
+              "PostAssessment",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostAssessment",
+                _vm.ass,
+                false,
+                true
+              )
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("selection")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("להשוות")])
-          ]
+          "button",
+          { staticClass: "theme-btn-red big-btn", on: { click: _vm.save } },
+          [_vm._v("לשמור")]
         )
-      ]),
-      _vm._v(" "),
-      _vm.selected == "selection"
-        ? _c(
-            "PostSelection",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSelection",
-              _vm.selection,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "survey"
-        ? _c(
-            "PostSurvey",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSurvey",
-              _vm.survey,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "assessment"
-        ? _c(
-            "PostAssessment",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostAssessment",
-              _vm.ass,
-              false,
-              true
-            )
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("לשמור")])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48732,7 +48691,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
