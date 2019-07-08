@@ -436,7 +436,19 @@ class AdminController extends Controller
         $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
-        $current = SelectOne::where('postId', -1)->first();
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
@@ -460,6 +472,25 @@ class AdminController extends Controller
 
         $image = SingleLikableImage::where('postId', 0)->first();
 
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+
         if (!empty($image)){
             $deletableId = $image->id;
             $image->delete();
@@ -482,6 +513,25 @@ class AdminController extends Controller
         $image->move($destinationPath, $name);
 
         $image = SingleLikableImage::where('postId', -1)->first();
+
+        $current = SelectOne::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = SingleLikableImage::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
+        $current = Survey::where('postId', 0)->first();
+        if (!empty($current)){
+            $deletableId = $current->id;
+            $current->delete();
+            LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
+        }
 
         if (!empty($image)){
             $deletableId = $image->id;
@@ -890,6 +940,106 @@ class AdminController extends Controller
 
         return $fullPost;
 
+    }
+
+
+    public function editPostCreateAllSections(Request $request){
+        $currentId = $request->get('id');
+        $post = Post::find($currentId);
+        $currentCreatedAt = $post->created_at;
+
+        PostTitle::where('postId', $currentId)->delete();
+        PostContent::where('postId', $currentId)->delete();
+        PostImage::where('postId', $currentId)->delete();
+        PostImageAndText::where('postId', $currentId)->delete();
+        PostVideo::where('postId', $currentId)->delete();
+        SelectOne::where('postId', $currentId)->delete();
+        SingleLikableImage::where('postId', $currentId)->delete();
+        Survey::where('postId', $currentId)->delete();
+
+        $sections = $request->get('sections');
+        $files = $request->allFiles();
+
+        foreach ($sections as $key => $section) {
+            if ($section['type'] == 'metaTitle'){
+                $metaTitle  = $section['title'];
+
+                $hashtags = null;
+                if (isset($section['celebrities'])){
+                    $hashtags   = $section['celebrities']; //array
+                }
+                $author     = $section['author'];
+                $date       = $section['date'];;
+                $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId);
+
+            }
+            elseif($section['type'] == 'text'){
+                $content = $section['value'];
+//                dd($content);
+                $this->createPostAddContent($this->post->id, $content, $key);
+            }
+            elseif($section['type'] == 'title'){
+                $title = $section['value'];
+                $this->createPostAddTitle($this->post->id, $title, $key);
+            }
+            elseif($section['type'] == 'video'){
+                $url = $section['value'];
+                $this->createPostAddVideo($this->post->id, $url, $key);
+            }
+            elseif($section['type'] == 'survey'){
+//                dd($files);
+                $title = $section['title'];
+                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+            }
+            elseif ($section['type'] == 'image'){
+//                    dd($files['sections'][$key]['value']);
+
+                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+            }
+            elseif ($section['type'] == 'imageWithText'){
+                $this->createPostAddImageWithText(
+                    $this->post->id,
+                    $files['sections'][$key]['image'],
+                    $section['title'],
+                    $section['text'],
+                    $section['imagePosition'],
+                    $key
+                );
+//                dd($files);
+            }elseif ($section['type'] == 'selection'){
+                $leftFile = $files['sections'][$key]['image1'];
+                $rightFile = $files['sections'][$key]['image2'];
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+            }elseif ($section['type'] == 'assessment'){
+                $file = $files['sections'][$key]['image'];
+                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+            }
+        }
+        return json_encode(['success' => true]);
+
+    }
+
+    public function editPostHeaderMeta($metaTitle, $hashtags,  $author, $date, $id){
+        $date = $date/1000;
+        $date = Carbon::createFromTimestamp($date)->toDateTimeString();
+
+        $post = Post::create([
+            'id' => $id,
+            'author' => $author,
+            'hot' => "false",
+            'metaTitle' => $metaTitle,
+            'created_at' => $date,
+        ]);
+        if (isset($hashtags)){
+            foreach ($hashtags as $hashtag) {
+                HashtagPosts::create([
+                    'hashtagId' => $hashtag,
+                    'postId' => $post->id,
+                ]);
+            }
+        }
+
+        return $post;
     }
 
 }
