@@ -970,7 +970,7 @@ class AdminController extends Controller
                 }
                 $author     = $section['author'];
                 $date       = $currentCreatedAt;
-                $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
+                $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId);
 
             }
             elseif($section['type'] == 'text'){
@@ -1017,6 +1017,29 @@ class AdminController extends Controller
         }
         return json_encode(['success' => true]);
 
+    }
+
+    public function editPostHeaderMeta($metaTitle, $hashtags,  $author, $date, $id){
+        $date = $date/1000;
+        $date = Carbon::createFromTimestamp($date)->toDateTimeString();
+
+        $post = Post::create([
+            'id' => $id,
+            'author' => $author,
+            'hot' => "false",
+            'metaTitle' => $metaTitle,
+            'created_at' => $date,
+        ]);
+        if (isset($hashtags)){
+            foreach ($hashtags as $hashtag) {
+                HashtagPosts::create([
+                    'hashtagId' => $hashtag,
+                    'postId' => $post->id,
+                ]);
+            }
+        }
+
+        return $post;
     }
 
 }
