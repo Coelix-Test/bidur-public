@@ -175,7 +175,7 @@ class AdminController extends Controller
 
         $post = Post::create([
             'author' => $author,
-            'hot' => "false",
+            'hot' => "true",
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);

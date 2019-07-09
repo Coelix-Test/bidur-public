@@ -398,10 +398,10 @@ class MainController extends Controller
         $hashtagId = $request->get('hashtag_id');
         $page = $request->get('page');
         if ($page == 0){
-            $hashtagPosts = HashtagPosts::offset(0)->take(24)->get();
+            $hashtagPosts = HashtagPosts::where('hashtag_id', $hashtagId)->offset(0)->take(24)->get();
         }else{
             $offset = $page * 24;
-            $hashtagPosts = HashtagPosts::offset($offset)->take(24)->get();
+            $hashtagPosts = HashtagPosts::where('hashtag_id', $hashtagId)->offset($offset)->take(24)->get();
         }
 
 
@@ -411,10 +411,12 @@ class MainController extends Controller
         $postsWithContent['hashtagName'] = $hashtag->text;
 
         foreach ($hashtagPosts as $hashtagPost) {
-            if ($hashtagPost->hashtagId == $hashtagId){
+
+            if ($hashtagPost->hashtagId == (int)$hashtagId){
                 $postIds[] = $hashtagPost->postId;
             }
         }
+
 //        dd($postIds);
         if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
