@@ -948,7 +948,7 @@ class AdminController extends Controller
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
                 $questionsWithAnswers[$survey->order]['image'] = $survey->image;
 //                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
-                $questionsWithAnswers[$survey->order]['value']['title'] = $survey->question;
+                $questionsWithAnswers[$survey->order]['title'] = $survey->question;
                 $questionsWithAnswers[$survey->order]['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
@@ -960,9 +960,9 @@ class AdminController extends Controller
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
 //                    $z++;
                 }
-                $questionsWithAnswers[$survey->order]['variants'] = $ass;
+                $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
+                $fullPost['sections'] = $questionsWithAnswers;
 
             }
 
