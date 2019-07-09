@@ -568,7 +568,7 @@ class AdminController extends Controller
             SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
         }
         $survey = Survey::create([
-            'postId' => 1,
+            'postId' => 0,
             'authorId' => 1,
             'order' => 1,
             'question' => $title,
