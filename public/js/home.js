@@ -3864,7 +3864,6 @@ __webpack_require__.r(__webpack_exports__);
     birthdayPost: function birthdayPost() {
       var i = 0;
       var firstPostTitle = this.birthdayPost.text;
-      console.log(firstPostTitle);
       var speed = 50;
       document.getElementsByClassName('typewriter')[0].innerHTML = '';
 
