@@ -3126,55 +3126,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
-
-function makeItRain(_x) {
-  return _makeItRain.apply(this, arguments);
-}
-
-function _makeItRain() {
-  _makeItRain = _asyncToGenerator(
-  /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n) {
-    var fallTime, rotateTime, delayTime, $fetti, colors, append_to, i, el;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            colors = ['red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia'];
-
-            if (!n) {
-              n = 20;
-            }
-
-            append_to = document.body;
-            $appendTo.css({
-              'overflow': 'hidden'
-            });
-
-            for (i = 0; i < n; i++) {
-              el = document.createElement(el);
-              fallTime = Math.random() * 2 + 3;
-              rotateTime = Math.random() * 2 + 1;
-              delayTime = Math.random() * 4;
-              $fetti.css({
-                'left': Math.floor($(window).width() * Math.random()) + 'px',
-                'background-color': colors[Math.floor(Math.random() * colors.length)],
-                'animation': "fetti_fall ".concat(fallTime, "s linear infinite, fetti_rotate ").concat(rotateTime, "s linear infinite"),
-                'animation-delay': delayTime + 's'
-              });
-              $appendTo.append($fetti);
-            }
-
-          case 5:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _makeItRain.apply(this, arguments);
-}
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {}
@@ -3186,6 +3137,57 @@ function _makeItRain() {
     HearthButton: _HearthButton__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    makeItRain: function () {
+      var _makeItRain = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n) {
+        var fallTime, rotateTime, delayTime, colors, append_to, _loop, i;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                colors = ['red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia'];
+
+                if (!n) {
+                  n = 20;
+                }
+
+                append_to = this.$el; // append_to.style({ 'overflow': 'hidden' });
+
+                _loop = function _loop() {
+                  var el = document.createElement('div');
+                  el.classList.add('fetti');
+                  fallTime = Math.random() * 10 + 3;
+                  rotateTime = Math.random() * 2 + 1;
+                  el.style.left = Math.floor(append_to.offsetWidth * Math.random()) + 'px';
+                  el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                  el.style.animation = "fettiFall ".concat(fallTime, "s linear, fettiRotate ").concat(rotateTime, "s infinite linear"); // el.style.transition = `top ${delayTime}s linear`
+
+                  setTimeout(function () {
+                    append_to.removeChild(el);
+                  }, fallTime * 1000);
+                  append_to.appendChild(el);
+                };
+
+                for (i = 0; i < n; i++) {
+                  _loop();
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function makeItRain(_x) {
+        return _makeItRain.apply(this, arguments);
+      }
+
+      return makeItRain;
+    }(),
     left: function left() {
       if (this.popped) return;
       var el = this.$refs.right;
@@ -3200,6 +3202,8 @@ function _makeItRain() {
         position: 'left',
         serviceId: this.data.id
       });
+      this.$refs.lightning.style.zIndex = 1;
+      this.makeItRain(70);
     },
     right: function right() {
       if (this.popped) return;
@@ -3215,6 +3219,8 @@ function _makeItRain() {
         position: 'right',
         serviceId: this.data.id
       });
+      this.$refs.lightning.style.zIndex = 1;
+      this.makeItRain(70);
     }
   }
 });
@@ -4675,7 +4681,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       data: [],
       name: '',
-      img: ''
+      img: '',
+      page: ''
     };
   },
   components: {
@@ -4698,6 +4705,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.name = res.data.hashtagName;
         _this.img = res.data.hashtagImg;
       });
+    },
+    onScroll: function onScroll(e) {
+      console.log(e);
     }
   },
   created: function created() {
@@ -4706,6 +4716,12 @@ __webpack_require__.r(__webpack_exports__);
   beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     next();
+  },
+  mounted: function mounted() {
+    document.addEventListener('scroll', this.onScroll);
+  },
+  destroyed: function destroyed() {
+    document.removeEventListener('scroll', this.onScroll);
   }
 });
 
@@ -5050,7 +5066,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
         _this.postId = id;
@@ -5314,7 +5330,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".one-survey[data-v-6ca2d077] {\n  height: 700px;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 50px;\n}\n.one-survey .title[data-v-6ca2d077] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  text-align: center;\n  padding-bottom: 50px;\n  padding-top: 50px;\n}\n.one-survey .body[data-v-6ca2d077] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n  z-index: 5;\n}\n.one-survey .body img[data-v-6ca2d077] {\n  width: 300px;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.one-survey .body .left[data-v-6ca2d077],\n.one-survey .body .right[data-v-6ca2d077] {\n  height: 100%;\n  position: absolute;\n  top: 0;\n  -webkit-transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n}\n.one-survey .body .left.fade[data-v-6ca2d077],\n.one-survey .body .right.fade[data-v-6ca2d077] {\n  opacity: 0;\n}\n.one-survey .body .left.none[data-v-6ca2d077],\n.one-survey .body .right.none[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left:hover .hearth-button[data-v-6ca2d077],\n.one-survey .body .right:hover .hearth-button[data-v-6ca2d077] {\n  opacity: 1;\n}\n.one-survey .body .left.selected[data-v-6ca2d077],\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  z-index: 1;\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);\n}\n.one-survey .body .left.selected .hearth-button[data-v-6ca2d077],\n.one-survey .body .right.selected .hearth-button[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left[data-v-6ca2d077] {\n  left: 0;\n}\n.one-survey .body .left.selected[data-v-6ca2d077] {\n  left: 50%;\n  -webkit-transform: translateX(-50%) scale(1.1);\n          transform: translateX(-50%) scale(1.1);\n}\n.one-survey .body .right[data-v-6ca2d077] {\n  right: 0;\n}\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  right: 50%;\n  -webkit-transform: translateX(50%) scale(1.1);\n          transform: translateX(50%) scale(1.1);\n}\n@media (max-width: 768px) {\n.one-survey[data-v-6ca2d077] {\n    height: 400px;\n}\n.one-survey .title[data-v-6ca2d077] {\n    padding-top: 12px;\n    padding-bottom: 12px;\n    font-size: 24px;\n    line-height: 24px;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n    pointer-events: none;\n    z-index: 2;\n}\n.one-survey .body > div[data-v-6ca2d077] {\n    width: calc(50% - 8px);\n    margin: 0 4px;\n}\n.one-survey .body > div img[data-v-6ca2d077] {\n    width: 100%;\n    height: 100%;\n    max-width: 100%;\n    padding: 0;\n}\n}", ""]);
+exports.push([module.i, ".one-survey[data-v-6ca2d077] {\n  height: 700px;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 50px;\n  position: relative;\n}\n.one-survey .title[data-v-6ca2d077] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  text-align: center;\n  padding-bottom: 50px;\n  padding-top: 50px;\n}\n.one-survey .body[data-v-6ca2d077] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n  z-index: 5;\n}\n.one-survey .body img[data-v-6ca2d077] {\n  width: 300px;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.one-survey .body .left[data-v-6ca2d077],\n.one-survey .body .right[data-v-6ca2d077] {\n  height: 100%;\n  position: absolute;\n  top: 0;\n  -webkit-transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n}\n.one-survey .body .left.fade[data-v-6ca2d077],\n.one-survey .body .right.fade[data-v-6ca2d077] {\n  opacity: 0;\n}\n.one-survey .body .left.none[data-v-6ca2d077],\n.one-survey .body .right.none[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left:hover .hearth-button[data-v-6ca2d077],\n.one-survey .body .right:hover .hearth-button[data-v-6ca2d077] {\n  opacity: 1;\n}\n.one-survey .body .left.selected[data-v-6ca2d077],\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  z-index: 1;\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);\n}\n.one-survey .body .left.selected .hearth-button[data-v-6ca2d077],\n.one-survey .body .right.selected .hearth-button[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left[data-v-6ca2d077] {\n  left: 0;\n}\n.one-survey .body .left.selected[data-v-6ca2d077] {\n  left: 50%;\n  -webkit-transform: translateX(-50%) scale(1.1);\n          transform: translateX(-50%) scale(1.1);\n}\n.one-survey .body .right[data-v-6ca2d077] {\n  right: 0;\n}\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  right: 50%;\n  -webkit-transform: translateX(50%) scale(1.1);\n          transform: translateX(50%) scale(1.1);\n}\n@media (max-width: 768px) {\n.one-survey[data-v-6ca2d077] {\n    height: 400px;\n}\n.one-survey .title[data-v-6ca2d077] {\n    padding-top: 12px;\n    padding-bottom: 12px;\n    font-size: 24px;\n    line-height: 24px;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n    pointer-events: none;\n    z-index: 2;\n}\n.one-survey .body > div[data-v-6ca2d077] {\n    width: calc(50% - 8px);\n    margin: 0 4px;\n}\n.one-survey .body > div img[data-v-6ca2d077] {\n    width: 100%;\n    height: 100%;\n    max-width: 100%;\n    padding: 0;\n}\n}", ""]);
 
 // exports
 
@@ -39024,6 +39040,7 @@ var render = function() {
       _c(
         "svg",
         {
+          ref: "lightning",
           staticClass: "lightning",
           attrs: {
             width: "26",
@@ -64467,7 +64484,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

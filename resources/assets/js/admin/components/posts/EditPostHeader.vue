@@ -77,7 +77,7 @@ export default {
 
 .main-post-title{
     height: 85px;
-    font-family: 'Playfair Display';
+    // font-family: 'Playfair Display';
     font-size: 48px;
     font-weight: 700;
     border: 1px solid #E0E0E0;

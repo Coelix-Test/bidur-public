@@ -9,39 +9,32 @@
         </div>
         <div class="add-section" @click="select('assessment')">
           <img src="/img/icons/edit-post-assessment.svg" alt="">
-          <span>Assessment</span>
+          <span>הערכה</span>
         </div>
         <div class="add-section" @click="select('selection')">
           <img src="/img/icons/edit-post-selection.svg" alt="">
-          <span>Selection</span>
+          <span>להשוות</span>
         </div>
       </div>
-      <div class="add-section" @click="select('assessment')">
-        <img src="/img/icons/edit-post-assessment.svg" alt="">
-        <span>הערכה</span>
-      </div>
-      <div class="add-section" @click="select('selection')">
-        <img src="/img/icons/edit-post-selection.svg" alt="">
-        <span>להשוות</span>
-      </div>
-    </div>
-    <PostSelection
-      v-bind.sync="selection"
-      :deletable="false"
-      v-if="selected == 'selection'"
-    />
-    <PostSurvey
-      v-bind.sync="survey"
-      :deletable="false"
-      v-else-if="selected == 'survey'"
-    />
-    <PostAssessment
-      v-bind.sync="ass"
-      :deletable="false"
-      v-else-if="selected == 'assessment'"
-    />
 
-    <button class="theme-btn-red big-btn">לשמור</button>
+      <PostSelection
+        v-bind.sync="selection"
+        :deletable="false"
+        v-if="selected == 'selection'"
+      />
+      <PostSurvey
+        v-bind.sync="survey"
+        :deletable="false"
+        v-else-if="selected == 'survey'"
+      />
+      <PostAssessment
+        v-bind.sync="ass"
+        :deletable="false"
+        v-else-if="selected == 'assessment'"
+      />
+
+      <button @click="save" class="theme-btn-red big-btn">לשמור</button>
+    </div>
   </div>
 </template>
 
@@ -93,7 +86,7 @@ export default {
         }).then(res => {
           console.log('qweqweqwew');
         });
-        axios.post('/showCompareFromMain');
+        // axios.post('/showCompareFromMain');
       }
       else if(this.selected == 'assessment') {
         data.append('title', this.ass.title);
@@ -105,11 +98,20 @@ export default {
         }).then(res => {
           console.log('qweqweqwew');
         });
-        axios.post('/showSinglePhotoFromMain');
+        // axios.post('/showSinglePhotoFromMain');
       }
-      // else if() {
-      //
-      // }
+      else if(this.selected == 'survey') {
+        data.append('title', this.survey.title);
+        data.append('image', this.survey.image);
+        data.append('answers', JSON.stringify(this.survey.answers));
+        axios.post('/addSurvey', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
+      }
 
 
     }
@@ -128,6 +130,9 @@ export default {
   flex-direction: column;
   align-items: stretch;
   padding-bottom: 40px;
+  .plate {
+    padding-bottom: 40px;
+  }
   .birthday-section{
     padding-bottom: 35px;
   }

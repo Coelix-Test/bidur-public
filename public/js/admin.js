@@ -4886,7 +4886,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-family: \"Playfair Display\";\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}", ""]);
+exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}", ""]);
 
 // exports
 
