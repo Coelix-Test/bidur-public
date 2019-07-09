@@ -4305,7 +4305,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/getAllSurveys', {
         title: this.searchQuery
       }).then(function (res) {
-        console.log(res.data);
         _this2.surveys = res.data;
       });
     }
@@ -4469,7 +4468,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/showAllAdmins').then(function (response) {
-      _this.users = response.data; // console.log(this.users);
+      _this.users = response.data;
+      console.log(_this.users);
     });
   },
   methods: {
@@ -4501,12 +4501,19 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/makeUserAdmin', {
         userId: id
       }).then(function (res) {
-        _this4.users = res.data;
-        console.log(res);
+        _this4.users = res.data; // console.log(res);
       });
     },
     renderSearch: function renderSearch() {
-      console.log(123);
+      var _this5 = this;
+
+      console.log(this.searchQuery);
+      axios.post('/userSearch', {
+        search: this.searchQuery
+      }).then(function (res) {
+        console.log(res.data);
+        _this5.users = res.data;
+      });
     }
   }
 });
@@ -28244,7 +28251,7 @@ var render = function() {
             expression: "searchQuery"
           }
         ],
-        attrs: { type: "text", placeholder: "start type your suurvey name" },
+        attrs: { type: "text", placeholder: "start type your user name" },
         domProps: { value: _vm.searchQuery },
         on: {
           input: [

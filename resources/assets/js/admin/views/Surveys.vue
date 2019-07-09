@@ -32,7 +32,6 @@ export default {
       axios
         .post('/getAllSurveys', { title : this.searchQuery })
           .then(res => {
-            console.log(res.data);
             this.surveys = res.data;
           });
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="users">
     <div class="search">
-      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your suurvey name">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your user name">
     </div>
     <div class="usersTable">
       <div class="heading">
@@ -49,7 +49,7 @@ export default {
       .post('/showAllAdmins')
         .then(response => {
           this.users = response.data;
-          // console.log(this.users);
+          console.log(this.users);
         })
   },
   methods : {
@@ -73,11 +73,17 @@ export default {
         .post('/makeUserAdmin', { userId : id})
           .then(res => {
             this.users = res.data;
-            console.log(res);
+            // console.log(res);
           });
     },
     renderSearch() {
-      console.log(123);
+      console.log(this.searchQuery);
+      axios
+        .post('/userSearch', { search : this.searchQuery })
+          .then(res => {
+            console.log(res.data);
+            this.users = res.data;
+          });
     }
   }
 }
