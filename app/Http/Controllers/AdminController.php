@@ -945,7 +945,7 @@ class AdminController extends Controller
 
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
-            foreach ($surveys as $survey) {
+            foreach ($surveys as $key => $survey) {
 //                $flag = true;
 //                if (\Auth::check()){
 //                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
@@ -961,8 +961,8 @@ class AdminController extends Controller
                 $questionsWithAnswers['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
-                foreach ($questions as $question) {
-                    $ass[$question->order] = $question->question;
+                foreach ($questions as $key => $question) {
+                    $ass[$key] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
@@ -1168,6 +1168,33 @@ class AdminController extends Controller
             }
         }
         return json_encode($finalAllPosts);
+
+    }
+
+
+    public function userSearch(Request $request){
+        $search = $request->get('search');
+        $users = User::where('name', $search)->orWhere('name', 'like', '%'.$search.'%')->orWhere('email', $search)->orWhere('email', 'like', '%'.$search.'%')->get();
+        if ($users->isEmpty()){
+            return json_encode(['success' => false]);
+        }
+
+        foreach ($users as $key => $user) {
+            $admin = Admin::where('userId', $user->id)->first();
+            $finalAllUsers[$key]['email'] = $user->email;
+            $finalAllUsers[$key]['id'] = $user->id;
+            if (!empty($admin)){
+                $finalAllUsers[$key]['is_admin'] = true;
+            }else{
+                $finalAllUsers[$key]['is_admin'] = false;
+            }
+            $finalAllUsers[$key]['name'] = $user->name;
+            $finalAllUsers[$key]['phone'] = $user->phone;
+            $finalAllUsers[$key]['status'] = $user->isOnline();
+//            $finalAllUsers[$key]['email'] = $user->email;
+        }
+
+        return json_encode($finalAllUsers);
 
     }
 
