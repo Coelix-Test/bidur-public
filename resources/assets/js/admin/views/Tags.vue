@@ -46,7 +46,8 @@ export default {
   data() {
     return {
       showAddNewTag : false,
-      tags : null
+      tags : null,
+      searchQuery : null,
 
     }
   },

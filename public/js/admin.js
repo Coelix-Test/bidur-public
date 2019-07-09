@@ -4425,7 +4425,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       showAddNewTag: false,
-      tags: null
+      tags: null,
+      searchQuery: null
     };
   },
   mounted: function mounted() {
