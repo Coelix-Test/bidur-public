@@ -400,7 +400,7 @@ class MainController extends Controller
         if ($page == 0){
             $hashtagPosts = HashtagPosts::offset(0)->take(24)->get();
         }else{
-            $offset = $page * 12;
+            $offset = $page * 24;
             $hashtagPosts = HashtagPosts::offset($offset)->take(24)->get();
         }
 
