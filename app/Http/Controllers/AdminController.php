@@ -1237,15 +1237,15 @@ class AdminController extends Controller
             }elseif ($section['type'] == 'selection'){
 
                 if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
-                    $leftFile = $files['sections'][$key]['image1'];
-                    $rightFile = $files['sections'][$key]['image2'];
+                    $leftFile = $files['sections'][$key]['image2'];
+                    $rightFile = $files['sections'][$key]['image1'];
                     $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
-                }elseif (isset($files['sections'][$key]['image1'])){
-                    $leftFile = $files['sections'][$key]['image1'];
-                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image2'], $section['title'], $key, true, false);
+                }elseif (isset($files['sections'][$key]['image1'])){ //только правая
+                    $rightFile = $files['sections'][$key]['image1'];
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, true, false);
                 }elseif (isset($files['sections'][$key]['image2'])){
-                    $rightFile = $files['sections'][$key]['image2'];
-                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, false, true);
+                    $leftFile = $files['sections'][$key]['image2'];
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $key, false, true);
                 }else{
                     $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, true, true);
                 }
