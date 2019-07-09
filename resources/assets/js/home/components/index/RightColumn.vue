@@ -52,7 +52,6 @@ export default {
     birthdayPost : function() {
       let i = 0;
       let firstPostTitle = this.birthdayPost.text;
-      console.log(firstPostTitle);
       let speed = 50;
       document.getElementsByClassName('typewriter')[0].innerHTML = '';
       function typeWriter() {
