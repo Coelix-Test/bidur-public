@@ -1,16 +1,6 @@
 <template>
   <div class="recent-posts-mobile">
-    <div v-if="survey" class="surveys">
-      <template v-if="survey.type == 'survey'">
-        <div class="selected-poll">
-          <img src="img/rihanna.png" alt="">
-          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
-        </div>
-      </template>
-      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
-
-    </div>
+    <surveys mobile />
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
 
@@ -43,9 +33,10 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import VuePoll from 'vue-poll'
-import LikeSurvey from './../common/LikeSurvey'
-import OneSurvey from './../common/OneSurvey'
+import Surveys from './Surveys';
+// import VuePoll from 'vue-poll'
+// import LikeSurvey from './../common/LikeSurvey'
+// import OneSurvey from './../common/OneSurvey'
 
 export default {
   data() {
@@ -59,26 +50,24 @@ export default {
     axios.post('/getRecentPosts').then(res => {
       this.posts = res.data;
     });
-    axios.post('/getServiceForMainPageSecond').then(res => {
-      this.survey = res.data;
-    });
+    // axios.post('/getServiceForMainPageSecond').then(res => {
+    //   this.survey = res.data;
+    // });
   },
   methods : {
-    addVote(obj, id){
-      console.log(obj);
-      axios
-        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
-          .then(response => {
-
-          });
-    }
+    // addVote(obj, id){
+    //   console.log(obj);
+    //   axios
+    //     .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+    //       .then(response => {
+    //
+    //       });
+    // }
   },
   components: {
     Carousel,
     Slide,
-    LikeSurvey,
-    OneSurvey,
-    VuePoll,
+    Surveys
   },
 }
 </script>

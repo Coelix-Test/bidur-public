@@ -3,7 +3,7 @@
   <div class="right-column-bot">
 
     <surveys/>
-    <surveys mobile/>
+    <!-- <surveys mobile/> -->
 
     <div class="latest-posts" v-if="windowWidth > 768" >
       <h2>חדשות נוספות</h2>
@@ -63,14 +63,14 @@ export default {
     Surveys,
   },
   methods: {
-    addVote(obj, id){
-      console.log(obj);
-      axios
-        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
-          .then(response => {
-            // console.log(response);
-          });
-    }
+    // addVote(obj, id){
+    //   console.log(obj);
+    //   axios
+    //     .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+    //       .then(response => {
+    //         // console.log(response);
+    //       });
+    // }
   },
 }
 </script>
