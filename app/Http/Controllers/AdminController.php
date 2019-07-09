@@ -945,7 +945,7 @@ class AdminController extends Controller
 
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
-            foreach ($surveys as $survey) {
+            foreach ($surveys as $key => $survey) {
 //                $flag = true;
 //                if (\Auth::check()){
 //                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
@@ -971,7 +971,7 @@ class AdminController extends Controller
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
+                $fullPost['sections'][$key] = $questionsWithAnswers;
 
             }
 
@@ -1167,6 +1167,19 @@ class AdminController extends Controller
                 $finalAllPosts[$key]['is_in_main_section'] = true;
             }
         }
+        return json_encode($finalAllPosts);
+
+    }
+
+
+    public function userSerach(Request $request){
+        $title = $request->get('title');
+        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        if (empty($posts)){
+            return json_encode(['success' => false]);
+        }
+        $mainSection = MainSection::find(1);
+
         return json_encode($finalAllPosts);
 
     }
