@@ -3552,6 +3552,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39395,10 +39398,9 @@ var render = function() {
           _vm.isLoggedIn
             ? [
                 _c(
-                  "a",
+                  "button",
                   {
-                    staticClass: "btn-common btn-gold-gradient",
-                    attrs: { href: "#" },
+                    staticClass: "btn-common th-btn-gold",
                     on: { click: _vm.logout }
                   },
                   [_vm._v("להתנתק")]

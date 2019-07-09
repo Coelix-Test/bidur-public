@@ -23,7 +23,10 @@
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <a href="#" @click="logout" class="btn-common btn-gold-gradient">להתנתק</a>
+                <button
+                  @click="logout"
+                  class="btn-common th-btn-gold"
+                >להתנתק</button>
               </template>
               <template v-else>
                 <button
