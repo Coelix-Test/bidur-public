@@ -961,8 +961,8 @@ class AdminController extends Controller
                 $questionsWithAnswers['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
-                foreach ($questions as $question) {
-                    $ass[$question->order] = $question->question;
+                foreach ($questions as $key => $question) {
+                    $ass[$key] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
@@ -971,7 +971,7 @@ class AdminController extends Controller
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'][$key] = $questionsWithAnswers;
+                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
 
             }
 
@@ -1172,13 +1172,12 @@ class AdminController extends Controller
     }
 
 
-    public function userSerach(Request $request){
-        $title = $request->get('title');
-        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
-        if (empty($posts)){
+    public function userSearch(Request $request){
+        $search = $request->get('search');
+        $users = User::where('name', $search)->orWhere('name', 'like', '%'.$search.'%')->orWhere('email', $search)->orWhere('email', 'like', '%'.$search.'%')->get();
+        if ($users->isEmpty()){
             return json_encode(['success' => false]);
         }
-        $mainSection = MainSection::find(1);
 
         return json_encode($finalAllPosts);
 
