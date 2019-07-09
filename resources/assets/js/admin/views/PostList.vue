@@ -53,11 +53,9 @@ export default {
           });
     },
     renderSearch() {
-      console.log(this.searchQuery);
       axios
         .post('/postTitleSerach', {title : this.searchQuery})
           .then(res => {
-            console.log(res);
             this.posts = res.data;
           });
     }

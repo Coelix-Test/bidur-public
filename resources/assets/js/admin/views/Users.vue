@@ -1,5 +1,8 @@
 <template>
   <div class="users">
+    <div class="search">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your suurvey name">
+    </div>
     <div class="usersTable">
       <div class="heading">
         <div class="name">שם משתמש</div>
@@ -37,7 +40,8 @@ export default {
   data() {
     return {
       users : null,
-      user : null
+      user : null,
+      searchQuery : null,
     }
   },
   mounted() {
@@ -71,6 +75,9 @@ export default {
             this.users = res.data;
             console.log(res);
           });
+    },
+    renderSearch() {
+      console.log(123);
     }
   }
 }
@@ -81,6 +88,18 @@ export default {
     max-width: 1440px;
     margin:32px auto;
     padding:0 24px;
+    .search {
+      padding:0 24px 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      input {
+        width:300px;
+        padding:6px 16px;
+        font-size: 16px;
+        color:#333;
+      }
+    }
       .usersTable {
         border: 1px solid #F2F2F2;
         box-sizing: border-box;
