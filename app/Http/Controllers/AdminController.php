@@ -606,7 +606,7 @@ class AdminController extends Controller
         }
         $survey = Survey::create([
             'postId' => -1,
-            'authorUd' => 1,
+            'authorId' => 1,
             'order' => 1,
             'question' => $title,
             'image' => '/images/postImages/'.$name
@@ -960,14 +960,18 @@ class AdminController extends Controller
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
 //                    $z++;
                 }
+                $questionsWithAnswers[$survey->order]['variants'] = $ass;
+                unset($ass);
+                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
+
             }
+
 //            foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
 //                $fullPost['sections'][$key] = $questionsWithAnswer;
 //            }
 
-            foreach ($ass as $key => $asses) {
-                $fullPost['sections'][$key] = $asses;
-            }
+
+
         }
         $compares = $post->getCompare;
         if (isset($compares[0])){
@@ -1027,6 +1031,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
+        dd($request);
 
         Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
