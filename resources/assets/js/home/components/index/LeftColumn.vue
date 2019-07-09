@@ -36,11 +36,11 @@ export default {
       let i = 0;
       let firstPostTitle = this.posts[0].title;
       let speed = 50;
-      document.getElementsByClassName('typewriter')[0].innerHTML = null;
+      document.getElementsByClassName('typewriter')[1].innerHTML = null;
       function typeWriter() {
 
         if (i < firstPostTitle.length) {
-          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+          document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
           i++;
           setTimeout(typeWriter, speed);
         }
