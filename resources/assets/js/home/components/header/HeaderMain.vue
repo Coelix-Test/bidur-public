@@ -112,39 +112,39 @@ export default {
     initSlick(){
       $('.header-main .celebrities-slider').slick({
         slidesToShow: 12,
-        slidesToScroll: 12,
+        slidesToScroll: 4,
         dots: false,
         arrows: true,
         rtl: true,
         infinite: true,
-        initialSlide: 2,
+        initialSlide: 0,
         responsive: [
             {
             breakpoint: 1500,
             settings: {
               slidesToShow: 10,
-              slidesToScroll: 10
+              slidesToScroll: 4
             }
           },
           {
             breakpoint: 1367,
             settings: {
               slidesToShow: 9,
-              slidesToScroll: 9
+              slidesToScroll: 4
             }
           },
           {
             breakpoint: 1200,
             settings: {
               slidesToShow: 8,
-              slidesToScroll: 8
+              slidesToScroll: 4
             }
           },
           {
             breakpoint: 1024,
             settings: {
               slidesToShow: 7,
-              slidesToScroll: 7
+              slidesToScroll: 2
             }
           },
           {

@@ -57,16 +57,22 @@ export default {
       }).then(res => {
         this.loading = false;
         if(!res.data.data) {
-          this.end = true;
-          return;
+          var data = [];
+        } else {
+          var data = Object.values(res.data.data);
         }
+
         if(append) {
-          this.data.push(...Object.values(res.data.data));
+          this.data.push(...data);
           console.log('appended');
         } else {
-          this.data = Object.values(res.data.data);
+          this.data = data;
           this.name = res.data.hashtagName;
           this.img = res.data.hashtagImg;
+        }
+
+        if(!data.length) {
+          this.end = true;
         }
       });
     },
@@ -88,6 +94,9 @@ export default {
     this.sync(this.$route.params.id);
   },
   beforeRouteUpdate(to, from, next) {
+    this.page = 0;
+    this.loading = false;
+    this.end = false;
     this.sync(to.params.id);
     next();
   },

@@ -3349,35 +3349,35 @@ __webpack_require__.r(__webpack_exports__);
     initSlick: function initSlick() {
       $('.header-main .celebrities-slider').slick({
         slidesToShow: 12,
-        slidesToScroll: 12,
+        slidesToScroll: 4,
         dots: false,
         arrows: true,
         rtl: true,
         infinite: true,
-        initialSlide: 2,
+        initialSlide: 0,
         responsive: [{
           breakpoint: 1500,
           settings: {
             slidesToShow: 10,
-            slidesToScroll: 10
+            slidesToScroll: 4
           }
         }, {
           breakpoint: 1367,
           settings: {
             slidesToShow: 9,
-            slidesToScroll: 9
+            slidesToScroll: 4
           }
         }, {
           breakpoint: 1200,
           settings: {
             slidesToShow: 8,
-            slidesToScroll: 8
+            slidesToScroll: 4
           }
         }, {
           breakpoint: 1024,
           settings: {
             slidesToShow: 7,
-            slidesToScroll: 7
+            slidesToScroll: 2
           }
         }, {
           breakpoint: 991,
@@ -4783,20 +4783,25 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         _this.loading = false;
 
         if (!res.data.data) {
-          _this.end = true;
-          return;
+          var data = [];
+        } else {
+          var data = Object.values(res.data.data);
         }
 
         if (append) {
           var _this$data;
 
-          (_this$data = _this.data).push.apply(_this$data, _toConsumableArray(Object.values(res.data.data)));
+          (_this$data = _this.data).push.apply(_this$data, _toConsumableArray(data));
 
           console.log('appended');
         } else {
-          _this.data = Object.values(res.data.data);
+          _this.data = data;
           _this.name = res.data.hashtagName;
           _this.img = res.data.hashtagImg;
+        }
+
+        if (!data.length) {
+          _this.end = true;
         }
       });
     },
@@ -4818,6 +4823,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     this.sync(this.$route.params.id);
   },
   beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    this.page = 0;
+    this.loading = false;
+    this.end = false;
     this.sync(to.params.id);
     next();
   },
@@ -40568,9 +40576,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "a-modal" }, [
-    _vm._v("\n  Link copied to your buffer!\n")
-  ])
+  return _c("div", { staticClass: "a-modal" }, [_vm._v("\n  הקישור הועתק\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41132,7 +41138,7 @@ var render = function() {
         _vm.opened
           ? _c("div", { staticClass: "popup" }, [
               _c("div", { staticClass: "title" }, [
-                _vm._v("\n        Copy this link and paste\n      ")
+                _vm._v("\n        לחץ על הלחצן כדי להעתיק את הקישור\n      ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input" }, [

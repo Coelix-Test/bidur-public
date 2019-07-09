@@ -5,6 +5,9 @@
     </div>
     <div class="surveys-wrapper">
       <single-survey v-if="surveys" v-for="survey in surveys" :data="survey" :key="survey.id"  />
+      <div v-if="surveys == null">
+        שום דבר לא נמצא!
+      </div>
     </div>
 
   </div>
@@ -32,8 +35,14 @@ export default {
       axios
         .post('/getAllSurveys', { title : this.searchQuery })
           .then(res => {
-            this.surveys = res.data;
-          });
+            if(res.data.success != false) {
+              this.surveys = res.data;
+            }else {
+              this.surveys = null;
+            }
+
+          })
+          .catch(error => this.surveys = null);
     }
   },
   components : {

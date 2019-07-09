@@ -4311,6 +4311,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4335,7 +4338,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/getAllSurveys', {
         title: this.searchQuery
       }).then(function (res) {
-        _this2.surveys = res.data;
+        if (res.data.success != false) {
+          _this2.surveys = res.data;
+        } else {
+          _this2.surveys = null;
+        }
+      })["catch"](function (error) {
+        return _this2.surveys = null;
       });
     }
   },
@@ -28132,12 +28141,18 @@ var render = function() {
     _c(
       "div",
       { staticClass: "surveys-wrapper" },
-      _vm._l(_vm.surveys, function(survey) {
-        return _vm.surveys
-          ? _c("single-survey", { key: survey.id, attrs: { data: survey } })
+      [
+        _vm._l(_vm.surveys, function(survey) {
+          return _vm.surveys
+            ? _c("single-survey", { key: survey.id, attrs: { data: survey } })
+            : _vm._e()
+        }),
+        _vm._v(" "),
+        _vm.surveys == null
+          ? _c("div", [_vm._v("\n      שום דבר לא נמצא!\n    ")])
           : _vm._e()
-      }),
-      1
+      ],
+      2
     )
   ])
 }
