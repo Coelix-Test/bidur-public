@@ -945,11 +945,11 @@ class AdminController extends Controller
 //                    }
 //                }
                 $questions = $survey->getAllVariants;
-                $questionsWithAnswers[$survey->order]['type'] = 'survey';
-                $questionsWithAnswers[$survey->order]['image'] = $survey->image;
-//                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
-                $questionsWithAnswers[$survey->order]['title'] = $survey->question;
-                $questionsWithAnswers[$survey->order]['id'] = $survey->id;
+                $questionsWithAnswers['type'] = 'survey';
+                $questionsWithAnswers['image'] = $survey->image;
+
+                $questionsWithAnswers['title'] = $survey->question;
+                $questionsWithAnswers['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
                 foreach ($questions as $question) {
