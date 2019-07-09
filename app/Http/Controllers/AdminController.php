@@ -621,8 +621,17 @@ class AdminController extends Controller
         }
         return json_encode(['success' => true]);
     }
-    public function getAllSurveys(){
-        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+    public function getAllSurveys(Request $request){
+        $like = $request->get('title');
+        if ($like == 0){
+            $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+        }else{
+            $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
+        }
+
+        if (empty($allSurveys)){
+            return json_encode(['success' => false]);
+        }
         foreach ($allSurveys as $key => $survey) {
             $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
@@ -1161,4 +1170,6 @@ class AdminController extends Controller
         return json_encode($finalAllPosts);
 
     }
+
+
 }
