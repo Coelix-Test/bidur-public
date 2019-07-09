@@ -36,14 +36,12 @@ export default {
     HearthButton,
   },
   methods: {
-    async makeItRain(n) {
+    async makeItRain(n, append) {
 
       var fallTime, rotateTime, delayTime;
       var colors = [ 'red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia' ];
 
       if (!n) { n = 20 }
-      let append_to = this.$el;
-      // append_to.style({ 'overflow': 'hidden' });
 
       for (var i = 0; i < n; i++) {
         let el = document.createElement('div');
@@ -52,16 +50,16 @@ export default {
         fallTime = ((Math.random() * 10) + 3);
         rotateTime = ((Math.random() * 2) + 1);
 
-        el.style.left = Math.floor(append_to.offsetWidth * Math.random()) + 'px';
+        el.style.left = Math.floor(append.offsetWidth * Math.random()) + 'px';
         el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         el.style.animation = `fettiFall ${fallTime}s linear, fettiRotate ${rotateTime}s infinite linear`;
         // el.style.transition = `top ${delayTime}s linear`
 
         setTimeout(() => {
-          append_to.removeChild(el);
+          append.removeChild(el);
         }, fallTime * 1000);
 
-        append_to.appendChild(el);
+        append.appendChild(el);
       }
 
     },
@@ -82,7 +80,7 @@ export default {
       });
 
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70);
+      this.makeItRain(70, this.$refs.left);
     },
     right() {
       if(this.popped) return;
@@ -101,7 +99,7 @@ export default {
       });
 
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70);
+      this.makeItRain(70, this.$refs.right);
     }
   }
 }

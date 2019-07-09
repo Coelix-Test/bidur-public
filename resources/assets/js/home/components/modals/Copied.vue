@@ -1,6 +1,6 @@
 <template>
   <div class="a-modal">
-    Link copied to your buffer!
+    הקישור הועתק
   </div>
 </template>
 

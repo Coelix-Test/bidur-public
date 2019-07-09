@@ -15,19 +15,25 @@
           </div>
 
           <div class="socials-wrap">
-              <a href="#" class="telegram"></a>
-              <a href="#" class="youtube"></a>
-              <a href="#" class="facebook"></a>
-              <a href="#" class="instagram"></a>
+              <a href="https://t.me/Israelbidurofficial" class="telegram"></a>
+              <a href="https://www.israel-bidur.co.il/%D7%90%D7%95%D7%93%D7%95%D7%AA" class="youtube"></a>
+              <a href="https://www.instagram.com/israel_bidur/" class="facebook"></a>
+              <a href="https://www.facebook.com/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%93%D7%95%D7%A8-353719708444460/" class="instagram"></a>
           </div>
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <a href="#" @click="logout" class="btn-common btn-gold-gradient">להתנתק</a>
+                <button
+                  @click="logout"
+                  class="btn-common th-btn-gold"
+                >להתנתק</button>
               </template>
               <template v-else>
-                <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
-                <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
+                <button
+                  class="btn-common th-btn-gold"
+                  @click="$root.openReg"
+                >הרשמה</button>
+                <a href="#" class="btn-common btn-gold-text" @click="$root.openLogin">
                   <span>כניסה</span>
                 </a>
               </template>

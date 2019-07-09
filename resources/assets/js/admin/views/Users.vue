@@ -1,5 +1,8 @@
 <template>
   <div class="users">
+    <div class="search">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your user name">
+    </div>
     <div class="usersTable">
       <div class="heading">
         <div class="name">שם משתמש</div>
@@ -8,7 +11,7 @@
         <div class="status">סטטוס</div>
         <div class="action">סוג משתמש</div>
       </div>
-      <div class="content">
+      <div v-if="users" class="content">
         <div v-if="users && user.id != 1" v-for="user in users" :key="user.id" class="user">
           <div class="name"><input type="text" name="username" v-model="user.name" minlength="2" required></div>
           <div class="mail"><input type="email" name="mail" v-model="user.email" minlength="2" required></div>
@@ -28,6 +31,9 @@
           </div>
         </div>
       </div>
+      <div v-if="users == null" class="notice">
+        משתמשים לא נמצאו!
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +43,8 @@ export default {
   data() {
     return {
       users : null,
-      user : null
+      user : null,
+      searchQuery : null,
     }
   },
   mounted() {
@@ -45,7 +52,7 @@ export default {
       .post('/showAllAdmins')
         .then(response => {
           this.users = response.data;
-          // console.log(this.users);
+          console.log(this.users);
         })
   },
   methods : {
@@ -69,8 +76,19 @@ export default {
         .post('/makeUserAdmin', { userId : id})
           .then(res => {
             this.users = res.data;
-            console.log(res);
           });
+    },
+    renderSearch() {
+      axios
+        .post('/userSearch', { search : this.searchQuery })
+          .then(res => {
+            if(res.data.success != false) {
+              this.users = res.data;
+            }else {
+              this.users = null;
+            }
+          })
+          .catch(error => this.users = null);
     }
   }
 }
@@ -81,6 +99,18 @@ export default {
     max-width: 1440px;
     margin:32px auto;
     padding:0 24px;
+    .search {
+      padding:0 24px 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      input {
+        width:300px;
+        padding:6px 16px;
+        font-size: 16px;
+        color:#333;
+      }
+    }
       .usersTable {
         border: 1px solid #F2F2F2;
         box-sizing: border-box;

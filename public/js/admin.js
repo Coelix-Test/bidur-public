@@ -2813,9 +2813,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    mobile: {
+      type: Boolean,
+      "default": false
+    }
+  },
   data: function data() {
     return {
-      selected: 'selection',
+      selected: 'comparablePhotos',
       selection: {
         image1: '',
         image2: '',
@@ -2848,7 +2854,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post('/createNewComparison', data, {
+        axios.post(this.mobile ? '/addNewComparisonSecond' : '/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2858,7 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post('/createSinglePhoto', data, {
+        axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2869,7 +2875,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post('/addSurvey', data, {
+        axios.post(this.mobile ? '/addNewSurveyToMainSecond' : '/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2877,6 +2883,19 @@ __webpack_require__.r(__webpack_exports__);
           console.log('qweqweqwew');
         });
       }
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    if (!this.mobile) {
+      axios.post('/getServiceForMainPage').then(function (res) {
+        _this.selected = res.data.type;
+      });
+    } else {
+      axios.post('/getServiceForMainPageSecond').then(function (res) {
+        _this.selected = res.data.type;
+      });
     }
   }
 });
@@ -3663,6 +3682,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3837,10 +3858,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      posts: null
+      posts: null,
+      searchQuery: null
     };
   },
   created: function created() {
@@ -3868,6 +3896,21 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this2.posts = res.data;
         alert('פוסט נמחק!');
+      });
+    },
+    renderSearch: function renderSearch() {
+      var _this3 = this;
+
+      axios.post('/postTitleSerach', {
+        title: this.searchQuery
+      }).then(function (res) {
+        if (res.data.success != false) {
+          _this3.posts = res.data;
+        } else {
+          _this3.posts = null;
+        }
+      })["catch"](function (error) {
+        return _this3.posts = null;
       });
     }
   }
@@ -4281,20 +4324,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      surveys: null
+      surveys: null,
+      searchQuery: null
     };
   },
   created: function created() {
     var _this = this;
 
-    axios.post('/getAllSurveys').then(function (res) {
+    axios.post('/getAllSurveys', {
+      title: 0
+    }).then(function (res) {
       _this.surveys = res.data;
-      console.log(_this.surveys);
     });
+  },
+  methods: {
+    renderSearch: function renderSearch() {
+      var _this2 = this;
+
+      axios.post('/getAllSurveys', {
+        title: this.searchQuery
+      }).then(function (res) {
+        if (res.data.success != false) {
+          _this2.surveys = res.data;
+        } else {
+          _this2.surveys = null;
+        }
+      })["catch"](function (error) {
+        return _this2.surveys = null;
+      });
+    }
   },
   components: {
     SingleSurvey: _components_SingleSurvey_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -4440,18 +4508,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       users: null,
-      user: null
+      user: null,
+      searchQuery: null
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.post('/showAllAdmins').then(function (response) {
-      _this.users = response.data; // console.log(this.users);
+      _this.users = response.data;
+      console.log(_this.users);
     });
   },
   methods: {
@@ -4484,7 +4560,21 @@ __webpack_require__.r(__webpack_exports__);
         userId: id
       }).then(function (res) {
         _this4.users = res.data;
-        console.log(res);
+      });
+    },
+    renderSearch: function renderSearch() {
+      var _this5 = this;
+
+      axios.post('/userSearch', {
+        search: this.searchQuery
+      }).then(function (res) {
+        if (res.data.success != false) {
+          _this5.users = res.data;
+        } else {
+          _this5.users = null;
+        }
+      })["catch"](function (error) {
+        return _this5.users = null;
       });
     }
   }
@@ -5269,7 +5359,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".post-list[data-v-82f78b1e] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.post-list .posts-wrapper[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.post-list .posts-wrapper .post[data-v-82f78b1e] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n  border: 1px solid #eee;\n  padding: 24px 12px 12px;\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);\n  color: #000;\n  position: relative;\n}\n.post-list .posts-wrapper .post h2[data-v-82f78b1e] {\n  word-break: break-all;\n  font-size: 24px;\n  line-height: 24px;\n  font-weight: 700;\n}\n.post-list .posts-wrapper .post .post-meta[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  border-bottom: 1px solid #eee;\n  padding-bottom: 6px;\n  margin-bottom: 6px;\n}\n.post-list .posts-wrapper .post .post-meta .author[data-v-82f78b1e] {\n  margin-right: 6px;\n  padding-right: 6px;\n  border-right: 1px solid #000;\n  word-break: break-all;\n}\n.post-list .posts-wrapper .post .post-meta .id[data-v-82f78b1e] {\n  color: lightgrey;\n  margin-right: 16px;\n  position: absolute;\n  top: 4px;\n  left: 4px;\n}\n.post-list .posts-wrapper .post .actions[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e], .post-list .posts-wrapper .post .actions a[data-v-82f78b1e] {\n  border-width: 0;\n  background-color: transparent;\n  margin: 0 8px;\n  font-weight: 600;\n  display: block;\n  color: #000;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e]:hover, .post-list .posts-wrapper .post .actions a[data-v-82f78b1e]:hover {\n  color: #EB5757;\n}", ""]);
+exports.push([module.i, ".post-list[data-v-82f78b1e] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.post-list .search[data-v-82f78b1e] {\n  padding: 0 24px 16px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.post-list .search input[data-v-82f78b1e] {\n  width: 300px;\n  padding: 6px 16px;\n  font-size: 16px;\n  color: #333;\n}\n.post-list .posts-wrapper[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.post-list .posts-wrapper .post[data-v-82f78b1e] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n  border: 1px solid #eee;\n  padding: 24px 12px 12px;\n  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);\n  color: #000;\n  position: relative;\n}\n.post-list .posts-wrapper .post h2[data-v-82f78b1e] {\n  word-break: break-all;\n  font-size: 24px;\n  line-height: 24px;\n  font-weight: 700;\n}\n.post-list .posts-wrapper .post .post-meta[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: end;\n          align-items: flex-end;\n  border-bottom: 1px solid #eee;\n  padding-bottom: 6px;\n  margin-bottom: 6px;\n}\n.post-list .posts-wrapper .post .post-meta .author[data-v-82f78b1e] {\n  margin-right: 6px;\n  padding-right: 6px;\n  border-right: 1px solid #000;\n  word-break: break-all;\n}\n.post-list .posts-wrapper .post .post-meta .id[data-v-82f78b1e] {\n  color: lightgrey;\n  margin-right: 16px;\n  position: absolute;\n  top: 4px;\n  left: 4px;\n}\n.post-list .posts-wrapper .post .actions[data-v-82f78b1e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e], .post-list .posts-wrapper .post .actions a[data-v-82f78b1e] {\n  border-width: 0;\n  background-color: transparent;\n  margin: 0 8px;\n  font-weight: 600;\n  display: block;\n  color: #000;\n}\n.post-list .posts-wrapper .post .actions button[data-v-82f78b1e]:hover, .post-list .posts-wrapper .post .actions a[data-v-82f78b1e]:hover {\n  color: #EB5757;\n}", ""]);
 
 // exports
 
@@ -5307,7 +5397,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".surveys[data-v-f854e4d4] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.surveys .surveys-wrapper[data-v-f854e4d4] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n}\n.surveys .surveys-wrapper .single-survey[data-v-f854e4d4] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n}", ""]);
+exports.push([module.i, ".surveys[data-v-f854e4d4] {\n  max-width: 1440px;\n  padding: 0 24px;\n  margin: 32px auto;\n}\n.surveys .search[data-v-f854e4d4] {\n  padding: 0 24px 16px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .search input[data-v-f854e4d4] {\n  width: 300px;\n  padding: 6px 16px;\n  font-size: 16px;\n  color: #333;\n}\n.surveys .surveys-wrapper[data-v-f854e4d4] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: wrap;\n}\n.surveys .surveys-wrapper .single-survey[data-v-f854e4d4] {\n  flex-basis: calc(25% - 24px);\n  padding: 12px;\n  margin: 0 12px 16px;\n}", ""]);
 
 // exports
 
@@ -5326,7 +5416,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .usersTable[data-v-d40a25f6] {\n  border: 1px solid #F2F2F2;\n  box-sizing: border-box;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n  padding: 6px 12px;\n  color: #333;\n}\n.users .usersTable .heading > div.action[data-v-d40a25f6] {\n  flex-basis: 20%;\n}\n.users .usersTable .heading > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 20%;\n  padding-left: 16px;\n  overflow: hidden;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  padding: 6px 12px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div.action[data-v-d40a25f6] {\n  flex-basis: 20%;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6] {\n  border-width: 0;\n  background-color: transparent;\n  color: #828282;\n  font-weight: 900;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6]:hover {\n  color: #EB5757;\n}\n.users .usersTable .content .user > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .content .user > div.phone input[data-v-d40a25f6] {\n  text-align: right;\n}\n.users .usersTable .content .user > div.status span[data-v-d40a25f6] {\n  background: #BDBDBD;\n  color: #fff;\n  border-radius: 10px;\n  padding: 4px 12px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div.status span.is_admin[data-v-d40a25f6] {\n  background: #0088cc !important;\n}\n.users .usersTable .content .user > div.status.online span[data-v-d40a25f6] {\n  background: limegreen;\n  color: #fff;\n  padding: 4px 12px;\n  border-radius: 10px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 20%;\n  padding-left: 16px;\n  overflow: hidden;\n  padding-top: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6] {\n  border-color: transparent;\n  border-style: solid;\n  padding: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6]:hover {\n  border-color: #eee;\n}", ""]);
+exports.push([module.i, ".users[data-v-d40a25f6] {\n  max-width: 1440px;\n  margin: 32px auto;\n  padding: 0 24px;\n}\n.users .search[data-v-d40a25f6] {\n  padding: 0 24px 16px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.users .search input[data-v-d40a25f6] {\n  width: 300px;\n  padding: 6px 16px;\n  font-size: 16px;\n  color: #333;\n}\n.users .usersTable[data-v-d40a25f6] {\n  border: 1px solid #F2F2F2;\n  box-sizing: border-box;\n}\n.users .usersTable .heading[data-v-d40a25f6] {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n  padding: 6px 12px;\n  color: #333;\n}\n.users .usersTable .heading > div.action[data-v-d40a25f6] {\n  flex-basis: 20%;\n}\n.users .usersTable .heading > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .heading > div[data-v-d40a25f6] {\n  flex-basis: 20%;\n  padding-left: 16px;\n  overflow: hidden;\n}\n.users .usersTable .content .user[data-v-d40a25f6] {\n  width: 100%;\n  padding: 6px 12px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap: nowrap;\n}\n.users .usersTable .content .user > div.action[data-v-d40a25f6] {\n  flex-basis: 20%;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6] {\n  border-width: 0;\n  background-color: transparent;\n  color: #828282;\n  font-weight: 900;\n}\n.users .usersTable .content .user > div.action button[data-v-d40a25f6]:hover {\n  color: #EB5757;\n}\n.users .usersTable .content .user > div.phone[data-v-d40a25f6] {\n  direction: ltr;\n  text-align: right;\n}\n.users .usersTable .content .user > div.phone input[data-v-d40a25f6] {\n  text-align: right;\n}\n.users .usersTable .content .user > div.status span[data-v-d40a25f6] {\n  background: #BDBDBD;\n  color: #fff;\n  border-radius: 10px;\n  padding: 4px 12px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div.status span.is_admin[data-v-d40a25f6] {\n  background: #0088cc !important;\n}\n.users .usersTable .content .user > div.status.online span[data-v-d40a25f6] {\n  background: limegreen;\n  color: #fff;\n  padding: 4px 12px;\n  border-radius: 10px;\n  text-transform: capitalize;\n}\n.users .usersTable .content .user > div[data-v-d40a25f6] {\n  flex-basis: 20%;\n  padding-left: 16px;\n  overflow: hidden;\n  padding-top: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6] {\n  border-color: transparent;\n  border-style: solid;\n  padding: 4px;\n}\n.users .usersTable .content .user > div input[data-v-d40a25f6]:hover {\n  border-color: #eee;\n}", ""]);
 
 // exports
 
@@ -26717,7 +26807,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "surveys" }, [
-    _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+    _c("h2", { staticClass: "heading" }, [
+      _vm._v(_vm._s(this.mobile ? "Mobile" : "") + " Surveys")
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -26749,7 +26841,7 @@ var render = function() {
               staticClass: "add-section",
               on: {
                 click: function($event) {
-                  return _vm.select("assessment")
+                  return _vm.select("likableImage")
                 }
               }
             },
@@ -26768,7 +26860,7 @@ var render = function() {
               staticClass: "add-section",
               on: {
                 click: function($event) {
-                  return _vm.select("selection")
+                  return _vm.select("comparablePhotos")
                 }
               }
             },
@@ -26782,7 +26874,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm.selected == "selection"
+        _vm.selected == "comparablePhotos"
           ? _c(
               "PostSelection",
               _vm._b(
@@ -26804,7 +26896,7 @@ var render = function() {
                 true
               )
             )
-          : _vm.selected == "assessment"
+          : _vm.selected == "likableImage"
           ? _c(
               "PostAssessment",
               _vm._b(
@@ -27576,7 +27668,9 @@ var render = function() {
       _vm._v(" "),
       _c("instagram"),
       _vm._v(" "),
-      _c("Surveys")
+      _c("surveys"),
+      _vm._v(" "),
+      _c("surveys", { attrs: { mobile: "" } })
     ],
     1
   )
@@ -27702,70 +27796,102 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "post-list" }, [
+    _c("div", { staticClass: "search" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.searchQuery,
+            expression: "searchQuery"
+          }
+        ],
+        attrs: { type: "text", placeholder: "start type your post name" },
+        domProps: { value: _vm.searchQuery },
+        on: {
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.searchQuery = $event.target.value
+            },
+            _vm.renderSearch
+          ]
+        }
+      })
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "posts-wrapper" },
-      _vm._l(_vm.posts, function(post) {
-        return _vm.posts
-          ? _c("div", { key: post.post.id, staticClass: "post" }, [
-              _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
-              _vm._v(" "),
-              _c("div", { staticClass: "post-meta" }, [
-                _c("span", { staticClass: "date" }, [
-                  _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
+      [
+        _vm._l(_vm.posts, function(post) {
+          return _vm.posts
+            ? _c("div", { key: post.post.id, staticClass: "post" }, [
+                _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "post-meta" }, [
+                  _c("span", { staticClass: "date" }, [
+                    _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "author" }, [
+                    _vm._v("מאת " + _vm._s(post.post.author))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "id" }, [
+                    _vm._v("#" + _vm._s(post.post.id))
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "author" }, [
-                  _vm._v("מאת " + _vm._s(post.post.author))
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "id" }, [
-                  _vm._v("#" + _vm._s(post.post.id))
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "actions" },
-                [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: ".#/post/" + post.post.id,
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("צפייה")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/post/" + post.post.id } },
-                    [_vm._v("ערוך")]
-                  ),
-                  _vm._v(" "),
-                  post.is_in_main_section == null
-                    ? _c(
-                        "button",
-                        {
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.deletePost(post.post.id)
+                _c(
+                  "div",
+                  { staticClass: "actions" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: ".#/post/" + post.post.id,
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("צפייה")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/post/" + post.post.id } },
+                      [_vm._v("ערוך")]
+                    ),
+                    _vm._v(" "),
+                    post.is_in_main_section == null
+                      ? _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.deletePost(post.post.id)
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("מחק כתבה")]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ])
+                          },
+                          [_vm._v("מחק כתבה")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ])
+            : _vm._e()
+        }),
+        _vm._v(" "),
+        _vm.posts == null
+          ? _c("div", [_vm._v("\n      פוסטים לא נמצאו!\n    ")])
           : _vm._e()
-      }),
-      0
+      ],
+      2
     )
   ])
 }
@@ -28189,15 +28315,47 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "surveys" }, [
+    _c("div", { staticClass: "search" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.searchQuery,
+            expression: "searchQuery"
+          }
+        ],
+        attrs: { type: "text", placeholder: "start type your survey name" },
+        domProps: { value: _vm.searchQuery },
+        on: {
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.searchQuery = $event.target.value
+            },
+            _vm.renderSearch
+          ]
+        }
+      })
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "surveys-wrapper" },
-      _vm._l(_vm.surveys, function(survey) {
-        return _vm.surveys
-          ? _c("single-survey", { key: survey.id, attrs: { data: survey } })
+      [
+        _vm._l(_vm.surveys, function(survey) {
+          return _vm.surveys
+            ? _c("single-survey", { key: survey.id, attrs: { data: survey } })
+            : _vm._e()
+        }),
+        _vm._v(" "),
+        _vm.surveys == null
+          ? _c("div", [_vm._v("\n      שום דבר לא נמצא!\n    ")])
           : _vm._e()
-      }),
-      1
+      ],
+      2
     )
   ])
 }
@@ -28348,177 +28506,211 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "users" }, [
+    _c("div", { staticClass: "search" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.searchQuery,
+            expression: "searchQuery"
+          }
+        ],
+        attrs: { type: "text", placeholder: "start type your user name" },
+        domProps: { value: _vm.searchQuery },
+        on: {
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.searchQuery = $event.target.value
+            },
+            _vm.renderSearch
+          ]
+        }
+      })
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "usersTable" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content" },
-        _vm._l(_vm.users, function(user) {
-          return _vm.users && user.id != 1
-            ? _c("div", { key: user.id, staticClass: "user" }, [
-                _c("div", { staticClass: "name" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.name,
-                        expression: "user.name"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "username",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mail" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.email,
-                        expression: "user.email"
-                      }
-                    ],
-                    attrs: {
-                      type: "email",
-                      name: "mail",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "email", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "phone" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.phone,
-                        expression: "user.phone"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "phone",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.phone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "phone", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                user.status == "online"
-                  ? _c("div", { staticClass: "status online" }, [
-                      user.is_admin == true
-                        ? _c("span", { staticClass: "is_admin" }, [
-                            _vm._v("Admin")
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(user.status))])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                user.status == "offline"
-                  ? _c("div", { staticClass: "status offline" }, [
-                      user.is_admin == true
-                        ? _c("span", { staticClass: "is_admin" }, [
-                            _vm._v("Admin")
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(user.status))])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "action" }, [
-                  user.is_current_user == null
-                    ? _c(
-                        "button",
-                        {
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteUser(user.id)
-                            }
+      _vm.users
+        ? _c(
+            "div",
+            { staticClass: "content" },
+            _vm._l(_vm.users, function(user) {
+              return _vm.users && user.id != 1
+                ? _c("div", { key: user.id, staticClass: "user" }, [
+                    _c("div", { staticClass: "name" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.name,
+                            expression: "user.name"
                           }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "username",
+                          minlength: "2",
+                          required: ""
                         },
-                        [_vm._v("מחיקה")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.updateUser(
-                            user.id,
-                            user.name,
-                            user.email,
-                            user.phone
+                        domProps: { value: user.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mail" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.email,
+                            expression: "user.email"
+                          }
+                        ],
+                        attrs: {
+                          type: "email",
+                          name: "mail",
+                          minlength: "2",
+                          required: ""
+                        },
+                        domProps: { value: user.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "email", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "phone" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.phone,
+                            expression: "user.phone"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "phone",
+                          minlength: "2",
+                          required: ""
+                        },
+                        domProps: { value: user.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "phone", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    user.status == "online"
+                      ? _c("div", { staticClass: "status online" }, [
+                          user.is_admin == true
+                            ? _c("span", { staticClass: "is_admin" }, [
+                                _vm._v("Admin")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(user.status))])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    user.status == "offline"
+                      ? _c("div", { staticClass: "status offline" }, [
+                          user.is_admin == true
+                            ? _c("span", { staticClass: "is_admin" }, [
+                                _vm._v("Admin")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(user.status))])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "action" }, [
+                      user.is_current_user == null
+                        ? _c(
+                            "button",
+                            {
+                              attrs: { type: "submit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteUser(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v("מחיקה")]
                           )
-                        }
-                      }
-                    },
-                    [_vm._v("שמור")]
-                  ),
-                  _vm._v(" "),
-                  user.is_current_user == null
-                    ? _c(
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
                         "button",
                         {
                           attrs: { type: "submit" },
                           on: {
                             click: function($event) {
-                              return _vm.makeUserAdmin(user.id)
+                              return _vm.updateUser(
+                                user.id,
+                                user.name,
+                                user.email,
+                                user.phone
+                              )
                             }
                           }
                         },
-                        [_vm._v("הגדר כמנהל")]
-                      )
-                    : _vm._e()
-                ])
-              ])
-            : _vm._e()
-        }),
-        0
-      )
+                        [_vm._v("שמור")]
+                      ),
+                      _vm._v(" "),
+                      user.is_current_user == null
+                        ? _c(
+                            "button",
+                            {
+                              attrs: { type: "submit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.makeUserAdmin(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v("הגדר כמנהל")]
+                          )
+                        : _vm._e()
+                    ])
+                  ])
+                : _vm._e()
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.users == null
+        ? _c("div", { staticClass: "notice" }, [
+            _vm._v("\n      משתמשים לא נמצאו!\n    ")
+          ])
+        : _vm._e()
     ])
   ])
 }
@@ -49207,7 +49399,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
