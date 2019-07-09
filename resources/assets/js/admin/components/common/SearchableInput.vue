@@ -1,6 +1,5 @@
 <template>
     <div class="searchable-input">
-        {{index}}
         <input type="text" class="theme-input-text" :placeholder="placeholder" v-model="query" required>
         <div class="search-results">
             <div v-for="matchingItem in filtered"
@@ -17,9 +16,6 @@ export default {
     props: {
         options: {
             type: Array
-        },
-        index: {
-            type: Number
         },
         deletable: {
             type: Boolean,
@@ -40,7 +36,7 @@ export default {
         }
     },
     data() {
-      console.log(this.value);
+      //console.log(this.value);
       return {
         query: this.value ? this.value[this.label] : '',
       };
