@@ -57,13 +57,10 @@ export default {
   },
   created() {
     axios.post('/getRecentPosts').then(res => {
-      // console.log(res.data);
       this.posts = res.data;
     });
-    axios.post('/getServiceForMainPage').then(res => {
+    axios.post('/getServiceForMainPageSecond').then(res => {
       this.survey = res.data;
-      console.log(res.data);
-      // console.log(this.survey);
     });
   },
   methods : {
@@ -72,7 +69,7 @@ export default {
       axios
         .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
           .then(response => {
-            // console.log(response);
+
           });
     }
   },

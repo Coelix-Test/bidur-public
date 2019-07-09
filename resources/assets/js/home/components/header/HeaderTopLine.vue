@@ -64,10 +64,18 @@
       							<router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
       						</li>
                   <li class="menu-item">
-                    <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
-                    <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
-                      <span>כניסה</span>
-                    </a>
+
+                    <div class="auth-btns">
+                        <template v-if="isLoggedIn">
+                          <a href="#" @click="logout" class="btn-common btn-gold-gradient logout">להתנתק</a>
+                        </template>
+                        <template v-else>
+                          <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
+                          <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
+                            <span>כניסה</span>
+                          </a>
+                        </template>
+                    </div>
                   </li>
                   <li class="menu-item">
                     <div class="socials-wrap">
@@ -120,5 +128,15 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+  @media (max-width:768px) {
+    .auth-btns {
+      justify-content: center;
+      a.logout {
+        margin:0 auto;
+        margin-left: auto!important;
+        margin-right: auto!important;
+      }
+    }
+  }
 </style>
