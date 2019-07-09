@@ -1,5 +1,8 @@
 <template>
   <div class="post-list">
+    <div class="search">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your post name">
+    </div>
     <div class="posts-wrapper">
       <div v-for="post in posts" v-if="posts" class="post" :key="post.post.id">
 
@@ -25,7 +28,8 @@
 export default {
   data() {
     return {
-      posts : null
+      posts : null,
+      searchQuery : null,
     }
   },
   created() {
@@ -47,6 +51,15 @@ export default {
               this.posts = res.data;
               alert('פוסט נמחק!');
           });
+    },
+    renderSearch() {
+      console.log(this.searchQuery);
+      axios
+        .post('/postTitleSerach', {title : this.searchQuery})
+          .then(res => {
+            console.log(res);
+            this.posts = res.data;
+          });
     }
   }
 }
@@ -57,6 +70,18 @@ export default {
     max-width:1440px;
     padding:0 24px;
     margin: 32px auto;
+      .search {
+        padding:0 24px 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        input {
+          width:300px;
+          padding:6px 16px;
+          font-size: 16px;
+          color:#333;
+        }
+      }
       .posts-wrapper {
         display: flex;
         flex-direction: row;
