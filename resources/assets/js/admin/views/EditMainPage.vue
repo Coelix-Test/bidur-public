@@ -12,7 +12,9 @@
 
     <instagram/>
 
-    <Surveys/>
+    <surveys/>
+
+    <surveys mobile/>
   </div>
 </template>
 

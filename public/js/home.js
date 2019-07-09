@@ -3031,6 +3031,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     like: function like() {
+      console.log(12312312);
       if (this.clicked) return;
       this.disliked = this.data.dislikes;
       this.liked = this.data.likes;
@@ -3140,8 +3141,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     makeItRain: function () {
       var _makeItRain = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n) {
-        var fallTime, rotateTime, delayTime, colors, append_to, _loop, i;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n, append) {
+        var fallTime, rotateTime, delayTime, colors, _loop, i;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -3153,36 +3154,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   n = 20;
                 }
 
-                append_to = this.$el; // append_to.style({ 'overflow': 'hidden' });
-
                 _loop = function _loop() {
                   var el = document.createElement('div');
                   el.classList.add('fetti');
                   fallTime = Math.random() * 10 + 3;
                   rotateTime = Math.random() * 2 + 1;
-                  el.style.left = Math.floor(append_to.offsetWidth * Math.random()) + 'px';
+                  el.style.left = Math.floor(append.offsetWidth * Math.random()) + 'px';
                   el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                   el.style.animation = "fettiFall ".concat(fallTime, "s linear, fettiRotate ").concat(rotateTime, "s infinite linear"); // el.style.transition = `top ${delayTime}s linear`
 
                   setTimeout(function () {
-                    append_to.removeChild(el);
+                    append.removeChild(el);
                   }, fallTime * 1000);
-                  append_to.appendChild(el);
+                  append.appendChild(el);
                 };
 
                 for (i = 0; i < n; i++) {
                   _loop();
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee);
       }));
 
-      function makeItRain(_x) {
+      function makeItRain(_x, _x2) {
         return _makeItRain.apply(this, arguments);
       }
 
@@ -3203,7 +3202,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         serviceId: this.data.id
       });
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70);
+      this.makeItRain(70, this.$refs.left);
     },
     right: function right() {
       if (this.popped) return;
@@ -3220,7 +3219,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         serviceId: this.data.id
       });
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70);
+      this.makeItRain(70, this.$refs.right);
     }
   }
 });
@@ -3451,6 +3450,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4636,6 +4641,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5600,7 +5614,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n  width: 50%;\n}\n.contact-us .column.right[data-v-3884cfdf] {\n  padding-left: 12px;\n}\n.contact-us .column.left[data-v-3884cfdf] {\n  padding-right: 12px;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n  font-weight: 900;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info > a[data-v-3884cfdf] {\n  color: #333;\n  padding-left: 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.contact-us .column .info > a .icon[data-v-3884cfdf] {\n  padding: 0 0 0 8px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n  font-weight: 700;\n  margin-bottom: 16px;\n  color: #333;\n  font-size: 40px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border-radius: 10px;\n  border: 1px solid #E0E0E0;\n  margin-bottom: 16px;\n  padding: 6px 12px;\n  -webkit-appearance: none;\n  -moz-appearance: textfield;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-inner-spin-button, .contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border: 1px solid #E0E0E0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n  min-height: 200px;\n  padding: 6px 12px;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form button[data-v-3884cfdf] {\n  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 10px;\n  align-self: flex-start;\n  padding: 16px 48px;\n  border-style: hidden;\n  color: #fff;\n  font-weight: 900;\n  font-size: 24px;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n    width: 100%;\n    padding-right: 0 !important;\n    padding-left: 0 !important;\n    margin-bottom: 16px;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: start;\n            align-items: flex-start;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n    padding-bottom: 8px;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n    font-size: 32px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n    font-size: 32px;\n}\n}", ""]);
+exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n  width: 50%;\n}\n.contact-us .column.right[data-v-3884cfdf] {\n  padding-left: 12px;\n}\n.contact-us .column.left[data-v-3884cfdf] {\n  padding-right: 12px;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n  font-weight: 900;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info > a[data-v-3884cfdf] {\n  color: #333;\n  padding-left: 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.contact-us .column .info > a .icon[data-v-3884cfdf] {\n  padding: 0 0 0 8px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n  font-weight: 700;\n  margin-bottom: 16px;\n  color: #333;\n  font-size: 40px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border-radius: 10px;\n  border: 1px solid #E0E0E0;\n  margin-bottom: 16px;\n  padding: 6px 12px;\n  -webkit-appearance: none;\n  -moz-appearance: textfield;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-inner-spin-button, .contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border: 1px solid #E0E0E0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n  min-height: 200px;\n  padding: 6px 12px;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form button[data-v-3884cfdf] {\n  align-self: flex-start;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n    width: 100%;\n    padding-right: 0 !important;\n    padding-left: 0 !important;\n    margin-bottom: 16px;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: start;\n            align-items: flex-start;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n    padding-bottom: 8px;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n    font-size: 32px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -5695,7 +5709,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.right-column[data-v-37103d6a] {\n  flex-basis:50%;\n  padding-left: 8px;\n}\n.birthdayPost[data-v-37103d6a] {\n  width: 100%;\n  position: relative;\n  margin-bottom: 48px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  flex-direction: column;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  color: #fff;\n  height:500px;\n  /* overflow: hidden; */\n  /* background-color: rgba(100,100,100,0.7); */\n  opacity: 0;\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: transform 0.5s ease, opacity 0.5s ease;\n  transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: translateX(100px);\n          transform: translateX(100px);\n  padding:80px 32px 12px;\n}\n.birthdayPost.in-viewport[data-v-37103d6a] {\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n  opacity: 1;\n}\n.birthdayPost > div.bdayInner[data-v-37103d6a] {\n  color:#fff;\n  text-decoration: none;\n  width:100%;\n  height: 100%;\n  position: relative;\n}\n.birthdayPost h2[data-v-37103d6a] {\n  font-size: 2em;\n  text-align: center;\n  margin-bottom: 0;\n  position: absolute;\n  right:32px;\n  top:0;\n  color:#F2C94C;\n  text-align: right;\n  z-index:5;\n  font-family: 'Levin','Assistant',sans-serif;\n}\n.birthdayPost .overlay[data-v-37103d6a] {\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  border:4px solid #F2C94C;\n  -webkit-transform:rotate(3deg);\n          transform:rotate(3deg);\n}\n.birthdayPost img[data-v-37103d6a] {\n  max-width:100%;\n  width:100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.birthdayPost > img[data-v-37103d6a] {\n  -o-object-fit: contain;\n     object-fit: contain;\n  position: absolute;\n  z-index:2;\n  pointer-events: none;\n}\n.birthdayPost .overlay img[data-v-37103d6a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nul.posts[data-v-37103d6a] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  flex-wrap:wrap;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  margin: 0;\n  padding: 0;\n  margin-bottom: 24px;\n  opacity: 0;\n  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: transform 1s ease, opacity 1s ease;\n  transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n  -webkit-transform: translateX(100px);\n          transform: translateX(100px);\n}\nul.posts.in-viewport[data-v-37103d6a] {\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n  opacity: 1;\n}\nul.posts li[data-v-37103d6a] {\n  list-style-type: none;\n  flex-basis: calc(50% - 8px);\n  box-sizing: border-box;\n  height:241px;\n  position: relative;\n}\nul.posts li .background-square[data-v-37103d6a] {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  pointer-events: none;\n  z-index: -2;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  opacity: 1;\n  -webkit-transform: translate(8px, 8px);\n          transform: translate(8px, 8px);\n  -webkit-transition: .3s;\n  transition: .3s;\n}\nul.posts li[data-v-37103d6a]:nth-child(3), ul.posts li[data-v-37103d6a]:nth-child(4) {\n  align-self: flex-end;\n}\nul.posts li[data-v-37103d6a]:nth-child(2) {\n  margin-top: 24px;\n}\nul.posts li[data-v-37103d6a]:nth-child(3) {\n  margin-bottom: auto;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n  margin-top: 48px;\n}\nul.posts li:nth-child(2) .background-square[data-v-37103d6a],\nul.posts li:nth-child(3) .background-square[data-v-37103d6a] {\n  background-color: #F2C94C;\n}\nul.posts li a[data-v-37103d6a] {\n  width:100%;\n  height:100%;\n  box-sizing: border-box;\n  position: relative;\n  padding:80px 24px 16px;\n  min-height:150px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  color:#fff;\n  overflow: hidden;\n  text-decoration: none;\n  position: relative;\n}\nul.posts li a .overlay[data-v-37103d6a] {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  pointer-events: none;\n  z-index: -1;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  /* opacity: .3; */\n  -webkit-transition: .3s;\n  transition: .3s;\n}\nul.posts li:nth-child(1) a .overlay[data-v-37103d6a] {\n  background: -webkit-gradient(linear, left bottom, left top, from(#3E64C0), color-stop(16.13%, #3BB9FE), color-stop(68.63%, rgba(0, 240, 255, 0)));\n  background: linear-gradient(0deg, #3E64C0 0%, #3BB9FE 16.13%, rgba(0, 240, 255, 0) 68.63%);\n}\nul.posts li:nth-child(2) a .overlay[data-v-37103d6a] {\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(71.7%, rgba(255, 251, 149, 0)), color-stop(82.92%, rgba(255, 149, 155, 0.83)), color-stop(89.04%, rgba(255, 100, 129, 0.885638)), color-stop(101.62%, #FF004D));\n  background: linear-gradient(180deg, rgba(255, 251, 149, 0) 71.7%, rgba(255, 149, 155, 0.83) 82.92%, rgba(255, 100, 129, 0.885638) 89.04%, #FF004D 101.62%);\n}\nul.posts li:nth-child(3) a .overlay[data-v-37103d6a] {\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n  background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n  opacity: .5;\n}\nul.posts li:nth-child(4) a .overlay[data-v-37103d6a] {\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(55.56%, #FDA014), to(#1389EF));\n  background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);\n  opacity: .5;\n}\nul.posts li:hover img[data-v-37103d6a] {\n  -webkit-transform:scale(1.1);\n          transform:scale(1.1);\n}\nul.posts li a:hover .overlay[data-v-37103d6a] {\n  background: rgba(0,0,0,0.2);\n}\nul.posts li a h2[data-v-37103d6a] {\n  font-weight: 700;\n  margin-bottom: 0;\n  font-size: 24px;\n  text-transform: uppercase;\n}\nul.posts li a p[data-v-37103d6a] {\n  margin-bottom: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\nul.posts li a img[data-v-37103d6a] {\n  position: absolute;\n  top:0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width:100%;\n  height:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  z-index: -2;\n  -webkit-transition: .3s;\n  transition: .3s;\n}\nul.posts li a p .post-date[data-v-37103d6a] {\n  border-right:1px solid #fff;\n  padding-right: 6px;\n  margin-right: 4px;\n  /* white-space: nowrap; */\n}\n@media (max-width:768px) {\n.right-column[data-v-37103d6a] {\n    padding-left: 0;\n    -webkit-box-ordinal-group:4;\n            order:3;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n            flex-direction: column-reverse;\n}\nul.posts li[data-v-37103d6a] {\n    flex-basis: calc(50% - 4px);\n}\nul.posts li a h2[data-v-37103d6a] {\n    font-size: 16px;\n    line-height: 16px;\n}\nul.posts li a[data-v-37103d6a] {\n    padding:80px 8px 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(2),\n  ul.posts li[data-v-37103d6a]:nth-child(3) {\n    margin-top: 0;\n    margin-bottom: 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n    margin-top: 0;\n}\nul.posts li .background-square[data-v-37103d6a] {\n    background-color: transparent;\n    display: none;\n}\n.birthdayPost h2[data-v-37103d6a] {\n    right:8px;\n    top:8px;\n    font-size: 1.6em;\n}\n.birthdayPost[data-v-37103d6a] {\n    padding: 0;\n    margin-top: 16px;\n    margin-bottom: 32px;\n    padding-top: 120px;\n    box-sizing: content-box;\n}\nul.posts li a p[data-v-37103d6a] {\n    font-size: 13px;\n    line-height: 13px;\n    margin-top: 8px;\n}\n}\n@media (max-width:550px) {\nul.posts[data-v-37103d6a] {\n    height:auto;\n}\n.birthdayPost[data-v-37103d6a] {\n    height: 200px;\n    margin-bottom: 16px;\n}\nul.posts li[data-v-37103d6a] {\n    /* flex-basis:100%;\n    height:auto; */\n    margin-bottom: 8px;\n}\n}\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@-webkit-keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n@keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n.right-column[data-v-37103d6a] {\n    flex-basis:50%;\n    padding-left: 8px;\n}\n.birthdayPost[data-v-37103d6a] {\n    width: 100%;\n    position: relative;\n    margin-bottom: 48px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color: #fff;\n    height:500px;\n    /* overflow: hidden; */\n    /* background-color: rgba(100,100,100,0.7); */\n    opacity: 0;\n    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n    padding:80px 32px 12px;\n}\n.birthdayPost.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\n.birthdayPost > div.bdayInner[data-v-37103d6a] {\n    color:#fff;\n    text-decoration: none;\n    width:100%;\n    height: 100%;\n    position: relative;\n}\n.birthdayPost > img[data-v-37103d6a] {\n    -webkit-animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost h2[data-v-37103d6a] {\n    font-size: 2em;\n    text-align: center;\n    margin-bottom: 0;\n    position: absolute;\n    right:32px;\n    top:0;\n    color:#F2C94C;\n    text-align: right;\n    z-index:5;\n    font-family: 'Levin','Assistant',sans-serif;\n}\n.birthdayPost .overlay[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    left:0;\n    right:0;\n    bottom:0;\n    border:4px solid #F2C94C;\n    -webkit-animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost img[data-v-37103d6a] {\n    max-width:100%;\n    width:100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n.birthdayPost > img[data-v-37103d6a] {\n    -o-object-fit: contain;\n       object-fit: contain;\n    position: absolute;\n    z-index:2;\n    pointer-events: none;\n}\n.birthdayPost .overlay img[data-v-37103d6a] {\n    -o-object-fit: cover;\n       object-fit: cover;\n}\nul.posts[data-v-37103d6a] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n    flex-wrap:wrap;\n    -webkit-box-align: start;\n            align-items: flex-start;\n    -webkit-box-pack: justify;\n            justify-content: space-between;\n    margin: 0;\n    padding: 0;\n    margin-bottom: 24px;\n    opacity: 0;\n    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: transform 1s ease, opacity 1s ease;\n    transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n}\nul.posts.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\nul.posts li[data-v-37103d6a] {\n    list-style-type: none;\n    flex-basis: calc(50% - 8px);\n    box-sizing: border-box;\n    height:241px;\n    position: relative;\n}\nul.posts li .background-square[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -2;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    opacity: 1;\n    -webkit-transform: translate(8px, 8px);\n            transform: translate(8px, 8px);\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li[data-v-37103d6a]:nth-child(3), ul.posts li[data-v-37103d6a]:nth-child(4) {\n    align-self: flex-end;\n}\nul.posts li[data-v-37103d6a]:nth-child(2) {\n    margin-top: 24px;\n}\nul.posts li[data-v-37103d6a]:nth-child(3) {\n    margin-bottom: auto;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n    margin-top: 48px;\n}\nul.posts li:nth-child(2) .background-square[data-v-37103d6a],\n  ul.posts li:nth-child(3) .background-square[data-v-37103d6a] {\n    background-color: #F2C94C;\n}\nul.posts li a[data-v-37103d6a] {\n    width:100%;\n    height:100%;\n    box-sizing: border-box;\n    position: relative;\n    padding:80px 24px 16px;\n    min-height:150px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color:#fff;\n    overflow: hidden;\n    text-decoration: none;\n    position: relative;\n}\nul.posts li a .overlay[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -1;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    /* opacity: .3; */\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li:nth-child(1) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left bottom, left top, from(#3E64C0), color-stop(16.13%, #3BB9FE), color-stop(68.63%, rgba(0, 240, 255, 0)));\n    background: linear-gradient(0deg, #3E64C0 0%, #3BB9FE 16.13%, rgba(0, 240, 255, 0) 68.63%);\n}\nul.posts li:nth-child(2) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(71.7%, rgba(255, 251, 149, 0)), color-stop(82.92%, rgba(255, 149, 155, 0.83)), color-stop(89.04%, rgba(255, 100, 129, 0.885638)), color-stop(101.62%, #FF004D));\n    background: linear-gradient(180deg, rgba(255, 251, 149, 0) 71.7%, rgba(255, 149, 155, 0.83) 82.92%, rgba(255, 100, 129, 0.885638) 89.04%, #FF004D 101.62%);\n}\nul.posts li:nth-child(3) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n    opacity: .5;\n}\nul.posts li:nth-child(4) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(55.56%, #FDA014), to(#1389EF));\n    background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);\n    opacity: .5;\n}\nul.posts li:hover img[data-v-37103d6a] {\n    -webkit-transform:scale(1.1);\n            transform:scale(1.1);\n}\nul.posts li a:hover .overlay[data-v-37103d6a] {\n    background: rgba(0,0,0,0.2);\n}\nul.posts li a h2[data-v-37103d6a] {\n    font-weight: 700;\n    margin-bottom: 0;\n    font-size: 24px;\n    text-transform: uppercase;\n}\nul.posts li a p[data-v-37103d6a] {\n    margin-bottom: 0;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n}\nul.posts li a img[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    bottom: 0;\n    right: 0;\n    left: 0;\n    width:100%;\n    height:100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    z-index: -2;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li a p .post-date[data-v-37103d6a] {\n    border-right:1px solid #fff;\n    padding-right: 6px;\n    margin-right: 4px;\n    /* white-space: nowrap; */\n}\n@media (max-width:768px) {\n.right-column[data-v-37103d6a] {\n      padding-left: 0;\n      -webkit-box-ordinal-group:4;\n              order:3;\n      display: -webkit-box;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: reverse;\n              flex-direction: column-reverse;\n}\nul.posts li[data-v-37103d6a] {\n      flex-basis: calc(50% - 4px);\n}\nul.posts li a h2[data-v-37103d6a] {\n      font-size: 16px;\n      line-height: 16px;\n}\nul.posts li a[data-v-37103d6a] {\n      padding:80px 8px 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(2),\n    ul.posts li[data-v-37103d6a]:nth-child(3) {\n      margin-top: 0;\n      margin-bottom: 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n      margin-top: 0;\n}\nul.posts li .background-square[data-v-37103d6a] {\n      background-color: transparent;\n      display: none;\n}\n.birthdayPost h2[data-v-37103d6a] {\n      right:8px;\n      top:8px;\n      font-size: 1.6em;\n}\n.birthdayPost[data-v-37103d6a] {\n      padding: 0;\n      margin-top: 16px;\n      margin-bottom: 32px;\n      padding-top: 120px;\n      box-sizing: content-box;\n}\nul.posts li a p[data-v-37103d6a] {\n      font-size: 13px;\n      line-height: 13px;\n      margin-top: 8px;\n}\n}\n@media (max-width:550px) {\nul.posts[data-v-37103d6a] {\n      height:auto;\n}\n.birthdayPost[data-v-37103d6a] {\n      height: 200px;\n      margin-bottom: 16px;\n}\nul.posts li[data-v-37103d6a] {\n      /* flex-basis:100%;\n      height:auto; */\n      margin-bottom: 8px;\n}\n}\n", ""]);
 
 // exports
 
@@ -39404,10 +39418,9 @@ var render = function() {
           _vm.isLoggedIn
             ? [
                 _c(
-                  "a",
+                  "button",
                   {
-                    staticClass: "btn-common btn-gold-gradient",
-                    attrs: { href: "#" },
+                    staticClass: "btn-common th-btn-gold",
                     on: { click: _vm.logout }
                   },
                   [_vm._v("להתנתק")]
@@ -39415,11 +39428,10 @@ var render = function() {
               ]
             : [
                 _c(
-                  "a",
+                  "button",
                   {
-                    staticClass: "btn-common btn-gold-gradient",
-                    attrs: { href: "#" },
-                    on: { click: _vm.$root.$root.openReg }
+                    staticClass: "btn-common th-btn-gold",
+                    on: { click: _vm.$root.openReg }
                   },
                   [_vm._v("הרשמה")]
                 ),
@@ -39429,7 +39441,7 @@ var render = function() {
                   {
                     staticClass: "btn-common btn-gold-text",
                     attrs: { href: "#" },
-                    on: { click: _vm.$root.$root.openLogin }
+                    on: { click: _vm.$root.openLogin }
                   },
                   [_c("span", [_vm._v("כניסה")])]
                 )
@@ -39586,13 +39598,30 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "socials-wrap" }, [
-      _c("a", { staticClass: "telegram", attrs: { href: "#" } }),
+      _c("a", {
+        staticClass: "telegram",
+        attrs: { href: "https://t.me/Israelbidurofficial" }
+      }),
       _vm._v(" "),
-      _c("a", { staticClass: "youtube", attrs: { href: "#" } }),
+      _c("a", {
+        staticClass: "youtube",
+        attrs: {
+          href: "https://www.israel-bidur.co.il/%D7%90%D7%95%D7%93%D7%95%D7%AA"
+        }
+      }),
       _vm._v(" "),
-      _c("a", { staticClass: "facebook", attrs: { href: "#" } }),
+      _c("a", {
+        staticClass: "facebook",
+        attrs: { href: "https://www.instagram.com/israel_bidur/" }
+      }),
       _vm._v(" "),
-      _c("a", { staticClass: "instagram", attrs: { href: "#" } })
+      _c("a", {
+        staticClass: "instagram",
+        attrs: {
+          href:
+            "https://www.facebook.com/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%93%D7%95%D7%A8-353719708444460/"
+        }
+      })
     ])
   },
   function() {
@@ -41193,17 +41222,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "column right" }, [
         _c("div", [
-          _c("h2", [_vm._v("About Us")]),
+          _c("h2", [_vm._v("אודות")]),
           _vm._v(" "),
           _c("p", [
             _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              'בשנת 2014 נוסד עמוד האינסטגרם "ישראל בידור" על ידי איש התקשורת דוד סער (דאז בן 19 בלבד) במטרה להפוך לגוף תקשורת צעיר, רענן, אטרקטיבי ומכבד - אשר מסקר אודות עולם הבידור הישראלי והתרחשויות השעה.\n\nלאור ההצלחה במדיות החברתיות והפיכתו של עמוד האינסטגרם ISRAEL_BIDUR@ לעמוד הבידור הנעקב ביותר בישראל (עם למעלה מרבע מיליון עוקבים מרחבי הארץ והעולם) הוחלט להקים אתר אינטרנט שגם הוא יעסוק בכל תחומי הבידור, התרבות והרכילות בישראל.\n\nאופי האתר מבוסס על עמוד האינסטגרם של "ישראל בידור" כאשר הממשק ביניהם הולך להיות באופן קבוע, הן בתוכן, הן בערכים, הן בסיקור והן בקונספט הכללי.'
             )
           ])
         ]),
@@ -41215,17 +41238,9 @@ var staticRenderFns = [
         _c("img", { attrs: { src: "img/2471790.png", alt: "" } }),
         _vm._v(" "),
         _c("div", [
-          _c("h2", [_vm._v("About Us")]),
-          _vm._v(" "),
           _c("p", [
             _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              'אתר "ישראל בידור" הציב לעצמו כמה יעדים: בראש ובראשונה לשמור על כבוד האדם, להיות הראשונים בעדכוני עולם הבידור, לספק את החומרים הכי מעניינים בתחום, לשמור על מקוריות שובת לב ולשמור על כללי האתיקה העיתונאית.\n\nקהל הקוראים והגולשים של ישראל בידור רחב היקף וחוצה קהלים. מרבית הקוראים והגולשים הינם בין הגילאים 60 - 10 אשר אוהבים, מתחברים וצורכים את חווית הסיקור שלנו אודות עולם הבידור הישראלי.\n\nצוות האתר מורכב מכותבים ועורכים צעירים במיוחד אשר התנסות הכתיבה בפלטפורמה תקשורתית זו, הינה מקפצה גדולה עבורם והדמנות מבורכת.\n\nלסיום, אנו מבטיחים כי נעשה הכל על מנת שנוכל להביא לכם יום יום ושעה שעה את התכנים המעניינים ביותר, האמינים ביותר והמכבדים ביותר.\n\n'
             )
           ])
         ])
@@ -41355,7 +41370,7 @@ var render = function() {
         _c("h2", [_vm._v("יש לכם שאלה? שלחו לנו הודעה!")]),
         _vm._v(" "),
         _vm.sendMessage
-          ? _c("form", { attrs: { action: "#" } }, [
+          ? _c("form", { on: { submit: _vm.sendMail } }, [
               _c("input", {
                 directives: [
                   {
@@ -41468,12 +41483,8 @@ var render = function() {
               _c(
                 "button",
                 {
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      return _vm.sendMail($event)
-                    }
-                  }
+                  staticClass: "th-btn th-btn-gold",
+                  attrs: { type: "submit" }
                 },
                 [_vm._v("שלח הודעה!")]
               )
@@ -64633,7 +64644,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

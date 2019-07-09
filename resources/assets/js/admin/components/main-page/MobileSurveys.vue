@@ -1,17 +1,17 @@
 <template>
   <div class="surveys">
-    <h2 class="heading">{{ this.mobile ? 'Mobile' : '' }} Surveys</h2>
+    <h2 class="heading">Mobile Surveys</h2>
     <div class="plate shadow-section">
       <div class="types">
         <div class="add-section" @click="select('survey')">
           <img src="/img/icons/edit-post-survey.svg" alt="">
           <span>Survey</span>
         </div>
-        <div class="add-section" @click="select('likableImage')">
+        <div class="add-section" @click="select('assessment')">
           <img src="/img/icons/edit-post-assessment.svg" alt="">
           <span>הערכה</span>
         </div>
-        <div class="add-section" @click="select('comparablePhotos')">
+        <div class="add-section" @click="select('selection')">
           <img src="/img/icons/edit-post-selection.svg" alt="">
           <span>להשוות</span>
         </div>
@@ -20,7 +20,7 @@
       <PostSelection
         v-bind.sync="selection"
         :deletable="false"
-        v-if="selected == 'comparablePhotos'"
+        v-if="selected == 'selection'"
       />
       <PostSurvey
         v-bind.sync="survey"
@@ -30,7 +30,7 @@
       <PostAssessment
         v-bind.sync="ass"
         :deletable="false"
-        v-else-if="selected == 'likableImage'"
+        v-else-if="selected == 'assessment'"
       />
 
       <button @click="save" class="theme-btn-red big-btn">לשמור</button>
@@ -44,15 +44,9 @@ import PostSurvey from './../posts/PostSurvey.vue';
 import PostAssessment from './../posts/PostAssessment.vue';
 
 export default {
-  props: {
-    mobile: {
-      type: Boolean,
-      default: false,
-    }
-  },
   data(){
     return {
-      selected: 'comparablePhotos',
+      selected: 'selection',
       selection: {
         image1: '',
         image2: '',
@@ -85,50 +79,39 @@ export default {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post(this.mobile ? '/addNewComparisonSecond' : '/createNewComparison', data, {
+        axios.post('/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+          
         });
-        // axios.post('/showCompareFromMain');
       }
       else if(this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
+        axios.post('/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+
         });
-        // axios.post('/showSinglePhotoFromMain');
       }
       else if(this.selected == 'survey') {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post(this.mobile ? '/addNewSurveyToMainSecond' : '/addNewSurveyToMain', data, {
+        axios.post('/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+
         });
       }
-    }
-  },
-  created() {
-    if(!this.mobile) {
-      axios.post('/getServiceForMainPage').then(res => {
-        this.selected = res.data.type;
-      });
-    } else {
-      axios.post('/getServiceForMainPageSecond').then(res => {
-        this.selected = res.data.type;
-      })
+
+
     }
   }
 }

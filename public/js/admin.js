@@ -2817,9 +2817,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    mobile: {
+      type: Boolean,
+      "default": false
+    }
+  },
   data: function data() {
     return {
-      selected: 'selection',
+      selected: 'comparablePhotos',
       selection: {
         image1: '',
         image2: '',
@@ -2852,7 +2858,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post('/createNewComparison', data, {
+        axios.post(this.mobile ? '/addNewComparisonSecond' : '/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2862,7 +2868,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post('/createSinglePhoto', data, {
+        axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2873,7 +2879,7 @@ __webpack_require__.r(__webpack_exports__);
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post('/addSurvey', data, {
+        axios.post(this.mobile ? '/addNewSurveyToMainSecond' : '/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -2881,6 +2887,19 @@ __webpack_require__.r(__webpack_exports__);
           console.log('qweqweqwew');
         });
       }
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    if (!this.mobile) {
+      axios.post('/getServiceForMainPage').then(function (res) {
+        _this.selected = res.data.type;
+      });
+    } else {
+      axios.post('/getServiceForMainPageSecond').then(function (res) {
+        _this.selected = res.data.type;
+      });
     }
   }
 });
@@ -3635,6 +3654,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_main_page_PostsTileSection_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/main-page/PostsTileSection.vue */ "./resources/assets/js/admin/components/main-page/PostsTileSection.vue");
 /* harmony import */ var _components_main_page_Instagram_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/main-page/Instagram.vue */ "./resources/assets/js/admin/components/main-page/Instagram.vue");
 /* harmony import */ var _components_main_page_Surveys_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../components/main-page/Surveys.vue */ "./resources/assets/js/admin/components/main-page/Surveys.vue");
+//
+//
 //
 //
 //
@@ -26564,7 +26585,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "surveys" }, [
-    _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+    _c("h2", { staticClass: "heading" }, [
+      _vm._v(_vm._s(this.mobile ? "Mobile" : "") + " Surveys")
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -26596,7 +26619,7 @@ var render = function() {
               staticClass: "add-section",
               on: {
                 click: function($event) {
-                  return _vm.select("assessment")
+                  return _vm.select("likableImage")
                 }
               }
             },
@@ -26615,7 +26638,7 @@ var render = function() {
               staticClass: "add-section",
               on: {
                 click: function($event) {
-                  return _vm.select("selection")
+                  return _vm.select("comparablePhotos")
                 }
               }
             },
@@ -26629,7 +26652,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm.selected == "selection"
+        _vm.selected == "comparablePhotos"
           ? _c(
               "PostSelection",
               _vm._b(
@@ -26651,7 +26674,7 @@ var render = function() {
                 true
               )
             )
-          : _vm.selected == "assessment"
+          : _vm.selected == "likableImage"
           ? _c(
               "PostAssessment",
               _vm._b(
@@ -27420,7 +27443,9 @@ var render = function() {
       _vm._v(" "),
       _c("instagram"),
       _vm._v(" "),
-      _c("Surveys")
+      _c("surveys"),
+      _vm._v(" "),
+      _c("surveys", { attrs: { mobile: "" } })
     ],
     1
   )

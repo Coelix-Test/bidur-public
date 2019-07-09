@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     like() {
+      console.log(12312312);
       if(this.clicked) return;
       this.disliked = this.data.dislikes;
       this.liked = this.data.likes;
