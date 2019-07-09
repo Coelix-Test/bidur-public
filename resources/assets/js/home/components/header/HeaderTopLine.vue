@@ -15,10 +15,10 @@
           </div>
 
           <div class="socials-wrap">
-              <a href="#" class="telegram"></a>
-              <a href="#" class="youtube"></a>
-              <a href="#" class="facebook"></a>
-              <a href="#" class="instagram"></a>
+              <a href="https://t.me/Israelbidurofficial" class="telegram"></a>
+              <a href="https://www.israel-bidur.co.il/%D7%90%D7%95%D7%93%D7%95%D7%AA" class="youtube"></a>
+              <a href="https://www.instagram.com/israel_bidur/" class="facebook"></a>
+              <a href="https://www.facebook.com/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%93%D7%95%D7%A8-353719708444460/" class="instagram"></a>
           </div>
 
           <div class="auth-btns">
