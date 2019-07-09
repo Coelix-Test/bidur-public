@@ -104,7 +104,7 @@ export default {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post('/addSurvey', data, {
+        axios.post('/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
