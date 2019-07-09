@@ -20,6 +20,9 @@
         </div>
 
       </div>
+      <div v-if="posts == null">
+        פוסטים לא נמצאו!
+      </div>
     </div>
   </div>
 </template>
@@ -56,8 +59,14 @@ export default {
       axios
         .post('/postTitleSerach', {title : this.searchQuery})
           .then(res => {
-            this.posts = res.data;
-          });
+            if(res.data.success != false) {
+              this.posts = res.data;
+            }else {
+              this.posts = null;
+            }
+
+          })
+          .catch(error => this.posts = null);
     }
   }
 }

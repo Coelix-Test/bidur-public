@@ -3851,6 +3851,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3891,7 +3894,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/postTitleSerach', {
         title: this.searchQuery
       }).then(function (res) {
-        _this3.posts = res.data;
+        if (res.data.success != false) {
+          _this3.posts = res.data;
+        } else {
+          _this3.posts = null;
+        }
+      })["catch"](function (error) {
+        return _this3.posts = null;
       });
     }
   }
@@ -4477,6 +4486,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4522,18 +4534,22 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/makeUserAdmin', {
         userId: id
       }).then(function (res) {
-        _this4.users = res.data; // console.log(res);
+        _this4.users = res.data;
       });
     },
     renderSearch: function renderSearch() {
       var _this5 = this;
 
-      console.log(this.searchQuery);
       axios.post('/userSearch', {
         search: this.searchQuery
       }).then(function (res) {
-        console.log(res.data);
-        _this5.users = res.data;
+        if (res.data.success != false) {
+          _this5.users = res.data;
+        } else {
+          _this5.users = null;
+        }
+      })["catch"](function (error) {
+        return _this5.users = null;
       });
     }
   }
@@ -27600,67 +27616,73 @@ var render = function() {
     _c(
       "div",
       { staticClass: "posts-wrapper" },
-      _vm._l(_vm.posts, function(post) {
-        return _vm.posts
-          ? _c("div", { key: post.post.id, staticClass: "post" }, [
-              _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
-              _vm._v(" "),
-              _c("div", { staticClass: "post-meta" }, [
-                _c("span", { staticClass: "date" }, [
-                  _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
+      [
+        _vm._l(_vm.posts, function(post) {
+          return _vm.posts
+            ? _c("div", { key: post.post.id, staticClass: "post" }, [
+                _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "post-meta" }, [
+                  _c("span", { staticClass: "date" }, [
+                    _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "author" }, [
+                    _vm._v("מאת " + _vm._s(post.post.author))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "id" }, [
+                    _vm._v("#" + _vm._s(post.post.id))
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "author" }, [
-                  _vm._v("מאת " + _vm._s(post.post.author))
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "id" }, [
-                  _vm._v("#" + _vm._s(post.post.id))
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "actions" },
-                [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: ".#/post/" + post.post.id,
-                        target: "_blank"
-                      }
-                    },
-                    [_vm._v("צפייה")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { attrs: { to: "/post/" + post.post.id } },
-                    [_vm._v("ערוך")]
-                  ),
-                  _vm._v(" "),
-                  post.is_in_main_section == null
-                    ? _c(
-                        "button",
-                        {
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.deletePost(post.post.id)
+                _c(
+                  "div",
+                  { staticClass: "actions" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: ".#/post/" + post.post.id,
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("צפייה")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/post/" + post.post.id } },
+                      [_vm._v("ערוך")]
+                    ),
+                    _vm._v(" "),
+                    post.is_in_main_section == null
+                      ? _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.deletePost(post.post.id)
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("מחק כתבה")]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ])
+                          },
+                          [_vm._v("מחק כתבה")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ])
+            : _vm._e()
+        }),
+        _vm._v(" "),
+        _vm.posts == null
+          ? _c("div", [_vm._v("\n      פוסטים לא נמצאו!\n    ")])
           : _vm._e()
-      }),
-      0
+      ],
+      2
     )
   ])
 }
@@ -28295,174 +28317,182 @@ var render = function() {
     _c("div", { staticClass: "usersTable" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content" },
-        _vm._l(_vm.users, function(user) {
-          return _vm.users && user.id != 1
-            ? _c("div", { key: user.id, staticClass: "user" }, [
-                _c("div", { staticClass: "name" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.name,
-                        expression: "user.name"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "username",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "name", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mail" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.email,
-                        expression: "user.email"
-                      }
-                    ],
-                    attrs: {
-                      type: "email",
-                      name: "mail",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "email", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "phone" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: user.phone,
-                        expression: "user.phone"
-                      }
-                    ],
-                    attrs: {
-                      type: "text",
-                      name: "phone",
-                      minlength: "2",
-                      required: ""
-                    },
-                    domProps: { value: user.phone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(user, "phone", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                user.status == "online"
-                  ? _c("div", { staticClass: "status online" }, [
-                      user.is_admin == true
-                        ? _c("span", { staticClass: "is_admin" }, [
-                            _vm._v("Admin")
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(user.status))])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                user.status == "offline"
-                  ? _c("div", { staticClass: "status offline" }, [
-                      user.is_admin == true
-                        ? _c("span", { staticClass: "is_admin" }, [
-                            _vm._v("Admin")
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(user.status))])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "action" }, [
-                  user.is_current_user == null
-                    ? _c(
-                        "button",
-                        {
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteUser(user.id)
-                            }
+      _vm.users
+        ? _c(
+            "div",
+            { staticClass: "content" },
+            _vm._l(_vm.users, function(user) {
+              return _vm.users && user.id != 1
+                ? _c("div", { key: user.id, staticClass: "user" }, [
+                    _c("div", { staticClass: "name" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.name,
+                            expression: "user.name"
                           }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "username",
+                          minlength: "2",
+                          required: ""
                         },
-                        [_vm._v("מחיקה")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.updateUser(
-                            user.id,
-                            user.name,
-                            user.email,
-                            user.phone
+                        domProps: { value: user.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mail" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.email,
+                            expression: "user.email"
+                          }
+                        ],
+                        attrs: {
+                          type: "email",
+                          name: "mail",
+                          minlength: "2",
+                          required: ""
+                        },
+                        domProps: { value: user.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "email", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "phone" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.phone,
+                            expression: "user.phone"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "phone",
+                          minlength: "2",
+                          required: ""
+                        },
+                        domProps: { value: user.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(user, "phone", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    user.status == "online"
+                      ? _c("div", { staticClass: "status online" }, [
+                          user.is_admin == true
+                            ? _c("span", { staticClass: "is_admin" }, [
+                                _vm._v("Admin")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(user.status))])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    user.status == "offline"
+                      ? _c("div", { staticClass: "status offline" }, [
+                          user.is_admin == true
+                            ? _c("span", { staticClass: "is_admin" }, [
+                                _vm._v("Admin")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(user.status))])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "action" }, [
+                      user.is_current_user == null
+                        ? _c(
+                            "button",
+                            {
+                              attrs: { type: "submit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteUser(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v("מחיקה")]
                           )
-                        }
-                      }
-                    },
-                    [_vm._v("שמור")]
-                  ),
-                  _vm._v(" "),
-                  user.is_current_user == null
-                    ? _c(
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
                         "button",
                         {
                           attrs: { type: "submit" },
                           on: {
                             click: function($event) {
-                              return _vm.makeUserAdmin(user.id)
+                              return _vm.updateUser(
+                                user.id,
+                                user.name,
+                                user.email,
+                                user.phone
+                              )
                             }
                           }
                         },
-                        [_vm._v("הגדר כמנהל")]
-                      )
-                    : _vm._e()
-                ])
-              ])
-            : _vm._e()
-        }),
-        0
-      )
+                        [_vm._v("שמור")]
+                      ),
+                      _vm._v(" "),
+                      user.is_current_user == null
+                        ? _c(
+                            "button",
+                            {
+                              attrs: { type: "submit" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.makeUserAdmin(user.id)
+                                }
+                              }
+                            },
+                            [_vm._v("הגדר כמנהל")]
+                          )
+                        : _vm._e()
+                    ])
+                  ])
+                : _vm._e()
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.users == null
+        ? _c("div", { staticClass: "notice" }, [
+            _vm._v("\n      משתמשים לא נמצאו!\n    ")
+          ])
+        : _vm._e()
     ])
   ])
 }

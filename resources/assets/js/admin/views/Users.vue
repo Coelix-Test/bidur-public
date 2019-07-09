@@ -11,7 +11,7 @@
         <div class="status">סטטוס</div>
         <div class="action">סוג משתמש</div>
       </div>
-      <div class="content">
+      <div v-if="users" class="content">
         <div v-if="users && user.id != 1" v-for="user in users" :key="user.id" class="user">
           <div class="name"><input type="text" name="username" v-model="user.name" minlength="2" required></div>
           <div class="mail"><input type="email" name="mail" v-model="user.email" minlength="2" required></div>
@@ -30,6 +30,9 @@
             <button v-if="user.is_current_user == null" type="submit" @click="makeUserAdmin(user.id)">הגדר כמנהל</button>
           </div>
         </div>
+      </div>
+      <div v-if="users == null" class="notice">
+        משתמשים לא נמצאו!
       </div>
     </div>
   </div>
@@ -73,17 +76,19 @@ export default {
         .post('/makeUserAdmin', { userId : id})
           .then(res => {
             this.users = res.data;
-            // console.log(res);
           });
     },
     renderSearch() {
-      console.log(this.searchQuery);
       axios
         .post('/userSearch', { search : this.searchQuery })
           .then(res => {
-            console.log(res.data);
-            this.users = res.data;
-          });
+            if(res.data.success != false) {
+              this.users = res.data;
+            }else {
+              this.users = null;
+            }
+          })
+          .catch(error => this.users = null);
     }
   }
 }
