@@ -101,7 +101,16 @@ export default {
         // axios.post('/showSinglePhotoFromMain');
       }
       else if(this.selected == 'survey') {
-        console.log(this.survey);
+        data.append('title', this.survey.title);
+        data.append('image', this.survey.image);
+        data.append('answers', JSON.stringify(this.survey.answers));
+        axios.post('/addSurvey', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(res => {
+          console.log('qweqweqwew');
+        });
       }
 
 
@@ -121,6 +130,9 @@ export default {
   flex-direction: column;
   align-items: stretch;
   padding-bottom: 40px;
+  .plate {
+    padding-bottom: 40px;
+  }
   .birthday-section{
     padding-bottom: 35px;
   }
