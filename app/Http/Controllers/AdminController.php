@@ -1180,7 +1180,7 @@ class AdminController extends Controller
         }
 
         foreach ($users as $key => $user) {
-            $admin = Admin::where('userId', $user->id)->first();
+            $admin = Admins::where('userId', $user->id)->first();
             $finalAllUsers[$key]['email'] = $user->email;
             $finalAllUsers[$key]['id'] = $user->id;
             if (!empty($admin)){
