@@ -621,8 +621,17 @@ class AdminController extends Controller
         }
         return json_encode(['success' => true]);
     }
-    public function getAllSurveys(){
-        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+    public function getAllSurveys(Request $request){
+        $like = $request->get('title');
+        if ($like == 0){
+            $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+        }else{
+            $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
+        }
+
+        if ($allSurveys->isEmpty()){
+            return json_encode(['success' => false]);
+        }
         foreach ($allSurveys as $key => $survey) {
             $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
             foreach ($variants as $variant) {
@@ -936,7 +945,7 @@ class AdminController extends Controller
 
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
-            foreach ($surveys as $survey) {
+            foreach ($surveys as $key => $survey) {
 //                $flag = true;
 //                if (\Auth::check()){
 //                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
@@ -962,7 +971,7 @@ class AdminController extends Controller
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
+                $fullPost['sections'][$key] = $questionsWithAnswers;
 
             }
 
@@ -1128,5 +1137,52 @@ class AdminController extends Controller
 
         return $post;
     }
+
+
+    public function postTitleSerach(Request $request){
+        $title = $request->get('title');
+        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        if (empty($posts)){
+            return json_encode(['success' => false]);
+        }
+        $mainSection = MainSection::find(1);
+        foreach ($posts as $key => $post) {
+            $finalAllPosts[$key]['post'] = $post;
+            if ($post->id == $mainSection->first){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+        }
+        return json_encode($finalAllPosts);
+
+    }
+
+
+    public function userSerach(Request $request){
+        $title = $request->get('title');
+        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        if (empty($posts)){
+            return json_encode(['success' => false]);
+        }
+        $mainSection = MainSection::find(1);
+
+        return json_encode($finalAllPosts);
+
+    }
+
 
 }
