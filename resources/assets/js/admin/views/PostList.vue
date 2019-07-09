@@ -48,12 +48,16 @@ export default {
       this.$router.push({ name: 'post-edit', params: { id: id } });
     },
     deletePost(id) {
-      axios
-        .post('/deletePost',{id : id})
-          .then(res => {
-              this.posts = res.data;
-              alert('פוסט נמחק!');
-          });
+      let result = confirm('למחוק את הפוסט?');
+      if(result == true) {
+        axios
+          .post('/deletePost',{id : id})
+            .then(res => {
+                this.posts = res.data;
+            });
+      }
+
+
     },
     renderSearch() {
       axios

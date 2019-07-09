@@ -65,11 +65,14 @@ export default {
           });
     },
     deleteUser(id) {
-      axios
-        .post('/deleteAdmin', { userId : id})
-          .then(res => {
-            this.users = res.data;
-          });
+      let result = confirm('מחק משתמש?');
+      if(result == true) {
+        axios
+          .post('/deleteAdmin', { userId : id})
+            .then(res => {
+              this.users = res.data;
+            });
+      }
     },
     makeUserAdmin(id) {
       axios

@@ -2848,13 +2848,31 @@ __webpack_require__.r(__webpack_exports__);
     PostAssessment: _posts_PostAssessment_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   methods: {
+    onReceive: function onReceive(res) {
+      this.selected = res.data.type;
+
+      if (res.data.type == 'comparablePhotos') {
+        this.selection.title = res.data.value.description;
+        this.selection.image1 = res.data.value.imageLeft;
+        this.selection.image2 = res.data.value.imageRight;
+      } else if (res.data.type == 'likableImage') {
+        this.ass.title = res.data.value.description;
+        this.ass.image = res.data.value.imgUrl;
+      } else if (res.data.type == 'survey') {
+        this.survey.title = res.data.value.question;
+        this.survey.image = res.data.image;
+        this.survey.answers = res.data.value.answers.map(function (n) {
+          return n.text;
+        }); // console.log(this.survey.image);
+      }
+    },
     select: function select(type) {
       this.selected = type;
     },
     save: function save() {
       var data = new FormData();
 
-      if (this.selected == 'selection') {
+      if (this.selected == 'comparablePhotos') {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
@@ -2862,18 +2880,16 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {
-          console.log('qweqweqwew');
+        }).then(function (res) {// console.log('qweqweqwew');
         }); // axios.post('/showCompareFromMain');
-      } else if (this.selected == 'assessment') {
+      } else if (this.selected == 'likableImage') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
         axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {
-          console.log('qweqweqwew');
+        }).then(function (res) {// console.log('qweqweqwew');
         }); // axios.post('/showSinglePhotoFromMain');
       } else if (this.selected == 'survey') {
         data.append('title', this.survey.title);
@@ -2883,23 +2899,16 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {
-          console.log('qweqweqwew');
+        }).then(function (res) {// console.log('qweqweqwew');
         });
       }
     }
   },
   created: function created() {
-    var _this = this;
-
     if (!this.mobile) {
-      axios.post('/getServiceForMainPage').then(function (res) {
-        _this.selected = res.data.type;
-      });
+      axios.post('/getServiceForMainPage').then(this.onReceive);
     } else {
-      axios.post('/getServiceForMainPageSecond').then(function (res) {
-        _this.selected = res.data.type;
-      });
+      axios.post('/getServiceForMainPageSecond').then(this.onReceive);
     }
   }
 });
@@ -3881,12 +3890,15 @@ __webpack_require__.r(__webpack_exports__);
     deletePost: function deletePost(id) {
       var _this2 = this;
 
-      axios.post('/deletePost', {
-        id: id
-      }).then(function (res) {
-        _this2.posts = res.data;
-        alert('פוסט נמחק!');
-      });
+      var result = confirm('למחוק את הפוסט?');
+
+      if (result == true) {
+        axios.post('/deletePost', {
+          id: id
+        }).then(function (res) {
+          _this2.posts = res.data;
+        });
+      }
     },
     renderSearch: function renderSearch() {
       var _this3 = this;
@@ -4549,11 +4561,15 @@ __webpack_require__.r(__webpack_exports__);
     deleteUser: function deleteUser(id) {
       var _this3 = this;
 
-      axios.post('/deleteAdmin', {
-        userId: id
-      }).then(function (res) {
-        _this3.users = res.data;
-      });
+      var result = confirm('מחק משתמש?');
+
+      if (result == true) {
+        axios.post('/deleteAdmin', {
+          userId: id
+        }).then(function (res) {
+          _this3.users = res.data;
+        });
+      }
     },
     makeUserAdmin: function makeUserAdmin(id) {
       var _this4 = this;
