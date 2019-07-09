@@ -1040,7 +1040,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
-        dd($request);
+//        dd($request);
 
         Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
@@ -1126,6 +1126,7 @@ class AdminController extends Controller
             'created_at' => $date,
         ]);
 //        dd($post);
+        HashtagPosts::where('postId', $post->id)->delete();
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
                 HashtagPosts::create([
@@ -1180,7 +1181,7 @@ class AdminController extends Controller
         }
 
         foreach ($users as $key => $user) {
-            $admin = Admin::where('userId', $user->id)->first();
+            $admin = Admins::where('userId', $user->id)->first();
             $finalAllUsers[$key]['email'] = $user->email;
             $finalAllUsers[$key]['id'] = $user->id;
             if (!empty($admin)){
