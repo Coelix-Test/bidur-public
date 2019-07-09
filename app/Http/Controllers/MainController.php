@@ -309,6 +309,8 @@ class MainController extends Controller
                 $data['id'] = $likableImage->id;
                 $data['imgUrl'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
+                $data['likes'] = LikesForSingleImage::where('serviceId', $likableImage->id)->count();
+                $data['dislikes'] = DisLikesForSingleImage::where('serviceId', $likableImage->id)->count();
 
                 $fullPost['sections'][$likableImage->order]['type'] = 'likableImage';
                 $fullPost['sections'][$likableImage->order]['value'] = $data;
