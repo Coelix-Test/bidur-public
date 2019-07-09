@@ -2360,6 +2360,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4722,7 +4725,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  width: 100%;\n  height: 400px;\n  margin-bottom: 0;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  margin-bottom: 0;\n  width: 100%;\n}\n.wrapper label.empty[data-v-b5a3eaa8] {\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
 
 // exports
 
@@ -26057,7 +26060,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
     _vm.value === ""
-      ? _c("label", [
+      ? _c("label", { staticClass: "empty" }, [
           _c("img", {
             attrs: { src: "/img/icons/edit-post-upload-image.svg", alt: "" }
           }),
@@ -26075,9 +26078,26 @@ var render = function() {
             }
           })
         ])
-      : typeof _vm.value === "string"
-      ? _c("img", { staticClass: "image", attrs: { src: _vm.value, alt: "" } })
-      : _c("img", { staticClass: "image", attrs: { src: _vm.image, alt: "" } })
+      : _c("label", [
+          _c("input", {
+            attrs: { type: "file", accept: "image/*" },
+            on: {
+              change: function($event) {
+                return _vm.onFileChange($event.target.files[0])
+              }
+            }
+          }),
+          _vm._v(" "),
+          typeof _vm.value === "string"
+            ? _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.value, alt: "" }
+              })
+            : _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.image, alt: "" }
+              })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -27938,8 +27958,7 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px",
-            display: "none"
+            "font-size": "16px"
           },
           attrs: { dir: "ltr" }
         },
