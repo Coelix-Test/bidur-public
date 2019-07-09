@@ -962,7 +962,7 @@ class AdminController extends Controller
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'] = $questionsWithAnswers;
+                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
 
             }
 
