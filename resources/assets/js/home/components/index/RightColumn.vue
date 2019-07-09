@@ -1,13 +1,16 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <img class="conftetti" src="img/happyBdayConfetti.svg" alt="">
+      <!-- <confetti-svg class="confetti"></confetti-svg> -->
+      <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
       <img class="hat" src="img/happyBdayHat.svg" alt="">
       <img class="gifts" src="img/happyBdayGifts.svg" alt="">
 
       <h2 class="typewriter"></h2>
       <div class="bdayInner">
-        <div class="overlay"></div>
+        <div class="overlay">
+          <confetti-svg class="confetti"></confetti-svg>
+        </div>
         <img :src="birthdayPost.img" alt="">
       </div>
     </article>
@@ -32,11 +35,16 @@
 </template>
 
 <script>
+import ConfettiSvg from './ConfettiFallSvg.vue';
+
 export default {
   props : {
     data : {
       requred: true,
     }
+  },
+  components: {
+    ConfettiSvg
   },
   data() {
     return {
@@ -102,13 +110,13 @@ export default {
 
 @keyframes rotateAnim2 {
   0% {
-    transform: rotate(10deg) scale(0.99);
+    transform: rotate(20deg) scale(0.99);
   }
   50% {
-    transform: rotate(4deg) scale(1.01);
+    transform: rotate(-20deg) scale(1.01);
   }
   100% {
-    transform: rotate(10deg) scale(0.99);
+    transform: rotate(20deg) scale(0.99);
   }
   /* 0% {
     transform: rotate(0deg);
@@ -158,9 +166,10 @@ export default {
     animation: rotateAnimNeg 5s ease infinite;
   }
   .birthdayPost > .hat{
-    transform-origin: 16% 10%;
-    animation: rotateAnim2 .3s ease infinite;
-    /* background: url('/img/rectangle.svg') no-repeat 16% 10%;
+    top: 5%;
+    transform-origin: 16% 14%;
+    animation: rotateAnim2 4s ease infinite;
+    /* background: url('/img/rectangle.svg') no-repeat 16% 14%;
     -webkit-background-size: 10px 10px;
     background-size: 10px 10px; */
   }
@@ -197,13 +206,15 @@ export default {
     animation: rotateAnim 5s ease infinite;
 
   }
-  .birthdayPost img {
+  .birthdayPost img,
+  .confetti {
     max-width:100%;
     width:100%;
     height: 100%;
     object-fit: cover;
   }
-  .birthdayPost > img {
+  .birthdayPost > img,
+  .confetti {
     object-fit: contain;
     position: absolute;
     z-index:2;

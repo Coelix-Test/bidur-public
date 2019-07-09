@@ -3581,6 +3581,86 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    setDurations: function setDurations() {
+      console.log($('.bdConfetty'));
+      $('.bdConfetty path').each(function (index) {
+        console.log(this);
+        var min = 2,
+            max = 5;
+        $(this).css('animation-delay', Math.random() * (-max + min) - min + 's');
+        $(this).css('animation-duration', (Math.random() * (max - min) + min) * 2.5 + 's');
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.setDurations();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=script&lang=js& ***!
@@ -3801,6 +3881,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfettiFallSvg_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfettiFallSvg.vue */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue");
 //
 //
 //
@@ -3834,11 +3915,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
       requred: true
     }
+  },
+  components: {
+    ConfettiSvg: _ConfettiFallSvg_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -5490,6 +5578,25 @@ exports.push([module.i, "@media (max-width: 768px) {\n.auth-btns[data-v-7b54dd56
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@-webkit-keyframes transformFall-data-v-16827099 {\n0% {\n    -webkit-transform: translateY(-100%);\n    transform: translateY(-100%);\n    opacity: 0;\n}\n1% {\n    opacity: 100%;\n}\n100% {\n    opacity: 100%;\n    -webkit-transform: translateY(100%);\n    transform: translateY(100%);\n}\n}\n@keyframes transformFall-data-v-16827099 {\n0% {\n    -webkit-transform: translateY(-100%);\n    transform: translateY(-100%);\n    opacity: 0;\n}\n1% {\n    opacity: 100%;\n}\n100% {\n    opacity: 100%;\n    -webkit-transform: translateY(100%);\n    transform: translateY(100%);\n}\n}\npath[data-v-16827099], rect[data-v-16827099] {\n  opacity: 1;\n  position: absolute;\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%);\n  -webkit-animation: transformFall-data-v-16827099 linear infinite;\n          animation: transformFall-data-v-16827099 linear infinite;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/Surveys.vue?vue&type=style&index=0&id=015f69b1&lang=scss&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/Surveys.vue?vue&type=style&index=0&id=015f69b1&lang=scss&scoped=true& ***!
@@ -5768,7 +5875,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n@-webkit-keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@-webkit-keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n@keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n@-webkit-keyframes rotateAnim2-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(10deg) scale(0.99);\n            transform: rotate(10deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(10deg) scale(0.99);\n            transform: rotate(10deg) scale(0.99);\n}\n  /* 0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  } */\n}\n@keyframes rotateAnim2-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(10deg) scale(0.99);\n            transform: rotate(10deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(10deg) scale(0.99);\n            transform: rotate(10deg) scale(0.99);\n}\n  /* 0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  } */\n}\n.right-column[data-v-37103d6a] {\n    flex-basis:50%;\n    padding-left: 8px;\n}\n.birthdayPost[data-v-37103d6a] {\n    width: 100%;\n    position: relative;\n    margin-bottom: 48px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color: #fff;\n    height:500px;\n    /* overflow: hidden; */\n    /* background-color: rgba(100,100,100,0.7); */\n    opacity: 0;\n    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n    padding:80px 32px 12px;\n}\n.birthdayPost.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\n.birthdayPost > div.bdayInner[data-v-37103d6a] {\n    color:#fff;\n    text-decoration: none;\n    width:100%;\n    height: 100%;\n    position: relative;\n}\n\n  /* animating images */\n.birthdayPost > .conftetti[data-v-37103d6a] {\n    -webkit-animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost > .hat[data-v-37103d6a]{\n    -webkit-transform-origin: 16% 10%;\n            transform-origin: 16% 10%;\n    -webkit-animation: rotateAnim2-data-v-37103d6a .3s ease infinite;\n            animation: rotateAnim2-data-v-37103d6a .3s ease infinite;\n    /* background: url('/img/rectangle.svg') no-repeat 16% 10%;\n    -webkit-background-size: 10px 10px;\n    background-size: 10px 10px; */\n}\n.birthdayPost > .gifts[data-v-37103d6a]{\n    -webkit-transform-origin: 15% 88%;\n            transform-origin: 15% 88%;\n    -webkit-animation: rotateAnim2-data-v-37103d6a 3s ease infinite;\n            animation: rotateAnim2-data-v-37103d6a 3s ease infinite;\n\n    /* background: url('/img/rectangle.svg') no-repeat 18% 118%;\n    -webkit-background-size: 10px 10px;\n    background-size: 10px 10px; */\n}\n  /* animation images end */\n.birthdayPost h2[data-v-37103d6a] {\n    font-size: 2em;\n    text-align: center;\n    margin-bottom: 0;\n    position: absolute;\n    right:32px;\n    top:0;\n    color:#F2C94C;\n    text-align: right;\n    z-index:5;\n    font-family: 'Levin','Assistant',sans-serif;\n}\n.birthdayPost .overlay[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    left:0;\n    right:0;\n    bottom:0;\n    border:4px solid #F2C94C;\n    -webkit-animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost img[data-v-37103d6a] {\n    max-width:100%;\n    width:100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n.birthdayPost > img[data-v-37103d6a] {\n    -o-object-fit: contain;\n       object-fit: contain;\n    position: absolute;\n    z-index:2;\n    pointer-events: none;\n}\n.birthdayPost .overlay img[data-v-37103d6a] {\n    -o-object-fit: cover;\n       object-fit: cover;\n}\nul.posts[data-v-37103d6a] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n    flex-wrap:wrap;\n    -webkit-box-align: start;\n            align-items: flex-start;\n    -webkit-box-pack: justify;\n            justify-content: space-between;\n    margin: 0;\n    padding: 0;\n    margin-bottom: 24px;\n    opacity: 0;\n    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: transform 1s ease, opacity 1s ease;\n    transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n}\nul.posts.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\nul.posts li[data-v-37103d6a] {\n    list-style-type: none;\n    flex-basis: calc(50% - 8px);\n    box-sizing: border-box;\n    height:241px;\n    position: relative;\n}\nul.posts li .background-square[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -2;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    opacity: 1;\n    -webkit-transform: translate(8px, 8px);\n            transform: translate(8px, 8px);\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li[data-v-37103d6a]:nth-child(3), ul.posts li[data-v-37103d6a]:nth-child(4) {\n    align-self: flex-end;\n}\nul.posts li[data-v-37103d6a]:nth-child(2) {\n    margin-top: 24px;\n}\nul.posts li[data-v-37103d6a]:nth-child(3) {\n    margin-bottom: auto;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n    margin-top: 48px;\n}\nul.posts li:nth-child(2) .background-square[data-v-37103d6a],\n  ul.posts li:nth-child(3) .background-square[data-v-37103d6a] {\n    background-color: #F2C94C;\n}\nul.posts li a[data-v-37103d6a] {\n    width:100%;\n    height:100%;\n    box-sizing: border-box;\n    position: relative;\n    padding:80px 24px 16px;\n    min-height:150px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color:#fff;\n    overflow: hidden;\n    text-decoration: none;\n    position: relative;\n}\nul.posts li a .overlay[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -1;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    /* opacity: .3; */\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li:nth-child(1) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left bottom, left top, from(#3E64C0), color-stop(16.13%, #3BB9FE), color-stop(68.63%, rgba(0, 240, 255, 0)));\n    background: linear-gradient(0deg, #3E64C0 0%, #3BB9FE 16.13%, rgba(0, 240, 255, 0) 68.63%);\n}\nul.posts li:nth-child(2) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(71.7%, rgba(255, 251, 149, 0)), color-stop(82.92%, rgba(255, 149, 155, 0.83)), color-stop(89.04%, rgba(255, 100, 129, 0.885638)), color-stop(101.62%, #FF004D));\n    background: linear-gradient(180deg, rgba(255, 251, 149, 0) 71.7%, rgba(255, 149, 155, 0.83) 82.92%, rgba(255, 100, 129, 0.885638) 89.04%, #FF004D 101.62%);\n}\nul.posts li:nth-child(3) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n    opacity: .5;\n}\nul.posts li:nth-child(4) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(55.56%, #FDA014), to(#1389EF));\n    background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);\n    opacity: .5;\n}\nul.posts li:hover img[data-v-37103d6a] {\n    -webkit-transform:scale(1.1);\n            transform:scale(1.1);\n}\nul.posts li a:hover .overlay[data-v-37103d6a] {\n    background: rgba(0,0,0,0.2);\n}\nul.posts li a h2[data-v-37103d6a] {\n    font-weight: 700;\n    margin-bottom: 0;\n    font-size: 24px;\n    text-transform: uppercase;\n}\nul.posts li a p[data-v-37103d6a] {\n    margin-bottom: 0;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n}\nul.posts li a img[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    bottom: 0;\n    right: 0;\n    left: 0;\n    width:100%;\n    height:100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    z-index: -2;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li a p .post-date[data-v-37103d6a] {\n    border-right:1px solid #fff;\n    padding-right: 6px;\n    margin-right: 4px;\n    /* white-space: nowrap; */\n}\n@media (max-width:768px) {\n.right-column[data-v-37103d6a] {\n      padding-left: 0;\n      -webkit-box-ordinal-group:4;\n              order:3;\n      display: -webkit-box;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: reverse;\n              flex-direction: column-reverse;\n}\nul.posts li[data-v-37103d6a] {\n      flex-basis: calc(50% - 4px);\n}\nul.posts li a h2[data-v-37103d6a] {\n      font-size: 16px;\n      line-height: 16px;\n}\nul.posts li a[data-v-37103d6a] {\n      padding:80px 8px 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(2),\n    ul.posts li[data-v-37103d6a]:nth-child(3) {\n      margin-top: 0;\n      margin-bottom: 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n      margin-top: 0;\n}\nul.posts li .background-square[data-v-37103d6a] {\n      background-color: transparent;\n      display: none;\n}\n.birthdayPost h2[data-v-37103d6a] {\n      right:8px;\n      top:8px;\n      font-size: 1.6em;\n}\n.birthdayPost[data-v-37103d6a] {\n      padding: 0;\n      margin-top: 16px;\n      margin-bottom: 32px;\n      padding-top: 120px;\n      box-sizing: content-box;\n}\nul.posts li a p[data-v-37103d6a] {\n      font-size: 13px;\n      line-height: 13px;\n      margin-top: 8px;\n}\n}\n@media (max-width:550px) {\nul.posts[data-v-37103d6a] {\n      height:auto;\n}\n.birthdayPost[data-v-37103d6a] {\n      height: 200px;\n      margin-bottom: 16px;\n}\nul.posts li[data-v-37103d6a] {\n      /* flex-basis:100%;\n      height:auto; */\n      margin-bottom: 8px;\n}\n}\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@keyframes rotateAnimNeg-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n50% {\n    -webkit-transform: rotate(3deg) scale(1);\n            transform: rotate(3deg) scale(1);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.97);\n            transform: rotate(2deg) scale(0.97);\n}\n}\n@-webkit-keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n@keyframes rotateAnim-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(4deg) scale(1.01);\n            transform: rotate(4deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(2deg) scale(0.99);\n            transform: rotate(2deg) scale(0.99);\n}\n}\n@-webkit-keyframes rotateAnim2-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(20deg) scale(0.99);\n            transform: rotate(20deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(-20deg) scale(1.01);\n            transform: rotate(-20deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(20deg) scale(0.99);\n            transform: rotate(20deg) scale(0.99);\n}\n  /* 0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  } */\n}\n@keyframes rotateAnim2-data-v-37103d6a {\n0% {\n    -webkit-transform: rotate(20deg) scale(0.99);\n            transform: rotate(20deg) scale(0.99);\n}\n50% {\n    -webkit-transform: rotate(-20deg) scale(1.01);\n            transform: rotate(-20deg) scale(1.01);\n}\n100% {\n    -webkit-transform: rotate(20deg) scale(0.99);\n            transform: rotate(20deg) scale(0.99);\n}\n  /* 0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  } */\n}\n.right-column[data-v-37103d6a] {\n    flex-basis:50%;\n    padding-left: 8px;\n}\n.birthdayPost[data-v-37103d6a] {\n    width: 100%;\n    position: relative;\n    margin-bottom: 48px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color: #fff;\n    height:500px;\n    /* overflow: hidden; */\n    /* background-color: rgba(100,100,100,0.7); */\n    opacity: 0;\n    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease;\n    transition: transform 0.5s ease, opacity 0.5s ease, -webkit-transform 0.5s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n    padding:80px 32px 12px;\n}\n.birthdayPost.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\n.birthdayPost > div.bdayInner[data-v-37103d6a] {\n    color:#fff;\n    text-decoration: none;\n    width:100%;\n    height: 100%;\n    position: relative;\n}\n\n  /* animating images */\n.birthdayPost > .conftetti[data-v-37103d6a] {\n    -webkit-animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnimNeg-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost > .hat[data-v-37103d6a]{\n    top: 5%;\n    -webkit-transform-origin: 16% 14%;\n            transform-origin: 16% 14%;\n    -webkit-animation: rotateAnim2-data-v-37103d6a 4s ease infinite;\n            animation: rotateAnim2-data-v-37103d6a 4s ease infinite;\n    /* background: url('/img/rectangle.svg') no-repeat 16% 14%;\n    -webkit-background-size: 10px 10px;\n    background-size: 10px 10px; */\n}\n.birthdayPost > .gifts[data-v-37103d6a]{\n    -webkit-transform-origin: 15% 88%;\n            transform-origin: 15% 88%;\n    -webkit-animation: rotateAnim2-data-v-37103d6a 3s ease infinite;\n            animation: rotateAnim2-data-v-37103d6a 3s ease infinite;\n\n    /* background: url('/img/rectangle.svg') no-repeat 18% 118%;\n    -webkit-background-size: 10px 10px;\n    background-size: 10px 10px; */\n}\n  /* animation images end */\n.birthdayPost h2[data-v-37103d6a] {\n    font-size: 2em;\n    text-align: center;\n    margin-bottom: 0;\n    position: absolute;\n    right:32px;\n    top:0;\n    color:#F2C94C;\n    text-align: right;\n    z-index:5;\n    font-family: 'Levin','Assistant',sans-serif;\n}\n.birthdayPost .overlay[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    left:0;\n    right:0;\n    bottom:0;\n    border:4px solid #F2C94C;\n    -webkit-animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n            animation: rotateAnim-data-v-37103d6a 5s ease infinite;\n}\n.birthdayPost img[data-v-37103d6a],\n  .confetti[data-v-37103d6a] {\n    max-width:100%;\n    width:100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n.birthdayPost > img[data-v-37103d6a],\n  .confetti[data-v-37103d6a] {\n    -o-object-fit: contain;\n       object-fit: contain;\n    position: absolute;\n    z-index:2;\n    pointer-events: none;\n}\n.birthdayPost .overlay img[data-v-37103d6a] {\n    -o-object-fit: cover;\n       object-fit: cover;\n}\nul.posts[data-v-37103d6a] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n    flex-wrap:wrap;\n    -webkit-box-align: start;\n            align-items: flex-start;\n    -webkit-box-pack: justify;\n            justify-content: space-between;\n    margin: 0;\n    padding: 0;\n    margin-bottom: 24px;\n    opacity: 0;\n    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: opacity 1s ease, -webkit-transform 1s ease;\n    transition: transform 1s ease, opacity 1s ease;\n    transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n    -webkit-transform: translateX(100px);\n            transform: translateX(100px);\n}\nul.posts.in-viewport[data-v-37103d6a] {\n    -webkit-transform: translateX(0);\n            transform: translateX(0);\n    opacity: 1;\n}\nul.posts li[data-v-37103d6a] {\n    list-style-type: none;\n    flex-basis: calc(50% - 8px);\n    box-sizing: border-box;\n    height:241px;\n    position: relative;\n}\nul.posts li .background-square[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -2;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    opacity: 1;\n    -webkit-transform: translate(8px, 8px);\n            transform: translate(8px, 8px);\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li[data-v-37103d6a]:nth-child(3), ul.posts li[data-v-37103d6a]:nth-child(4) {\n    align-self: flex-end;\n}\nul.posts li[data-v-37103d6a]:nth-child(2) {\n    margin-top: 24px;\n}\nul.posts li[data-v-37103d6a]:nth-child(3) {\n    margin-bottom: auto;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n    margin-top: 48px;\n}\nul.posts li:nth-child(2) .background-square[data-v-37103d6a],\n  ul.posts li:nth-child(3) .background-square[data-v-37103d6a] {\n    background-color: #F2C94C;\n}\nul.posts li a[data-v-37103d6a] {\n    width:100%;\n    height:100%;\n    box-sizing: border-box;\n    position: relative;\n    padding:80px 24px 16px;\n    min-height:150px;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n    color:#fff;\n    overflow: hidden;\n    text-decoration: none;\n    position: relative;\n}\nul.posts li a .overlay[data-v-37103d6a] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    pointer-events: none;\n    z-index: -1;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    /* opacity: .3; */\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li:nth-child(1) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left bottom, left top, from(#3E64C0), color-stop(16.13%, #3BB9FE), color-stop(68.63%, rgba(0, 240, 255, 0)));\n    background: linear-gradient(0deg, #3E64C0 0%, #3BB9FE 16.13%, rgba(0, 240, 255, 0) 68.63%);\n}\nul.posts li:nth-child(2) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(71.7%, rgba(255, 251, 149, 0)), color-stop(82.92%, rgba(255, 149, 155, 0.83)), color-stop(89.04%, rgba(255, 100, 129, 0.885638)), color-stop(101.62%, #FF004D));\n    background: linear-gradient(180deg, rgba(255, 251, 149, 0) 71.7%, rgba(255, 149, 155, 0.83) 82.92%, rgba(255, 100, 129, 0.885638) 89.04%, #FF004D 101.62%);\n}\nul.posts li:nth-child(3) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(47.95%, rgba(255, 131, 131, 0)), to(#4200FF));\n    background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);\n    opacity: .5;\n}\nul.posts li:nth-child(4) a .overlay[data-v-37103d6a] {\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(55.56%, #FDA014), to(#1389EF));\n    background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);\n    opacity: .5;\n}\nul.posts li:hover img[data-v-37103d6a] {\n    -webkit-transform:scale(1.1);\n            transform:scale(1.1);\n}\nul.posts li a:hover .overlay[data-v-37103d6a] {\n    background: rgba(0,0,0,0.2);\n}\nul.posts li a h2[data-v-37103d6a] {\n    font-weight: 700;\n    margin-bottom: 0;\n    font-size: 24px;\n    text-transform: uppercase;\n}\nul.posts li a p[data-v-37103d6a] {\n    margin-bottom: 0;\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n            flex-direction: row;\n}\nul.posts li a img[data-v-37103d6a] {\n    position: absolute;\n    top:0;\n    bottom: 0;\n    right: 0;\n    left: 0;\n    width:100%;\n    height:100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    z-index: -2;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\nul.posts li a p .post-date[data-v-37103d6a] {\n    border-right:1px solid #fff;\n    padding-right: 6px;\n    margin-right: 4px;\n    /* white-space: nowrap; */\n}\n@media (max-width:768px) {\n.right-column[data-v-37103d6a] {\n      padding-left: 0;\n      -webkit-box-ordinal-group:4;\n              order:3;\n      display: -webkit-box;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: reverse;\n              flex-direction: column-reverse;\n}\nul.posts li[data-v-37103d6a] {\n      flex-basis: calc(50% - 4px);\n}\nul.posts li a h2[data-v-37103d6a] {\n      font-size: 16px;\n      line-height: 16px;\n}\nul.posts li a[data-v-37103d6a] {\n      padding:80px 8px 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(2),\n    ul.posts li[data-v-37103d6a]:nth-child(3) {\n      margin-top: 0;\n      margin-bottom: 8px;\n}\nul.posts li[data-v-37103d6a]:nth-child(4) {\n      margin-top: 0;\n}\nul.posts li .background-square[data-v-37103d6a] {\n      background-color: transparent;\n      display: none;\n}\n.birthdayPost h2[data-v-37103d6a] {\n      right:8px;\n      top:8px;\n      font-size: 1.6em;\n}\n.birthdayPost[data-v-37103d6a] {\n      padding: 0;\n      margin-top: 16px;\n      margin-bottom: 32px;\n      padding-top: 120px;\n      box-sizing: content-box;\n}\nul.posts li a p[data-v-37103d6a] {\n      font-size: 13px;\n      line-height: 13px;\n      margin-top: 8px;\n}\n}\n@media (max-width:550px) {\nul.posts[data-v-37103d6a] {\n      height:auto;\n}\n.birthdayPost[data-v-37103d6a] {\n      height: 200px;\n      margin-bottom: 16px;\n}\nul.posts li[data-v-37103d6a] {\n      /* flex-basis:100%;\n      height:auto; */\n      margin-bottom: 8px;\n}\n}\n", ""]);
 
 // exports
 
@@ -36840,6 +36947,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../../node_modules/sass-loader/lib/loader.js??ref--9-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/Surveys.vue?vue&type=style&index=0&id=015f69b1&lang=scss&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/Surveys.vue?vue&type=style&index=0&id=015f69b1&lang=scss&scoped=true& ***!
@@ -39746,6 +39883,430 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "svg",
+    {
+      staticClass: "bdConfetty",
+      attrs: {
+        width: "732",
+        height: "635",
+        viewBox: "0 0 732 635",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        "xmlns:xlink": "http://www.w3.org/1999/xlink"
+      }
+    },
+    [
+      _c("path", {
+        attrs: {
+          d:
+            "M606.601 180.375C606.601 180.375 605.72 188.303 611.636 203.936C617.552 219.569 610.413 226.638 603.524 237.197C594.623 250.847 603.59 271.171 618.867 278.386",
+          stroke: "white",
+          "stroke-miterlimit": "10",
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round"
+        }
+      }),
+      _vm._v(" "),
+      _c("rect", {
+        attrs: {
+          x: "562.833",
+          y: "76.9443",
+          width: "78.884",
+          height: "103.073",
+          fill: "url(#pattern0)"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M603.655 184.722C603.944 185.779 604.944 182.859 606.64 183.665C609.203 184.881 610.978 184.445 607.862 181.128C605.443 178.551 603.274 183.321 603.655 184.722Z",
+          fill: "#08604F"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M607.68 180.004C607.732 180.638 609.941 180.995 606.523 181.259C603.105 181.536 605.234 180.836 605.182 180.202C605.129 179.568 602.921 179.211 606.339 178.947C609.757 178.67 607.64 179.37 607.68 180.004Z",
+          fill: "#015345"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          opacity: "0.45",
+          d:
+            "M600.408 87.7276C605.207 86.8422 609.914 86.829 614.344 87.5822C610.045 84.9261 605.089 83.4065 599.803 83.38C583.409 83.3272 570.051 97.7177 569.985 115.531C572.812 102.131 584.723 90.648 600.408 87.7276Z",
+          fill: "url(#paint0_radial)"
+        }
+      }),
+      _vm._v(" "),
+      _c("rect", {
+        attrs: {
+          x: "621.996",
+          y: "160.196",
+          width: "94.6607",
+          height: "108.359",
+          fill: "url(#pattern1)"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          opacity: "0.45",
+          d:
+            "M682.763 175.261C688.351 176.846 693.373 179.344 697.686 182.476C694.491 177.375 690.008 173.12 684.381 170.305C666.934 161.57 645.175 169.843 635.762 188.806C645.819 176.001 664.515 170.067 682.763 175.261Z",
+          fill: "url(#paint1_radial)"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M647.581 267.709C637.944 296.807 660.754 323.302 642.953 364.756C622.982 411.231 665.356 434.793 634.749 481.479",
+          stroke: "#EEEEEE",
+          "stroke-miterlimit": "10",
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M642.966 269.678C642.782 270.854 645.175 268.489 646.608 270.101C648.764 272.532 650.854 272.969 649.066 268.225C647.673 264.538 643.203 268.132 642.966 269.678Z",
+          fill: "#A00041"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M649.381 267.048C649.144 267.696 651.314 269.11 647.58 267.709C643.846 266.308 646.41 266.678 646.646 266.031C646.883 265.383 644.714 263.969 648.447 265.37C652.181 266.757 649.617 266.401 649.381 267.048Z",
+          fill: "#780031"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M632.934 446.911C632.934 446.911 614.159 482.206 634.761 524.466C664.514 585.491 642.768 598.507 611.083 625.98",
+          stroke: "#EEEEEE",
+          "stroke-miterlimit": "10",
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round"
+        }
+      }),
+      _vm._v(" "),
+      _c("rect", {
+        attrs: {
+          x: "590.442",
+          y: "305.555",
+          width: "117.011",
+          height: "138.752",
+          fill: "url(#pattern2)"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M628.229 448.655C628.255 450.161 630.74 446.699 632.857 448.391C636.078 450.967 638.76 451.06 635.525 445.51C633.014 441.228 628.189 446.673 628.229 448.655Z",
+          fill: "#561056"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M635.682 443.989C635.524 444.848 638.535 446.143 633.579 445.205C628.622 444.267 631.896 444.161 632.053 443.302C632.211 442.443 629.2 441.148 634.157 442.086C639.114 443.025 635.84 443.13 635.682 443.989Z",
+          fill: "#430D42"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          opacity: "0.45",
+          d:
+            "M656.299 321.544C664.49 321.161 672.339 322.245 679.517 324.518C672.97 319.113 665.068 315.426 656.259 314.171C628.979 310.299 603.486 331.178 599.292 360.818C607.088 339.159 629.518 322.787 656.299 321.544Z",
+          fill: "url(#paint2_radial)"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M544.981 43.0089C544.981 43.0089 544.81 47.8057 527.232 55.5626C509.654 63.3195 502.41 78.3576 504.881 89.2595C504.881 89.2595 495.836 76.3754 508.497 61.5092C521.158 46.6429 544.166 36.0713 544.166 36.0713L544.981 43.0089Z",
+          fill: "#FB8C00"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M517.53 0.0625C517.53 0.0625 506.184 18.2324 523.775 26.1611C541.366 34.0898 544.982 39.0452 544.982 43.0095C544.982 43.0095 554.842 30.7861 541.195 23.8485C527.548 16.9109 512.6 15.4309 517.53 0.0625Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M502.331 73.1382C502.331 73.1382 494.192 90.2509 506.196 105.778C518.199 121.305 549.096 147.575 543.837 167.053C543.837 167.053 554.762 146.32 534.305 125.758C513.848 105.196 502.331 95.0081 502.331 73.1382Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M710.466 96.3831C710.466 96.3831 710.965 103.374 695.294 106.875C679.622 110.377 678.465 115.042 679.622 118.927C679.622 118.927 671.786 111.17 682.909 103.757C694.636 95.947 708.388 96.4359 706.89 88.5865C706.903 88.5997 712.687 86.2872 710.466 96.3831Z",
+          fill: "#880E4F"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M681.567 50.1064C681.567 50.1064 667.447 69.1617 687.759 80.0504C708.072 90.9391 711.937 90.9391 710.202 97.7446C710.202 97.7446 715.422 84.3319 700.526 77.9097C685.616 71.4875 675.559 66.4263 681.567 50.1064Z",
+          fill: "#D81B60"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M680.857 105.316C680.857 105.316 677.308 120.103 700.131 120.103L695.872 125.165L701.486 130.609C701.486 130.596 662.438 121.887 680.857 105.316Z",
+          fill: "#D81B60"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M16.4321 396.47C16.4321 396.47 16.0114 403.395 29.2113 406.87C42.4112 410.346 43.3841 414.971 42.4112 418.829C42.4112 418.829 49.0112 411.138 39.6371 403.791C29.7635 396.047 18.1675 396.523 19.4297 388.753C19.4428 388.753 14.5783 386.454 16.4321 396.47Z",
+          fill: "#F57C00"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M40.7813 350.563C40.7813 350.563 52.6796 369.46 35.5618 380.256C18.4571 391.052 15.1966 391.052 16.656 397.805C16.656 397.805 12.2516 384.498 24.8073 378.128C37.363 371.785 45.843 366.764 40.7813 350.563Z",
+          fill: "#FF9800"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M41.3725 405.323C41.3725 405.323 44.3701 419.991 25.1356 419.991L28.7248 425L24.0049 430.404C24.0049 430.404 56.8995 421.775 41.3725 405.323Z",
+          fill: "#FF9800"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M144.208 33.6931C144.208 33.6931 144.721 45.454 157.566 55.0344C170.411 64.6149 172.83 66.28 170.923 69.61C170.923 69.61 176.642 62.831 168.254 55.8009C159.866 48.7708 142.052 43.2736 147.521 22.3154C147.508 22.3154 144.208 26.0287 144.208 33.6931Z",
+          fill: "#00BFA5"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M151.071 87.2513C151.071 87.2513 152.11 90.3567 161.05 92.5503C169.99 94.7571 165.402 102.131 165.402 102.131C165.402 102.131 168.452 100.307 169.214 97.5321C169.214 97.5321 170.832 98.6818 170.832 100.215C170.832 100.215 174.263 91.4931 165.875 87.6609C157.487 83.8287 150.519 83.1812 152.044 77.499C152.057 77.5122 147.508 81.1859 151.071 87.2513Z",
+          fill: "#00BFA5"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M164.43 2.88965C163.154 8.77009 141.658 9.91975 144.209 33.6926C144.209 33.6926 144.314 19.7513 155.91 15.0337C170.662 9.03438 164.43 2.88965 164.43 2.88965Z",
+          fill: "#1DE9B6"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M172.818 67.6944C171.069 70.5619 170.661 71.5926 159.591 75.2927C151.585 77.9752 149.573 82.2963 151.072 87.2385C151.072 87.2385 143.591 77.3145 155.279 70.7337C165.521 64.9854 170.267 66.5976 171.858 60.1621C171.858 60.1885 174.54 64.8797 172.818 67.6944Z",
+          fill: "#1DE9B6"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M569.646 566.936C569.646 566.936 569.554 569.526 560.048 573.728C550.543 577.93 546.625 586.057 547.953 591.951C547.953 591.951 543.062 584.986 549.911 576.939C556.761 568.891 569.199 563.183 569.199 563.183L569.646 566.936Z",
+          fill: "#E00E40"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M554.788 543.705C554.788 543.705 548.648 553.536 558.167 557.818C567.673 562.112 569.632 564.782 569.632 566.936C569.632 566.936 574.969 560.328 567.581 556.575C560.218 552.823 552.132 552.016 554.788 543.705Z",
+          fill: "#FF1744"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M546.571 583.229C546.571 583.229 542.166 592.493 548.661 600.884C555.156 609.288 571.866 623.494 569.013 634.039C569.013 634.039 574.929 622.82 563.859 611.707C552.789 600.58 546.571 595.056 546.571 583.229Z",
+          fill: "#FF1744"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M461.783 17.9551C461.783 17.9551 455.039 21.0737 464.571 27.1788C464.571 27.1788 463.756 25.0248 466.201 23.4655C466.201 23.4655 460.613 20.783 461.783 17.9551Z",
+          fill: "#F50057"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M24.7503 290.966C24.7503 290.966 36.7275 294.507 19.7938 301.418C19.7938 301.418 21.24 298.974 16.9014 297.203C16.9145 297.203 26.8276 294.177 24.7503 290.966Z",
+          fill: "#F50057"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M622.891 39.6268C622.891 39.6268 634.473 41.7279 634.842 22.5669C634.842 22.5669 632.199 26.7162 627.321 26.6237C627.321 26.637 628.531 36.4685 622.891 39.6268Z",
+          fill: "#F50057"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M702.773 408.825C702.773 408.825 691.426 411.944 699.302 429.387C699.302 429.387 699.906 424.498 704.35 422.463C704.337 422.476 699.039 414.111 702.773 408.825Z",
+          fill: "#F50057"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M325.038 16.9375C325.038 16.9375 315.506 23.8751 328.982 37.4199C328.982 37.4199 327.825 32.6231 331.283 29.1609C331.283 29.1609 323.395 23.2144 325.038 16.9375Z",
+          fill: "#F50057"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M601.04 545.794C601.04 545.794 608.521 554.925 621.129 540.561C621.129 540.561 616.449 542.015 612.781 538.764C612.794 538.764 607.377 547.05 601.04 545.794Z",
+          fill: "#E91E63"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M486.58 564.624C486.58 564.624 492.273 568.522 485.87 578.05C485.87 578.05 486.159 574.892 484.029 572.87C484.029 572.87 487.921 568.575 486.58 564.624Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M689.587 284.292C689.587 284.292 694.596 288.494 703.457 281.556C703.457 281.556 700.223 282.31 697.751 280.83C697.751 280.816 693.912 284.794 689.587 284.292Z",
+          fill: "#1DE9B6"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M577.836 90.7406C577.836 90.7406 583.108 97.176 592.009 87.0537C592.009 87.0537 588.709 88.0845 586.119 85.7852C586.132 85.7852 582.306 91.6259 577.836 90.7406Z",
+          fill: "#1DE9B6"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M717.827 19.4354C717.827 19.4354 723.099 25.8708 732 15.7486C732 15.7486 728.7 16.7661 726.11 14.48C726.11 14.48 722.297 20.3207 717.827 19.4354Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M723.729 353.298C723.729 353.298 723.992 365.151 712.238 352.307C712.238 352.307 715.012 352.796 715.38 348.342C715.394 348.329 721.297 356.192 723.729 353.298Z",
+          fill: "#9C27B0"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M116.601 109.094C116.601 109.094 113.038 120.366 131.878 123.221C131.878 123.221 128.118 120.049 128.841 115.199C128.841 115.199 118.981 115.12 116.601 109.094Z",
+          fill: "#9C27B0"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M376.431 48.0443C376.431 48.0443 383.911 57.1754 396.52 42.8113C396.52 42.8113 391.839 44.2649 388.171 41.0142C388.184 41.0274 382.768 49.3128 376.431 48.0443Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M714.212 162.587C714.212 162.587 704.759 167.781 718.301 177.586C718.301 177.586 717.118 174.084 720.536 171.494C720.536 171.507 712.621 167.212 714.212 162.587Z",
+          fill: "#FFC107"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M206.369 21.589C206.369 21.589 215.467 20.479 212.588 5.62598C212.588 5.62598 211.286 9.44495 207.579 10.5285C207.579 10.5285 210.116 17.8229 206.369 21.589Z",
+          fill: "#FFC107"
+        }
+      })
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=template&id=a94489d6&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=template&id=a94489d6&scoped=true& ***!
@@ -40008,11 +40569,6 @@ var render = function() {
           },
           [
             _c("img", {
-              staticClass: "conftetti",
-              attrs: { src: "img/happyBdayConfetti.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("img", {
               staticClass: "hat",
               attrs: { src: "img/happyBdayHat.svg", alt: "" }
             }),
@@ -40025,7 +40581,12 @@ var render = function() {
             _c("h2", { staticClass: "typewriter" }),
             _vm._v(" "),
             _c("div", { staticClass: "bdayInner" }, [
-              _c("div", { staticClass: "overlay" }),
+              _c(
+                "div",
+                { staticClass: "overlay" },
+                [_c("confetti-svg", { staticClass: "confetti" })],
+                1
+              ),
               _vm._v(" "),
               _c("img", { attrs: { src: _vm.birthdayPost.img, alt: "" } })
             ])
@@ -62848,6 +63409,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderTopLine_vue_vue_type_template_id_7b54dd56_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderTopLine_vue_vue_type_template_id_7b54dd56_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true&");
+/* harmony import */ var _ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=script&lang=js& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "16827099",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/home/components/index/ConfettiFallSvg.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfettiFallSvg.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../../node_modules/sass-loader/lib/loader.js??ref--9-3!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
