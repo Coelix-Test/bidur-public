@@ -1,8 +1,8 @@
 <template>
-  <div v-if="survey">
+  <div v-if="survey" :class="{ mobile: this.mobile }">
     <template v-if="survey.type == 'survey'">
       <div class="selected-poll">
-        <img src="img/rihanna.png" alt="">
+        <img :src="survey.image" alt="">
         <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
       </div>
     </template>
@@ -31,11 +31,6 @@ export default {
   },
   methods: {
     onReceive(res) {
-      if(res.data.value.answerVariants) {
-        res.data.value.answers = Object.values(res.data.value.answerVariants);
-      }
-
-      console.log(res.data.value.answers);
 
       this.survey = res.data;
     },
@@ -58,5 +53,20 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
+.mobile {
+  display: none;
+
+  img {
+    width: 100%;
+  }
+
+  @media (max-width: 992px) {
+    display: block;
+  }
+}
+
+
+
 </style>
