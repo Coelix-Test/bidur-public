@@ -750,16 +750,18 @@ class MainController extends Controller
             }
             elseif ($section->getTable() == 'surveys'){
                 $data['type'] = 'survey';
-                $data['value']['id'] = $section->id;
+                $data['id'] = $section->id;
+                $data['image'] = $section->image;
                 $data['value']['question'] = $section->question;
                 $variants = SurveyAnswerVariant::where('surveyId', $section->id)->get();
                 foreach ($variants as $variant) {
                     $allVariants['answerId'] = $variant->id;
-                    $allVariants['answer'] = $variant->question;
-                    $allVariants['order'] = $variant->order;
+                    $allVariants['text'] = $variant->question;
+                    $allVariants['value'] = $variant->order;
                     $allVariants['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+                    $all[] = $allVariants;
                 }
-                $data['value']['answerVariants'] = $allVariants;
+                $data['value']['answers'] = $all;
                 return json_encode($data);
             }
             else{
