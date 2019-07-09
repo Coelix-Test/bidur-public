@@ -1040,7 +1040,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
-        dd($request);
+//        dd($request);
 
         Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
