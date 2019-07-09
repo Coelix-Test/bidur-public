@@ -549,11 +549,69 @@ class AdminController extends Controller
     }
 
     public function addNewSurveyToMain(Request $request){
-        dd($request);
+        $title = $request->get('title');
+        $answers = json_decode($request->get('answers'));
+        $image = $request->file('image');
+        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/compare');
+        $image->move($destinationPath, $name);
+
+
+        $currentSurvey = Survey::where('postId', 0)->first();
+        $deletableId = $currentSurvey->id;
+        Survey::where('postId', 0)->delete();
+        SelectOne::where('postId', 0)->delete();
+        SingleLikableImage::where('postId', 0)->delete();
+        SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        $survey = Survey::create([
+            'postId' => 1,
+            'authorUd' => 1,
+            'order' => 1,
+            'question' => $title,
+            'image' => '/images/postImages/'.$name
+        ]);
+
+        foreach ($answers as $key => $answer) {
+            SurveyAnswerVariant::create([
+                'surveyId' => $survey->id,
+                'question' => $answer,
+                'order' => $key+1,
+            ]);
+        }
+        return json_encode(['success' => true]);
     }
 
     public function addNewSurveyToMainSecond(Request $request){
-        dd($request);
+        $title = $request->get('title');
+        $answers = json_decode($request->get('answers'));
+        $image = $request->file('image');
+        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/compare');
+        $image->move($destinationPath, $name);
+
+
+        $currentSurvey = Survey::where('postId', -1)->first();
+        $deletableId = $currentSurvey->id;
+        Survey::where('postId', -1)->delete();
+        SelectOne::where('postId', -1)->delete();
+        SingleLikableImage::where('postId', -1)->delete();
+        SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        $survey = Survey::create([
+            'postId' => -1,
+            'authorUd' => 1,
+            'order' => 1,
+            'question' => $title,
+            'image' => '/images/postImages/'.$name
+        ]);
+
+        foreach ($answers as $key => $answer) {
+            SurveyAnswerVariant::create([
+                'surveyId' => $survey->id,
+                'question' => $answer,
+                'order' => $key+1,
+            ]);
+        }
+        return json_encode(['success' => true]);
     }
     public function getAllSurveys(){
         $allSurveys = Survey::orderBy('created_at', 'desc')->get();
