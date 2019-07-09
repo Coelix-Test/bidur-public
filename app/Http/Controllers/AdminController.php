@@ -558,11 +558,15 @@ class AdminController extends Controller
 
 
         $currentSurvey = Survey::where('postId', 0)->first();
-        $deletableId = $currentSurvey->id;
+        if (isset($currentSurvey)){
+            $deletableId = $currentSurvey->id;
+        }
         Survey::where('postId', 0)->delete();
         SelectOne::where('postId', 0)->delete();
         SingleLikableImage::where('postId', 0)->delete();
-        SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        if (isset($currentSurvey)){
+            SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        }
         $survey = Survey::create([
             'postId' => 1,
             'authorUd' => 1,
@@ -591,11 +595,15 @@ class AdminController extends Controller
 
 
         $currentSurvey = Survey::where('postId', -1)->first();
-        $deletableId = $currentSurvey->id;
+        if (isset($currentSurvey)){
+            $deletableId = $currentSurvey->id;
+        }
         Survey::where('postId', -1)->delete();
         SelectOne::where('postId', -1)->delete();
         SingleLikableImage::where('postId', -1)->delete();
-        SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        if (isset($currentSurvey)){
+            SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
+        }
         $survey = Survey::create([
             'postId' => -1,
             'authorUd' => 1,
