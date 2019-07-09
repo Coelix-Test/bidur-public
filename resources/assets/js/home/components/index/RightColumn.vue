@@ -101,7 +101,7 @@ export default {
 }
 
 @keyframes rotateAnim2 {
-  /* 0% {
+  0% {
     transform: rotate(10deg) scale(0.99);
   }
   50% {
@@ -109,13 +109,13 @@ export default {
   }
   100% {
     transform: rotate(10deg) scale(0.99);
-  } */
-  0% {
+  }
+  /* 0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
-  }
+  } */
 }
 
   .right-column {
@@ -158,13 +158,19 @@ export default {
     animation: rotateAnimNeg 5s ease infinite;
   }
   .birthdayPost > .hat{
-    transform-origin: 50% 50%;
-    animation: rotateAnim .3s ease infinite;
+    transform-origin: 16% 10%;
+    animation: rotateAnim2 .3s ease infinite;
+    /* background: url('/img/rectangle.svg') no-repeat 16% 10%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
   }
   .birthdayPost > .gifts{
-    transform-origin: 91.7% 11.8%;
-    /* transform-origin: 8.3% 11.8%; */
+    transform-origin: 15% 88%;
     animation: rotateAnim2 3s ease infinite;
+
+    /* background: url('/img/rectangle.svg') no-repeat 18% 118%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
   }
   /* animation images end */
 
