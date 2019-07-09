@@ -1,7 +1,10 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <img src="img/happyBdayOverlay.svg" alt="">
+      <img class="conftetti" src="img/happyBdayConfetti.svg" alt="">
+      <img class="hat" src="img/happyBdayHat.svg" alt="">
+      <img class="gifts" src="img/happyBdayGifts.svg" alt="">
+
       <h2 class="typewriter"></h2>
       <div class="bdayInner">
         <div class="overlay"></div>
@@ -97,6 +100,24 @@ export default {
   }
 }
 
+@keyframes rotateAnim2 {
+  /* 0% {
+    transform: rotate(10deg) scale(0.99);
+  }
+  50% {
+    transform: rotate(4deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(10deg) scale(0.99);
+  } */
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
   .right-column {
     flex-basis:50%;
     padding-left: 8px;
@@ -131,9 +152,22 @@ export default {
     height: 100%;
     position: relative;
   }
-  .birthdayPost > img {
+
+  /* animating images */
+  .birthdayPost > .conftetti {
     animation: rotateAnimNeg 5s ease infinite;
   }
+  .birthdayPost > .hat{
+    transform-origin: 50% 50%;
+    animation: rotateAnim .3s ease infinite;
+  }
+  .birthdayPost > .gifts{
+    transform-origin: 91.7% 11.8%;
+    /* transform-origin: 8.3% 11.8%; */
+    animation: rotateAnim2 3s ease infinite;
+  }
+  /* animation images end */
+
   .birthdayPost h2 {
     font-size: 2em;
     text-align: center;
