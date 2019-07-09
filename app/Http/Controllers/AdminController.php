@@ -569,7 +569,7 @@ class AdminController extends Controller
         }
         $survey = Survey::create([
             'postId' => 1,
-            'authorUd' => 1,
+            'authorId' => 1,
             'order' => 1,
             'question' => $title,
             'image' => '/images/postImages/'.$name
