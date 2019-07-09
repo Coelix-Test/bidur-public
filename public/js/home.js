@@ -4006,6 +4006,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    addVote: function addVote(obj, id) {
+      console.log(obj);
+      axios.post('/addSurveyVote', {
+        surveyId: id,
+        answer: obj.value
+      }).then(function (response) {// console.log(response);
+      });
+    },
     onReceive: function onReceive(res) {
       this.survey = res.data;
     },
@@ -5499,7 +5507,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, ".selected-poll[data-v-015f69b1] {\n  border: 4px solid #F2C94C;\n}\n.selected-poll img[data-v-015f69b1] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
 
 // exports
 
