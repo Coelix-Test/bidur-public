@@ -629,7 +629,7 @@ class AdminController extends Controller
             $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
         }
 
-        if (empty($allSurveys)){
+        if ($allSurveys->isEmpty()){
             return json_encode(['success' => false]);
         }
         foreach ($allSurveys as $key => $survey) {
