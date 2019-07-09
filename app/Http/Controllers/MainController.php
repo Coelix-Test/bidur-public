@@ -172,26 +172,6 @@ class MainController extends Controller
             }
         }
 
-//        $allTypesOfPosts['trending'] = $finalAllPosts;
-//        $allTypesOfPosts['hot'] = $finalHotPosts;
-//        $allTypesOfPosts['recent'] = $finalRecentPosts;
-//
-//        foreach ($allTypesOfPosts['trending'] as $key => $trendingPost) {
-//
-//            $allTrendingPosts[$key] = $trendingPost;
-//            unset($allTypesOfPosts['trending'][$key]['post']);
-//            $allTypesOfPosts['trending'][$key] = $trendingPost['rating'];
-//        }
-//        arsort($allTypesOfPosts['trending']);
-//        foreach ($allTypesOfPosts['trending'] as $outerKey => $trendingPost) {
-//            $tmp = ['rating' => $trendingPost, 'post' => $allTrendingPosts[$outerKey]];
-//            $allTypesOfPosts['trending'][$outerKey] = $tmp;
-//        }
-//
-//        foreach ($allTypesOfPosts['trending'] as $key => $postAndRating) {
-//            $allTypesOfPosts['trending'][$key]['post'] = $postAndRating['post'];
-//        }
-        //dd($allTypesOfPosts);
         return $finalAllPosts;
     }
 

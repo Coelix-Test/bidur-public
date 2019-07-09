@@ -1129,4 +1129,36 @@ class AdminController extends Controller
         return $post;
     }
 
+
+    public function postTitleSerach(Request $request){
+        $title = $request->get('title');
+        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        if (empty($posts)){
+            return json_encode(['success' => false]);
+        }
+        $mainSection = MainSection::find(1);
+        foreach ($posts as $key => $post) {
+            $finalAllPosts[$key]['post'] = $post;
+            if ($post->id == $mainSection->first){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+        }
+        return json_encode($finalAllPosts);
+
+    }
 }
