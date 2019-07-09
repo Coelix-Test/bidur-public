@@ -53,6 +53,7 @@ export default {
         label{
           margin-bottom: 0;
           width: 100%;
+          cursor: pointer;
         }
         label.empty{
             height: 400px;

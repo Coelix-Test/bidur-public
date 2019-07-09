@@ -328,6 +328,7 @@ export default {
         text-align: center;
         padding: 8px 25px 2px 25px;
         margin-left: 16px;
+        margin-bottom: 15px;
         cursor: pointer;
         span{
             display: block;
