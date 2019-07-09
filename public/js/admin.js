@@ -2360,6 +2360,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2859,7 +2862,16 @@ __webpack_require__.r(__webpack_exports__);
           console.log('qweqweqwew');
         }); // axios.post('/showSinglePhotoFromMain');
       } else if (this.selected == 'survey') {
-        console.log(this.survey);
+        data.append('title', this.survey.title);
+        data.append('image', this.survey.image);
+        data.append('answers', JSON.stringify(this.survey.answers));
+        axios.post('/addSurvey', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (res) {
+          console.log('qweqweqwew');
+        });
       }
     }
   }
@@ -4712,7 +4724,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  width: 100%;\n  height: 400px;\n  margin-bottom: 0;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n}\n.wrapper label.empty[data-v-b5a3eaa8] {\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
 
 // exports
 
@@ -4845,7 +4857,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
+exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .plate[data-v-6f35ac06] {\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
 
 // exports
 
@@ -4883,7 +4895,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}", ""]);
+exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}\n@media (max-width: 1530px) {\n.main-post-title[data-v-a4301eac] {\n    height: 65px;\n    font-size: 40px;\n}\n}", ""]);
 
 // exports
 
@@ -5168,7 +5180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}\n.post-section[data-v-e3f0f34a] {\n  margin-bottom: 20px;\n}\n.submit-post[data-v-e3f0f34a] {\n  font-size: 24px;\n  border-radius: 10px;\n  padding: 0 150px;\n  height: 80px;\n  margin-top: 30px;\n}\n.add-section-buttons-line[data-v-e3f0f34a] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 30px;\n}\n.add-section-buttons-line .add-section[data-v-e3f0f34a] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.add-section-buttons-line .add-section span[data-v-e3f0f34a] {\n  display: block;\n}\n.add-section-buttons-line .add-section img[data-v-e3f0f34a] {\n  height: 24px;\n  width: auto;\n}\n.add-section-buttons-line .add-section.add-image-text[data-v-e3f0f34a] {\n  padding-right: 10px;\n  padding-left: 10px;\n}\n.survey-section[data-v-e3f0f34a],\n.assessment-section[data-v-e3f0f34a],\n.selection-section[data-v-e3f0f34a] {\n  width: 75%;\n}", ""]);
+exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}\n.post-section[data-v-e3f0f34a] {\n  margin-bottom: 20px;\n}\n.submit-post[data-v-e3f0f34a] {\n  font-size: 24px;\n  border-radius: 10px;\n  padding: 0 150px;\n  height: 80px;\n  margin-top: 30px;\n}\n.add-section-buttons-line[data-v-e3f0f34a] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 30px;\n}\n.add-section-buttons-line .add-section[data-v-e3f0f34a] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  margin-bottom: 15px;\n  cursor: pointer;\n}\n.add-section-buttons-line .add-section span[data-v-e3f0f34a] {\n  display: block;\n}\n.add-section-buttons-line .add-section img[data-v-e3f0f34a] {\n  height: 24px;\n  width: auto;\n}\n.add-section-buttons-line .add-section.add-image-text[data-v-e3f0f34a] {\n  padding-right: 10px;\n  padding-left: 10px;\n}\n.survey-section[data-v-e3f0f34a],\n.assessment-section[data-v-e3f0f34a],\n.selection-section[data-v-e3f0f34a] {\n  width: 75%;\n}", ""]);
 
 // exports
 
@@ -26047,7 +26059,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
     _vm.value === ""
-      ? _c("label", [
+      ? _c("label", { staticClass: "empty" }, [
           _c("img", {
             attrs: { src: "/img/icons/edit-post-upload-image.svg", alt: "" }
           }),
@@ -26065,9 +26077,26 @@ var render = function() {
             }
           })
         ])
-      : typeof _vm.value === "string"
-      ? _c("img", { staticClass: "image", attrs: { src: _vm.value, alt: "" } })
-      : _c("img", { staticClass: "image", attrs: { src: _vm.image, alt: "" } })
+      : _c("label", [
+          _c("input", {
+            attrs: { type: "file", accept: "image/*" },
+            on: {
+              change: function($event) {
+                return _vm.onFileChange($event.target.files[0])
+              }
+            }
+          }),
+          _vm._v(" "),
+          typeof _vm.value === "string"
+            ? _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.value, alt: "" }
+              })
+            : _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.image, alt: "" }
+              })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -27894,8 +27923,7 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px",
-            display: "none"
+            "font-size": "16px"
           },
           attrs: { dir: "ltr" }
         },

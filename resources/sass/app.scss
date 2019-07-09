@@ -28,13 +28,13 @@ $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
-  lg: 992px,
+  lg: 1360px,
   xl: 1530px
 );
 $container-max-widths: (
   sm: 540px,
   md: 720px,
-  lg: 960px,
+  lg: 1330px,
   xl: 1500px
 );
 @import '~normalize.css';

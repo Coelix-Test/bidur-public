@@ -1,13 +1,16 @@
 <template>
     <div class="wrapper">
 
-        <label v-if="value === ''">
+        <label class="empty" v-if="value === ''">
             <img src="/img/icons/edit-post-upload-image.svg" alt="">
             <div class="theme-btn theme-btn-red upload-btn">העלאת תמונה</div>
             <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
         </label>
-        <img v-else-if="typeof value === 'string'" :src="value" class="image" alt="">
-        <img v-else :src="image" class="image" alt="">
+        <label v-else>
+          <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
+          <img v-if="typeof value === 'string'" :src="value" class="image" alt="">
+          <img v-else :src="image" class="image" alt="">
+        </label>
     </div>
 </template>
 
@@ -48,9 +51,12 @@ export default {
             display: none;
         }
         label{
-            width: 100%;
+          margin-bottom: 0;
+          width: 100%;
+          cursor: pointer;
+        }
+        label.empty{
             height: 400px;
-            margin-bottom: 0;
             background-color: #E0E0E0;
             display: -webkit-flex;
             display: -ms-flex;

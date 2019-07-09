@@ -97,5 +97,10 @@ export default {
         margin-left: 14px;
     }
 }
-
+@media(max-width: 1530px){
+  .main-post-title{
+    height: 65px;
+    font-size: 40px;
+  }
+}
 </style>

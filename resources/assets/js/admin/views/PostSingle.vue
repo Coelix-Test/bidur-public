@@ -113,7 +113,7 @@
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
             </form>
-            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display:none;">
+            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;">
                 <template v-if="celebrities !== undefined">
                     title: {{title}} <br>
                     author: {{author}} <br>
@@ -328,6 +328,7 @@ export default {
         text-align: center;
         padding: 8px 25px 2px 25px;
         margin-left: 16px;
+        margin-bottom: 15px;
         cursor: pointer;
         span{
             display: block;
