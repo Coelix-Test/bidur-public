@@ -2,18 +2,8 @@
 <template>
   <div class="right-column-bot">
 
-    <div v-if="survey">
-      <template v-if="survey.type == 'survey'">
-        <div class="selected-poll">
-          <img src="img/rihanna.png" alt="">
-          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
-        </div>
-      </template>
-
-      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
-    </div>
-
+    <surveys/>
+    <surveys mobile/>
 
     <div class="latest-posts" v-if="windowWidth > 768" >
       <h2>חדשות נוספות</h2>
@@ -47,39 +37,30 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import VuePoll from 'vue-poll'
-import LikeSurvey from './../common/LikeSurvey'
-import OneSurvey from './../common/OneSurvey'
+import Surveys from './Surveys';
 
 export default {
   props : {
     data : {
       requred: true,
-    }
+    },
   },
   data() {
     return {
-      posts : [],
-      survey: [],
+      posts: [],
       windowWidth : document.documentElement.clientWidth,
     }
   },
   created() {
-    axios.post('/getServiceForMainPage').then(res => {
-      this.survey = res.data;
-      // console.log(this.survey);
-    });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);
       this.posts = res.data;
     });
   },
   components: {
-    VuePoll,
     Carousel,
     Slide,
-    LikeSurvey,
-    OneSurvey,
+    Surveys,
   },
   methods: {
     addVote(obj, id){
