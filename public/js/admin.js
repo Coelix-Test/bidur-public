@@ -2423,14 +2423,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     options: {
       type: Array
-    },
-    index: {
-      type: Number
     },
     deletable: {
       type: Boolean,
@@ -2449,7 +2445,7 @@ __webpack_require__.r(__webpack_exports__);
     value: {}
   },
   data: function data() {
-    console.log(this.value);
+    //console.log(this.value);
     return {
       query: this.value ? this.value[this.label] : ''
     };
@@ -2926,6 +2922,10 @@ __webpack_require__.r(__webpack_exports__);
       allCelebrities: []
     };
   },
+  computed: {// allCelebritiesFiltered(){
+    //   return this.allCelebrities.filter(n => !this.celebrities.find(z => n.id == z.id));
+    // }
+  },
   components: {
     SearchableInput: _common_SearchableInput_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2950,6 +2950,16 @@ __webpack_require__.r(__webpack_exports__);
           delete item.img;
         });
         _this.allCelebrities = response.data;
+      });
+    },
+    allCelebritiesSelectable: function allCelebritiesSelectable(i) {
+      var _this2 = this;
+
+      //exclude all already selected celebrities (except already selected in current select)
+      return this.allCelebrities.filter(function (n) {
+        return !_this2.celebrities.find(function (z, index) {
+          return n.id == z.id && index !== i;
+        });
       });
     },
     addCelebrity: function addCelebrity() {
@@ -26130,7 +26140,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "searchable-input" }, [
-    _vm._v("\n    " + _vm._s(_vm.index) + "\n    "),
     _c("input", {
       directives: [
         {
@@ -26659,7 +26668,10 @@ var render = function() {
       _vm._l(_vm.celebrities, function(celebrity, i) {
         return _c("searchable-input", {
           key: celebrity.id ? celebrity.id : celebrity.uuid,
-          attrs: { placeholder: "Add celebrity", options: _vm.allCelebrities },
+          attrs: {
+            placeholder: "Add celebrity",
+            options: _vm.allCelebritiesSelectable(i)
+          },
           on: {
             deleteSelf: function($event) {
               return _vm.deleteCelebrity(i)
