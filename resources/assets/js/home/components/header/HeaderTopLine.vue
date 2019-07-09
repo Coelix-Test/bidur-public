@@ -26,8 +26,11 @@
                 <a href="#" @click="logout" class="btn-common btn-gold-gradient">להתנתק</a>
               </template>
               <template v-else>
-                <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
-                <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
+                <button
+                  class="btn-common th-btn-gold"
+                  @click="$root.openReg"
+                >הרשמה</button>
+                <a href="#" class="btn-common btn-gold-text" @click="$root.openLogin">
                   <span>כניסה</span>
                 </a>
               </template>

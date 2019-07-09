@@ -53,6 +53,31 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+@keyframes rotateAnimNeg {
+  0% {
+    transform: rotate(2deg) scale(0.97);
+  }
+  50% {
+    transform: rotate(3deg) scale(1);
+  }
+  100% {
+    transform: rotate(2deg) scale(0.97);
+  }
+}
+
+@keyframes rotateAnim {
+  0% {
+    transform: rotate(2deg) scale(0.99);
+  }
+  50% {
+    transform: rotate(4deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(2deg) scale(0.99);
+  }
+}
+
   .right-column {
     flex-basis:50%;
     padding-left: 8px;
@@ -87,6 +112,9 @@ export default {
     height: 100%;
     position: relative;
   }
+  .birthdayPost > img {
+    animation: rotateAnimNeg 5s ease infinite;
+  }
   .birthdayPost h2 {
     font-size: 2em;
     text-align: center;
@@ -99,6 +127,7 @@ export default {
     z-index:5;
     font-family: 'Levin','Assistant',sans-serif;
   }
+
   .birthdayPost .overlay {
     position: absolute;
     top:0;
@@ -106,7 +135,7 @@ export default {
     right:0;
     bottom:0;
     border:4px solid #F2C94C;
-    transform:rotate(3deg);
+    animation: rotateAnim 5s ease infinite;
 
   }
   .birthdayPost img {
