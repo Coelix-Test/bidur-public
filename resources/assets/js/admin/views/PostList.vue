@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <div class="search">
-      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your post name">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
     </div>
     <div class="posts-wrapper">
       <div v-for="post in posts" v-if="posts" class="post" :key="post.post.id">
@@ -48,12 +48,16 @@ export default {
       this.$router.push({ name: 'post-edit', params: { id: id } });
     },
     deletePost(id) {
-      axios
-        .post('/deletePost',{id : id})
-          .then(res => {
-              this.posts = res.data;
-              alert('פוסט נמחק!');
-          });
+      let result = confirm('למחוק את הפוסט?');
+      if(result == true) {
+        axios
+          .post('/deletePost',{id : id})
+            .then(res => {
+                this.posts = res.data;
+            });
+      }
+
+
     },
     renderSearch() {
       axios

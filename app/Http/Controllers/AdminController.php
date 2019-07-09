@@ -683,7 +683,7 @@ class AdminController extends Controller
             'authorId' => 1,
             'order' => 1,
             'question' => $title,
-            'image' => '/images/postImages/'.$name
+            'image' => '/images/compare/'.$name
         ]);
 
         foreach ($answers as $key => $answer) {
@@ -1346,6 +1346,23 @@ class AdminController extends Controller
 
         return json_encode($finalAllUsers);
 
+    }
+
+
+    public function tagNameSearch(Request $request){
+        $search = $request->get('title');
+        $tags = Hashtag::where('text', $search)->orWhere('text', 'like', '%'.$search.'%')->get();
+
+        if ($tags->isEmpty()){
+            return json_encode(['success' => false]);
+        }
+
+        foreach ($tags as $key => $tag) {
+            $finalTags[$key]['id'] = $tag->id;
+            $finalTags[$key]['img'] = $tag->image;
+            $finalTags[$key]['name'] = $tag->text;
+        }
+        return json_encode($finalTags);
     }
 
 

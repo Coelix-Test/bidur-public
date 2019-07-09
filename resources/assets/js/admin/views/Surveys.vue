@@ -1,8 +1,8 @@
 <template>
   <div class="surveys">
-    <div class="search">
+    <!-- <div class="search">
       <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your survey name">
-    </div>
+    </div> -->
     <div class="surveys-wrapper">
       <single-survey v-if="surveys" v-for="survey in surveys" :data="survey" :key="survey.id"  />
       <div v-if="surveys == null">

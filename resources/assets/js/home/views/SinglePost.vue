@@ -334,7 +334,7 @@ export default {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
     padding:0 0 0;
-    border:4px solid #E4A913;
+    border:4px solid #E4A913!important;
   }
   section.survey {
     max-width: 550px;

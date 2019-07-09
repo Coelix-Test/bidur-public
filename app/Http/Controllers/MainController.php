@@ -398,10 +398,10 @@ class MainController extends Controller
         $hashtagId = $request->get('hashtag_id');
         $page = $request->get('page');
         if ($page == 0){
-            $hashtagPosts = HashtagPosts::where('hashtag_id', $hashtagId)->offset(0)->take(24)->get();
+            $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->offset(0)->take(24)->get();
         }else{
             $offset = $page * 24;
-            $hashtagPosts = HashtagPosts::where('hashtag_id', $hashtagId)->offset($offset)->take(24)->get();
+            $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->offset($offset)->take(24)->get();
         }
 
 
@@ -796,6 +796,7 @@ class MainController extends Controller
 
 
     }
+
 
 
 
