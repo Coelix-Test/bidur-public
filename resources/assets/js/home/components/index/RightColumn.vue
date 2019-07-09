@@ -2,7 +2,7 @@
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
       <img src="img/happyBdayOverlay.svg" alt="">
-      <h2>{{birthdayPost.text}}</h2>
+      <h2 class="typewriter"></h2>
       <div class="bdayInner">
         <div class="overlay"></div>
         <img :src="birthdayPost.img" alt="">
@@ -46,8 +46,27 @@ export default {
       .post('/getMainBday')
         .then(res => {
           this.birthdayPost = res.data;
-          // console.log(this.birthdayPost);
         });
+  },
+  watch : {
+    birthdayPost : function() {
+      let i = 0;
+      let firstPostTitle = this.birthdayPost.text;
+      let speed = 50;
+      document.getElementsByClassName('typewriter')[0].innerHTML = '';
+      function typeWriter() {
+
+        if (i < firstPostTitle.length) {
+          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      };
+      typeWriter();
+    }
+  },
+  mounted() {
+
   }
 }
 </script>

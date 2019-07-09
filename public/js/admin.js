@@ -2360,6 +2360,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2376,6 +2379,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onFileChange: function onFileChange(file) {
+      this.fileToBase64(file);
+      this.$emit('update:value', file);
+    },
+    fileToBase64: function fileToBase64(file) {
       var _this = this;
 
       var reader = new FileReader();
@@ -2383,7 +2390,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.image = reader.result;
       }, false);
       reader.readAsDataURL(file);
-      this.$emit('update:value', file);
+    }
+  },
+  created: function created() {
+    if (typeof this.value !== 'string') {
+      this.fileToBase64(this.value);
     }
   }
 });
@@ -2802,13 +2813,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2854,8 +2858,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
-        });
-        axios.post('/showCompareFromMain');
+        }); // axios.post('/showCompareFromMain');
       } else if (this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
@@ -2865,12 +2868,19 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
+        }); // axios.post('/showSinglePhotoFromMain');
+      } else if (this.selected == 'survey') {
+        data.append('title', this.survey.title);
+        data.append('image', this.survey.image);
+        data.append('answers', JSON.stringify(this.survey.answers));
+        axios.post('/addSurvey', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (res) {
+          console.log('qweqweqwew');
         });
-        axios.post('/showSinglePhotoFromMain');
-      } // else if() {
-      //
-      // }
-
+      }
     }
   }
 });
@@ -4008,6 +4018,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
 
 
 
@@ -4206,22 +4217,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         _this.title = response.data.mainTitle;
         _this.author = response.data.author;
         _this.date = new Date(response.data.date * 1000);
-        var postSections = response.data.sections;
-        postSections = Object.keys(postSections).map(function (i) {
-          return postSections[i];
-        });
-        console.log(postSections);
-        _this.celebrities = response.data.hashtags.map(function (i) {
-          return {
-            id: i.id,
-            name: i.title
-          };
-        });
-        console.log(postSections);
-        _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+
+        if (response.data.sections) {
+          var postSections = response.data.sections;
+          postSections = Object.keys(postSections).map(function (i) {
+            return postSections[i];
+          });
+          _this.sections = postSections; // console.log(postSections);
+        }
+
+        if (response.data.hashtags) {
+          _this.celebrities = response.data.hashtags.map(function (i) {
+            return {
+              id: i.id,
+              name: i.title
+            };
+          });
+        } // console.log(postSections);
+        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
         // sections
+
       });
     }
   }
@@ -4715,7 +4732,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  width: 100%;\n  height: 400px;\n  margin-bottom: 0;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n}\n.wrapper label.empty[data-v-b5a3eaa8] {\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
 
 // exports
 
@@ -4848,7 +4865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
+exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .plate[data-v-6f35ac06] {\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
 
 // exports
 
@@ -4886,7 +4903,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}", ""]);
+exports.push([module.i, ".main-post-title[data-v-a4301eac] {\n  height: 85px;\n  font-size: 48px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  width: 100%;\n  padding: 0 17px;\n}\n.main-post-title[data-v-a4301eac]::-webkit-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-moz-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]:-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::-ms-input-placeholder {\n  color: #BDBDBD;\n}\n.main-post-title[data-v-a4301eac]::placeholder {\n  color: #BDBDBD;\n}\n.inputs-row[data-v-a4301eac] {\n  margin-bottom: 12px;\n}\n.ico-input[data-v-a4301eac] {\n  margin-left: 37px;\n}\n.ico-input .ico[data-v-a4301eac] {\n  margin-left: 14px;\n}\n@media (max-width: 1530px) {\n.main-post-title[data-v-a4301eac] {\n    height: 65px;\n    font-size: 40px;\n}\n}", ""]);
 
 // exports
 
@@ -4943,7 +4960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".imagetext-wrap[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n}\n.imagetext-wrap.flex-row-reverse .col-img[data-v-417ddb05] {\n  margin-right: 0;\n  margin-left: 35px;\n}\n.col-text[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.col-img[data-v-417ddb05] {\n  width: 40%;\n  margin-right: 35px;\n}\n.title-block[data-v-417ddb05] {\n  margin-bottom: 10px;\n}\n.text-editor[data-v-417ddb05] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.text-editor .tox-tinymce[data-v-417ddb05] {\n  height: 100% !important;\n}\n.imagetext-actions[data-v-417ddb05] {\n  height: 60px;\n  background-color: #F5F5F5;\n  margin-top: 25px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  position: relative;\n}\n.delete-self[data-v-417ddb05] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 15px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}\n.change-image-position[data-v-417ddb05] {\n  width: 110px;\n  height: 38px;\n  background: url(\"/img/icons/edit-post-change-image-position.svg\") no-repeat center;\n  background-size: cover;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".imagetext-wrap[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  padding-top: 25px;\n  padding-right: 14px;\n}\n.imagetext-wrap.flex-row-reverse .col-img[data-v-417ddb05] {\n  margin-right: 0;\n  margin-left: 35px;\n}\n.col-text[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.col-img[data-v-417ddb05] {\n  width: 40%;\n  margin-right: 35px;\n}\n.title-block[data-v-417ddb05] {\n  margin-bottom: 10px;\n}\n.text-editor[data-v-417ddb05] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.text-editor .tox-tinymce[data-v-417ddb05] {\n  height: 100% !important;\n}\n.imagetext-actions[data-v-417ddb05] {\n  height: 60px;\n  background-color: #F5F5F5;\n  margin-top: 25px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  position: relative;\n}\n.delete-self[data-v-417ddb05] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 15px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}\n.change-image-position[data-v-417ddb05] {\n  width: 110px;\n  height: 38px;\n  background: url(\"/img/icons/edit-post-change-image-position.svg\") no-repeat center;\n  background-size: cover;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -5171,7 +5188,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}\n.post-section[data-v-e3f0f34a] {\n  margin-bottom: 20px;\n}\n.submit-post[data-v-e3f0f34a] {\n  font-size: 24px;\n  border-radius: 10px;\n  padding: 0 150px;\n  height: 80px;\n  margin-top: 30px;\n}\n.add-section-buttons-line[data-v-e3f0f34a] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 30px;\n}\n.add-section-buttons-line .add-section[data-v-e3f0f34a] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.add-section-buttons-line .add-section span[data-v-e3f0f34a] {\n  display: block;\n}\n.add-section-buttons-line .add-section img[data-v-e3f0f34a] {\n  height: 24px;\n  width: auto;\n}\n.add-section-buttons-line .add-section.add-image-text[data-v-e3f0f34a] {\n  padding-right: 10px;\n  padding-left: 10px;\n}\n.survey-section[data-v-e3f0f34a],\n.assessment-section[data-v-e3f0f34a],\n.selection-section[data-v-e3f0f34a] {\n  width: 75%;\n}", ""]);
+exports.push([module.i, ".container[data-v-e3f0f34a] {\n  padding-top: 30px;\n}\n.post-section[data-v-e3f0f34a] {\n  margin-bottom: 20px;\n}\n.submit-post[data-v-e3f0f34a] {\n  font-size: 24px;\n  border-radius: 10px;\n  padding: 0 150px;\n  height: 80px;\n  margin-top: 30px;\n}\n.add-section-buttons-line[data-v-e3f0f34a] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 30px;\n}\n.add-section-buttons-line .add-section[data-v-e3f0f34a] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  margin-bottom: 15px;\n  cursor: pointer;\n}\n.add-section-buttons-line .add-section span[data-v-e3f0f34a] {\n  display: block;\n}\n.add-section-buttons-line .add-section img[data-v-e3f0f34a] {\n  height: 24px;\n  width: auto;\n}\n.add-section-buttons-line .add-section.add-image-text[data-v-e3f0f34a] {\n  padding-right: 10px;\n  padding-left: 10px;\n}\n.survey-section[data-v-e3f0f34a],\n.assessment-section[data-v-e3f0f34a],\n.selection-section[data-v-e3f0f34a] {\n  width: 75%;\n}", ""]);
 
 // exports
 
@@ -26050,7 +26067,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
     _vm.value === ""
-      ? _c("label", [
+      ? _c("label", { staticClass: "empty" }, [
           _c("img", {
             attrs: { src: "/img/icons/edit-post-upload-image.svg", alt: "" }
           }),
@@ -26068,9 +26085,26 @@ var render = function() {
             }
           })
         ])
-      : typeof _vm.value === "string"
-      ? _c("img", { staticClass: "image", attrs: { src: _vm.value, alt: "" } })
-      : _c("img", { staticClass: "image", attrs: { src: _vm.image, alt: "" } })
+      : _c("label", [
+          _c("input", {
+            attrs: { type: "file", accept: "image/*" },
+            on: {
+              change: function($event) {
+                return _vm.onFileChange($event.target.files[0])
+              }
+            }
+          }),
+          _vm._v(" "),
+          typeof _vm.value === "string"
+            ? _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.value, alt: "" }
+              })
+            : _c("img", {
+                staticClass: "image",
+                attrs: { src: _vm.image, alt: "" }
+              })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -26485,13 +26519,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "surveys" },
-    [
-      _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "plate shadow-section" }, [
+  return _c("div", { staticClass: "surveys" }, [
+    _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "plate shadow-section" },
+      [
         _c("div", { staticClass: "types" }, [
           _c(
             "div",
@@ -26527,7 +26561,7 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Assessment")])
+              _c("span", [_vm._v("הערכה")])
             ]
           ),
           _vm._v(" "),
@@ -26546,89 +26580,55 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Selection")])
+              _c("span", [_vm._v("להשוות")])
             ]
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("assessment")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("הערכה")])
-          ]
-        ),
+        _vm.selected == "selection"
+          ? _c(
+              "PostSelection",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSelection",
+                _vm.selection,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "survey"
+          ? _c(
+              "PostSurvey",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSurvey",
+                _vm.survey,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "assessment"
+          ? _c(
+              "PostAssessment",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostAssessment",
+                _vm.ass,
+                false,
+                true
+              )
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("selection")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("להשוות")])
-          ]
+          "button",
+          { staticClass: "theme-btn-red big-btn", on: { click: _vm.save } },
+          [_vm._v("לשמור")]
         )
-      ]),
-      _vm._v(" "),
-      _vm.selected == "selection"
-        ? _c(
-            "PostSelection",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSelection",
-              _vm.selection,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "survey"
-        ? _c(
-            "PostSurvey",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSurvey",
-              _vm.survey,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "assessment"
-        ? _c(
-            "PostAssessment",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostAssessment",
-              _vm.ass,
-              false,
-              true
-            )
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("לשמור")])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26973,7 +26973,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
+  return _c("div", { staticClass: "wrapper imagetext-component" }, [
     _c("div", { staticClass: "imagetext-wrap", class: _vm.directionClass }, [
       _c(
         "div",
@@ -27674,6 +27674,7 @@ var render = function() {
                         "post-image-text",
                         _vm._b(
                           {
+                            staticClass: "shadow-section",
                             attrs: { index: index },
                             on: { deleteSection: _vm.deleteSection }
                           },
