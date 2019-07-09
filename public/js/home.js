@@ -41900,10 +41900,10 @@ var render = function() {
                   perPageCustom: [[320, 1], [768, 1], [769, 2]]
                 }
               },
-              _vm._l(_vm.relevantPosts, function(post) {
+              _vm._l(_vm.relevantPosts, function(post, i) {
                 return _c(
                   "slide",
-                  { key: post.id, staticClass: "related-post" },
+                  { key: post.id + "-" + i, staticClass: "related-post" },
                   [
                     _c("img", { attrs: { src: post.img, alt: "" } }),
                     _vm._v(" "),

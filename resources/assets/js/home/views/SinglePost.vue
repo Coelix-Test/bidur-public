@@ -85,7 +85,7 @@
     <div class="related-posts">
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="post in relevantPosts" class="related-post" :key="post.id">
+        <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
             <img :src="post.img" alt="">
             <div class="related-post-content">
               <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
