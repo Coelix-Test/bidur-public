@@ -4302,7 +4302,6 @@ __webpack_require__.r(__webpack_exports__);
     renderSearch: function renderSearch() {
       var _this2 = this;
 
-      console.log(this.searchQuery);
       axios.post('/getAllSurveys', {
         title: this.searchQuery
       }).then(function (res) {
@@ -28060,7 +28059,7 @@ var render = function() {
             expression: "searchQuery"
           }
         ],
-        attrs: { type: "text", placeholder: "start type your suurvey name" },
+        attrs: { type: "text", placeholder: "start type your survey name" },
         domProps: { value: _vm.searchQuery },
         on: {
           input: [
