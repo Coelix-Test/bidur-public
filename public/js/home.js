@@ -3620,11 +3620,11 @@ __webpack_require__.r(__webpack_exports__);
     var i = 0;
     var firstPostTitle = this.posts[0].title;
     var speed = 50;
-    document.getElementsByClassName('typewriter')[0].innerHTML = null;
+    document.getElementsByClassName('typewriter')[1].innerHTML = null;
 
     function typeWriter() {
       if (i < firstPostTitle.length) {
-        document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+        document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
         i++;
         setTimeout(typeWriter, speed);
       }
@@ -3857,9 +3857,30 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getMainBday').then(function (res) {
-      _this.birthdayPost = res.data; // console.log(this.birthdayPost);
+      _this.birthdayPost = res.data;
     });
-  }
+  },
+  watch: {
+    birthdayPost: function birthdayPost() {
+      var i = 0;
+      var firstPostTitle = this.birthdayPost.text;
+      console.log(firstPostTitle);
+      var speed = 50;
+      document.getElementsByClassName('typewriter')[0].innerHTML = '';
+
+      function typeWriter() {
+        if (i < firstPostTitle.length) {
+          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      ;
+      typeWriter();
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -39905,7 +39926,7 @@ var render = function() {
           [
             _c("img", { attrs: { src: "img/happyBdayOverlay.svg", alt: "" } }),
             _vm._v(" "),
-            _c("h2", [_vm._v(_vm._s(_vm.birthdayPost.text))]),
+            _c("h2", { staticClass: "typewriter" }),
             _vm._v(" "),
             _c("div", { staticClass: "bdayInner" }, [
               _c("div", { staticClass: "overlay" }),
