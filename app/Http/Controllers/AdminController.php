@@ -1179,7 +1179,22 @@ class AdminController extends Controller
             return json_encode(['success' => false]);
         }
 
-        return json_encode($finalAllPosts);
+        foreach ($users as $key => $user) {
+            $admin = Admin::where('userId', $user->id)->first();
+            $finalAllUsers[$key]['email'] = $user->email;
+            $finalAllUsers[$key]['id'] = $user->id;
+            if (!empty($admin)){
+                $finalAllUsers[$key]['is_admin'] = true;
+            }else{
+                $finalAllUsers[$key]['is_admin'] = false;
+            }
+            $finalAllUsers[$key]['name'] = $user->name;
+            $finalAllUsers[$key]['phone'] = $user->phone;
+            $finalAllUsers[$key]['status'] = $user->isOnline();
+//            $finalAllUsers[$key]['email'] = $user->email;
+        }
+
+        return json_encode($finalAllUsers);
 
     }
 
