@@ -1126,6 +1126,7 @@ class AdminController extends Controller
             'created_at' => $date,
         ]);
 //        dd($post);
+        HashtagPosts::where('postId', $post->id)->delete();
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
                 HashtagPosts::create([
