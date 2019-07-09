@@ -199,20 +199,35 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImage($postId, $file, $description, $order){
+    public function createPostAddImage($postId, $file, $description, $order, $flag = null){
         $image = $file;
-        $text = $description;
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+        if (isset($flag)){
+            $fimalImage = $file;
+        }else{
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        $img = PostImage::create([
-            'postId' => $postId,
-            'url' => '/images/postImages/'.$name,
-            'description' => $text,
-            'order' => $order
-        ]);
+        $text = $description;
+
+        if (isset($flag)){
+            $img = PostImage::create([
+                'postId' => $postId,
+                'url' => $fimalImage,
+                'description' => $text,
+                'order' => $order
+            ]);
+        }else{
+            $img = PostImage::create([
+                'postId' => $postId,
+                'url' => '/images/postImages/'.$name,
+                'description' => $text,
+                'order' => $order
+            ]);
+        }
+
         // dd($img);
 
     }
@@ -225,45 +240,77 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order){
-        $image = $file;
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order, $flag = null){
+        if (isset($flag)){
+            $finalImage = $file;
+        }else{
+            $image = $file;
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        PostImageAndText::create([
-            'postId' => $postId,
-            'url' => '/images/postImages/'.$name,
-            'title' => $title,
-            'imagePosition' => $imagePosition,
-            'content' => $text,
-            'order' => $order
-        ]);
+        if (isset($flag)){
+            PostImageAndText::create([
+                'postId' => $postId,
+                'url' => $finalImage,
+                'title' => $title,
+                'imagePosition' => $imagePosition,
+                'content' => $text,
+                'order' => $order
+            ]);
+        }else{
+            PostImageAndText::create([
+                'postId' => $postId,
+                'url' => '/images/postImages/'.$name,
+                'title' => $title,
+                'imagePosition' => $imagePosition,
+                'content' => $text,
+                'order' => $order
+            ]);
+        }
+
     }
 
-    public function createPostAddSurvey($variants, $title, $postId, $order, $image){
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+    public function createPostAddSurvey($variants, $title, $postId, $order, $image, $flag = null){
+        if ($flag){
+            $finalImage = $image;
+        }else{
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        if (\Auth::check() == false){
+
+
+        if (isset($finalImage)){
             $survey = Survey::create([
                 'postId' => $postId,
                 'authorId' => 1,
                 'order' => $order,
                 'question' => $title,
-                'image' => '/images/postImages/'.$name,
+                'image' => $finalImage,
             ]);
         }else{
-            $survey = Survey::create([
-                'postId' => $postId,
-                'authorId' => \Auth::id(),
-                'order' => $order,
-                'question' => $title,
-                'image' => '/images/postImages/'.$name,
-            ]);
+            if (\Auth::check() == false){
+                $survey = Survey::create([
+                    'postId' => $postId,
+                    'authorId' => 1,
+                    'order' => $order,
+                    'question' => $title,
+                    'image' => '/images/postImages/'.$name,
+                ]);
+            }else{
+                $survey = Survey::create([
+                    'postId' => $postId,
+                    'authorId' => \Auth::id(),
+                    'order' => $order,
+                    'question' => $title,
+                    'image' => '/images/postImages/'.$name,
+                ]);
+            }
         }
 
         foreach ($variants as $key => $variant) {
@@ -284,40 +331,104 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order){
-        if($leftFile) {
-            $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $leftFile->move($destinationPath, $leftName);
+    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $flagLeft = null, $flagRight = null){
+        if ($flagLeft && $flagRight){
+            $finalLeft = $leftFile;
+            $finalRight = $rightFile;
+        }elseif ($flagLeft){
+            $finalLeft = $leftFile;
+            if($rightFile) {
+                $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $rightFile->move($destinationPath, $rightName);
+            }
+        }elseif ($flagRight){
+            $finalRight = $rightFile;
+            if($leftFile) {
+                $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $leftFile->move($destinationPath, $leftName);
+            }
+        }else{
+            if($leftFile) {
+                $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $leftFile->move($destinationPath, $leftName);
+            }
+            if($rightFile) {
+                $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $rightFile->move($destinationPath, $rightName);
+            }
         }
-        if($rightFile) {
-            $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $rightFile->move($destinationPath, $rightName);
+
+
+        if (isset($finalLeft) && isset($finalRight)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => $finalLeft,
+                'urlRight' => $finalRight,
+                'order' => $order,
+            ]);
+        }elseif(isset($finalLeft)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => $finalLeft,
+                'urlRight' => '/images/postImages/'.$rightName,
+                'order' => $order,
+            ]);
+        }elseif (isset($finalRight)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => '/images/postImages/'.$leftName,
+                'urlRight' => $finalRight,
+                'order' => $order,
+            ]);
+        }else{
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => '/images/postImages/'.$leftName,
+                'urlRight' => '/images/postImages/'.$rightName,
+                'order' => $order,
+            ]);
         }
-        SelectOne::create([
-            'postId' => $postId,
-            'description' => $description,
-            'urlLeft' => '/images/postImages/'.$leftName,
-            'urlRight' => '/images/postImages/'.$rightName,
-            'order' => $order,
-        ]);
+
+
+
+
     }
 
-    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order){
+    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order, $flag = null){
+        if ($flag){
+            $finalImage = $file;
+        }else{
+            if($file) {
+                $name = rand(0,999999).time().'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $file->move($destinationPath, $name);
+            }
 
-        if($file) {
-            $name = rand(0,999999).time().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $file->move($destinationPath, $name);
         }
 
-        SingleLikableImage::create([
-            'postId' => $postId,
-            'description' => $description,
-            'url' => '/images/postImages/'.$name,
-            'order' => $order,
-        ]);
+        if(isset($finalImage)){
+            SingleLikableImage::create([
+                'postId' => $postId,
+                'description' => $description,
+                'url' => $finalImage,
+                'order' => $order,
+            ]);
+        }else{
+            SingleLikableImage::create([
+                'postId' => $postId,
+                'description' => $description,
+                'url' => '/images/postImages/'.$name,
+                'order' => $order,
+            ]);
+        }
     }
 
     public function getAllHashtags(){
@@ -1084,30 +1195,68 @@ class AdminController extends Controller
             elseif($section['type'] == 'survey'){
 //                dd($files);
                 $title = $section['title'];
-                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                if (isset($files['sections'][$key]['image'])){
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                }else{
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$section['image'], true );
+                }
             }
             elseif ($section['type'] == 'image'){
-//                    dd($files['sections'][$key]['value']);
 
-                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+//                    dd($files['sections'][$key]['value']);
+                if (isset($files['sections'][$key]['value'])){
+                    $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+                }else{
+                    $this->createPostAddImage($this->post->id, $section['value'], $section['description'], $key, true);
+                }
             }
             elseif ($section['type'] == 'imageWithText'){
-                $this->createPostAddImageWithText(
-                    $this->post->id,
-                    $files['sections'][$key]['image'],
-                    $section['title'],
-                    $section['text'],
-                    $section['imagePosition'],
-                    $key
-                );
+
+                if (isset($files['sections'][$key]['image'])){
+                    $this->createPostAddImageWithText(
+                        $this->post->id,
+                        $files['sections'][$key]['image'],
+                        $section['title'],
+                        $section['text'],
+                        $section['imagePosition'],
+                        $key
+                    );
+                }else{
+                    $this->createPostAddImageWithText(
+                        $this->post->id,
+                        $section['image'],
+                        $section['title'],
+                        $section['text'],
+                        $section['imagePosition'],
+                        $key,
+                        true
+                    );
+                }
+
 //                dd($files);
             }elseif ($section['type'] == 'selection'){
-                $leftFile = $files['sections'][$key]['image1'];
-                $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+
+                if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
+                    $leftFile = $files['sections'][$key]['image1'];
+                    $rightFile = $files['sections'][$key]['image2'];
+                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+                }elseif (isset($files['sections'][$key]['image1'])){
+                    $leftFile = $files['sections'][$key]['image1'];
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image2'], $section['title'], $key, true, false);
+                }elseif (isset($files['sections'][$key]['image2'])){
+                    $rightFile = $files['sections'][$key]['image2'];
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, false, true);
+                }else{
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, true, true);
+                }
             }elseif ($section['type'] == 'assessment'){
-                $file = $files['sections'][$key]['image'];
-                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                if (isset($files['sections'][$key]['image'])){
+                    $file = $files['sections'][$key]['image'];
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                }else{
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $section['image'], $section['title'], $key, true);
+                }
+
             }
         }
         return json_encode(['success' => true]);
