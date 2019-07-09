@@ -121,5 +121,6 @@ Route::post('/getUserData', 'AdminController@getUserData');
 
     Route::post('/postTitleSerach', 'AdminController@postTitleSerach');
     Route::post('/userSearch', 'AdminController@userSearch');
+    Route::post('/tagNameSearch', 'AdminController@tagNameSearch');
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');

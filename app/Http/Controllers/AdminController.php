@@ -1349,4 +1349,21 @@ class AdminController extends Controller
     }
 
 
+    public function tagNameSearch(Request $request){
+        $search = $request->get('title');
+        $tags = Hashtag::where('text', $search)->orWhere('text', 'like', '%'.$search.'%')->get();
+
+        if ($tags->isEmpty()){
+            return json_encode(['success' => false]);
+        }
+
+        foreach ($tags as $key => $tag) {
+            $finalTags[$key]['id'] = $tag->id;
+            $finalTags[$key]['img'] = $tag->image;
+            $finalTags[$key]['name'] = $tag->text;
+        }
+        return json_encode($finalTags);
+    }
+
+
 }
