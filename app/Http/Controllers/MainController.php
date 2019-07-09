@@ -706,7 +706,7 @@ class MainController extends Controller
             elseif ($section->getTable() == 'single_likable_image'){
                 $data['type'] = 'likableImage';
                 $data['value']['id'] = $section->id;
-                $data['value']['imageUrl'] = $section->url;
+                $data['value']['imgUrl'] = $section->url;
                 $data['value']['description'] = $section->description;
                 $data['value']['likes'] = LikesForSingleImage::where('serviceId', $section->id)->count();
                 $data['value']['dislikes'] = DisLikesForSingleImage::where('serviceId', $section->id)->count();

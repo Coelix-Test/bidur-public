@@ -801,6 +801,7 @@ class AdminController extends Controller
     }
 
     public function showEditablePostContent(Request $request){
+//        dd($request);
         $id = $request->get('id');
 
         $post = Post::find($id);
@@ -819,7 +820,9 @@ class AdminController extends Controller
                 $fullPost['sections'][$title->order]['value'] = $title->titleText;
             }
         }
-        $fullPost['hashtags'] = $hashtagData;
+        if (isset($hashtagData)){
+            $fullPost['hashtags'] = $hashtagData;
+        }
         $contents = $post->getAllContents;
         if (isset($contents[0])){
             foreach ($contents as $content) {
@@ -1037,6 +1040,7 @@ class AdminController extends Controller
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);
+//        dd($post);
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
                 HashtagPosts::create([

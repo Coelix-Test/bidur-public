@@ -4647,6 +4647,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
 /* harmony import */ var _components_all_DefaultPost_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/all/DefaultPost.vue */ "./resources/assets/js/home/components/all/DefaultPost.vue");
 /* harmony import */ var _components_all_QuadPost_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/all/QuadPost.vue */ "./resources/assets/js/home/components/all/QuadPost.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -4682,7 +4690,9 @@ __webpack_require__.r(__webpack_exports__);
       data: [],
       name: '',
       img: '',
-      page: ''
+      page: 0,
+      loading: false,
+      end: false
     };
   },
   components: {
@@ -4697,17 +4707,44 @@ __webpack_require__.r(__webpack_exports__);
     sync: function sync(id) {
       var _this = this;
 
+      var append = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      this.loading = true;
       return axios.post('/getAllPostsByHashtag', {
-        hashtag_id: id
+        hashtag_id: id,
+        page: this.page
       }).then(function (res) {
-        console.log(res);
-        _this.data = res.data.data;
-        _this.name = res.data.hashtagName;
-        _this.img = res.data.hashtagImg;
+        _this.loading = false;
+
+        if (!res.data.data) {
+          _this.end = true;
+          return;
+        }
+
+        if (append) {
+          var _this$data;
+
+          (_this$data = _this.data).push.apply(_this$data, _toConsumableArray(Object.values(res.data.data)));
+
+          console.log('appended');
+        } else {
+          _this.data = Object.values(res.data.data);
+          _this.name = res.data.hashtagName;
+          _this.img = res.data.hashtagImg;
+        }
       });
     },
     onScroll: function onScroll(e) {
-      console.log(e);
+      var doc = document.documentElement;
+      var screen = doc.clientHeight;
+      var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+
+      if (top >= doc.scrollHeight - screen * 2 && !this.loading && !this.end) {
+        this.nextPage();
+      }
+    },
+    nextPage: function nextPage() {
+      this.page++;
+      this.sync(this.$route.params.id, true);
     }
   },
   created: function created() {
@@ -5159,7 +5196,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news[data-v-2170b176] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  width: 380px;\n  min-width: 380px;\n  padding-right: 30px;\n}\n.side-news .block[data-v-2170b176] {\n  background: #FFFFFF;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n  padding: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 30px;\n}\n.side-news .banner[data-v-2170b176] {\n  width: 100%;\n  height: auto;\n  margin-bottom: 30px;\n}\n@media (max-width: 1200px) {\n.side-news[data-v-2170b176] {\n    padding-right: 0;\n    width: 100%;\n    min-width: unset;\n}\n}", ""]);
+exports.push([module.i, ".side-news[data-v-2170b176] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  width: 380px;\n  min-width: 380px;\n  padding-right: 30px;\n}\n.side-news .block[data-v-2170b176] {\n  background: #FFFFFF;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n  padding: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 30px;\n}\n.side-news .banner[data-v-2170b176] {\n  width: 100%;\n  height: auto;\n  margin-bottom: 30px;\n}\n@media (max-width: 992px) {\n.side-news[data-v-2170b176] {\n    padding-right: 0;\n    width: 100%;\n    min-width: unset;\n}\n}", ""]);
 
 // exports
 
@@ -5501,7 +5538,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 0 10px;\n}\n}", ""]);
+exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: stretch;\n            align-items: stretch;\n    padding: 0 10px;\n}\n}", ""]);
 
 // exports
 
@@ -64484,7 +64521,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

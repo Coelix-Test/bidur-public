@@ -2802,13 +2802,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2854,8 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
-        });
-        axios.post('/showCompareFromMain');
+        }); // axios.post('/showCompareFromMain');
       } else if (this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
@@ -2865,12 +2857,10 @@ __webpack_require__.r(__webpack_exports__);
           }
         }).then(function (res) {
           console.log('qweqweqwew');
-        });
-        axios.post('/showSinglePhotoFromMain');
-      } // else if() {
-      //
-      // }
-
+        }); // axios.post('/showSinglePhotoFromMain');
+      } else if (this.selected == 'survey') {
+        console.log(this.survey);
+      }
     }
   }
 });
@@ -4008,6 +3998,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
 
 
 
@@ -4206,21 +4197,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         _this.title = response.data.mainTitle;
         _this.author = response.data.author;
         _this.date = new Date(response.data.date * 1000);
-        var postSections = response.data.sections;
-        postSections = Object.keys(postSections).map(function (i) {
-          return postSections[i];
-        });
-        console.log(postSections);
-        _this.celebrities = response.data.hashtags.map(function (i) {
-          return {
-            id: i.id,
-            name: i.title
-          };
-        });
-        _this.sections = postSections; // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
+
+        if (response.data.sections) {
+          var postSections = response.data.sections;
+          postSections = Object.keys(postSections).map(function (i) {
+            return postSections[i];
+          });
+          _this.sections = postSections; // console.log(postSections);
+        }
+
+        if (response.data.hashtags) {
+          _this.celebrities = response.data.hashtags.map(function (i) {
+            return {
+              id: i.id,
+              name: i.title
+            };
+          });
+        } // console.log(postSections);
+        // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
         // this.date = new Date();
         // celebrities: [],
         // sections
+
       });
     }
   }
@@ -4942,7 +4940,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".imagetext-wrap[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n}\n.imagetext-wrap.flex-row-reverse .col-img[data-v-417ddb05] {\n  margin-right: 0;\n  margin-left: 35px;\n}\n.col-text[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.col-img[data-v-417ddb05] {\n  width: 40%;\n  margin-right: 35px;\n}\n.title-block[data-v-417ddb05] {\n  margin-bottom: 10px;\n}\n.text-editor[data-v-417ddb05] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.text-editor .tox-tinymce[data-v-417ddb05] {\n  height: 100% !important;\n}\n.imagetext-actions[data-v-417ddb05] {\n  height: 60px;\n  background-color: #F5F5F5;\n  margin-top: 25px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  position: relative;\n}\n.delete-self[data-v-417ddb05] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 15px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}\n.change-image-position[data-v-417ddb05] {\n  width: 110px;\n  height: 38px;\n  background: url(\"/img/icons/edit-post-change-image-position.svg\") no-repeat center;\n  background-size: cover;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, ".imagetext-wrap[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  padding-top: 25px;\n  padding-right: 14px;\n}\n.imagetext-wrap.flex-row-reverse .col-img[data-v-417ddb05] {\n  margin-right: 0;\n  margin-left: 35px;\n}\n.col-text[data-v-417ddb05] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.col-img[data-v-417ddb05] {\n  width: 40%;\n  margin-right: 35px;\n}\n.title-block[data-v-417ddb05] {\n  margin-bottom: 10px;\n}\n.text-editor[data-v-417ddb05] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n}\n.text-editor .tox-tinymce[data-v-417ddb05] {\n  height: 100% !important;\n}\n.imagetext-actions[data-v-417ddb05] {\n  height: 60px;\n  background-color: #F5F5F5;\n  margin-top: 25px;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  position: relative;\n}\n.delete-self[data-v-417ddb05] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 15px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}\n.change-image-position[data-v-417ddb05] {\n  width: 110px;\n  height: 38px;\n  background: url(\"/img/icons/edit-post-change-image-position.svg\") no-repeat center;\n  background-size: cover;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -26484,13 +26482,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "surveys" },
-    [
-      _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "plate shadow-section" }, [
+  return _c("div", { staticClass: "surveys" }, [
+    _c("h2", { staticClass: "heading" }, [_vm._v("Surveys")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "plate shadow-section" },
+      [
         _c("div", { staticClass: "types" }, [
           _c(
             "div",
@@ -26526,7 +26524,7 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Assessment")])
+              _c("span", [_vm._v("הערכה")])
             ]
           ),
           _vm._v(" "),
@@ -26545,89 +26543,55 @@ var render = function() {
                 attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
               }),
               _vm._v(" "),
-              _c("span", [_vm._v("Selection")])
+              _c("span", [_vm._v("להשוות")])
             ]
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("assessment")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-assessment.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("הערכה")])
-          ]
-        ),
+        _vm.selected == "selection"
+          ? _c(
+              "PostSelection",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSelection",
+                _vm.selection,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "survey"
+          ? _c(
+              "PostSurvey",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostSurvey",
+                _vm.survey,
+                false,
+                true
+              )
+            )
+          : _vm.selected == "assessment"
+          ? _c(
+              "PostAssessment",
+              _vm._b(
+                { attrs: { deletable: false } },
+                "PostAssessment",
+                _vm.ass,
+                false,
+                true
+              )
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
-          "div",
-          {
-            staticClass: "add-section",
-            on: {
-              click: function($event) {
-                return _vm.select("selection")
-              }
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/img/icons/edit-post-selection.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("להשוות")])
-          ]
+          "button",
+          { staticClass: "theme-btn-red big-btn", on: { click: _vm.save } },
+          [_vm._v("לשמור")]
         )
-      ]),
-      _vm._v(" "),
-      _vm.selected == "selection"
-        ? _c(
-            "PostSelection",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSelection",
-              _vm.selection,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "survey"
-        ? _c(
-            "PostSurvey",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostSurvey",
-              _vm.survey,
-              false,
-              true
-            )
-          )
-        : _vm.selected == "assessment"
-        ? _c(
-            "PostAssessment",
-            _vm._b(
-              { attrs: { deletable: false } },
-              "PostAssessment",
-              _vm.ass,
-              false,
-              true
-            )
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("button", { staticClass: "theme-btn-red big-btn" }, [_vm._v("לשמור")])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26972,7 +26936,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
+  return _c("div", { staticClass: "wrapper imagetext-component" }, [
     _c("div", { staticClass: "imagetext-wrap", class: _vm.directionClass }, [
       _c(
         "div",
@@ -27673,6 +27637,7 @@ var render = function() {
                         "post-image-text",
                         _vm._b(
                           {
+                            staticClass: "shadow-section",
                             attrs: { index: index },
                             on: { deleteSection: _vm.deleteSection }
                           },
@@ -27929,7 +27894,8 @@ var render = function() {
           staticStyle: {
             direction: "ltr",
             "text-align": "left",
-            "font-size": "16px"
+            "font-size": "16px",
+            display: "none"
           },
           attrs: { dir: "ltr" }
         },
@@ -48732,7 +48698,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })

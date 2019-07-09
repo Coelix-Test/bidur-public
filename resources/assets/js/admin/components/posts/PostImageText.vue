@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper imagetext-component">
         <div class="imagetext-wrap" :class="directionClass">
             <div class="col-text">
                 <post-title v-if="title !== null"
@@ -97,6 +97,8 @@ export default {
         display: -webkit-flex;
         display: -ms-flex;
         display: flex;
+        padding-top: 25px;
+        padding-right: 14px;
         &.flex-row-reverse{
             .col-img{
                 margin-right: 0;
