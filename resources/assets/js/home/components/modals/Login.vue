@@ -36,7 +36,7 @@
         </button>
       </div>
       <div class="lost-password">
-        <a href="./password/reset" target="_blank">סיסמה אבודה?</a>
+        <a href="./password/reset">סיסמה אבודה?</a>
       </div>
     </form>
 

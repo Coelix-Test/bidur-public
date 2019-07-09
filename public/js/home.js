@@ -40589,9 +40589,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "lost-password" }, [
-      _c("a", { attrs: { href: "./password/reset", target: "_blank" } }, [
-        _vm._v("סיסמה אבודה?")
-      ])
+      _c("a", { attrs: { href: "./password/reset" } }, [_vm._v("סיסמה אבודה?")])
     ])
   }
 ]
