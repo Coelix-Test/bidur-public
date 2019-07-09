@@ -606,7 +606,7 @@ class AdminController extends Controller
         }
         $survey = Survey::create([
             'postId' => -1,
-            'authorUd' => 1,
+            'authorId' => 1,
             'order' => 1,
             'question' => $title,
             'image' => '/images/postImages/'.$name
@@ -945,11 +945,11 @@ class AdminController extends Controller
 //                    }
 //                }
                 $questions = $survey->getAllVariants;
-                $questionsWithAnswers[$survey->order]['type'] = 'survey';
-                $questionsWithAnswers[$survey->order]['image'] = $survey->image;
-//                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
-                $questionsWithAnswers[$survey->order]['value']['title'] = $survey->question;
-                $questionsWithAnswers[$survey->order]['id'] = $survey->id;
+                $questionsWithAnswers['type'] = 'survey';
+                $questionsWithAnswers['image'] = $survey->image;
+
+                $questionsWithAnswers['title'] = $survey->question;
+                $questionsWithAnswers['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
                 foreach ($questions as $question) {
@@ -960,14 +960,18 @@ class AdminController extends Controller
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
 //                    $z++;
                 }
+                $questionsWithAnswers['answers'] = $ass;
+                unset($ass);
+                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
+
             }
+
 //            foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
 //                $fullPost['sections'][$key] = $questionsWithAnswer;
 //            }
 
-            foreach ($ass as $key => $asses) {
-                $fullPost['sections'][$key] = $asses;
-            }
+
+
         }
         $compares = $post->getCompare;
         if (isset($compares[0])){
@@ -1027,6 +1031,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
+        dd($request);
 
         Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
@@ -1124,4 +1129,36 @@ class AdminController extends Controller
         return $post;
     }
 
+
+    public function postTitleSerach(Request $request){
+        $title = $request->get('title');
+        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        if (empty($posts)){
+            return json_encode(['success' => false]);
+        }
+        $mainSection = MainSection::find(1);
+        foreach ($posts as $key => $post) {
+            $finalAllPosts[$key]['post'] = $post;
+            if ($post->id == $mainSection->first){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+        }
+        return json_encode($finalAllPosts);
+
+    }
 }

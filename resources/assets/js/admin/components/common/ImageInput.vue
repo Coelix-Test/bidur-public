@@ -31,13 +31,21 @@ export default {
     },
     methods: {
         onFileChange(file){
-            let reader = new FileReader();
-            reader.addEventListener('load', () => {
-                this.image = reader.result;
-            }, false);
-            reader.readAsDataURL(file);
+            this.fileToBase64(file);
             this.$emit('update:value', file);
+        },
+        fileToBase64(file){
+          let reader = new FileReader();
+          reader.addEventListener('load', () => {
+            this.image = reader.result;
+          }, false);
+          reader.readAsDataURL(file);
         }
+    },
+    created(){
+      if(typeof this.value !== 'string'){
+        this.fileToBase64(this.value);
+      }
     }
 }
 </script>

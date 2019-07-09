@@ -68,7 +68,7 @@ Route::post('/sendMail',   'MainController@sendMail');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
+Route::get('/admin', 'AdminController@showAdmin');
 Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
@@ -118,6 +118,8 @@ Route::post('/getUserData', 'AdminController@getUserData');
     Route::post('/deleteMail', 'AdminController@deleteMail');
 
     Route::post('/editMainPagePosts', 'AdminController@editMainPagePosts');
+
+    Route::post('/postTitleSerach', 'AdminController@postTitleSerach');
 
 
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
