@@ -760,12 +760,17 @@ class AdminController extends Controller
         return json_encode($data);
     }
 
-    public function showSurveyOnMain(){
-        return json_encode('work in progress');
+    public function addSurvey(Request $request){
+        Survey::where('postId', 0)->delete();
+        $title = $request->get('title');
+        $answers = $request->get('answers');
+        $image = $request->allFiles();
+
+
     }
 
-    public function showSurveyOnMainSecond(){
-        return json_encode('work in progress');
+    public function addSurveySecond(Request $request){
+
     }
 
 
