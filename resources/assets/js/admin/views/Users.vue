@@ -1,7 +1,7 @@
 <template>
   <div class="users">
     <div class="search">
-      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="start type your user name">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="שם משתמש">
     </div>
     <div class="usersTable">
       <div class="heading">

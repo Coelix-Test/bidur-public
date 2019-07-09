@@ -132,6 +132,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .menu-list {
+    a {
+      white-space: nowrap;
+    }
+  }
   @media (max-width:768px) {
     .auth-btns {
       justify-content: center;
