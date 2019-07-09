@@ -2379,6 +2379,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onFileChange: function onFileChange(file) {
+      this.fileToBase64(file);
+      this.$emit('update:value', file);
+    },
+    fileToBase64: function fileToBase64(file) {
       var _this = this;
 
       var reader = new FileReader();
@@ -2386,7 +2390,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.image = reader.result;
       }, false);
       reader.readAsDataURL(file);
-      this.$emit('update:value', file);
+    }
+  },
+  created: function created() {
+    if (typeof this.value !== 'string') {
+      this.fileToBase64(this.value);
     }
   }
 });
@@ -48726,7 +48734,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
 
 
 /***/ })
