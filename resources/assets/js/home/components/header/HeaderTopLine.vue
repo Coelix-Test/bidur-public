@@ -23,15 +23,21 @@
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <button
-                  @click="logout"
-                  class="btn-common th-btn-gold"
-                ><span>להתנתק</span></button>
-                <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a>
+                <div class="my-account-wrap">
+                  <div class="my-account">
+                    <a href="./#/my-account" class="my-account-link">Hey, UsersName</a>
+                    <ul class="profile-nav">
+                      <li><a href="#" class="profile-settings">Profile settings</a></li>
+                      <li><a href="#" class="favourite-posts">Favourite posts</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <a href="#" @click="logout" class="logout-btn">Exit</a>
               </template>
               <template v-else>
                 <button
-                  class="btn-common th-btn-gold"
+                  class="btn-common btn-gold-gradient"
                   @click="$root.openReg"
                 >הרשמה</button>
                 <a href="#" class="btn-common btn-gold-text" @click="$root.openLogin">
@@ -134,36 +140,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu-list {
-    a {
-      white-space: nowrap;
-    }
-  }
-  .my-account {
-    color:#fff;
-  }
-  @media (max-width:768px) {
-    .auth-btns {
-      justify-content: center;
-      // a.logout {
-      //   // margin:0 auto;
-      //   margin-left: 10px!important;
-      //   // margin-right: auto!important;
-      // }
 
-    }
-    // .top-row-inner-mob {
-    //   justify-content: center;
-    //   .header-text {
-    //     font-weight: 600;
-    //     flex-grow:2;
-    //     text-align: center;
-    //     overflow:hidden;
-    //   }
-    // }
-    // .header-main .top-row-inner .btn-common:first-child,
-    // .header-main .top-row-inner-mob .btn-common:first-child {
-    //   margin-right: 0!important;
-    // }
-  }
 </style>
