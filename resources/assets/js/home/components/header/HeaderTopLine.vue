@@ -25,7 +25,7 @@
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
                   <div class="my-account">
-                    <router-link class="my-account-link" :to="{ name: 'my-account' }">Hey, UsersName</router-link>
+                    <router-link class="my-account-link" :to="{ name: 'my-account' }">Hey, {{ user.name }}</router-link>
                     <ul class="profile-nav">
                       <li>
                         <router-link
@@ -127,7 +127,8 @@
 export default {
   data(){
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: {},
     }
   },
   created() {
@@ -137,6 +138,7 @@ export default {
           if(res.data.login == true) {
             this.isLoggedIn = true;
           }
+          this.user = res.data.data;
         });
   },
   methods : {

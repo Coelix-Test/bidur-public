@@ -87,17 +87,19 @@ export default {
     }
   }
 
-  @media(max-width: 450px) {
-    flex-direction: column;
-    border-bottom: 0;
-    .img {
-      height: 200px;
-      width: 100%;
-      max-width: unset;
-    }
-    .desc {
-      padding-right: 0;
-      padding-top: 10px;
+  .link-wrapper {
+    @media(max-width: 450px) {
+      flex-direction: column;
+      border-bottom: 0;
+      .img {
+        height: 200px;
+        width: 100%;
+        max-width: unset;
+      }
+      .desc {
+        padding-right: 0;
+        padding-top: 10px;
+      }
     }
   }
 }

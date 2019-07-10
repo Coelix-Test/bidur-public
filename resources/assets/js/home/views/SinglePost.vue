@@ -38,7 +38,7 @@
           </div>
 
 
-          <div v-if="post.type == 'survey'" class="poll">
+          <div ref="poll" v-if="post.type == 'survey'" class="poll">
             <img :src="post.img" alt="">
             <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
           </div>
@@ -188,15 +188,23 @@ export default {
             this.postData = this.post.data.post.sections;
             this.postTitle = this.postData[1].value;
             this.hashtags = this.post.data.post.hashtags;
+
              if(this.hashtags != null) {
                var relevantPosts = [];
+               var proms = [];
               for(let i =0;i < this.hashtags.length;i++) {
-                axios
+                proms.push(axios
                   .post('/getAllRelevantPosts', {hashtag_id: this.hashtags[i],})
                     .then(response => {
                       this.relevantPosts = response.data;
-                    })
+                    }))
               }
+            } else {
+              console.log('sbahd bskh dvbaksj bdjahs dasvdkahs');
+              axios.post('/getRecentPosts').then(res => {
+                this.relevantPosts = res.data;
+                console.log(this.relevantPosts);
+              });
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
@@ -209,6 +217,7 @@ export default {
           });
     },
     addVote(obj, id){
+      makeItRain(70, this.$refs.poll);
         axios
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
