@@ -3646,7 +3646,6 @@ __webpack_require__.r(__webpack_exports__);
     setDurations: function setDurations() {
       console.log($('.bdConfetty'));
       $('.bdConfetty path').each(function (index) {
-        console.log(this);
         var min = 2,
             max = 5;
         $(this).css('animation-delay', Math.random() * (-max + min) - min + 's');
@@ -3692,7 +3691,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
-      requred: true
+      required: true
     }
   },
   data: function data() {
@@ -3701,22 +3700,19 @@ __webpack_require__.r(__webpack_exports__);
       posts: this.data
     };
   },
-  mounted: function mounted() {
-    var i = 0;
-    var firstPostTitle = this.posts[0].title;
-    var speed = 50;
-    document.getElementsByClassName('typewriter')[1].innerHTML = null;
-
-    function typeWriter() {
-      if (i < firstPostTitle.length) {
-        document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-      }
-    }
-
-    ;
-    typeWriter();
+  mounted: function mounted() {// let i = 0;
+    // let firstPostTitle = this.posts[0].title;
+    // let speed = 50;
+    // document.getElementsByClassName('typewriter')[1].innerHTML = '';
+    // function typeWriter() {
+    //
+    //   if (i < firstPostTitle.length) {
+    //     document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
+    //     i++;
+    //     setTimeout(typeWriter, speed);
+    //   }
+    // };
+    // typeWriter();
   },
   created: function created() {// this.data.forEach( (el)=> {
     //   axios.post('/getInfoOnPostForMain', {id : el} ).then(response => { this.twoPosts.push(response.data) });

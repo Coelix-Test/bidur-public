@@ -16404,6 +16404,10 @@ body {
   height: 35px;
 }
 
+.header-main .top-row-inner .btn-common:first-child {
+  margin-right: auto;
+}
+
 .header-main .top-row-inner .auth-btns,
 .header-main .top-row-inner-mob .auth-btns {
   display: -webkit-box;
@@ -16418,7 +16422,6 @@ body {
 
 .header-main .top-row-inner .btn-common:first-child,
 .header-main .top-row-inner-mob .btn-common:first-child {
-  margin-right: auto;
   margin-left: 10px;
 }
 

@@ -21,7 +21,7 @@
 export default {
   props : {
     data : {
-      requred: true,
+      required: true,
     }
   },
   data() {
@@ -33,19 +33,19 @@ export default {
   },
   mounted() {
 
-      let i = 0;
-      let firstPostTitle = this.posts[0].title;
-      let speed = 50;
-      document.getElementsByClassName('typewriter')[1].innerHTML = null;
-      function typeWriter() {
-
-        if (i < firstPostTitle.length) {
-          document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
-        }
-      };
-      typeWriter();
+      // let i = 0;
+      // let firstPostTitle = this.posts[0].title;
+      // let speed = 50;
+      // document.getElementsByClassName('typewriter')[1].innerHTML = '';
+      // function typeWriter() {
+      //
+      //   if (i < firstPostTitle.length) {
+      //     document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
+      //     i++;
+      //     setTimeout(typeWriter, speed);
+      //   }
+      // };
+      // typeWriter();
 
 
   },

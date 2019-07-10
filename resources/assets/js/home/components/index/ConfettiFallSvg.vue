@@ -55,7 +55,6 @@ export default {
     setDurations(){
       console.log($('.bdConfetty'));
       $('.bdConfetty path').each(function(index){
-        console.log(this);
         const min = 2,
               max = 5;
         $(this).css('animation-delay', (Math.random() * (-max + min) - min)+'s');
