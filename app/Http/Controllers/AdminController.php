@@ -498,16 +498,33 @@ class AdminController extends Controller
     }
 
     public function addNewComparison(Request $request){
+
+        $leftFlag = true;
+        $rightFlag = true;
         $leftImage = $request->file('leftImage');
-        $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $leftImage->move($destinationPath, $leftName);
+
+
+        if (isset($leftImage)){
+            $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $leftImage->move($destinationPath, $leftName);
+
+        }else{
+            $currentLeftName = $request->get('leftImage');
+            $rightFlag = false;
+        }
+
 
         $rightImage = $request->file('rightImage');
+        if (isset($rightImage)){
+            $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $rightImage->move($destinationPath, $rightName);
+        }else{
+            $currentRightName = $request->get('rightImage');
+            $rightFlag = false;
+        }
 
-        $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $rightImage->move($destinationPath, $rightName);
 
         $current = SelectOne::where('postId', 0)->first();
         if (!empty($current)){
@@ -527,27 +544,71 @@ class AdminController extends Controller
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        SelectOne::create([
-            'urlRight' => '/images/compare/'.$rightName,
-            'urlLeft' => '/images/compare/'.$leftName,
-            'description' => $request->get('title'),
-            'postId' => 0,
-            'order' => 0,
-        ]);
+        if ($leftFlag && $rightFlag){
+            SelectOne::create([
+                'urlRight' => '/images/compare/'.$rightName,
+                'urlLeft' => '/images/compare/'.$leftName,
+                'description' => $request->get('title'),
+                'postId' => 0,
+                'order' => 0,
+            ]);
+        }elseif ($rightFlag){
+
+            SelectOne::create([
+                'urlRight' => '/images/compare/'.$rightName,
+                'urlLeft' => $currentLeftName,
+                'description' => $request->get('title'),
+                'postId' => 0,
+                'order' => 0,
+            ]);
+        }elseif ($leftFlag){
+            SelectOne::create([
+                'urlRight' => $currentRightName,
+                'urlLeft' => '/images/compare/'.$leftName,
+                'description' => $request->get('title'),
+                'postId' => 0,
+                'order' => 0,
+            ]);
+        }else{
+            SelectOne::create([
+                'urlRight' => $currentRightName,
+                'urlLeft' => $currentLeftName,
+                'description' => $request->get('title'),
+                'postId' => 0,
+                'order' => 0,
+            ]);
+        }
+
         return ['success' => true];
     }
 
     public function addNewComparisonSecond(Request $request){
+        $leftFlag = true;
+        $rightFlag = true;
         $leftImage = $request->file('leftImage');
-        $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $leftImage->move($destinationPath, $leftName);
+
+
+        if (isset($leftImage)){
+            $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $leftImage->move($destinationPath, $leftName);
+
+        }else{
+            $currentLeftName = $request->get('leftImage');
+            $rightFlag = false;
+        }
+
 
         $rightImage = $request->file('rightImage');
+        if (isset($rightImage)){
+            $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $rightImage->move($destinationPath, $rightName);
+        }else{
+            $currentRightName = $request->get('rightImage');
+            $rightFlag = false;
+        }
 
-        $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $rightImage->move($destinationPath, $rightName);
 
         $current = SelectOne::where('postId', -1)->first();
         if (!empty($current)){
@@ -567,21 +628,56 @@ class AdminController extends Controller
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        SelectOne::create([
-            'urlRight' => '/images/compare/'.$rightName,
-            'urlLeft' => '/images/compare/'.$leftName,
-            'postId' => -1,
-            'description' => $request->get('title'),
-            'order' => 0,
-        ]);
+        if ($leftFlag && $rightFlag){
+            SelectOne::create([
+                'urlRight' => '/images/compare/'.$rightName,
+                'urlLeft' => '/images/compare/'.$leftName,
+                'description' => $request->get('title'),
+                'postId' => -1,
+                'order' => 0,
+            ]);
+        }elseif ($rightFlag){
+
+            SelectOne::create([
+                'urlRight' => '/images/compare/'.$rightName,
+                'urlLeft' => $currentLeftName,
+                'description' => $request->get('title'),
+                'postId' => -1,
+                'order' => 0,
+            ]);
+        }elseif ($leftFlag){
+            SelectOne::create([
+                'urlRight' => $currentRightName,
+                'urlLeft' => '/images/compare/'.$leftName,
+                'description' => $request->get('title'),
+                'postId' => -1,
+                'order' => 0,
+            ]);
+        }else{
+            SelectOne::create([
+                'urlRight' => $currentRightName,
+                'urlLeft' => $currentLeftName,
+                'description' => $request->get('title'),
+                'postId' => -1,
+                'order' => 0,
+            ]);
+        }
+
         return ['success' => true];
     }
 
     public function addSinglePhoto(Request $request){
         $image = $request->file('image');
-        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/singlePhoto');
-        $image->move($destinationPath, $name);
+        $flag = true;
+        if (isset($image)){
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/singlePhoto');
+            $image->move($destinationPath, $name);
+        }else{
+            $currentImageUrl = $request->get('image');
+            $flag = false;
+        }
+
 
         $image = SingleLikableImage::where('postId', 0)->first();
 
@@ -610,20 +706,37 @@ class AdminController extends Controller
             LikesForSingleImage::where('serviceId', $deletableId)->delete();
             DisLikesForSingleImage::where('serviceId', $deletableId)->delete();
         }
-        SingleLikableImage::create([
-            'url' => '/images/singlePhoto/'.$name,
-            'postId' => 0,
-            'description' => $request->get('title'),
-            'order' => 0,
-        ]);
+        if ($flag){
+            SingleLikableImage::create([
+                'url' => '/images/singlePhoto/'.$name,
+                'postId' => 0,
+                'description' => $request->get('title'),
+                'order' => 0,
+            ]);
+        }else{
+            SingleLikableImage::create([
+                'url' => $currentImageUrl,
+                'postId' => 0,
+                'description' => $request->get('title'),
+                'order' => 0,
+            ]);
+        }
+
         return ['success' => true];
     }
 
     public function addSinglePhotoSecond(Request $request){
         $image = $request->file('image');
-        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/singlePhoto');
-        $image->move($destinationPath, $name);
+        $flag = true;
+        if (isset($image)){
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/singlePhoto');
+            $image->move($destinationPath, $name);
+        }else{
+            $currentImageUrl = $request->get('image');
+            $flag = false;
+        }
+
 
         $image = SingleLikableImage::where('postId', -1)->first();
 
@@ -652,22 +765,40 @@ class AdminController extends Controller
             LikesForSingleImage::where('serviceId', $deletableId)->delete();
             DisLikesForSingleImage::where('serviceId', $deletableId)->delete();
         }
-        SingleLikableImage::create([
-            'url' => '/images/singlePhoto/'.$name,
-            'postId' => -1,
-            'description' => $request->get('title'),
-            'order' => 0,
-        ]);
+        if ($flag){
+            SingleLikableImage::create([
+                'url' => '/images/singlePhoto/'.$name,
+                'postId' => -1,
+                'description' => $request->get('title'),
+                'order' => 0,
+            ]);
+        }else{
+            SingleLikableImage::create([
+                'url' => $currentImageUrl,
+                'postId' => -1,
+                'description' => $request->get('title'),
+                'order' => 0,
+            ]);
+        }
+
         return ['success' => true];
     }
 
     public function addNewSurveyToMain(Request $request){
         $title = $request->get('title');
         $answers = json_decode($request->get('answers'));
+
+        $flag = true;
         $image = $request->file('image');
-        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $image->move($destinationPath, $name);
+        if (isset($image)){
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $image->move($destinationPath, $name);
+        }else{
+            $currentSurveyImage = $request->get('image');
+            $flag = false;
+        }
+
 
 
         $currentSurvey = Survey::where('postId', 0)->first();
@@ -680,13 +811,25 @@ class AdminController extends Controller
         if (isset($currentSurvey)){
             SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
         }
-        $survey = Survey::create([
-            'postId' => 0,
-            'authorId' => 1,
-            'order' => 1,
-            'question' => $title,
-            'image' => '/images/compare/'.$name
-        ]);
+
+        if ($flag){
+            $survey = Survey::create([
+                'postId' => 0,
+                'authorId' => 1,
+                'order' => 1,
+                'question' => $title,
+                'image' => '/images/compare/'.$name
+            ]);
+        }else{
+            $survey = Survey::create([
+                'postId' => 0,
+                'authorId' => 1,
+                'order' => 1,
+                'question' => $title,
+                'image' => $currentSurveyImage
+            ]);
+        }
+
 
         foreach ($answers as $key => $answer) {
             SurveyAnswerVariant::create([
@@ -701,10 +844,18 @@ class AdminController extends Controller
     public function addNewSurveyToMainSecond(Request $request){
         $title = $request->get('title');
         $answers = json_decode($request->get('answers'));
+
+        $flag = true;
         $image = $request->file('image');
-        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/compare');
-        $image->move($destinationPath, $name);
+        if (isset($image)){
+            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/compare');
+            $image->move($destinationPath, $name);
+        }else{
+            $currentSurveyImage = $request->get('image');
+            $flag = false;
+        }
+
 
 
         $currentSurvey = Survey::where('postId', -1)->first();
@@ -717,13 +868,25 @@ class AdminController extends Controller
         if (isset($currentSurvey)){
             SurveyAnswerVariant::where('surveyId', $deletableId)->delete();
         }
-        $survey = Survey::create([
-            'postId' => -1,
-            'authorId' => 1,
-            'order' => 1,
-            'question' => $title,
-            'image' => '/images/postImages/'.$name
-        ]);
+
+        if ($flag){
+            $survey = Survey::create([
+                'postId' => -1,
+                'authorId' => 1,
+                'order' => 1,
+                'question' => $title,
+                'image' => '/images/compare/'.$name
+            ]);
+        }else{
+            $survey = Survey::create([
+                'postId' => -1,
+                'authorId' => 1,
+                'order' => 1,
+                'question' => $title,
+                'image' => $currentSurveyImage
+            ]);
+        }
+
 
         foreach ($answers as $key => $answer) {
             SurveyAnswerVariant::create([
