@@ -2617,6 +2617,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3574,7 +3588,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: {}
     };
   },
   created: function created() {
@@ -3584,6 +3599,8 @@ __webpack_require__.r(__webpack_exports__);
       if (res.data.login == true) {
         _this.isLoggedIn = true;
       }
+
+      _this.user = res.data.data;
     });
   },
   methods: {
@@ -5550,14 +5567,21 @@ __webpack_require__.r(__webpack_exports__);
 
         if (_this.hashtags != null) {
           var relevantPosts = [];
+          var proms = [];
 
           for (var i = 0; i < _this.hashtags.length; i++) {
-            axios.post('/getAllRelevantPosts', {
+            proms.push(axios.post('/getAllRelevantPosts', {
               hashtag_id: _this.hashtags[i]
             }).then(function (response) {
               _this.relevantPosts = response.data;
-            });
+            }));
           }
+        } else {
+          console.log('sbahd bskh dvbaksj bdjahs dasvdkahs');
+          axios.post('/getRecentPosts').then(function (res) {
+            _this.relevantPosts = res.data;
+            console.log(_this.relevantPosts);
+          });
         }
 
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
@@ -5570,6 +5594,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addVote: function addVote(obj, id) {
+      makeItRain(70, this.$refs.poll);
       axios.post('/addSurveyVote', {
         surveyId: id,
         answer: obj.value
@@ -5612,7 +5637,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".whatsapp-button[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  left: 24px;\n  bottom: 24px;\n  width: 48px;\n  height: 48px;\n}\n#preloader[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  pointer-events: none;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: #fff;\n  z-index: 200;\n}\n#preloader.fade[data-v-de2c8afa] {\n  opacity: 0.5;\n}\n#preloader > div[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.ball[data-v-de2c8afa] {\n  width: 22px;\n  height: 22px;\n  border-radius: 11px;\n  margin: 0 10px;\n  -webkit-animation: 2s bounce-data-v-de2c8afa ease infinite;\n          animation: 2s bounce-data-v-de2c8afa ease infinite;\n  background-color: #F2C94C;\n}\n.red[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.25s;\n          animation-delay: 0.25s;\n}\n.yellow[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.green[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.75s;\n          animation-delay: 0.75s;\n}\n@-webkit-keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n@keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.whatsapp-button[data-v-de2c8afa] {\n    width: 32px;\n    height: 32px;\n    left: 12px;\n    bottom: 12px;\n}\n}", ""]);
+exports.push([module.i, ".socials-btn[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  bottom: 24px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  box-shadow: 0 5 10px rgba(0, 0, 0, 0.3);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n  left: 24px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n  left: 98px;\n  border: 2px solid #fff;\n}\n.socials-btn svg[data-v-de2c8afa] {\n  width: 100%;\n  height: 100%;\n}\n#preloader[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  pointer-events: none;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: #fff;\n  z-index: 200;\n}\n#preloader.fade[data-v-de2c8afa] {\n  opacity: 0.5;\n}\n#preloader > div[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.ball[data-v-de2c8afa] {\n  width: 22px;\n  height: 22px;\n  border-radius: 11px;\n  margin: 0 10px;\n  -webkit-animation: 2s bounce-data-v-de2c8afa ease infinite;\n          animation: 2s bounce-data-v-de2c8afa ease infinite;\n  background-color: #F2C94C;\n}\n.red[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.25s;\n          animation-delay: 0.25s;\n}\n.yellow[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.green[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.75s;\n          animation-delay: 0.75s;\n}\n@-webkit-keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n@keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.whatsapp-button[data-v-de2c8afa] {\n    width: 32px;\n    height: 32px;\n    left: 12px;\n    bottom: 12px;\n}\n}", ""]);
 
 // exports
 
@@ -5650,7 +5675,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
+exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post .link-wrapper[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .link-wrapper .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .link-wrapper .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -38856,7 +38881,7 @@ var render = function() {
       _c(
         "a",
         {
-          staticClass: "whatsapp-button",
+          staticClass: "socials-btn whatsapp",
           attrs: {
             href:
               "https://api.whatsapp.com/send?phone=97254459498&text=&source=&data=123",
@@ -38901,6 +38926,65 @@ var render = function() {
                 attrs: {
                   d:
                     "M187.145,135.945l-16.772-0.883c-5.297,0-10.593,1.766-14.124,5.297  c-7.945,7.062-21.186,20.303-24.717,37.959c-6.179,26.483,3.531,58.262,26.483,90.041s67.09,82.979,144.772,105.048  c24.717,7.062,44.138,2.648,60.028-7.062c12.359-7.945,20.303-20.303,22.952-33.545l2.648-12.359  c0.883-3.531-0.883-7.945-4.414-9.71l-55.614-25.6c-3.531-1.766-7.945-0.883-10.593,2.648l-22.069,28.248  c-1.766,1.766-4.414,2.648-7.062,1.766c-15.007-5.297-65.324-26.483-92.69-79.448c-0.883-2.648-0.883-5.297,0.883-7.062  l21.186-23.834c1.766-2.648,2.648-6.179,1.766-8.828l-25.6-57.379C193.324,138.593,190.676,135.945,187.145,135.945"
+                }
+              })
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "socials-btn telegram",
+          attrs: {
+            href:
+              "https://api.whatsapp.com/send?phone=97254459498&text=&source=&data=123",
+            target: "_blank"
+          }
+        },
+        [
+          _c(
+            "svg",
+            {
+              attrs: {
+                width: "35",
+                height: "36",
+                viewBox: "0 0 35 36",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M17.5 35.5C27.165 35.5 35 27.665 35 18C35 8.33502 27.165 0.5 17.5 0.5C7.83502 0.5 0 8.33502 0 18C0 27.665 7.83502 35.5 17.5 35.5Z",
+                  fill: "#29B6F6"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M26.7063 10.125L23.4285 26.8603C23.4285 26.8603 23.2876 27.625 22.3391 27.625C21.8351 27.625 21.5753 27.3853 21.5753 27.3853L14.4755 21.4939L11.0018 19.743L6.54362 18.5574C6.54362 18.5574 5.75 18.3281 5.75 17.6719C5.75 17.125 6.56637 16.8643 6.56637 16.8643L25.2179 9.45475C25.217 9.45388 25.7875 9.24913 26.2031 9.25C26.4586 9.25 26.75 9.35938 26.75 9.6875C26.75 9.90625 26.7063 10.125 26.7063 10.125Z",
+                  fill: "white"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M17.1247 23.6919L14.127 26.6442C14.127 26.6442 13.9966 26.7448 13.8225 26.7492C13.7621 26.7509 13.6974 26.7413 13.6309 26.7116L14.4744 21.4922L17.1247 23.6919Z",
+                  fill: "#B0BEC5"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M23.1599 12.9214C23.012 12.7289 22.739 12.6939 22.5465 12.84L11 19.7499C11 19.7499 12.8428 24.9054 13.1236 25.7979C13.4054 26.6913 13.6311 26.7123 13.6311 26.7123L14.4746 21.4929L23.0776 13.5339C23.2701 13.3878 23.306 13.1139 23.1599 12.9214Z",
+                  fill: "#CFD8DC"
                 }
               })
             ]
@@ -40067,7 +40151,7 @@ var render = function() {
                           staticClass: "my-account-link",
                           attrs: { to: { name: "my-account" } }
                         },
-                        [_vm._v("Hey, UsersName")]
+                        [_vm._v("Hey, " + _vm._s(_vm.user.name))]
                       ),
                       _vm._v(" "),
                       _c("ul", { staticClass: "profile-nav" }, [
@@ -43258,7 +43342,7 @@ var render = function() {
                     post.type == "survey"
                       ? _c(
                           "div",
-                          { staticClass: "poll" },
+                          { ref: "poll", refInFor: true, staticClass: "poll" },
                           [
                             _c("img", { attrs: { src: post.img, alt: "" } }),
                             _vm._v(" "),
@@ -65550,7 +65634,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  TEST: true,
+  TEST: false,
   mobile: typeof window.orientation !== "undefined" || navigator.userAgent.indexOf('IEMobile') !== -1
 });
 
@@ -65958,8 +66042,8 @@ __webpack_require__.r(__webpack_exports__);
     open: function open(context) {
       app.$modal.show(_components_modals_Ad_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
         adaptive: true,
-        width: '90%',
-        height: '90%'
+        width: '100%',
+        height: '100%'
       }, {
         'before-close': function beforeClose(e) {
           if (context.getters.canClose) {
