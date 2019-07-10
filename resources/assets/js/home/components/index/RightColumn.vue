@@ -1,14 +1,13 @@
 <template>
   <div class="right-column">
-    <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
+    <article v-in-viewport.once class="birthdayPost">
       <!-- <confetti-svg class="confetti"></confetti-svg> -->
       <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
-      <img class="hat" src="img/happyBdayHat.svg" alt="">
-      <img class="gifts" src="img/happyBdayGifts.svg" alt="">
+      <img v-if="birthdayPost" class="hat" src="img/happyBdayHat.svg" alt="">
+      <img v-if="birthdayPost" class="gifts" src="img/happyBdayGifts.svg" alt="">
 
-      <!-- <h2 class="typewriter"></h2> -->
-      <type-writer class="h2" :text="birthdayPost.text"></type-writer>
-      <div class="bdayInner">
+      <type-writer class="h2" v-if="birthdayPost" :text="birthdayPost.text"></type-writer>
+      <div v-if="birthdayPost" class="bdayInner">
         <div class="overlay">
           <confetti-svg class="confetti"></confetti-svg>
         </div>
@@ -60,6 +59,10 @@ export default {
       .post('/getMainBday')
         .then(res => {
           this.birthdayPost = res.data;
+        }).catch(error => {
+          console.log('No birthday post!');
+          // TODO: put ads instead of birthday post
+          document.querySelector('.birthdayPost').style.backgroundColor = '#eee';
         });
   },
   watch : {
@@ -196,6 +199,7 @@ export default {
     color:#F2C94C;
     text-align: right;
     z-index:5;
+    padding-left:32px;
     font-family: 'Levin','Assistant',sans-serif;
   }
 

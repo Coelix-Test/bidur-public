@@ -88,7 +88,7 @@
 
                     <div class="auth-btns">
                         <template v-if="isLoggedIn">
-                          <a href="#" @click="logout" class="btn-common btn-gold-gradient logout">להתנתק</a>
+                          <a href="#" @click="logout" class="btn-common btn-gold-gradient logout"><span>להתנתק</span></a>
                           <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a>
                         </template>
                         <template v-else>

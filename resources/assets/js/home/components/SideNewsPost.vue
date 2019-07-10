@@ -1,5 +1,5 @@
 <template>
-  <router-link @click="scrollTop" v-in-viewport :to="'/post/' + data.id+'/#'" class="side-news-post">
+  <router-link @click="scrollTop" v-in-viewport.once :to="'/post/' + data.id+'/#'" class="side-news-post">
     <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
     <div class="desc">
       <div class="title">{{ data.title }}</div>
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     scrollTop() {
-      
+
     },
 
   }

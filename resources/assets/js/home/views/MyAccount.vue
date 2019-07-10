@@ -1,11 +1,11 @@
 <template>
   <div class="my-account">
     <div class="my-account-wrapper">
-      <h1>החשבון שלי</h1>
-      <h2>מידע</h2>
-      <router-link :to="'/edit-profile'">ערוך מידע</router-link>
+      <h1>הודעות מועדפות</h1>
+      <!-- <h2>מידע</h2>
+      <router-link :to="'/edit-profile'" class="edit-profile">ערוך מידע</router-link> -->
       <div v-if="favoritePosts" class="favorites">
-        <h2>הודעות מועדפות</h2>
+        <!-- <h2></h2> -->
         <ul v-if="favoritePosts">
           <li v-for="post in favoritePosts" class="single-post">
             <div class="thumbnail">
@@ -81,6 +81,9 @@ export default {
     .my-account-wrapper {
       flex-grow:2;
       padding-left: 24px;
+      .edit-profile {
+
+      }
       h1 {
         font-weight:700;
         color:#333;
