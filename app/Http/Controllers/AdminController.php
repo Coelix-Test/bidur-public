@@ -685,7 +685,7 @@ class AdminController extends Controller
             'authorId' => 1,
             'order' => 1,
             'question' => $title,
-            'image' => '/images/postImages/'.$name
+            'image' => '/images/compare/'.$name
         ]);
 
         foreach ($answers as $key => $answer) {

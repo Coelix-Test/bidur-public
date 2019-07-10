@@ -113,7 +113,7 @@
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
             </form>
-            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;">
+            <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display: none;">
                 <template v-if="celebrities !== undefined">
                     title: {{title}} <br>
                     author: {{author}} <br>
@@ -121,6 +121,9 @@
                     celebrities: {{celebrities}} <br>
                     sections: {{sections}}
                 </template>
+            </div>
+            <div class="col-3">
+                <!-- <side-news></side-news> -->
             </div>
         </div>
     </div>
@@ -137,6 +140,8 @@ import PostVideoLink from './../components/posts/PostVideoLink.vue';
 import PostSurvey from './../components/posts/PostSurvey.vue';
 import PostAssessment from './../components/posts/PostAssessment.vue';
 import PostSelection from './../components/posts/PostSelection.vue';
+
+import SideNews from './../../home/components/SideNews.vue';
 
 export default {
     data: function(){
@@ -158,7 +163,8 @@ export default {
         PostVideoLink,
         PostSurvey,
         PostAssessment,
-        PostSelection
+        PostSelection,
+        SideNews
     },
     methods: {
         addSection(type){

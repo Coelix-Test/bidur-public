@@ -1,16 +1,6 @@
 <template>
   <div class="recent-posts-mobile">
-    <div v-if="survey" class="surveys">
-      <template v-if="survey.type == 'survey'">
-        <div class="selected-poll">
-          <img src="img/rihanna.png" alt="">
-          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
-        </div>
-      </template>
-      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
-
-    </div>
+    <surveys mobile />
     <div class="latest-posts">
       <h2>חדשות נוספות</h2>
 
@@ -43,9 +33,10 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import VuePoll from 'vue-poll'
-import LikeSurvey from './../common/LikeSurvey'
-import OneSurvey from './../common/OneSurvey'
+import Surveys from './Surveys';
+// import VuePoll from 'vue-poll'
+// import LikeSurvey from './../common/LikeSurvey'
+// import OneSurvey from './../common/OneSurvey'
 
 export default {
   data() {
@@ -59,37 +50,35 @@ export default {
     axios.post('/getRecentPosts').then(res => {
       this.posts = res.data;
     });
-    axios.post('/getServiceForMainPageSecond').then(res => {
-      this.survey = res.data;
-    });
+    // axios.post('/getServiceForMainPageSecond').then(res => {
+    //   this.survey = res.data;
+    // });
   },
   methods : {
-    addVote(obj, id){
-      console.log(obj);
-      axios
-        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
-          .then(response => {
-
-          });
-    }
+    // addVote(obj, id){
+    //   console.log(obj);
+    //   axios
+    //     .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+    //       .then(response => {
+    //
+    //       });
+    // }
   },
   components: {
     Carousel,
     Slide,
-    LikeSurvey,
-    OneSurvey,
-    VuePoll,
+    Surveys
   },
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .latest-posts {
     width:100%;
     max-width: 100%;
     overflow: hidden;
-    background: rgba(196, 196, 196, 0.1);
-    border-right: 6px solid #F2C94C;
+    //background: rgba(196, 196, 196, 0.1);
+    //border-right: 6px solid #F2C94C;
     margin-top: 24px;
     padding:24px 8px;
   }
@@ -182,6 +171,7 @@ export default {
     font-weight: bold;
     margin-bottom: 32px;
     margin-top: 0;
+    text-align: center;
   }
   .selected-poll {
     display: flex;

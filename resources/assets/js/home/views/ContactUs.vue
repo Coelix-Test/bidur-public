@@ -9,7 +9,7 @@
       </p>
       <div class="contact-form">
         <h2>יש לכם שאלה? שלחו לנו הודעה!</h2>
-        <form v-if="sendMessage" action="#">
+        <form @submit="sendMail" v-if="sendMessage">
           <input
             type="text"
             name="name"
@@ -43,7 +43,7 @@
             v-model="mailContent.message"
             placeholder="תוכן ההודעה"
           /></textarea>
-          <button type="submit" @click="sendMail($event)">שלח הודעה!</button>
+          <button class="th-btn th-btn-gold" type="submit">שלח הודעה!</button>
         </form>
         <div v-if="sendMessage == false" class="form-notice">
           ההודעה שלך נשלחה בהצלחה!
@@ -175,15 +175,7 @@ export default {
                }
              }
              button {
-                background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
-                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-                border-radius: 10px;
                 align-self: flex-start;
-                padding:16px 48px;
-                border-style: hidden;
-                color:#fff;
-                font-weight: 900;
-                font-size: 24px;
              }
           }
 

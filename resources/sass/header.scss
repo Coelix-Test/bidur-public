@@ -50,6 +50,11 @@
                 height: 35px;
             }
         }
+        .btn-common{
+            &:first-child{
+                margin-right: auto;
+            }
+        }
     }
     .top-row-inner,
     .top-row-inner-mob{
@@ -61,7 +66,6 @@
             height: 35px;
             padding: 0 28px;
             &:first-child{
-                margin-right: auto;
                 margin-left: 10px;
             }
         }
@@ -339,8 +343,8 @@
                 display: flex;
                 justify-content: center;
                 a{
-                    width: 20px;
-                    height: 20px;
+                    width: 25px;
+                    height: 25px;
                     flex-shrink: 0;
                     &:first-child{
                         //margin-right: auto;//style for socials in header, not in menu
@@ -356,6 +360,13 @@
                     width: 100%;
                     height: auto;
                 }
+            }
+            .header-text{
+              text-align: center;
+              margin-right: 40px;
+              margin-left: 10px;
+              font-weight: 700;
+              font-size: 14px;
             }
 
         }
@@ -378,29 +389,6 @@
             }
         }
 
-        //native scroll in celebrities section
-        // .celebrities-container{
-        //     padding: 0;
-        //     overflow: hidden;
-        // }
-        // .celebrities-slider{
-        //     display: flex;
-        //     width: 100%;
-        //     overflow-x: scroll;
-        //     .celebrity{
-        //         margin-right: 10px;
-        //         margin-left: 10px;
-        //     }
-        //     &::-webkit-scrollbar{
-        //         height: 0px;
-        //     }
-        //     &::-webkit-scrollbar-track {
-        //         background-color: transparent;
-        //     }
-        //     &::-webkit-scrollbar-thumb{
-        //         background-color: transparent;
-        //     }
-        // }
         //slider scroll
         .celebrities-container{
             padding-right: 0;

@@ -2,18 +2,8 @@
 <template>
   <div class="right-column-bot">
 
-    <div v-if="survey">
-      <template v-if="survey.type == 'survey'">
-        <div class="selected-poll">
-          <img src="img/rihanna.png" alt="">
-          <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
-        </div>
-      </template>
-
-      <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-      <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
-    </div>
-
+    <surveys/>
+    <!-- <surveys mobile/> -->
 
     <div class="latest-posts" v-if="windowWidth > 768" >
       <h2>חדשות נוספות</h2>
@@ -25,7 +15,8 @@
         autoplay
         navigationEnabled
         :autoplayTimeout="4000"
-        :paginationEnabled="false"
+        :paginationEnabled="true"
+        :paginationPadding="8"
         :perPageCustom="[[320, 2], [768, 2], [769, 4]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
@@ -47,54 +38,45 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import VuePoll from 'vue-poll'
-import LikeSurvey from './../common/LikeSurvey'
-import OneSurvey from './../common/OneSurvey'
+import Surveys from './Surveys';
 
 export default {
   props : {
     data : {
       requred: true,
-    }
+    },
   },
   data() {
     return {
-      posts : [],
-      survey: [],
+      posts: [],
       windowWidth : document.documentElement.clientWidth,
     }
   },
   created() {
-    axios.post('/getServiceForMainPage').then(res => {
-      this.survey = res.data;
-      // console.log(this.survey);
-    });
     axios.post('/getRecentPosts').then(res => {
       // console.log(res.data);
       this.posts = res.data;
     });
   },
   components: {
-    VuePoll,
     Carousel,
     Slide,
-    LikeSurvey,
-    OneSurvey,
+    Surveys,
   },
   methods: {
-    addVote(obj, id){
-      console.log(obj);
-      axios
-        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
-          .then(response => {
-            // console.log(response);
-          });
-    }
+    // addVote(obj, id){
+    //   console.log(obj);
+    //   axios
+    //     .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+    //       .then(response => {
+    //         // console.log(response);
+    //       });
+    // }
   },
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .right-column-bot {
     flex-basis:50%;
     width:50%;
@@ -135,8 +117,8 @@ export default {
     width:100%;
     max-width: 100%;
     overflow: hidden;
-    background: rgba(196, 196, 196, 0.1);
-    border-right: 6px solid #F2C94C;
+    // background: rgba(196, 196, 196, 0.1);
+    // border-right: 6px solid #F2C94C;
     margin-top: 24px;
     padding:24px 8px;
   }
@@ -229,6 +211,7 @@ export default {
     font-weight: bold;
     margin-bottom: 32px;
     margin-top: 0;
+    text-align: center;
   }
   @media (max-width:768px) {
     .latest-post-item {
@@ -267,4 +250,14 @@ export default {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
   }
+</style>
+<style lang="scss">
+.latest-post-slider {
+  .VueCarousel-dot-container{
+    margin-top: 0!important;
+  }
+  .VueCarousel-dot{
+    margin-top: 0 !important;
+  }
+}
 </style>

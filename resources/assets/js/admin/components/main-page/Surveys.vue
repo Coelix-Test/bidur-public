@@ -1,17 +1,17 @@
 <template>
   <div class="surveys">
-    <h2 class="heading">Surveys</h2>
+    <h2 class="heading">{{ this.mobile ? 'Mobile' : '' }} Surveys</h2>
     <div class="plate shadow-section">
       <div class="types">
         <div class="add-section" @click="select('survey')">
           <img src="/img/icons/edit-post-survey.svg" alt="">
           <span>Survey</span>
         </div>
-        <div class="add-section" @click="select('assessment')">
+        <div class="add-section" @click="select('likableImage')">
           <img src="/img/icons/edit-post-assessment.svg" alt="">
           <span>הערכה</span>
         </div>
-        <div class="add-section" @click="select('selection')">
+        <div class="add-section" @click="select('comparablePhotos')">
           <img src="/img/icons/edit-post-selection.svg" alt="">
           <span>להשוות</span>
         </div>
@@ -20,7 +20,7 @@
       <PostSelection
         v-bind.sync="selection"
         :deletable="false"
-        v-if="selected == 'selection'"
+        v-if="selected == 'comparablePhotos'"
       />
       <PostSurvey
         v-bind.sync="survey"
@@ -30,7 +30,7 @@
       <PostAssessment
         v-bind.sync="ass"
         :deletable="false"
-        v-else-if="selected == 'assessment'"
+        v-else-if="selected == 'likableImage'"
       />
 
       <button @click="save" class="theme-btn-red big-btn">לשמור</button>
@@ -44,9 +44,15 @@ import PostSurvey from './../posts/PostSurvey.vue';
 import PostAssessment from './../posts/PostAssessment.vue';
 
 export default {
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false,
+    }
+  },
   data(){
     return {
-      selected: 'selection',
+      selected: 'comparablePhotos',
       selection: {
         image1: '',
         image2: '',
@@ -69,34 +75,54 @@ export default {
     PostAssessment,
   },
   methods: {
+    onReceive(res) {
+      this.selected = res.data.type;
+      if(res.data.type == 'comparablePhotos') {
+        this.selection.title = res.data.value.description;
+        this.selection.image1 = res.data.value.imageLeft;
+        this.selection.image2 = res.data.value.imageRight;
+      }
+      else if(res.data.type == 'likableImage') {
+        this.ass.title = res.data.value.description;
+        this.ass.image = res.data.value.imgUrl;
+      }
+      else if(res.data.type == 'survey') {
+        this.survey.title = res.data.value.question;
+        this.survey.image = res.data.image;
+        this.survey.answers = res.data.value.answers.map(n => {
+          return n.text;
+        });
+        // console.log(this.survey.image);
+      }
+    },
     select(type) {
       this.selected = type;
     },
     save() {
       var data = new FormData();
 
-      if(this.selected == 'selection') {
+      if(this.selected == 'comparablePhotos') {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post('/createNewComparison', data, {
+        axios.post(this.mobile ? '/addNewComparisonSecond' : '/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+          // console.log('qweqweqwew');
         });
         // axios.post('/showCompareFromMain');
       }
-      else if(this.selected == 'assessment') {
+      else if(this.selected == 'likableImage') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post('/createSinglePhoto', data, {
+        axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+          // console.log('qweqweqwew');
         });
         // axios.post('/showSinglePhotoFromMain');
       }
@@ -104,16 +130,21 @@ export default {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post('/addSurvey', data, {
+        axios.post(this.mobile ? '/addNewSurveyToMainSecond' : '/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          console.log('qweqweqwew');
+          // console.log('qweqweqwew');
         });
       }
-
-
+    }
+  },
+  created() {
+    if(!this.mobile) {
+      axios.post('/getServiceForMainPage').then(this.onReceive);
+    } else {
+      axios.post('/getServiceForMainPageSecond').then(this.onReceive)
     }
   }
 }

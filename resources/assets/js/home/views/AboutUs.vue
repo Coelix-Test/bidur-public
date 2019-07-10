@@ -3,9 +3,12 @@
     <div class="row">
       <div class="column right">
         <div>
-          <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2>אודות</h2>
+          <p>בשנת 2014 נוסד עמוד האינסטגרם "ישראל בידור" על ידי איש התקשורת דוד סער (דאז בן 19 בלבד) במטרה להפוך לגוף תקשורת צעיר, רענן, אטרקטיבי ומכבד - אשר מסקר אודות עולם הבידור הישראלי והתרחשויות השעה.
+
+לאור ההצלחה במדיות החברתיות והפיכתו של עמוד האינסטגרם ISRAEL_BIDUR@ לעמוד הבידור הנעקב ביותר בישראל (עם למעלה מרבע מיליון עוקבים מרחבי הארץ והעולם) הוחלט להקים אתר אינטרנט שגם הוא יעסוק בכל תחומי הבידור, התרבות והרכילות בישראל.
+
+אופי האתר מבוסס על עמוד האינסטגרם של "ישראל בידור" כאשר הממשק ביניהם הולך להיות באופן קבוע, הן בתוכן, הן בערכים, הן בסיקור והן בקונספט הכללי.</p>
         </div>
         <img src="img/14734.png" alt="">
       </div>
@@ -13,9 +16,15 @@
       <div class="column left">
         <img src="img/2471790.png" alt="">
         <div>
-          <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>אתר "ישראל בידור" הציב לעצמו כמה יעדים: בראש ובראשונה לשמור על כבוד האדם, להיות הראשונים בעדכוני עולם הבידור, לספק את החומרים הכי מעניינים בתחום, לשמור על מקוריות שובת לב ולשמור על כללי האתיקה העיתונאית.
+
+קהל הקוראים והגולשים של ישראל בידור רחב היקף וחוצה קהלים. מרבית הקוראים והגולשים הינם בין הגילאים 60 - 10 אשר אוהבים, מתחברים וצורכים את חווית הסיקור שלנו אודות עולם הבידור הישראלי.
+
+צוות האתר מורכב מכותבים ועורכים צעירים במיוחד אשר התנסות הכתיבה בפלטפורמה תקשורתית זו, הינה מקפצה גדולה עבורם והדמנות מבורכת.
+
+לסיום, אנו מבטיחים כי נעשה הכל על מנת שנוכל להביא לכם יום יום ושעה שעה את התכנים המעניינים ביותר, האמינים ביותר והמכבדים ביותר.
+
+</p>
         </div>
       </div>
     </div>

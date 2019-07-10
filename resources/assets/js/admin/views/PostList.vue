@@ -1,5 +1,8 @@
 <template>
   <div class="post-list">
+    <div class="search">
+      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
+    </div>
     <div class="posts-wrapper">
       <div v-for="post in posts" v-if="posts" class="post" :key="post.post.id">
 
@@ -17,6 +20,9 @@
         </div>
 
       </div>
+      <div v-if="posts == null">
+        פוסטים לא נמצאו!
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +31,8 @@
 export default {
   data() {
     return {
-      posts : null
+      posts : null,
+      searchQuery : null,
     }
   },
   created() {
@@ -41,12 +48,29 @@ export default {
       this.$router.push({ name: 'post-edit', params: { id: id } });
     },
     deletePost(id) {
+      let result = confirm('למחוק את הפוסט?');
+      if(result == true) {
+        axios
+          .post('/deletePost',{id : id})
+            .then(res => {
+                this.posts = res.data;
+            });
+      }
+
+
+    },
+    renderSearch() {
       axios
-        .post('/deletePost',{id : id})
+        .post('/postTitleSerach', {title : this.searchQuery})
           .then(res => {
+            if(res.data.success != false) {
               this.posts = res.data;
-              alert('פוסט נמחק!');
-          });
+            }else {
+              this.posts = null;
+            }
+
+          })
+          .catch(error => this.posts = null);
     }
   }
 }
@@ -57,6 +81,18 @@ export default {
     max-width:1440px;
     padding:0 24px;
     margin: 32px auto;
+      .search {
+        padding:0 24px 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        input {
+          width:300px;
+          padding:6px 16px;
+          font-size: 16px;
+          color:#333;
+        }
+      }
       .posts-wrapper {
         display: flex;
         flex-direction: row;

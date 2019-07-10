@@ -9,7 +9,7 @@
     <transition name="anim">
       <div v-if="opened" class="popup">
         <div class="title">
-          Copy this link and paste
+          לחץ על הלחצן כדי להעתיק את הקישור
         </div>
         <div class="input">
           <button @click="copy" type="button" name="button">

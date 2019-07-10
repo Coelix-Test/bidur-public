@@ -843,8 +843,8 @@ class MainController extends Controller
             $offset = $page * 24;
             $favPosts = Favourites::where('userId', $user->id)->offset($offset)->take(24)->get();
         }
-        
-        
+
+
         if (isset($favPosts)){
             foreach ($favPosts as $favPost) {
                 $posts[] = Post::find($favPost->postId)->id;
