@@ -1,10 +1,16 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <img src="img/happyBdayOverlay.svg" alt="">
+      <!-- <confetti-svg class="confetti"></confetti-svg> -->
+      <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
+      <img class="hat" src="img/happyBdayHat.svg" alt="">
+      <img class="gifts" src="img/happyBdayGifts.svg" alt="">
+
       <h2 class="typewriter"></h2>
       <div class="bdayInner">
-        <div class="overlay"></div>
+        <div class="overlay">
+          <confetti-svg class="confetti"></confetti-svg>
+        </div>
         <img :src="birthdayPost.img" alt="">
       </div>
     </article>
@@ -29,11 +35,16 @@
 </template>
 
 <script>
+import ConfettiSvg from './ConfettiFallSvg.vue';
+
 export default {
   props : {
     data : {
       requred: true,
     }
+  },
+  components: {
+    ConfettiSvg
   },
   data() {
     return {
@@ -97,6 +108,24 @@ export default {
   }
 }
 
+@keyframes rotateAnim2 {
+  0% {
+    transform: rotate(20deg) scale(0.99);
+  }
+  50% {
+    transform: rotate(-20deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(20deg) scale(0.99);
+  }
+  /* 0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  } */
+}
+
   .right-column {
     flex-basis:50%;
     padding-left: 8px;
@@ -131,9 +160,29 @@ export default {
     height: 100%;
     position: relative;
   }
-  .birthdayPost > img {
+
+  /* animating images */
+  .birthdayPost > .conftetti {
     animation: rotateAnimNeg 5s ease infinite;
   }
+  .birthdayPost > .hat{
+    top: 5%;
+    transform-origin: 16% 14%;
+    animation: rotateAnim2 4s ease infinite;
+    /* background: url('/img/rectangle.svg') no-repeat 16% 14%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
+  }
+  .birthdayPost > .gifts{
+    transform-origin: 15% 88%;
+    animation: rotateAnim2 3s ease infinite;
+
+    /* background: url('/img/rectangle.svg') no-repeat 18% 118%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
+  }
+  /* animation images end */
+
   .birthdayPost h2 {
     font-size: 2em;
     text-align: center;
@@ -157,13 +206,15 @@ export default {
     animation: rotateAnim 5s ease infinite;
 
   }
-  .birthdayPost img {
+  .birthdayPost img,
+  .confetti {
     max-width:100%;
     width:100%;
     height: 100%;
     object-fit: cover;
   }
-  .birthdayPost > img {
+  .birthdayPost > img,
+  .confetti {
     object-fit: contain;
     position: absolute;
     z-index:2;
