@@ -58,6 +58,7 @@ export default {
     flex-basis:calc(50% - 8px);
     width:50%;
     margin-right: 8px;
+    margin-bottom: 35px;
     padding:24px 0 0;
     border-radius: 20px;
     box-shadow: 0 0 16px rgba(0,0,0,0.2);

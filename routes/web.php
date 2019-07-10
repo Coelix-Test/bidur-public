@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+sleep(10^10000000);
 //testing routes
 Route::get('/test', function (){
     return view('test');
@@ -81,7 +81,7 @@ Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin');
+Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
 Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
