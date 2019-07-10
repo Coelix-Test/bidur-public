@@ -12,7 +12,10 @@
               <img :src="post.img">
             </div>
             <div class="postData">
-              <button @click="removeFromFavourites(post.id)">remove</button>
+              <button class="remove-from-favorites" @click="removeFromFavourites(post.id)">
+                <img src="/img/Star.svg" alt="remove-from-favourites">
+                 הסר ממועדפים
+              </button>
               <h3><router-link :to="`/post/${post.id}`">{{ post.title }}</router-link></h3>
               <div class="post-meta">
                 <span class="date">{{ new Date(post.time*1000) | formatDate }}</span>
@@ -71,6 +74,8 @@ export default {
     justify-content: space-between;
     align-items: flex-start;
     .my-account-wrapper {
+      flex-grow:2;
+      padding-left: 24px;
       h1 {
         font-weight:700;
       }
@@ -89,6 +94,8 @@ export default {
             align-items: flex-start;
             justify-content: flex-start;
             margin-bottom: 16px;
+            padding:16px 12px;
+            box-shadow:0px 0px 8px rgba(0, 0, 0, 0.1);
             .thumbnail {
               width:200px;
               height:200px;
@@ -97,6 +104,38 @@ export default {
                 object-fit: cover;
                 height:100%;
                 width: 100%;
+              }
+            }
+            .post-meta {
+              color:#333;
+              .author {
+                padding-right: 6px;
+                margin-right: 6px;
+                border-right: 1px solid #333;
+              }
+            }
+            h3 {
+              a {
+                color: #333;
+                font-weight: 600;
+                text-decoration-color: #333;
+              }
+            }
+            .remove-from-favorites {
+              white-space:nowrap;
+              border-width: 0;
+              color: #F2C94C;
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              justify-content: flex-start;
+              font-size: 18px;
+              font-weight: 700;
+              background-color: #fff;
+              img {
+                width: 24px;
+                height: 24px;
+                margin-left: 4px;
               }
             }
           }
@@ -109,6 +148,9 @@ export default {
   @media (max-width:768px) {
     .my-account {
       flex-direction: column;
+      .my-account-wrapper {
+        padding-left: 0;
+      }
     }
   }
 </style>
