@@ -72,13 +72,13 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .latest-posts {
     width:100%;
     max-width: 100%;
     overflow: hidden;
-    background: rgba(196, 196, 196, 0.1);
-    border-right: 6px solid #F2C94C;
+    //background: rgba(196, 196, 196, 0.1);
+    //border-right: 6px solid #F2C94C;
     margin-top: 24px;
     padding:24px 8px;
   }
@@ -171,6 +171,7 @@ export default {
     font-weight: bold;
     margin-bottom: 32px;
     margin-top: 0;
+    text-align: center;
   }
   .selected-poll {
     display: flex;

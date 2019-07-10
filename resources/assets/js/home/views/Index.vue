@@ -5,7 +5,6 @@
 
     <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
-    <!-- <right-column-bot v-if="windowWidth < 768" /> -->
     <right-column-bot />
     <left-column-bot />
     <recent-posts-mobile v-if="windowWidth < 768" />
@@ -71,8 +70,14 @@ export default {
     .home {
       flex-direction:column;
       padding: 0 12px 48px;
+      margin-bottom: 0;
     }
 
+  }
+  @media(max-width: 555px){
+    .home{
+      padding-bottom: 0;
+    }
   }
 </style>
 
