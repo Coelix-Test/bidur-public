@@ -123,7 +123,7 @@
                 </template>
             </div>
             <div class="col-3">
-                <side-news></side-news>
+                <!-- <side-news></side-news> -->
             </div>
         </div>
     </div>

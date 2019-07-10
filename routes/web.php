@@ -66,6 +66,19 @@ Route::post('/getServiceForMainPageSecond',   'MainController@getServiceForMainP
 Route::post('/sendMail',   'MainController@sendMail');
 
 
+//favourite
+
+Route::post('/addPostToFavourite', 'MainController@addPostToFavourite');
+Route::post('/deletePostFromFavourites', 'MainController@deletePostFromFavourites');
+Route::post('/getAllFavourites', 'MainController@getAllFavourites');
+
+//changePersonalInfo
+Route::post('/getPersonalInfo', 'MainController@getPersonalInfo');
+Route::post('/checkPassword', 'MainController@checkPassword');
+Route::post('/changePassword', 'MainController@changePassword');
+Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
+
+
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin');
