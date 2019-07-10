@@ -22,6 +22,7 @@ use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -870,8 +871,44 @@ class MainController extends Controller
         }
     }
 
-    public function changePassword(){
+    public function checkPassword(Request $request){
+        if (\Auth::check()){
+            $currentPassword = User::find(\Auth::id())->password;
 
+            $oldPassword = $request->get('oldPassword');
+
+            if (Hash::check($oldPassword, $currentPassword)){
+                return json_encode(['success' => true]);
+            }else{
+                return json_encode(['success' => false]);
+            }
+        }
+        return json_encode(['success' => false]);
+    }
+
+    public function changePassword(Request $request){
+        $newPassword = $request->get('password');
+
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $user->password =  Hash::make($newPassword);
+            $user->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false]);
+    }
+
+    public function changePersonalInfo(Request $request){
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $user->name = $name;
+            $user->phone = $phone;
+            $user->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false]);
     }
 
 
