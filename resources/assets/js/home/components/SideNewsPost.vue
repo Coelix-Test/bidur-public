@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/post/' + data.id" class="side-news-post">
+  <router-link v-in-viewport :to="'/post/' + data.id" class="side-news-post">
     <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
     <div class="desc">
       <div class="title">{{ data.title }}</div>
@@ -30,6 +30,13 @@ export default {
   align-items: stretch;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  transition: .3s;
+  transform: translateX(-100%);
+  opacity: 0;
+  &.in-viewport {
+    opacity: 1;
+    transform:translateX(0);
+  }
   &:last-child {
     border-bottom: 0;
     padding-bottom: 0;

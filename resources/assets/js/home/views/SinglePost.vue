@@ -419,6 +419,12 @@ export default {
     }
   }
   @media (max-width:768px) {
+    section.imageWithText {
+      text-align: justify;
+    }
+    section.content {
+      text-align: justify;
+    }
     .post-content h1 {
       font-size: 32px;
       line-height: 32px;
