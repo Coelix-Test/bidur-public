@@ -81,7 +81,7 @@ Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin');
+Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
 Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
