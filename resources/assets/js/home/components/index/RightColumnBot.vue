@@ -15,7 +15,8 @@
         autoplay
         navigationEnabled
         :autoplayTimeout="4000"
-        :paginationEnabled="false"
+        :paginationEnabled="true"
+        :paginationPadding="8"
         :perPageCustom="[[320, 2], [768, 2], [769, 4]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
@@ -75,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .right-column-bot {
     flex-basis:50%;
     width:50%;
@@ -116,8 +117,8 @@ export default {
     width:100%;
     max-width: 100%;
     overflow: hidden;
-    background: rgba(196, 196, 196, 0.1);
-    border-right: 6px solid #F2C94C;
+    // background: rgba(196, 196, 196, 0.1);
+    // border-right: 6px solid #F2C94C;
     margin-top: 24px;
     padding:24px 8px;
   }
@@ -210,6 +211,7 @@ export default {
     font-weight: bold;
     margin-bottom: 32px;
     margin-top: 0;
+    text-align: center;
   }
   @media (max-width:768px) {
     .latest-post-item {
@@ -248,4 +250,14 @@ export default {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
   }
+</style>
+<style lang="scss">
+.latest-post-slider {
+  .VueCarousel-dot-container{
+    margin-top: 0!important;
+  }
+  .VueCarousel-dot{
+    margin-top: 0 !important;
+  }
+}
 </style>

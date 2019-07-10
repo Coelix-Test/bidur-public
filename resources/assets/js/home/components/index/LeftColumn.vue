@@ -6,7 +6,8 @@
         <!-- {{post}} -->
         <div class="overlay"></div>
         <img :src="post.img" alt="">
-        <h2 class="typewriter">{{post.title}}</h2>
+        <!-- <h2 class="typewriter">{{post.title}}</h2> -->
+        <type-writer class="h2" :text="post.title"></type-writer>
         <p>
           <span class="author">{{ post.author }}</span>
           <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import TypeWriter from './../common/TypeWriter.vue';
 export default {
   props : {
     data : {
@@ -31,21 +33,12 @@ export default {
 
     }
   },
+  components: {
+    TypeWriter
+  },
   mounted() {
 
-      // let i = 0;
-      // let firstPostTitle = this.posts[0].title;
-      // let speed = 50;
-      // document.getElementsByClassName('typewriter')[1].innerHTML = '';
-      // function typeWriter() {
-      //
-      //   if (i < firstPostTitle.length) {
-      //     document.getElementsByClassName('typewriter')[1].innerHTML += firstPostTitle.charAt(i);
-      //     i++;
-      //     setTimeout(typeWriter, speed);
-      //   }
-      // };
-      // typeWriter();
+
 
 
   },
@@ -156,7 +149,7 @@ export default {
   .posts-column article:hover .overlay {
     background: rgba(0,0,0,1);
   }
-  .posts-column article h2 {
+  .posts-column article .h2 {
     font-family: 'Assistant', sans-serif;
     font-weight: 700;
     font-size: 36px;
@@ -196,7 +189,7 @@ export default {
     .posts-column article {
       margin-bottom: 8px;
     }
-    .posts-column article h2 {
+    .posts-column article .h2 {
       font-size: 20px;
       line-height: 20px;
     }

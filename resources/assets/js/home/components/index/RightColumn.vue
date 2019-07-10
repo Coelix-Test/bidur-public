@@ -6,7 +6,8 @@
       <img class="hat" src="img/happyBdayHat.svg" alt="">
       <img class="gifts" src="img/happyBdayGifts.svg" alt="">
 
-      <h2 class="typewriter"></h2>
+      <!-- <h2 class="typewriter"></h2> -->
+      <type-writer class="h2" :text="birthdayPost.text"></type-writer>
       <div class="bdayInner">
         <div class="overlay">
           <confetti-svg class="confetti"></confetti-svg>
@@ -21,7 +22,7 @@
           <div class="overlay"></div>
 
           <img :src="post.img" alt="">
-          <h2>{{post.title}}</h2>
+          <h2 class="h2">{{post.title}}</h2>
           <p>
             <span class="author">{{ post.author }}</span>
             <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
@@ -36,6 +37,7 @@
 
 <script>
 import ConfettiSvg from './ConfettiFallSvg.vue';
+import TypeWriter from './../common/TypeWriter.vue';
 
 export default {
   props : {
@@ -44,7 +46,8 @@ export default {
     }
   },
   components: {
-    ConfettiSvg
+    ConfettiSvg,
+    TypeWriter
   },
   data() {
     return {
@@ -61,19 +64,19 @@ export default {
   },
   watch : {
     birthdayPost : function() {
-      let i = 0;
-      let firstPostTitle = this.birthdayPost.text;
-      let speed = 50;
-      document.getElementsByClassName('typewriter')[0].innerHTML = '';
-      function typeWriter() {
-
-        if (i < firstPostTitle.length) {
-          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
-        }
-      };
-      typeWriter();
+      // let i = 0;
+      // let firstPostTitle = this.birthdayPost.text;
+      // let speed = 50;
+      // document.getElementsByClassName('typewriter')[0].innerHTML = '';
+      // function typeWriter() {
+      //
+      //   if (i < firstPostTitle.length) {
+      //     document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+      //     i++;
+      //     setTimeout(typeWriter, speed);
+      //   }
+      // };
+      // typeWriter();
     }
   },
   mounted() {
@@ -82,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 @keyframes rotateAnimNeg {
   0% {
@@ -183,7 +186,7 @@ export default {
   }
   /* animation images end */
 
-  .birthdayPost h2 {
+  .birthdayPost .h2 {
     font-size: 2em;
     text-align: center;
     margin-bottom: 0;
@@ -327,7 +330,7 @@ export default {
   ul.posts li a:hover .overlay {
     background: rgba(0,0,0,0.2);
   }
-  ul.posts li a h2 {
+  ul.posts li a .h2 {
     font-weight: 700;
     margin-bottom: 0;
     font-size: 24px;
@@ -367,7 +370,7 @@ export default {
     ul.posts li {
       flex-basis: calc(50% - 4px);
     }
-    ul.posts li a h2 {
+    ul.posts li a .h2 {
       font-size: 16px;
       line-height: 16px;
     }
@@ -386,7 +389,7 @@ export default {
       background-color: transparent;
       display: none;
     }
-    .birthdayPost h2 {
+    .birthdayPost .h2 {
       right:8px;
       top:8px;
       font-size: 1.6em;
@@ -405,10 +408,21 @@ export default {
     }
   }
   @media (max-width:550px) {
-
+    .birthdayPost{
+      & > .hat{
+        top: 21%;
+      }
+      & > .gifts{
+        bottom: -8%;
+      }
+    }
+    .birthdayPost .h2{
+      text-align: center;
+    }
 
     ul.posts {
       height:auto;
+      margin-bottom: 0;
     }
     .birthdayPost {
       height: 200px;

@@ -47,14 +47,13 @@
                   <span></span>
               </div>
 
-
               <div id="nav-panel" class="main-nav modal fade">
       			<div class="modal-content">
       				<div class="main-nav-content">
       					<ul id="menu-primary-menu" class="menu">
                   <li class="menu-item">
                     <router-link :to="{ name: 'index'}">
-                      <img src="/img/logo-gradient.png" width="124px" alt="">
+                      <img src="/img/logo-gradient.png" width="148px" alt="">
                     </router-link>
                   </li>
       						<li class="menu-item">
@@ -95,6 +94,7 @@
 
 
           </div>
+          <span class="header-text">הבית של הבידור הישראל</span>
           <router-link :to="{ name: 'index'}" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
           </router-link>
