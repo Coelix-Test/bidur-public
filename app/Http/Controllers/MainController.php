@@ -880,10 +880,10 @@ class MainController extends Controller
             if (Hash::check($oldPassword, $currentPassword)){
                 return json_encode(['success' => true]);
             }else{
-                return json_encode(['success' => false]);
+                return json_encode(['success' => false, 'message' => 'Passwords do not match']);
             }
         }
-        return json_encode(['success' => false]);
+        return json_encode(['success' => false, 'message' => 'Login please']);
     }
 
     public function changePassword(Request $request){
@@ -895,7 +895,7 @@ class MainController extends Controller
             $user->save();
             return json_encode(['success' => true]);
         }
-        return json_encode(['success' => false]);
+        return json_encode(['success' => false, 'message' => 'Login please']);
     }
 
     public function changePersonalInfo(Request $request){
@@ -908,7 +908,7 @@ class MainController extends Controller
             $user->save();
             return json_encode(['success' => true]);
         }
-        return json_encode(['success' => false]);
+        return json_encode(['success' => false, 'message' => 'Login please']);
     }
 
 
