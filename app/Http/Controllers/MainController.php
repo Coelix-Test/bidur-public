@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DisLikesForSingleImage;
 use App\Emoji;
+use App\Favourites;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
@@ -796,6 +797,55 @@ class MainController extends Controller
 
 
     }
+
+    public function addPostToFavourite(Request $request){
+        $post = Post::find($request->get('postId'));
+        $user = User::find($request->get('userId'));
+
+        Favourites::create([
+            'postId' => $post->id,
+            'userId' => $user->id,
+        ]);
+
+        return json_encode(['success' => true]);
+    }
+
+    public function deletePostFromFavourites(Request $request){
+        $post = Post::find($request->get('postId'));
+        $user = User::find($request->get('userId'));
+
+        Favourites::where('userId', $user->id)->where('postId', $post->id)->delete();
+
+    }
+
+    public function getAllFavourites(Request $request){
+        $user = User::find(\Auth::id());
+        $page = $request->get('page');
+
+        if ($page == 0){
+            $favPosts = Favourites::where('userId', $user->id)->take(24)->get();
+        }else{
+            $offset = $page * 24;
+            $favPosts = Favourites::where('userId', $user->id)->offset($offset)->take(24)->get();
+        }
+        
+        
+        if (isset($favPosts)){
+            foreach ($favPosts as $favPost) {
+                $posts[] = Post::find($favPost->postId)->id;
+            }
+
+            foreach ($posts as $post) {
+                $finalPosts[] = $this->getContent($post);
+            }
+
+            return json_encode($finalPosts);
+        }
+        return json_encode(['success' => false]);
+
+
+    }
+
 
 
 
