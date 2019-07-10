@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-sleep(10^10000000);
+
 //testing routes
 Route::get('/test', function (){
     return view('test');
