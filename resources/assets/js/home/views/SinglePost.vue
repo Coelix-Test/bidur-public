@@ -17,15 +17,16 @@
         </nav>
 
         <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
+        <button v-if="post.data.post.is_favourite == false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+          <img src="/img/Star.svg" alt="">
+          הוסף למועדפים
+        </button>
         <div class="post-meta">
 
           <div class="info">
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
-            <button @click="addPostToFavourite(postId)">
-              <img src="/img/Star.svg" alt="add-to-favourites">
-              הוסף למועדפים
-            </button>
+
           </div>
           <share />
 
@@ -377,6 +378,7 @@ export default {
     width: 24px;
     height: 24px;
     margin-left: 4px;
+    pointer-events: none;
   }
   .img-subtext {
     max-width: 600px;

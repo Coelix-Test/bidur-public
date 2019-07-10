@@ -79,6 +79,7 @@ export default {
       padding-left: 24px;
       h1 {
         font-weight:700;
+        color:#333;
       }
       .edit-profile {
 
@@ -138,6 +139,7 @@ export default {
                 width: 24px;
                 height: 24px;
                 margin-left: 4px;
+                pointer-events: none;
               }
             }
           }
@@ -150,8 +152,24 @@ export default {
   @media (max-width:768px) {
     .my-account {
       flex-direction: column;
+      padding:24px 12px;
       .my-account-wrapper {
+        width:100%;
         padding-left: 0;
+        .favorites {
+          width:100%;
+          ul {
+            li.single-post {
+              padding: 12px;
+              flex-direction: column;
+              .thumbnail {
+                width:100%;
+                margin-left: 0;
+                margin-bottom: 8px;
+              }
+            }
+          }
+        }
       }
     }
   }
