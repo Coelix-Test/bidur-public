@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 use App\Admins;
 use App\DisLikesForSingleImage;
+use App\Favourites;
 use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
@@ -44,6 +45,7 @@ class AdminController extends Controller
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
         HashtagPosts::where('postId', $request->get('id'))->delete();
+        Favourites::where('postId', $request->get('id')->delete());
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
@@ -175,7 +177,7 @@ class AdminController extends Controller
 
         $post = Post::create([
             'author' => $author,
-            'hot' => "false",
+            'hot' => "true",
             'metaTitle' => $metaTitle,
             'created_at' => $date,
         ]);
@@ -199,20 +201,35 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImage($postId, $file, $description, $order){
+    public function createPostAddImage($postId, $file, $description, $order, $flag = null){
         $image = $file;
-        $text = $description;
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+        if (isset($flag)){
+            $fimalImage = $file;
+        }else{
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        $img = PostImage::create([
-            'postId' => $postId,
-            'url' => '/images/postImages/'.$name,
-            'description' => $text,
-            'order' => $order
-        ]);
+        $text = $description;
+
+        if (isset($flag)){
+            $img = PostImage::create([
+                'postId' => $postId,
+                'url' => $fimalImage,
+                'description' => $text,
+                'order' => $order
+            ]);
+        }else{
+            $img = PostImage::create([
+                'postId' => $postId,
+                'url' => '/images/postImages/'.$name,
+                'description' => $text,
+                'order' => $order
+            ]);
+        }
+
         // dd($img);
 
     }
@@ -225,45 +242,77 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order){
-        $image = $file;
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order, $flag = null){
+        if (isset($flag)){
+            $finalImage = $file;
+        }else{
+            $image = $file;
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        PostImageAndText::create([
-            'postId' => $postId,
-            'url' => '/images/postImages/'.$name,
-            'title' => $title,
-            'imagePosition' => $imagePosition,
-            'content' => $text,
-            'order' => $order
-        ]);
+        if (isset($flag)){
+            PostImageAndText::create([
+                'postId' => $postId,
+                'url' => $finalImage,
+                'title' => $title,
+                'imagePosition' => $imagePosition,
+                'content' => $text,
+                'order' => $order
+            ]);
+        }else{
+            PostImageAndText::create([
+                'postId' => $postId,
+                'url' => '/images/postImages/'.$name,
+                'title' => $title,
+                'imagePosition' => $imagePosition,
+                'content' => $text,
+                'order' => $order
+            ]);
+        }
+
     }
 
-    public function createPostAddSurvey($variants, $title, $postId, $order, $image){
-        if($image) {
-            $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $image->move($destinationPath, $name);
+    public function createPostAddSurvey($variants, $title, $postId, $order, $image, $flag = null){
+        if ($flag){
+            $finalImage = $image;
+        }else{
+            if($image) {
+                $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $image->move($destinationPath, $name);
+            }
         }
-        if (\Auth::check() == false){
+
+
+        if (isset($finalImage)){
             $survey = Survey::create([
                 'postId' => $postId,
                 'authorId' => 1,
                 'order' => $order,
                 'question' => $title,
-                'image' => '/images/postImages/'.$name,
+                'image' => $finalImage,
             ]);
         }else{
-            $survey = Survey::create([
-                'postId' => $postId,
-                'authorId' => \Auth::id(),
-                'order' => $order,
-                'question' => $title,
-                'image' => '/images/postImages/'.$name,
-            ]);
+            if (\Auth::check() == false){
+                $survey = Survey::create([
+                    'postId' => $postId,
+                    'authorId' => 1,
+                    'order' => $order,
+                    'question' => $title,
+                    'image' => '/images/postImages/'.$name,
+                ]);
+            }else{
+                $survey = Survey::create([
+                    'postId' => $postId,
+                    'authorId' => \Auth::id(),
+                    'order' => $order,
+                    'question' => $title,
+                    'image' => '/images/postImages/'.$name,
+                ]);
+            }
         }
 
         foreach ($variants as $key => $variant) {
@@ -284,40 +333,104 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order){
-        if($leftFile) {
-            $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $leftFile->move($destinationPath, $leftName);
+    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $flagLeft = null, $flagRight = null){
+        if ($flagLeft && $flagRight){
+            $finalLeft = $leftFile;
+            $finalRight = $rightFile;
+        }elseif ($flagLeft){
+            $finalLeft = $leftFile;
+            if($rightFile) {
+                $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $rightFile->move($destinationPath, $rightName);
+            }
+        }elseif ($flagRight){
+            $finalRight = $rightFile;
+            if($leftFile) {
+                $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $leftFile->move($destinationPath, $leftName);
+            }
+        }else{
+            if($leftFile) {
+                $leftName = rand(0,999999).time().'.'.$leftFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $leftFile->move($destinationPath, $leftName);
+            }
+            if($rightFile) {
+                $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $rightFile->move($destinationPath, $rightName);
+            }
         }
-        if($rightFile) {
-            $rightName = rand(0,999999).time().'.'.$rightFile->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $rightFile->move($destinationPath, $rightName);
+
+
+        if (isset($finalLeft) && isset($finalRight)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => $finalLeft,
+                'urlRight' => $finalRight,
+                'order' => $order,
+            ]);
+        }elseif(isset($finalLeft)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => $finalLeft,
+                'urlRight' => '/images/postImages/'.$rightName,
+                'order' => $order,
+            ]);
+        }elseif (isset($finalRight)){
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => '/images/postImages/'.$leftName,
+                'urlRight' => $finalRight,
+                'order' => $order,
+            ]);
+        }else{
+            SelectOne::create([
+                'postId' => $postId,
+                'description' => $description,
+                'urlLeft' => '/images/postImages/'.$leftName,
+                'urlRight' => '/images/postImages/'.$rightName,
+                'order' => $order,
+            ]);
         }
-        SelectOne::create([
-            'postId' => $postId,
-            'description' => $description,
-            'urlLeft' => '/images/postImages/'.$leftName,
-            'urlRight' => '/images/postImages/'.$rightName,
-            'order' => $order,
-        ]);
+
+
+
+
     }
 
-    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order){
+    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order, $flag = null){
+        if ($flag){
+            $finalImage = $file;
+        }else{
+            if($file) {
+                $name = rand(0,999999).time().'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('/images/postImages');
+                $file->move($destinationPath, $name);
+            }
 
-        if($file) {
-            $name = rand(0,999999).time().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('/images/postImages');
-            $file->move($destinationPath, $name);
         }
 
-        SingleLikableImage::create([
-            'postId' => $postId,
-            'description' => $description,
-            'url' => '/images/postImages/'.$name,
-            'order' => $order,
-        ]);
+        if(isset($finalImage)){
+            SingleLikableImage::create([
+                'postId' => $postId,
+                'description' => $description,
+                'url' => $finalImage,
+                'order' => $order,
+            ]);
+        }else{
+            SingleLikableImage::create([
+                'postId' => $postId,
+                'description' => $description,
+                'url' => '/images/postImages/'.$name,
+                'order' => $order,
+            ]);
+        }
     }
 
     public function getAllHashtags(){
@@ -436,19 +549,19 @@ class AdminController extends Controller
         $destinationPath = public_path('/images/compare');
         $rightImage->move($destinationPath, $rightName);
 
-        $current = SelectOne::where('postId', 0)->first();
+        $current = SelectOne::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        $current = SingleLikableImage::where('postId', 0)->first();
+        $current = SingleLikableImage::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        $current = Survey::where('postId', 0)->first();
+        $current = Survey::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
@@ -514,19 +627,19 @@ class AdminController extends Controller
 
         $image = SingleLikableImage::where('postId', -1)->first();
 
-        $current = SelectOne::where('postId', 0)->first();
+        $current = SelectOne::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        $current = SingleLikableImage::where('postId', 0)->first();
+        $current = SingleLikableImage::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
             LikesForLeftAndRight::where('serviceId', $deletableId)->delete();
         }
-        $current = Survey::where('postId', 0)->first();
+        $current = Survey::where('postId', -1)->first();
         if (!empty($current)){
             $deletableId = $current->id;
             $current->delete();
@@ -572,7 +685,7 @@ class AdminController extends Controller
             'authorId' => 1,
             'order' => 1,
             'question' => $title,
-            'image' => '/images/postImages/'.$name
+            'image' => '/images/compare/'.$name
         ]);
 
         foreach ($answers as $key => $answer) {
@@ -780,6 +893,7 @@ class AdminController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
+            $data['id'] = \Auth::id();
             $admin = Admins::where('userId', $user->id)->first();
 
             empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
@@ -961,8 +1075,8 @@ class AdminController extends Controller
                 $questionsWithAnswers['id'] = $survey->id;
                 $i = 0;
                 $z = 0;
-                foreach ($questions as $question) {
-                    $ass[$question->order] = $question->question;
+                foreach ($questions as $key => $question) {
+                    $ass[$key] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
 //                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
@@ -971,7 +1085,7 @@ class AdminController extends Controller
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
-                $fullPost['sections'][$key] = $questionsWithAnswers;
+                $fullPost['sections'][$survey->order] = $questionsWithAnswers;
 
             }
 
@@ -1040,7 +1154,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
-        dd($request);
+//        dd($request);
 
         Post::where('id', $currentId)->delete();
         PostTitle::where('postId', $currentId)->delete();
@@ -1084,30 +1198,68 @@ class AdminController extends Controller
             elseif($section['type'] == 'survey'){
 //                dd($files);
                 $title = $section['title'];
-                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                if (isset($files['sections'][$key]['image'])){
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                }else{
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$section['image'], true );
+                }
             }
             elseif ($section['type'] == 'image'){
-//                    dd($files['sections'][$key]['value']);
 
-                $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+//                    dd($files['sections'][$key]['value']);
+                if (isset($files['sections'][$key]['value'])){
+                    $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
+                }else{
+                    $this->createPostAddImage($this->post->id, $section['value'], $section['description'], $key, true);
+                }
             }
             elseif ($section['type'] == 'imageWithText'){
-                $this->createPostAddImageWithText(
-                    $this->post->id,
-                    $files['sections'][$key]['image'],
-                    $section['title'],
-                    $section['text'],
-                    $section['imagePosition'],
-                    $key
-                );
+
+                if (isset($files['sections'][$key]['image'])){
+                    $this->createPostAddImageWithText(
+                        $this->post->id,
+                        $files['sections'][$key]['image'],
+                        $section['title'],
+                        $section['text'],
+                        $section['imagePosition'],
+                        $key
+                    );
+                }else{
+                    $this->createPostAddImageWithText(
+                        $this->post->id,
+                        $section['image'],
+                        $section['title'],
+                        $section['text'],
+                        $section['imagePosition'],
+                        $key,
+                        true
+                    );
+                }
+
 //                dd($files);
             }elseif ($section['type'] == 'selection'){
-                $leftFile = $files['sections'][$key]['image1'];
-                $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+
+                if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
+                    $leftFile = $files['sections'][$key]['image2'];
+                    $rightFile = $files['sections'][$key]['image1'];
+                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+                }elseif (isset($files['sections'][$key]['image1'])){ //только правая
+                    $rightFile = $files['sections'][$key]['image1'];
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, true, false);
+                }elseif (isset($files['sections'][$key]['image2'])){
+                    $leftFile = $files['sections'][$key]['image2'];
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $key, false, true);
+                }else{
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, true, true);
+                }
             }elseif ($section['type'] == 'assessment'){
-                $file = $files['sections'][$key]['image'];
-                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                if (isset($files['sections'][$key]['image'])){
+                    $file = $files['sections'][$key]['image'];
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                }else{
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $section['image'], $section['title'], $key, true);
+                }
+
             }
         }
         return json_encode(['success' => true]);
@@ -1126,6 +1278,7 @@ class AdminController extends Controller
             'created_at' => $date,
         ]);
 //        dd($post);
+        HashtagPosts::where('postId', $post->id)->delete();
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
                 HashtagPosts::create([
@@ -1142,7 +1295,7 @@ class AdminController extends Controller
     public function postTitleSerach(Request $request){
         $title = $request->get('title');
         $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
-        if (empty($posts)){
+        if ($posts->isEmpty()){
             return json_encode(['success' => false]);
         }
         $mainSection = MainSection::find(1);
@@ -1172,16 +1325,47 @@ class AdminController extends Controller
     }
 
 
-    public function userSerach(Request $request){
-        $title = $request->get('title');
-        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
-        if (empty($posts)){
+    public function userSearch(Request $request){
+        $search = $request->get('search');
+        $users = User::where('name', $search)->orWhere('name', 'like', '%'.$search.'%')->orWhere('email', $search)->orWhere('email', 'like', '%'.$search.'%')->get();
+        if ($users->isEmpty()){
             return json_encode(['success' => false]);
         }
-        $mainSection = MainSection::find(1);
 
-        return json_encode($finalAllPosts);
+        foreach ($users as $key => $user) {
+            $admin = Admins::where('userId', $user->id)->first();
+            $finalAllUsers[$key]['email'] = $user->email;
+            $finalAllUsers[$key]['id'] = $user->id;
+            if (!empty($admin)){
+                $finalAllUsers[$key]['is_admin'] = true;
+            }else{
+                $finalAllUsers[$key]['is_admin'] = false;
+            }
+            $finalAllUsers[$key]['name'] = $user->name;
+            $finalAllUsers[$key]['phone'] = $user->phone;
+            $finalAllUsers[$key]['status'] = $user->isOnline();
+//            $finalAllUsers[$key]['email'] = $user->email;
+        }
 
+        return json_encode($finalAllUsers);
+
+    }
+
+
+    public function tagNameSearch(Request $request){
+        $search = $request->get('title');
+        $tags = Hashtag::where('text', $search)->orWhere('text', 'like', '%'.$search.'%')->get();
+
+        if ($tags->isEmpty()){
+            return json_encode(['success' => false]);
+        }
+
+        foreach ($tags as $key => $tag) {
+            $finalTags[$key]['id'] = $tag->id;
+            $finalTags[$key]['img'] = $tag->image;
+            $finalTags[$key]['name'] = $tag->text;
+        }
+        return json_encode($finalTags);
     }
 
 

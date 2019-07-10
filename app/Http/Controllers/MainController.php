@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DisLikesForSingleImage;
 use App\Emoji;
+use App\Favourites;
 use App\Hashtag;
 use App\HashtagPosts;
 use App\Insta;
@@ -21,6 +22,7 @@ use App\SurveyAnswerVariant;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -316,6 +318,17 @@ class MainController extends Controller
             }
         }
 
+        if (\Auth::check()){
+            if (!empty(Favourites::where('userId', \Auth::id())->where('postId', $post->id)->first())){
+                $fullPost['is_favourite'] = true;
+            }else{
+                $fullPost['is_favourite'] = false;
+            }
+        }else{
+            $fullPost['is_favourite'] = false;
+        }
+
+
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
     }
 
@@ -398,10 +411,10 @@ class MainController extends Controller
         $hashtagId = $request->get('hashtag_id');
         $page = $request->get('page');
         if ($page == 0){
-            $hashtagPosts = HashtagPosts::offset(0)->take(24)->get();
+            $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->offset(0)->take(24)->get();
         }else{
-            $offset = $page * 12;
-            $hashtagPosts = HashtagPosts::offset($offset)->take(24)->get();
+            $offset = $page * 24;
+            $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->offset($offset)->take(24)->get();
         }
 
 
@@ -411,10 +424,12 @@ class MainController extends Controller
         $postsWithContent['hashtagName'] = $hashtag->text;
 
         foreach ($hashtagPosts as $hashtagPost) {
-            if ($hashtagPost->hashtagId == $hashtagId){
+
+            if ($hashtagPost->hashtagId == (int)$hashtagId){
                 $postIds[] = $hashtagPost->postId;
             }
         }
+
 //        dd($postIds);
         if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
@@ -795,6 +810,106 @@ class MainController extends Controller
 
     }
 
+    public function addPostToFavourite(Request $request){
+        $post = Post::find($request->get('postId'));
+        $user = User::find(\Auth::id());
+
+        if (!empty(Favourites::where('userId', $user->id)->where('postId', $post->id)->first())){
+            return json_encode(['success' => false]);
+        }
+
+        Favourites::create([
+            'postId' => $post->id,
+            'userId' => $user->id,
+        ]);
+
+    }
+
+    public function deletePostFromFavourites(Request $request){
+        $post = Post::find($request->get('postId'));
+        $user = User::find(\Auth::id());
+
+        Favourites::where('userId', $user->id)->where('postId', $post->id)->delete();
+        return ['success' => true];
+    }
+
+    public function getAllFavourites(Request $request){
+        $user = User::find(\Auth::id());
+        $page = $request->get('page');
+
+        if ($page == 0){
+            $favPosts = Favourites::where('userId', $user->id)->take(24)->get();
+        }else{
+            $offset = $page * 24;
+            $favPosts = Favourites::where('userId', $user->id)->offset($offset)->take(24)->get();
+        }
+
+
+        if (isset($favPosts)){
+            foreach ($favPosts as $favPost) {
+                $posts[] = Post::find($favPost->postId)->id;
+            }
+
+            foreach ($posts as $post) {
+                $finalPosts[] = $this->getContent($post);
+            }
+
+            return json_encode($finalPosts);
+        }
+        return json_encode(['success' => false]);
+    }
+
+
+    public function getPersonalInfo(){
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $data['name'] = $user->name;
+            $data['phone'] = $user->phone;
+            return json_encode($data);
+        }else{
+            return json_encode(['success' => false]);
+        }
+    }
+
+    public function checkPassword(Request $request){
+        if (\Auth::check()){
+            $currentPassword = User::find(\Auth::id())->password;
+
+            $oldPassword = $request->get('oldPassword');
+
+            if (Hash::check($oldPassword, $currentPassword)){
+                return json_encode(['success' => true]);
+            }else{
+                return json_encode(['success' => false, 'message' => 'Passwords do not match']);
+            }
+        }
+        return json_encode(['success' => false, 'message' => 'Login please']);
+    }
+
+    public function changePassword(Request $request){
+        $newPassword = $request->get('password');
+
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $user->password =  Hash::make($newPassword);
+            $user->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false, 'message' => 'Login please']);
+    }
+
+    public function changePersonalInfo(Request $request){
+        $name = $request->get('name');
+        $phone = $request->get('phone');
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $user->name = $name;
+            $user->phone = $phone;
+            $user->save();
+            return json_encode(['success' => true]);
+        }
+        return json_encode(['success' => false, 'message' => 'Login please']);
+    }
 
 
 }

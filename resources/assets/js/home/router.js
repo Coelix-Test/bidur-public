@@ -13,6 +13,9 @@ import SinglePost from './views/SinglePost.vue'
 import ByHashtag from './views/ByHashtag.vue'
 import AboutUs from './views/AboutUs.vue'
 import ContactUs from './views/ContactUs.vue'
+import MyAccount from './views/MyAccount.vue'
+import EditProfile from './views/EditProfile.vue'
+
 
 const routes = [
   {
@@ -40,6 +43,16 @@ const routes = [
     component: AboutUs,
     name: 'about-us',
   },
+  {
+    path: '/my-account',
+    component: MyAccount,
+    name: 'my-account',
+  },
+  {
+    path: '/edit-profile',
+    component: EditProfile,
+    name: 'edit-profile',
+  }
 ];
 
 // routes.push(auth);

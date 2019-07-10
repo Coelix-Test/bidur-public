@@ -17,11 +17,21 @@
         </nav>
 
         <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
+        <button v-if="post.data.post.is_favourite == false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+          <img src="/img/Star.svg" alt="">
+          הוסף למועדפים
+        </button>
+        <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
+          <img src="/img/Star.svg" alt="">
+          הסר ממועדפים
+        </button>
+
         <div class="post-meta">
 
           <div class="info">
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
+
           </div>
           <share />
 
@@ -85,10 +95,10 @@
     <div class="related-posts">
 
       <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
-        <slide v-for="post in relevantPosts" class="related-post" :key="post.id">
+        <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
             <img :src="post.img" alt="">
             <div class="related-post-content">
-              <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
+              <router-link @click="scrollTop" :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
               <p class="related-post-meta">
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
                 <span class="author">by {{post.author}}</span>
@@ -133,6 +143,22 @@ export default {
     }
   },
   methods : {
+    addPostToFavourite(id) {
+      axios
+        .post('/addPostToFavourite',{postId : id})
+          .then( res=>{
+            console.log(res.data);
+            alert('הוסף פוסט למועדפים!');
+          });
+    },
+    removeFromFavourites(id) {
+      axios
+        .post('/deletePostFromFavourites',{ postId : id})
+          .then(res => {
+            // console.log(res);
+            alert('פוסט נמחק מהמועדפים!');
+          });
+    },
     changePost($event, id) {
       event.preventDefault()
       this.sync(id);
@@ -140,14 +166,11 @@ export default {
       this.$router.push({ path : `/post/${id}` });
     },
     computeNumber(value) {
-      // console.log(value);
     },
     sync(id) {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
-
             this.post = response;
             this.errorMessage = false;
             this.postId = id;
@@ -161,13 +184,12 @@ export default {
                   .post('/getAllRelevantPosts', {hashtag_id: this.hashtags[i],})
                     .then(response => {
                       this.relevantPosts = response.data;
-                      // console.log('response', this.relevantPosts);
                     })
               }
-
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+            window.scrollTo(0,0);
           })
           .catch(error => {
             console.log('error');
@@ -176,12 +198,9 @@ export default {
           });
     },
     addVote(obj, id){
-        // console.log(obj);
-        // console.log(id);
         axios
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
-              // console.log(response);
             });
     }
   },
@@ -223,6 +242,7 @@ export default {
     flex-grow:2;
     display: flex;
     flex-direction: column;
+    padding-left: 16px;
   }
   .post-content nav {
     display: flex;
@@ -334,7 +354,7 @@ export default {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 24px;
     padding:0 0 0;
-    border:4px solid #E4A913;
+    border:4px solid #E4A913!important;
   }
   section.survey {
     max-width: 550px;
@@ -350,6 +370,25 @@ export default {
     padding-bottom: 32px;
     /* margin-top: 32px; */
     border-bottom: 1px solid #BDBDBD;
+  }
+  .add-to-favourites {
+    white-space: nowrap;
+    border-width: 0;
+    color: #F2C94C;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #fff;
+    padding-right: 0;
+  }
+  .add-to-favourites img {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+    pointer-events: none;
   }
   .img-subtext {
     max-width: 600px;
@@ -419,9 +458,18 @@ export default {
     }
   }
   @media (max-width:768px) {
+    section.imageWithText {
+      text-align: justify;
+    }
+    section.content {
+      text-align: justify;
+    }
     .post-content h1 {
       font-size: 32px;
       line-height: 32px;
+    }
+    .post-content {
+      padding-left: 0;
     }
     .opinion h2 {
       text-align: center;

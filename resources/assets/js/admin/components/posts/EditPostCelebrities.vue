@@ -6,7 +6,7 @@
             v-for="(celebrity, i) in celebrities"
             :placeholder="'Add celebrity'"
             :key="celebrity.id ? celebrity.id : celebrity.uuid"
-            :options="allCelebrities"
+            :options="allCelebritiesSelectable(i)"
             v-model="celebrities[i]"
             @deleteSelf="deleteCelebrity(i)">
         </searchable-input>
@@ -28,6 +28,11 @@ export default {
         return {
             allCelebrities: []
         }
+    },
+    computed: {
+      // allCelebritiesFiltered(){
+      //   return this.allCelebrities.filter(n => !this.celebrities.find(z => n.id == z.id));
+      // }
     },
     components: {
         SearchableInput
@@ -52,6 +57,10 @@ export default {
                     });
                     this.allCelebrities = response.data;
                 });
+        },
+        allCelebritiesSelectable(i){
+          //exclude all already selected celebrities (except already selected in current select)
+          return this.allCelebrities.filter(n => !this.celebrities.find((z, index) => n.id == z.id && index !== i));
         },
         addCelebrity(){
 

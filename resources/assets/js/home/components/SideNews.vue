@@ -51,10 +51,13 @@ export default {
   align-items: stretch;
   width: 380px;
   min-width: 380px;
-  padding-right: 30px;
+  padding-right: 12px;
+  padding-left: 12px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   .block {
     background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -68,7 +71,7 @@ export default {
     margin-bottom: 30px;
   }
 
-  @media(max-width: 992px) {
+  @media(max-width: 768px) {
     padding-right: 0;
     width: 100%;
     min-width:unset;

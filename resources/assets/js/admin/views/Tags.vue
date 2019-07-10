@@ -2,14 +2,17 @@
 
   <div class="main-wrapper">
     <div class="tags-wrapper">
-      <div class="tags-heading">
+      <div class="search">
+        <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="תג שם">
+      </div>
+      <!-- <div class="tags-heading">
         <div class="show-per-page">
 
         </div>
         <div class="sort-by">
 
         </div>
-      </div>
+      </div> -->
       <ul class="tags-list">
         <li id="add-new-tag" class="single-tag" @click="addNewTag($event)">
           <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none">
@@ -43,7 +46,8 @@ export default {
   data() {
     return {
       showAddNewTag : false,
-      tags : null
+      tags : null,
+      searchQuery : null,
 
     }
   },
@@ -53,6 +57,19 @@ export default {
      .then(response => (this.tags = response.data));
  },
  methods : {
+   renderSearch() {
+     axios
+       .post('/tagNameSearch', { title : this.searchQuery })
+         .then(res => {
+           if(res.data.success != false) {
+             this.tags = res.data;
+           }else {
+             this.tags = null;
+           }
+
+         })
+         .catch(error => this.tags = null);
+   },
    deleteHashtag(data) {
      console.log('data', data);
      this.tags = data;
@@ -192,5 +209,19 @@ export default {
     color:#fff;
     font-weight: 600;
     white-space: nowrap;
+  }
+</style>
+<style lang="scss" >
+  .search {
+    padding:0 24px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    input {
+      width:300px;
+      padding:6px 16px;
+      font-size: 16px;
+      color:#333;
+    }
   }
 </style>

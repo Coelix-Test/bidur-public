@@ -1,10 +1,17 @@
 <template>
   <div class="right-column">
     <article v-if="birthdayPost" v-in-viewport.once class="birthdayPost">
-      <img src="img/happyBdayOverlay.svg" alt="">
-      <h2 class="typewriter"></h2>
+      <!-- <confetti-svg class="confetti"></confetti-svg> -->
+      <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
+      <img class="hat" src="img/happyBdayHat.svg" alt="">
+      <img class="gifts" src="img/happyBdayGifts.svg" alt="">
+
+      <!-- <h2 class="typewriter"></h2> -->
+      <type-writer class="h2" :text="birthdayPost.text"></type-writer>
       <div class="bdayInner">
-        <div class="overlay"></div>
+        <div class="overlay">
+          <confetti-svg class="confetti"></confetti-svg>
+        </div>
         <img :src="birthdayPost.img" alt="">
       </div>
     </article>
@@ -15,7 +22,7 @@
           <div class="overlay"></div>
 
           <img :src="post.img" alt="">
-          <h2>{{post.title}}</h2>
+          <h2 class="h2">{{post.title}}</h2>
           <p>
             <span class="author">{{ post.author }}</span>
             <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
@@ -29,11 +36,18 @@
 </template>
 
 <script>
+import ConfettiSvg from './ConfettiFallSvg.vue';
+import TypeWriter from './../common/TypeWriter.vue';
+
 export default {
   props : {
     data : {
       requred: true,
     }
+  },
+  components: {
+    ConfettiSvg,
+    TypeWriter
   },
   data() {
     return {
@@ -50,19 +64,19 @@ export default {
   },
   watch : {
     birthdayPost : function() {
-      let i = 0;
-      let firstPostTitle = this.birthdayPost.text;
-      let speed = 50;
-      document.getElementsByClassName('typewriter')[0].innerHTML = '';
-      function typeWriter() {
-
-        if (i < firstPostTitle.length) {
-          document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
-        }
-      };
-      typeWriter();
+      // let i = 0;
+      // let firstPostTitle = this.birthdayPost.text;
+      // let speed = 50;
+      // document.getElementsByClassName('typewriter')[0].innerHTML = '';
+      // function typeWriter() {
+      //
+      //   if (i < firstPostTitle.length) {
+      //     document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
+      //     i++;
+      //     setTimeout(typeWriter, speed);
+      //   }
+      // };
+      // typeWriter();
     }
   },
   mounted() {
@@ -71,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 @keyframes rotateAnimNeg {
   0% {
@@ -95,6 +109,24 @@ export default {
   100% {
     transform: rotate(2deg) scale(0.99);
   }
+}
+
+@keyframes rotateAnim2 {
+  0% {
+    transform: rotate(20deg) scale(0.99);
+  }
+  50% {
+    transform: rotate(-20deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(20deg) scale(0.99);
+  }
+  /* 0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  } */
 }
 
   .right-column {
@@ -131,10 +163,30 @@ export default {
     height: 100%;
     position: relative;
   }
-  .birthdayPost > img {
+
+  /* animating images */
+  .birthdayPost > .conftetti {
     animation: rotateAnimNeg 5s ease infinite;
   }
-  .birthdayPost h2 {
+  .birthdayPost > .hat{
+    top: 5%;
+    transform-origin: 16% 14%;
+    animation: rotateAnim2 4s ease infinite;
+    /* background: url('/img/rectangle.svg') no-repeat 16% 14%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
+  }
+  .birthdayPost > .gifts{
+    transform-origin: 15% 88%;
+    animation: rotateAnim2 3s ease infinite;
+
+    /* background: url('/img/rectangle.svg') no-repeat 18% 118%;
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px; */
+  }
+  /* animation images end */
+
+  .birthdayPost .h2 {
     font-size: 2em;
     text-align: center;
     margin-bottom: 0;
@@ -157,13 +209,15 @@ export default {
     animation: rotateAnim 5s ease infinite;
 
   }
-  .birthdayPost img {
+  .birthdayPost img,
+  .confetti {
     max-width:100%;
     width:100%;
     height: 100%;
     object-fit: cover;
   }
-  .birthdayPost > img {
+  .birthdayPost > img,
+  .confetti {
     object-fit: contain;
     position: absolute;
     z-index:2;
@@ -276,7 +330,7 @@ export default {
   ul.posts li a:hover .overlay {
     background: rgba(0,0,0,0.2);
   }
-  ul.posts li a h2 {
+  ul.posts li a .h2 {
     font-weight: 700;
     margin-bottom: 0;
     font-size: 24px;
@@ -316,7 +370,7 @@ export default {
     ul.posts li {
       flex-basis: calc(50% - 4px);
     }
-    ul.posts li a h2 {
+    ul.posts li a .h2 {
       font-size: 16px;
       line-height: 16px;
     }
@@ -335,7 +389,7 @@ export default {
       background-color: transparent;
       display: none;
     }
-    .birthdayPost h2 {
+    .birthdayPost .h2 {
       right:8px;
       top:8px;
       font-size: 1.6em;
@@ -354,10 +408,21 @@ export default {
     }
   }
   @media (max-width:550px) {
-
+    .birthdayPost{
+      & > .hat{
+        top: 21%;
+      }
+      & > .gifts{
+        bottom: -8%;
+      }
+    }
+    .birthdayPost .h2{
+      text-align: center;
+    }
 
     ul.posts {
       height:auto;
+      margin-bottom: 0;
     }
     .birthdayPost {
       height: 200px;

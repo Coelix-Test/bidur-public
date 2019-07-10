@@ -30,6 +30,14 @@ export default {
     };
   },
   methods: {
+    addVote(obj, id){
+      console.log(obj);
+      axios
+        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+          .then(response => {
+            // console.log(response);
+          });
+    },
     onReceive(res) {
 
       this.survey = res.data;
@@ -54,7 +62,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.selected-poll {
+  border:4px solid #F2C94C;
+  img {
+    width:100%;
+    object-fit: cover;
+  }
+}
 .mobile {
   display: none;
 

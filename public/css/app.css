@@ -16404,6 +16404,10 @@ body {
   height: 35px;
 }
 
+.header-main .top-row-inner .btn-common:first-child {
+  margin-right: auto;
+}
+
 .header-main .top-row-inner .auth-btns,
 .header-main .top-row-inner-mob .auth-btns {
   display: -webkit-box;
@@ -16418,7 +16422,6 @@ body {
 
 .header-main .top-row-inner .btn-common:first-child,
 .header-main .top-row-inner-mob .btn-common:first-child {
-  margin-right: auto;
   margin-left: 10px;
 }
 
@@ -16764,8 +16767,8 @@ body {
   }
 
   .header-main .top-row-inner-mob .socials-wrap a {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     flex-shrink: 0;
   }
 
@@ -16776,6 +16779,14 @@ body {
   .header-main .top-row-inner-mob .logo-wrap img {
     width: 100%;
     height: auto;
+  }
+
+  .header-main .top-row-inner-mob .header-text {
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 14px;
   }
 
   .header-main .top-row-inner {
