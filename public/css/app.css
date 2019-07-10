@@ -15812,6 +15812,7 @@ body {
 .btn-gold-gradient {
   color: #fff;
   background: linear-gradient(285.95deg, #D3A01D 1.57%, #F2C94C 98.82%);
+  border: none;
 }
 
 .btn-gold-gradient:hover {
@@ -16408,6 +16409,105 @@ body {
   margin-right: auto;
 }
 
+.header-main .top-row-inner .auth-btns a {
+  text-decoration: none;
+  color: #4F4F4F;
+}
+
+.header-main .top-row-inner .auth-btns ul {
+  list-style-type: none;
+  display: -ms-flex;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.header-main .top-row-inner .auth-btns .my-account-wrap {
+  position: relative;
+  z-index: 2;
+  min-width: 230px;
+  height: 43px;
+  margin-right: auto;
+}
+
+.header-main .top-row-inner .auth-btns .my-account {
+  display: -ms-inline-flex;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: end;
+          align-items: flex-end;
+  min-width: 230px;
+  overflow: hidden;
+  background: #fff;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-main .top-row-inner .auth-btns .my-account:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header-main .top-row-inner .auth-btns .my-account:hover .profile-nav {
+  max-height: 300px;
+}
+
+.header-main .top-row-inner .auth-btns .profile-nav {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  text-align: left;
+}
+
+.header-main .top-row-inner .auth-btns .profile-nav a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: block;
+}
+
+.header-main .top-row-inner .auth-btns .logout-btn {
+  padding-left: 35px;
+  background: url("/img/icons/header/logout.svg") no-repeat left center;
+  background-size: 23px;
+  margin-right: 50px;
+  display: -ms-flex;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.header-main .top-row-inner .auth-btns .my-account-link {
+  background: url("/img/icons/header/profile.svg") no-repeat 8px center;
+  background-size: 30px;
+  padding: 8px 0 8px 45px;
+  height: 43px;
+}
+
+.header-main .top-row-inner .auth-btns .profile-settings,
+.header-main .top-row-inner .auth-btns .favourite-posts {
+  padding-left: 45px;
+}
+
+.header-main .top-row-inner .auth-btns .profile-settings {
+  background: url("/img/icons/header/profile-settings.svg") no-repeat 15px center;
+  background-size: 16px;
+}
+
+.header-main .top-row-inner .auth-btns .favourite-posts {
+  background: url("/img/icons/header/favourite-posts.svg") no-repeat 15px center;
+  background-size: 16px;
+}
+
 .header-main .top-row-inner .auth-btns,
 .header-main .top-row-inner-mob .auth-btns {
   display: -webkit-box;
@@ -16789,6 +16889,11 @@ body {
     font-size: 14px;
   }
 
+  .header-main .top-row-inner-mob .auth-btns {
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+
   .header-main .top-row-inner {
     display: none;
   }
@@ -16819,7 +16924,7 @@ body {
 }
 
 #footer_main {
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 #footer_main .contact-line {

@@ -55,6 +55,86 @@
                 margin-right: auto;
             }
         }
+        .auth-btns{
+          a{
+            text-decoration: none;
+            color: $dark;
+          }
+          ul{
+            list-style-type: none;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+          }
+          .my-account-wrap{
+            position: relative;
+            z-index: 2;
+            min-width: 230px;
+            height: 43px;
+            margin-right: auto;
+          }
+          .my-account{
+            display: -webkit-inline-flex;
+            display: -ms-inline-flex;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-end;
+            min-width: 230px;
+            overflow: hidden;
+            background: #fff;
+            transition: all .3s ease-in-out;
+            &:hover{
+              box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+              position: absolute;
+              top: 0;
+              left: 0;
+              .profile-nav{
+                max-height: 300px;
+              }
+            }
+          }
+          .profile-nav{
+            transition: all .3s ease-in-out;
+            max-height: 0;
+            text-align: left;
+            a{
+              padding-top: 5px;
+              padding-bottom: 5px;
+              display: block;
+            }
+          }
+          .logout-btn{
+            padding-left: 35px;
+            background: url('/img/icons/header/logout.svg') no-repeat left center;
+            background-size: 23px;
+            margin-right: 50px;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            align-items: center;
+          }
+          .my-account-link{
+            background: url('/img/icons/header/profile.svg') no-repeat 8px center;
+            background-size: 30px;
+            padding: 8px 0 8px 45px;
+            height: 43px;
+          }
+          .profile-settings,
+          .favourite-posts{
+            padding-left: 45px;
+          }
+          .profile-settings{
+            background: url('/img/icons/header/profile-settings.svg') no-repeat 15px center;
+            background-size: 16px;
+          }
+          .favourite-posts{
+            background: url('/img/icons/header/favourite-posts.svg') no-repeat 15px center;
+            background-size: 16px;
+          }
+        }
     }
     .top-row-inner,
     .top-row-inner-mob{
@@ -367,6 +447,9 @@
               margin-left: 10px;
               font-weight: 700;
               font-size: 14px;
+            }
+            .auth-btns{
+              justify-content: center;
             }
 
         }
