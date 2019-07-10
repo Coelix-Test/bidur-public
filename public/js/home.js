@@ -3962,7 +3962,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -41071,49 +41070,51 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "right-column" }, [
-    _vm.birthdayPost
-      ? _c(
-          "article",
+    _c(
+      "article",
+      {
+        directives: [
           {
-            directives: [
-              {
-                name: "in-viewport",
-                rawName: "v-in-viewport.once",
-                modifiers: { once: true }
-              }
-            ],
-            staticClass: "birthdayPost"
-          },
-          [
-            _c("img", {
-              staticClass: "hat",
-              attrs: { src: "img/happyBdayHat.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "gifts",
-              attrs: { src: "img/happyBdayGifts.svg", alt: "" }
-            }),
-            _vm._v(" "),
-            _c("type-writer", {
+            name: "in-viewport",
+            rawName: "v-in-viewport.once",
+            modifiers: { once: true }
+          }
+        ],
+        staticClass: "birthdayPost"
+      },
+      [
+        _c("img", {
+          staticClass: "hat",
+          attrs: { src: "img/happyBdayHat.svg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "gifts",
+          attrs: { src: "img/happyBdayGifts.svg", alt: "" }
+        }),
+        _vm._v(" "),
+        _vm.birthdayPost
+          ? _c("type-writer", {
               staticClass: "h2",
               attrs: { text: _vm.birthdayPost.text }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "bdayInner" }, [
-              _c(
-                "div",
-                { staticClass: "overlay" },
-                [_c("confetti-svg", { staticClass: "confetti" })],
-                1
-              ),
-              _vm._v(" "),
-              _c("img", { attrs: { src: _vm.birthdayPost.img, alt: "" } })
-            ])
-          ],
-          1
-        )
-      : _vm._e(),
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "bdayInner" }, [
+          _c(
+            "div",
+            { staticClass: "overlay" },
+            [_c("confetti-svg", { staticClass: "confetti" })],
+            1
+          ),
+          _vm._v(" "),
+          _vm.birthdayPost
+            ? _c("img", { attrs: { src: _vm.birthdayPost.img, alt: "" } })
+            : _vm._e()
+        ])
+      ],
+      1
+    ),
     _vm._v(" "),
     _vm.posts
       ? _c(
