@@ -397,6 +397,7 @@ export default {
     background-color: #fff;
     padding-right: 0;
     margin-left: auto;
+
   }
   .add-to-favourites img {
     width: 24px;
