@@ -72,7 +72,6 @@
   height: 80px;
   font-weight: bold;
   font-size: 28px;
-  border: 0;
 }
 
 .th-btn-gold {
@@ -83,6 +82,7 @@
   transition: box-shadow 0.3s ease, -webkit-transform 0.3s ease;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   transition: box-shadow 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+  border: 0;
 }
 
 .th-btn-gold:hover {

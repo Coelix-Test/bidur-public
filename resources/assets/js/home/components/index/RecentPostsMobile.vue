@@ -17,7 +17,7 @@
       <carousel
         v-if="posts"
         class="latest-post-slider"
-        rtl
+        rtl 
         autoplay
         navigationEnabled
         :autoplayTimeout="4000"
