@@ -89,7 +89,7 @@
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
             <img :src="post.img" alt="">
             <div class="related-post-content">
-              <router-link :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
+              <router-link @click="scrollTop" :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
               <p class="related-post-meta">
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
                 <span class="author">by {{post.author}}</span>
@@ -134,8 +134,10 @@ export default {
     }
   },
   methods : {
+    scrollTop() {
+      // window.scrollTo(0,0);
+    },
     addPostToFavourite(id) {
-      // console.log();
       axios
         .post('/addPostToFavourite',{postId : id})
           .then( res=>{
@@ -150,14 +152,11 @@ export default {
       this.$router.push({ path : `/post/${id}` });
     },
     computeNumber(value) {
-      // console.log(value);
     },
     sync(id) {
       return axios
         .post('/post/'+id)
           .then(response => {
-            // console.log(response.data);
-
             this.post = response;
             this.errorMessage = false;
             this.postId = id;
@@ -171,13 +170,12 @@ export default {
                   .post('/getAllRelevantPosts', {hashtag_id: this.hashtags[i],})
                     .then(response => {
                       this.relevantPosts = response.data;
-                      // console.log('response', this.relevantPosts);
                     })
               }
-
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
             this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+            window.scrollTo(0,0);
           })
           .catch(error => {
             console.log('error');
@@ -186,12 +184,9 @@ export default {
           });
     },
     addVote(obj, id){
-        // console.log(obj);
-        // console.log(id);
         axios
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
-              // console.log(response);
             });
     }
   },
@@ -233,6 +228,7 @@ export default {
     flex-grow:2;
     display: flex;
     flex-direction: column;
+    padding-left: 16px;
   }
   .post-content nav {
     display: flex;
@@ -438,6 +434,9 @@ export default {
     .post-content h1 {
       font-size: 32px;
       line-height: 32px;
+    }
+    .post-content {
+      padding-left: 0;
     }
     .opinion h2 {
       text-align: center;

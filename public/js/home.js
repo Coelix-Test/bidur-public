@@ -2714,7 +2714,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     data: {}
   },
-  methods: {}
+  methods: {
+    scrollTop: function scrollTop() {}
+  }
 });
 
 /***/ }),
@@ -5369,8 +5371,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    scrollTop: function scrollTop() {// window.scrollTo(0,0);
+    },
     addPostToFavourite: function addPostToFavourite(id) {
-      // console.log();
       axios.post('/addPostToFavourite', {
         postId: id
       }).then(function (res) {
@@ -5386,13 +5389,11 @@ __webpack_require__.r(__webpack_exports__);
         path: "/post/".concat(id)
       });
     },
-    computeNumber: function computeNumber(value) {// console.log(value);
-    },
+    computeNumber: function computeNumber(value) {},
     sync: function sync(id) {
       var _this = this;
 
       return axios.post('/post/' + id).then(function (response) {
-        // console.log(response.data);
         _this.post = response;
         _this.errorMessage = false;
         _this.postId = id;
@@ -5407,13 +5408,14 @@ __webpack_require__.r(__webpack_exports__);
             axios.post('/getAllRelevantPosts', {
               hashtag_id: _this.hashtags[i]
             }).then(function (response) {
-              _this.relevantPosts = response.data; // console.log('response', this.relevantPosts);
+              _this.relevantPosts = response.data;
             });
           }
         }
 
         _this.prevPostId = response.data.previousPost ? response.data.previousPost.toString() : false;
         _this.nextPostId = response.data.nextPost ? response.data.nextPost.toString() : false;
+        window.scrollTo(0, 0);
       })["catch"](function (error) {
         console.log('error');
         _this.errorMessage = true;
@@ -5421,13 +5423,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addVote: function addVote(obj, id) {
-      // console.log(obj);
-      // console.log(id);
       axios.post('/addSurveyVote', {
         surveyId: id,
         answer: obj.value
-      }).then(function (response) {// console.log(response);
-      });
+      }).then(function (response) {});
     }
   },
   created: function created() {
@@ -6112,7 +6111,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -38864,7 +38863,8 @@ var render = function() {
     {
       directives: [{ name: "in-viewport", rawName: "v-in-viewport" }],
       staticClass: "side-news-post",
-      attrs: { to: "/post/" + _vm.data.id }
+      attrs: { to: "/post/" + _vm.data.id + "/#" },
+      on: { click: _vm.scrollTop }
     },
     [
       _c("div", {
@@ -42890,7 +42890,10 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          { attrs: { to: "/post/" + post.id + "/#" } },
+                          {
+                            attrs: { to: "/post/" + post.id + "/#" },
+                            on: { click: _vm.scrollTop }
+                          },
                           [_c("h3", [_vm._v(_vm._s(post.title))])]
                         ),
                         _vm._v(" "),

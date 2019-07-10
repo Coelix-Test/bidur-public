@@ -4902,7 +4902,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     data: {}
   },
-  methods: {}
+  methods: {
+    scrollTop: function scrollTop() {}
+  }
 });
 
 /***/ }),
@@ -29125,7 +29127,8 @@ var render = function() {
     {
       directives: [{ name: "in-viewport", rawName: "v-in-viewport" }],
       staticClass: "side-news-post",
-      attrs: { to: "/post/" + _vm.data.id }
+      attrs: { to: "/post/" + _vm.data.id + "/#" },
+      on: { click: _vm.scrollTop }
     },
     [
       _c("div", {
