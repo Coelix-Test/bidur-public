@@ -7,15 +7,16 @@
       <div class="favorites">
         <h2>Favorite Posts</h2>
         <ul v-if="favoritePosts">
-          <li v-for="post in favoritePosts">
+          <li v-for="post in favoritePosts" class="single-post">
             <div class="thumbnail">
-              <!-- <img :src="post.post"> -->
+              <img :src="post.img">
             </div>
             <div class="postData">
-              <h3><router-link :to="`/post/${post.post.id}`">{{post.post.metaTitle}}</router-link></h3>
+              <button @click="removeFromFavourites(post.id)">remove</button>
+              <h3><router-link :to="`/post/${post.id}`">{{ post.title }}</router-link></h3>
               <div class="post-meta">
-                <span class="date">{{post.post.created_at | formatDate}}</span>
-                <span class="author">{{ post.post.author }} | </span>
+                <span class="date">{{ new Date(post.time*1000) | formatDate }}</span>
+                <span class="author">{{ post.author }}</span>
               </div>
             </div>
 
@@ -37,16 +38,23 @@ export default {
   data() {
     return {
       favoritePosts : null,
-
     }
   },
   created() {
     axios
-      .post('/getAllPosts')
+      .post('/getAllFavourites',{page : 0})
         .then(res => {
-          console.log(res.data);
           this.favoritePosts = res.data;
         });
+  },
+  methods : {
+    removeFromFavourites(id) {
+      axios
+        .post('/deletePostFromFavourites',{ postId : id,})
+          .then(res => {
+            console.log(res);
+          });
+    }
   },
   components : {
     SideNews,

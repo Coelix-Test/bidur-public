@@ -5181,6 +5181,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5191,10 +5192,20 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.post('/getAllPosts').then(function (res) {
-      console.log(res.data);
+    axios.post('/getAllFavourites', {
+      page: 0
+    }).then(function (res) {
       _this.favoritePosts = res.data;
     });
+  },
+  methods: {
+    removeFromFavourites: function removeFromFavourites(id) {
+      axios.post('/deletePostFromFavourites', {
+        postId: id
+      }).then(function (res) {
+        console.log(res);
+      });
+    }
   },
   components: {
     SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -5330,6 +5341,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5354,6 +5366,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    addPostToFavourite: function addPostToFavourite(id) {
+      console.log(id);
+    },
     changePost: function changePost($event, id) {
       event.preventDefault();
       this.sync(id);
@@ -42538,17 +42553,31 @@ var render = function() {
               ? _c(
                   "ul",
                   _vm._l(_vm.favoritePosts, function(post) {
-                    return _c("li", [
-                      _c("div", { staticClass: "thumbnail" }),
+                    return _c("li", { staticClass: "single-post" }, [
+                      _c("div", { staticClass: "thumbnail" }, [
+                        _c("img", { attrs: { src: post.img } })
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "postData" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.removeFromFavourites(post.id)
+                              }
+                            }
+                          },
+                          [_vm._v("remove")]
+                        ),
+                        _vm._v(" "),
                         _c(
                           "h3",
                           [
                             _c(
                               "router-link",
-                              { attrs: { to: "/post/" + post.post.id } },
-                              [_vm._v(_vm._s(post.post.metaTitle))]
+                              { attrs: { to: "/post/" + post.id } },
+                              [_vm._v(_vm._s(post.title))]
                             )
                           ],
                           1
@@ -42557,12 +42586,14 @@ var render = function() {
                         _c("div", { staticClass: "post-meta" }, [
                           _c("span", { staticClass: "date" }, [
                             _vm._v(
-                              _vm._s(_vm._f("formatDate")(post.post.created_at))
+                              _vm._s(
+                                _vm._f("formatDate")(new Date(post.time * 1000))
+                              )
                             )
                           ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "author" }, [
-                            _vm._v(_vm._s(post.post.author) + " | ")
+                            _vm._v(_vm._s(post.author))
                           ])
                         ])
                       ])
@@ -42672,7 +42703,21 @@ var render = function() {
                             )
                           )
                         )
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.addPostToFavourite(
+                                _vm.post.data.post.id
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("addPostToFavourite")]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("share")
