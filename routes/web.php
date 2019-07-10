@@ -16,7 +16,7 @@ Route::get('/test', function (){
     return view('test');
 });
 Route::get('/test2', 'MainController@getRecentPosts');
-Route::post('/test/{id}', 'MainController@getRecentPosts')->name('test');
+//Route::post('/test/{id}', 'MainController@getRecentPosts')->name('test');
 
 
 
@@ -81,7 +81,7 @@ Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
+Route::get('/admin', 'AdminController@showAdmin');
 Route::post('/getUserData', 'AdminController@getUserData');
     //posts
     Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');

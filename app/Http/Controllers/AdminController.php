@@ -44,8 +44,9 @@ class AdminController extends Controller
 
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
+
         HashtagPosts::where('postId', $request->get('id'))->delete();
-        Favourites::where('postId', $request->get('id')->delete());
+        Favourites::where('postId', $request->get('id'))->delete();
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
