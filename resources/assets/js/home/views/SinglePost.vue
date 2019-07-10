@@ -21,6 +21,11 @@
           <img src="/img/Star.svg" alt="">
           הוסף למועדפים
         </button>
+        <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
+          <img src="/img/Star.svg" alt="">
+          הסר ממועדפים
+        </button>
+
         <div class="post-meta">
 
           <div class="info">
@@ -138,15 +143,20 @@ export default {
     }
   },
   methods : {
-    scrollTop() {
-      // window.scrollTo(0,0);
-    },
     addPostToFavourite(id) {
       axios
         .post('/addPostToFavourite',{postId : id})
           .then( res=>{
             console.log(res.data);
-            alert('Post added to favourites!');
+            alert('הוסף פוסט למועדפים!');
+          });
+    },
+    removeFromFavourites(id) {
+      axios
+        .post('/deletePostFromFavourites',{ postId : id})
+          .then(res => {
+            // console.log(res);
+            alert('פוסט נמחק מהמועדפים!');
           });
     },
     changePost($event, id) {

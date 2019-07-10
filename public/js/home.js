@@ -5453,6 +5453,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -5477,14 +5482,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    scrollTop: function scrollTop() {// window.scrollTo(0,0);
-    },
     addPostToFavourite: function addPostToFavourite(id) {
       axios.post('/addPostToFavourite', {
         postId: id
       }).then(function (res) {
         console.log(res.data);
-        alert('Post added to favourites!');
+        alert('הוסף פוסט למועדפים!');
+      });
+    },
+    removeFromFavourites: function removeFromFavourites(id) {
+      axios.post('/deletePostFromFavourites', {
+        postId: id
+      }).then(function (res) {
+        // console.log(res);
+        alert('פוסט נמחק מהמועדפים!');
       });
     },
     changePost: function changePost($event, id) {
@@ -5590,7 +5601,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news[data-v-2170b176] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  width: 380px;\n  min-width: 380px;\n  padding-right: 12px;\n  padding-left: 12px;\n  overflow: hidden;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n}\n.side-news .block[data-v-2170b176] {\n  background: #FFFFFF;\n  padding: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 30px;\n}\n.side-news .banner[data-v-2170b176] {\n  width: 100%;\n  height: auto;\n  margin-bottom: 30px;\n}\n@media (max-width: 992px) {\n.side-news[data-v-2170b176] {\n    padding-right: 0;\n    width: 100%;\n    min-width: unset;\n}\n}", ""]);
+exports.push([module.i, ".side-news[data-v-2170b176] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  width: 380px;\n  min-width: 380px;\n  padding-right: 12px;\n  padding-left: 12px;\n  overflow: hidden;\n  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n}\n.side-news .block[data-v-2170b176] {\n  background: #FFFFFF;\n  padding: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 30px;\n}\n.side-news .banner[data-v-2170b176] {\n  width: 100%;\n  height: auto;\n  margin-bottom: 30px;\n}\n@media (max-width: 768px) {\n.side-news[data-v-2170b176] {\n    padding-right: 0;\n    width: 100%;\n    min-width: unset;\n}\n}", ""]);
 
 // exports
 
@@ -5799,7 +5810,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".menu-list a[data-v-7b54dd56] {\n  white-space: nowrap;\n}\n@media (max-width: 768px) {\n.auth-btns[data-v-7b54dd56] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.auth-btns a.logout[data-v-7b54dd56] {\n    margin: 0 auto;\n    margin-left: auto !important;\n    margin-right: auto !important;\n}\n.top-row-inner-mob[data-v-7b54dd56] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.top-row-inner-mob .header-text[data-v-7b54dd56] {\n    font-weight: 600;\n    -webkit-box-flex: 2;\n            flex-grow: 2;\n    text-align: center;\n    overflow: hidden;\n}\n}", ""]);
+exports.push([module.i, ".menu-list a[data-v-7b54dd56] {\n  white-space: nowrap;\n}\n.my-account[data-v-7b54dd56] {\n  color: #fff;\n}\n@media (max-width: 768px) {\n.auth-btns[data-v-7b54dd56] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.auth-btns a.logout[data-v-7b54dd56] {\n    margin-left: 10px !important;\n}\n.top-row-inner-mob[data-v-7b54dd56] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.top-row-inner-mob .header-text[data-v-7b54dd56] {\n    font-weight: 600;\n    -webkit-box-flex: 2;\n            flex-grow: 2;\n    text-align: center;\n    overflow: hidden;\n}\n.header-main .top-row-inner .btn-common[data-v-7b54dd56]:first-child,\n.header-main .top-row-inner-mob .btn-common[data-v-7b54dd56]:first-child {\n    margin-right: 0 !important;\n}\n}", ""]);
 
 // exports
 
@@ -39986,10 +39997,10 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "btn-common btn-gold-text ",
+                    staticClass: "btn-common btn-gold-text my-account",
                     attrs: { href: "./#/my-account" }
                   },
-                  [_vm._v("My account")]
+                  [_vm._v("החשבון שלי")]
                 )
               ]
             : [
@@ -40112,14 +40123,7 @@ var render = function() {
                                     [_vm._v("להתנתק")]
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn-common btn-gold-text ",
-                                      attrs: { href: "./#/my-account" }
-                                    },
-                                    [_vm._v("My account")]
-                                  )
+                                  _vm._m(2)
                                 ]
                               : [
                                   _c(
@@ -40148,7 +40152,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _vm._m(3)
                     ]
                   )
                 ])
@@ -40211,6 +40215,19 @@ var staticRenderFns = [
       "div",
       { staticClass: "menu-btn toggle-mnu toggle-nav item-menu-nav" },
       [_c("span")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn-common btn-gold-text my-account",
+        attrs: { href: "./#/my-account" }
+      },
+      [_c("span", [_vm._v("החשבון שלי")])]
     )
   },
   function() {
@@ -43015,6 +43032,24 @@ var render = function() {
                       [
                         _c("img", { attrs: { src: "/img/Star.svg", alt: "" } }),
                         _vm._v("\n        הוסף למועדפים\n      ")
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.post.data.post.is_favourite == true
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "add-to-favourites",
+                        on: {
+                          click: function($event) {
+                            return _vm.removeFromFavourites(_vm.postId)
+                          }
+                        }
+                      },
+                      [
+                        _c("img", { attrs: { src: "/img/Star.svg", alt: "" } }),
+                        _vm._v("\n        הסר ממועדפים\n      ")
                       ]
                     )
                   : _vm._e(),

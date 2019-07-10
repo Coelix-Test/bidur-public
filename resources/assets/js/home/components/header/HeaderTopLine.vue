@@ -27,7 +27,7 @@
                   @click="logout"
                   class="btn-common th-btn-gold"
                 >להתנתק</button>
-                <a href="./#/my-account" class="btn-common btn-gold-text ">My account</a>
+                <a href="./#/my-account" class="btn-common btn-gold-text my-account">החשבון שלי</a>
               </template>
               <template v-else>
                 <button
@@ -72,7 +72,7 @@
                     <div class="auth-btns">
                         <template v-if="isLoggedIn">
                           <a href="#" @click="logout" class="btn-common btn-gold-gradient logout">להתנתק</a>
-                          <a href="./#/my-account" class="btn-common btn-gold-text ">My account</a>
+                          <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a>
                         </template>
                         <template v-else>
                           <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
@@ -144,14 +144,18 @@ export default {
       white-space: nowrap;
     }
   }
+  .my-account {
+    color:#fff;
+  }
   @media (max-width:768px) {
     .auth-btns {
       justify-content: center;
       a.logout {
-        margin:0 auto;
-        margin-left: auto!important;
-        margin-right: auto!important;
+        // margin:0 auto;
+        margin-left: 10px!important;
+        // margin-right: auto!important;
       }
+
     }
     .top-row-inner-mob {
       justify-content: center;
@@ -162,6 +166,9 @@ export default {
         overflow:hidden;
       }
     }
-
+    .header-main .top-row-inner .btn-common:first-child,
+    .header-main .top-row-inner-mob .btn-common:first-child {
+      margin-right: 0!important;
+    }
   }
 </style>
