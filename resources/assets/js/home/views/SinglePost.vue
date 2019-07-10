@@ -22,7 +22,10 @@
           <div class="info">
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
-            <button @click="addPostToFavourite(postId)">addPostToFavourite</button>
+            <button @click="addPostToFavourite(postId)">
+              <img src="/img/Star.svg" alt="add-to-favourites">
+              הוסף למועדפים
+            </button>
           </div>
           <share />
 
@@ -356,6 +359,24 @@ export default {
     padding-bottom: 32px;
     /* margin-top: 32px; */
     border-bottom: 1px solid #BDBDBD;
+  }
+  .add-to-favourites {
+    white-space: nowrap;
+    border-width: 0;
+    color: #F2C94C;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #fff;
+    padding-right: 0;
+  }
+  .add-to-favourites img {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
   }
   .img-subtext {
     max-width: 600px;

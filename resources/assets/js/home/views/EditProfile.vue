@@ -16,6 +16,6 @@ export default {
     margin:0 auto;
     padding: 32px 24px;
     display: flex;
-
+    
   }
 </style>

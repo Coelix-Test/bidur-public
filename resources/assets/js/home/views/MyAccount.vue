@@ -1,11 +1,11 @@
 <template>
   <div class="my-account">
     <div class="my-account-wrapper">
-      <h1>my-account</h1>
-      <h2>Information</h2>
-      <router-link :to="'/edit-profile'">Edit Information</router-link>
+      <h1>החשבון שלי</h1>
+      <h2>מידע</h2>
+      <router-link :to="'/edit-profile'">ערוך מידע</router-link>
       <div class="favorites">
-        <h2>Favorite Posts</h2>
+        <h2>הודעות מועדפות</h2>
         <ul v-if="favoritePosts">
           <li v-for="post in favoritePosts" class="single-post">
             <div class="thumbnail">
@@ -55,7 +55,8 @@ export default {
       axios
         .post('/deletePostFromFavourites',{ postId : id})
           .then(res => {
-            console.log(res);
+            // console.log(res);
+            alert('Post deleted from favourites!');
           });
     }
   },
@@ -132,6 +133,7 @@ export default {
               font-size: 18px;
               font-weight: 700;
               background-color: #fff;
+              padding-right: 0;
               img {
                 width: 24px;
                 height: 24px;
