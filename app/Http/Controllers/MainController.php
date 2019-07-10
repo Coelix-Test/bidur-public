@@ -800,8 +800,8 @@ class MainController extends Controller
 
     public function addPostToFavourite(Request $request){
         $post = Post::find($request->get('postId'));
-        $user = User::find($request->get(\Auth::id()));
-
+        $user = User::find(\Auth::id());
+        // dd(\Auth::id());
         Favourites::create([
             'postId' => $post->id,
             'userId' => $user->id,
@@ -827,8 +827,8 @@ class MainController extends Controller
             $offset = $page * 24;
             $favPosts = Favourites::where('userId', $user->id)->offset($offset)->take(24)->get();
         }
-        
-        
+
+
         if (isset($favPosts)){
             foreach ($favPosts as $favPost) {
                 $posts[] = Post::find($favPost->postId)->id;

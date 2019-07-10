@@ -5367,7 +5367,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addPostToFavourite: function addPostToFavourite(id) {
-      console.log(id);
+      // console.log();
+      axios.post('/addPostToFavourite', {
+        postId: id
+      }).then(function (res) {
+        console.log(res.data);
+        alert('Post added to favourites!');
+      });
     },
     changePost: function changePost($event, id) {
       event.preventDefault();
@@ -5932,7 +5938,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".my-account[data-v-4f97eb3c] {\n  margin: 0 auto;\n  padding: 32px 24px;\n  max-width: 1440px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.my-account .my-account-wrapper h1[data-v-4f97eb3c] {\n  font-weight: 700;\n}\n@media (max-width: 768px) {\n.my-account[data-v-4f97eb3c] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}", ""]);
+exports.push([module.i, ".my-account[data-v-4f97eb3c] {\n  margin: 0 auto;\n  padding: 32px 24px;\n  max-width: 1440px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.my-account .my-account-wrapper h1[data-v-4f97eb3c] {\n  font-weight: 700;\n}\n.my-account .my-account-wrapper .favorites ul[data-v-4f97eb3c] {\n  margin: 0;\n  padding: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.my-account .my-account-wrapper .favorites ul li.single-post[data-v-4f97eb3c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-bottom: 16px;\n}\n.my-account .my-account-wrapper .favorites ul li.single-post .thumbnail[data-v-4f97eb3c] {\n  width: 200px;\n  height: 200px;\n  margin-left: 16px;\n}\n.my-account .my-account-wrapper .favorites ul li.single-post .thumbnail img[data-v-4f97eb3c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 100%;\n  width: 100%;\n}\n@media (max-width: 768px) {\n.my-account[data-v-4f97eb3c] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -42710,9 +42716,7 @@ var render = function() {
                         {
                           on: {
                             click: function($event) {
-                              return _vm.addPostToFavourite(
-                                _vm.post.data.post.id
-                              )
+                              return _vm.addPostToFavourite(_vm.postId)
                             }
                           }
                         },

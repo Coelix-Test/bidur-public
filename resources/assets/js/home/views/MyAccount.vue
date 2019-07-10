@@ -50,7 +50,7 @@ export default {
   methods : {
     removeFromFavourites(id) {
       axios
-        .post('/deletePostFromFavourites',{ postId : id,})
+        .post('/deletePostFromFavourites',{ postId : id})
           .then(res => {
             console.log(res);
           });
@@ -78,7 +78,29 @@ export default {
 
       }
       .favorites {
-
+        ul {
+          margin:0;
+          padding:0;
+          display: flex;
+          flex-direction: column;
+          li.single-post {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-bottom: 16px;
+            .thumbnail {
+              width:200px;
+              height:200px;
+              margin-left: 16px;
+              img {
+                object-fit: cover;
+                height:100%;
+                width: 100%;
+              }
+            }
+          }
+        }
       }
     }
 

@@ -22,7 +22,7 @@
           <div class="info">
             <span class="author">{{ post.data.post.author }}</span>
             <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
-            <button @click="addPostToFavourite(post.data.post.id)">addPostToFavourite</button>
+            <button @click="addPostToFavourite(postId)">addPostToFavourite</button>
           </div>
           <share />
 
@@ -135,7 +135,13 @@ export default {
   },
   methods : {
     addPostToFavourite(id) {
-      console.log(id);
+      // console.log();
+      axios
+        .post('/addPostToFavourite',{postId : id})
+          .then( res=>{
+            console.log(res.data);
+            alert('Post added to favourites!');
+          });
     },
     changePost($event, id) {
       event.preventDefault()
