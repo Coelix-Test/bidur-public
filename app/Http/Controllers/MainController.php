@@ -317,7 +317,7 @@ class MainController extends Controller
             }
         }
 
-        if (\Auth::chech()){
+        if (\Auth::check()){
             if (!empty(Favourites::where('userId', \Auth::id())->where('postId', $post->id)->first())){
                 $fullPost['is_favourite'] = true;
             }else{
@@ -856,12 +856,23 @@ class MainController extends Controller
             return json_encode($finalPosts);
         }
         return json_encode(['success' => false]);
-
-
     }
 
 
+    public function getPersonalInfo(){
+        if (\Auth::check()){
+            $user = User::find(\Auth::id());
+            $data['name'] = $user->name;
+            $data['phone'] = $user->phone;
+            return json_encode($data);
+        }else{
+            return json_encode(['success' => false]);
+        }
+    }
 
+    public function changePassword(){
+
+    }
 
 
 }
