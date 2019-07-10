@@ -800,7 +800,7 @@ class MainController extends Controller
 
     public function addPostToFavourite(Request $request){
         $post = Post::find($request->get('postId'));
-        $user = \Auth::id();
+        $user = User::find($request->get(\Auth::id()));
 
         Favourites::create([
             'postId' => $post->id,
@@ -811,7 +811,7 @@ class MainController extends Controller
 
     public function deletePostFromFavourites(Request $request){
         $post = Post::find($request->get('postId'));
-        $user = \Auth::id();
+        $user = User::find($request->get(\Auth::id()));
 
         Favourites::where('userId', $user->id)->where('postId', $post->id)->delete();
 
