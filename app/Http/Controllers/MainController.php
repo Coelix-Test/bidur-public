@@ -850,7 +850,11 @@ class MainController extends Controller
 
         if (isset($favPosts)){
             foreach ($favPosts as $favPost) {
-                $posts[] = Post::find($favPost->postId)->id;
+                $p = Post::find($favPost->postId);
+                if (!empty($p)){
+                    $posts[] = $p->id;
+
+                }
             }
 
             foreach ($posts as $post) {
