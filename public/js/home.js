@@ -3614,6 +3614,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40049,7 +40061,63 @@ var render = function() {
         [
           _vm.isLoggedIn
             ? [
-                _vm._m(1),
+                _c("div", { staticClass: "my-account-wrap" }, [
+                  _c(
+                    "div",
+                    { staticClass: "my-account" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "my-account-link",
+                          attrs: { to: { name: "my-account" } }
+                        },
+                        [_vm._v("Hey, UsersName")]
+                      ),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "profile-nav" }, [
+                        _c(
+                          "li",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "profile-settings",
+                                attrs: { to: { name: "edit-profile" } }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Profile settings\n                      "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "favourite-posts",
+                                attrs: { to: { name: "my-account" } }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Favourite posts\n                      "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -40091,7 +40159,7 @@ var render = function() {
       { staticClass: "top-row-inner-mob" },
       [
         _c("div", { staticClass: "menu-wrap" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
@@ -40181,7 +40249,7 @@ var render = function() {
                                     [_vm._v("להתנתק")]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(3)
+                                  _vm._m(2)
                                 ]
                               : [
                                   _c(
@@ -40210,7 +40278,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(4)
+                      _vm._m(3)
                     ]
                   )
                 ])
@@ -40263,34 +40331,6 @@ var staticRenderFns = [
             "https://www.facebook.com/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%93%D7%95%D7%A8-353719708444460/"
         }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-account-wrap" }, [
-      _c("div", { staticClass: "my-account" }, [
-        _c(
-          "a",
-          { staticClass: "my-account-link", attrs: { href: "./#/my-account" } },
-          [_vm._v("Hey, UsersName")]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "profile-nav" }, [
-          _c("li", [
-            _c("a", { staticClass: "profile-settings", attrs: { href: "#" } }, [
-              _vm._v("Profile settings")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "favourite-posts", attrs: { href: "#" } }, [
-              _vm._v("Favourite posts")
-            ])
-          ])
-        ])
-      ])
     ])
   },
   function() {

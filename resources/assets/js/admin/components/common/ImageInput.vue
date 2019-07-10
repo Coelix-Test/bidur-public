@@ -8,6 +8,7 @@
         </label>
         <label v-else>
           <input type="file" accept="image/*" @change="onFileChange($event.target.files[0])">
+          <div class="text-on-image">לחץ כדי לשנות את התמונה</div>
           <img v-if="typeof value === 'string'" :src="value" class="image" alt="">
           <img v-else :src="image" class="image" alt="">
         </label>
@@ -90,6 +91,24 @@ export default {
         .image{
             width: 100%;
             height: auto;
+        }
+        .text-on-image{
+          position: absolute;
+          display: -webkit-flex;
+          display: -ms-flex;
+          display: flex;
+          -ms-align-items: center;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          background: rgba(0,0,0,.3);
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          color: #fff;
+          font-size: 18px;
+          font-weight: 700;
         }
     }
 </style>

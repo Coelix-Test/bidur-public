@@ -25,10 +25,22 @@
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
                   <div class="my-account">
-                    <a href="./#/my-account" class="my-account-link">Hey, UsersName</a>
+                    <router-link class="my-account-link" :to="{ name: 'my-account' }">Hey, UsersName</router-link>
                     <ul class="profile-nav">
-                      <li><a href="#" class="profile-settings">Profile settings</a></li>
-                      <li><a href="#" class="favourite-posts">Favourite posts</a></li>
+                      <li>
+                        <router-link
+                          class="profile-settings"
+                          :to="{ name: 'edit-profile' }">
+                          Profile settings
+                        </router-link>
+                      </li>
+                      <li>
+                        <router-link
+                          class="favourite-posts"
+                          :to="{ name: 'my-account' }">
+                          Favourite posts
+                        </router-link>
+                      </li>
                     </ul>
                   </div>
                 </div>

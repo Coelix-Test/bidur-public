@@ -2363,6 +2363,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4959,7 +4960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n}\n.wrapper label.empty[data-v-b5a3eaa8] {\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b5a3eaa8] {\n  position: relative;\n}\n.wrapper input[type=file][data-v-b5a3eaa8] {\n  display: none;\n}\n.wrapper label[data-v-b5a3eaa8] {\n  margin-bottom: 0;\n  width: 100%;\n  cursor: pointer;\n}\n.wrapper label.empty[data-v-b5a3eaa8] {\n  height: 400px;\n  background-color: #E0E0E0;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  text-align: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.wrapper .upload-btn[data-v-b5a3eaa8] {\n  width: 360px;\n  height: 79px;\n  border-radius: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 24px;\n  font-weight: 600;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.wrapper .image[data-v-b5a3eaa8] {\n  width: 100%;\n  height: auto;\n}\n.wrapper .text-on-image[data-v-b5a3eaa8] {\n  position: absolute;\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  text-align: center;\n  background: rgba(0, 0, 0, 0.3);\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n}", ""]);
 
 // exports
 
@@ -26468,6 +26469,10 @@ var render = function() {
               }
             }
           }),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-on-image" }, [
+            _vm._v("לחץ כדי לשנות את התמונה")
+          ]),
           _vm._v(" "),
           typeof _vm.value === "string"
             ? _c("img", {
