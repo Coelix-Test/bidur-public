@@ -2710,6 +2710,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {}
@@ -3097,15 +3099,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _HearthButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HearthButton */ "./resources/assets/js/home/components/common/HearthButton.vue");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _HearthButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HearthButton */ "./resources/assets/js/home/components/common/HearthButton.vue");
 //
 //
 //
@@ -3137,58 +3131,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {};
   },
   components: {
-    HearthButton: _HearthButton__WEBPACK_IMPORTED_MODULE_1__["default"]
+    HearthButton: _HearthButton__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
-    makeItRain: function () {
-      var _makeItRain = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n, append) {
-        var fallTime, rotateTime, delayTime, colors, _loop, i;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                colors = ['red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia'];
-
-                if (!n) {
-                  n = 20;
-                }
-
-                _loop = function _loop() {
-                  var el = document.createElement('div');
-                  el.classList.add('fetti');
-                  fallTime = Math.random() * 10 + 3;
-                  rotateTime = Math.random() * 2 + 1;
-                  el.style.left = Math.floor(append.offsetWidth * Math.random()) + 'px';
-                  el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                  el.style.animation = "fettiFall ".concat(fallTime, "s linear, fettiRotate ").concat(rotateTime, "s infinite linear"); // el.style.transition = `top ${delayTime}s linear`
-
-                  setTimeout(function () {
-                    append.removeChild(el);
-                  }, fallTime * 1000);
-                  append.appendChild(el);
-                };
-
-                for (i = 0; i < n; i++) {
-                  _loop();
-                }
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      function makeItRain(_x, _x2) {
-        return _makeItRain.apply(this, arguments);
-      }
-
-      return makeItRain;
-    }(),
     left: function left() {
       if (this.popped) return;
       var el = this.$refs.right;
@@ -3204,7 +3149,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         serviceId: this.data.id
       });
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70, this.$refs.left);
+      makeItRain(70, this.$refs.left);
     },
     right: function right() {
       if (this.popped) return;
@@ -3221,7 +3166,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         serviceId: this.data.id
       });
       this.$refs.lightning.style.zIndex = 1;
-      this.makeItRain(70, this.$refs.right);
+      makeItRain(70, this.$refs.right);
     }
   }
 });
@@ -4165,7 +4110,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addVote: function addVote(obj, id) {
-      console.log(obj);
+      makeItRain(70, this.$refs.poll);
       axios.post('/addSurveyVote', {
         surveyId: id,
         answer: obj.value
@@ -4577,6 +4522,18 @@ __webpack_require__.r(__webpack_exports__);
         _this.$emit('close');
 
         document.location.reload();
+      })["catch"](function (err) {
+        var errors = err.response.data.errors;
+
+        if (errors.email) {
+          if (errors.email[0] == 'The email has already been taken.') {
+            _this.err = 'האימייל כבר נלקח.';
+          }
+        } else if (errors.password) {
+          if (errors.password[0] == 'The password must be at least 6 characters.') {
+            _this.err = 'על הסיסמה להיות לפחות 6 תווים.';
+          }
+        }
       });
     },
     login: function login() {
@@ -5693,7 +5650,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
+exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -5845,7 +5802,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".one-survey[data-v-6ca2d077] {\n  height: 700px;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 50px;\n  position: relative;\n}\n.one-survey .title[data-v-6ca2d077] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  text-align: center;\n  padding-bottom: 50px;\n  padding-top: 50px;\n}\n.one-survey .body[data-v-6ca2d077] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n  z-index: 5;\n}\n.one-survey .body img[data-v-6ca2d077] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.one-survey .body .left[data-v-6ca2d077],\n.one-survey .body .right[data-v-6ca2d077] {\n  width: 50%;\n  padding: 0 8px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  -webkit-transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n}\n.one-survey .body .left.fade[data-v-6ca2d077],\n.one-survey .body .right.fade[data-v-6ca2d077] {\n  opacity: 0;\n}\n.one-survey .body .left.none[data-v-6ca2d077],\n.one-survey .body .right.none[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left:hover .hearth-button[data-v-6ca2d077],\n.one-survey .body .right:hover .hearth-button[data-v-6ca2d077] {\n  opacity: 1;\n}\n.one-survey .body .left.selected[data-v-6ca2d077],\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  z-index: 1;\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);\n  padding: 0;\n}\n.one-survey .body .left.selected .hearth-button[data-v-6ca2d077],\n.one-survey .body .right.selected .hearth-button[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left[data-v-6ca2d077] {\n  left: 0;\n}\n.one-survey .body .left.selected[data-v-6ca2d077] {\n  left: 50%;\n  -webkit-transform: translateX(-50%) scale(1.1);\n          transform: translateX(-50%) scale(1.1);\n}\n.one-survey .body .right[data-v-6ca2d077] {\n  right: 0;\n}\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  right: 50%;\n  -webkit-transform: translateX(50%) scale(1.1);\n          transform: translateX(50%) scale(1.1);\n}\n@media (max-width: 768px) {\n.one-survey[data-v-6ca2d077] {\n    height: 400px;\n    padding: 0 0px 50px;\n}\n.one-survey .title[data-v-6ca2d077] {\n    padding-top: 12px;\n    padding-bottom: 12px;\n    font-size: 24px;\n    line-height: 24px;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n    pointer-events: none;\n    z-index: 2;\n}\n.one-survey .body > div[data-v-6ca2d077] {\n    width: calc(50% - 8px);\n    margin: 0 4px;\n}\n.one-survey .body > div img[data-v-6ca2d077] {\n    width: 100%;\n    height: 100%;\n    max-width: 100%;\n    padding: 0;\n}\n}", ""]);
+exports.push([module.i, ".one-survey[data-v-6ca2d077] {\n  height: 700px;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 50px;\n  position: relative;\n}\n.one-survey .title[data-v-6ca2d077] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  text-align: center;\n  padding-bottom: 50px;\n  padding-top: 50px;\n}\n.one-survey .body[data-v-6ca2d077] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n  z-index: 5;\n}\n.one-survey .body img[data-v-6ca2d077] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.one-survey .body .left[data-v-6ca2d077],\n.one-survey .body .right[data-v-6ca2d077] {\n  width: 50%;\n  padding: 0 8px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  -webkit-transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease;\n  transition: box-shadow 0.5s ease, opacity 0.5s ease, left 0.5s ease, right 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n}\n.one-survey .body .left.fade[data-v-6ca2d077],\n.one-survey .body .right.fade[data-v-6ca2d077] {\n  opacity: 0;\n}\n.one-survey .body .left.none[data-v-6ca2d077],\n.one-survey .body .right.none[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left:hover .hearth-button[data-v-6ca2d077],\n.one-survey .body .right:hover .hearth-button[data-v-6ca2d077] {\n  opacity: 1;\n}\n.one-survey .body .left.selected[data-v-6ca2d077],\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  z-index: 1;\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);\n  padding: 0;\n}\n.one-survey .body .left.selected .hearth-button[data-v-6ca2d077],\n.one-survey .body .right.selected .hearth-button[data-v-6ca2d077] {\n  display: none;\n}\n.one-survey .body .left[data-v-6ca2d077] {\n  left: 0;\n}\n.one-survey .body .left.selected[data-v-6ca2d077] {\n  left: 50%;\n  -webkit-transform: translateX(-50%) scale(1.1);\n          transform: translateX(-50%) scale(1.1);\n}\n.one-survey .body .right[data-v-6ca2d077] {\n  right: 0;\n}\n.one-survey .body .right.selected[data-v-6ca2d077] {\n  right: 50%;\n  -webkit-transform: translateX(50%) scale(1.1);\n          transform: translateX(50%) scale(1.1);\n}\n@media (max-width: 768px) {\n.one-survey[data-v-6ca2d077] {\n    height: 400px;\n    padding: 0 0px 50px;\n}\n.one-survey .title[data-v-6ca2d077] {\n    padding-top: 12px;\n    padding-bottom: 12px;\n    font-size: 24px;\n    line-height: 24px;\n    padding-bottom: 30px;\n}\n.one-survey .body > svg[data-v-6ca2d077] {\n    pointer-events: none;\n    z-index: 2;\n}\n.one-survey .body > div[data-v-6ca2d077] {\n    width: calc(50% - 8px);\n    margin: 0 4px;\n}\n.one-survey .body > div img[data-v-6ca2d077] {\n    width: 100%;\n    height: 100%;\n    max-width: 100%;\n    padding: 0;\n}\n}", ""]);
 
 // exports
 
@@ -5978,7 +5935,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".selected-poll[data-v-015f69b1] {\n  border: 4px solid #F2C94C;\n}\n.selected-poll img[data-v-015f69b1] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, ".selected-poll[data-v-015f69b1] {\n  position: relative;\n  border: 4px solid #F2C94C;\n}\n.selected-poll img[data-v-015f69b1] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -6301,7 +6258,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -8px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 60px;\n}\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 8px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
 
 // exports
 
@@ -39049,7 +39006,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "router-link",
+    "div",
     {
       directives: [
         {
@@ -39058,28 +39015,39 @@ var render = function() {
           modifiers: { once: true }
         }
       ],
-      staticClass: "side-news-post",
-      attrs: { to: "/post/" + _vm.data.id + "/#" },
-      on: { click: _vm.scrollTop }
+      staticClass: "side-news-post"
     },
     [
-      _c("div", {
-        staticClass: "img",
-        style: { backgroundImage: "url(" + _vm.data.img + ")" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "desc" }, [
-        _c("div", { staticClass: "title" }, [_vm._v(_vm._s(_vm.data.title))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "subtitle" }, [
-          _vm._v(
-            _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +
-              " |  " +
-              _vm._s(_vm.data.author)
-          )
-        ])
-      ])
-    ]
+      _c(
+        "router-link",
+        {
+          staticClass: "link-wrapper",
+          attrs: { to: "/post/" + _vm.data.id + "/#" },
+          on: { click: _vm.scrollTop }
+        },
+        [
+          _c("div", {
+            staticClass: "img",
+            style: { backgroundImage: "url(" + _vm.data.img + ")" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc" }, [
+            _c("div", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.data.title))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "subtitle" }, [
+              _vm._v(
+                _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +
+                  " |  " +
+                  _vm._s(_vm.data.author)
+              )
+            ])
+          ])
+        ]
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -40315,7 +40283,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "header-text" }, [
-          _vm._v("הבית של הבידור הישראל")
+          _vm._v("הבית של הבידור הישראלי")
         ]),
         _vm._v(" "),
         _c(
@@ -40348,15 +40316,15 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("a", {
         staticClass: "facebook",
-        attrs: { href: "https://www.instagram.com/israel_bidur/" }
-      }),
-      _vm._v(" "),
-      _c("a", {
-        staticClass: "instagram",
         attrs: {
           href:
             "https://www.facebook.com/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%93%D7%95%D7%A8-353719708444460/"
         }
+      }),
+      _vm._v(" "),
+      _c("a", {
+        staticClass: "instagram",
+        attrs: { href: "https://www.instagram.com/israel_bidur/" }
       })
     ])
   },
@@ -41324,7 +41292,7 @@ var render = function() {
             ? [
                 _c(
                   "div",
-                  { staticClass: "selected-poll" },
+                  { ref: "poll", staticClass: "selected-poll" },
                   [
                     _c("img", { attrs: { src: _vm.survey.image, alt: "" } }),
                     _vm._v(" "),
@@ -43195,7 +43163,9 @@ var render = function() {
               { staticClass: "post-content" },
               [
                 _vm.post.data.post.mainTitle
-                  ? _c("h1", [_vm._v(_vm._s(_vm.post.data.post.mainTitle))])
+                  ? _c("h1", { staticClass: "main-title" }, [
+                      _vm._v(_vm._s(_vm.post.data.post.mainTitle))
+                    ])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.post.data.post.is_favourite == false
@@ -65595,20 +65565,28 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-in-viewport-directive */ "./node_modules/vue-in-viewport-directive/index.js");
-/* harmony import */ var vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./router */ "./resources/assets/js/home/router.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./resources/assets/js/home/store/index.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./App.vue */ "./resources/assets/js/home/App.vue");
-/* harmony import */ var _components_modals_Login_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/modals/Login.vue */ "./resources/assets/js/home/components/modals/Login.vue");
-/* harmony import */ var _components_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/modals/Reg.vue */ "./resources/assets/js/home/components/modals/Reg.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-in-viewport-directive */ "./node_modules/vue-in-viewport-directive/index.js");
+/* harmony import */ var vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./router */ "./resources/assets/js/home/router.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/assets/js/home/store/index.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./App.vue */ "./resources/assets/js/home/App.vue");
+/* harmony import */ var _components_modals_Login_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/modals/Login.vue */ "./resources/assets/js/home/components/modals/Login.vue");
+/* harmony import */ var _components_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/modals/Reg.vue */ "./resources/assets/js/home/components/modals/Reg.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -65616,9 +65594,60 @@ __webpack_require__.r(__webpack_exports__);
 // import en from 'javascript-time-ago/locale/en'
 
 
+
+window.makeItRain =
+/*#__PURE__*/
+function () {
+  var _ref = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(n, append) {
+    var fallTime, rotateTime, delayTime, colors, _loop, i;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            colors = ['red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia'];
+
+            if (!n) {
+              n = 20;
+            }
+
+            _loop = function _loop() {
+              var el = document.createElement('div');
+              el.classList.add('fetti');
+              fallTime = Math.random() * 10 + 3;
+              rotateTime = Math.random() * 2 + 1;
+              el.style.left = Math.floor(append.offsetWidth * Math.random()) + 'px';
+              el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+              el.style.animation = "fettiFall ".concat(fallTime, "s linear, fettiRotate ").concat(rotateTime, "s infinite linear"); // el.style.transition = `top ${delayTime}s linear`
+
+              setTimeout(function () {
+                append.removeChild(el);
+              }, fallTime * 1000);
+              append.appendChild(el);
+            };
+
+            for (i = 0; i < n; i++) {
+              _loop();
+            }
+
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
 window.env = __webpack_require__(/*! ./env */ "./resources/assets/js/home/env.js")["default"];
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('in-viewport', vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_2___default.a);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_3___default.a, {
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.directive('in-viewport', vue_in_viewport_directive__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_4___default.a, {
   dynamic: true,
   injectModalsContainer: true
 });
@@ -65633,33 +65662,33 @@ __webpack_require__(/*! slick-carousel/slick/slick.min.js */ "./node_modules/sli
 
 __webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
 
-moment__WEBPACK_IMPORTED_MODULE_4___default.a.locale('he'); // TimeAgo.addLocale(en);
+moment__WEBPACK_IMPORTED_MODULE_5___default.a.locale('he'); // TimeAgo.addLocale(en);
 // const timeAgo = new TimeAgo('en-US');
 // console.log(timeAgo.format(new Date()));
 // this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.devtools = true;
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.performance = true;
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$env = env;
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.devtools = true;
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.performance = true;
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$env = env;
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('formatDate', function (value) {
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.filter('formatDate', function (value) {
   if (value) {
-    return moment__WEBPACK_IMPORTED_MODULE_4___default()(String(value)).fromNow();
+    return moment__WEBPACK_IMPORTED_MODULE_5___default()(String(value)).fromNow();
   }
 });
-window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  router: _router__WEBPACK_IMPORTED_MODULE_5__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_6__["default"],
+window.app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
+  router: _router__WEBPACK_IMPORTED_MODULE_6__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_7__["default"],
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
   },
   methods: {
     openReg: function openReg() {
-      this.$modal.show(_components_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_9__["default"], {}, {
+      this.$modal.show(_components_modals_Reg_vue__WEBPACK_IMPORTED_MODULE_10__["default"], {}, {
         adaptive: true,
         width: this.$env.mobile ? '90%' : 600,
         height: this.$env.mobile ? '90%' : 'auto',
@@ -65668,7 +65697,7 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
     },
     openLogin: function openLogin() {
-      this.$modal.show(_components_modals_Login_vue__WEBPACK_IMPORTED_MODULE_8__["default"], {}, {
+      this.$modal.show(_components_modals_Login_vue__WEBPACK_IMPORTED_MODULE_9__["default"], {}, {
         adaptive: true,
         width: this.$env.mobile ? '90%' : 600,
         height: this.$env.mobile ? '90%' : 'auto',

@@ -84,7 +84,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          
+          alert('נשמר!');
         });
       }
       else if(this.selected == 'assessment') {
@@ -95,7 +95,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-
+          alert('נשמר!');
         });
       }
       else if(this.selected == 'survey') {
@@ -107,7 +107,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-
+          alert('נשמר!');
         });
       }
 

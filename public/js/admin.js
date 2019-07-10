@@ -2610,7 +2610,7 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (res) {
-        console.log('saved');
+        alert('נשמר!');
       });
     }
   }
@@ -2669,7 +2669,7 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (res) {
-        console.log(res);
+        alert('נשמר!');
       });
     }
   }
@@ -2746,7 +2746,7 @@ __webpack_require__.r(__webpack_exports__);
         fifthPostId: this.values[4].id,
         sixthPostId: this.values[5].id
       }).then(function (response) {
-        console.log('saved');
+        alert('נשמר!');
       });
     }
   },
@@ -2877,7 +2877,8 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {// console.log('qweqweqwew');
+        }).then(function (res) {
+          alert('נשמר!');
         }); // axios.post('/showCompareFromMain');
       } else if (this.selected == 'likableImage') {
         data.append('title', this.ass.title);
@@ -2886,7 +2887,8 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {// console.log('qweqweqwew');
+        }).then(function (res) {
+          alert('נשמר!');
         }); // axios.post('/showSinglePhotoFromMain');
       } else if (this.selected == 'survey') {
         data.append('title', this.survey.title);
@@ -2896,7 +2898,8 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-        }).then(function (res) {// console.log('qweqweqwew');
+        }).then(function (res) {
+          alert('נשמר!');
         });
       }
     }
@@ -4274,7 +4277,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         // window.location.href = document.location.origin+"/admin#/?refresh=1";
         alert(successMessage); // document.location.reload(true);
       })["catch"](function (error) {
-        return console.log(response);
+        alert('שגיאה, נראה שאחת התמונות לא הועלתה');
       });
     }
   },
@@ -4899,6 +4902,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {}
@@ -5036,7 +5041,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".instagram[data-v-206e099f] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.instagram .birthday-section[data-v-206e099f] {\n  padding-bottom: 35px;\n}\n.instagram .text[data-v-206e099f] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.instagram .btn-wrap[data-v-206e099f] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.instagram .form[data-v-206e099f] {\n  padding: 50px 70px;\n}\n.instagram .form input[data-v-206e099f] {\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".instagram[data-v-206e099f] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.instagram .birthday-section[data-v-206e099f] {\n  padding-bottom: 35px;\n}\n.instagram .text[data-v-206e099f] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.instagram .btn-wrap[data-v-206e099f] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding-bottom: 40px;\n}\n.instagram .form[data-v-206e099f] {\n  padding: 50px 70px;\n}\n.instagram .form input[data-v-206e099f] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -5093,7 +5098,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .plate[data-v-6f35ac06] {\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}", ""]);
+exports.push([module.i, ".surveys[data-v-6f35ac06] {\n  padding-top: 20px;\n  width: 49%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .plate[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  padding-bottom: 40px;\n}\n.surveys .birthday-section[data-v-6f35ac06] {\n  padding-bottom: 35px;\n}\n.surveys .text[data-v-6f35ac06] {\n  font-size: 36px;\n  font-weight: 700;\n  width: 80%;\n  margin-right: auto;\n  margin-left: auto;\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.surveys .btn-wrap[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.surveys .form[data-v-6f35ac06] {\n  padding: 50px 70px;\n}\n.surveys .form input[data-v-6f35ac06] {\n  width: 100%;\n}\n.surveys .types[data-v-6f35ac06] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.surveys .types .add-section[data-v-6f35ac06] {\n  background: #F2F2F2;\n  font-size: 14px;\n  color: #828282;\n  text-align: center;\n  padding: 8px 25px 2px 25px;\n  margin-left: 16px;\n  cursor: pointer;\n}\n.surveys .types .add-section span[data-v-6f35ac06] {\n  display: block;\n}\n.surveys .types .add-section img[data-v-6f35ac06] {\n  height: 24px;\n  width: auto;\n}\n.surveys .types .add-section.add-image-text[data-v-6f35ac06] {\n  padding-right: 10px;\n  padding-left: 10px;\n}\n.surveys .big-btn[data-v-6f35ac06] {\n  align-self: center;\n}", ""]);
 
 // exports
 
@@ -5511,7 +5516,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
+exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -29128,7 +29133,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "router-link",
+    "div",
     {
       directives: [
         {
@@ -29137,28 +29142,39 @@ var render = function() {
           modifiers: { once: true }
         }
       ],
-      staticClass: "side-news-post",
-      attrs: { to: "/post/" + _vm.data.id + "/#" },
-      on: { click: _vm.scrollTop }
+      staticClass: "side-news-post"
     },
     [
-      _c("div", {
-        staticClass: "img",
-        style: { backgroundImage: "url(" + _vm.data.img + ")" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "desc" }, [
-        _c("div", { staticClass: "title" }, [_vm._v(_vm._s(_vm.data.title))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "subtitle" }, [
-          _vm._v(
-            _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +
-              " |  " +
-              _vm._s(_vm.data.author)
-          )
-        ])
-      ])
-    ]
+      _c(
+        "router-link",
+        {
+          staticClass: "link-wrapper",
+          attrs: { to: "/post/" + _vm.data.id + "/#" },
+          on: { click: _vm.scrollTop }
+        },
+        [
+          _c("div", {
+            staticClass: "img",
+            style: { backgroundImage: "url(" + _vm.data.img + ")" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc" }, [
+            _c("div", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.data.title))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "subtitle" }, [
+              _vm._v(
+                _vm._s(_vm._f("formatDate")(new Date(_vm.data.time * 1000))) +
+                  " |  " +
+                  _vm._s(_vm.data.author)
+              )
+            ])
+          ])
+        ]
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []

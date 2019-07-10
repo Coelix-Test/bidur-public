@@ -265,7 +265,9 @@ export default {
                     alert(successMessage);
                     // document.location.reload(true);
                 })
-                .catch(error => console.log(response));
+                .catch(error => {
+                  alert('שגיאה, נראה שאחת התמונות לא הועלתה');
+                });
         }
     },
     created() {

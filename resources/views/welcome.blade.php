@@ -10,6 +10,8 @@
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>IsraelBidur</title>
+
+  <script type="text/javascript" async="async" src="//widgets.outbrain.com/outbrain.js"></script>
 </head>
 <body>
 

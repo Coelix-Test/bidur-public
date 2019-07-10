@@ -131,6 +131,19 @@ export default {
       }).then(res => {
         this.$emit('close');
         document.location.reload();
+      }).catch(err => {
+        let errors = err.response.data.errors;
+
+        if(errors.email) {
+          if(errors.email[0] == 'The email has already been taken.') {
+            this.err = 'האימייל כבר נלקח.';
+          }
+        }
+        else if(errors.password) {
+          if(errors.password[0] == 'The password must be at least 6 characters.') {
+            this.err = 'על הסיסמה להיות לפחות 6 תווים.';
+          }
+        }
       });
     },
     login() {

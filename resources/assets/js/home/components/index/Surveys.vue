@@ -1,7 +1,7 @@
 <template>
   <div v-if="survey" :class="{ mobile: this.mobile }">
     <template v-if="survey.type == 'survey'">
-      <div class="selected-poll">
+      <div ref="poll" class="selected-poll">
         <img :src="survey.image" alt="">
         <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
       </div>
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     addVote(obj, id){
-      console.log(obj);
+      makeItRain(70, this.$refs.poll);
       axios
         .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
           .then(response => {
@@ -63,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
 .selected-poll {
+  position: relative;
   border:4px solid #F2C94C;
   img {
     width:100%;

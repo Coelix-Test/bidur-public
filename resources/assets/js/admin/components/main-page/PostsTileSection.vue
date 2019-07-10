@@ -55,7 +55,7 @@ export default {
             fifthPostId: this.values[4].id,
             sixthPostId: this.values[5].id,
           }).then(response => {
-            console.log('saved');
+            alert('נשמר!');
           });
         }
     },

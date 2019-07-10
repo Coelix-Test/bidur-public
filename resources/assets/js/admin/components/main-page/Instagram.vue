@@ -41,7 +41,7 @@ export default {
           'Content-Type': 'multipart/form-data'
         }
       }).then(res => {
-        console.log(res);
+        alert('נשמר!');
       });
     }
   }
@@ -74,6 +74,7 @@ export default {
   .btn-wrap{
     display: flex;
     justify-content: center;
+    padding-bottom: 40px;
   }
   .form {
     padding: 50px 70px;

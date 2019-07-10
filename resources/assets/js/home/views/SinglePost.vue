@@ -6,7 +6,7 @@
       <div v-if="post" class="post-content">
 
 
-        <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
+        <h1 class="main-title" v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <button v-if="post.data.post.is_favourite == false" class="add-to-favourites" @click="addPostToFavourite(postId)">
           <img src="/img/Star.svg" alt="">
           הוסף למועדפים
@@ -473,6 +473,22 @@ export default {
     }
   }
   @media (max-width:768px) {
+
+    h1.main-title {
+      color: #fff;
+      background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
+      margin: -32px -8px;
+      text-align: center;
+      margin-top: -31px;
+      font-size: 26px;
+      padding: 32px 8px;
+      padding-bottom: 50px;
+    }
+
+    .add-to-favourites {
+      margin-top: 60px;
+    }
+
     section.imageWithText {
       text-align: justify;
     }

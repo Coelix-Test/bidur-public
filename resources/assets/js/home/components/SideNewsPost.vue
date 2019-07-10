@@ -1,11 +1,13 @@
 <template>
-  <router-link @click="scrollTop" v-in-viewport.once :to="'/post/' + data.id+'/#'" class="side-news-post">
-    <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
-    <div class="desc">
-      <div class="title">{{ data.title }}</div>
-      <div class="subtitle">{{ new Date(data.time*1000) | formatDate }} |  {{ data.author }}</div>
-    </div>
-  </router-link>
+  <div class="side-news-post" v-in-viewport.once>
+    <router-link @click="scrollTop" :to="'/post/' + data.id+'/#'" class="link-wrapper">
+      <div class="img" :style="{ backgroundImage: `url(${data.img})` }"></div>
+      <div class="desc">
+        <div class="title">{{ data.title }}</div>
+        <div class="subtitle">{{ new Date(data.time*1000) | formatDate }} |  {{ data.author }}</div>
+      </div>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -45,6 +47,15 @@ export default {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+
+  .link-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
   .img {
     width: 120px;
     min-width: 120px;

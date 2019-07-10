@@ -110,7 +110,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          // console.log('qweqweqwew');
+          alert('נשמר!');
         });
         // axios.post('/showCompareFromMain');
       }
@@ -122,7 +122,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          // console.log('qweqweqwew');
+          alert('נשמר!');
         });
         // axios.post('/showSinglePhotoFromMain');
       }
@@ -135,7 +135,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
-          // console.log('qweqweqwew');
+          alert('נשמר!');
         });
       }
     }
@@ -162,6 +162,9 @@ export default {
   align-items: stretch;
   padding-bottom: 40px;
   .plate {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     padding-bottom: 40px;
   }
   .birthday-section{
@@ -211,6 +214,9 @@ export default {
         padding-left: 10px;
       }
     }
+  }
+  .big-btn {
+    align-self: center;
   }
 }
 </style>
