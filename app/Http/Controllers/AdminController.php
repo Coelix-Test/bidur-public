@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 use App\Admins;
 use App\DisLikesForSingleImage;
+use App\Favourites;
 use App\HappyBirthsday;
 use App\Hashtag;
 use App\HashtagPosts;
@@ -44,6 +45,7 @@ class AdminController extends Controller
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
         HashtagPosts::where('postId', $request->get('id'))->delete();
+        Favourites::where('postId', $request->get('id')->delete());
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
