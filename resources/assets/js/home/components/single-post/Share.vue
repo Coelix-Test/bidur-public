@@ -22,6 +22,11 @@
           </button>
           <input readonly type="text" :value="url">
         </div>
+        <div class="shareLinks">
+          <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`" target="_blank"><img src="/img/icons/social-facebook-colored.svg" alt=""></a>
+          <a :href="`whatsapp://send?text=${url}`" target="_blank"><img src="/img/whatsApp.svg" alt=""></a>
+          <a :href="`https://telegram.me/share/url?text=${url}`" target="_blank"><img src="/img/icons/social-telegram-colored.svg" alt=""></a>
+        </div>
       </div>
     </transition>
   </div>
@@ -77,6 +82,7 @@ export default {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
     padding: 15px 10px;
     position: absolute;
+    z-index:20;
     &::before {
       content: '';
       left: 20px;
@@ -136,6 +142,20 @@ export default {
         background: #EB5757;
         width: 36px;
         border-radius: 0 3px 3px 0;
+      }
+    }
+
+    .shareLinks {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 8px;
+      a {
+        img {
+          width:40px;
+          height: 40px;
+          margin: 0 8px;
+        }
       }
     }
   }

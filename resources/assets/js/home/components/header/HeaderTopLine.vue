@@ -23,15 +23,33 @@
 
           <div class="auth-btns">
               <template v-if="isLoggedIn">
-                <button
-                  @click="logout"
-                  class="btn-common th-btn-gold"
-                >להתנתק</button>
-                <a href="./#/my-account" class="btn-common btn-gold-text my-account">החשבון שלי</a>
+                <div class="my-account-wrap">
+                  <div class="my-account">
+                    <router-link class="my-account-link" :to="{ name: 'my-account' }">Hey, UsersName</router-link>
+                    <ul class="profile-nav">
+                      <li>
+                        <router-link
+                          class="profile-settings"
+                          :to="{ name: 'edit-profile' }">
+                          Profile settings
+                        </router-link>
+                      </li>
+                      <li>
+                        <router-link
+                          class="favourite-posts"
+                          :to="{ name: 'my-account' }">
+                          Favourite posts
+                        </router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <a href="#" @click="logout" class="logout-btn">Exit</a>
               </template>
               <template v-else>
                 <button
-                  class="btn-common th-btn-gold"
+                  class="btn-common btn-gold-gradient"
                   @click="$root.openReg"
                 >הרשמה</button>
                 <a href="#" class="btn-common btn-gold-text" @click="$root.openLogin">
@@ -70,7 +88,7 @@
 
                     <div class="auth-btns">
                         <template v-if="isLoggedIn">
-                          <a href="#" @click="logout" class="btn-common btn-gold-gradient logout">להתנתק</a>
+                          <a href="#" @click="logout" class="btn-common btn-gold-gradient logout"><span>להתנתק</span></a>
                           <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a>
                         </template>
                         <template v-else>
@@ -134,36 +152,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu-list {
-    a {
-      white-space: nowrap;
-    }
-  }
-  .my-account {
-    color:#fff;
-  }
-  @media (max-width:768px) {
-    .auth-btns {
-      justify-content: center;
-      // a.logout {
-      //   // margin:0 auto;
-      //   margin-left: 10px!important;
-      //   // margin-right: auto!important;
-      // }
 
-    }
-    // .top-row-inner-mob {
-    //   justify-content: center;
-    //   .header-text {
-    //     font-weight: 600;
-    //     flex-grow:2;
-    //     text-align: center;
-    //     overflow:hidden;
-    //   }
-    // }
-    // .header-main .top-row-inner .btn-common:first-child,
-    // .header-main .top-row-inner-mob .btn-common:first-child {
-    //   margin-right: 0!important;
-    // }
-  }
 </style>

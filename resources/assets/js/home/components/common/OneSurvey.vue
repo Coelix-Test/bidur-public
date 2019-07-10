@@ -134,7 +134,7 @@ export default {
     align-items: center;
     justify-content: center;
     img {
-      width: 300px;
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }
@@ -143,6 +143,8 @@ export default {
     }
     .left,
     .right {
+      width: 50%;
+      padding: 0 8px;
       height: 100%;
       position: absolute;
       top: 0;
@@ -161,6 +163,7 @@ export default {
       &.selected {
         z-index: 1;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        padding:0;
         .hearth-button {
           display: none;
         }
@@ -185,6 +188,7 @@ export default {
 @media (max-width:768px) {
   .one-survey {
     height: 400px;
+    padding:0 0px 50px;
     .title {
       padding-top: 12px;
       padding-bottom: 12px;

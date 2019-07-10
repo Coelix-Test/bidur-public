@@ -28,6 +28,9 @@ class MainController extends Controller
 {
     public function showBday(){
         $bday = Insta::find(1);
+        if (empty($bday)){
+            return json_encode(['success' => false]);
+        }
         $bdayArray['img'] = $bday->img;
         $bdayArray['text'] = $bday->text;
 
