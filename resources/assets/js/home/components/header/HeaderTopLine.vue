@@ -27,6 +27,7 @@
                   @click="logout"
                   class="btn-common th-btn-gold"
                 >להתנתק</button>
+                <a href="./#/my-account" class="btn-common btn-gold-text ">My account</a>
               </template>
               <template v-else>
                 <button
@@ -71,6 +72,7 @@
                     <div class="auth-btns">
                         <template v-if="isLoggedIn">
                           <a href="#" @click="logout" class="btn-common btn-gold-gradient logout">להתנתק</a>
+                          <a href="./#/my-account" class="btn-common btn-gold-text ">My account</a>
                         </template>
                         <template v-else>
                           <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
@@ -95,6 +97,11 @@
 
 
           </div>
+
+          <div class="header-text">
+            הבית של הבידור הישראלי
+          </div>
+
           <router-link :to="{ name: 'index'}" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
           </router-link>
@@ -146,5 +153,15 @@ export default {
         margin-right: auto!important;
       }
     }
+    .top-row-inner-mob {
+      justify-content: center;
+      .header-text {
+        font-weight: 600;
+        flex-grow:2;
+        text-align: center;
+        overflow:hidden;
+      }
+    }
+
   }
 </style>
