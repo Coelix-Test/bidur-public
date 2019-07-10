@@ -29125,7 +29125,13 @@ var render = function() {
   return _c(
     "router-link",
     {
-      directives: [{ name: "in-viewport", rawName: "v-in-viewport" }],
+      directives: [
+        {
+          name: "in-viewport",
+          rawName: "v-in-viewport.once",
+          modifiers: { once: true }
+        }
+      ],
       staticClass: "side-news-post",
       attrs: { to: "/post/" + _vm.data.id + "/#" },
       on: { click: _vm.scrollTop }

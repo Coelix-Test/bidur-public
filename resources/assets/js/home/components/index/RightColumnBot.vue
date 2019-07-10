@@ -14,10 +14,11 @@
         rtl
         autoplay
         navigationEnabled
+        navigationNextLabel="<img src='img/icons8-next-page.svg' />"
         :autoplayTimeout="4000"
         :paginationEnabled="true"
         :paginationPadding="8"
-        :perPageCustom="[[320, 2], [768, 2], [769, 4]]"
+        :perPageCustom="[[320, 1], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
             <img :src="post.img" alt="">
@@ -120,7 +121,7 @@ export default {
     // background: rgba(196, 196, 196, 0.1);
     // border-right: 6px solid #F2C94C;
     margin-top: 24px;
-    padding:24px 8px;
+    padding:24px 8px 24px 24px;
   }
   .latest-posts .heading {
     display: flex;
@@ -152,6 +153,7 @@ export default {
     width:100%;
     margin:0;
     padding:0;
+    padding-left: 48px;
     /* max-width: 600px; */
   }
   .latest-post-item {
@@ -188,10 +190,15 @@ export default {
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
     white-space:nowrap;
+    line-height: 12px;
+  }
+  .latest-post-slider .VueCarousel-dot:focus {
+    outline: none!important;
   }
   .latest-post-item p .author {
     color:black;
-    white-space:nowrap;
+    line-height: 12px;
+    // white-space:nowrap;
   }
   .latest-post-item h3 {
     font-size: 18px;
@@ -212,6 +219,22 @@ export default {
     margin-bottom: 32px;
     margin-top: 0;
     text-align: center;
+  }
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
+    right:unset;
+    left:16px;
+    outline:none;
+    transform: translateX(0) translateY(-50%);
+    width:40px;
+    padding:0;
+    height: 40px;
+  }
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next img {
+    width:40px;
+    height: 40px;
+  }
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-prev {
+    display: none;
   }
   @media (max-width:768px) {
     .latest-post-item {

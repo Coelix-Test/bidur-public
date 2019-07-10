@@ -10,9 +10,10 @@
         rtl
         autoplay
         navigationEnabled
+        navigationNextLabel="<img src='img/icons8-next-page.svg' />"
         :autoplayTimeout="4000"
-        :paginationEnabled="false"
-        :perPageCustom="[[320, 2], [768, 2], [769, 4]]"
+        :paginationEnabled="true"
+        :perPageCustom="[[320, 2], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
             <img :src="post.img" alt="">
@@ -148,10 +149,15 @@ export default {
     border-right: 1px solid #B3AAAA;
     margin-right: 4px;
     white-space:nowrap;
+    line-height: 12px;
+  }
+  .latest-post-slider .VueCarousel-dot:focus {
+    outline: none!important;
   }
   .latest-post-item p .author {
     color:black;
-    white-space:nowrap;
+    line-height: 12px;
+    // white-space:nowrap;
   }
   .latest-post-item h3 {
     font-size: 18px;
@@ -202,8 +208,26 @@ export default {
     background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
     padding-bottom: 32px;
   }
-
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
+    right:unset;
+    left:16px;
+    outline:none;
+    transform: translateX(0) translateY(-50%);
+    width:40px;
+    padding:0;
+    height: 40px;
+  }
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next img {
+    width:40px;
+    height: 40px;
+  }
+  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-prev {
+    display: none;
+  }
   @media (max-width:768px) {
+    .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
+      display:none;
+    }
     .selected-poll {
       margin-bottom: 8px;
     }
@@ -222,6 +246,12 @@ export default {
       padding-left: 0;
       margin-bottom: 16px;
       margin-top: 46px;
+    }
+    .latest-post-item p {
+      flex-direction: column;
+    }
+    .latest-post-item p span:first-child {
+      padding-bottom: 8px;
     }
   }
   @media (max-width:550px) {

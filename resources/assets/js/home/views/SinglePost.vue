@@ -4,17 +4,7 @@
 
       <single-post-example v-if="errorMessage" />
       <div v-if="post" class="post-content">
-        <nav>
 
-          <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
-            <img src="/img/arrow-right.svg">
-            לכתבה הקודמת
-          </router-link>
-          <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
-            לכתבה הבאה
-            <img src="/img/arrow-left.svg">
-          </router-link>
-        </nav>
 
         <h1 v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <button v-if="post.data.post.is_favourite == false" class="add-to-favourites" @click="addPostToFavourite(postId)">
@@ -44,7 +34,7 @@
 
           <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span v-html="post.description"></span>
+            <span v-if="post.description" v-html="post.description"></span>
           </div>
 
 
@@ -78,6 +68,18 @@
 
         </section>
 
+        <nav>
+
+          <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
+            <img src="/img/arrow-right.svg">
+            לכתבה הקודמת
+          </router-link>
+          <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
+            לכתבה הבאה
+            <img src="/img/arrow-left.svg">
+          </router-link>
+        </nav>
+
 
 
         <div class="opinion">
@@ -86,6 +88,7 @@
             <emoji v-if="postId" :postId="postId" />
           </div>
         </div>
+
       </div>
 
 
@@ -94,11 +97,18 @@
     </div>
     <div class="related-posts">
 
-      <carousel v-if="relevantPosts" :rtl="true" :perPageCustom="[[320, 1], [768, 1], [769, 2]]">
+      <carousel
+        v-if="relevantPosts"
+        :rtl="true"
+        :perPageCustom="[[320, 1], [768, 2], [769, 3]]"
+      >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
+          <router-link :to="'/post/'+post.id+'/#'">
+
+
             <img :src="post.img" alt="">
             <div class="related-post-content">
-              <router-link @click="scrollTop" :to="'/post/'+post.id+'/#'"><h3>{{ post.title }}</h3></router-link>
+              <h3>{{ post.title }}</h3>
               <p class="related-post-meta">
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
                 <span class="author">by {{post.author}}</span>
@@ -107,6 +117,7 @@
                 {{ post.excerpt }}
               </p>
             </div>
+          </router-link>
         </slide>
       </carousel>
 
@@ -234,6 +245,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 0 24px;
     max-width:1440px;
     margin:32px auto 0;
@@ -299,6 +311,7 @@ export default {
   }
   section.image img {
     max-width: 100%;
+    width:100%;
     object-fit: cover;
     margin-bottom: 12px;
     display: block;
@@ -415,6 +428,7 @@ export default {
   }
   .related-post a {
     text-decoration-color: #333;
+    text-decoration: none;
   }
   .related-post h3 {
     color:#333;
@@ -450,7 +464,6 @@ export default {
   .share {
     color:#333333;
     text-decoration-color:#333333;
-
   }
   @media (max-width:1024px) {
     .post-wrapper {
