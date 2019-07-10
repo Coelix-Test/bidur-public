@@ -145,25 +145,25 @@ export default {
   @media (max-width:768px) {
     .auth-btns {
       justify-content: center;
-      a.logout {
-        // margin:0 auto;
-        margin-left: 10px!important;
-        // margin-right: auto!important;
-      }
+      // a.logout {
+      //   // margin:0 auto;
+      //   margin-left: 10px!important;
+      //   // margin-right: auto!important;
+      // }
 
     }
-    .top-row-inner-mob {
-      justify-content: center;
-      .header-text {
-        font-weight: 600;
-        flex-grow:2;
-        text-align: center;
-        overflow:hidden;
-      }
-    }
-    .header-main .top-row-inner .btn-common:first-child,
-    .header-main .top-row-inner-mob .btn-common:first-child {
-      margin-right: 0!important;
-    }
+    // .top-row-inner-mob {
+    //   justify-content: center;
+    //   .header-text {
+    //     font-weight: 600;
+    //     flex-grow:2;
+    //     text-align: center;
+    //     overflow:hidden;
+    //   }
+    // }
+    // .header-main .top-row-inner .btn-common:first-child,
+    // .header-main .top-row-inner-mob .btn-common:first-child {
+    //   margin-right: 0!important;
+    // }
   }
 </style>
