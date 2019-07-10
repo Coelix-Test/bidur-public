@@ -3991,6 +3991,10 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.post('/getMainBday').then(function (res) {
       _this.birthdayPost = res.data;
+    })["catch"](function (error) {
+      console.log('No birthday post!'); // TODO: put ads instead of birthday post
+
+      document.querySelector('.birthdayPost').style.backgroundColor = '#eee';
     });
   },
   watch: {
