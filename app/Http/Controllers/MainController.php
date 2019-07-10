@@ -317,6 +317,17 @@ class MainController extends Controller
             }
         }
 
+        if (\Auth::chech()){
+            if (!empty(Favourites::where('userId', \Auth::id())->where('postId', $post->id)->first())){
+                $fullPost['is_favourite'] = true;
+            }else{
+                $fullPost['is_favourite'] = false;
+            }
+        }else{
+            $fullPost['is_favourite'] = false;
+        }
+
+
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
     }
 
@@ -818,7 +829,7 @@ class MainController extends Controller
         $user = User::find(\Auth::id());
 
         Favourites::where('userId', $user->id)->where('postId', $post->id)->delete();
-
+        return ['success' => true];
     }
 
     public function getAllFavourites(Request $request){
