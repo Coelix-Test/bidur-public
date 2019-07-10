@@ -4,7 +4,7 @@
       <h1>החשבון שלי</h1>
       <h2>מידע</h2>
       <router-link :to="'/edit-profile'">ערוך מידע</router-link>
-      <div class="favorites">
+      <div v-if="favoritePosts" class="favorites">
         <h2>הודעות מועדפות</h2>
         <ul v-if="favoritePosts">
           <li v-for="post in favoritePosts" class="single-post">
@@ -28,6 +28,8 @@
       </div>
     </div>
 
+
+
     <!-- <a href=""></a> -->
     <side-news />
   </div>
@@ -48,6 +50,8 @@ export default {
       .post('/getAllFavourites',{page : 0})
         .then(res => {
           this.favoritePosts = res.data;
+        }).catch(error => {
+          this.favoritePosts = null;
         });
   },
   methods : {

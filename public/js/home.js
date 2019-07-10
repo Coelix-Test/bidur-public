@@ -5082,16 +5082,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userData: null
+      userData: null,
+      oldPass: null,
+      newPass: null,
+      confirmPass: null
     };
   },
   created: function created() {
+    var _this = this;
+
     axios.post('/getPersonalInfo').then(function (res) {
-      console.log(res.data);
+      if (res.data.success == false) {
+        _this.userData = null;
+      } else {
+        _this.userData = res.data;
+      }
     });
+  },
+  methods: {
+    updatePersonalInfo: function updatePersonalInfo(e) {
+      e.preventDefault();
+      axios.post('/changePersonalInfo', {
+        name: this.userData.name,
+        phone: this.userData.phone
+      }).then(function (res) {
+        // console.log(res);
+        if (res.data.success == true) {
+          alert('Data was successfully edited!');
+        }
+      });
+    },
+    changePassword: function changePassword(e) {
+      e.preventDefault();
+      var oldPass = this.oldPass;
+      var newPass = this.newPass;
+      var confirmPass = this.confirmPass;
+
+      if (newPass === confirmPass && newPass != null) {
+        axios.post('/checkPassword', {
+          oldPassword: oldPass
+        }).then(function (res) {
+          // console.log(res);
+          if (res.data.success == true) {
+            axios.post('/changePassword', {
+              password: newPass
+            }).then(function (res) {
+              console.log(res);
+              alert('סיסמא שונתה!');
+            });
+          } else if (res.data.success == false) {
+            alert('הסיסמה הישנה אינה תואמת');
+          }
+        });
+      } else {
+        alert('הסיסמה החדשה אינה תואמת');
+      }
+    }
   }
 });
 
@@ -5215,6 +5284,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5229,6 +5300,8 @@ __webpack_require__.r(__webpack_exports__);
       page: 0
     }).then(function (res) {
       _this.favoritePosts = res.data;
+    })["catch"](function (error) {
+      _this.favoritePosts = null;
     });
   },
   methods: {
@@ -5954,7 +6027,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".edit-profile[data-v-46aa8e80] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n}\n.edit-profile .edit-profile-wrapper[data-v-46aa8e80] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}", ""]);
+exports.push([module.i, ".edit-profile[data-v-46aa8e80] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  color: #333;\n  box-sizing: border-box;\n}\n.edit-profile h1[data-v-46aa8e80] {\n  font-weight: 700;\n  text-align: center;\n  margin-bottom: 16px;\n}\n.edit-profile .edit-profile-wrapper[data-v-46aa8e80] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.edit-profile .edit-profile-wrapper > div[data-v-46aa8e80] {\n  padding: 0 12px;\n  width: 320px;\n  box-sizing: border-box;\n}\n.edit-profile .edit-profile-wrapper > div h2[data-v-46aa8e80] {\n  font-weight: 700;\n}\n.edit-profile .edit-profile-wrapper > div form .form-group[data-v-46aa8e80] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.edit-profile .edit-profile-wrapper > div form .form-group input[data-v-46aa8e80] {\n  padding: 6px 12px;\n  font-size: 16px;\n  color: #333;\n  border-radius: 5px;\n  border: 1px solid #333;\n  width: 100%;\n}\n.edit-profile .edit-profile-wrapper > div form button[data-v-46aa8e80] {\n  width: 100%;\n  padding: 12px 16px;\n  font-size: 20px;\n  border-width: 0;\n  background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  border-radius: 5px;\n  color: #fff;\n}\n@media (max-width: 768px) {\n.edit-profile[data-v-46aa8e80] {\n    padding: 24px 12px;\n}\n.edit-profile .edit-profile-wrapper[data-v-46aa8e80] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n.edit-profile .edit-profile-wrapper > div[data-v-46aa8e80] {\n    width: 100%;\n    margin-bottom: 24px;\n}\n}", ""]);
 
 // exports
 
@@ -42500,38 +42573,196 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "edit-profile" }, [
-      _c("h1", [_vm._v("ערוך פרופיל")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "edit-profile-wrapper" }, [
-        _c("div", { staticClass: "personal-info" }, [
-          _c("h2", [_vm._v("מידע אישי")]),
-          _vm._v(" "),
-          _c("form", { attrs: { action: "" } }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "name" } }, [_vm._v("שם מלא")]),
+  return _c("div", { staticClass: "edit-profile" }, [
+    _c("h1", [_vm._v("ערוך פרופיל")]),
+    _vm._v(" "),
+    _vm.userData
+      ? _c("div", { staticClass: "edit-profile-wrapper" }, [
+          _c("div", { staticClass: "personal-info" }, [
+            _c("h2", [_vm._v("מידע אישי")]),
+            _vm._v(" "),
+            _c("form", { attrs: { action: "" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("שם מלא")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userData.name,
+                      expression: "userData.name"
+                    }
+                  ],
+                  attrs: { type: "text", id: "name", name: "name" },
+                  domProps: { value: _vm.userData.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.userData, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
               _vm._v(" "),
-              _c("input", { attrs: { type: "text", id: "name", name: "name" } })
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("מספר טלפון")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userData.phone,
+                      expression: "userData.phone"
+                    }
+                  ],
+                  attrs: { type: "text", id: "phone", name: "phone" },
+                  domProps: { value: _vm.userData.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.userData, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "submit-button",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.updatePersonalInfo }
+                },
+                [_vm._v("לשמור")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "password" }, [
+            _c("h2", [_vm._v("שנה סיסמא")]),
+            _vm._v(" "),
+            _c("form", { attrs: { action: "" } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "current_password" } }, [
+                  _vm._v("סיסמה נוכחית")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.oldPass,
+                      expression: "oldPass"
+                    }
+                  ],
+                  attrs: {
+                    type: "password",
+                    id: "current_password",
+                    name: "current_password"
+                  },
+                  domProps: { value: _vm.oldPass },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.oldPass = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "new_password" } }, [
+                  _vm._v("סיסמה חדשה")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.newPass,
+                      expression: "newPass"
+                    }
+                  ],
+                  attrs: {
+                    type: "password",
+                    id: "new_password",
+                    name: "new_password"
+                  },
+                  domProps: { value: _vm.newPass },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.newPass = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "confirm_password" } }, [
+                  _vm._v("אשר סיסמה")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.confirmPass,
+                      expression: "confirmPass"
+                    }
+                  ],
+                  attrs: {
+                    type: "password",
+                    id: "confirm_password",
+                    name: "confirm_password"
+                  },
+                  domProps: { value: _vm.confirmPass },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.confirmPass = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "submit-button",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.changePassword }
+                },
+                [_vm._v("לשמור")]
+              )
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "password" }, [
-          _c("h2", [_vm._v("שנה סיסמא")]),
-          _vm._v(" "),
-          _c("form", { attrs: { action: "" } })
         ])
-      ])
-    ])
-  }
-]
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.userData == null
+      ? _c("div", { staticClass: "notice" }, [
+          _vm._v("\n    עליך להתחבר כדי לראות דף זה!\n  ")
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42615,74 +42846,78 @@ var render = function() {
             _vm._v("ערוך מידע")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "favorites" }, [
-            _c("h2", [_vm._v("הודעות מועדפות")]),
-            _vm._v(" "),
-            _vm.favoritePosts
-              ? _c(
-                  "ul",
-                  _vm._l(_vm.favoritePosts, function(post) {
-                    return _c("li", { staticClass: "single-post" }, [
-                      _c("div", { staticClass: "thumbnail" }, [
-                        _c("img", { attrs: { src: post.img } })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "postData" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "remove-from-favorites",
-                            on: {
-                              click: function($event) {
-                                return _vm.removeFromFavourites(post.id)
-                              }
-                            }
-                          },
-                          [
-                            _c("img", {
-                              attrs: {
-                                src: "/img/Star.svg",
-                                alt: "remove-from-favourites"
-                              }
-                            }),
-                            _vm._v(
-                              "\n               הסר ממועדפים\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "h3",
-                          [
-                            _c(
-                              "router-link",
-                              { attrs: { to: "/post/" + post.id } },
-                              [_vm._v(_vm._s(post.title))]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "post-meta" }, [
-                          _c("span", { staticClass: "date" }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("formatDate")(new Date(post.time * 1000))
-                              )
-                            )
+          _vm.favoritePosts
+            ? _c("div", { staticClass: "favorites" }, [
+                _c("h2", [_vm._v("הודעות מועדפות")]),
+                _vm._v(" "),
+                _vm.favoritePosts
+                  ? _c(
+                      "ul",
+                      _vm._l(_vm.favoritePosts, function(post) {
+                        return _c("li", { staticClass: "single-post" }, [
+                          _c("div", { staticClass: "thumbnail" }, [
+                            _c("img", { attrs: { src: post.img } })
                           ]),
                           _vm._v(" "),
-                          _c("span", { staticClass: "author" }, [
-                            _vm._v(_vm._s(post.author))
+                          _c("div", { staticClass: "postData" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "remove-from-favorites",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.removeFromFavourites(post.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: "/img/Star.svg",
+                                    alt: "remove-from-favourites"
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n               הסר ממועדפים\n            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "h3",
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: "/post/" + post.id } },
+                                  [_vm._v(_vm._s(post.title))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "post-meta" }, [
+                              _c("span", { staticClass: "date" }, [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm._f("formatDate")(
+                                      new Date(post.time * 1000)
+                                    )
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "author" }, [
+                                _vm._v(_vm._s(post.author))
+                              ])
+                            ])
                           ])
                         ])
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              : _vm._e()
-          ])
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ])
+            : _vm._e()
         ],
         1
       ),
