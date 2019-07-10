@@ -41056,15 +41056,19 @@ var render = function() {
         staticClass: "birthdayPost"
       },
       [
-        _c("img", {
-          staticClass: "hat",
-          attrs: { src: "img/happyBdayHat.svg", alt: "" }
-        }),
+        _vm.birthdayPost
+          ? _c("img", {
+              staticClass: "hat",
+              attrs: { src: "img/happyBdayHat.svg", alt: "" }
+            })
+          : _vm._e(),
         _vm._v(" "),
-        _c("img", {
-          staticClass: "gifts",
-          attrs: { src: "img/happyBdayGifts.svg", alt: "" }
-        }),
+        _vm.birthdayPost
+          ? _c("img", {
+              staticClass: "gifts",
+              attrs: { src: "img/happyBdayGifts.svg", alt: "" }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _vm.birthdayPost
           ? _c("type-writer", {
@@ -41073,18 +41077,18 @@ var render = function() {
             })
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "bdayInner" }, [
-          _c(
-            "div",
-            { staticClass: "overlay" },
-            [_c("confetti-svg", { staticClass: "confetti" })],
-            1
-          ),
-          _vm._v(" "),
-          _vm.birthdayPost
-            ? _c("img", { attrs: { src: _vm.birthdayPost.img, alt: "" } })
-            : _vm._e()
-        ])
+        _vm.birthdayPost
+          ? _c("div", { staticClass: "bdayInner" }, [
+              _c(
+                "div",
+                { staticClass: "overlay" },
+                [_c("confetti-svg", { staticClass: "confetti" })],
+                1
+              ),
+              _vm._v(" "),
+              _c("img", { attrs: { src: _vm.birthdayPost.img, alt: "" } })
+            ])
+          : _vm._e()
       ],
       1
     ),
