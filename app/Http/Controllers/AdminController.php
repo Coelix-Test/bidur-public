@@ -44,8 +44,9 @@ class AdminController extends Controller
 
     public function deletePost(Request $request){
         Post::find($request->get('id'))->delete();
+
         HashtagPosts::where('postId', $request->get('id'))->delete();
-        Favourites::where('postId', $request->get('id')->delete());
+        Favourites::where('postId', $request->get('id'))->delete();
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
@@ -897,13 +898,13 @@ class AdminController extends Controller
         }
         return json_encode(['success' => true]);
     }
-    public function getAllSurveys(Request $request){
-        $like = $request->get('title');
-        if ($like == 0){
+    public function getAllSurveys(){
+//        $like = $request->get('title');
+//        if ($like == 0){
             $allSurveys = Survey::orderBy('created_at', 'desc')->get();
-        }else{
-            $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
-        }
+//        }else{
+//            $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
+//        }
 
         if ($allSurveys->isEmpty()){
             return json_encode(['success' => false]);
