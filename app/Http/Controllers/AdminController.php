@@ -891,6 +891,7 @@ class AdminController extends Controller
             $data['name'] = $user->name;
             $data['email'] = $user->email;
             $data['phone'] = $user->phone;
+            $data['id'] = \Auth::id();
             $admin = Admins::where('userId', $user->id)->first();
 
             empty($admin) ? $data['is_admin'] = false : $data['is_admin'] = true;
