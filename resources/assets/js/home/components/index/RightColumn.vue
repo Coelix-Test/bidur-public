@@ -196,6 +196,7 @@ export default {
     color:#F2C94C;
     text-align: right;
     z-index:5;
+    padding-left:32px;
     font-family: 'Levin','Assistant',sans-serif;
   }
 
