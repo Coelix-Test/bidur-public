@@ -1,5 +1,5 @@
 export default {
-  TEST: false,
+  TEST: true,
   mobile: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
 
 }

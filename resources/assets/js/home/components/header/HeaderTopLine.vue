@@ -120,6 +120,9 @@
           </router-link>
 
       </div>
+      <div v-if="this.$env.mobile" class="fixedMobileAd">
+        Mobile ads
+      </div>
   </div><!-- top row end -->
 </template>
 
@@ -137,7 +140,9 @@ export default {
         .then(res => {
           if(res.data.login == true) {
             this.isLoggedIn = true;
+            console.log();
           }
+          this.$root.is_user_logged_in = res.data.login;
           this.user = res.data.data;
         });
   },
@@ -154,5 +159,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .fixedMobileAd {
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:60px;
+    width:100%;
+    z-index:2;
+    background-color: #eee;
+  }
 </style>

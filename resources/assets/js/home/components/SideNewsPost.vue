@@ -54,6 +54,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    text-decoration: none;
   }
 
   .img {

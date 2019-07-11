@@ -81,23 +81,23 @@ Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
 
 
 //admin
-Route::get('/admin', 'AdminController@showAdmin');
+Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
 Route::post('/getUserData', 'AdminController@getUserData');
     //posts
-    Route::post('/createPost', 'AdminController@createFullPost')->name('create-post');
+    Route::post('/createPost', 'AdminController@createFullPost')->name('create-post')->middleware('admin');
     Route::post('/getAllPostsWithOffset', 'AdminController@getAllPosts')->name('get-all-posts');
 
     Route::post('/showEditablePostContent', 'AdminController@showEditablePostContent');
     Route::post('/editPostCreateAllSections', 'AdminController@editPostCreateAllSections');
     //services
-    Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday'); //true
-    Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison');
-    Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo');
-    Route::post('/addNewSurveyToMain', 'AdminController@addNewSurveyToMain');
-    Route::post('/addNewComparisonSecond', 'AdminController@addNewComparisonSecond');
-    Route::post('/addSinglePhotoSecond', 'AdminController@addSinglePhotoSecond');
-    Route::post('/addNewSurveyToMainSecond', 'AdminController@addNewSurveyToMainSecond');
-    Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta');
+    Route::post('/createHappyBirthday', 'AdminController@addHappyBirthday')->name('add-happy-birthday')->middleware('admin'); //true
+    Route::post('/createNewComparison', 'AdminController@addNewComparison')->name('add-comparison')->middleware('admin');
+    Route::post('/createSinglePhoto', 'AdminController@addSinglePhoto')->name('add-single-photo')->middleware('admin');
+    Route::post('/addNewSurveyToMain', 'AdminController@addNewSurveyToMain')->middleware('admin');
+    Route::post('/addNewComparisonSecond', 'AdminController@addNewComparisonSecond')->middleware('admin');
+    Route::post('/addSinglePhotoSecond', 'AdminController@addSinglePhotoSecond')->middleware('admin');
+    Route::post('/addNewSurveyToMainSecond', 'AdminController@addNewSurveyToMainSecond')->middleware('admin');
+    Route::post('/createInsta', 'AdminController@createInsta')->name('add-insta')->middleware('admin');
 
     Route::post('/showSinglePhotoFromMain', 'AdminController@showSinglePhotoFromMain');
     Route::post('/showCompareFromMain', 'AdminController@showCompareFromMain');

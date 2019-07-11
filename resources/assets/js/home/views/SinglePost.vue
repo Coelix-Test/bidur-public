@@ -7,13 +7,17 @@
 
 
         <h1 class="main-title" v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
-        <button v-if="post.data.post.is_favourite == false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+        <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
           <img src="/img/Star.svg" alt="">
           הוסף למועדפים
         </button>
         <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
           <img src="/img/Star.svg" alt="">
           הסר ממועדפים
+        </button>
+        <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
+          <img src="/img/Star.svg" alt="">
+          הוסף למועדפים
         </button>
 
         <div class="post-meta">
@@ -510,6 +514,7 @@ export default {
     }
     .post-content {
       padding-left: 0;
+      width: 100%;
     }
     .opinion h2 {
       text-align: center;
