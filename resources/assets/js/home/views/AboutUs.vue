@@ -30,7 +30,7 @@
     </div>
 
     <div v-if="posts" class="latest-posts">
-      <h2>Latest Posts</h2>
+      <h2>חדשות נוספות</h2>
       <carousel
         class="latest-post-slider"
         :rtl="true"
@@ -47,8 +47,8 @@
                 <h3>{{ post.title }}</h3>
               </router-link>
               <p>
-                <span class="post-date">{{post.time}}</span>
-                <span class="author">by {{post.author}}</span>
+                <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
+                <span class="author">מאת {{post.author}}</span>
               </p>
             </div>
         </slide>

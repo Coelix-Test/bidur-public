@@ -16600,6 +16600,7 @@ body {
   color: #FDC63A;
   text-decoration: none;
   color: #4f4f4f;
+  white-space: nowrap;
   position: relative;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;

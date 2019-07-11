@@ -38,6 +38,7 @@ export default {
   transition: .3s;
   transform: translateX(-100%);
   opacity: 0;
+  height:120px;
   &.in-viewport {
     opacity: 1;
     transform:translateX(0);
@@ -61,6 +62,8 @@ export default {
     width: 120px;
     min-width: 120px;
     max-width: 120px;
+    height:100%;
+    display: block;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -102,6 +105,11 @@ export default {
         padding-top: 10px;
       }
     }
+  }
+}
+@media (max-width:768px) {
+  .side-news-post {
+    height:unset;
   }
 }
 

@@ -442,7 +442,7 @@ class MainController extends Controller
 
         }
         else{
-            return json_encode(['success' => false]);
+            return json_encode([$postsWithContent]);
         }
     }
 

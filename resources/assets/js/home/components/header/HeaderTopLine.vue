@@ -168,5 +168,8 @@ export default {
     width:100%;
     z-index:2;
     background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

@@ -4950,6 +4950,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         if (!data.length) {
           _this.end = true;
+        } //if have no posts :
+
+
+        if (res.data[0].hashtagImg && res.data[0].hashtagName) {
+          _this.img = res.data[0].hashtagImg;
+          console.log(123);
+          _this.name = res.data[0].hashtagName;
         }
       });
     },
@@ -5682,7 +5689,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  text-decoration: none;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post .link-wrapper[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .link-wrapper .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .link-wrapper .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}", ""]);
+exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n  height: 120px;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  text-decoration: none;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  height: 100%;\n  display: block;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-image: url(https://via.placeholder.com/130x110);\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post .link-wrapper[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .link-wrapper .img[data-v-fff594f6] {\n    height: 200px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .link-wrapper .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}\n@media (max-width: 768px) {\n.side-news-post[data-v-fff594f6] {\n    height: unset;\n}\n}", ""]);
 
 // exports
 
@@ -5872,7 +5879,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: 60px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n}", ""]);
+exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  height: 60px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}", ""]);
 
 // exports
 
@@ -6138,7 +6145,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: stretch;\n            align-items: stretch;\n    padding: 0 10px;\n}\n}", ""]);
+exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: stretch;\n            align-items: stretch;\n    padding: 0 10px;\n}\n}\n@media (max-width: 768px) {\nmain .header .hashtag .name[data-v-38d9e614] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -42529,7 +42536,7 @@ var render = function() {
           "div",
           { staticClass: "latest-posts" },
           [
-            _c("h2", [_vm._v("Latest Posts")]),
+            _c("h2", [_vm._v("חדשות נוספות")]),
             _vm._v(" "),
             _c(
               "carousel",
@@ -42563,11 +42570,15 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", [
                           _c("span", { staticClass: "post-date" }, [
-                            _vm._v(_vm._s(post.time))
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("formatDate")(new Date(post.time * 1000))
+                              )
+                            )
                           ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "author" }, [
-                            _vm._v("by " + _vm._s(post.author))
+                            _vm._v("מאת " + _vm._s(post.author))
                           ])
                         ])
                       ],

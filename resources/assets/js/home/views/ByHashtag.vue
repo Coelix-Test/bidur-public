@@ -74,6 +74,12 @@ export default {
         if(!data.length) {
           this.end = true;
         }
+        //if have no posts :
+        if(res.data[0].hashtagImg && res.data[0].hashtagName) {
+          this.img = res.data[0].hashtagImg;
+          console.log(123);
+          this.name = res.data[0].hashtagName;
+        }
       });
     },
     onScroll(e) {
@@ -169,6 +175,17 @@ main {
     flex-direction: column;
     align-items: stretch;
     padding: 0 10px;
+  }
+}
+@media (max-width:768px) {
+  main {
+    .header {
+      .hashtag {
+        .name {
+          font-size: 32px;
+        }
+      }
+    }
   }
 }
 
