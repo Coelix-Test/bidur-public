@@ -1,7 +1,7 @@
 <template>
   <div class="like-survey">
     <img :src="data.imgUrl">
-    <div class="body">
+    <div class="body" ref="body">
       <div class="title">
         {{ data.description }}
       </div>
@@ -63,6 +63,7 @@ export default {
       this.liked = this.data.likes;
       this.liked++;
       this.clicked = true;
+      makeItRain(70, this.$refs.body);
       axios
         .post('/likeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
@@ -74,6 +75,7 @@ export default {
       this.liked = this.data.likes;
       this.disliked++;
       this.clicked = true;
+      makeItRain(70, this.$refs.body);
       axios
         .post('/dislikeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
@@ -123,6 +125,7 @@ export default {
     align-items: center;
     padding-bottom: 45px;
     padding-top: 20px;
+    position: relative;
     .title {
       font-weight: bold;
       font-size: 36px;
