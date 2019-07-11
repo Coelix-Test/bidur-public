@@ -82,7 +82,7 @@ export default {
     .image {
       width: 100%;
       min-width: unset;
-      min-height: 200px;
+      min-height: 300px;
     }
     .desc {
       padding-top: 30px;

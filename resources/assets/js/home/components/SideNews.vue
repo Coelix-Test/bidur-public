@@ -8,10 +8,8 @@
         v-if="i <= 4"
       />
     </div>
-    <img
-      class="banner"
-      src="https://via.placeholder.com/380x600"
-    >
+    <div class="OUTBRAIN banner" data-src="DROP_PERMALINK_HERE" data-widget-id="GS_1"></div>
+
     <div class="block">
       <side-news-post
         v-for="(item, i) in data"
