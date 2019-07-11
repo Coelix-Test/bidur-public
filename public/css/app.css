@@ -16688,15 +16688,37 @@ body {
 }
 
 .header-main .celebrities-container {
-  margin: 16px auto;
+  margin: 0 auto;
+  padding: 16px 0;
   max-width: 1440px;
 }
 
-.header-main .celebrities-slider {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
+.header-main .celebirities-slider-wrap {
+  position: relative;
+}
+
+.header-main .celebirities-slider-wrap .swiper-button-prev,
+.header-main .celebirities-slider-wrap .swiper-button-next {
+  width: 20px;
+  height: 20px;
+  background-size: 8px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -10px;
+}
+
+.header-main .celebirities-slider-wrap .swiper-button-next,
+.header-main .celebirities-slider-wrap .swiper-container-rtl .swiper-button-prev {
+  background-image: url(/img/icons/arrow-corner-left.svg);
+  left: -25px;
+  right: auto;
+}
+
+.header-main .celebirities-slider-wrap .swiper-button-prev,
+.header-main .celebirities-slider-wrap .swiper-container-rtl .swiper-button-next {
+  background-image: url(/img/icons/arrow-corner-right.svg);
+  right: -25px;
+  left: auto;
 }
 
 .header-main .celebrities-slider a {
@@ -16918,33 +16940,14 @@ body {
 
   .header-main .celebrities-container {
     padding: 0;
-    overflow: hidden;
+    margin-bottom: 8px;
   }
 
-  .header-main .celebrities-slider {
-    display: -webkit-box;
-    display: flex;
-    width: 100%;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .header-main .celebrities-slider .celebrity {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-
-  .header-main .celebrities-slider::-webkit-scrollbar {
-    height: 0px;
-  }
-
-  .header-main .celebrities-slider::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  .header-main .celebrities-slider::-webkit-scrollbar-thumb {
-    background-color: transparent;
+  .header-main .celebrities-slider .slide-wrap {
+    -webkit-box-flex: 1;
+            flex-grow: 1;
+    width: auto;
+    padding: 0 5px;
   }
 }
 

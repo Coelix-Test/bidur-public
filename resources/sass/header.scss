@@ -274,12 +274,34 @@
 
     //celebrities slider
     .celebrities-container{
-        margin: 16px auto;
+        margin: 0 auto;
+        padding: 16px 0;
         max-width: 1440px;
     }
+    .celebirities-slider-wrap{
+      position: relative;
+      .swiper-button-prev, .swiper-button-next{
+        width: 20px;
+        height: 20px;
+        background-size: 8px 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: -10px;
+      }
+      .swiper-button-next, .swiper-container-rtl .swiper-button-prev{
+        background-image: url(/img/icons/arrow-corner-left.svg);
+        left: -25px;
+        right: auto;
+      }
+      .swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+        background-image: url(/img/icons/arrow-corner-right.svg);
+        right: -25px;
+        left: auto;
+      }
+    }
     .celebrities-slider{
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
         a{
             outline: none;
             text-decoration: none;
@@ -475,29 +497,41 @@
         }
 
         //native scroll in celebrities section
+        // .celebrities-container{
+        //     padding: 0;
+        //     overflow: hidden;
+        //     margin-bottom: 8px;
+        // }
+        // .celebrities-slider{
+        //     display: flex;
+        //     width: 100%;
+        //     overflow-x: scroll;
+        //     scrollbar-width: none;
+        //     -ms-overflow-style: none;
+        //     .celebrity{
+        //         margin-right: 10px;
+        //         margin-left: 10px;
+        //     }
+        //     &::-webkit-scrollbar{
+        //         height: 0px;
+        //     }
+        //     &::-webkit-scrollbar-track {
+        //         background-color: transparent;
+        //     }
+        //     &::-webkit-scrollbar-thumb{
+        //         background-color: transparent;
+        //     }
+        // }
         .celebrities-container{
             padding: 0;
-            overflow: hidden;
+            margin-bottom: 8px;
         }
         .celebrities-slider{
-            display: flex;
-            width: 100%;
-            overflow-x: scroll;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            .celebrity{
-                margin-right: 10px;
-                margin-left: 10px;
-            }
-            &::-webkit-scrollbar{
-                height: 0px;
-            }
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb{
-                background-color: transparent;
-            }
+          .slide-wrap{
+            flex-grow: 1;
+            width: auto;
+            padding: 0 5px;
+          }
         }
 
         //slider scroll
