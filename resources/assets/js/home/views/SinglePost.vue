@@ -488,7 +488,7 @@ export default {
     h1.main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
-      margin: -32px -8px;
+      margin: -32px -16px;
       text-align: center;
       margin-top: -31px;
       font-size: 26px;
@@ -543,7 +543,7 @@ export default {
       padding:0;
     }
     .post-wrapper {
-      padding:0 8px;
+      padding:0 16px;
     }
     .related-post-content {
       padding:0 4px;

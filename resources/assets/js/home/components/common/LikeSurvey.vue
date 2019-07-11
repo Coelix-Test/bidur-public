@@ -191,6 +191,14 @@ export default {
     img {
       height:300px;
     }
+    .body {
+      .title {
+        line-height: 28px;
+        font-size: 28px;
+        padding-bottom: 16px;
+        text-align: center;
+      }
+    }
   }
 }
 
