@@ -4853,8 +4853,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post('/getRecentPosts').then(function (res) {
-      _this.posts = res.data;
-      console.log(res.data);
+      _this.posts = res.data; // console.log(res.data);
     });
   },
   components: {
@@ -4955,8 +4954,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           var _this$data;
 
           (_this$data = _this.data).push.apply(_this$data, _toConsumableArray(data));
-
-          console.log('appended');
         } else {
           _this.data = data;
           _this.name = res.data.hashtagName;
@@ -4970,7 +4967,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         if (res.data[0].hashtagImg && res.data[0].hashtagName) {
           _this.img = res.data[0].hashtagImg;
-          console.log(123);
           _this.name = res.data[0].hashtagName;
         }
       });
@@ -5212,7 +5208,7 @@ __webpack_require__.r(__webpack_exports__);
             axios.post('/changePassword', {
               password: newPass
             }).then(function (res) {
-              console.log(res);
+              // console.log(res);
               alert('סיסמא שונתה!');
             });
           } else if (res.data.success == false) {
@@ -5618,10 +5614,8 @@ __webpack_require__.r(__webpack_exports__);
             }));
           }
         } else {
-          console.log('sbahd bskh dvbaksj bdjahs dasvdkahs');
           axios.post('/getRecentPosts').then(function (res) {
             _this.relevantPosts = res.data;
-            console.log(_this.relevantPosts);
           });
         }
 

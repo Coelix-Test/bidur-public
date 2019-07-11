@@ -64,7 +64,6 @@ export default {
 
         if(append) {
           this.data.push(...data);
-          console.log('appended');
         } else {
           this.data = data;
           this.name = res.data.hashtagName;
@@ -77,7 +76,6 @@ export default {
         //if have no posts :
         if(res.data[0].hashtagImg && res.data[0].hashtagName) {
           this.img = res.data[0].hashtagImg;
-          console.log(123);
           this.name = res.data[0].hashtagName;
         }
       });

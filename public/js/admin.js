@@ -2734,8 +2734,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.selectedPosts = Object.values(res.data);
       });
     },
-    selectPost: function selectPost(post) {
-      console.log(post);
+    selectPost: function selectPost(post) {// console.log(post);
     },
     save: function save() {
       axios.post('/editMainPagePosts', {
@@ -3182,8 +3181,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('update:answers', newAnswers);
     },
     deleteAnswer: function deleteAnswer(index) {
-      var newAnswers = this.answers;
-      console.log(index);
+      var newAnswers = this.answers; // console.log(index);
+
       newAnswers = newAnswers.filter(function (answer, i) {
         return i !== index;
       });
@@ -3242,7 +3241,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateValue: function updateValue(value) {
-      console.log(value);
+      // console.log(value);
       this.$emit('update:value', value);
     }
   }

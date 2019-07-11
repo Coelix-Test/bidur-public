@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         updateValue(value){
-            console.log(value);
+            // console.log(value);
             this.$emit('update:value', value);
         }
     }

@@ -204,10 +204,8 @@ export default {
                     }))
               }
             } else {
-              console.log('sbahd bskh dvbaksj bdjahs dasvdkahs');
               axios.post('/getRecentPosts').then(res => {
                 this.relevantPosts = res.data;
-                console.log(this.relevantPosts);
               });
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;

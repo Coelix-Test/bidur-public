@@ -58,7 +58,7 @@ export default {
         },
         deleteAnswer(index){
             let newAnswers = this.answers;
-            console.log(index);
+            // console.log(index);
             newAnswers = newAnswers.filter((answer,i) => i !== index);
             this.$emit('update:answers', newAnswers);
         }

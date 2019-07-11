@@ -72,7 +72,7 @@ export default {
   created() {
     axios.post('/getRecentPosts').then(res => {
       this.posts = res.data;
-      console.log(res.data);
+      // console.log(res.data);
     });
   },
   components : {

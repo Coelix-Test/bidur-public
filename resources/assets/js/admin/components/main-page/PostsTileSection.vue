@@ -44,7 +44,7 @@ export default {
             });
         },
         selectPost(post){
-          console.log(post);
+          // console.log(post);
         },
         save() {
           axios.post('/editMainPagePosts', {

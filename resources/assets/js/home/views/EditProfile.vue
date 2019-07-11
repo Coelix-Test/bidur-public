@@ -90,7 +90,7 @@ export default {
                 axios
                   .post('/changePassword',{ password : newPass })
                     .then(res=>{
-                       console.log(res);
+                       // console.log(res);
                        alert('סיסמא שונתה!');
                     })
               }else if(res.data.success == false){
