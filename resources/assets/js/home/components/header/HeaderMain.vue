@@ -2,21 +2,24 @@
   <div class="header-main">
     <header-top-line></header-top-line>
     <div class="celebrities-container">
-      <div class="celebrities-slider">
-        <!-- <slick
-          ref="slick"
-          :options="slickOptions"> -->
-          <div class="slide-wrap" v-for="hashtag in hashtags" :key="hashtag.id">
-            <router-link :to="{ name: 'hashtag', params: { id: hashtag.id }}" class="np-slide-item">
-              <div class="celebrity">
-                <div class="img-wrap">
-                  <div class="image" :style="'background-image: url('+hashtag.img+');'"></div>
+      <div class="celebirities-slider-wrap" >
+        <swiper class="celebrities-slider" :options="swiperOptions" ref="celebritiesSwiper">
+
+          <swiper-slide class="slide-wrap" v-for="hashtag in hashtags" :key="hashtag.id">
+
+              <router-link :to="{ name: 'hashtag', params: { id: hashtag.id }}" class="np-slide-item">
+                <div class="celebrity">
+                  <div class="img-wrap">
+                    <div class="image" :style="'background-image: url('+hashtag.img+');'"></div>
+                  </div>
+                  <div class="name">{{hashtag.name}}</div>
                 </div>
-                <div class="name">{{hashtag.name}}</div>
-              </div>
-            </router-link>
-          </div>
-        <!-- </slick> -->
+              </router-link>
+
+          </swiper-slide>
+        </swiper>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
 
       </div>
     </div><!-- celebrities row end-->
@@ -46,141 +49,52 @@
 
 <script>
 import HeaderTopLine from './HeaderTopLine.vue';
-import Slick from 'vue-slick';
+// import Slick from 'vue-slick';
+import 'swiper/dist/css/swiper.css';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 export default {
   data(){
     return {
       hashtags: [],
       postTitles: [],
-      slickOptions: {
-        slidesToShow: 12,
-        // slidesToScroll: 12,
-        // dots: false,
-        // arrows: true,
-        // rtl: true,
-        // infinite: true,
-        // initialSlide: 2,
-        // responsive: [
-        //   {
-        //     breakpoint: 1500,
-        //     settings: {
-        //       slidesToShow: 10,
-        //       slidesToScroll: 10
-        //     }
-        //   },
-        //   {
-        //     breakpoint: 1367,
-        //     settings: {
-        //       slidesToShow: 9,
-        //       slidesToScroll: 9
-        //     }
-        //   },
-        //   {
-        //     breakpoint: 1200,
-        //     settings: {
-        //       slidesToShow: 8,
-        //       slidesToScroll: 8
-        //     }
-        //   },
-        //   {
-        //     breakpoint: 1024,
-        //     settings: {
-        //       slidesToShow: 7,
-        //       slidesToScroll: 7
-        //     }
-        //   },
-        //   {
-        //     breakpoint: 991,
-        //     settings: {
-        //       arrows: false,
-        //       centerMode: true,
-        //       variableWidth: true,
-        //       slidesToShow: 1,
-        //       slidesToScroll: 3,
-        //     }
-        //   }
-        // ]
+      swiperOptions: {
+        slidesPerView: 12,
+        breakpoints: {
+          1500: {
+            slidesPerView: 10,
+          },
+          1367: {
+            slidesPerView: 9
+          },
+          1200: {
+            slidesPerView: 8
+          },
+          1024: {
+            slidesPerView: 7
+          },
+          991: {
+            slidesPerView: 'auto',
+            freeMode: true
+          }
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
       }
     };
   },
   components: {
     HeaderTopLine,
-    Slick
+    swiper,
+    swiperSlide
   },
   methods: {
-    initSlick(){
-      $('.header-main .celebrities-slider').slick({
-        slidesToShow: 12,
-        slidesToScroll: 4,
-        dots: false,
-        arrows: true,
-        rtl: true,
-        infinite: true,
-        initialSlide: 0,
-        responsive: [
-            {
-            breakpoint: 1500,
-            settings: {
-              slidesToShow: 10,
-              slidesToScroll: 4
-            }
-          },
-          {
-            breakpoint: 1367,
-            settings: {
-              slidesToShow: 9,
-              slidesToScroll: 4
-            }
-          },
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 8,
-              slidesToScroll: 4
-            }
-          },
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 7,
-              slidesToScroll: 2
-            }
-          },
-          // {
-          //     breakpoint: 991,
-          //     settings: {
-          //         arrows: false,
-          //         centerMode: true,
-          //         variableWidth: true,
-          //         slidesToShow: 1,
-          //         slidesToScroll: 3,
-          //     }
-          // }
-
-          {
-              breakpoint: 991,
-              settings: "unslick"
-          }
-        ]
-      });
-    },//not vue component
-    reInitSlick() {
-      // Helpful if you have to deal with v-for to update dynamic lists
-      this.$nextTick(() => {
-        this.$refs.slick.reSlick();
-      });
-    },
     getAllHashtags(){
       axios.post('/getAllHashtags')
           .then(response => {
-            // console.log(response.data);
             this.hashtags = response.data;
-
-            //not vue slick
-            setTimeout(() => {
-              this.initSlick();
-            },400);
 
           });
     },
@@ -209,13 +123,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  // @import '~slick-carousel/slick/slick.css';
-  // @import '~slick-carousel/slick/slick-theme.css';
+<style lang="scss">
   .run-stroke {
     a {
       color:#333;
       text-decoration: none;
     }
   }
+
 </style>
