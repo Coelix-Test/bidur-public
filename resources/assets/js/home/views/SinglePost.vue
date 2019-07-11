@@ -493,7 +493,7 @@ export default {
       margin-top: -31px;
       font-size: 26px;
       padding: 32px 8px;
-      padding-bottom: 50px;
+      /* padding-bottom: 50px; */
     }
 
     .add-to-favourites {
