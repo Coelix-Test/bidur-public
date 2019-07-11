@@ -3387,19 +3387,19 @@ __webpack_require__.r(__webpack_exports__);
             slidesToShow: 7,
             slidesToScroll: 2
           }
-        }, {
+        }, // {
+        //     breakpoint: 991,
+        //     settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         variableWidth: true,
+        //         slidesToShow: 1,
+        //         slidesToScroll: 3,
+        //     }
+        // }
+        {
           breakpoint: 991,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            variableWidth: true,
-            slidesToShow: 1,
-            slidesToScroll: 3
-          } // {
-          //     breakpoint: 991,
-          //     settings: "unslick"
-          // }
-
+          settings: "unslick"
         }]
       });
     },

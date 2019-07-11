@@ -16695,6 +16695,8 @@ body {
 .header-main .celebrities-slider {
   display: -webkit-box;
   display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 .header-main .celebrities-slider a {
@@ -16915,13 +16917,34 @@ body {
   }
 
   .header-main .celebrities-container {
-    padding-right: 0;
-    padding-left: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .header-main .celebrities-slider {
+    display: -webkit-box;
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .header-main .celebrities-slider .celebrity {
-    padding-right: 15px;
-    padding-left: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .header-main .celebrities-slider::-webkit-scrollbar {
+    height: 0px;
+  }
+
+  .header-main .celebrities-slider::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .header-main .celebrities-slider::-webkit-scrollbar-thumb {
+    background-color: transparent;
   }
 }
 
