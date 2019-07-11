@@ -394,15 +394,16 @@ export default {
       display: none;
     }
     .birthdayPost .h2 {
-      right:8px;
+      right:0;
       top:8px;
+      padding-left: 0;
       font-size: 1.6em;
     }
     .birthdayPost {
       padding: 0;
-      margin-top: 16px;
+      margin-top: 0;
       margin-bottom: 32px;
-      padding-top: 120px;
+      padding-top: 48px;
       box-sizing: content-box;
     }
     ul.posts li a p {

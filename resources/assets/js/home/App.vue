@@ -157,15 +157,16 @@ export default {
 @media (max-width:768px) {
   .socials-btn {
     bottom: 64px;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.1);
   }
   .socials-btn.whatsapp {
     left: 12px;
   }
   .socials-btn.telegram {
-    left: 56px;
+    left: 48px;
+    border-width:0;
   }
 
 }

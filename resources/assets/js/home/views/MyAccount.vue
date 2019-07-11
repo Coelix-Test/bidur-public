@@ -26,6 +26,9 @@
           </li>
         </ul>
       </div>
+      <div v-if="favoritePosts == null" class="notice">
+        אין לך כתבות מועדפות
+      </div>
     </div>
 
 
@@ -60,7 +63,14 @@ export default {
         .post('/deletePostFromFavourites',{ postId : id})
           .then(res => {
             // console.log(res);
-            alert('Post deleted from favourites!');
+            // alert('Post deleted from favourites!');
+            axios
+              .post('/getAllFavourites',{page : 0})
+                .then(res => {
+                  this.favoritePosts = res.data;
+                }).catch(error => {
+                  this.favoritePosts = null;
+                });
           });
     }
   },

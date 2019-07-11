@@ -153,6 +153,7 @@ export default {
       flex-basis:100%;
       margin-right: 0;
       transform:translateX(0);
+      margin-top: 8px;
     }
     .insta-features div img {
       width:30px;

@@ -4,7 +4,7 @@
       <h1>צור קשר</h1>
       <p class="info">
         <a href="#"><span class="icon"><img src="img/icons/location.svg" alt=""></span>Lorem ipsum dolor sit</a>
-        <a href="mailto:example@gmail.com"><span class="icon"><img src="img/icons/mail.svg" alt=""></span>example@gmail.com</a>
+        <a href="mailto:example@gmail.com"><span class="icon"><img src="img/icons/mail.svg" alt=""></span>israelbidur1@gmail.com</a>
         <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>+380631189234</a>
       </p>
       <div class="contact-form">
@@ -121,6 +121,7 @@ export default {
             align-items: center;
             padding-bottom: 24px;
             margin-bottom: 24px;
+            flex-wrap: wrap;
             border-bottom: 1px solid #333;
             > a {
               color:#333;
@@ -128,6 +129,8 @@ export default {
               display: flex;
               flex-direction: row;
               align-items: center;
+              white-space: nowrap;
+              padding-bottom: 4px;
               text-decoration-color: #333;
               .icon {
                 padding:0 0 0 8px;

@@ -7,11 +7,11 @@
         <form  action="">
           <div class="form-group">
             <label for="name">שם מלא</label>
-            <input type="text" id="name" name="name" v-model="userData.name">
+            <input type="text" id="name" name="name" v-model="userData.name" maxlength="20">
           </div>
           <div class="form-group">
             <label for="name">מספר טלפון</label>
-            <input type="text" id="phone" name="phone" v-model="userData.phone">
+            <input type="text" id="phone" name="phone" v-model="userData.phone" maxlength="15">
           </div>
           <button type="submit" @click="updatePersonalInfo" class="submit-button">לשמור</button>
         </form>
@@ -25,11 +25,11 @@
           </div>
           <div class="form-group">
             <label for="new_password">סיסמה חדשה</label>
-            <input type="password" id="new_password" name="new_password" v-model="newPass">
+            <input type="password" id="new_password" name="new_password" v-model="newPass" minlength="6" maxlength="20">
           </div>
           <div class="form-group">
             <label for="confirm_password">אשר סיסמה</label>
-            <input type="password" id="confirm_password" name="confirm_password" v-model="confirmPass">
+            <input type="password" id="confirm_password" name="confirm_password" v-model="confirmPass" minlength="6" maxlength="20">
           </div>
           <button type="submit" @click="changePassword" class="submit-button">לשמור</button>
         </form>
@@ -81,7 +81,7 @@ export default {
       let oldPass = this.oldPass;
       let newPass = this.newPass;
       let confirmPass = this.confirmPass;
-      if(newPass === confirmPass && newPass != null) {
+      if(newPass === confirmPass && newPass != null && newPass.length >= 5) {
         axios
           .post('/checkPassword', { oldPassword : oldPass })
             .then(res => {
