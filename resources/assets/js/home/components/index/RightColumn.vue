@@ -3,8 +3,8 @@
     <article v-in-viewport.once class="birthdayPost">
       <!-- <confetti-svg class="confetti"></confetti-svg> -->
       <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
-      <img v-if="birthdayPost" class="hat" src="img/happyBdayHat.svg" alt="">
-      <img v-if="birthdayPost" class="gifts" src="img/happyBdayGifts.svg" alt="">
+      <img v-if="birthdayPost" class="hat" src="img/hat2.svg" alt="">
+      <img v-if="birthdayPost" class="gifts" src="img/GIFTBOX2.svg" alt="">
 
       <type-writer class="h2" v-if="birthdayPost" :text="birthdayPost.text"></type-writer>
       <div v-if="birthdayPost" class="bdayInner">
@@ -60,7 +60,7 @@ export default {
         .then(res => {
           this.birthdayPost = res.data;
         }).catch(error => {
-          console.log('No birthday post!');
+          // console.log('No birthday post!');
           // TODO: put ads instead of birthday post
           document.querySelector('.birthdayPost').style.backgroundColor = '#eee';
         });
@@ -172,6 +172,10 @@ export default {
     animation: rotateAnimNeg 5s ease infinite;
   }
   .birthdayPost > .hat{
+    pointer-events: none;
+    width:64px;
+    height: 64px;
+    left:0;
     top: 5%;
     transform-origin: 16% 14%;
     animation: rotateAnim2 4s ease infinite;
@@ -180,6 +184,10 @@ export default {
     background-size: 10px 10px; */
   }
   .birthdayPost > .gifts{
+    height: 80px;
+    width: 80px;
+    left:0;
+    pointer-events: none;
     transform-origin: 15% 88%;
     animation: rotateAnim2 3s ease infinite;
 
@@ -369,6 +377,7 @@ export default {
       padding-left: 0;
       order:3;
       display: flex;
+      width: 100%;
       flex-direction: column-reverse;
     }
     ul.posts li {
