@@ -72,7 +72,7 @@ export default {
           .then(res => {
               // console.log(res);
               if(res.data.success == true) {
-                alert('Data was successfully edited!')
+                alert('נשמר בהצלחה!')
               }
             });
     },
