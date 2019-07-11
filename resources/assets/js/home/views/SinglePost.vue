@@ -38,7 +38,7 @@
 
           <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span v-if="post.description" v-html="post.description"></span>
+            <span v-if="post.description != null" v-html="post.description"></span>
           </div>
 
 

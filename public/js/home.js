@@ -48506,7 +48506,7 @@ var render = function() {
                               _c("img", {
                                 attrs: {
                                   src: "/img/logo-yellow.png",
-                                  width: "148px",
+                                  width: "200px",
                                   alt: ""
                                 }
                               })
@@ -51624,7 +51624,7 @@ var render = function() {
                       ? _c("div", [
                           _c("img", { attrs: { src: post.value, alt: "" } }),
                           _vm._v(" "),
-                          post.description
+                          post.description != null
                             ? _c("span", {
                                 domProps: {
                                   innerHTML: _vm._s(post.description)
