@@ -61,57 +61,67 @@
       </div>
 
       <div class="top-row-inner-mob">
-          <div class="menu-wrap">
-              <div class="menu-btn toggle-mnu toggle-nav item-menu-nav">
-                  <span></span>
-              </div>
+        <div class="menu-wrap">
+            <div class="menu-btn toggle-mnu toggle-nav item-menu-nav"
+              :class="{active: menuActive}"
+              @click="menuActive = !menuActive">
+                <span></span>
+            </div>
 
-              <div id="nav-panel" class="main-nav modal fade">
-      			<div class="modal-content">
-      				<div class="main-nav-content">
-      					<ul id="menu-primary-menu" class="menu">
-                  <li class="menu-item">
-                    <router-link :to="{ name: 'index'}">
-                      <img src="/img/logo-gradient.png" width="148px" alt="">
-                    </router-link>
-                  </li>
-      						<li class="menu-item">
-      							<router-link :to="{ name: 'index'}">דף הבית</router-link>
-      						</li>
-      						<li class="menu-item">
-      							<router-link :to="{ name: 'about-us'}">אודות</router-link>
-      						</li>
-      						<li class="menu-item">
-      							<router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
-      						</li>
-                  <li class="menu-item">
-
-                    <div class="auth-btns">
-                        <template v-if="isLoggedIn">
+            <div id="nav-panel" class="main-nav modal fade">
+        			<div class="modal-content">
+        				<div class="main-nav-content">
+        					<ul id="menu-primary-menu" class="menu">
+                    <li class="menu-item">
+                      <router-link :to="{ name: 'index'}">
+                        <img src="/img/logo-gradient.png" width="148px" alt="">
+                      </router-link>
+                    </li>
+        						<li class="menu-item">
+        							<router-link :to="{ name: 'index'}">דף הבית</router-link>
+        						</li>
+        						<li class="menu-item">
+        							<router-link :to="{ name: 'about-us'}">אודות</router-link>
+        						</li>
+        						<li class="menu-item">
+        							<router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
+        						</li>
+                    <template v-if="isLoggedIn">
+                      <li class="menu-item">
+                        <router-link :to="{ name: 'my-account'}">הודעות מועדפות</router-link>
+                      </li>
+                      <li class="menu-item">
+                        <router-link :to="{ name: 'edit-profile'}">ערוך פרופיל</router-link>
+                      </li>
+                      <li class="menu-item">
+                        <div class="auth-btns">
                           <a href="#" @click="logout" class="btn-common btn-gold-gradient logout"><span>להתנתק</span></a>
-                          <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a>
-                        </template>
-                        <template v-else>
+                          <!-- <a href="./#/my-account" class="btn-common btn-gold-text my-account"><span>החשבון שלי</span></a> -->
+                        </div>
+                      </li>
+                    </template>
+                    <template v-else>
+                      <li class="menu-item">
+                        <div class="auth-btns">
                           <a href="#" class="btn-common btn-gold-gradient" @click="$root.$root.openReg">הרשמה</a>
                           <a href="#" class="btn-common btn-gold-text" @click="$root.$root.openLogin">
                             <span>כניסה</span>
                           </a>
-                        </template>
-                    </div>
-                  </li>
-                  <li class="menu-item">
-                    <div class="socials-wrap">
-                      <a href="#" class="telegram"></a>
-                      <a href="#" class="youtube"></a>
-                      <a href="#" class="facebook"></a>
-                      <a href="#" class="instagram"></a>
-                    </div>
-                  </li>
-      					</ul>
-      				</div>
-      			</div>
-      		</div>
-
+                        </div>
+                      </li>
+                    </template>
+                    <li class="menu-item">
+                      <div class="socials-wrap">
+                        <a href="#" class="telegram"></a>
+                        <a href="#" class="youtube"></a>
+                        <a href="#" class="facebook"></a>
+                        <a href="#" class="instagram"></a>
+                      </div>
+                    </li>
+        					</ul>
+        				</div>
+        			</div>
+        		</div>
 
           </div>
           <span class="header-text">הבית של הבידור הישראלי</span>
@@ -127,6 +137,7 @@
 export default {
   data(){
     return {
+      menuActive: false,
       isLoggedIn: false,
       user: {},
     }
@@ -148,6 +159,11 @@ export default {
           .then(res => {
             document.location.reload(true);
           });
+    }
+  },
+  watch: {
+    '$route' () {
+      this.menuActive = false;
     }
   }
 }

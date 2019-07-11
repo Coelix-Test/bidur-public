@@ -3585,9 +3585,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      menuActive: false,
       isLoggedIn: false,
       user: {}
     };
@@ -3608,6 +3619,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/logout').then(function (res) {
         document.location.reload(true);
       });
+    }
+  },
+  watch: {
+    '$route': function $route() {
+      this.menuActive = false;
     }
   }
 });
@@ -40238,7 +40254,19 @@ var render = function() {
       { staticClass: "top-row-inner-mob" },
       [
         _c("div", { staticClass: "menu-wrap" }, [
-          _vm._m(1),
+          _c(
+            "div",
+            {
+              staticClass: "menu-btn toggle-mnu toggle-nav item-menu-nav",
+              class: { active: _vm.menuActive },
+              on: {
+                click: function($event) {
+                  _vm.menuActive = !_vm.menuActive
+                }
+              }
+            },
+            [_c("span")]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -40310,55 +40338,78 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("li", { staticClass: "menu-item" }, [
-                        _c(
-                          "div",
-                          { staticClass: "auth-btns" },
-                          [
-                            _vm.isLoggedIn
-                              ? [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn-common btn-gold-gradient logout",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.logout }
-                                    },
-                                    [_c("span", [_vm._v("להתנתק")])]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(2)
-                                ]
-                              : [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn-common btn-gold-gradient",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.$root.$root.openReg }
-                                    },
-                                    [_vm._v("הרשמה")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn-common btn-gold-text",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.$root.$root.openLogin }
-                                    },
-                                    [_c("span", [_vm._v("כניסה")])]
-                                  )
-                                ]
+                      _vm.isLoggedIn
+                        ? [
+                            _c(
+                              "li",
+                              { staticClass: "menu-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: { name: "my-account" } } },
+                                  [_vm._v("הודעות מועדפות")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "menu-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: { name: "edit-profile" } } },
+                                  [_vm._v("ערוך פרופיל")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "menu-item" }, [
+                              _c("div", { staticClass: "auth-btns" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn-common btn-gold-gradient logout",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.logout }
+                                  },
+                                  [_c("span", [_vm._v("להתנתק")])]
+                                )
+                              ])
+                            ])
+                          ]
+                        : [
+                            _c("li", { staticClass: "menu-item" }, [
+                              _c("div", { staticClass: "auth-btns" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-common btn-gold-gradient",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.$root.$root.openReg }
+                                  },
+                                  [_vm._v("הרשמה")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-common btn-gold-text",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.$root.$root.openLogin }
+                                  },
+                                  [_c("span", [_vm._v("כניסה")])]
+                                )
+                              ])
+                            ])
                           ],
-                          2
-                        )
-                      ]),
                       _vm._v(" "),
-                      _vm._m(3)
-                    ]
+                      _vm._m(1)
+                    ],
+                    2
                   )
                 ])
               ])
@@ -40411,29 +40462,6 @@ var staticRenderFns = [
         attrs: { href: "https://www.instagram.com/israel_bidur/" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "menu-btn toggle-mnu toggle-nav item-menu-nav" },
-      [_c("span")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn-common btn-gold-text my-account",
-        attrs: { href: "./#/my-account" }
-      },
-      [_c("span", [_vm._v("החשבון שלי")])]
-    )
   },
   function() {
     var _vm = this
@@ -65846,25 +65874,7 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 //     // }
 //   ]
 // });
-//run stroke
-// if($('.run-stroke').length){
-//     //calculate width of stroke
-//     var strokeWidth = $('.run-stroke').width();
-//     var strokeSpeed = 70;//20px per second
-//     var strokeAnimDuration = strokeWidth / strokeSpeed;
-//
-//     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
-// }
-
-$(document).ready(function () {
-  $(".toggle-mnu").click(function () {
-    $(this).toggleClass("active");
-    return false;
-  });
-  $(".toggle-mnu+.main-nav a").on('click', function () {
-    $(".toggle-mnu").toggleClass("active");
-  });
-}); //TODO: DELETE AFTER HEADER REFACTOR
+//TODO: DELETE AFTER HEADER REFACTOR
 //auth buttons
 // $('.register-popup-trigger').on('click', function(e){
 //     e.preventDefault();
