@@ -466,6 +466,7 @@
         .celebrities-slider{
             .celebrity{
                 font-size: 12px;
+                line-height: 12px;
             }
             .image{
                 width: 53px;
@@ -485,6 +486,8 @@
         .celebrities-slider{
             display: flex;
             width: 100%;
+            padding-top: 2px;
+            overflow: hidden;
             overflow-x: scroll;
             scrollbar-width: none;
             -ms-overflow-style: none;

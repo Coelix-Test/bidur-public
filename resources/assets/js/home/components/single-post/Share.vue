@@ -25,7 +25,7 @@
         <div class="shareLinks">
           <a :href="`https://www.facebook.com/sharer/sharer.php?u=${url}`" target="_blank"><img src="/img/icons/social-facebook-colored.svg" alt=""></a>
           <a :href="`whatsapp://send?text=${url}`" target="_blank"><img src="/img/whatsApp.svg" alt=""></a>
-          <a :href="`https://telegram.me/share/url?text=${url}`" target="_blank"><img src="/img/icons/social-telegram-colored.svg" alt=""></a>
+          <a :href="`https://telegram.me/share/url?url=${url}&text=בדוק את זה!`" target="_blank"><img src="/img/icons/social-telegram-colored.svg" alt=""></a>
         </div>
       </div>
     </transition>

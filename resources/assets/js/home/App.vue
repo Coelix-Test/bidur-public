@@ -19,7 +19,7 @@
       <router-view></router-view>
     </transition>
 
-    <a href="https://api.whatsapp.com/send?phone=97254459498&text=&source=&data=123" target="_blank" class="socials-btn whatsapp">
+    <a :href="`whatsapp://send?text=${currentPageUrl}`" target="_blank" class="socials-btn whatsapp">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
         <path style="fill:#EDEDED;" d="M0,512l35.31-128C12.359,344.276,0,300.138,0,254.234C0,114.759,114.759,0,255.117,0  S512,114.759,512,254.234S395.476,512,255.117,512c-44.138,0-86.51-14.124-124.469-35.31L0,512z"/>
         <path style="fill:#55CD6C;" d="M137.71,430.786l7.945,4.414c32.662,20.303,70.621,32.662,110.345,32.662  c115.641,0,211.862-96.221,211.862-213.628S371.641,44.138,255.117,44.138S44.138,137.71,44.138,254.234  c0,40.607,11.476,80.331,32.662,113.876l5.297,7.945l-20.303,74.152L137.71,430.786z"/>
@@ -27,7 +27,7 @@
       </svg>
     </a>
 
-    <a href="https://api.whatsapp.com/send?phone=97254459498&text=&source=&data=123" target="_blank" class="socials-btn telegram">
+    <a :href="`https://telegram.me/share/url?url=${currentPageUrl}&text=בדוק את זה!`" target="_blank" class="socials-btn telegram">
       <svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.5 35.5C27.165 35.5 35 27.665 35 18C35 8.33502 27.165 0.5 17.5 0.5C7.83502 0.5 0 8.33502 0 18C0 27.665 7.83502 35.5 17.5 35.5Z" fill="#29B6F6"/>
       <path d="M26.7063 10.125L23.4285 26.8603C23.4285 26.8603 23.2876 27.625 22.3391 27.625C21.8351 27.625 21.5753 27.3853 21.5753 27.3853L14.4755 21.4939L11.0018 19.743L6.54362 18.5574C6.54362 18.5574 5.75 18.3281 5.75 17.6719C5.75 17.125 6.56637 16.8643 6.56637 16.8643L25.2179 9.45475C25.217 9.45388 25.7875 9.24913 26.2031 9.25C26.4586 9.25 26.75 9.35938 26.75 9.6875C26.75 9.90625 26.7063 10.125 26.7063 10.125Z" fill="white"/>
@@ -43,10 +43,16 @@
 import HeaderMain from './components/header/HeaderMain.vue';
 
 export default {
+  data() {
+    return {
+      currentPageUrl : null,
+    }
+  },
   components: {
     HeaderMain
   },
   created() {
+    this.currentPageUrl = window.location.href;
     window.onload = function() {
       var preloader = document.getElementById('preloader');
 

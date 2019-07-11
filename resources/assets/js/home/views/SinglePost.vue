@@ -71,6 +71,10 @@
           <!-- <div v-if="post.type == ''"></div> -->
 
         </section>
+        <div v-if="this.$env.mobile == true">
+          <img src="https://via.placeholder.com/380x600" alt="ads" class="banner">
+        </div>
+
 
         <nav>
 
@@ -495,7 +499,14 @@ export default {
       padding: 32px 8px;
       /* padding-bottom: 50px; */
     }
-
+    .banner {
+      width:100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      height:300px;
+    }
     .add-to-favourites {
       margin-top: 60px;
     }
