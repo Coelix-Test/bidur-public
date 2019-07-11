@@ -3696,7 +3696,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     setDurations: function setDurations() {
-      console.log($('.bdConfetty'));
       $('.bdConfetty path').each(function (index) {
         var min = 2,
             max = 5;
@@ -40245,7 +40244,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        Profile settings\n                      "
+                                  "\n                        ערוך פרופיל\n                      "
                                 )
                               ]
                             )
@@ -40264,7 +40263,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        Favourite posts\n                      "
+                                  "\n                        הודעות מועדפות\n                      "
                                 )
                               ]
                             )
@@ -40284,7 +40283,7 @@ var render = function() {
                     attrs: { href: "#" },
                     on: { click: _vm.logout }
                   },
-                  [_vm._v("Exit")]
+                  [_vm._v("להתנתק")]
                 )
               ]
             : [

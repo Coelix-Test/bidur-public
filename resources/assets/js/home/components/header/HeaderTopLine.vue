@@ -31,21 +31,21 @@
                         <router-link
                           class="profile-settings"
                           :to="{ name: 'edit-profile' }">
-                          Profile settings
+                          ערוך פרופיל
                         </router-link>
                       </li>
                       <li>
                         <router-link
                           class="favourite-posts"
                           :to="{ name: 'my-account' }">
-                          Favourite posts
+                          הודעות מועדפות
                         </router-link>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <a href="#" @click="logout" class="logout-btn">Exit</a>
+                <a href="#" @click="logout" class="logout-btn">להתנתק</a>
               </template>
               <template v-else>
                 <button
