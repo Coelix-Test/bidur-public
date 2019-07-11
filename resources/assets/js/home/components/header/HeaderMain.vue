@@ -2,7 +2,7 @@
   <div class="header-main">
     <header-top-line></header-top-line>
     <div class="celebrities-container">
-      <div class="celebirities-slider-wrap" >
+      <div class="celebrities-slider-wrap" >
         <swiper class="celebrities-slider" :options="swiperOptions" ref="celebritiesSwiper">
 
           <swiper-slide class="slide-wrap" v-for="hashtag in hashtags" :key="hashtag.id">

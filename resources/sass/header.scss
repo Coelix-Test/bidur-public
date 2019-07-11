@@ -278,7 +278,7 @@
         padding: 16px 0;
         max-width: 1440px;
     }
-    .celebirities-slider-wrap{
+    .celebrities-slider-wrap{
       position: relative;
       .swiper-button-prev, .swiper-button-next{
         width: 20px;
@@ -538,6 +538,11 @@
           }
         }
 
+        .celebrities-slider-wrap{
+          .swiper-button-prev, .swiper-button-next{
+            display: none;
+          }
+        }
         //slider scroll
         // .celebrities-container{
         //     padding-right: 0;
