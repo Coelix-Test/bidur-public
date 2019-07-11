@@ -30,7 +30,7 @@
           <share />
 
         </div>
-        <section :class="post.type" v-for="post in postData" >
+        <section :class="post.type + ' section'" v-in-viewport.once v-for="post in postData">
 
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
@@ -185,6 +185,7 @@ export default {
       this.$router.push({ path : `/post/${id}` });
     },
     computeNumber(value) {
+
     },
     sync(id) {
       return axios
@@ -250,6 +251,11 @@ export default {
     Emoji,
     LikeSurvey,
     OneSurvey,
+  },
+  mounted() {
+    let els = this.$el.getElementsByTagName('p');
+
+    console.log(els);
   }
 }
 
@@ -587,5 +593,15 @@ export default {
       font-size: 28px;
       line-height: 28px;
     }
+  }
+
+  .section {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  .section.in-viewport {
+    transform: scale(1);
+    opacity: 1;
   }
 </style>
