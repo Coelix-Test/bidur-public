@@ -152,25 +152,6 @@ window.app = new Vue({
 //     // }
 //   ]
 // });
-//run stroke
-// if($('.run-stroke').length){
-//     //calculate width of stroke
-//     var strokeWidth = $('.run-stroke').width();
-//     var strokeSpeed = 70;//20px per second
-//     var strokeAnimDuration = strokeWidth / strokeSpeed;
-//
-//     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
-// }
-
-$(document).ready(function(){
-  $(".toggle-mnu").click(function() {
-    $(this).toggleClass("active");
-    return false;
-  });
-  $(".toggle-mnu+.main-nav a").on('click', function(){
-    $(".toggle-mnu").toggleClass("active");
-  });
-});
 
 //TODO: DELETE AFTER HEADER REFACTOR
 //auth buttons
