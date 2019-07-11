@@ -177,6 +177,7 @@ export default {
       > div {
         width:calc(50% - 8px);
         margin:0 4px;
+        overflow: hidden;
         img {
           width: 100%;
           height: 100%;

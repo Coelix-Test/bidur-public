@@ -75,6 +75,11 @@ export default {
     padding-right: 0;
     width: 100%;
     min-width:unset;
+    padding-left: 0;
+    .banner {
+      height:300px;
+      object-fit: cover;
+    }
   }
 }
 
