@@ -10,7 +10,7 @@ import moment from 'moment'
 window.makeItRain = async function(n, append) {
 
   var fallTime, rotateTime, delayTime;
-  var colors = [ 'red', 'yellow', 'purple', 'cyan', 'pink', 'crimson', 'hotpink', 'fuchsia' ];
+  var colors = [ '#e3b436', '#eec447', '#d4a21f' ];
 
   if (!n) { n = 20 }
 

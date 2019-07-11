@@ -127,6 +127,7 @@ export default {
     align-items: center;
     padding-bottom: 45px;
     padding-top: 20px;
+    position: relative;
     .title {
       font-weight: bold;
       font-size: 36px;
