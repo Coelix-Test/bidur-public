@@ -67,7 +67,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(https://via.placeholder.com/130x110);
+    // background-image: url(https://via.placeholder.com/130x110);
   }
   .desc {
     padding-right: 10px;
@@ -96,7 +96,7 @@ export default {
       flex-direction: column;
       border-bottom: 0;
       .img {
-        height: 200px;
+        height: 300px;
         width: 100%;
         max-width: unset;
       }

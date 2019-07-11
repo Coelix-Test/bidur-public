@@ -74,7 +74,7 @@
         					<ul id="menu-primary-menu" class="menu">
                     <li class="menu-item">
                       <router-link :to="{ name: 'index'}">
-                        <img src="/img/logo-gradient.png" width="148px" alt="">
+                        <img src="/img/logo-yellow.png" width="148px" alt="">
                       </router-link>
                     </li>
         						<li class="menu-item">

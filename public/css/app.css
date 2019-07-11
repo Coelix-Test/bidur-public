@@ -16851,7 +16851,7 @@ body {
   }
 
   .header-main .top-row-inner-mob {
-    height: 45px;
+    height: 50px;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -16876,7 +16876,8 @@ body {
   }
 
   .header-main .top-row-inner-mob .logo-wrap {
-    width: 70px;
+    width: 90px;
+    padding: 4px 0 4px;
   }
 
   .header-main .top-row-inner-mob .logo-wrap img {
@@ -16887,11 +16888,12 @@ body {
   .header-main .top-row-inner-mob .header-text {
     text-align: center;
     margin-right: 40px;
-    margin-left: 10px;
     font-weight: 700;
     font-size: 14px;
     line-height: 14px;
     white-space: nowrap;
+    -webkit-box-flex: 2;
+            flex-grow: 2;
   }
 
   .header-main .top-row-inner-mob .auth-btns {
@@ -16905,6 +16907,7 @@ body {
 
   .header-main .celebrities-slider .celebrity {
     font-size: 12px;
+    line-height: 12px;
   }
 
   .header-main .celebrities-slider .image {
@@ -16926,6 +16929,8 @@ body {
     display: -webkit-box;
     display: flex;
     width: 100%;
+    padding-top: 2px;
+    overflow: hidden;
     overflow-x: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;

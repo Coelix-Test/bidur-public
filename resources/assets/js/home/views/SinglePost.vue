@@ -71,6 +71,10 @@
           <!-- <div v-if="post.type == ''"></div> -->
 
         </section>
+        <div v-if="this.$env.mobile == true">
+          <img src="https://via.placeholder.com/380x600" alt="ads" class="banner">
+        </div>
+
 
         <nav>
 
@@ -489,12 +493,20 @@ export default {
     h1.main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
-      margin: -32px -8px;
+      margin: -32px -16px;
       text-align: center;
       margin-top: -31px;
       font-size: 26px;
       padding: 32px 8px;
-      padding-bottom: 50px;
+      /* padding-bottom: 50px; */
+    }
+    .banner {
+      width:100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      height:300px;
     }
     .post-meta .info {
       transform: translateY(-70px);
@@ -559,7 +571,7 @@ export default {
       padding:0;
     }
     .post-wrapper {
-      padding:0 8px;
+      padding:0 16px;
     }
     .related-post-content {
       padding:0 4px;

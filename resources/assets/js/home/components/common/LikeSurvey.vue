@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     like() {
-      console.log(12312312);
       if(this.clicked) return;
       this.disliked = this.data.dislikes;
       this.liked = this.data.likes;
@@ -68,7 +67,6 @@ export default {
       axios
         .post('/likeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
-            console.log(res);
           });
     },
     dislike() {
@@ -193,6 +191,14 @@ export default {
   .like-survey {
     img {
       height:300px;
+    }
+    .body {
+      .title {
+        line-height: 24px;
+        font-size: 24px;
+        padding-bottom: 16px;
+        text-align: center;
+      }
     }
   }
 }
