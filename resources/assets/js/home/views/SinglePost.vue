@@ -485,6 +485,7 @@ export default {
   }
   @media (max-width:768px) {
 
+    /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     h1.main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
@@ -495,10 +496,25 @@ export default {
       padding: 32px 8px;
       padding-bottom: 50px;
     }
-
-    .add-to-favourites {
-      margin-top: 60px;
+    .post-meta .info {
+      transform: translateY(-70px);
+      color: #fff;
+      position: absolute;
+      width: 100%;
+      right: 0;
+      text-align: center;
     }
+    .post-meta .info .date {
+      border-color: #fff;
+    }
+    .add-to-favourites {
+      margin-top: 30px;
+      transform: translateY(30px);
+    }
+    .post-meta {
+      justify-content: flex-end;
+    }
+    /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
     section.imageWithText {
       text-align: justify;
