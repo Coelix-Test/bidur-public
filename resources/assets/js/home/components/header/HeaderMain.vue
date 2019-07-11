@@ -147,21 +147,21 @@ export default {
               slidesToScroll: 2
             }
           },
-          {
-              breakpoint: 991,
-              settings: {
-                  arrows: false,
-                  centerMode: true,
-                  variableWidth: true,
-                  slidesToShow: 1,
-                  slidesToScroll: 3,
-              }
-          }
-
           // {
           //     breakpoint: 991,
-          //     settings: "unslick"
+          //     settings: {
+          //         arrows: false,
+          //         centerMode: true,
+          //         variableWidth: true,
+          //         slidesToShow: 1,
+          //         slidesToScroll: 3,
+          //     }
           // }
+
+          {
+              breakpoint: 991,
+              settings: "unslick"
+          }
         ]
       });
     },//not vue component

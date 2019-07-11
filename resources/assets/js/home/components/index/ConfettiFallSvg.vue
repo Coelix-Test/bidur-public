@@ -53,7 +53,6 @@
 export default {
   methods: {
     setDurations(){
-      console.log($('.bdConfetty'));
       $('.bdConfetty path').each(function(index){
         const min = 2,
               max = 5;

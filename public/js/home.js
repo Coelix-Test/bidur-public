@@ -3387,19 +3387,19 @@ __webpack_require__.r(__webpack_exports__);
             slidesToShow: 7,
             slidesToScroll: 2
           }
-        }, {
+        }, // {
+        //     breakpoint: 991,
+        //     settings: {
+        //         arrows: false,
+        //         centerMode: true,
+        //         variableWidth: true,
+        //         slidesToShow: 1,
+        //         slidesToScroll: 3,
+        //     }
+        // }
+        {
           breakpoint: 991,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            variableWidth: true,
-            slidesToShow: 1,
-            slidesToScroll: 3
-          } // {
-          //     breakpoint: 991,
-          //     settings: "unslick"
-          // }
-
+          settings: "unslick"
         }]
       });
     },
@@ -3586,9 +3586,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      menuActive: false,
       isLoggedIn: false,
       user: {}
     };
@@ -3611,6 +3622,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/logout').then(function (res) {
         document.location.reload(true);
       });
+    }
+  },
+  watch: {
+    '$route': function $route() {
+      this.menuActive = false;
     }
   }
 });
@@ -3680,7 +3696,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     setDurations: function setDurations() {
-      console.log($('.bdConfetty'));
       $('.bdConfetty path').each(function (index) {
         var min = 2,
             max = 5;
@@ -40241,7 +40256,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        Profile settings\n                      "
+                                  "\n                        ערוך פרופיל\n                      "
                                 )
                               ]
                             )
@@ -40260,7 +40275,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        Favourite posts\n                      "
+                                  "\n                        הודעות מועדפות\n                      "
                                 )
                               ]
                             )
@@ -40280,7 +40295,7 @@ var render = function() {
                     attrs: { href: "#" },
                     on: { click: _vm.logout }
                   },
-                  [_vm._v("Exit")]
+                  [_vm._v("להתנתק")]
                 )
               ]
             : [
@@ -40313,7 +40328,19 @@ var render = function() {
       { staticClass: "top-row-inner-mob" },
       [
         _c("div", { staticClass: "menu-wrap" }, [
-          _vm._m(1),
+          _c(
+            "div",
+            {
+              staticClass: "menu-btn toggle-mnu toggle-nav item-menu-nav",
+              class: { active: _vm.menuActive },
+              on: {
+                click: function($event) {
+                  _vm.menuActive = !_vm.menuActive
+                }
+              }
+            },
+            [_c("span")]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -40385,55 +40412,78 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("li", { staticClass: "menu-item" }, [
-                        _c(
-                          "div",
-                          { staticClass: "auth-btns" },
-                          [
-                            _vm.isLoggedIn
-                              ? [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn-common btn-gold-gradient logout",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.logout }
-                                    },
-                                    [_c("span", [_vm._v("להתנתק")])]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(2)
-                                ]
-                              : [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn-common btn-gold-gradient",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.$root.$root.openReg }
-                                    },
-                                    [_vm._v("הרשמה")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn-common btn-gold-text",
-                                      attrs: { href: "#" },
-                                      on: { click: _vm.$root.$root.openLogin }
-                                    },
-                                    [_c("span", [_vm._v("כניסה")])]
-                                  )
-                                ]
+                      _vm.isLoggedIn
+                        ? [
+                            _c(
+                              "li",
+                              { staticClass: "menu-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: { name: "my-account" } } },
+                                  [_vm._v("הודעות מועדפות")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "menu-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  { attrs: { to: { name: "edit-profile" } } },
+                                  [_vm._v("ערוך פרופיל")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("li", { staticClass: "menu-item" }, [
+                              _c("div", { staticClass: "auth-btns" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn-common btn-gold-gradient logout",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.logout }
+                                  },
+                                  [_c("span", [_vm._v("להתנתק")])]
+                                )
+                              ])
+                            ])
+                          ]
+                        : [
+                            _c("li", { staticClass: "menu-item" }, [
+                              _c("div", { staticClass: "auth-btns" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-common btn-gold-gradient",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.$root.$root.openReg }
+                                  },
+                                  [_vm._v("הרשמה")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-common btn-gold-text",
+                                    attrs: { href: "#" },
+                                    on: { click: _vm.$root.$root.openLogin }
+                                  },
+                                  [_c("span", [_vm._v("כניסה")])]
+                                )
+                              ])
+                            ])
                           ],
-                          2
-                        )
-                      ]),
                       _vm._v(" "),
-                      _vm._m(3)
-                    ]
+                      _vm._m(1)
+                    ],
+                    2
                   )
                 ])
               ])
@@ -40492,29 +40542,6 @@ var staticRenderFns = [
         attrs: { href: "https://www.instagram.com/israel_bidur/" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "menu-btn toggle-mnu toggle-nav item-menu-nav" },
-      [_c("span")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn-common btn-gold-text my-account",
-        attrs: { href: "./#/my-account" }
-      },
-      [_c("span", [_vm._v("החשבון שלי")])]
-    )
   },
   function() {
     var _vm = this
@@ -65984,25 +66011,7 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 //     // }
 //   ]
 // });
-//run stroke
-// if($('.run-stroke').length){
-//     //calculate width of stroke
-//     var strokeWidth = $('.run-stroke').width();
-//     var strokeSpeed = 70;//20px per second
-//     var strokeAnimDuration = strokeWidth / strokeSpeed;
-//
-//     $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
-// }
-
-$(document).ready(function () {
-  $(".toggle-mnu").click(function () {
-    $(this).toggleClass("active");
-    return false;
-  });
-  $(".toggle-mnu+.main-nav a").on('click', function () {
-    $(".toggle-mnu").toggleClass("active");
-  });
-}); //TODO: DELETE AFTER HEADER REFACTOR
+//TODO: DELETE AFTER HEADER REFACTOR
 //auth buttons
 // $('.register-popup-trigger').on('click', function(e){
 //     e.preventDefault();
@@ -66937,7 +66946,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

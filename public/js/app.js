@@ -12690,10 +12690,10 @@ $('.register-popup-trigger').on('click', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\scss\admin\admin.scss */"./resources/assets/scss/admin/admin.scss");
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\scss\home\home.scss */"./resources/assets/scss/home/home.scss");
+__webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/scss/admin/admin.scss */"./resources/assets/scss/admin/admin.scss");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/scss/home/home.scss */"./resources/assets/scss/home/home.scss");
 
 
 /***/ })

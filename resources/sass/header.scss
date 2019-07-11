@@ -279,6 +279,7 @@
     }
     .celebrities-slider{
         display: flex;
+        justify-content: space-between;
         a{
             outline: none;
             text-decoration: none;
@@ -448,6 +449,7 @@
               font-weight: 700;
               font-size: 14px;
               line-height: 14px;
+              white-space: nowrap;
             }
             .auth-btns{
               justify-content: center;
@@ -473,16 +475,42 @@
             }
         }
 
-        //slider scroll
+        //native scroll in celebrities section
         .celebrities-container{
-            padding-right: 0;
-            padding-left: 0;
+            padding: 0;
+            overflow: hidden;
         }
         .celebrities-slider{
+            display: flex;
+            width: 100%;
+            overflow-x: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             .celebrity{
-                padding-right: 15px;
-                padding-left: 15px;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+            &::-webkit-scrollbar{
+                height: 0px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb{
+                background-color: transparent;
             }
         }
+
+        //slider scroll
+        // .celebrities-container{
+        //     padding-right: 0;
+        //     padding-left: 0;
+        // }
+        // .celebrities-slider{
+        //     .celebrity{
+        //         padding-right: 15px;
+        //         padding-left: 15px;
+        //     }
+        // }
     }
 }
