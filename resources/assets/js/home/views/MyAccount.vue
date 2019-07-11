@@ -1,7 +1,7 @@
 <template>
   <div class="my-account">
     <div class="my-account-wrapper">
-      <h1>הודעות מועדפות</h1>
+      <h1>כתבות מועדפות</h1>
       <!-- <h2>מידע</h2>
       <router-link :to="'/edit-profile'" class="edit-profile">ערוך מידע</router-link> -->
       <div v-if="favoritePosts" class="favorites">

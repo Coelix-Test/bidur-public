@@ -3,9 +3,9 @@
     <div class="column right">
       <h1>צור קשר</h1>
       <p class="info">
-        <a href="#"><span class="icon"><img src="img/icons/location.svg" alt=""></span>Lorem ipsum dolor sit</a>
+        <a href="#"><span class="icon"><img src="img/icons/location.svg" alt=""></span>דבורה הנביאה  תל אביב-יפו</a>
         <a href="mailto:example@gmail.com"><span class="icon"><img src="img/icons/mail.svg" alt=""></span>israelbidur1@gmail.com</a>
-        <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>+380631189234</a>
+        <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>0505435701</a>
       </p>
       <div class="contact-form">
         <h2>יש לכם שאלה? שלחו לנו הודעה!</h2>
@@ -133,7 +133,9 @@ export default {
               padding-bottom: 4px;
               text-decoration-color: #333;
               .icon {
-                padding:0 0 0 8px;
+                margin: 0 0 0 8px;
+                width: 30px;
+                display: block;
               }
             }
           }

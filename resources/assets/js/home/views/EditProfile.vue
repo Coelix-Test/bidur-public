@@ -1,6 +1,6 @@
 <template>
   <div class="edit-profile">
-    <h1>ערוך פרופיל</h1>
+    <h1>הגדרות פרופיל</h1>
     <div v-if="userData" class="edit-profile-wrapper">
       <div class="personal-info">
         <h2>מידע אישי</h2>
@@ -11,13 +11,13 @@
           </div>
           <div class="form-group">
             <label for="name">מספר טלפון</label>
-            <input type="text" id="phone" name="phone" v-model="userData.phone" maxlength="15">
+            <input type="text" id="phone" name="phone" v-model="userData.phone" maxlength="15" dir="ltr" style="text-align:right;">
           </div>
-          <button type="submit" @click="updatePersonalInfo" class="submit-button">לשמור</button>
+          <button type="submit" @click="updatePersonalInfo" class="submit-button">שמור</button>
         </form>
       </div>
       <div class="password">
-        <h2>שנה סיסמא</h2>
+        <h2>שנה סיסמה</h2>
         <form action="">
           <div class="form-group">
             <label for="current_password">סיסמה נוכחית</label>
@@ -28,10 +28,10 @@
             <input type="password" id="new_password" name="new_password" v-model="newPass" minlength="6" maxlength="20">
           </div>
           <div class="form-group">
-            <label for="confirm_password">אשר סיסמה</label>
+            <label for="confirm_password">אימות סיסמה</label>
             <input type="password" id="confirm_password" name="confirm_password" v-model="confirmPass" minlength="6" maxlength="20">
           </div>
-          <button type="submit" @click="changePassword" class="submit-button">לשמור</button>
+          <button type="submit" @click="changePassword" class="submit-button">שמור</button>
         </form>
       </div>
     </div>

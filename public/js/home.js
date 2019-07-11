@@ -6191,7 +6191,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n  width: 50%;\n}\n.contact-us .column.right[data-v-3884cfdf] {\n  padding-left: 12px;\n}\n.contact-us .column.left[data-v-3884cfdf] {\n  padding-right: 12px;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n  font-weight: 900;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  flex-wrap: wrap;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info > a[data-v-3884cfdf] {\n  color: #333;\n  padding-left: 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  white-space: nowrap;\n  padding-bottom: 4px;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.contact-us .column .info > a .icon[data-v-3884cfdf] {\n  padding: 0 0 0 8px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n  font-weight: 700;\n  margin-bottom: 16px;\n  color: #333;\n  font-size: 40px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border-radius: 10px;\n  border: 1px solid #E0E0E0;\n  margin-bottom: 16px;\n  padding: 6px 12px;\n  -webkit-appearance: none;\n  -moz-appearance: textfield;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-inner-spin-button, .contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border: 1px solid #E0E0E0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n  min-height: 200px;\n  padding: 6px 12px;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form button[data-v-3884cfdf] {\n  align-self: flex-start;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n    width: 100%;\n    padding-right: 0 !important;\n    padding-left: 0 !important;\n    margin-bottom: 16px;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: start;\n            align-items: flex-start;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n    padding-bottom: 8px;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n    font-size: 32px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n    font-size: 32px;\n}\n}", ""]);
+exports.push([module.i, ".contact-us[data-v-3884cfdf] {\n  max-width: 1440px;\n  margin: 0 auto;\n  padding: 32px 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.contact-us .column[data-v-3884cfdf] {\n  flex-basis: 50%;\n  width: 50%;\n}\n.contact-us .column.right[data-v-3884cfdf] {\n  padding-left: 12px;\n}\n.contact-us .column.left[data-v-3884cfdf] {\n  padding-right: 12px;\n}\n.contact-us .column .leftColImg[data-v-3884cfdf] {\n  width: 100%;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n  color: #333;\n  font-weight: 900;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 24px;\n  margin-bottom: 24px;\n  flex-wrap: wrap;\n  border-bottom: 1px solid #333;\n}\n.contact-us .column .info > a[data-v-3884cfdf] {\n  color: #333;\n  padding-left: 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  white-space: nowrap;\n  padding-bottom: 4px;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.contact-us .column .info > a .icon[data-v-3884cfdf] {\n  margin: 0 0 0 8px;\n  width: 30px;\n  display: block;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n  font-weight: 700;\n  margin-bottom: 16px;\n  color: #333;\n  font-size: 40px;\n}\n.contact-us .column .contact-form form[data-v-3884cfdf] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border-radius: 10px;\n  border: 1px solid #E0E0E0;\n  margin-bottom: 16px;\n  padding: 6px 12px;\n  -webkit-appearance: none;\n  -moz-appearance: textfield;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-inner-spin-button, .contact-us .column .contact-form form input[type=number][data-v-3884cfdf]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf] {\n  font-size: 20px;\n  color: #333;\n  border: 1px solid #E0E0E0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n  min-height: 200px;\n  padding: 6px 12px;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-webkit-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-moz-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]:-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::-ms-input-placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form textarea[data-v-3884cfdf]::placeholder {\n  color: #333;\n}\n.contact-us .column .contact-form form button[data-v-3884cfdf] {\n  align-self: flex-start;\n}\n@media (max-width: 768px) {\n.contact-us[data-v-3884cfdf] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    padding: 16px 12px;\n}\n.contact-us .column[data-v-3884cfdf] {\n    flex-basis: 100%;\n    width: 100%;\n    padding-right: 0 !important;\n    padding-left: 0 !important;\n    margin-bottom: 16px;\n}\n.contact-us .column .info[data-v-3884cfdf] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: start;\n            align-items: flex-start;\n}\n.contact-us .column .info > span[data-v-3884cfdf] {\n    padding-bottom: 8px;\n}\n.contact-us .column h1[data-v-3884cfdf] {\n    font-size: 32px;\n}\n.contact-us .column .contact-form h2[data-v-3884cfdf] {\n    font-size: 32px;\n}\n}", ""]);
 
 // exports
 
@@ -40241,7 +40241,7 @@ var render = function() {
                           staticClass: "my-account-link",
                           attrs: { to: { name: "my-account" } }
                         },
-                        [_vm._v("Hey, " + _vm._s(_vm.user.name))]
+                        [_vm._v("היי, " + _vm._s(_vm.user.name))]
                       ),
                       _vm._v(" "),
                       _c("ul", { staticClass: "profile-nav" }, [
@@ -40256,7 +40256,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        ערוך פרופיל\n                      "
+                                  "\n                        הגדרות פרופיל\n                      "
                                 )
                               ]
                             )
@@ -40275,7 +40275,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                        הודעות מועדפות\n                      "
+                                  "\n                        כתבות מועדפות\n                      "
                                 )
                               ]
                             )
@@ -40421,7 +40421,7 @@ var render = function() {
                                 _c(
                                   "router-link",
                                   { attrs: { to: { name: "my-account" } } },
-                                  [_vm._v("הודעות מועדפות")]
+                                  [_vm._v("כתבות מועדפות")]
                                 )
                               ],
                               1
@@ -40434,7 +40434,7 @@ var render = function() {
                                 _c(
                                   "router-link",
                                   { attrs: { to: { name: "edit-profile" } } },
-                                  [_vm._v("ערוך פרופיל")]
+                                  [_vm._v("הגדרות פרופיל")]
                                 )
                               ],
                               1
@@ -42932,7 +42932,7 @@ var staticRenderFns = [
         _c("span", { staticClass: "icon" }, [
           _c("img", { attrs: { src: "img/icons/location.svg", alt: "" } })
         ]),
-        _vm._v("Lorem ipsum dolor sit")
+        _vm._v("דבורה הנביאה  תל אביב-יפו")
       ]),
       _vm._v(" "),
       _c("a", { attrs: { href: "mailto:example@gmail.com" } }, [
@@ -42946,7 +42946,7 @@ var staticRenderFns = [
         _c("span", { staticClass: "icon" }, [
           _c("img", { attrs: { src: "img/icons/phone.svg", alt: "" } })
         ]),
-        _vm._v("+380631189234")
+        _vm._v("0505435701")
       ])
     ])
   },
@@ -42984,7 +42984,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "edit-profile" }, [
-    _c("h1", [_vm._v("ערוך פרופיל")]),
+    _c("h1", [_vm._v("הגדרות פרופיל")]),
     _vm._v(" "),
     _vm.userData
       ? _c("div", { staticClass: "edit-profile-wrapper" }, [
@@ -43034,11 +43034,13 @@ var render = function() {
                       expression: "userData.phone"
                     }
                   ],
+                  staticStyle: { "text-align": "right" },
                   attrs: {
                     type: "text",
                     id: "phone",
                     name: "phone",
-                    maxlength: "15"
+                    maxlength: "15",
+                    dir: "ltr"
                   },
                   domProps: { value: _vm.userData.phone },
                   on: {
@@ -43059,13 +43061,13 @@ var render = function() {
                   attrs: { type: "submit" },
                   on: { click: _vm.updatePersonalInfo }
                 },
-                [_vm._v("לשמור")]
+                [_vm._v("שמור")]
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "password" }, [
-            _c("h2", [_vm._v("שנה סיסמא")]),
+            _c("h2", [_vm._v("שנה סיסמה")]),
             _vm._v(" "),
             _c("form", { attrs: { action: "" } }, [
               _c("div", { staticClass: "form-group" }, [
@@ -43134,7 +43136,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "confirm_password" } }, [
-                  _vm._v("אשר סיסמה")
+                  _vm._v("אימות סיסמה")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -43172,7 +43174,7 @@ var render = function() {
                   attrs: { type: "submit" },
                   on: { click: _vm.changePassword }
                 },
-                [_vm._v("לשמור")]
+                [_vm._v("שמור")]
               )
             ])
           ])
@@ -43259,7 +43261,7 @@ var render = function() {
     { staticClass: "my-account" },
     [
       _c("div", { staticClass: "my-account-wrapper" }, [
-        _c("h1", [_vm._v("הודעות מועדפות")]),
+        _c("h1", [_vm._v("כתבות מועדפות")]),
         _vm._v(" "),
         _vm.favoritePosts
           ? _c("div", { staticClass: "favorites" }, [

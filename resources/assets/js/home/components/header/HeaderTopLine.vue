@@ -25,20 +25,20 @@
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
                   <div class="my-account">
-                    <router-link class="my-account-link" :to="{ name: 'my-account' }">Hey, {{ user.name }}</router-link>
+                    <router-link class="my-account-link" :to="{ name: 'my-account' }">היי, {{ user.name }}</router-link>
                     <ul class="profile-nav">
                       <li>
                         <router-link
                           class="profile-settings"
                           :to="{ name: 'edit-profile' }">
-                          ערוך פרופיל
+                          הגדרות פרופיל
                         </router-link>
                       </li>
                       <li>
                         <router-link
                           class="favourite-posts"
                           :to="{ name: 'my-account' }">
-                          הודעות מועדפות
+                          כתבות מועדפות
                         </router-link>
                       </li>
                     </ul>
@@ -88,10 +88,10 @@
         						</li>
                     <template v-if="isLoggedIn">
                       <li class="menu-item">
-                        <router-link :to="{ name: 'my-account'}">הודעות מועדפות</router-link>
+                        <router-link :to="{ name: 'my-account'}">כתבות מועדפות</router-link>
                       </li>
                       <li class="menu-item">
-                        <router-link :to="{ name: 'edit-profile'}">ערוך פרופיל</router-link>
+                        <router-link :to="{ name: 'edit-profile'}">הגדרות פרופיל</router-link>
                       </li>
                       <li class="menu-item">
                         <div class="auth-btns">
