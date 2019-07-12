@@ -853,7 +853,6 @@ class MainController extends Controller
                 $p = Post::find($favPost->postId);
                 if (!empty($p)){
                     $posts[] = $p->id;
-
                 }
             }
 

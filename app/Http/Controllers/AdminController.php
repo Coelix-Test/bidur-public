@@ -20,6 +20,7 @@ use App\PostImage;
 use App\PostImageAndText;
 use App\PostTitle;
 use App\PostVideo;
+use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
@@ -50,6 +51,47 @@ class AdminController extends Controller
         $c = new MainController();
         return $c->getAllPostsWithAllFilters();
     }
+
+
+    public function getAllPostsPaginated(Request $request){
+
+        $page = $request->get('page');
+        if ($page == 0){
+            $offset = 0;
+        }else{
+            $offset = 24 * $page;
+        }
+
+        $posts = Post::orderBy('created_at', 'desc')->take(24)->offset($offset)->get();
+
+        $mainSection = MainSection::find(1);
+
+        foreach ($posts as $key => $post) {
+            $finalAllPosts[$key]['post'] = $post;
+            $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
+            if ($post->id == $mainSection->first){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->second){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->third){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fourth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->fifth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->sixth){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+        }
+
+        return $finalAllPosts;
+    }
+
 
 
     public function getAllPosts(Request $request ){
