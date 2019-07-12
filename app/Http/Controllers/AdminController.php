@@ -52,18 +52,17 @@ class AdminController extends Controller
     }
 
 
-    public function getAllPostsPaginated(Request $request = null){
-        if (isset($request)){
-            $page = $request->get('page');
-            if ($page == 0){
-                $offset = 0;
-            }else{
-                $offset = 24 * $page;
-            }
-            $deleted = $request->get('deletedCounter');
-            if (isset($deleted)){
-                $offset = $offset - $deleted;
-            }
+    public function getAllPostsPaginated(Request $request){
+
+        $page = $request->get('page');
+        if ($page == 0){
+            $offset = 0;
+        }else{
+            $offset = 24 * $page;
+        }
+        $deleted = $request->get('deletedCounter');
+        if (isset($deleted)){
+            $offset = $offset - $deleted;
         }
 
         $posts = Post::orderBy('created_at', 'desc')->take(20)->offset($offset)->get();

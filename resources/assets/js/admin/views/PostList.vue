@@ -107,12 +107,13 @@ export default {
     },
   },
   created() {
-    axios
-      .post('/getAllPosts')
-        .then(res => {
-          console.log(res.data);
-          this.posts = res.data;
-        });
+    // axios
+    //   .post('/getAllPosts')
+    //     .then(res => {
+    //       console.log(res.data);
+    //       this.posts = res.data;
+    //     });
+    this.getPaginatedPosts();
   },
   mounted(){
     document.addEventListener('scroll', this.onScroll);
