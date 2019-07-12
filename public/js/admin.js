@@ -3847,6 +3847,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -3855,6 +3856,8 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+=======
+>>>>>>> origin/dev-alexey
 //
 //
 //
@@ -3888,12 +3891,26 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   data: function data() {
     return {
       posts: null,
+<<<<<<< HEAD
       searchQuery: null,
       deletedPostsCount: 0,
       page: 0,
       loading: false
     };
   },
+=======
+      searchQuery: null
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/getAllPosts').then(function (res) {
+      console.log(res.data);
+      _this.posts = res.data;
+    });
+  },
+>>>>>>> origin/dev-alexey
   methods: {
     editPost: function editPost(id) {
       this.$router.push({
@@ -3904,7 +3921,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       });
     },
     deletePost: function deletePost(id) {
+<<<<<<< HEAD
       var _this = this;
+=======
+      var _this2 = this;
+>>>>>>> origin/dev-alexey
 
       var result = confirm('למחוק את הפוסט?');
 
@@ -3912,17 +3933,26 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         axios.post('/deletePost', {
           id: id
         }).then(function (res) {
+<<<<<<< HEAD
           _this.posts = res.data;
+=======
+          _this2.posts = res.data;
+>>>>>>> origin/dev-alexey
         });
       }
     },
     renderSearch: function renderSearch() {
+<<<<<<< HEAD
       var _this2 = this;
+=======
+      var _this3 = this;
+>>>>>>> origin/dev-alexey
 
       axios.post('/postTitleSerach', {
         title: this.searchQuery
       }).then(function (res) {
         if (res.data.success != false) {
+<<<<<<< HEAD
           _this2.posts = res.data;
         } else {
           _this2.posts = null;
@@ -3990,6 +4020,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   destroyed: function destroyed() {
     document.removeEventListener('scroll', this.onScroll);
+=======
+          _this3.posts = res.data;
+        } else {
+          _this3.posts = null;
+        }
+      })["catch"](function (error) {
+        return _this3.posts = null;
+      });
+    }
+>>>>>>> origin/dev-alexey
   }
 });
 
@@ -49581,7 +49621,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+=======
+module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
+>>>>>>> origin/dev-alexey
 
 
 /***/ })
