@@ -66,7 +66,7 @@ class AdminController extends Controller
             }
         }
 
-        $posts = Post::orderBy('created_at', 'desc')->take(24)->offset($offset)->get();
+        $posts = Post::orderBy('created_at', 'desc')->take(20)->offset($offset)->get();
 
         $mainSection = MainSection::find(1);
 
