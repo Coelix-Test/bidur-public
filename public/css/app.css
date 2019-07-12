@@ -16892,8 +16892,13 @@ body {
   }
 
   .header-main .top-row-inner-mob .socials-wrap a {
+<<<<<<< HEAD
     width: 25px;
     height: 25px;
+=======
+    width: 35px;
+    height: 35px;
+>>>>>>> origin/dev-alexey
     flex-shrink: 0;
   }
 
@@ -16911,8 +16916,13 @@ body {
     text-align: center;
     margin-right: 40px;
     font-weight: 700;
+<<<<<<< HEAD
     font-size: 14px;
     line-height: 14px;
+=======
+    font-size: 16px;
+    line-height: 16px;
+>>>>>>> origin/dev-alexey
     white-space: nowrap;
     -webkit-box-flex: 2;
             flex-grow: 2;

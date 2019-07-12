@@ -446,8 +446,8 @@
                 display: flex;
                 justify-content: center;
                 a{
-                    width: 25px;
-                    height: 25px;
+                    width: 35px;
+                    height: 35px;
                     flex-shrink: 0;
                     &:first-child{
                         //margin-right: auto;//style for socials in header, not in menu
@@ -470,8 +470,8 @@
               margin-right: 40px;
               // margin-left: 10px;
               font-weight: 700;
-              font-size: 14px;
-              line-height: 14px;
+              font-size: 16px;
+              line-height: 16px;
               white-space: nowrap;
               flex-grow:2;
             }
