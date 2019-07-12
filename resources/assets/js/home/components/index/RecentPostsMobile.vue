@@ -7,7 +7,7 @@
       <carousel
         v-if="posts"
         class="latest-post-slider"
-        rtl   
+        rtl
         autoplay
         navigationEnabled
         navigationNextLabel="<img src='img/icons8-next-page.svg' />"
@@ -16,16 +16,16 @@
         :perPageCustom="[[320, 2], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
+          <router-link :to="'/post/'+post.id">
             <img :src="post.img" alt="">
             <div class="content">
-              <router-link :to="'/post/'+post.id">
                 <h3>{{ post.title }}</h3>
-              </router-link>
               <p>
                 <span class="author">{{post.author}}</span>
                 <span class="post-date">{{ new Date(post.time*1000) | formatDate }}</span>
               </p>
             </div>
+          </router-link>
         </slide>
       </carousel>
     </div>
@@ -119,6 +119,10 @@ export default {
     padding-left: 16px;
     outline: none;
   }
+  .latest-post-item a {
+    text-decoration: none;
+    color:#333;
+  }
   .latest-post-item {
     width:100%;
     height:100%;
@@ -167,7 +171,7 @@ export default {
     word-break: break-all;
     font-weight: 700;
   }
-  .latest-post-item a {
+  .latest-post-item h3 {
     color:#333;
     text-decoration-color: #333;
   }
