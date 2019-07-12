@@ -48,18 +48,22 @@ class AdminController extends Controller
 
         HashtagPosts::where('postId', $request->get('id'))->delete();
         Favourites::where('postId', $request->get('id'))->delete();
-        $c = new MainController();
-        return $c->getAllPostsWithAllFilters();
+        return json_encode(['success' => true]);
     }
 
 
-    public function getAllPostsPaginated(Request $request){
-
-        $page = $request->get('page');
-        if ($page == 0){
-            $offset = 0;
-        }else{
-            $offset = 24 * $page;
+    public function getAllPostsPaginated(Request $request = null){
+        if (isset($request)){
+            $page = $request->get('page');
+            if ($page == 0){
+                $offset = 0;
+            }else{
+                $offset = 24 * $page;
+            }
+            $deleted = $request->get('deletedCounter');
+            if (isset($deleted)){
+                $offset = $offset - $deleted;
+            }
         }
 
         $posts = Post::orderBy('created_at', 'desc')->take(24)->offset($offset)->get();
