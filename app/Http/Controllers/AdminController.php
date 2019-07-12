@@ -80,7 +80,7 @@ class AdminController extends Controller
     }
 
 
-    public function getAllPostsPaginated(Request $request = null){
+    public function getAllPostsPaginated(Request $request){
 
             $page = $request->get('page');
             if ($page == 0){
