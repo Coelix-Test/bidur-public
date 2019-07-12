@@ -99,7 +99,6 @@ export default {
       var doc = document.documentElement;
       var screen = doc.clientHeight;
       var top = ((window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0));
-      console.log(top);
 
       if(top >= doc.scrollHeight - (screen * 2) && !this.loading && !this.end) {
         this.getNextPage();
