@@ -22,7 +22,7 @@ Route::get('/test2', 'MainController@getRecentPosts');
 
 //user routes
 Route::get('/', 'PostController@getMainPage');
-
+Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
 
 Auth::routes();
 
@@ -138,4 +138,4 @@ Route::post('/getUserData', 'AdminController@getUserData');
 
     Route::post('/getAllPostsPaginated', 'AdminController@getAllPostsPaginated');
 
-    Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
+

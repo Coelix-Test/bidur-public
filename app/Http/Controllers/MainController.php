@@ -24,6 +24,28 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
+/*
+ *
+ * ALL THE "%Second" METHODS
+ * ARE FOR THE MOBILE
+ *
+ * REMEMBER ABOUT THE RTL
+ * THE RIGHT AND LEFT ARE SWITCHED
+ *
+ * ALL THE AUTHOR IDS ARE 1
+ * BECAUSE RHE REGISTRATION IS USELESS AND STOOOOOPID
+ *
+ * THE "question" IN SurveyAnswerVariants
+ * ARE ACTUALLY ANSWERS, NOT QUESTIONS
+ *
+ * FIND THE TRASH BIN BELOW
+ *
+ *  */
+
+
+
+
 class MainController extends Controller
 {
     public function showBday(){
@@ -36,51 +58,6 @@ class MainController extends Controller
 
         return json_encode($bdayArray);
     }
-
-    public function showAdditionalSection(){
-        $likable = SingleLikableImage::where('postId', 0)->get();
-        $compare = SelectOne::where('postId', 0)->get();
-        $survey = Survey::where('postId', 0)->get();
-
-        if (!empty($likable)){
-            $data['image'] = $likable->url;
-            $likes = $likable->getLikes();
-            $dislikes = $likable->getDislikes();
-            $data['likes'] = $likes;
-            $data['dislikes'] = $dislikes;
-            return $data;
-        }
-        if (!empty($compare)){
-            $data['urlLeft'] = $compare->urlLeft;
-            $data['urlRight'] = $compare->urlRight;
-            $likes = LikesForLeftAndRight::where('serviceId', $compare->id)->get();
-            $left = 0;
-            $right = 0;
-            $total = 0;
-            foreach ($likes as $like) {
-                $total++;
-                if ($like->value == 'left'){
-                    $left++;
-                }else{
-                    $right++;
-                }
-            }
-            $right = (int)($right/$total) * 100;
-            $left = 100 - $right;
-            $data['left'] = $left;
-            $data['right'] = $right;
-            return $data;
-        }
-        if (!empty($survey)){
-            $variants = $survey->getAllVariants();
-            foreach ($variants as $variant) {
-                $answers = $variant->answers();
-                //тут надо каунтить вариатны и давать проценты но меня ебет
-            }
-            return 1312;
-        }
-    }
-
 
 
     public function getInfoOnPostForMain(Request $request){
@@ -180,16 +157,6 @@ class MainController extends Controller
         return $finalAllPosts;
     }
 
-    public function showHashtags(){
-        $hashtags = Hashtag::all();
-        foreach ($hashtags as $key => $hashtag) {
-            $hashtagArray[$key]['name'] = $hashtag->text;
-            $hashtagArray[$key]['img'] = $hashtag->image;
-            $hashtagArray[$key]['id'] = $hashtag->id;
-        }
-        return $hashtagArray;
-    }
-
     public function showSinglePost($id){
         try{
             $post = Post::findOrFail($id);
@@ -247,13 +214,7 @@ class MainController extends Controller
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
             foreach ($surveys as $survey) {
-//                $flag = true;
-//                if (\Auth::check()){
-//                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
-//                    if (empty($ass)){
-//                        $flag = false;
-//                    }
-//                }
+
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
                 $questionsWithAnswers[$survey->order]['img'] = $survey->image;
@@ -463,16 +424,8 @@ class MainController extends Controller
     public function getContent($id){
         $post = Post::find($id);
         $thumbnail = $post->getAllImages()->first();
-//        $content = $post->getAllContents()->first();
-//        $title = $post->getAllTitles()->first();
-        $author = $post->author;
 
-//        if (!empty($content)){
-//            $excerpt = substr($content->contentText, 0, 200);
-//            $excerpt = strip_tags($excerpt);
-//        }else{
-//            $excerpt = '';
-//        }
+        $author = $post->author;
 
         $rating = (int)$post->getRating()->avg('rating');
         $time = $post->created_at;
@@ -490,16 +443,7 @@ class MainController extends Controller
             $allInfo['author'] = '';
         }
         $allInfo['title'] = $post->metaTitle;
-//        if (!empty($title)){
-//            $allInfo['title'] = $title->titleText;
-//        }else{
-//            $allInfo['title'] = '';
-//        }
-//        if (!empty($excerpt)){
-//            $allInfo['excerpt'] = $excerpt.'...';
-//        }else{
-//            $allInfo['excerpt'] = '';
-//        }
+
         if (!empty($time)){
             $allInfo['time'] = $time;
         }else{
@@ -523,22 +467,20 @@ class MainController extends Controller
         $fourth = Post::where('id', $section->fourth)->first();
         $fifth = Post::where('id', $section->fifth)->first();
         $sixth = Post::where('id', $section->sixth)->first();
-        $data[(int)1] = $this->getContent($first->id);
-        $data[(int)2] = $this->getContent($second->id);
-        $data[(int)3] = $this->getContent($third->id);
-        $data[(int)4] = $this->getContent($fourth->id);
-        $data[(int)5] = $this->getContent($fifth->id);
-        $data[(int)6] = $this->getContent($sixth->id);
+        $data[1] = $this->getContent($first->id);
+        $data[2] = $this->getContent($second->id);
+        $data[3] = $this->getContent($third->id);
+        $data[4] = $this->getContent($fourth->id);
+        $data[5] = $this->getContent($fifth->id);
+        $data[6] = $this->getContent($sixth->id);
         return json_encode($data, JSON_FORCE_OBJECT);
     }
 
     public function addEmojiReaction(Request $request){
-//        $userId = \Auth::id();
+
         $postId = $request->get('postId');
         $reaction = $request->get('reaction');
-//        if (!Emoji::where('postId', $postId)->where('authorId', $userId)->get()->isEmpty()){
-//            Emoji::where('postId', $postId)->where('authorId', $userId)->delete();
-//        }
+
         Emoji::create([
             'authorId' => 1,
             'reaction' => $reaction,
@@ -551,9 +493,6 @@ class MainController extends Controller
 //        $userId = \Auth::id();
         $postId = $request->get('postId');
 
-        $reaction = Emoji::where('postId', $postId);
-//                            ->where('authorId', $userId);
-
         $reactions['love']      = 0;
         $reactions['laugh']     = 0;
         $reactions['wow']       = 0;
@@ -562,6 +501,8 @@ class MainController extends Controller
         $reactions['like']      = 0;
         $reactions['dislike']   = 0;
 
+
+        $reaction = Emoji::where('postId', $postId);
         $love   = $reaction->where('reaction', 'love')->get();
         $reaction = Emoji::where('postId', $postId);
         $laugh  = $reaction->where('reaction', 'laugh')->get();
@@ -606,53 +547,30 @@ class MainController extends Controller
         $answerNumber = $request->get('answer');
 
         $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber+1)->first();
-//
-//        $answer = SurveyAnswers::where('answer', $variant->id)->where('userId', \Auth::id())->first();
-////        dd($answer);
-//        if (empty($answer)){
-            SurveyAnswers::create([
-                'answer' => $variant->id,
-//                'userId' => \Auth::id(),
-                'surveyId' => $surveyId,
-            ]);
-            return json_encode(['success' => true]);
-//        }else{
-//            return json_encode(['success' => false]);
-//        }
-    }
 
-//    public function getRecentPosts(){
-//        dd(123);
-//    }
+
+        SurveyAnswers::create([
+            'answer' => $variant->id,
+            'surveyId' => $surveyId,
+        ]);
+        return json_encode(['success' => true]);
+
+    }
 
     public function getRecentPosts(){
 
         $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
-//        dd($recentPosts);
+
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
 
         }
-//        dd($postsForView);
         return json_encode($postsForView);
     }
 
 
-//    public function getSingleLikablePhoto(){
-//        $photo = SingleLikableImage::where('postId', 0)->first();
-//
-//        $likes = LikesForSingleImage::where('serviceId', $photo->id)->get();
-//
-//        $dislikes = DisLikesForSingleImage::where('serviceId', $photo->id)->get();
-//
-//        $data['image'] = $photo->url;
-//        $data['likes'] = $likes->count();
-//        $data['dislikes'] = $dislikes->count();
-//        return json_encode($data);
-//    }
-
     public function likeSinglePhoto(Request $request){
-//        $postId = $request->get('postId');
+
         $serviceId = $request->get('serviceId');
         LikesForSingleImage::create([
             'serviceId' => $serviceId,
@@ -661,7 +579,7 @@ class MainController extends Controller
     }
 
     public function dislikeSinglePhoto(Request $request){
-//        $postId = $request->get('postId');
+
         $serviceId = $request->get('serviceId');
         DisLikesForSingleImage::create([
             'serviceId' => $serviceId,
@@ -916,6 +834,27 @@ class MainController extends Controller
         }
         return json_encode(['success' => false, 'message' => 'Login please']);
     }
+
+
+    // ************************ TRASH BIN *******************************//
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    ///////////////////////////////////////////////////////////////////////
+
+
 
 
 }
