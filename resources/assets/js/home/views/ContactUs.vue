@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .th-btn {
+    max-width:100%;
+  }
   .contact-us {
     max-width: 1440px;
     margin: 0 auto;
