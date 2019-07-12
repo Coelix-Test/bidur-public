@@ -3847,6 +3847,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -3880,16 +3888,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: null,
-      searchQuery: null
+      searchQuery: null,
+      deletedPostsCount: 0,
+      page: 0,
+      loading: false
     };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.post('/getAllPosts').then(function (res) {
-      console.log(res.data);
-      _this.posts = res.data;
-    });
   },
   methods: {
     editPost: function editPost(id) {
@@ -3901,7 +3904,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deletePost: function deletePost(id) {
-      var _this2 = this;
+      var _this = this;
 
       var result = confirm('למחוק את הפוסט?');
 
@@ -3909,25 +3912,83 @@ __webpack_require__.r(__webpack_exports__);
         axios.post('/deletePost', {
           id: id
         }).then(function (res) {
-          _this2.posts = res.data;
+          _this.posts = res.data;
         });
       }
     },
     renderSearch: function renderSearch() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.post('/postTitleSerach', {
         title: this.searchQuery
       }).then(function (res) {
         if (res.data.success != false) {
-          _this3.posts = res.data;
+          _this2.posts = res.data;
         } else {
-          _this3.posts = null;
+          _this2.posts = null;
         }
       })["catch"](function (error) {
-        return _this3.posts = null;
+        return _this2.posts = null;
       });
+    },
+    getPaginatedPosts: function getPaginatedPosts() {
+      var _this3 = this;
+
+      var append = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      this.loading = true;
+      return axios.post('/getAllPostsPaginated', {
+        page: this.page,
+        deletedCounter: this.deletedPostsCount
+      }).then(function (res) {
+        _this3.loading = false;
+
+        if (!res.data) {
+          var data = [];
+        } else {
+          var data = res.data;
+        }
+
+        if (append) {
+          var _this3$posts;
+
+          (_this3$posts = _this3.posts).push.apply(_this3$posts, _toConsumableArray(data));
+        } else {
+          _this3.posts = data;
+        }
+
+        if (!data.length) {
+          _this3.end = true;
+        }
+      });
+    },
+    getNextPage: function getNextPage() {
+      this.page++;
+      this.getPaginatedPosts(true);
+    },
+    onScroll: function onScroll(e) {
+      var doc = document.documentElement;
+      var screen = doc.clientHeight;
+      var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+      console.log(top);
+
+      if (top >= doc.scrollHeight - screen * 2 && !this.loading && !this.end) {
+        this.getNextPage();
+      }
     }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    axios.post('/getAllPosts').then(function (res) {
+      console.log(res.data);
+      _this4.posts = res.data;
+    });
+  },
+  mounted: function mounted() {
+    document.addEventListener('scroll', this.onScroll);
+  },
+  destroyed: function destroyed() {
+    document.removeEventListener('scroll', this.onScroll);
   }
 });
 

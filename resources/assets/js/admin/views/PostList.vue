@@ -33,15 +33,10 @@ export default {
     return {
       posts : null,
       searchQuery : null,
+      deletedPostsCount : 0,
+      page: 0,
+      loading: false,
     }
-  },
-  created() {
-    axios
-      .post('/getAllPosts')
-        .then(res => {
-          console.log(res.data);
-          this.posts = res.data;
-        });
   },
   methods : {
     editPost(id) {
@@ -56,8 +51,6 @@ export default {
                 this.posts = res.data;
             });
       }
-
-
     },
     renderSearch() {
       axios
@@ -71,7 +64,61 @@ export default {
 
           })
           .catch(error => this.posts = null);
-    }
+    },
+    getPaginatedPosts(append = false) {
+      this.loading = true;
+      return axios.post('/getAllPostsPaginated', {
+        page: this.page,
+        deletedCounter: this.deletedPostsCount
+      }).then(res => {
+        this.loading = false;
+
+        if(!res.data) {
+          var data = [];
+        } else {
+          var data = res.data;
+        }
+
+        if(append) {
+          this.posts.push(...data);
+        } else {
+          this.posts = data;
+        }
+
+        if(!data.length) {
+          this.end = true;
+        }
+
+      });
+    },
+    getNextPage() {
+      this.page++;
+      this.getPaginatedPosts(true);
+    },
+    onScroll(e) {
+      var doc = document.documentElement;
+      var screen = doc.clientHeight;
+      var top = ((window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0));
+      console.log(top);
+
+      if(top >= doc.scrollHeight - (screen * 2) && !this.loading && !this.end) {
+        this.getNextPage();
+      }
+    },
+  },
+  created() {
+    axios
+      .post('/getAllPosts')
+        .then(res => {
+          console.log(res.data);
+          this.posts = res.data;
+        });
+  },
+  mounted(){
+    document.addEventListener('scroll', this.onScroll);
+  },
+  destroyed(){
+    document.removeEventListener('scroll', this.onScroll);
   }
 }
 </script>
