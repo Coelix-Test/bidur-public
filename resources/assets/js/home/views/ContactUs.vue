@@ -215,6 +215,9 @@ export default {
          }
         }
 
+      .th-btn {
+        width: 100%;
+      }
     }
   }
 
