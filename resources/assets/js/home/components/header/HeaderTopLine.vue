@@ -177,7 +177,7 @@ export default {
 <style lang="scss" scoped>
   .fixedMobileAd {
     position: fixed;
-    top:calc(100vh - 60px);
+    top:calc(100% - 60px);
     left:0;
     right:0;
     height:60px;
