@@ -38,7 +38,7 @@
 
           <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span v-if="post.description" v-html="post.description"></span>
+            <span v-if="post.description != null" v-html="post.description"></span>
           </div>
 
 
@@ -72,7 +72,7 @@
 
         </section>
         <div v-if="this.$env.mobile == true">
-          <img src="https://via.placeholder.com/380x600" alt="ads" class="banner">
+          <div class="OUTBRAIN" :data-src="this.$route.query.page" data-widget-id="GS_6"></div>
         </div>
 
 
@@ -444,6 +444,13 @@ export default {
     margin-top: 24px;
     text-decoration: none;
   }
+  .related-posts::v-deep .VueCarousel-dot-container {
+    margin-top: 0!important;
+    margin-bottom: 20px!important;
+  }
+  .related-posts::v-deep .VueCarousel-dot {
+    margin-top: 10px!important;
+  }
   .related-post img {
     width: 220px;
     height: 180px;
@@ -473,7 +480,7 @@ export default {
     flex-direction: row;
     white-space: nowrap;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 0;
   }
   .related-post-meta .author {
     padding-right: 6px;

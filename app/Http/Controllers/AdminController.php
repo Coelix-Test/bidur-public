@@ -20,6 +20,7 @@ use App\PostImage;
 use App\PostImageAndText;
 use App\PostTitle;
 use App\PostVideo;
+use App\Rating;
 use App\SelectOne;
 use App\SingleLikableImage;
 use App\Survey;
@@ -30,6 +31,34 @@ use Carbon\Carbon;
 use Illuminate\Container\RewindableGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+
+
+
+/*
+ * ALL THE "%Second" METHODS
+ * ARE FOR THE MOBILE
+ *
+ * REMEMBER ABOUT THE RTL
+ * THE RIGHT AND LEFT ARE SWITCHED
+ *
+ * ALL THE AUTHOR IDS ARE 1
+ * BECAUSE RHE REGISTRATION IS USELESS AND STOOOOOPID
+ *
+ * THE "question" IN SurveyAnswerVariants
+ * ARE ACTUALLY ANSWERS, NOT QUESTIONS
+ *
+ * FIND THE TRASH BIN BELOW
+ *
+ *  */
+
+
+
+
+
+
+
+
 class AdminController extends Controller
 {
     protected $post;
@@ -47,57 +76,64 @@ class AdminController extends Controller
 
         HashtagPosts::where('postId', $request->get('id'))->delete();
         Favourites::where('postId', $request->get('id'))->delete();
-        $c = new MainController();
-        return $c->getAllPostsWithAllFilters();
+        return json_encode(['success' => true]);
     }
 
 
-    public function getAllPosts(Request $request ){
-//        $offset = 3;
+    public function getAllPostsPaginated(Request $request){
 
-        if (!empty($request->get('offset'))){
-            $offset = $request->get('offset');
+            $page = $request->get('page');
+            if ($page == 0){
+                $offset = 0;
+            }else{
+                $offset = 20 * $page;
+            }
+            $deleted = $request->get('deletedCounter');
+            if (isset($deleted)){
+                $offset = $offset - $deleted;
+            }
+
+
+        $posts = Post::orderBy('created_at', 'desc')->take(20)->offset($offset)->get();
+
+
+        //mainSection for hiding the delete btn in admin page
+        $mainSection = MainSection::find(1);
+        if (!$posts->isEmpty()){
+            foreach ($posts as $key => $post) {
+                $finalAllPosts[$key]['post'] = $post;
+                $finalAllPosts[$key]['rating'] = round(Rating::where('id', $post->id)->avg('rating'), 1);
+                if ($post->id == $mainSection->first){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+                if ($post->id == $mainSection->second){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+                if ($post->id == $mainSection->third){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+                if ($post->id == $mainSection->fourth){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+                if ($post->id == $mainSection->fifth){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+                if ($post->id == $mainSection->sixth){
+                    $finalAllPosts[$key]['is_in_main_section'] = true;
+                }
+            }
+            return $finalAllPosts;
         }else{
-            $offset = 0;
+            return json_encode(['success' => false, 'message' => 'no more posts']);
         }
 
-        $posts = Post::offset($offset)->limit(20)->orderBy('created_at', 'desc')->get();
 
-        foreach ($posts as $key => $post) {
-            $allPosts[$key]['title'] = $post->metaTitle;
-            $allPosts[$key]['author'] = $post->author;
 
-            $time = $post->created_at;
-            $time = $time->timestamp;
-            $mainSection = MainSection::find(1);
-            if ($post->id == $mainSection->first){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            if ($post->id == $mainSection->second){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            if ($post->id == $mainSection->third){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            if ($post->id == $mainSection->fourth){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            if ($post->id == $mainSection->fifth){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            if ($post->id == $mainSection->sixth){
-                $allPosts[$key]['is_in_main_section'] = true;
-            }
-            $allPosts[$key]['createdAt'] = $time;
-        }
-        return json_encode($allPosts);
     }
 
-    public function getRecentPosts($offset = 0, $take = 5){
-        $recentPosts = Post::orderBy('created_at', 'desc')->skip($offset)->take($take)->get();
-        return json_encode($recentPosts);
-    }
 
+
+    // gets all the titles and ids for the line in the header
     public function getAllPostTitles(){
         $posts = Post::all();
         foreach ($posts as $key => $post) {
@@ -110,6 +146,8 @@ class AdminController extends Controller
         return json_encode($titles);
     }
 
+    //function goes through all the sections of the post and
+    //creates every one of them individually, linking them to post
     public function createFullPost(Request $request){
         $sections = $request->get('sections');
         $files = $request->allFiles();
@@ -173,6 +211,7 @@ class AdminController extends Controller
     }
 
     public function createPostHeaderMeta($metaTitle, $hashtags,  $author, $date){
+        //parsing js timestamp
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
 
@@ -190,7 +229,6 @@ class AdminController extends Controller
                 ]);
             }
         }
-
         return $post;
     }
 
@@ -207,6 +245,7 @@ class AdminController extends Controller
         if (isset($flag)){
             $fimalImage = $file;
         }else{
+
             if($image) {
                 $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/images/postImages');
@@ -230,9 +269,6 @@ class AdminController extends Controller
                 'order' => $order
             ]);
         }
-
-        // dd($img);
-
     }
 
     public function createPostAddTitle($postId, $title, $order){
@@ -335,6 +371,7 @@ class AdminController extends Controller
     }
 
     public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $flagLeft = null, $flagRight = null){
+        //remember about the rtl, left is right, right is left, dont mess up
         if ($flagLeft && $flagRight){
             $finalLeft = $leftFile;
             $finalRight = $rightFile;
@@ -399,10 +436,6 @@ class AdminController extends Controller
                 'order' => $order,
             ]);
         }
-
-
-
-
     }
 
     public function createPostAddSingleLikablePhoto($postId, $file, $description, $order, $flag = null){
@@ -491,6 +524,7 @@ class AdminController extends Controller
         ]);
     }
 
+    //stored in the table always by the 1st id
     public function getMainBday(){
         $happy = HappyBirthsday::find(1);
         $data['img'] = $happy->img;
@@ -499,12 +533,10 @@ class AdminController extends Controller
     }
 
     public function addNewComparison(Request $request){
-
+        //remember about the rtl, left is right, right is left, dont mess up
         $leftFlag = true;
         $rightFlag = true;
         $leftImage = $request->file('leftImage');
-
-
         if (isset($leftImage)){
             $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
             $destinationPath = public_path('/images/compare');
@@ -515,7 +547,6 @@ class AdminController extends Controller
             $rightFlag = false;
         }
 
-
         $rightImage = $request->file('rightImage');
         if (isset($rightImage)){
             $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
@@ -525,7 +556,6 @@ class AdminController extends Controller
             $currentRightName = $request->get('rightImage');
             $rightFlag = false;
         }
-
 
         $current = SelectOne::where('postId', 0)->first();
         if (!empty($current)){
@@ -584,6 +614,7 @@ class AdminController extends Controller
     }
 
     public function addNewComparisonSecond(Request $request){
+        //remember about the rtl, left is right, right is left, dont mess up
         $leftFlag = true;
         $rightFlag = true;
         $leftImage = $request->file('leftImage');
@@ -663,7 +694,6 @@ class AdminController extends Controller
                 'order' => 0,
             ]);
         }
-
         return ['success' => true];
     }
 
@@ -899,12 +929,9 @@ class AdminController extends Controller
         return json_encode(['success' => true]);
     }
     public function getAllSurveys(){
-//        $like = $request->get('title');
-//        if ($like == 0){
-            $allSurveys = Survey::orderBy('created_at', 'desc')->get();
-//        }else{
-//            $allSurveys = Survey::where('question', $like)->orWhere('question', 'like', '%'.$like.'%')->get();
-//        }
+
+        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+
 
         if ($allSurveys->isEmpty()){
             return json_encode(['success' => false]);
@@ -1074,6 +1101,7 @@ class AdminController extends Controller
         $fourthPostId = $request->get(  'fourthPostId');
         $fifthPostId = $request->get(   'fifthPostId');
         $sixthPostId = $request->get(   'sixthPostId');
+        // truncate MEANS "TO EMPTY"
         MainSection::truncate();
         MainSection::create([
             'id' => 1,
@@ -1086,43 +1114,13 @@ class AdminController extends Controller
         ]);
     }
 
-    public function showSinglePhotoFromMain(){
-        $image = SingleLikableImage::where('postId', 0)->first();
-        $data['image'] = $image->url;
-        return json_encode($data);
-    }
 
-    public function showCompareFromMain(){
-        $section = SelectOne::where('postId', 0)->first();
-        $data['leftImage'] = $section->urlLeft;
-        $data['rightImage'] = $section->urlRight;
-        return json_encode($data);
-    }
-
-    public function showSinglePhotoFromMainSecond(){
-        $image = SingleLikableImage::where('postId', -1)->first();
-        $data['image'] = $image->url;
-        return json_encode($data);
-    }
-
-    public function showCompareFromMainSecond(){
-        $section = SelectOne::where('postId', -1)->first();
-        $data['leftImage'] = $section->urlLeft;
-        $data['rightImage'] = $section->urlRight;
-        return json_encode($data);
-    }
 
     public function addSurvey(Request $request){
         Survey::where('postId', 0)->delete();
         $title = $request->get('title');
         $answers = $request->get('answers');
         $image = $request->allFiles();
-
-
-    }
-
-    public function addSurveySecond(Request $request){
-
     }
 
 
@@ -1151,10 +1149,6 @@ class AdminController extends Controller
     public function deleteMail(Request $request){
         Mail::where('id', $request->get('id'))->delete();
         return $this->getAllMails();
-    }
-
-    public function editPost(Request $request){
-
     }
 
     public function showEditablePostContent(Request $request){
@@ -1223,49 +1217,24 @@ class AdminController extends Controller
         $surveys = $post->getAllSurveys;
         if (isset($surveys[0])){
             foreach ($surveys as $key => $survey) {
-//                $flag = true;
-//                if (\Auth::check()){
-//                    $ass = SurveyAnswers::where('surveyId', $survey->id)->where('userId', \Auth::id())->first();
-//                    if (empty($ass)){
-//                        $flag = false;
-//                    }
-//                }
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers['type'] = 'survey';
                 $questionsWithAnswers['image'] = $survey->image;
 
                 $questionsWithAnswers['title'] = $survey->question;
                 $questionsWithAnswers['id'] = $survey->id;
-                $i = 0;
-                $z = 0;
-                foreach ($questions as $key => $question) {
-                    $ass[$key] = $question->question;
-//                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['value'] = $i++;
-//                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['text'] = $question->question;
-//                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['votes'] = count($question->answers);
-//                    $questionsWithAnswers[$survey->order]['value']['answers'][$z]['customId'] = $question->id;
-//                    $z++;
+                foreach ($questions as $key2 => $question) {
+                    $ass[$key2] = $question->question;
                 }
                 $questionsWithAnswers['answers'] = $ass;
                 unset($ass);
                 $fullPost['sections'][$survey->order] = $questionsWithAnswers;
 
             }
-
-//            foreach ($questionsWithAnswers as $key => $questionsWithAnswer) {
-//                $fullPost['sections'][$key] = $questionsWithAnswer;
-//            }
-
-
-
         }
         $compares = $post->getCompare;
         if (isset($compares[0])){
             foreach ($compares as $compare) {
-//                $data['id']         = $compare->id;
-//                $data['image1']     = $compare->urlLeft;
-//                $data['image2']     = $compare->urlRight;
-//                $data['title']  =     $compare->description;
 
                 $fullPost['sections'][$compare->order]['type'] = 'selection';
                 $fullPost['sections'][$compare->order]['id']     = $compare->id;
@@ -1296,17 +1265,6 @@ class AdminController extends Controller
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
 
         ksort($fullPost);
-//        $previousPostId = Post::where('id', '<', $post->id)->max('id');
-//        $nextPostId = Post::where('id', '>', $post->id)->min('id');
-//        if (!$hashtags->isEmpty()){
-//            foreach ($hashtags as $hashtag) {
-//                $h = Hashtag::find($hashtag->hashtagId);
-//                $data['id'] = $h->id;
-//                $data['title'] = $h->text;
-//                $fullPost['hashtags'][] = $data;
-//                unset($data);
-//            }
-//        }
 
         return $fullPost;
 
@@ -1515,6 +1473,28 @@ class AdminController extends Controller
     }
 
 
+
+
+
+    // ************************ TRASH BIN *******************************//
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    //                                                                   //
+    ///////////////////////////////////////////////////////////////////////
+
+
     public function tagNameSearch(Request $request){
         $search = $request->get('title');
         $tags = Hashtag::where('text', $search)->orWhere('text', 'like', '%'.$search.'%')->get();
@@ -1530,6 +1510,34 @@ class AdminController extends Controller
         }
         return json_encode($finalTags);
     }
+
+
+    public function showSinglePhotoFromMain(){
+        $image = SingleLikableImage::where('postId', 0)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMain(){
+        $section = SelectOne::where('postId', 0)->first();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
+    }
+
+    public function showSinglePhotoFromMainSecond(){
+        $image = SingleLikableImage::where('postId', -1)->first();
+        $data['image'] = $image->url;
+        return json_encode($data);
+    }
+
+    public function showCompareFromMainSecond(){
+        $section = SelectOne::where('postId', -1)->first();
+        $data['leftImage'] = $section->urlLeft;
+        $data['rightImage'] = $section->urlRight;
+        return json_encode($data);
+    }
+
 
 
 }
