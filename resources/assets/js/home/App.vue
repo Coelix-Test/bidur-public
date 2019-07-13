@@ -162,7 +162,7 @@ export default {
 }
 @media (max-width:768px) {
   .socials-btn {
-    top: calc(100vh - 64px);
+    top: calc(100% - 64px);
     width: 32px;
     height: 32px;
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.1);
