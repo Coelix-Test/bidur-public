@@ -252,6 +252,9 @@ export default {
       margin-bottom: 16px;
       margin-top: 46px;
     }
+    .latest-post-item {
+      overflow:hidden;
+    }
     .latest-post-item p {
       // flex-direction: column;
     }
