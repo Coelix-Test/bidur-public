@@ -605,7 +605,7 @@ export default {
   }
 
   .section {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     transform: scale(0.9);
     opacity: 0;
   }
