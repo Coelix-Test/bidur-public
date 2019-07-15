@@ -4,22 +4,24 @@
       <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
     </div>
     <div class="posts-wrapper">
-      <div v-for="post in posts" v-if="posts" class="post" :key="post.post.id">
+      <template v-for="post in posts" v-if="posts">
+        <div class="post" v-if="!isDeletedPost(post.post.id)" :key="post.post.id">
 
-        <h2>{{post.post.metaTitle}}</h2>
-        <div class="post-meta">
-          <span class="date">{{post.post.created_at | formatDate}}</span>
-          <span class="author">מאת {{post.post.author}}</span>
-          <span class="id">#{{post.post.id}}</span>
-        </div>
-        <div class="actions">
-          <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
-          <!-- <button @click="editPost(post.post.id)">edit</button> -->
-          <router-link :to="'/post/' + post.post.id">ערוך</router-link>
-          <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>
-        </div>
+          <h2>{{post.post.metaTitle}}</h2>
+          <div class="post-meta">
+            <span class="date">{{post.post.created_at | formatDate}}</span>
+            <span class="author">מאת {{post.post.author}}</span>
+            <span class="id">#{{post.post.id}}</span>
+          </div>
+          <div class="actions">
+            <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
+            <!-- <button @click="editPost(post.post.id)">edit</button> -->
+            <router-link :to="'/post/' + post.post.id">ערוך</router-link>
+            <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>
+          </div>
 
-      </div>
+        </div>
+      </template>
       <div v-if="posts == null">
         פוסטים לא נמצאו!
       </div>
@@ -34,6 +36,7 @@ export default {
       posts : null,
       searchQuery : null,
       deletedPostsCount : 0,
+      deletedPosts: [],
       page: 0,
       loading: false,
       end: false,
@@ -49,9 +52,15 @@ export default {
         axios
           .post('/deletePost',{id : id})
             .then(res => {
-                this.posts = res.data;
+                if(res.data.success){
+                    this.deletedPostsCount++;
+                    this.deletedPosts.push(id);
+                }
             });
       }
+    },
+    isDeletedPost(id){
+      return this.deletedPosts.indexOf(id) > -1;
     },
     renderSearch() {
       axios
