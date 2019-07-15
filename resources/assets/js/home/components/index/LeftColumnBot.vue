@@ -9,7 +9,9 @@
         <h2>תמונת האינסטגרם המנצחת של היום</h2>
       </div>
 
-        <img :src="instagramData.img" alt="">
+        <a :href="instagramData.link" class="insta-image-link">
+          <img :src="instagramData.img" alt="">
+        </a>
         <div class="insta-features">
             <div class="right">
               <img src="img/icons/save.svg" alt="">
@@ -20,7 +22,7 @@
               <img src="img/icons/insta-like.svg" alt="">
             </div>
         </div>
-        <a :href="instagramData.link" target="_blank">לעמוד האינסטגרם שלנו</a>
+        <a class="insta-btn" :href="instagramData.link" target="_blank">לעמוד האינסטגרם שלנו</a>
 
     </div>
   </div>
@@ -53,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .left-column-bot {
     flex-basis:calc(50% - 8px);
     width:50%;
@@ -98,7 +100,7 @@ export default {
     margin-top: 16px;
     position: relative;
   }
-  .instagram-post a {
+  .instagram-post .insta-btn {
     background: linear-gradient(90deg, #F97B4A 0%, #C6278D 54.18%, #4200FF 95.31%);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -113,11 +115,14 @@ export default {
     white-space: nowrap;
     transform:translateX(-50%) translateY(50%);
   }
-  .instagram-post > img {
-    width:100%;
-    height:100%;
-    object-fit: cover;
-    object-position: center;
+  .insta-image-link{
+    display: block;
+    width: 100%;
+    height: auto;
+    img{
+      width: 100%;
+      height: auto;
+    }
   }
   .insta-features {
     padding:24px 24px;
