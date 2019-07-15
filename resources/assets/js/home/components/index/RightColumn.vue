@@ -381,6 +381,7 @@ export default {
       flex-direction: column-reverse;
     }
     ul.posts li {
+      overflow: hidden;
       flex-basis: calc(50% - 4px);
     }
     ul.posts li a .h2 {
@@ -419,6 +420,7 @@ export default {
       font-size: 13px;
       line-height: 13px;
       margin-top: 8px;
+      white-space: nowrap;
     }
   }
   @media (max-width:550px) {
