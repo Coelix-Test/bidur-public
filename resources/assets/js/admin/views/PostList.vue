@@ -36,6 +36,7 @@ export default {
       deletedPostsCount : 0,
       page: 0,
       loading: false,
+      end: false,
     }
   },
   methods : {
@@ -73,7 +74,7 @@ export default {
       }).then(res => {
         this.loading = false;
 
-        if(!res.data) {
+        if(res.data.hasOwnProperty('success')) {
           var data = [];
         } else {
           var data = res.data;
