@@ -8,7 +8,7 @@
 
         <h1 class="main-title" v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/Star.svg" alt=" ">
           הוסף למועדפים
         </button>
         <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">

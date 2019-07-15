@@ -51541,7 +51541,9 @@ var render = function() {
                         }
                       },
                       [
-                        _c("img", { attrs: { src: "/img/Star.svg", alt: "" } }),
+                        _c("img", {
+                          attrs: { src: "/img/Star.svg", alt: " " }
+                        }),
                         _vm._v("\n        הוסף למועדפים\n      ")
                       ]
                     )
