@@ -146,6 +146,7 @@ export default {
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
   }
   .latest-post-item p .post-date {
     color:#B3AAAA;
@@ -252,7 +253,7 @@ export default {
       margin-top: 46px;
     }
     .latest-post-item p {
-      flex-direction: column;
+      // flex-direction: column;
     }
     .latest-post-item p span:first-child {
       padding-bottom: 8px;

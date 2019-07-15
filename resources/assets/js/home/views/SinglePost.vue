@@ -108,7 +108,7 @@
       <carousel
         v-if="relevantPosts"
         :rtl="true"
-        :perPageCustom="[[320, 1], [768, 2], [769, 3]]"
+        :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
       >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
           <router-link :to="'/post/'+post.id+'/#'">
@@ -503,6 +503,7 @@ export default {
   @media (max-width:768px) {
 
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
+    /* likes counter: 3 */
     h1.main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
@@ -573,6 +574,7 @@ export default {
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex-basis:100%;
     }
     .related-post-meta {
       justify-content: center;
