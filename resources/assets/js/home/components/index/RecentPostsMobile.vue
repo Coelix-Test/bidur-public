@@ -10,10 +10,11 @@
         rtl
         autoplay
         navigationEnabled
-        navigationNextLabel="<img src='img/icons8-next-page.svg' />"
+        navigationNextLabel="<img src='img/icons8-prev-page.svg' />"
+        navigationPrevLabel="<img src='img/icons8-prev-page.svg' />"
         :autoplayTimeout="4000"
-        :paginationEnabled="true"
-        :perPageCustom="[[320, 2], [768, 2], [769, 3]]"
+        :paginationEnabled="false"
+        :perPageCustom="[[320, 1], [550, 1], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
           <router-link :to="'/post/'+post.id">
@@ -81,7 +82,7 @@ export default {
     //background: rgba(196, 196, 196, 0.1);
     //border-right: 6px solid #F2C94C;
     margin-top: 24px;
-    padding:24px 8px;
+    padding:24px 8px 0;
   }
   .latest-posts .heading {
     display: flex;
@@ -177,7 +178,7 @@ export default {
     text-decoration-color: #333;
   }
   .latest-posts h2 {
-    color:#333333;
+    color: #F2C94C;
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 32px;
@@ -213,26 +214,43 @@ export default {
     background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
     padding-bottom: 32px;
   }
-  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
+  .latest-posts::v-deep .VueCarousel {
+    padding: 0 16px;
+  }
+  .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next {
     right:unset;
-    left:16px;
+    left:0;
+  }
+  .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-prev {
+    left:unset;
+    right:0;
+  }
+  .latest-posts::v-deep .VueCarousel .VueCarousel-wrapper .VueCarousel-slide {
+    padding:0 24px;
+    box-sizing: border-box;
+  }
+  .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button {
+    width:40px;
+    padding:0!important;
+    height: 40px;
     outline:none;
     transform: translateX(0) translateY(-50%);
-    width:40px;
-    padding:0;
-    height: 40px;
+    z-index:2;
   }
-  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next img {
+  .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button img {
     width:40px;
     height: 40px;
   }
-  .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-prev {
-    display: none;
+  .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next img {
+    transform: rotate(180deg);
   }
+  // .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-prev {
+  //   display: none;
+  // }
   @media (max-width:768px) {
-    .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
-      display:none;
-    }
+    // .latest-posts::v-deep .VueCarousel  .VueCarousel-navigation .VueCarousel-navigation-next {
+    //   display:none;
+    // }
     .selected-poll {
       margin-bottom: 8px;
     }

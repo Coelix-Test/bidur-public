@@ -2,7 +2,7 @@
 <template>
   <div class="right-column-bot">
 
-    <surveys/>
+    <surveys v-if="this.$env.mobile == false"/>
     <!-- <surveys mobile/> -->
 
     <div class="latest-posts" v-if="windowWidth > 768" >

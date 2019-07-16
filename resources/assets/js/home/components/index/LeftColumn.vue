@@ -1,16 +1,29 @@
 <template>
   <div class="left-column posts-column">
-
-    <article v-in-viewport.once v-for="post in posts" >
-      <router-link :to="'/post/'+post.id">
+    <article v-in-viewport.once  >
+      <router-link :to="'/post/'+posts[0].id">
         <!-- {{post}} -->
         <div class="overlay"></div>
-        <img :src="post.img" alt="">
+        <img :src="posts[0].img" alt="">
         <!-- <h2 class="typewriter">{{post.title}}</h2> -->
-        <type-writer class="h2" :text="post.title"></type-writer>
+        <type-writer class="h2" :text="posts[0].title"></type-writer>
         <p>
-          <span class="author">{{ post.author }}</span>
-          <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
+          <span class="author">{{ posts[0].author }}</span>
+          <span class="post-date">{{  new Date(posts[0].time*1000) | formatDate }}</span>
+
+        </p>
+      </router-link>
+    </article>
+    <surveys v-if="this.$env.mobile == true"/>
+    <article v-in-viewport.once >
+      <router-link :to="'/post/'+posts[1].id">
+        <div class="overlay"></div>
+        <img :src="posts[1].img" alt="">
+
+        <type-writer class="h2" :text="posts[1].title"></type-writer>
+        <p>
+          <span class="author">{{ posts[1].author }}</span>
+          <span class="post-date">{{  new Date(posts[1].time*1000) | formatDate }}</span>
 
         </p>
       </router-link>
@@ -20,6 +33,8 @@
 
 <script>
 import TypeWriter from './../common/TypeWriter.vue';
+import Surveys from './Surveys';
+
 export default {
   props : {
     data : {
@@ -34,7 +49,8 @@ export default {
     }
   },
   components: {
-    TypeWriter
+    TypeWriter,
+    Surveys,
   },
   mounted() {
 
