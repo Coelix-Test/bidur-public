@@ -14,7 +14,7 @@
         navigationPrevLabel="<img src='img/icons8-prev-page.svg' />"
         :autoplayTimeout="4000"
         :paginationEnabled="false"
-        :perPageCustom="[[320, 1], [550, 1], [768, 2], [769, 3]]"
+        :perPageCustom="[[320, 1], [550, 2], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
           <router-link :to="'/post/'+post.id">
@@ -81,8 +81,8 @@ export default {
     overflow: hidden;
     //background: rgba(196, 196, 196, 0.1);
     //border-right: 6px solid #F2C94C;
-    margin-top: 24px;
-    padding:24px 8px 0;
+    // margin-top: 24px;
+    padding:12px 8px 0;
   }
   .latest-posts .heading {
     display: flex;
@@ -137,7 +137,7 @@ export default {
   }
   .latest-post-item  img {
     width:100%;
-    height:120px;
+    height:200px;
     object-fit: cover;
     object-position: center;
     margin-left: 0;
@@ -184,6 +184,17 @@ export default {
     margin-bottom: 32px;
     margin-top: 0;
     text-align: center;
+    position: relative;
+  }
+  .latest-posts h2:after {
+    content:'';
+    width:60px;
+    height:3px;
+    background-color: #F2C94C;
+    position: absolute;
+    bottom:-12px;
+    left:50%;
+    transform: translateX(-50%);
   }
   .selected-poll {
     display: flex;
