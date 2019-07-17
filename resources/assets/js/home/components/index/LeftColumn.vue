@@ -104,7 +104,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(60deg, #F2C94C, #F2C94C, #F2C94C, #F2C94C, #CD9E25, #CD9E25, #CD9E25, #CD9E25);
+    background: linear-gradient(278.13deg, #87682C 1%, #FCD77E 100%);
     z-index: -1;
     animation: animatedgradient 3s ease alternate infinite;
     background-size: 300% 300%;
@@ -261,7 +261,7 @@ export default {
       order:1;
     }
     .posts-column article {
-      height:250px;
+      height:300px;
     }
     /* .posts-column article:nth-child(1) {
       height:250px;

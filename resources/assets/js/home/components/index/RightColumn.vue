@@ -417,8 +417,8 @@ export default {
       box-sizing: content-box;
     }
     ul.posts li a p {
-      font-size: 13px;
-      line-height: 13px;
+      font-size: 11px;
+      line-height: 11px;
       margin-top: 8px;
       white-space: nowrap;
     }

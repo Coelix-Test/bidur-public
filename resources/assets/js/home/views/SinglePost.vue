@@ -101,14 +101,17 @@
 
 
 
-      <side-news />
+      <side-news v-if="this.$env.mobile == false" />
     </div>
     <div class="related-posts">
-
+      <h2>חדשות נוספות</h2>
       <carousel
         v-if="relevantPosts"
         :rtl="true"
         :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
+        navigationEnabled
+        navigationNextLabel="<img src='img/chevron-to-left.svg' />"
+        navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
       >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
           <router-link :to="'/post/'+post.id+'/#'">
@@ -210,7 +213,7 @@ export default {
               }
             } else {
               axios.post('/getRecentPosts').then(res => {
-                this.relevantPosts = res.data;
+                this.relevantPosts = res.data.splice(0,6);
               });
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
@@ -285,8 +288,12 @@ export default {
     margin-bottom: 16px;
   }
   .post-content nav a {
-    color:#BDBDBD;
+    color:#FCD77E;
     font-size: 18px;
+    font-weight: bold;
+  }
+  .post-content nav a img {
+    display: none;
   }
   .post-content nav .next-post {
     flex-grow:2;
@@ -394,7 +401,9 @@ export default {
     max-width: 550px;
   }
   .opinion {
-
+    border: 8px solid;
+    border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+    border-image-slice: 1;
   }
   .opinion h2 {
     text-align: center;
@@ -436,6 +445,7 @@ export default {
     width: 100%;
     padding:0 24px;
   }
+
   .related-post {
     display: flex;
     flex-direction: row;
@@ -449,7 +459,27 @@ export default {
     margin-bottom: 20px!important;
   }
   .related-posts::v-deep .VueCarousel-dot {
-    margin-top: 10px!important;
+    margin-top: 10px!important;;
+    padding: 7px!important;
+  }
+  .related-posts::v-deep .VueCarousel-dot.VueCarousel-dot--active {
+    background-color: #FCD77E!important;
+
+  }
+  .related-posts::v-deep .VueCarousel-navigation-button {
+    transform: scale(1.6) translateY(-50%);
+    outline: none;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev {
+    right:12px;
+    left:unset;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev img {
+    transform:rotate(180deg);
+  }
+  .related-posts::v-deep .VueCarousel-navigation-next {
+    left:12px;
+    right:unset;
   }
   .related-post img {
     width: 220px;
@@ -495,13 +525,36 @@ export default {
     color:#333333;
     text-decoration-color:#333333;
   }
+  .related-posts h2 {
+      display: none;
+  }
   @media (max-width:1024px) {
     .post-wrapper {
       flex-direction: column;
     }
   }
   @media (max-width:768px) {
+    .related-posts h2 {
+      display: block;
+      position: relative;
+      text-align: center;
+      width:100%;
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
 
+    }
+    .related-posts h2:after {
+      content:'';
+      position: absolute;
+      background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+      width:60px;
+      height:6px;
+      border-radius: 5px;
+      bottom:-10px;
+      left:50%;
+      transform:translateX(-50%);
+    }
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     /* likes counter: 3 */
     h1.main-title {

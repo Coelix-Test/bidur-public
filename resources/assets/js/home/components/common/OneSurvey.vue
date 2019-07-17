@@ -88,6 +88,9 @@ export default {
   align-items: stretch;
   padding-bottom: 50px;
   position: relative;
+  border: 8px solid;
+  border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+  border-image-slice: 1;
   .title {
     font-weight: bold;
     font-size: 36px;
