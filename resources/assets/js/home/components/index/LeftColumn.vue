@@ -275,6 +275,10 @@ export default {
     .posts-column article {
       margin-bottom: 8px;
     }
+    .posts-column article:nth-child(2) {
+      margin-bottom: 0;
+      margin-top: 8px;
+    }
     .posts-column article .h2 {
       font-size: 20px;
       line-height: 20px;
