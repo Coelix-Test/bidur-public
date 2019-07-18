@@ -121,7 +121,7 @@ export default {
 <style lang="scss" scoped>
 
 .like-survey {
-  border: 8px solid;
+  border: 4px solid;
   border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
   border-image-slice: 1;
   img {

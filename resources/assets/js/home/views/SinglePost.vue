@@ -8,15 +8,15 @@
 
         <h1 class="main-title" v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
         <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
-          <img src="/img/Star.svg" alt=" ">
+          <img src="/img/icons/star-gradient.png" alt=" ">
           הוסף למועדפים
         </button>
         <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/icons/star-gradient.png" alt="">
           הסר ממועדפים
         </button>
         <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/icons/star-gradient.png" alt="">
           הוסף למועדפים
         </button>
 
@@ -76,7 +76,7 @@
         </div>
 
 
-        <nav>
+        <nav v-if="false">
 
           <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
             <img src="/img/arrow-right.svg">
@@ -402,7 +402,7 @@ export default {
     max-width: 550px;
   }
   .opinion {
-    border: 8px solid;
+    border: 4px solid;
     border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
     border-image-slice: 1;
     padding: 16px 0;
@@ -473,14 +473,14 @@ export default {
     outline: none;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev {
-    right:12px;
+    right:0;
     left:unset;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev img {
     transform:rotate(180deg);
   }
   .related-posts::v-deep .VueCarousel-navigation-next {
-    left:12px;
+    left:0;
     right:unset;
   }
   .related-post img {

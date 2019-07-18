@@ -81,6 +81,9 @@ export default {
     display: block;
   }
 }
+@media(max-width:768px) {
+
+}
 
 
 

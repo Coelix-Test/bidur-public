@@ -1,6 +1,6 @@
 <template>
   <div class="left-column posts-column">
-    <article v-in-viewport.once  >
+    <article v-in-viewport.once class="first" >
       <router-link :to="'/post/'+posts[0].id">
         <!-- {{post}} -->
         <div class="overlay"></div>
@@ -15,7 +15,7 @@
       </router-link>
     </article>
     <surveys v-if="this.$env.mobile == true"/>
-    <article v-in-viewport.once >
+    <article v-in-viewport.once class="second">
       <router-link :to="'/post/'+posts[1].id">
         <div class="overlay"></div>
         <img :src="posts[1].img" alt="">
@@ -253,7 +253,6 @@ export default {
     }
   }
   @media (max-width:768px) {
-
     .posts-column {
       padding-right: 0;
     }
@@ -262,6 +261,9 @@ export default {
     }
     .posts-column article {
       height:300px;
+    }
+    .posts-column article.second {
+      margin-top: 8px;
     }
     /* .posts-column article:nth-child(1) {
       height:250px;
