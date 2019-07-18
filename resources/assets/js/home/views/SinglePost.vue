@@ -170,7 +170,7 @@ export default {
       axios
         .post('/addPostToFavourite',{postId : id})
           .then( res=>{
-            console.log(res.data);
+            // console.log(res.data);
             alert('הוסף פוסט למועדפים!');
           });
     },
@@ -259,7 +259,7 @@ export default {
   mounted() {
     let els = this.$el.getElementsByTagName('p');
 
-    console.log(els);
+    // console.log(els);
   }
 }
 
@@ -485,8 +485,9 @@ export default {
   }
   .related-post img {
     width: 220px;
-    height: 180px;
+    height: 250px;
     object-fit: cover;
+
   }
   .related-post a {
     text-decoration-color: #333;
@@ -565,12 +566,13 @@ export default {
     }
     .related-posts {
       position: relative;
+      margin-top: 24px;
     }
     .related-posts .stars {
       display: block;
       object-fit: contain;
       width:100%;
-      height: 100%;
+      /* height: 100%; */
       position: absolute;
       top:0;
       left: 0;

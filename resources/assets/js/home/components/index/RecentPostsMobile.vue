@@ -384,8 +384,7 @@ export default {
     right:unset;
   }
   .related-post img {
-    width: 220px;
-    height: 180px;
+    height: 250px;
     object-fit: cover;
     width:100%;
   }
@@ -463,13 +462,13 @@ export default {
       position: relative;
       margin-right: -8px;
       margin-left: -8px;
-      margin-top: 8px;
+      margin-top: 24px;
     }
     .related-posts .stars {
       display: block;
       object-fit: contain;
       width:100%;
-      height: 100%;
+      // height: 100%;
       position: absolute;
       top:0;
       left: 0;
