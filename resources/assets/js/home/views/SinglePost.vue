@@ -104,6 +104,7 @@
       <side-news v-if="this.$env.mobile == false" />
     </div>
     <div class="related-posts">
+      <img src="/img/stars-posts.svg" alt="" class="stars">
       <h2>חדשות נוספות</h2>
       <carousel
         v-if="relevantPosts"
@@ -293,7 +294,7 @@ export default {
     font-weight: bold;
   }
   .post-content nav a img {
-    display: none;
+    /* display: none; */
   }
   .post-content nav .next-post {
     flex-grow:2;
@@ -404,6 +405,7 @@ export default {
     border: 8px solid;
     border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
     border-image-slice: 1;
+    padding: 16px 0;
   }
   .opinion h2 {
     text-align: center;
@@ -490,6 +492,9 @@ export default {
     text-decoration-color: #333;
     text-decoration: none;
   }
+  .related-posts .stars {
+    display: none;
+  }
   .related-post h3 {
     color:#333;
     text-decoration-color: #333;
@@ -534,6 +539,9 @@ export default {
     }
   }
   @media (max-width:768px) {
+    .opinion {
+      padding: 0;
+    }
     .related-posts h2 {
       display: block;
       position: relative;
@@ -554,6 +562,35 @@ export default {
       bottom:-10px;
       left:50%;
       transform:translateX(-50%);
+    }
+    .related-posts {
+      position: relative;
+    }
+    .related-posts .stars {
+      display: block;
+      object-fit: contain;
+      width:100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index:-1;
+    }
+    .related-posts:before {
+      /* content:url('/img/stars-posts.svg');
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat; */
     }
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     /* likes counter: 3 */

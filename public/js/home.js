@@ -3039,6 +3039,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {}
@@ -3047,7 +3049,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       liked: 0,
       disliked: 0,
-      clicked: false
+      clicked: false,
+      showPercents: false,
+      showIcons: true
     };
   },
   methods: {
@@ -3057,6 +3061,8 @@ __webpack_require__.r(__webpack_exports__);
       this.liked = this.data.likes;
       this.liked++;
       this.clicked = true;
+      this.showPercents = true;
+      this.showIcons = false;
       makeItRain(70, this.$refs.body);
       axios.post('/likeSinglePhoto', {
         serviceId: this.data.id
@@ -3068,6 +3074,8 @@ __webpack_require__.r(__webpack_exports__);
       this.liked = this.data.likes;
       this.disliked++;
       this.clicked = true;
+      this.showPercents = true;
+      this.showIcons = false;
       makeItRain(70, this.$refs.body);
       axios.post('/dislikeSinglePhoto', {
         serviceId: this.data.id
@@ -3084,10 +3092,13 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.disliked / sum * 100;
       } else {
         var k = 100;
-      } // console.log(k);
+      }
 
-
-      return k + '%';
+      console.log(k);
+      return {
+        text: k + '%',
+        num: k
+      };
     },
     dislikeHeight: function dislikeHeight() {
       var sum = this.disliked + this.liked;
@@ -3099,7 +3110,10 @@ __webpack_require__.r(__webpack_exports__);
       } // console.log(k);
 
 
-      return k + '%';
+      return {
+        text: k + '%',
+        num: k
+      };
     }
   }
 });
@@ -5494,6 +5508,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5799,7 +5814,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".like-survey[data-v-df04116c] {\n  border: 8px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n}\n.like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n  position: relative;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}\n@media (max-width: 768px) {\n.like-survey img[data-v-df04116c] {\n    height: 300px;\n}\n.like-survey .body .title[data-v-df04116c] {\n    line-height: 24px;\n    font-size: 24px;\n    padding-bottom: 16px;\n    text-align: center;\n}\n}", ""]);
+exports.push([module.i, ".like-survey[data-v-df04116c] {\n  border: 8px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n}\n.like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n  position: relative;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.like-survey .body .buttons button .percent[data-v-df04116c] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  color: #fff;\n  z-index: 2;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n  font-weight: bold;\n  font-size: 24px;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}\n@media (max-width: 768px) {\n.like-survey img[data-v-df04116c] {\n    height: 300px;\n}\n.like-survey .body .title[data-v-df04116c] {\n    line-height: 24px;\n    font-size: 24px;\n    padding-bottom: 16px;\n    text-align: center;\n}\n}\n@media (max-width: 550px) {\n.like-survey .body .buttons button[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n    width: 36px;\n}\n}", ""]);
 
 // exports
 
@@ -6312,7 +6327,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  display: none;\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 8px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:12px;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:12px;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  /* display: none; */\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 8px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n  padding: 16px 0;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:12px;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:12px;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-posts .stars[data-v-3e64b357] {\n  display: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.opinion[data-v-3e64b357] {\n    padding: 0;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n.related-posts[data-v-3e64b357] {\n    position: relative;\n}\n.related-posts .stars[data-v-3e64b357] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width:100%;\n    height: 100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index:-1;\n}\n.related-posts[data-v-3e64b357]:before {\n    /* content:url('/img/stars-posts.svg');\n    width:100%;\n    height:100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-position: center;\n    background-size: 100% 100%;\n    background-repeat: no-repeat; */\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -47891,6 +47906,12 @@ var render = function() {
             on: { click: _vm.dislike }
           },
           [
+            _vm.showPercents
+              ? _c("span", { staticClass: "percent" }, [
+                  _vm._v("%" + _vm._s(Math.floor(_vm.dislikeHeight.num)))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "yellow-star" }, [
               _c(
                 "svg",
@@ -47917,7 +47938,7 @@ var render = function() {
               "div",
               {
                 staticClass: "gray-star",
-                style: { height: _vm.dislikeHeight }
+                style: { height: _vm.dislikeHeight.text }
               },
               [
                 _c(
@@ -47942,36 +47963,38 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "svg",
-              {
-                staticClass: "icon",
-                attrs: {
-                  width: "52",
-                  height: "50",
-                  viewBox: "0 0 52 50",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8.47382 33.895H1.6948C0.762844 33.895 0 33.136 0 32.2003V1.69455C0 0.759242 0.759499 4.67107e-05 1.6948 4.67107e-05H8.47382C9.40913 4.67107e-05 10.1686 0.759344 10.1686 1.69455V32.2003C10.1686 33.136 9.40568 33.895 8.47382 33.895Z",
-                    fill: "white"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M47.6798 33.895C47.4068 33.9412 34.6272 33.895 34.6272 33.895L36.4122 38.7649C37.6439 42.1283 36.8464 47.2639 33.4289 49.0897C32.3162 49.6843 30.7615 49.9828 29.5081 49.6673C28.7892 49.4864 28.1575 49.0105 27.7809 48.3729C27.3479 47.6396 27.3926 46.7835 27.2384 45.9704C26.8473 43.908 25.8728 41.947 24.3636 40.4752C21.7324 37.9089 13.5586 30.5056 13.5586 30.5056V3.38931H41.8046C45.616 3.38708 48.1138 7.64335 46.234 10.968C48.4747 12.4031 49.2411 15.426 47.9288 17.747C50.1696 19.1821 50.9359 22.205 49.6236 24.526C53.4899 27.0022 52.1973 33.1309 47.6798 33.895Z",
-                    fill: "white"
-                  }
-                })
-              ]
-            )
+            _vm.showIcons
+              ? _c(
+                  "svg",
+                  {
+                    staticClass: "icon",
+                    attrs: {
+                      width: "52",
+                      height: "50",
+                      viewBox: "0 0 52 50",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M8.47382 33.895H1.6948C0.762844 33.895 0 33.136 0 32.2003V1.69455C0 0.759242 0.759499 4.67107e-05 1.6948 4.67107e-05H8.47382C9.40913 4.67107e-05 10.1686 0.759344 10.1686 1.69455V32.2003C10.1686 33.136 9.40568 33.895 8.47382 33.895Z",
+                        fill: "white"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M47.6798 33.895C47.4068 33.9412 34.6272 33.895 34.6272 33.895L36.4122 38.7649C37.6439 42.1283 36.8464 47.2639 33.4289 49.0897C32.3162 49.6843 30.7615 49.9828 29.5081 49.6673C28.7892 49.4864 28.1575 49.0105 27.7809 48.3729C27.3479 47.6396 27.3926 46.7835 27.2384 45.9704C26.8473 43.908 25.8728 41.947 24.3636 40.4752C21.7324 37.9089 13.5586 30.5056 13.5586 30.5056V3.38931H41.8046C45.616 3.38708 48.1138 7.64335 46.234 10.968C48.4747 12.4031 49.2411 15.426 47.9288 17.747C50.1696 19.1821 50.9359 22.205 49.6236 24.526C53.4899 27.0022 52.1973 33.1309 47.6798 33.895Z",
+                        fill: "white"
+                      }
+                    })
+                  ]
+                )
+              : _vm._e()
           ]
         ),
         _vm._v(" "),
@@ -47983,6 +48006,12 @@ var render = function() {
             on: { click: _vm.like }
           },
           [
+            _vm.showPercents
+              ? _c("span", { staticClass: "percent" }, [
+                  _vm._v("%" + _vm._s(Math.floor(_vm.likeHeight.num)))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "yellow-star" }, [
               _c(
                 "svg",
@@ -48007,7 +48036,10 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "gray-star", style: { height: _vm.likeHeight } },
+              {
+                staticClass: "gray-star",
+                style: { height: _vm.likeHeight.text }
+              },
               [
                 _c(
                   "svg",
@@ -48031,36 +48063,38 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "svg",
-              {
-                staticClass: "icon",
-                attrs: {
-                  width: "52",
-                  height: "50",
-                  viewBox: "0 0 52 50",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8.47382 15.8999H1.6948C0.762844 15.8999 0 16.6589 0 17.5946V48.1004C0 49.0357 0.759499 49.7949 1.6948 49.7949H8.47382C9.40913 49.7949 10.1686 49.0356 10.1686 48.1004V17.5946C10.1686 16.6589 9.40568 15.8999 8.47382 15.8999Z",
-                    fill: "white"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M47.6798 15.8999C47.4068 15.8537 34.6272 15.8999 34.6272 15.8999L36.4122 11.0301C37.6439 7.66662 36.8464 2.53101 33.4289 0.705208C32.3162 0.110668 30.7615 -0.18792 29.5081 0.1276C28.7892 0.308476 28.1575 0.784392 27.7809 1.42202C27.3479 2.15536 27.3926 3.01138 27.2384 3.82452C26.8473 5.88695 25.8728 7.8479 24.3636 9.31975C21.7324 11.886 13.5586 19.2894 13.5586 19.2894V46.4056H41.8046C45.616 46.4078 48.1138 42.1516 46.234 38.827C48.4747 37.3918 49.2411 34.3689 47.9288 32.0479C50.1696 30.6128 50.9359 27.5899 49.6236 25.2689C53.4899 22.7927 52.1973 16.664 47.6798 15.8999Z",
-                    fill: "white"
-                  }
-                })
-              ]
-            )
+            _vm.showIcons
+              ? _c(
+                  "svg",
+                  {
+                    staticClass: "icon",
+                    attrs: {
+                      width: "52",
+                      height: "50",
+                      viewBox: "0 0 52 50",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M8.47382 15.8999H1.6948C0.762844 15.8999 0 16.6589 0 17.5946V48.1004C0 49.0357 0.759499 49.7949 1.6948 49.7949H8.47382C9.40913 49.7949 10.1686 49.0356 10.1686 48.1004V17.5946C10.1686 16.6589 9.40568 15.8999 8.47382 15.8999Z",
+                        fill: "white"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M47.6798 15.8999C47.4068 15.8537 34.6272 15.8999 34.6272 15.8999L36.4122 11.0301C37.6439 7.66662 36.8464 2.53101 33.4289 0.705208C32.3162 0.110668 30.7615 -0.18792 29.5081 0.1276C28.7892 0.308476 28.1575 0.784392 27.7809 1.42202C27.3479 2.15536 27.3926 3.01138 27.2384 3.82452C26.8473 5.88695 25.8728 7.8479 24.3636 9.31975C21.7324 11.886 13.5586 19.2894 13.5586 19.2894V46.4056H41.8046C45.616 46.4078 48.1138 42.1516 46.234 38.827C48.4747 37.3918 49.2411 34.3689 47.9288 32.0479C50.1696 30.6128 50.9359 27.5899 49.6236 25.2689C53.4899 22.7927 52.1973 16.664 47.6798 15.8999Z",
+                        fill: "white"
+                      }
+                    })
+                  ]
+                )
+              : _vm._e()
           ]
         )
       ])
@@ -51885,6 +51919,11 @@ var render = function() {
       "div",
       { staticClass: "related-posts" },
       [
+        _c("img", {
+          staticClass: "stars",
+          attrs: { src: "/img/stars-posts.svg", alt: "" }
+        }),
+        _vm._v(" "),
         _c("h2", [_vm._v("חדשות נוספות")]),
         _vm._v(" "),
         _vm.relevantPosts
