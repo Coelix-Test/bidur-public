@@ -69,7 +69,7 @@ export default {
   @media (max-width:768px) {
     .home {
       flex-direction:column;
-      padding: 0 12px 48px;
+      padding: 0 0 48px;
       margin-bottom: 0;
     }
 

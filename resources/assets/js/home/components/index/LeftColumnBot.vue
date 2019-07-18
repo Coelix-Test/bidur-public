@@ -154,11 +154,13 @@ export default {
     }
     .left-column-bot {
       order: 4;
-      width:100%;
+      width:calc(100% - 16px);
       flex-basis:100%;
-      margin-right: 0;
+      margin-right: 8px;
+      margin-left: 8px;
       transform:translateX(0);
       margin-top: 8px;
+
     }
     .insta-features div img {
       width:30px;

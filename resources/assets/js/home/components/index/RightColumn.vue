@@ -374,7 +374,8 @@ export default {
   }
   @media (max-width:768px) {
     .right-column {
-      padding-left: 0;
+      padding-left: 8px;
+      padding-right: 8px;
       order:3;
       display: flex;
       width: 100%;

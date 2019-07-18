@@ -259,6 +259,8 @@ export default {
       padding-left: 0;
       margin-bottom: 16px;
       margin-top: 8px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
   }
   @media (max-width:550px) {

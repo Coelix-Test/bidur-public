@@ -123,7 +123,7 @@
               <h3>{{ post.title }}</h3>
               <p class="related-post-meta">
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
-                <span class="author">by {{post.author}}</span>
+                <span class="author">{{post.author}}</span>
               </p>
               <p class="excerpt">
                 {{ post.excerpt }}

@@ -258,6 +258,8 @@ export default {
     }
     .left-column {
       order:1;
+      padding-left: 8px;
+      padding-right: 8px;
     }
     .posts-column article {
       height:300px;

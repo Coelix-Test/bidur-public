@@ -1,7 +1,7 @@
 <template>
   <div class="recent-posts-mobile">
     <surveys mobile />
-    <div class="latest-posts">
+    <div class="latest-posts" v-if="false">
       <h2>חדשות נוספות</h2>
 
       <carousel
@@ -29,6 +29,39 @@
           </router-link>
         </slide>
       </carousel>
+
+    </div>
+    <div class="related-posts">
+      <img src="/img/stars-posts.svg" alt="" class="stars">
+      <h2>חדשות נוספות</h2>
+      <carousel
+        v-if="posts"
+        :rtl="true"
+        :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
+        navigationEnabled
+        navigationNextLabel="<img src='img/chevron-to-left.svg' />"
+        navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
+      >
+        <slide v-for="(post, i) in posts" class="related-post" :key="post.id + '-' + i">
+          <router-link :to="'/post/'+post.id+'/#'">
+
+
+            <img :src="post.img" alt="">
+            <div class="related-post-content">
+              <h3>{{ post.title }}</h3>
+              <p class="related-post-meta">
+                <span class="author">{{post.author}}</span>
+                <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
+
+              </p>
+              <p class="excerpt">
+                {{ post.excerpt }}
+              </p>
+            </div>
+          </router-link>
+        </slide>
+      </carousel>
+
     </div>
   </div>
 </template>
@@ -277,7 +310,8 @@ export default {
       order: 6;
       flex-basis:100%;
       width:100%;
-      padding-left: 0;
+      padding-left: 8px;
+      padding-right: 8px;
       margin-bottom: 16px;
       margin-top: 46px;
     }
@@ -306,5 +340,144 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
+  }
+  .related-post {
+    width: 100%;
+    padding:0 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 24px;
+    text-decoration: none;
+  }
+  .related-post .author {
+    color:#000;
+    font-weight: 900;
+  }
+  .related-posts::v-deep .VueCarousel-dot-container {
+    margin-top: 0!important;
+    margin-bottom: 20px!important;
+  }
+  .related-posts::v-deep .VueCarousel-dot {
+    margin-top: 10px!important;;
+    padding: 7px!important;
+  }
+  .related-posts::v-deep .VueCarousel-dot.VueCarousel-dot--active {
+    background-color: #FCD77E!important;
+
+  }
+  .related-posts::v-deep .VueCarousel-navigation-button {
+    transform: scale(1.6) translateY(-50%);
+    outline: none;
+    margin:0!important;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev {
+    right:0;
+    left:unset;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev img {
+    transform:rotate(180deg);
+  }
+  .related-posts::v-deep .VueCarousel-navigation-next {
+    left:0;
+    right:unset;
+  }
+  .related-post img {
+    width: 220px;
+    height: 180px;
+    object-fit: cover;
+    width:100%;
+  }
+  .related-post a {
+    text-decoration-color: #333;
+    text-decoration: none;
+    width:100%;
+  }
+  .related-posts .stars {
+    display: none;
+  }
+  .related-post h3 {
+    color:#F2C94C;
+    text-decoration-color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .related-post-content {
+    padding-right: 16px;
+    color:#333333;
+    padding-left: 16px;
+  }
+  .related-post-meta {
+    color:#333;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .related-post-meta .date {
+    padding-right: 6px;
+    margin-right: 6px;
+    border-right: 1px solid #333;
+
+  }
+  .related-post-content .excerpt {
+    color:#828282;
+    font-size: 16px;
+  }
+  .share {
+    color:#333333;
+    text-decoration-color:#333333;
+  }
+  .related-posts h2 {
+      display: none;
+  }
+  @media (max-width:768px) {
+
+    .related-posts h2 {
+      display: block;
+      position: relative;
+      text-align: center;
+      width:100%;
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+
+    }
+    .related-posts h2:after {
+      content:'';
+      position: absolute;
+      background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+      width:60px;
+      height:6px;
+      border-radius: 5px;
+      bottom:-10px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+    .related-posts {
+      position: relative;
+      margin-right: -8px;
+      margin-left: -8px;
+      margin-top: 8px;
+    }
+    .related-posts .stars {
+      display: block;
+      object-fit: contain;
+      width:100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index:-1;
+    }
+
   }
 </style>
