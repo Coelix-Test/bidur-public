@@ -473,18 +473,18 @@ export default {
     outline: none;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev {
-    right:0;
+    right:-12px;
     left:unset;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev img {
     transform:rotate(180deg);
   }
   .related-posts::v-deep .VueCarousel-navigation-next {
-    left:0;
+    left:-12px;
     right:unset;
   }
   .related-post img {
-    width: 220px;
+    width: 100%;
     height: 350px;
     object-fit: cover;
 
@@ -543,6 +543,7 @@ export default {
     .opinion {
       padding: 0;
     }
+
     .related-posts h2 {
       display: block;
       position: relative;
@@ -673,6 +674,9 @@ export default {
     }
     .related-post img {
       margin-bottom: 8px;
+    }
+    .related-post a {
+      width:100%;
     }
     section.survey {
       padding:0;
