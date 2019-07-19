@@ -1,16 +1,29 @@
 <template>
   <div class="left-column posts-column">
-
-    <article v-in-viewport.once v-for="post in posts" >
-      <router-link :to="'/post/'+post.id">
+    <article v-in-viewport.once class="first" >
+      <router-link :to="'/post/'+posts[0].id">
         <!-- {{post}} -->
         <div class="overlay"></div>
-        <img :src="post.img" alt="">
+        <img :src="posts[0].img" alt="">
         <!-- <h2 class="typewriter">{{post.title}}</h2> -->
-        <type-writer class="h2" :text="post.title"></type-writer>
+        <type-writer class="h2" :text="posts[0].title"></type-writer>
         <p>
-          <span class="author">{{ post.author }}</span>
-          <span class="post-date">{{  new Date(post.time*1000) | formatDate }}</span>
+          <span class="author">{{ posts[0].author }}</span>
+          <span class="post-date">{{  new Date(posts[0].time*1000) | formatDate }}</span>
+
+        </p>
+      </router-link>
+    </article>
+    <surveys v-if="this.$env.mobile == true" is_first />
+    <article v-in-viewport.once class="second">
+      <router-link :to="'/post/'+posts[1].id">
+        <div class="overlay"></div>
+        <img :src="posts[1].img" alt="">
+
+        <type-writer class="h2" :text="posts[1].title"></type-writer>
+        <p>
+          <span class="author">{{ posts[1].author }}</span>
+          <span class="post-date">{{  new Date(posts[1].time*1000) | formatDate }}</span>
 
         </p>
       </router-link>
@@ -20,6 +33,8 @@
 
 <script>
 import TypeWriter from './../common/TypeWriter.vue';
+import Surveys from './Surveys';
+
 export default {
   props : {
     data : {
@@ -34,7 +49,8 @@ export default {
     }
   },
   components: {
-    TypeWriter
+    TypeWriter,
+    Surveys,
   },
   mounted() {
 
@@ -88,7 +104,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(60deg, #F2C94C, #F2C94C, #F2C94C, #F2C94C, #CD9E25, #CD9E25, #CD9E25, #CD9E25);
+    background: linear-gradient(278.13deg, #87682C 1%, #FCD77E 100%);
     z-index: -1;
     animation: animatedgradient 3s ease alternate infinite;
     background-size: 300% 300%;
@@ -237,15 +253,19 @@ export default {
     }
   }
   @media (max-width:768px) {
-
     .posts-column {
       padding-right: 0;
     }
     .left-column {
       order:1;
+      padding-left: 8px;
+      padding-right: 8px;
     }
     .posts-column article {
-      height:250px;
+      height:350px;
+    }
+    .posts-column article.second {
+      margin-top: 8px;
     }
     /* .posts-column article:nth-child(1) {
       height:250px;
@@ -258,6 +278,10 @@ export default {
     }
     .posts-column article {
       margin-bottom: 8px;
+    }
+    .posts-column article:nth-child(2) {
+      margin-bottom: 0;
+      margin-top: 8px;
     }
     .posts-column article .h2 {
       font-size: 20px;

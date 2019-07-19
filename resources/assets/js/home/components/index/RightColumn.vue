@@ -374,13 +374,15 @@ export default {
   }
   @media (max-width:768px) {
     .right-column {
-      padding-left: 0;
+      padding-left: 8px;
+      padding-right: 8px;
       order:3;
       display: flex;
       width: 100%;
       flex-direction: column-reverse;
     }
     ul.posts li {
+      overflow: hidden;
       flex-basis: calc(50% - 4px);
     }
     ul.posts li a .h2 {
@@ -416,9 +418,10 @@ export default {
       box-sizing: content-box;
     }
     ul.posts li a p {
-      font-size: 13px;
-      line-height: 13px;
+      font-size: 11px;
+      line-height: 11px;
       margin-top: 8px;
+      white-space: nowrap;
     }
   }
   @media (max-width:550px) {

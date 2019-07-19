@@ -3884,14 +3884,18 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       posts: null,
       searchQuery: null,
       deletedPostsCount: 0,
+      deletedPosts: [],
       page: 0,
-      loading: false
+      loading: false,
+      end: false
     };
   },
   methods: {
@@ -3912,9 +3916,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         axios.post('/deletePost', {
           id: id
         }).then(function (res) {
-          _this.posts = res.data;
+          if (res.data.success) {
+            _this.deletedPostsCount++;
+
+            _this.deletedPosts.push(id);
+          }
         });
       }
+    },
+    isDeletedPost: function isDeletedPost(id) {
+      return this.deletedPosts.indexOf(id) > -1;
     },
     renderSearch: function renderSearch() {
       var _this2 = this;
@@ -3942,7 +3953,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       }).then(function (res) {
         _this3.loading = false;
 
-        if (!res.data) {
+        if (res.data.hasOwnProperty('success')) {
           var data = [];
         } else {
           var data = res.data;
@@ -27982,62 +27993,68 @@ var render = function() {
       [
         _vm._l(_vm.posts, function(post) {
           return _vm.posts
-            ? _c("div", { key: post.post.id, staticClass: "post" }, [
-                _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
-                _vm._v(" "),
-                _c("div", { staticClass: "post-meta" }, [
-                  _c("span", { staticClass: "date" }, [
-                    _vm._v(_vm._s(_vm._f("formatDate")(post.post.created_at)))
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "author" }, [
-                    _vm._v("מאת " + _vm._s(post.post.author))
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "id" }, [
-                    _vm._v("#" + _vm._s(post.post.id))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "actions" },
-                  [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: ".#/post/" + post.post.id,
-                          target: "_blank"
-                        }
-                      },
-                      [_vm._v("צפייה")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/post/" + post.post.id } },
-                      [_vm._v("ערוך")]
-                    ),
-                    _vm._v(" "),
-                    post.is_in_main_section == null
-                      ? _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.deletePost(post.post.id)
+            ? [
+                !_vm.isDeletedPost(post.post.id)
+                  ? _c("div", { key: post.post.id, staticClass: "post" }, [
+                      _c("h2", [_vm._v(_vm._s(post.post.metaTitle))]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "post-meta" }, [
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v(
+                            _vm._s(_vm._f("formatDate")(post.post.created_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "author" }, [
+                          _vm._v("מאת " + _vm._s(post.post.author))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "id" }, [
+                          _vm._v("#" + _vm._s(post.post.id))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "actions" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: ".#/post/" + post.post.id,
+                                target: "_blank"
                               }
-                            }
-                          },
-                          [_vm._v("מחק כתבה")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ])
+                            },
+                            [_vm._v("צפייה")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/post/" + post.post.id } },
+                            [_vm._v("ערוך")]
+                          ),
+                          _vm._v(" "),
+                          post.is_in_main_section == null
+                            ? _c(
+                                "button",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.deletePost(post.post.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("מחק כתבה")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ])
+                  : _vm._e()
+              ]
             : _vm._e()
         }),
         _vm._v(" "),
@@ -49580,11 +49597,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< Updated upstream
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\admin\admin.js */"./resources/assets/js/admin/admin.js");
-=======
 module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
->>>>>>> Stashed changes
 
 
 /***/ })

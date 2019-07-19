@@ -48,5 +48,10 @@ export default {
     width: 100%;
   }
 }
+@media(max-width:768px) {
+  .hearth-button {
+    width:100px;
+  }
+}
 
 </style>

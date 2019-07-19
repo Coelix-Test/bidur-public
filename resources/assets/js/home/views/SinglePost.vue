@@ -10,15 +10,15 @@
           <type-writer once :text="post.data.post.mainTitle"/>
         </h1>
         <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/icons/star-gradient.png" alt=" ">
           הוסף למועדפים
         </button>
         <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/icons/star-gradient.png" alt="">
           הסר ממועדפים
         </button>
         <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
-          <img src="/img/Star.svg" alt="">
+          <img src="/img/icons/star-gradient.png" alt="">
           הוסף למועדפים
         </button>
 
@@ -78,7 +78,7 @@
         </div>
 
 
-        <nav>
+        <nav v-if="false">
 
           <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
             <img src="/img/arrow-right.svg">
@@ -103,14 +103,18 @@
 
 
 
-      <side-news />
+      <side-news v-if="this.$env.mobile == false" />
     </div>
     <div class="related-posts">
-
+      <img src="/img/stars-posts.svg" alt="" class="stars">
+      <h2>חדשות נוספות</h2>
       <carousel
         v-if="relevantPosts"
         :rtl="true"
-        :perPageCustom="[[320, 1], [768, 2], [769, 3]]"
+        :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
+        navigationEnabled
+        navigationNextLabel="<img src='img/chevron-to-left.svg' />"
+        navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
       >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
           <router-link :to="'/post/'+post.id+'/#'">
@@ -121,7 +125,7 @@
               <h3>{{ post.title }}</h3>
               <p class="related-post-meta">
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
-                <span class="author">by {{post.author}}</span>
+                <span class="author">{{post.author}}</span>
               </p>
               <p class="excerpt">
                 {{ post.excerpt }}
@@ -169,7 +173,7 @@ export default {
       axios
         .post('/addPostToFavourite',{postId : id})
           .then( res=>{
-            console.log(res.data);
+            // console.log(res.data);
             alert('הוסף פוסט למועדפים!');
           });
     },
@@ -213,7 +217,7 @@ export default {
               }
             } else {
               axios.post('/getRecentPosts').then(res => {
-                this.relevantPosts = res.data;
+                this.relevantPosts = res.data.splice(0,6);
               });
             }
             this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
@@ -259,7 +263,7 @@ export default {
   mounted() {
     let els = this.$el.getElementsByTagName('p');
 
-    console.log(els);
+    // console.log(els);
   }
 }
 
@@ -289,8 +293,12 @@ export default {
     margin-bottom: 16px;
   }
   .post-content nav a {
-    color:#BDBDBD;
+    color:#FCD77E;
     font-size: 18px;
+    font-weight: bold;
+  }
+  .post-content nav a img {
+    /* display: none; */
   }
   .post-content nav .next-post {
     flex-grow:2;
@@ -398,7 +406,10 @@ export default {
     max-width: 550px;
   }
   .opinion {
-
+    border: 4px solid;
+    border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+    border-image-slice: 1;
+    padding: 16px 0;
   }
   .opinion h2 {
     text-align: center;
@@ -440,6 +451,7 @@ export default {
     width: 100%;
     padding:0 24px;
   }
+
   .related-post {
     display: flex;
     flex-direction: row;
@@ -453,16 +465,40 @@ export default {
     margin-bottom: 20px!important;
   }
   .related-posts::v-deep .VueCarousel-dot {
-    margin-top: 10px!important;
+    margin-top: 10px!important;;
+    padding: 7px!important;
+  }
+  .related-posts::v-deep .VueCarousel-dot.VueCarousel-dot--active {
+    background-color: #FCD77E!important;
+
+  }
+  .related-posts::v-deep .VueCarousel-navigation-button {
+    transform: scale(1.6) translateY(-50%);
+    outline: none;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev {
+    right:-12px;
+    left:unset;
+  }
+  .related-posts::v-deep .VueCarousel-navigation-prev img {
+    transform:rotate(180deg);
+  }
+  .related-posts::v-deep .VueCarousel-navigation-next {
+    left:-12px;
+    right:unset;
   }
   .related-post img {
-    width: 220px;
-    height: 180px;
+    width: 100%;
+    height: 350px;
     object-fit: cover;
+
   }
   .related-post a {
     text-decoration-color: #333;
     text-decoration: none;
+  }
+  .related-posts .stars {
+    display: none;
   }
   .related-post h3 {
     color:#333;
@@ -499,14 +535,72 @@ export default {
     color:#333333;
     text-decoration-color:#333333;
   }
+  .related-posts h2 {
+      display: none;
+  }
   @media (max-width:1024px) {
     .post-wrapper {
       flex-direction: column;
     }
   }
   @media (max-width:768px) {
+    .opinion {
+      padding: 0;
+    }
 
+    .related-posts h2 {
+      display: block;
+      position: relative;
+      text-align: center;
+      width:100%;
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+
+    }
+    .related-posts h2:after {
+      content:'';
+      position: absolute;
+      background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
+      width:60px;
+      height:6px;
+      border-radius: 5px;
+      bottom:-10px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+    .related-posts {
+      position: relative;
+      margin-top: 32px;
+    }
+    .related-posts .stars {
+      display: block;
+      object-fit: contain;
+      width:100%;
+      /* height: 100%; */
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index:-1;
+    }
+    .related-posts:before {
+      /* content:url('/img/stars-posts.svg');
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat; */
+    }
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
+    /* likes counter: 3 */
     h1.main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
@@ -577,12 +671,16 @@ export default {
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex-basis:100%;
     }
     .related-post-meta {
       justify-content: center;
     }
     .related-post img {
       margin-bottom: 8px;
+    }
+    .related-post a {
+      width:100%;
     }
     section.survey {
       padding:0;
