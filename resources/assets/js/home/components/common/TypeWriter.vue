@@ -18,16 +18,14 @@ export default {
   },
   methods: {
     typeWriter() {
-
-      if (this.textToShow.length < this.text.length) {
+      if(this.textToShow.length < this.text.length) {
         this.textToShow += this.text.charAt(this.textToShow.length);
-        if(this.textToShow.length < this.text.length){
+        if(this.textToShow.length < this.text.length) {
           setTimeout(this.typeWriter, this.speed);
-        }else{
+        } else {
           setTimeout(this.typeWriter, this.pause);
         }
-      }
-      else{
+      } else {
         this.textToShow = '';
         setTimeout(this.typeWriter, this.speed);
       }

@@ -6,7 +6,9 @@
       <div v-if="post" class="post-content">
 
 
-        <h1 class="main-title" v-if="post.data.post.mainTitle">{{ post.data.post.mainTitle }}</h1>
+        <h1 class="main-title" v-if="post.data.post.mainTitle">
+          <type-writer :text="post.data.post.mainTitle"/>
+        </h1>
         <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
           <img src="/img/Star.svg" alt="">
           הוסף למועדפים
@@ -138,6 +140,7 @@
 <script>
 
 import VuePoll from 'vue-poll'
+import TypeWriter from './../components/common/TypeWriter.vue'
 import Share from './../components/single-post/Share.vue'
 import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
@@ -251,6 +254,7 @@ export default {
     Emoji,
     LikeSurvey,
     OneSurvey,
+    TypeWriter,
   },
   mounted() {
     let els = this.$el.getElementsByTagName('p');
