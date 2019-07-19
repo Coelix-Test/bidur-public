@@ -493,7 +493,7 @@ export default {
     width: 100%;
     height: 350px;
     object-fit: cover;
-
+    padding: 10px;
   }
   .related-post a {
     text-decoration-color: #333;
