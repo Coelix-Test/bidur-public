@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable implements CanResetPassword
 {
-    use Notifiable;
+    use Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.

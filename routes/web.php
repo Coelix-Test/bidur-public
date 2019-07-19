@@ -15,7 +15,7 @@
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'MainController@getRecentPosts');
+Route::get('/test2', 'AdminController@testExel');
 //Route::post('/test/{id}', 'MainController@getRecentPosts')->name('test');
 
 

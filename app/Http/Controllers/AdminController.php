@@ -31,8 +31,7 @@ use Carbon\Carbon;
 use Illuminate\Container\RewindableGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 
 /*
@@ -1472,6 +1471,105 @@ class AdminController extends Controller
 
     }
 
+
+    public function testExel(){
+        $reader = new Xlsx();
+        ini_set('max_execution_time', 18000);
+        try{
+            $spreadsheet = $reader->load("D:\OSPanel\domains\\newspaper\ass.xlsx");
+        }catch (\Exception $e){
+            dd($e->getMessage());
+        }
+        $cells = $spreadsheet->getAllSheets();
+        $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'P'];
+//        foreach ($columns as $column) {
+            for ($i = 2; $i < 1109; $i++){
+                echo $spreadsheet->getActiveSheet()->getCell('D'.$i)->getValue();
+                echo '<br>';
+                $title =  strip_tags($spreadsheet->getActiveSheet()->getCell('A'.$i)->getValue());
+                $author = $spreadsheet->getActiveSheet()->getCell('F'.$i)->getValue();
+                if (!empty($author)){
+                    $post = Post::create([
+                        'author' => $author,
+                        'hot' => 'false',
+                        'metaTitle' => $title
+                    ]);
+                }else{
+                    $post = Post::create([
+                        'author' => 'israel-bidur',
+                        'hot' => 'false',
+                        'metaTitle' => $title
+                    ]);
+                }
+//
+                $content = $spreadsheet->getActiveSheet()->getCell('C'.$i)->getValue();
+                if (isset($content)){
+                    PostContent::create([
+                        'postId' => $post->id,
+                        'contentText' => $content,
+                        'order' => 1
+                    ]);
+                }
+//
+                $thumbnail = $spreadsheet->getActiveSheet()->getCell('D'.$i)->getValue();
+                $description = $spreadsheet->getActiveSheet()->getCell('P'.$i)->getValue();
+                if (isset($thumbnail)){
+                    if (isset($description)){
+                        PostImage::create([
+                            'postId' => $post->id,
+                            'url' => $thumbnail,
+                            'order' => 2,
+                            'description' => $description
+                        ]);
+                    }else{
+                        PostImage::create([
+                            'postId' => $post->id,
+                            'url' => $thumbnail,
+                            'order' => 2,
+                        ]);
+                    }
+                }
+
+                $surveyImage = $spreadsheet->getActiveSheet()->getCell('I'.$i)->getValue();
+                $surveyTitle = $spreadsheet->getActiveSheet()->getCell('N'.$i)->getValue();
+                $surveyLikes = $spreadsheet->getActiveSheet()->getCell('R'.$i)->getValue();
+                $surveyDislikes = $spreadsheet->getActiveSheet()->getCell('S'.$i)->getValue();
+//
+                if (isset($surveyImage) && isset($surveyTitle)){
+                    $survey = SingleLikableImage::create([
+                        'url' => $surveyImage,
+                        'postId' => $post->id,
+                        'description' => $surveyTitle,
+                        'order' => 3,
+                    ]);
+                }
+//
+                if (isset($survey) && isset($surveyLikes)){
+                    for ($inner = 0; $inner < (int)$surveyLikes; $inner++){
+                        LikesForSingleImage::create([
+                            'userId' => 0,
+                            'serviceId' => $survey->id,
+                        ]);
+                    }
+                }
+
+                if (isset($survey) && isset($surveyDislikes)){
+                    for ($inner = 0; $inner < (int)$surveyDislikes; $inner++){
+                        DisLikesForSingleImage::create([
+                            'userId' => 0,
+                            'serviceId' => $survey->id,
+                        ]);
+                    }
+                }
+//
+//
+//                echo '<hr>';
+            }
+//        }
+
+//        dd($spreadsheet->getActiveSheet()->getCell('C9')->getValue());
+
+    }
 
 
 

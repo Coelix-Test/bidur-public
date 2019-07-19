@@ -706,10 +706,6 @@ class MainController extends Controller
         }
     }
 
-    public function test(){
-        $post = Post::find(86);
-        dd($post->getCompare()->get());
-    }
 
     public function sendMail(Request $request){
         $name = $request->get('name');
@@ -727,8 +723,6 @@ class MainController extends Controller
         }catch (\Exception $exception){
             return ['success' => false, 'message' => $exception->getMessage()];
         }
-
-
     }
 
     public function addPostToFavourite(Request $request){
