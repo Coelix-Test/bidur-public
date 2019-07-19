@@ -15,9 +15,21 @@
   <script type="text/javascript" async="async" src="//widgets.outbrain.com/outbrain.js"></script>
 </head>
 <body>
-
     <div id="home"></div>
     @include('parts/footer')
+
+    <div id="preloader">
+      <div>
+        <img src="img/logo-yellow.png">
+      </div>
+      <div>
+        <div class="blue ball"></div>
+        <div class="red ball"></div>
+        <div class="yellow ball"></div>
+        <div class="green ball"></div>
+      </div>
+    </div>
+    
     <script src="/js/home.js" charset="utf-8"></script>
 </body>
 </html>

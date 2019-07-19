@@ -280,6 +280,7 @@ export default {
     outline:none;
     transform: translateX(0) translateY(-50%);
     z-index:2;
+    padding: 8px 0 !important;
   }
   .latest-posts::v-deep .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button img {
     width:40px;
@@ -371,10 +372,11 @@ export default {
     transform: scale(1.6) translateY(-50%);
     outline: none;
     margin:0!important;
+    padding: 8px 0 !important;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev {
-    right:0;
-    left:unset;
+    right: 0;
+    left: unset;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev img {
     transform:rotate(180deg);

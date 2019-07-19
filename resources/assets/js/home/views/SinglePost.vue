@@ -475,6 +475,8 @@ export default {
   .related-posts::v-deep .VueCarousel-navigation-button {
     transform: scale(1.6) translateY(-50%);
     outline: none;
+    padding: 8px 0 !important;
+    margin: 0 1px !important;
   }
   .related-posts::v-deep .VueCarousel-navigation-prev {
     right:-12px;
