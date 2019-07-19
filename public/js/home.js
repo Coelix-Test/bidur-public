@@ -3041,6 +3041,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {}
@@ -3063,6 +3102,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       this.showPercents = true;
       this.showIcons = false;
+      this.$refs['like'].classList.add('is_active');
+      this.$refs['dislike'].classList.add('not_active');
       makeItRain(70, this.$refs.body);
       axios.post('/likeSinglePhoto', {
         serviceId: this.data.id
@@ -3076,11 +3117,12 @@ __webpack_require__.r(__webpack_exports__);
       this.clicked = true;
       this.showPercents = true;
       this.showIcons = false;
+      this.$refs['dislike'].classList.add('is_active');
+      this.$refs['like'].classList.add('not_active');
       makeItRain(70, this.$refs.body);
       axios.post('/dislikeSinglePhoto', {
         serviceId: this.data.id
-      }).then(function (res) {
-        console.log(res);
+      }).then(function (res) {// console.log(res);
       });
     }
   },
@@ -3092,9 +3134,9 @@ __webpack_require__.r(__webpack_exports__);
         var k = this.disliked / sum * 100;
       } else {
         var k = 100;
-      }
+      } // console.log(k);
 
-      console.log(k);
+
       return {
         text: k + '%',
         num: k
@@ -4126,6 +4168,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     mobile: {
+      "default": false,
+      type: Boolean
+    },
+    is_first: {
       "default": false,
       type: Boolean
     }
@@ -5846,7 +5892,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".like-survey[data-v-df04116c] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n}\n.like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n  position: relative;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.like-survey .body .buttons button .percent[data-v-df04116c] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  color: #fff;\n  z-index: 2;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n  font-weight: bold;\n  font-size: 24px;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}\n@media (max-width: 768px) {\n.like-survey img[data-v-df04116c] {\n    height: 300px;\n}\n.like-survey .body .title[data-v-df04116c] {\n    line-height: 24px;\n    font-size: 24px;\n    padding-bottom: 16px;\n    text-align: center;\n}\n}\n@media (max-width: 550px) {\n.like-survey .body .buttons button[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n    width: 36px;\n}\n}", ""]);
+exports.push([module.i, ".like-survey[data-v-df04116c] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n}\n.like-survey img[data-v-df04116c] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 630px;\n}\n.like-survey .body[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-bottom: 45px;\n  padding-top: 20px;\n  position: relative;\n}\n.like-survey .body .title[data-v-df04116c] {\n  font-weight: bold;\n  font-size: 36px;\n  color: #333333;\n  padding-bottom: 10px;\n}\n.like-survey .body .buttons[data-v-df04116c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.like-survey .body .buttons button[data-v-df04116c] {\n  border: 0;\n  background: transparent;\n  position: relative;\n  margin: 0 10px;\n  width: 150px;\n  height: 142px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n}\n.like-survey .body .buttons button.is_active[data-v-df04116c] {\n  -webkit-transform: scale(1.2);\n          transform: scale(1.2);\n}\n.like-survey .body .buttons button.not_active[data-v-df04116c] {\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n}\n.like-survey .body .buttons button .percent[data-v-df04116c] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  color: #fff;\n  z-index: 2;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n  font-weight: bold;\n  font-size: 24px;\n}\n.like-survey .body .buttons button .gray-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n}\n.like-survey .body .buttons button .yellow-star[data-v-df04116c] {\n  position: absolute;\n  top: 0;\n  overflow: hidden;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c],\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n  width: 150px;\n  height: 142px;\n}\n.like-survey .body .buttons .dislike .icon[data-v-df04116c] {\n  -webkit-transform: translateY(10px);\n          transform: translateY(10px);\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n  position: relative;\n}\n@media (max-width: 768px) {\n.like-survey img[data-v-df04116c] {\n    height: 300px;\n}\n.like-survey .body .title[data-v-df04116c] {\n    line-height: 24px;\n    font-size: 24px;\n    padding-bottom: 16px;\n    text-align: center;\n}\n}\n@media (max-width: 550px) {\n.like-survey .body .buttons button[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .gray-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons button .yellow-star svg[data-v-df04116c] {\n    width: 120px;\n}\n.like-survey .body .buttons .icon[data-v-df04116c] {\n    width: 36px;\n}\n}", ""]);
 
 // exports
 
@@ -5960,7 +6006,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".latest-posts[data-v-068a545c] {\n  width: 100%;\n  max-width: 100%;\n  overflow: hidden;\n  padding: 12px 8px 0;\n}\n.latest-posts .heading[data-v-068a545c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  margin: 0 0 32px;\n}\n.latest-posts .heading button[data-v-068a545c] {\n  font-size: 20px;\n  padding: 4px 16px;\n  color: #fff;\n  /* border-color:transparent; */\n  border-style: hidden;\n  border-width: 2px;\n  background: linear-gradient(290.47deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  border-radius: 5px;\n  font-weight: 600;\n  background-clip: border-box;\n  box-sizing: border-box;\n}\n.latest-posts .heading button[data-v-068a545c]:hover {\n  color: #F2C94C;\n  background: rgba(196, 196, 196, 0.1);\n  border-style: solid;\n  border-color: #F2C94C;\n}\n.latest-post-slider[data-v-068a545c] {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  /* max-width: 600px; */\n}\n.latest-post-item[data-v-068a545c] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-item a[data-v-068a545c] {\n  text-decoration: none;\n  color: #333;\n}\n.latest-post-item[data-v-068a545c] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color: #333333;\n  text-decoration: none;\n  padding: 0 8px;\n}\n.latest-post-item img[data-v-068a545c] {\n  width: 100%;\n  height: 200px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 0;\n}\n.latest-post-item p[data-v-068a545c] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.latest-post-item p .post-date[data-v-068a545c] {\n  color: #B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space: nowrap;\n  line-height: 12px;\n}\n.latest-post-slider .VueCarousel-dot[data-v-068a545c]:focus {\n  outline: none !important;\n}\n.latest-post-item p .author[data-v-068a545c] {\n  color: black;\n  line-height: 12px;\n}\n.latest-post-item h3[data-v-068a545c] {\n  font-size: 18px;\n  line-height: 16px;\n  margin-bottom: 4px;\n  color: #333;\n  word-break: break-all;\n  font-weight: 700;\n}\n.latest-post-item h3[data-v-068a545c] {\n  color: #333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.latest-posts h2[data-v-068a545c] {\n  color: #F2C94C;\n  font-size: 40px;\n  font-weight: bold;\n  margin-bottom: 32px;\n  margin-top: 0;\n  text-align: center;\n  position: relative;\n}\n.latest-posts h2[data-v-068a545c]:after {\n  content: \"\";\n  width: 60px;\n  height: 3px;\n  background-color: #F2C94C;\n  position: absolute;\n  bottom: -12px;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n}\n.selected-poll[data-v-068a545c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-sizing: border-box;\n  border: 4px solid #E4A913;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.selected-poll img[data-v-068a545c] {\n  width: 100%;\n  height: auto;\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.poll[data-v-068a545c] {\n  width: 100%;\n}\n.selected-poll h3[data-v-068a545c] {\n  padding-top: 32px;\n  font-size: 32px;\n  color: #0E0E0E;\n  margin: 0;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel {\n  padding: 0 16px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next {\n  right: unset;\n  left: 0;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-prev {\n  left: unset;\n  right: 0;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-wrapper .VueCarousel-slide {\n  padding: 0 24px;\n  box-sizing: border-box;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button {\n  width: 40px;\n  padding: 0 !important;\n  height: 40px;\n  outline: none;\n  -webkit-transform: translateX(0) translateY(-50%);\n          transform: translateX(0) translateY(-50%);\n  z-index: 2;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button img {\n  width: 40px;\n  height: 40px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next img {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n@media (max-width: 768px) {\n.selected-poll[data-v-068a545c] {\n    margin-bottom: 8px;\n}\n.latest-post-item[data-v-068a545c] {\n    padding-left: 0;\n}\nh2[data-v-068a545c] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 768px) {\n.recent-posts-mobile[data-v-068a545c] {\n    -webkit-box-ordinal-group: 7;\n            order: 6;\n    flex-basis: 100%;\n    width: 100%;\n    padding-left: 8px;\n    padding-right: 8px;\n    margin-bottom: 16px;\n    margin-top: 46px;\n}\n.latest-post-item[data-v-068a545c] {\n    overflow: hidden;\n}\n.latest-post-item p span[data-v-068a545c]:first-child {\n    padding-bottom: 8px;\n}\n}\n@media (max-width: 550px) {\n.right-column-bot[data-v-068a545c] {\n    margin-top: 0;\n}\n}\n.like-survey[data-v-068a545c] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 50px;\n}\n.one-survey[data-v-068a545c] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 50px;\n}\n.related-post[data-v-068a545c] {\n  width: 100%;\n  padding: 0 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post .author[data-v-068a545c] {\n  color: #000;\n  font-weight: 900;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot-container {\n  margin-top: 0 !important;\n  margin-bottom: 20px !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot {\n  margin-top: 10px !important;\n  padding: 7px !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n  margin: 0 !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-prev {\n  right: 0;\n  left: unset;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-prev img {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-next {\n  left: 0;\n  right: unset;\n}\n.related-post img[data-v-068a545c] {\n  height: 250px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n}\n.related-post a[data-v-068a545c] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  width: 100%;\n}\n.related-posts .stars[data-v-068a545c] {\n  display: none;\n}\n.related-post h3[data-v-068a545c] {\n  color: #F2C94C;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 600;\n}\n.related-post-content[data-v-068a545c] {\n  padding-right: 16px;\n  color: #333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-068a545c] {\n  color: #333;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .date[data-v-068a545c] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-068a545c] {\n  color: #828282;\n  font-size: 16px;\n}\n.share[data-v-068a545c] {\n  color: #333333;\n  -webkit-text-decoration-color: #333333;\n          text-decoration-color: #333333;\n}\n.related-posts h2[data-v-068a545c] {\n  display: none;\n}\n@media (max-width: 768px) {\n.related-posts h2[data-v-068a545c] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width: 100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-068a545c]:after {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width: 60px;\n    height: 6px;\n    border-radius: 5px;\n    bottom: -10px;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n.related-posts[data-v-068a545c] {\n    position: relative;\n    margin-right: -8px;\n    margin-left: -8px;\n    margin-top: 24px;\n}\n.related-posts .stars[data-v-068a545c] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index: -1;\n}\n}", ""]);
+exports.push([module.i, ".latest-posts[data-v-068a545c] {\n  width: 100%;\n  max-width: 100%;\n  overflow: hidden;\n  padding: 12px 8px 0;\n}\n.latest-posts .heading[data-v-068a545c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  margin: 0 0 32px;\n}\n.latest-posts .heading button[data-v-068a545c] {\n  font-size: 20px;\n  padding: 4px 16px;\n  color: #fff;\n  /* border-color:transparent; */\n  border-style: hidden;\n  border-width: 2px;\n  background: linear-gradient(290.47deg, #D3A01D 1.57%, #F2C94C 98.82%);\n  border-radius: 5px;\n  font-weight: 600;\n  background-clip: border-box;\n  box-sizing: border-box;\n}\n.latest-posts .heading button[data-v-068a545c]:hover {\n  color: #F2C94C;\n  background: rgba(196, 196, 196, 0.1);\n  border-style: solid;\n  border-color: #F2C94C;\n}\n.latest-post-slider[data-v-068a545c] {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  /* max-width: 600px; */\n}\n.latest-post-item[data-v-068a545c] {\n  padding-left: 16px;\n  outline: none;\n}\n.latest-post-item a[data-v-068a545c] {\n  text-decoration: none;\n  color: #333;\n}\n.latest-post-item[data-v-068a545c] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  color: #333333;\n  text-decoration: none;\n  padding: 0 8px;\n}\n.latest-post-item img[data-v-068a545c] {\n  width: 100%;\n  height: 200px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  margin-left: 0;\n}\n.latest-post-item p[data-v-068a545c] {\n  font-size: 12px;\n  text-transform: uppercase;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n.latest-post-item p .post-date[data-v-068a545c] {\n  color: #B3AAAA;\n  padding-right: 4px;\n  border-right: 1px solid #B3AAAA;\n  margin-right: 4px;\n  white-space: nowrap;\n  line-height: 12px;\n}\n.latest-post-slider .VueCarousel-dot[data-v-068a545c]:focus {\n  outline: none !important;\n}\n.latest-post-item p .author[data-v-068a545c] {\n  color: black;\n  line-height: 12px;\n}\n.latest-post-item h3[data-v-068a545c] {\n  font-size: 18px;\n  line-height: 16px;\n  margin-bottom: 4px;\n  color: #333;\n  word-break: break-all;\n  font-weight: 700;\n}\n.latest-post-item h3[data-v-068a545c] {\n  color: #333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.latest-posts h2[data-v-068a545c] {\n  color: #F2C94C;\n  font-size: 40px;\n  font-weight: bold;\n  margin-bottom: 32px;\n  margin-top: 0;\n  text-align: center;\n  position: relative;\n}\n.latest-posts h2[data-v-068a545c]:after {\n  content: \"\";\n  width: 60px;\n  height: 3px;\n  background-color: #F2C94C;\n  position: absolute;\n  bottom: -12px;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n}\n.selected-poll[data-v-068a545c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  overflow: hidden;\n  background: #FFFFFF;\n  box-sizing: border-box;\n  border: 4px solid #E4A913;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n}\n.selected-poll img[data-v-068a545c] {\n  width: 100%;\n  height: auto;\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.poll[data-v-068a545c] {\n  width: 100%;\n}\n.selected-poll h3[data-v-068a545c] {\n  padding-top: 32px;\n  font-size: 32px;\n  color: #0E0E0E;\n  margin: 0;\n  background: -webkit-gradient(linear, right top, left top, from(#E4A913), color-stop(99.53%, #EED074));\n  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);\n  padding-bottom: 32px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel {\n  padding: 0 16px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next {\n  right: unset;\n  left: 0;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-prev {\n  left: unset;\n  right: 0;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-wrapper .VueCarousel-slide {\n  padding: 0 24px;\n  box-sizing: border-box;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button {\n  width: 40px;\n  padding: 0 !important;\n  height: 40px;\n  outline: none;\n  -webkit-transform: translateX(0) translateY(-50%);\n          transform: translateX(0) translateY(-50%);\n  z-index: 2;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-button img {\n  width: 40px;\n  height: 40px;\n}\n.latest-posts[data-v-068a545c] .VueCarousel .VueCarousel-navigation .VueCarousel-navigation-next img {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n@media (max-width: 768px) {\n.selected-poll[data-v-068a545c] {\n    margin-bottom: 8px;\n}\n.latest-post-item[data-v-068a545c] {\n    padding-left: 0;\n}\nh2[data-v-068a545c] {\n    margin-bottom: 16px;\n}\n}\n@media (max-width: 768px) {\n.recent-posts-mobile[data-v-068a545c] {\n    -webkit-box-ordinal-group: 7;\n            order: 6;\n    flex-basis: 100%;\n    width: 100%;\n    padding-left: 8px;\n    padding-right: 8px;\n    margin-bottom: 16px;\n    margin-top: 46px;\n}\n.latest-post-item[data-v-068a545c] {\n    overflow: hidden;\n}\n.latest-post-item p span[data-v-068a545c]:first-child {\n    padding-bottom: 8px;\n}\n}\n@media (max-width: 550px) {\n.right-column-bot[data-v-068a545c] {\n    margin-top: 0;\n}\n}\n.like-survey[data-v-068a545c] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 50px;\n}\n.one-survey[data-v-068a545c] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 50px;\n}\n.related-post[data-v-068a545c] {\n  width: 100%;\n  padding: 0 24px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-post .author[data-v-068a545c] {\n  color: #000;\n  font-weight: 900;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot-container {\n  margin-top: 0 !important;\n  margin-bottom: 20px !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot {\n  margin-top: 10px !important;\n  padding: 7px !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n  margin: 0 !important;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-prev {\n  right: 0;\n  left: unset;\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-prev img {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.related-posts[data-v-068a545c] .VueCarousel-navigation-next {\n  left: 0;\n  right: unset;\n}\n.related-post img[data-v-068a545c] {\n  height: 350px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n}\n.related-post a[data-v-068a545c] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  width: 100%;\n}\n.related-posts .stars[data-v-068a545c] {\n  display: none;\n}\n.related-post h3[data-v-068a545c] {\n  color: #F2C94C;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 600;\n}\n.related-post-content[data-v-068a545c] {\n  padding-right: 16px;\n  color: #333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-068a545c] {\n  color: #333;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .date[data-v-068a545c] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-068a545c] {\n  color: #828282;\n  font-size: 16px;\n}\n.share[data-v-068a545c] {\n  color: #333333;\n  -webkit-text-decoration-color: #333333;\n          text-decoration-color: #333333;\n}\n.related-posts h2[data-v-068a545c] {\n  display: none;\n}\n@media (max-width: 768px) {\n.related-posts h2[data-v-068a545c] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width: 100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-068a545c]:after {\n    content: \"\";\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width: 60px;\n    height: 6px;\n    border-radius: 5px;\n    bottom: -10px;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n.related-posts[data-v-068a545c] {\n    position: relative;\n    margin-right: -8px;\n    margin-left: -8px;\n    margin-top: 24px;\n}\n.related-posts .stars[data-v-068a545c] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index: -1;\n}\n}", ""]);
 
 // exports
 
@@ -6036,7 +6082,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".selected-poll[data-v-015f69b1] {\n  position: relative;\n  border: 4px solid #F2C94C;\n}\n.selected-poll img[data-v-015f69b1] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, ".main-survey.is_first[data-v-015f69b1] {\n  border: 4px solid;\n  -webkit-border-image: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);\n       -o-border-image: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);\n          border-image: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);\n  border-image-slice: 1;\n}\n.main-survey.is_first[data-v-015f69b1] > div {\n  border-width: 0;\n}\n.selected-poll[data-v-015f69b1] {\n  position: relative;\n  border: 4px solid #F2C94C;\n}\n.selected-poll img[data-v-015f69b1] {\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.mobile[data-v-015f69b1] {\n  display: none;\n}\n.mobile img[data-v-015f69b1] {\n  width: 100%;\n}\n@media (max-width: 992px) {\n.mobile[data-v-015f69b1] {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -6302,7 +6348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.left-column[data-v-a94489d6] {\n  flex-basis:50%;\n  padding-right:8px;\n}\n.posts-column[data-v-a94489d6] {\n  width:100%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.posts-column article[data-v-a94489d6] {\n  width:100%;\n  position: relative;\n  margin-bottom: 16px;\n  height:500px;\n  overflow: hidden;\n  opacity: 0;\n  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: transform 1s ease, opacity 1s ease;\n  transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n  -webkit-transform: translateX(-100px);\n          transform: translateX(-100px);\n}\n.posts-column article.in-viewport[data-v-a94489d6] {\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n  opacity: 1;\n}\n.posts-column article:nth-child(1) a[data-v-a94489d6] {\n  box-sizing: border-box;\n  border: 6px solid transparent;\n  position: relative;\n  z-index:5;\n}\n.posts-column article[data-v-a94489d6]:nth-child(1):after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  background: linear-gradient(278.13deg, #87682C 1%, #FCD77E 100%);\n  z-index: -1;\n  -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n          animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n  background-size: 300% 300%;\n}\n.posts-column article a[data-v-a94489d6] {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  color:#fff;\n  padding:0 24px 16px;\n  color:#fff;\n  -webkit-transition: .2s;\n  transition: .2s;\n  text-decoration: none;\n  overflow:hidden;\n}\n.posts-column article img[data-v-a94489d6] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width:100%;\n  height: 100%;\n  pointer-events: none;\n  z-index:-2;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -webkit-transition:.3s;\n  transition:.3s;\n}\n.posts-column article .overlay[data-v-a94489d6] {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  opacity: .5;\n  -webkit-transition: .3s;\n  transition: .3s;\n  /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */\n}\n.posts-column article:nth-child(2) .overlay[data-v-a94489d6]  {\n  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);\n  -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n          animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n  background-size: 300% 300%;\n  opacity: 0.2;\n}\n.posts-column article:hover img[data-v-a94489d6] {\n  -webkit-transform:scale(1.1);\n          transform:scale(1.1);\n}\n.posts-column article:nth-child(1):hover a[data-v-a94489d6] {\n  border-width:12px;\n}\n.posts-column article:hover .overlay[data-v-a94489d6] {\n  background: rgba(0,0,0,1);\n}\n.posts-column article .h2[data-v-a94489d6] {\n  font-family: 'Assistant', sans-serif;\n  font-weight: 700;\n  font-size: 36px;\n  line-height: 36px;\n}\n.posts-column article p[data-v-a94489d6] {\n  /* display: flex;\n  flex-direction: row; */\n  font-size: 20px;\n  font-weight: 400;\n  margin-bottom: 0;\n}\n.posts-column article p .post-date[data-v-a94489d6] {\n  border-right:1px solid #fff;\n  padding-right: 6px;\n  margin-right: 6px;\n}\n\n/* .posts-column article:first-child::before {\n  pointer-events: none;\n  content: \"\";\n  position: absolute;\n  top: -110%;\n  left: -210%;\n  width: 200%;\n  height: 200%;\n  opacity: 0;\n  transform: rotate(30deg);\n  background: rgba(255, 255, 255, 0.13);\n  background: linear-gradient(\n    to right,\n    rgba(255, 255, 255, 0.13) 0%,\n    rgba(255, 255, 255, 0.13) 77%,\n    rgba(255, 255, 255, 0.5) 92%,\n    rgba(255, 255, 255, 0.0) 100%\n  );\n} */\n/* .posts-column article:first-child::before {\n  opacity: 1;\n  top: -30%;\n  left: -30%;\n  transition-property: left, top, opacity;\n  transition-duration: 0.7s, 0.7s, 0.15s;\n  transition-timing-function: ease;\n  z-index:20;\n} */\n.posts-column article[data-v-a94489d6]:first-child::before {\n  pointer-events: none;\n  -webkit-animation: shine-data-v-a94489d6 5s ease-in-out infinite;\n          animation: shine-data-v-a94489d6 5s ease-in-out infinite;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n  content: \"\";\n  position: absolute;\n  top: -110%;\n  left: -210%;\n  width: 200%;\n  height: 200%;\n  opacity: 0;\n  -webkit-transform: rotate(30deg);\n          transform: rotate(30deg);\n  background: rgba(255, 255, 255, 0.13);\n  background: -webkit-gradient(\n    linear,\n    left top, right top,\n    from(rgba(255, 255, 255, 0.13)),\n    color-stop(77%, rgba(255, 255, 255, 0.13)),\n    color-stop(92%, rgba(255, 255, 255, 0.5)),\n    to(rgba(255, 255, 255, 0.0))\n  );\n  background: linear-gradient(\n    to right,\n    rgba(255, 255, 255, 0.13) 0%,\n    rgba(255, 255, 255, 0.13) 77%,\n    rgba(255, 255, 255, 0.5) 92%,\n    rgba(255, 255, 255, 0.0) 100%\n  );\n  z-index:6;\n}\n@-webkit-keyframes shine-data-v-a94489d6{\n10% {\n    opacity: 1;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n    -webkit-transition-duration: 0.7s, 0.7s, 0.15s;\n            transition-duration: 0.7s, 0.7s, 0.15s;\n    -webkit-transition-timing-function: ease;\n            transition-timing-function: ease;\n}\n100% {\n    opacity: 0;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n}\n}\n@keyframes shine-data-v-a94489d6{\n10% {\n    opacity: 1;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n    -webkit-transition-duration: 0.7s, 0.7s, 0.15s;\n            transition-duration: 0.7s, 0.7s, 0.15s;\n    -webkit-transition-timing-function: ease;\n            transition-timing-function: ease;\n}\n100% {\n    opacity: 0;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n}\n}\n@media (max-width:768px) {\n.posts-column[data-v-a94489d6] {\n    padding-right: 0;\n}\n.left-column[data-v-a94489d6] {\n    -webkit-box-ordinal-group:2;\n            order:1;\n    padding-left: 8px;\n    padding-right: 8px;\n}\n.posts-column article[data-v-a94489d6] {\n    height:300px;\n}\n.posts-column article.second[data-v-a94489d6] {\n    margin-top: 8px;\n}\n  /* .posts-column article:nth-child(1) {\n    height:250px;\n  } */\n}\n@media (max-width:550px) {\n.posts-column article p[data-v-a94489d6] {\n    font-size: 16px;\n    line-height: 16px;\n}\n.posts-column article[data-v-a94489d6] {\n    margin-bottom: 8px;\n}\n.posts-column article[data-v-a94489d6]:nth-child(2) {\n    margin-bottom: 0;\n    margin-top: 8px;\n}\n.posts-column article .h2[data-v-a94489d6] {\n    font-size: 20px;\n    line-height: 20px;\n}\n}\n@-webkit-keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n@keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.left-column[data-v-a94489d6] {\n  flex-basis:50%;\n  padding-right:8px;\n}\n.posts-column[data-v-a94489d6] {\n  width:100%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.posts-column article[data-v-a94489d6] {\n  width:100%;\n  position: relative;\n  margin-bottom: 16px;\n  height:500px;\n  overflow: hidden;\n  opacity: 0;\n  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: opacity 1s ease, -webkit-transform 1s ease;\n  transition: transform 1s ease, opacity 1s ease;\n  transition: transform 1s ease, opacity 1s ease, -webkit-transform 1s ease;\n  -webkit-transform: translateX(-100px);\n          transform: translateX(-100px);\n}\n.posts-column article.in-viewport[data-v-a94489d6] {\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n  opacity: 1;\n}\n.posts-column article:nth-child(1) a[data-v-a94489d6] {\n  box-sizing: border-box;\n  border: 6px solid transparent;\n  position: relative;\n  z-index:5;\n}\n.posts-column article[data-v-a94489d6]:nth-child(1):after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  background: linear-gradient(278.13deg, #87682C 1%, #FCD77E 100%);\n  z-index: -1;\n  -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n          animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n  background-size: 300% 300%;\n}\n.posts-column article a[data-v-a94489d6] {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  width:100%;\n  height:100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  color:#fff;\n  padding:0 24px 16px;\n  color:#fff;\n  -webkit-transition: .2s;\n  transition: .2s;\n  text-decoration: none;\n  overflow:hidden;\n}\n.posts-column article img[data-v-a94489d6] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width:100%;\n  height: 100%;\n  pointer-events: none;\n  z-index:-2;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -webkit-transition:.3s;\n  transition:.3s;\n}\n.posts-column article .overlay[data-v-a94489d6] {\n  position: absolute;\n  z-index: -1;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  opacity: .5;\n  -webkit-transition: .3s;\n  transition: .3s;\n  /* background: linear-gradient(180deg, #7EFFB7 0%, #0089FF 100%); */\n}\n.posts-column article:nth-child(2) .overlay[data-v-a94489d6]  {\n  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);\n  -webkit-animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n          animation: animatedgradient-data-v-a94489d6 3s ease alternate infinite;\n  background-size: 300% 300%;\n  opacity: 0.2;\n}\n.posts-column article:hover img[data-v-a94489d6] {\n  -webkit-transform:scale(1.1);\n          transform:scale(1.1);\n}\n.posts-column article:nth-child(1):hover a[data-v-a94489d6] {\n  border-width:12px;\n}\n.posts-column article:hover .overlay[data-v-a94489d6] {\n  background: rgba(0,0,0,1);\n}\n.posts-column article .h2[data-v-a94489d6] {\n  font-family: 'Assistant', sans-serif;\n  font-weight: 700;\n  font-size: 36px;\n  line-height: 36px;\n}\n.posts-column article p[data-v-a94489d6] {\n  /* display: flex;\n  flex-direction: row; */\n  font-size: 20px;\n  font-weight: 400;\n  margin-bottom: 0;\n}\n.posts-column article p .post-date[data-v-a94489d6] {\n  border-right:1px solid #fff;\n  padding-right: 6px;\n  margin-right: 6px;\n}\n\n/* .posts-column article:first-child::before {\n  pointer-events: none;\n  content: \"\";\n  position: absolute;\n  top: -110%;\n  left: -210%;\n  width: 200%;\n  height: 200%;\n  opacity: 0;\n  transform: rotate(30deg);\n  background: rgba(255, 255, 255, 0.13);\n  background: linear-gradient(\n    to right,\n    rgba(255, 255, 255, 0.13) 0%,\n    rgba(255, 255, 255, 0.13) 77%,\n    rgba(255, 255, 255, 0.5) 92%,\n    rgba(255, 255, 255, 0.0) 100%\n  );\n} */\n/* .posts-column article:first-child::before {\n  opacity: 1;\n  top: -30%;\n  left: -30%;\n  transition-property: left, top, opacity;\n  transition-duration: 0.7s, 0.7s, 0.15s;\n  transition-timing-function: ease;\n  z-index:20;\n} */\n.posts-column article[data-v-a94489d6]:first-child::before {\n  pointer-events: none;\n  -webkit-animation: shine-data-v-a94489d6 5s ease-in-out infinite;\n          animation: shine-data-v-a94489d6 5s ease-in-out infinite;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n  content: \"\";\n  position: absolute;\n  top: -110%;\n  left: -210%;\n  width: 200%;\n  height: 200%;\n  opacity: 0;\n  -webkit-transform: rotate(30deg);\n          transform: rotate(30deg);\n  background: rgba(255, 255, 255, 0.13);\n  background: -webkit-gradient(\n    linear,\n    left top, right top,\n    from(rgba(255, 255, 255, 0.13)),\n    color-stop(77%, rgba(255, 255, 255, 0.13)),\n    color-stop(92%, rgba(255, 255, 255, 0.5)),\n    to(rgba(255, 255, 255, 0.0))\n  );\n  background: linear-gradient(\n    to right,\n    rgba(255, 255, 255, 0.13) 0%,\n    rgba(255, 255, 255, 0.13) 77%,\n    rgba(255, 255, 255, 0.5) 92%,\n    rgba(255, 255, 255, 0.0) 100%\n  );\n  z-index:6;\n}\n@-webkit-keyframes shine-data-v-a94489d6{\n10% {\n    opacity: 1;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n    -webkit-transition-duration: 0.7s, 0.7s, 0.15s;\n            transition-duration: 0.7s, 0.7s, 0.15s;\n    -webkit-transition-timing-function: ease;\n            transition-timing-function: ease;\n}\n100% {\n    opacity: 0;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n}\n}\n@keyframes shine-data-v-a94489d6{\n10% {\n    opacity: 1;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n    -webkit-transition-duration: 0.7s, 0.7s, 0.15s;\n            transition-duration: 0.7s, 0.7s, 0.15s;\n    -webkit-transition-timing-function: ease;\n            transition-timing-function: ease;\n}\n100% {\n    opacity: 0;\n    top: -30%;\n    left: -30%;\n    -webkit-transition-property: left, top, opacity;\n    transition-property: left, top, opacity;\n}\n}\n@media (max-width:768px) {\n.posts-column[data-v-a94489d6] {\n    padding-right: 0;\n}\n.left-column[data-v-a94489d6] {\n    -webkit-box-ordinal-group:2;\n            order:1;\n    padding-left: 8px;\n    padding-right: 8px;\n}\n.posts-column article[data-v-a94489d6] {\n    height:350px;\n}\n.posts-column article.second[data-v-a94489d6] {\n    margin-top: 8px;\n}\n  /* .posts-column article:nth-child(1) {\n    height:250px;\n  } */\n}\n@media (max-width:550px) {\n.posts-column article p[data-v-a94489d6] {\n    font-size: 16px;\n    line-height: 16px;\n}\n.posts-column article[data-v-a94489d6] {\n    margin-bottom: 8px;\n}\n.posts-column article[data-v-a94489d6]:nth-child(2) {\n    margin-bottom: 0;\n    margin-top: 8px;\n}\n.posts-column article .h2[data-v-a94489d6] {\n    font-size: 20px;\n    line-height: 20px;\n}\n}\n@-webkit-keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n@keyframes animatedgradient-data-v-a94489d6 {\n0% {\n\t\tbackground-position: 0% 50%;\n}\n50% {\n\t\tbackground-position: 100% 50%;\n}\n100% {\n\t\tbackground-position: 0% 50%;\n}\n}\n", ""]);
 
 // exports
 
@@ -6359,7 +6405,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  /* display: none; */\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n  padding: 16px 0;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:0;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:0;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 250px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-posts .stars[data-v-3e64b357] {\n  display: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.opinion[data-v-3e64b357] {\n    padding: 0;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n.related-posts[data-v-3e64b357] {\n    position: relative;\n    margin-top: 24px;\n}\n.related-posts .stars[data-v-3e64b357] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width:100%;\n    /* height: 100%; */\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index:-1;\n}\n.related-posts[data-v-3e64b357]:before {\n    /* content:url('/img/stars-posts.svg');\n    width:100%;\n    height:100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-position: center;\n    background-size: 100% 100%;\n    background-repeat: no-repeat; */\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  /* display: none; */\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 24px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n  padding: 16px 0;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:0;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:0;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 220px;\n  height: 350px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-posts .stars[data-v-3e64b357] {\n  display: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.opinion[data-v-3e64b357] {\n    padding: 0;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n.related-posts[data-v-3e64b357] {\n    position: relative;\n    margin-top: 32px;\n}\n.related-posts .stars[data-v-3e64b357] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width:100%;\n    /* height: 100%; */\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index:-1;\n}\n.related-posts[data-v-3e64b357]:before {\n    /* content:url('/img/stars-posts.svg');\n    width:100%;\n    height:100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-position: center;\n    background-size: 100% 100%;\n    background-repeat: no-repeat; */\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -47933,6 +47979,7 @@ var render = function() {
         _c(
           "button",
           {
+            ref: "dislike",
             staticClass: "dislike",
             attrs: { type: "button" },
             on: { click: _vm.dislike }
@@ -47940,7 +47987,7 @@ var render = function() {
           [
             _vm.showPercents
               ? _c("span", { staticClass: "percent" }, [
-                  _vm._v("%" + _vm._s(Math.floor(_vm.dislikeHeight.num)))
+                  _vm._v("%" + _vm._s(Math.floor(_vm.likeHeight.num)))
                 ])
               : _vm._e(),
             _vm._v(" "),
@@ -47949,19 +47996,78 @@ var render = function() {
                 "svg",
                 {
                   attrs: {
-                    viewBox: "0 0 151 143",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "178",
+                    height: "169",
+                    viewBox: "0 0 178 169",
+                    fill: "none"
                   }
                 },
                 [
                   _c("path", {
                     attrs: {
                       d:
-                        "M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z",
-                      fill: "#F2C94C"
+                        "M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z",
+                      fill: "url(#paint0_linear)"
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "defs",
+                    [
+                      _c(
+                        "linearGradient",
+                        {
+                          attrs: {
+                            id: "paint0_linear",
+                            x1: "-10.8636",
+                            y1: "-2.51701e-05",
+                            x2: "104.602",
+                            y2: "233.072",
+                            gradientUnits: "userSpaceOnUse"
+                          }
+                        },
+                        [
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.177083",
+                              "stop-color": "#F9DD4A"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.265625",
+                              "stop-color": "#F97B4A"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.515625",
+                              "stop-color": "#C6278D"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.703125",
+                              "stop-color": "#7151CB"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.864583",
+                              "stop-color": "#4200FF"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ]
               )
             ]),
@@ -47977,19 +48083,78 @@ var render = function() {
                   "svg",
                   {
                     attrs: {
-                      viewBox: "0 0 151 143",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "178",
+                      height: "169",
+                      viewBox: "0 0 178 169",
+                      fill: "none"
                     }
                   },
                   [
                     _c("path", {
                       attrs: {
                         d:
-                          "M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z",
-                        fill: "#171717"
+                          "M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z",
+                        fill: "url(#paint0_linear)"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "defs",
+                      [
+                        _c(
+                          "linearGradient",
+                          {
+                            attrs: {
+                              id: "paint0_linear",
+                              x1: "-10.8636",
+                              y1: "-2.51701e-05",
+                              x2: "104.602",
+                              y2: "233.072",
+                              gradientUnits: "userSpaceOnUse"
+                            }
+                          },
+                          [
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.177083",
+                                "stop-color": "#F9DD4A"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.265625",
+                                "stop-color": "#F97B4A"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.515625",
+                                "stop-color": "#C6278D"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.703125",
+                                "stop-color": "#7151CB"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.864583",
+                                "stop-color": "#4200FF"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
                   ]
                 )
               ]
@@ -48013,7 +48178,8 @@ var render = function() {
                       attrs: {
                         d:
                           "M8.47382 33.895H1.6948C0.762844 33.895 0 33.136 0 32.2003V1.69455C0 0.759242 0.759499 4.67107e-05 1.6948 4.67107e-05H8.47382C9.40913 4.67107e-05 10.1686 0.759344 10.1686 1.69455V32.2003C10.1686 33.136 9.40568 33.895 8.47382 33.895Z",
-                        fill: "white"
+                        fill: "white",
+                        "fill-opacity": "0.8"
                       }
                     }),
                     _vm._v(" "),
@@ -48021,7 +48187,8 @@ var render = function() {
                       attrs: {
                         d:
                           "M47.6798 33.895C47.4068 33.9412 34.6272 33.895 34.6272 33.895L36.4122 38.7649C37.6439 42.1283 36.8464 47.2639 33.4289 49.0897C32.3162 49.6843 30.7615 49.9828 29.5081 49.6673C28.7892 49.4864 28.1575 49.0105 27.7809 48.3729C27.3479 47.6396 27.3926 46.7835 27.2384 45.9704C26.8473 43.908 25.8728 41.947 24.3636 40.4752C21.7324 37.9089 13.5586 30.5056 13.5586 30.5056V3.38931H41.8046C45.616 3.38708 48.1138 7.64335 46.234 10.968C48.4747 12.4031 49.2411 15.426 47.9288 17.747C50.1696 19.1821 50.9359 22.205 49.6236 24.526C53.4899 27.0022 52.1973 33.1309 47.6798 33.895Z",
-                        fill: "white"
+                        fill: "white",
+                        "fill-opacity": "0.8"
                       }
                     })
                   ]
@@ -48033,6 +48200,7 @@ var render = function() {
         _c(
           "button",
           {
+            ref: "like",
             staticClass: "like",
             attrs: { type: "button" },
             on: { click: _vm.like }
@@ -48040,7 +48208,7 @@ var render = function() {
           [
             _vm.showPercents
               ? _c("span", { staticClass: "percent" }, [
-                  _vm._v("%" + _vm._s(Math.floor(_vm.likeHeight.num)))
+                  _vm._v("%" + _vm._s(Math.floor(_vm.dislikeHeight.num)))
                 ])
               : _vm._e(),
             _vm._v(" "),
@@ -48049,19 +48217,78 @@ var render = function() {
                 "svg",
                 {
                   attrs: {
-                    viewBox: "0 0 151 143",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "178",
+                    height: "169",
+                    viewBox: "0 0 178 169",
+                    fill: "none"
                   }
                 },
                 [
                   _c("path", {
                     attrs: {
                       d:
-                        "M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z",
-                      fill: "#F2C94C"
+                        "M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z",
+                      fill: "url(#paint0_linear)"
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "defs",
+                    [
+                      _c(
+                        "linearGradient",
+                        {
+                          attrs: {
+                            id: "paint0_linear",
+                            x1: "-10.8636",
+                            y1: "-2.51701e-05",
+                            x2: "104.602",
+                            y2: "233.072",
+                            gradientUnits: "userSpaceOnUse"
+                          }
+                        },
+                        [
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.177083",
+                              "stop-color": "#F9DD4A"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.265625",
+                              "stop-color": "#F97B4A"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.515625",
+                              "stop-color": "#C6278D"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.703125",
+                              "stop-color": "#7151CB"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("stop", {
+                            attrs: {
+                              offset: "0.864583",
+                              "stop-color": "#4200FF"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ]
               )
             ]),
@@ -48077,19 +48304,78 @@ var render = function() {
                   "svg",
                   {
                     attrs: {
-                      viewBox: "0 0 151 143",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "178",
+                      height: "169",
+                      viewBox: "0 0 178 169",
+                      fill: "none"
                     }
                   },
                   [
                     _c("path", {
                       attrs: {
                         d:
-                          "M75.7766 0L100.781 44.3616L150.698 54.4334L116.234 91.9222L122.08 142.509L75.7766 121.316L29.4728 142.509L35.3192 91.9222L0.855469 54.4334L50.7726 44.3616L75.7766 0Z",
-                        fill: "#dfc26c"
+                          "M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z",
+                        fill: "url(#paint0_linear)"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "defs",
+                      [
+                        _c(
+                          "linearGradient",
+                          {
+                            attrs: {
+                              id: "paint0_linear",
+                              x1: "-10.8636",
+                              y1: "-2.51701e-05",
+                              x2: "104.602",
+                              y2: "233.072",
+                              gradientUnits: "userSpaceOnUse"
+                            }
+                          },
+                          [
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.177083",
+                                "stop-color": "#F9DD4A"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.265625",
+                                "stop-color": "#F97B4A"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.515625",
+                                "stop-color": "#C6278D"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.703125",
+                                "stop-color": "#7151CB"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("stop", {
+                              attrs: {
+                                offset: "0.864583",
+                                "stop-color": "#4200FF"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
                   ]
                 )
               ]
@@ -48113,7 +48399,8 @@ var render = function() {
                       attrs: {
                         d:
                           "M8.47382 15.8999H1.6948C0.762844 15.8999 0 16.6589 0 17.5946V48.1004C0 49.0357 0.759499 49.7949 1.6948 49.7949H8.47382C9.40913 49.7949 10.1686 49.0356 10.1686 48.1004V17.5946C10.1686 16.6589 9.40568 15.8999 8.47382 15.8999Z",
-                        fill: "white"
+                        fill: "white",
+                        "fill-opacity": "0.8"
                       }
                     }),
                     _vm._v(" "),
@@ -48121,7 +48408,8 @@ var render = function() {
                       attrs: {
                         d:
                           "M47.6798 15.8999C47.4068 15.8537 34.6272 15.8999 34.6272 15.8999L36.4122 11.0301C37.6439 7.66662 36.8464 2.53101 33.4289 0.705208C32.3162 0.110668 30.7615 -0.18792 29.5081 0.1276C28.7892 0.308476 28.1575 0.784392 27.7809 1.42202C27.3479 2.15536 27.3926 3.01138 27.2384 3.82452C26.8473 5.88695 25.8728 7.8479 24.3636 9.31975C21.7324 11.886 13.5586 19.2894 13.5586 19.2894V46.4056H41.8046C45.616 46.4078 48.1138 42.1516 46.234 38.827C48.4747 37.3918 49.2411 34.3689 47.9288 32.0479C50.1696 30.6128 50.9359 27.5899 49.6236 25.2689C53.4899 22.7927 52.1973 16.664 47.6798 15.8999Z",
-                        fill: "white"
+                        fill: "white",
+                        "fill-opacity": "0.8"
                       }
                     })
                   ]
@@ -49290,7 +49578,9 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      this.$env.mobile == true ? _c("surveys") : _vm._e(),
+      this.$env.mobile == true
+        ? _c("surveys", { attrs: { is_first: "" } })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "article",
@@ -49784,7 +50074,10 @@ var render = function() {
   return _vm.survey
     ? _c(
         "div",
-        { class: { mobile: this.mobile } },
+        {
+          staticClass: "main-survey",
+          class: { mobile: this.mobile, is_first: _vm.is_first }
+        },
         [
           _vm.survey.type == "survey"
             ? [

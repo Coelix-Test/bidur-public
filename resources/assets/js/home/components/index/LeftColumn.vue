@@ -14,7 +14,7 @@
         </p>
       </router-link>
     </article>
-    <surveys v-if="this.$env.mobile == true"/>
+    <surveys v-if="this.$env.mobile == true" is_first />
     <article v-in-viewport.once class="second">
       <router-link :to="'/post/'+posts[1].id">
         <div class="overlay"></div>
@@ -262,7 +262,7 @@ export default {
       padding-right: 8px;
     }
     .posts-column article {
-      height:300px;
+      height:350px;
     }
     .posts-column article.second {
       margin-top: 8px;

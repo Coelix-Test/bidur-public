@@ -1,5 +1,5 @@
 <template>
-  <div v-if="survey" :class="{ mobile: this.mobile }">
+  <div v-if="survey" :class="{ mobile: this.mobile, is_first }" class="main-survey">
     <template v-if="survey.type == 'survey'">
       <div ref="poll" class="selected-poll">
         <img :src="survey.image" alt="">
@@ -22,11 +22,17 @@ export default {
     mobile: {
       default: false,
       type: Boolean,
-    }
+
+    },
+    is_first: {
+      default: false,
+      type: Boolean,
+
+    },
   },
   data() {
     return {
-      survey: {}
+      survey: {},
     };
   },
   methods: {
@@ -62,9 +68,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main-survey.is_first {
+  border: 4px solid;
+  border-image: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  border-image-slice: 1;
+  &::v-deep {
+    > div {
+      border-width: 0;
+    }
+  }
+}
 .selected-poll {
   position: relative;
   border:4px solid #F2C94C;
+
   img {
     width:100%;
     object-fit: cover;
@@ -82,7 +99,7 @@ export default {
   }
 }
 @media(max-width:768px) {
-  
+
 }
 
 

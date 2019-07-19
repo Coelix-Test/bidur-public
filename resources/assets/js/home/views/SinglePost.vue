@@ -485,7 +485,7 @@ export default {
   }
   .related-post img {
     width: 220px;
-    height: 250px;
+    height: 350px;
     object-fit: cover;
 
   }
@@ -566,7 +566,7 @@ export default {
     }
     .related-posts {
       position: relative;
-      margin-top: 24px;
+      margin-top: 32px;
     }
     .related-posts .stars {
       display: block;

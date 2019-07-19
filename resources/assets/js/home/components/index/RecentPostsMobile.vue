@@ -384,7 +384,7 @@ export default {
     right:unset;
   }
   .related-post img {
-    height: 250px;
+    height: 350px;
     object-fit: cover;
     width:100%;
   }
