@@ -14,6 +14,10 @@ export default {
   props: {
     text: {
       default: ''
+    },
+    once: {
+      default: false,
+      type: Boolean,
     }
   },
   methods: {
@@ -26,8 +30,10 @@ export default {
           setTimeout(this.typeWriter, this.pause);
         }
       } else {
-        this.textToShow = '';
-        setTimeout(this.typeWriter, this.speed);
+        if(!this.once) {
+          this.textToShow = '';
+          setTimeout(this.typeWriter, this.speed);
+        }
       }
     }
   },

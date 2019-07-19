@@ -3213,6 +3213,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     text: {
       "default": ''
+    },
+    once: {
+      "default": false,
+      type: Boolean
     }
   },
   methods: {
@@ -3226,8 +3230,10 @@ __webpack_require__.r(__webpack_exports__);
           setTimeout(this.typeWriter, this.pause);
         }
       } else {
-        this.textToShow = '';
-        setTimeout(this.typeWriter, this.speed);
+        if (!this.once) {
+          this.textToShow = '';
+          setTimeout(this.typeWriter, this.speed);
+        }
       }
     }
   },
@@ -5327,14 +5333,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-poll */ "./node_modules/vue-poll/dist/vue-poll.js");
 /* harmony import */ var vue_poll__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_poll__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_single_post_Share_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/single-post/Share.vue */ "./resources/assets/js/home/components/single-post/Share.vue");
-/* harmony import */ var _components_single_post_Emoji_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/single-post/Emoji.vue */ "./resources/assets/js/home/components/single-post/Emoji.vue");
-/* harmony import */ var _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../components/SinglePostExample.vue */ "./resources/assets/js/home/components/SinglePostExample.vue");
-/* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
-/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_common_LikeSurvey__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../components/common/LikeSurvey */ "./resources/assets/js/home/components/common/LikeSurvey.vue");
-/* harmony import */ var _components_common_OneSurvey__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../components/common/OneSurvey */ "./resources/assets/js/home/components/common/OneSurvey.vue");
+/* harmony import */ var _components_common_TypeWriter_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../components/common/TypeWriter.vue */ "./resources/assets/js/home/components/common/TypeWriter.vue");
+/* harmony import */ var _components_single_post_Share_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../components/single-post/Share.vue */ "./resources/assets/js/home/components/single-post/Share.vue");
+/* harmony import */ var _components_single_post_Emoji_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../components/single-post/Emoji.vue */ "./resources/assets/js/home/components/single-post/Emoji.vue");
+/* harmony import */ var _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../components/SinglePostExample.vue */ "./resources/assets/js/home/components/SinglePostExample.vue");
+/* harmony import */ var _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_common_LikeSurvey__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../components/common/LikeSurvey */ "./resources/assets/js/home/components/common/LikeSurvey.vue");
+/* harmony import */ var _components_common_OneSurvey__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../components/common/OneSurvey */ "./resources/assets/js/home/components/common/OneSurvey.vue");
 //
 //
 //
@@ -5472,6 +5479,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 
@@ -5576,15 +5586,16 @@ __webpack_require__.r(__webpack_exports__);
     next();
   },
   components: {
-    SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    SideNews: _components_SideNews_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     VuePoll: vue_poll__WEBPACK_IMPORTED_MODULE_0___default.a,
-    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_5__["Carousel"],
-    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_5__["Slide"],
-    SinglePostExample: _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Share: _components_single_post_Share_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Emoji: _components_single_post_Emoji_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    LikeSurvey: _components_common_LikeSurvey__WEBPACK_IMPORTED_MODULE_6__["default"],
-    OneSurvey: _components_common_OneSurvey__WEBPACK_IMPORTED_MODULE_7__["default"]
+    Carousel: vue_carousel__WEBPACK_IMPORTED_MODULE_6__["Carousel"],
+    Slide: vue_carousel__WEBPACK_IMPORTED_MODULE_6__["Slide"],
+    SinglePostExample: _components_SinglePostExample_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Share: _components_single_post_Share_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Emoji: _components_single_post_Emoji_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    LikeSurvey: _components_common_LikeSurvey__WEBPACK_IMPORTED_MODULE_7__["default"],
+    OneSurvey: _components_common_OneSurvey__WEBPACK_IMPORTED_MODULE_8__["default"],
+    TypeWriter: _components_common_TypeWriter_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   mounted: function mounted() {
     var els = this.$el.getElementsByTagName('p');
@@ -5606,7 +5617,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".socials-btn[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  bottom: 24px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n  left: 24px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n  left: 80px;\n  border: 2px solid #fff;\n}\n.socials-btn svg[data-v-de2c8afa] {\n  width: 100%;\n  height: 100%;\n}\n#preloader[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  pointer-events: none;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: #fff;\n  z-index: 200;\n}\n#preloader.fade[data-v-de2c8afa] {\n  opacity: 0.5;\n}\n#preloader > div[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.ball[data-v-de2c8afa] {\n  width: 22px;\n  height: 22px;\n  border-radius: 11px;\n  margin: 0 10px;\n  -webkit-animation: 2s bounce-data-v-de2c8afa ease infinite;\n          animation: 2s bounce-data-v-de2c8afa ease infinite;\n  background-color: #F2C94C;\n}\n.red[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.25s;\n          animation-delay: 0.25s;\n}\n.yellow[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.green[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.75s;\n          animation-delay: 0.75s;\n}\n@-webkit-keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n@keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.socials-btn[data-v-de2c8afa] {\n    top: calc(100vh - 64px);\n    width: 32px;\n    height: 32px;\n    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n    left: 12px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n    left: 48px;\n    border-width: 0;\n}\n}", ""]);
+exports.push([module.i, ".socials-btn[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  bottom: 24px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n  left: 24px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n  left: 80px;\n  border: 2px solid #fff;\n}\n.socials-btn svg[data-v-de2c8afa] {\n  width: 100%;\n  height: 100%;\n}\n#preloader[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  pointer-events: none;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: #fff;\n  z-index: 200;\n}\n#preloader.fade[data-v-de2c8afa] {\n  opacity: 0.5;\n}\n#preloader > div[data-v-de2c8afa] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.ball[data-v-de2c8afa] {\n  width: 22px;\n  height: 22px;\n  border-radius: 11px;\n  margin: 0 10px;\n  -webkit-animation: 2s bounce-data-v-de2c8afa ease infinite;\n          animation: 2s bounce-data-v-de2c8afa ease infinite;\n  background-color: #F2C94C;\n}\n.red[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.25s;\n          animation-delay: 0.25s;\n}\n.yellow[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.green[data-v-de2c8afa] {\n  -webkit-animation-delay: 0.75s;\n          animation-delay: 0.75s;\n}\n@-webkit-keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n@keyframes bounce-data-v-de2c8afa {\n50% {\n    -webkit-transform: translateY(25px);\n            transform: translateY(25px);\n}\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.socials-btn[data-v-de2c8afa] {\n    bottom: 64px;\n    width: 32px;\n    height: 32px;\n    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n    left: 12px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n    left: 48px;\n    border-width: 0;\n}\n}", ""]);
 
 // exports
 
@@ -51523,9 +51534,19 @@ var render = function() {
               { staticClass: "post-content" },
               [
                 _vm.post.data.post.mainTitle
-                  ? _c("h1", { staticClass: "main-title" }, [
-                      _vm._v(_vm._s(_vm.post.data.post.mainTitle))
-                    ])
+                  ? _c(
+                      "h1",
+                      { staticClass: "main-title" },
+                      [
+                        _c("type-writer", {
+                          attrs: {
+                            once: "",
+                            text: _vm.post.data.post.mainTitle
+                          }
+                        })
+                      ],
+                      1
+                    )
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.post.data.post.is_favourite == false &&

@@ -7,7 +7,7 @@
 
 
         <h1 class="main-title" v-if="post.data.post.mainTitle">
-          <type-writer :text="post.data.post.mainTitle"/>
+          <type-writer once :text="post.data.post.mainTitle"/>
         </h1>
         <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
           <img src="/img/Star.svg" alt="">
