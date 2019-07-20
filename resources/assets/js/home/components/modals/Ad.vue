@@ -66,7 +66,7 @@ export default {
     &-enter {
       opacity: 0;
       .cnt {
-        transform: scale(0);
+        transform: scale(1.2);
       }
     }
     &-enter-to {
@@ -85,7 +85,7 @@ export default {
     &-leave-to {
       opacity: 0;
       .cnt {
-        transform: scale(0);
+        transform: scale(1.2);
       }
     }
 
