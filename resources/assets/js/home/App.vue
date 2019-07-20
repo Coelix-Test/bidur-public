@@ -62,7 +62,7 @@ export default {
 .socials-btn {
   display: block;
   position: fixed;
-  bottom: 44px;
+  bottom: 54px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -104,7 +104,7 @@ export default {
 }
 @media (max-width:768px) {
   .socials-btn {
-    bottom: 84px;
+    bottom: 94px;
     width: 32px;
     height: 32px;
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.1);
