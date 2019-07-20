@@ -4327,6 +4327,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -50285,12 +50286,14 @@ var render = function() {
         "div",
         { staticClass: "cnt" },
         [
-          _c("Adsense", {
-            attrs: {
-              "data-ad-client": "ca-pub-6511052822397382",
-              "data-ad-slot": "3853489762"
-            }
-          }),
+          _vm.$store.getters["modals/ad/onceOpened"]
+            ? _c("Adsense", {
+                attrs: {
+                  "data-ad-client": "ca-pub-6511052822397382",
+                  "data-ad-slot": "3853489762"
+                }
+              })
+            : _vm._e(),
           _vm._v(" "),
           !_vm.$store.getters["modals/ad/canClose"]
             ? _c("div", {
@@ -71833,6 +71836,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: {
+    once_opened: false,
     opened: false,
     can_close: false,
     time: 0
@@ -71840,6 +71844,7 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {
     open: function open(state) {
       state.opened = true;
+      state.once_opened = true;
       state.time = 5;
     },
     close: function close(state) {
@@ -71879,6 +71884,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     timeLeft: function timeLeft(state) {
       return state.time;
+    },
+    onceOpened: function onceOpened(state) {
+      return state.once_opened;
     }
   }
 });

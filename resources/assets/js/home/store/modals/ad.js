@@ -1,6 +1,7 @@
 export default {
   namespaced: true,
   state: {
+    once_opened: false,
     opened: false,
     can_close: false,
     time: 0,
@@ -8,6 +9,7 @@ export default {
   mutations: {
     open(state) {
       state.opened = true;
+      state.once_opened = true;
       state.time = 5;
     },
     close(state) {
@@ -49,6 +51,9 @@ export default {
     },
     timeLeft(state) {
       return state.time;
+    },
+    onceOpened(state) {
+      return state.once_opened;
     }
   }
 };
