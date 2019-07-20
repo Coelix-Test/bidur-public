@@ -1,6 +1,12 @@
 <template>
   <div class="a-modal">
-    <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video>
+    <!-- <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video> -->
+
+    <Adsense
+      data-ad-client="ca-pub-6511052822397382"
+      data-ad-slot="3853489762"
+    />
+
     <div v-if="!$store.getters['global/ad/canClose']" class="rest a-row-center" v-text="rest"></div>
     <button @click="close" v-else class="skip a-row-center">
       <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +27,7 @@
       </svg>
 
     </button>
-    <button @click="mute" class="mute a-row-center">
+    <!-- <button @click="mute" class="mute a-row-center">
       <svg v-show="muted" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d)">
           <path d="M32.3756 20.9171C32.3756 17.9337 30.7182 15.4475 28.232 14.2873V17.9337L32.3756 22.0773C32.3756 21.5801 32.3756 21.2486 32.3756 20.9171ZM36.5193 20.9171C36.5193 22.4088 36.1878 23.9005 35.6906 25.2265L38.1767 27.7127C39.337 25.7237 39.8342 23.2375 39.8342 20.7513C39.8342 13.6243 34.8618 7.65745 28.232 6.16575V9.6464C33.0386 11.3039 36.5193 15.6132 36.5193 20.9171ZM12.1547 6L10 8.15469L17.79 15.9447H10V25.8895H16.6298L24.9171 34.1767V23.0718L32.0441 30.1988C30.8839 31.0276 29.7237 31.6906 28.232 32.1879V35.6685C30.5524 35.1713 32.5414 34.1768 34.3646 32.6851L37.6795 36L39.8342 33.8454L24.9171 18.9283L12.1547 6ZM24.9171 7.65745L21.4364 11.1381L24.9171 14.6188V7.65745V7.65745Z" fill="white"/>
@@ -57,7 +63,7 @@
       </svg>
 
 
-    </button>
+    </button> -->
   </div>
 </template>
 

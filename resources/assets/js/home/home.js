@@ -2,9 +2,16 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
+import Ads from 'vue-google-adsense'
 // import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 import moment from 'moment'
+
+Vue.use(require('vue-script2'))
+
+Vue.use(Ads.Adsense)
+Vue.use(Ads.InArticleAdsense)
+Vue.use(Ads.InFeedAdsense)
 
 
 window.makeItRain = async function(n, append) {
