@@ -24,11 +24,14 @@
       </svg>
     </a>
 
+    <ad/>
+
   </div>
 </template>
 
 <script>
 import HeaderMain from './components/header/HeaderMain.vue';
+import Ad from './components/modals/Ad.vue';
 
 export default {
   data() {
@@ -37,7 +40,8 @@ export default {
     }
   },
   components: {
-    HeaderMain
+    HeaderMain,
+    Ad,
   },
   created() {
     this.currentPageUrl = window.location.href;

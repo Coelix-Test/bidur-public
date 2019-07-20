@@ -1,32 +1,40 @@
 <template>
-  <div class="a-modal">
+  <Modal v-show="opened" @close="close">
     <!-- <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video> -->
 
-    <Adsense
-      data-ad-client="ca-pub-6511052822397382"
-      data-ad-slot="3853489762"
-    />
+    <div class="cnt">
+      <Adsense
+        data-ad-client="ca-pub-6511052822397382"
+        data-ad-slot="3853489762"
+      />
 
-    <div v-if="!$store.getters['global/ad/canClose']" class="rest a-row-center" v-text="rest"></div>
-    <button @click="close" v-else class="skip a-row-center">
-      <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d)">
-          <path d="M40 7.73877L38.2608 6L25 19.2617L11.7391 6L10 7.73877L23.2609 21.0005L10 34.2613L11.7391 36L25 22.7393L38.2608 36L40 34.2613L26.7382 21.0005L40 7.73877Z" fill="white"/>
-        </g>
-        <defs>
-          <filter id="filter0_d" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="5"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-          </filter>
-        </defs>
-      </svg>
+      <div
+        v-if="!$store.getters['modals/ad/canClose']"
+        class="rest a-row-center"
+        v-text="$store.getters['modals/ad/timeLeft']"
+      ></div>
 
-    </button>
+      <button @click="close" v-else class="skip a-row-center">
+        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d)">
+            <path d="M40 7.73877L38.2608 6L25 19.2617L11.7391 6L10 7.73877L23.2609 21.0005L10 34.2613L11.7391 36L25 22.7393L38.2608 36L40 34.2613L26.7382 21.0005L40 7.73877Z" fill="white"/>
+          </g>
+          <defs>
+            <filter id="filter0_d" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+              <feOffset dy="4"/>
+              <feGaussianBlur stdDeviation="5"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+            </filter>
+          </defs>
+        </svg>
+
+      </button>
+    </div>
+
     <!-- <button @click="mute" class="mute a-row-center">
       <svg v-show="muted" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d)">
@@ -64,41 +72,63 @@
 
 
     </button> -->
-  </div>
+  </Modal>
 </template>
 
 <script>
+import Modal from './../common/Modal';
+
 export default {
   data() {
     return {
-      rest: 5,
-      interval: null,
-      muted: true,
+      // muted: true,
     };
   },
   methods: {
     close() {
-      this.$emit('close');
+      this.$store.commit('modals/ad/close');
     },
-    mute() {
-      this.muted = !this.muted;
-    }
+    // mute() {
+    //   this.muted = !this.muted;
+    // }
   },
   mounted() {
     // this.$refs.video.play();
-    this.interval = setInterval(() => {
-      this.rest--;
-      if(this.rest <= 0) {
-        clearInterval(this.interval);
-        this.$store.commit('global/ad/canClose');
-      }
-    }, 1000);
+
   },
+  components: {
+    Modal,
+  },
+  computed: {
+    opened() {
+      let opened = this.$store.getters['modals/ad/isOpened'];
+
+      if(opened) {
+        this.interval = setInterval(() => {
+          this.$store.commit('modals/ad/decrementTime');
+          if(this.$store.getters['modals/ad/timeLeft'] <= 0) {
+            clearInterval(this.interval);
+          }
+        }, 1000);
+      }
+
+      return opened
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.a-modal {
+.modal {
+
+}
+
+.cnt {
+  width: 100%;
+  height: 100%;
+
+  background: #fff;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,7 +140,7 @@ export default {
 
   .adswrapper {
     width: 100%;
-    height: 100%;
+    height: 300px;
   }
 
   .rest {
