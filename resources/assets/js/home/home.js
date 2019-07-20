@@ -101,6 +101,15 @@ window.app = new Vue({
         // overlayTransition: 'modal-bg-anim',
       })
     }
+  },
+  mounted() {
+    var preloader = document.getElementById('preloader');
+
+    preloader.className += ' fade';
+
+    setTimeout(function() {
+      preloader.remove();
+    }, 300);
   }
 }).$mount('#home');
 

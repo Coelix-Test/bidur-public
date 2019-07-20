@@ -2634,14 +2634,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.currentPageUrl = window.location.href;
-
-    window.onload = function () {
-      var preloader = document.getElementById('preloader');
-      preloader.className += ' fade';
-      setTimeout(function () {
-        preloader.remove();
-      }, 300);
-    };
   }
 });
 
@@ -71463,6 +71455,13 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 
       });
     }
+  },
+  mounted: function mounted() {
+    var preloader = document.getElementById('preloader');
+    preloader.className += ' fade';
+    setTimeout(function () {
+      preloader.remove();
+    }, 300);
   }
 }).$mount('#home'); //TODO: DELETE AFTER HEADER REFACTOR
 // $('.header-main .celebrities-slider').slick({

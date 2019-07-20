@@ -45,15 +45,6 @@ export default {
   },
   created() {
     this.currentPageUrl = window.location.href;
-    window.onload = function() {
-      var preloader = document.getElementById('preloader');
-
-      preloader.className += ' fade';
-
-      setTimeout(function() {
-        preloader.remove();
-      }, 300);
-    };
   }
 }
 </script>
