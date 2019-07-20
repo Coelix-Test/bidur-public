@@ -108,6 +108,11 @@ export default {
     width: 100%;
   }
 
+  .adswrapper {
+    width: 100%;
+    height: 100%;
+  }
+
   .rest {
     background: #fff;
     top: 30px;
