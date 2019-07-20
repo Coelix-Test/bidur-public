@@ -81,6 +81,7 @@ export default {
 
   .adswrapper {
     width: 600px;
+    max-width: 100%;
     height: 300px;
   }
 
