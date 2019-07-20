@@ -65,26 +65,26 @@ export default {
   &.fade-anim {
     &-enter {
       opacity: 0;
-      .container {
+      .cnt {
         transform: scale(0);
       }
     }
     &-enter-to {
       opacity: 1;
-      .container {
+      .cnt {
         transform: scale(1);
       }
     }
 
     &-leave {
       opacity: 1;
-      .container {
+      .cnt {
         transform: scale(1);
       }
     }
     &-leave-to {
       opacity: 0;
-      .container {
+      .cnt {
         transform: scale(0);
       }
     }
@@ -92,7 +92,7 @@ export default {
     &-leave-active,
     &-enter-active {
       transition: opacity 0.3s ease;
-      .container {
+      .cnt {
         transition: transform 0.3s ease;
       }
     }

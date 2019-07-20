@@ -3,9 +3,9 @@
     <!-- <preloader /> -->
     <header-main></header-main>
 
-    <transition name="anim" mode="out-in">
-      <router-view></router-view>
-    </transition>
+    <!-- <transition name="anim" mode="out-in"> -->
+    <router-view></router-view>
+    <!-- </transition> -->
 
     <a :href="`whatsapp://send?text=${currentPageUrl}`" target="_blank" class="socials-btn whatsapp">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
