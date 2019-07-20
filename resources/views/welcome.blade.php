@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en" dir="rtl">
 <head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131925839-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131925839-1');
+  </script>
+  
   <meta charset="UTF-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -29,7 +40,7 @@
         <div class="green ball"></div>
       </div>
     </div>
-    
+
     <script src="/js/home.js" charset="utf-8"></script>
 </body>
 </html>

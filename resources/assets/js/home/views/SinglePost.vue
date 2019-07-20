@@ -40,7 +40,7 @@
 
           <div v-if="post.type == 'image'">
             <img :src="post.value" alt="">
-            <span v-if="post.description != null" v-html="post.description"></span>
+            <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
           </div>
 
 
@@ -375,6 +375,9 @@ export default {
   section.video iframe {
     width:100%;
     height:450px;
+  }
+  section.content::v-deep * {
+    max-width: 100%;
   }
   section.image p {
     font-size: 16px;
