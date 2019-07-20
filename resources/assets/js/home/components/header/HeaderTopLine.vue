@@ -131,7 +131,7 @@
 
       </div>
       <div v-if="this.$env.mobile" class="fixedMobileAd">
-        <InFeedAdsense
+        <Adsense
           data-ad-client="ca-pub-6511052822397382"
           data-ad-slot="3961762360"
           data-ad-format="auto"

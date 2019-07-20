@@ -49166,7 +49166,7 @@ var render = function() {
           "div",
           { staticClass: "fixedMobileAd" },
           [
-            _c("InFeedAdsense", {
+            _c("Adsense", {
               attrs: {
                 "data-ad-client": "ca-pub-6511052822397382",
                 "data-ad-slot": "3961762360",
