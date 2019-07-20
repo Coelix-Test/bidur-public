@@ -133,7 +133,7 @@
       <div v-if="this.$env.mobile" class="fixedMobileAd">
         <Adsense
           data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="3961762360"
+          data-ad-slot="9113894619"
           data-ad-format="auto"
           :data-full-width-responsive="true"
         />

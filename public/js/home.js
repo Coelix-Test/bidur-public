@@ -4276,63 +4276,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4344,8 +4287,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.commit('modals/ad/close');
     }
   },
-  mounted: function mounted() {// this.$refs.video.play();
-  },
+  mounted: function mounted() {},
   components: {
     Modal: _common_Modal__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -4361,6 +4303,8 @@ __webpack_require__.r(__webpack_exports__);
 
           if (_this.$store.getters['modals/ad/timeLeft'] <= 0) {
             clearInterval(_this.interval);
+
+            _this.close();
           }
         }, 1000);
       }
@@ -49169,7 +49113,7 @@ var render = function() {
             _c("Adsense", {
               attrs: {
                 "data-ad-client": "ca-pub-6511052822397382",
-                "data-ad-slot": "3961762360",
+                "data-ad-slot": "9113894619",
                 "data-ad-format": "auto",
                 "data-full-width-responsive": true
               }
@@ -50286,138 +50230,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "Modal",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.opened,
-          expression: "opened"
-        }
-      ],
-      on: { close: _vm.close }
-    },
+    "transition",
+    { attrs: { name: "" } },
     [
       _c(
-        "div",
-        { staticClass: "cnt" },
+        "Modal",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.opened,
+              expression: "opened"
+            }
+          ],
+          on: { close: _vm.close }
+        },
         [
-          _vm.$store.getters["modals/ad/onceOpened"]
-            ? _c("Adsense", {
-                attrs: {
-                  "data-ad-client": "ca-pub-6511052822397382",
-                  "data-ad-slot": "3853489762"
-                }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.$store.getters["modals/ad/canClose"]
-            ? _c("div", {
+          _c(
+            "div",
+            { staticClass: "cnt" },
+            [
+              _vm.$store.getters["modals/ad/onceOpened"]
+                ? _c("Adsense", {
+                    attrs: {
+                      "data-ad-client": "ca-pub-6511052822397382",
+                      "data-ad-slot": "3853489762"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", {
                 staticClass: "rest a-row-center",
                 domProps: {
                   textContent: _vm._s(_vm.$store.getters["modals/ad/timeLeft"])
                 }
               })
-            : _c(
-                "button",
-                { staticClass: "skip a-row-center", on: { click: _vm.close } },
-                [
-                  _c(
-                    "svg",
-                    {
-                      attrs: {
-                        width: "50",
-                        height: "50",
-                        viewBox: "0 0 50 50",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("g", { attrs: { filter: "url(#filter0_d)" } }, [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M40 7.73877L38.2608 6L25 19.2617L11.7391 6L10 7.73877L23.2609 21.0005L10 34.2613L11.7391 36L25 22.7393L38.2608 36L40 34.2613L26.7382 21.0005L40 7.73877Z",
-                            fill: "white"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("defs", [
-                        _c(
-                          "filter",
-                          {
-                            attrs: {
-                              id: "filter0_d",
-                              x: "0",
-                              y: "0",
-                              width: "50",
-                              height: "50",
-                              filterUnits: "userSpaceOnUse",
-                              "color-interpolation-filters": "sRGB"
-                            }
-                          },
-                          [
-                            _c("feFlood", {
-                              attrs: {
-                                "flood-opacity": "0",
-                                result: "BackgroundImageFix"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("feColorMatrix", {
-                              attrs: {
-                                in: "SourceAlpha",
-                                type: "matrix",
-                                values:
-                                  "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("feOffset", { attrs: { dy: "4" } }),
-                            _vm._v(" "),
-                            _c("feGaussianBlur", {
-                              attrs: { stdDeviation: "5" }
-                            }),
-                            _vm._v(" "),
-                            _c("feColorMatrix", {
-                              attrs: {
-                                type: "matrix",
-                                values:
-                                  "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("feBlend", {
-                              attrs: {
-                                mode: "normal",
-                                in2: "BackgroundImageFix",
-                                result: "effect1_dropShadow"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("feBlend", {
-                              attrs: {
-                                mode: "normal",
-                                in: "SourceGraphic",
-                                in2: "effect1_dropShadow",
-                                result: "shape"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ])
-                    ]
-                  )
-                ]
-              )
-        ],
-        1
+            ],
+            1
+          )
+        ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
