@@ -85,7 +85,7 @@ export default {
     }
   },
   mounted() {
-    this.$refs.video.play();
+    // this.$refs.video.play();
     this.interval = setInterval(() => {
       this.rest--;
       if(this.rest <= 0) {
