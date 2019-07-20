@@ -135,7 +135,7 @@
           data-ad-client="ca-pub-6511052822397382"
           data-ad-slot="3961762360"
           data-ad-format="auto"
-          data-full-width-responsive
+          :data-full-width-responsive="true"
         />
       </div>
   </div><!-- top row end -->
