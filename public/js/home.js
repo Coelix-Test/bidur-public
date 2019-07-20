@@ -5779,7 +5779,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".socials-btn[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  bottom: 24px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n  left: 24px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n  left: 80px;\n  border: 2px solid #fff;\n}\n.socials-btn svg[data-v-de2c8afa] {\n  width: 100%;\n  height: 100%;\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.socials-btn[data-v-de2c8afa] {\n    bottom: 64px;\n    width: 32px;\n    height: 32px;\n    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n    left: 12px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n    left: 48px;\n    border-width: 0;\n}\n}", ""]);
+exports.push([module.i, ".socials-btn[data-v-de2c8afa] {\n  display: block;\n  position: fixed;\n  bottom: 44px;\n  width: 48px;\n  height: 48px;\n  border-radius: 50%;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n  left: 24px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n  left: 80px;\n  border: 2px solid #fff;\n}\n.socials-btn svg[data-v-de2c8afa] {\n  width: 100%;\n  height: 100%;\n}\n.anim-enter[data-v-de2c8afa] {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n  opacity: 0;\n}\n.anim-enter-to[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave[data-v-de2c8afa] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n.anim-leave-to[data-v-de2c8afa] {\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.anim-enter-active[data-v-de2c8afa],\n.anim-leave-active[data-v-de2c8afa] {\n  -webkit-transform-origin: center top;\n          transform-origin: center top;\n  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;\n}\n@media (max-width: 768px) {\n.socials-btn[data-v-de2c8afa] {\n    bottom: 84px;\n    width: 32px;\n    height: 32px;\n    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);\n}\n.socials-btn.whatsapp[data-v-de2c8afa] {\n    left: 12px;\n}\n.socials-btn.telegram[data-v-de2c8afa] {\n    left: 48px;\n    border-width: 0;\n}\n}", ""]);
 
 // exports
 
@@ -6026,7 +6026,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 60px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.fixedMobileAd .adswrapper[data-v-7b54dd56] {\n  width: 100%;\n  height: 60px;\n}", ""]);
+exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 80px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.fixedMobileAd .adswrapper[data-v-7b54dd56] {\n  width: 100%;\n  height: 80px;\n}", ""]);
 
 // exports
 
@@ -49168,10 +49168,10 @@ var render = function() {
           [
             _c("InFeedAdsense", {
               attrs: {
-                "data-ad-format": "fluid",
-                "data-ad-layout-key": "-fb+5w+4e-db+86",
                 "data-ad-client": "ca-pub-6511052822397382",
-                "data-ad-slot": "1853214598"
+                "data-ad-slot": "3961762360",
+                "data-ad-format": "auto",
+                "data-full-width-responsive": "true"
               }
             })
           ],

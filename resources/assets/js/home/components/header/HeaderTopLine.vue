@@ -132,10 +132,10 @@
       </div>
       <div v-if="this.$env.mobile" class="fixedMobileAd">
         <InFeedAdsense
-          data-ad-format="fluid"
-          data-ad-layout-key="-fb+5w+4e-db+86"
           data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="1853214598"
+          data-ad-slot="3961762360"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
         />
       </div>
   </div><!-- top row end -->
@@ -186,7 +186,7 @@ export default {
   bottom: env(safe-area-inset-bottom);
   left:0;
   right:0;
-  height:60px;
+  height:80px;
   width:100%;
   z-index:2;
   background-color: #eee;
@@ -196,7 +196,7 @@ export default {
 
   .adswrapper {
     width: 100%;
-    height:60px;
+    height: 80px;
   }
 }
 </style>
