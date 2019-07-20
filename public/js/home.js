@@ -49166,7 +49166,7 @@ var render = function() {
           "div",
           { staticClass: "fixedMobileAd" },
           [
-            _c("Adsense", {
+            _c("InFeedAdsense", {
               attrs: {
                 "data-ad-format": "fluid",
                 "data-ad-layout-key": "-fb+5w+4e-db+86",
