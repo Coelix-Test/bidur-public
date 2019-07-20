@@ -140,7 +140,7 @@ export default {
   }
 
   .adswrapper {
-    width: 100%;
+    width: 600px;
     height: 300px;
   }
 
