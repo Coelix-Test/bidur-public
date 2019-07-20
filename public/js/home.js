@@ -5962,7 +5962,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 80px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.fixedMobileAd .adswrapper[data-v-7b54dd56] {\n  width: 100%;\n  height: 90px;\n}", ""]);
+exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 90px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.fixedMobileAd .adswrapper[data-v-7b54dd56] {\n  width: 100%;\n  height: 90px;\n}", ""]);
 
 // exports
 
@@ -6114,7 +6114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".cnt[data-v-6b1ac3c1] {\n  width: 100%;\n  height: 100%;\n  background: #fff;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.cnt video[data-v-6b1ac3c1] {\n  width: 100%;\n}\n.cnt .adswrapper[data-v-6b1ac3c1] {\n  width: 600px;\n  max-width: 100%;\n  height: 300px;\n}\n.cnt .rest[data-v-6b1ac3c1] {\n  background: #fff;\n  top: 30px;\n  right: 30px;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  position: absolute;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n  cursor: default;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.cnt .skip[data-v-6b1ac3c1] {\n  border: 0;\n  background: transparent;\n  top: 20px;\n  right: 20px;\n  width: 50px;\n  height: 50px;\n  position: absolute;\n}\n.cnt .mute[data-v-6b1ac3c1] {\n  border: 0;\n  background: transparent;\n  top: 20px;\n  left: 20px;\n  width: 50px;\n  height: 50px;\n  position: absolute;\n}", ""]);
+exports.push([module.i, ".modal.fade-anim-enter[data-v-6b1ac3c1] {\n  opacity: 0;\n}\n.modal.fade-anim-enter .container[data-v-6b1ac3c1] {\n  -webkit-transform: scale(0);\n          transform: scale(0);\n}\n.modal.fade-anim-enter-to[data-v-6b1ac3c1] {\n  opacity: 1;\n}\n.modal.fade-anim-enter-to .container[data-v-6b1ac3c1] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n}\n.modal.fade-anim-leave[data-v-6b1ac3c1] {\n  opacity: 1;\n}\n.modal.fade-anim-leave .container[data-v-6b1ac3c1] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n}\n.modal.fade-anim-leave-to[data-v-6b1ac3c1] {\n  opacity: 0;\n}\n.modal.fade-anim-leave-to .container[data-v-6b1ac3c1] {\n  -webkit-transform: scale(0);\n          transform: scale(0);\n}\n.modal.fade-anim-leave-active[data-v-6b1ac3c1], .modal.fade-anim-enter-active[data-v-6b1ac3c1] {\n  -webkit-transition: opacity 0.3s ease;\n  transition: opacity 0.3s ease;\n}\n.modal.fade-anim-leave-active .container[data-v-6b1ac3c1], .modal.fade-anim-enter-active .container[data-v-6b1ac3c1] {\n  -webkit-transition: -webkit-transform 0.3s ease;\n  transition: -webkit-transform 0.3s ease;\n  transition: transform 0.3s ease;\n  transition: transform 0.3s ease, -webkit-transform 0.3s ease;\n}\n.cnt[data-v-6b1ac3c1] {\n  width: 100%;\n  height: 100%;\n  background: #fff;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.cnt video[data-v-6b1ac3c1] {\n  width: 100%;\n}\n.cnt .adswrapper[data-v-6b1ac3c1] {\n  width: 600px;\n  max-width: 100%;\n  height: 300px;\n}\n.cnt .rest[data-v-6b1ac3c1] {\n  background: #fff;\n  top: 30px;\n  right: 30px;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  position: absolute;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);\n  cursor: default;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.cnt .skip[data-v-6b1ac3c1] {\n  border: 0;\n  background: transparent;\n  top: 20px;\n  right: 20px;\n  width: 50px;\n  height: 50px;\n  position: absolute;\n}\n.cnt .mute[data-v-6b1ac3c1] {\n  border: 0;\n  background: transparent;\n  top: 20px;\n  left: 20px;\n  width: 50px;\n  height: 50px;\n  position: absolute;\n}", ""]);
 
 // exports
 
@@ -49105,7 +49105,7 @@ var render = function() {
             _c("Adsense", {
               attrs: {
                 "data-ad-client": "ca-pub-6511052822397382",
-                "data-ad-slot": "9113894619",
+                "data-ad-slot": "3961762360",
                 "data-ad-format": "auto",
                 "data-full-width-responsive": true
               }
@@ -50223,7 +50223,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "transition",
-    { attrs: { name: "" } },
+    { attrs: { name: "fade-anim" } },
     [
       _c(
         "Modal",

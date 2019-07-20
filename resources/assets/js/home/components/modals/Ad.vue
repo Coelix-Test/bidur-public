@@ -1,5 +1,5 @@
 <template>
-  <transition name="">
+  <transition name="fade-anim">
     <Modal v-show="opened" @close="close">
       <!-- <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video> -->
 
@@ -60,8 +60,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal {
 
+.modal {
+  &.fade-anim {
+    &-enter {
+      opacity: 0;
+      .container {
+        transform: scale(0);
+      }
+    }
+    &-enter-to {
+      opacity: 1;
+      .container {
+        transform: scale(1);
+      }
+    }
+
+    &-leave {
+      opacity: 1;
+      .container {
+        transform: scale(1);
+      }
+    }
+    &-leave-to {
+      opacity: 0;
+      .container {
+        transform: scale(0);
+      }
+    }
+
+    &-leave-active,
+    &-enter-active {
+      transition: opacity 0.3s ease;
+      .container {
+        transition: transform 0.3s ease;
+      }
+    }
+  }
 }
 
 .cnt {

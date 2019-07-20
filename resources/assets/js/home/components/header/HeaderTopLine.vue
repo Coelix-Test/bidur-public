@@ -133,7 +133,7 @@
       <div v-if="this.$env.mobile" class="fixedMobileAd">
         <Adsense
           data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="9113894619"
+          data-ad-slot="3961762360"
           data-ad-format="auto"
           :data-full-width-responsive="true"
         />
@@ -186,7 +186,7 @@ export default {
   bottom: env(safe-area-inset-bottom);
   left:0;
   right:0;
-  height:80px;
+  height: 90px;
   width:100%;
   z-index:2;
   background-color: #eee;
