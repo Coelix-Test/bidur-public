@@ -7,7 +7,7 @@
       </div>
       <div class="buttons" >
         <button @click="dislike" ref="dislike" type="button" class="dislike">
-          <span v-if="showPercents" class="percent">{{Math.floor(likeHeight.num)}}%</span>
+          <span v-if="showPercents" class="percent" dir="ltr">{{Math.floor(likeHeight.num)}}%</span>
           <div class="yellow-star">
             <svg xmlns="http://www.w3.org/2000/svg" width="178" height="169" viewBox="0 0 178 169" fill="none">
               <path d="M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z" fill="url(#paint0_linear)"/>
@@ -43,7 +43,7 @@
           </svg>
         </button>
         <button @click="like" ref="like" type="button" class="like">
-          <span v-if="showPercents" class="percent">{{Math.floor(dislikeHeight.num)}}%</span>
+          <span v-if="showPercents" class="percent" dir="ltr">{{Math.floor(dislikeHeight.num)}}%</span>
           <div class="yellow-star">
             <svg xmlns="http://www.w3.org/2000/svg" width="178" height="169" viewBox="0 0 178 169" fill="none">
               <path d="M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z" fill="url(#paint0_linear)"/>
