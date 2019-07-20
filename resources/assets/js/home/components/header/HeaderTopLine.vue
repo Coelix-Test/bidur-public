@@ -131,7 +131,10 @@
 
       </div>
       <div v-if="this.$env.mobile" class="fixedMobileAd">
-        Mobile ads
+        <Adsense
+          data-ad-client="ca-pub-6511052822397382"
+          data-ad-slot="3853489762"
+        />
       </div>
   </div><!-- top row end -->
 </template>
@@ -175,18 +178,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .fixedMobileAd {
-    position: fixed;
-    bottom: 0;
-    bottom: env(safe-area-inset-bottom);
-    left:0;
-    right:0;
-    height:60px;
-    width:100%;
-    z-index:2;
-    background-color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fixedMobileAd {
+  position: fixed;
+  bottom: 0;
+  bottom: env(safe-area-inset-bottom);
+  left:0;
+  right:0;
+  height:60px;
+  width:100%;
+  z-index:2;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .adswrapper {
+    width: 100%;
+    height: 100%;
   }
+}
 </style>

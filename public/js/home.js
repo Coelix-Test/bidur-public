@@ -3605,6 +3605,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6021,7 +6024,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 60px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}", ""]);
+exports.push([module.i, ".fixedMobileAd[data-v-7b54dd56] {\n  position: fixed;\n  bottom: 0;\n  bottom: env(safe-area-inset-bottom);\n  left: 0;\n  right: 0;\n  height: 60px;\n  width: 100%;\n  z-index: 2;\n  background-color: #eee;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.fixedMobileAd .adswrapper[data-v-7b54dd56] {\n  width: 100%;\n  height: 100%;\n}", ""]);
 
 // exports
 
@@ -49157,9 +49160,19 @@ var render = function() {
     ),
     _vm._v(" "),
     this.$env.mobile
-      ? _c("div", { staticClass: "fixedMobileAd" }, [
-          _vm._v("\n      Mobile ads\n    ")
-        ])
+      ? _c(
+          "div",
+          { staticClass: "fixedMobileAd" },
+          [
+            _c("Adsense", {
+              attrs: {
+                "data-ad-client": "ca-pub-6511052822397382",
+                "data-ad-slot": "3853489762"
+              }
+            })
+          ],
+          1
+        )
       : _vm._e()
   ])
 }
@@ -71845,7 +71858,7 @@ __webpack_require__.r(__webpack_exports__);
     open: function open(state) {
       state.opened = true;
       state.once_opened = true;
-      state.time = 5;
+      state.time = 3;
     },
     close: function close(state) {
       if (state.can_close) {

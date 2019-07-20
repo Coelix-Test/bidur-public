@@ -10,7 +10,7 @@ export default {
     open(state) {
       state.opened = true;
       state.once_opened = true;
-      state.time = 5;
+      state.time = 3;
     },
     close(state) {
       if(state.can_close) {
