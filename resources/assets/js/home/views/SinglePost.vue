@@ -195,6 +195,7 @@ export default {
 
     },
     sync(id) {
+      this.postData = [];
       return axios
         .post('/post/'+id)
           .then(response => {
