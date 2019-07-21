@@ -221,4 +221,20 @@ export default {
         }
     }
   }
+  @media (max-width:768px) {
+    .about-us {
+      .latest-posts {
+        .latest-post-slider {
+          .latest-post-item {
+            flex-direction: column;
+            img {
+              width:100%;
+              margin-left:0;
+              height:250px;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
