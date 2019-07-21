@@ -5,7 +5,6 @@
       <single-post-example v-if="errorMessage" />
       <div v-if="post" class="post-content">
 
-
         <h1 class="main-title" v-if="post.data.post.mainTitle">
           <type-writer once :text="post.data.post.mainTitle"/>
         </h1>
@@ -32,6 +31,7 @@
           <share />
 
         </div>
+
         <section :class="post.type + ' section'" v-in-viewport.once v-for="post in postData">
 
           <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>

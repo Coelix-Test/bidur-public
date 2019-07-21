@@ -39,6 +39,11 @@ export default {
   },
   mounted() {
     this.typeWriter();
+  },
+  watch: {
+    text() {
+      this.textToShow = '';
+    }
   }
 }
 </script>
