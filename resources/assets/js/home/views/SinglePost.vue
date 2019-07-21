@@ -353,9 +353,9 @@ export default {
   section.image span {
     max-width:500px;
     font-style: italic;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
     color:#333;
   }
   section.imageWithText img {
