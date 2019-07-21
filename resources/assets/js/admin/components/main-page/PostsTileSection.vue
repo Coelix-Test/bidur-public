@@ -12,7 +12,7 @@
                     v-model="values[index]"
                 />
             </div>
-            <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
+            <button @click="save" class="theme-btn theme-btn-red big-btn">פרסם</button>
         </div>
     </div>
 </template>
