@@ -43,6 +43,7 @@ export default {
   watch: {
     text() {
       this.textToShow = '';
+      this.typeWriter();
     }
   }
 }
