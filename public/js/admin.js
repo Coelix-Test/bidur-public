@@ -26948,7 +26948,9 @@ var render = function() {
             "div",
             { key: index },
             [
-              _c("p", { staticClass: "heading" }, [_vm._v(_vm._s(post.label))]),
+              _c("p", { staticClass: "heading" }, [
+                _vm._v("Post " + _vm._s(index + 1))
+              ]),
               _vm._v(" "),
               _c("searchable-input", {
                 staticClass: "searchable-input",
@@ -28012,7 +28014,7 @@ var render = function() {
       "div",
       { staticClass: "posts-wrapper" },
       [
-        _vm._l(_vm.posts, function(post) {
+        _vm._l(_vm.posts, function(post, index) {
           return _vm.posts
             ? [
                 !_vm.isDeletedPost(post.post.id)

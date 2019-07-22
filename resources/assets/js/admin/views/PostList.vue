@@ -4,7 +4,7 @@
       <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
     </div>
     <div class="posts-wrapper">
-      <template v-for="post in posts" v-if="posts">
+      <template v-for="(post, index) in posts" v-if="posts">
         <div class="post" v-if="!isDeletedPost(post.post.id)" :key="post.post.id">
 
           <h2>{{post.post.metaTitle}}</h2>
