@@ -1,6 +1,6 @@
 <template>
   <label class="checkbox">
-    <input type="checkbox" :checked="value ? true : false" @input="$emit('input', $event.target.value)">
+    <input type="checkbox" :checked="value ? true : false" @change="$emit('input', $event.target.value)">
     <div class="content">
       <slot/>
     </div>

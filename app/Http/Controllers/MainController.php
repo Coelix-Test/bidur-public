@@ -400,7 +400,7 @@ class MainController extends Controller
             foreach ($postIds as $postId) {
               // табуляции бля
               $kirill_spasibo = $this->getContent($postId);
-              if($kirill_spasibo->publish == 1) {
+              if($kirill_spasibo['publish'] == 1) {
                 $postsWithContent['data'][$postId] = $kirill_spasibo;
               }
             }
