@@ -1196,6 +1196,7 @@ class AdminController extends Controller
             foreach ($videos as $video) {
                 $fullPost['sections'][$video->order]['type'] = 'video';
                 $fullPost['sections'][$video->order]['value'] = $video->url;
+                $fullPost['sections'][$video->order]['description'] = $video->description;
             }
         }
 
