@@ -3689,6 +3689,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -27814,6 +27815,7 @@ var render = function() {
         name: "description",
         placeholder: "Add description"
       },
+      domProps: { value: _vm.description },
       on: {
         input: function($event) {
           return _vm.$emit("update:description", $event.target.value)
