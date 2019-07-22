@@ -112,6 +112,7 @@
                     </div>
                 </div>
                 <button type="submit" class="theme-btn theme-btn-red submit-post">לשמור</button>
+                <div class="div">TEST</div>
             </form>
             <div class="col-3" dir="ltr" style="direction: ltr;text-align: left;font-size: 16px;display: none;">
                 <template v-if="celebrities !== undefined">
