@@ -8,6 +8,7 @@
         v-if="i <= 4"
       />
     </div>
+
     <div class="OUTBRAIN banner" data-src="DROP_PERMALINK_HERE" data-widget-id="GS_1"></div>
 
     <div class="block">
