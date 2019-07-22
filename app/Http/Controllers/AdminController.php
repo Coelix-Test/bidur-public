@@ -1259,6 +1259,7 @@ class AdminController extends Controller
         }
 
         $fullPost['author'] = $post->author;
+        $fullPost['publish'] = $post->publish;
         $fullPost['date'] = $post->created_at->timestamp;
 
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
@@ -1357,7 +1358,8 @@ class AdminController extends Controller
                 }
 
 //                dd($files);
-            }elseif ($section['type'] == 'selection'){
+            }
+            elseif ($section['type'] == 'selection'){
 
                 if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
@@ -1372,7 +1374,8 @@ class AdminController extends Controller
                 }else{
                     $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, true, true);
                 }
-            }elseif ($section['type'] == 'assessment'){
+            }
+            elseif ($section['type'] == 'assessment'){
                 if (isset($files['sections'][$key]['image'])){
                     $file = $files['sections'][$key]['image'];
                     $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
@@ -1382,7 +1385,12 @@ class AdminController extends Controller
 
             }
         }
-        return json_encode(['success' => true]);
+
+        $post = Post::find(intval($currentId));
+        $post->publish = $request->get('publish');
+        $post->save();
+
+        return json_encode([ 'success' => true ]);
 
     }
 

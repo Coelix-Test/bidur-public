@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row">
             <form class="col-9" @submit.prevent="submitPostData">
+
+                <check-box v-model="publish" v-if="$route.params.id">
+                  PUBLISH
+                </check-box>
+
                 <edit-post-header
                     :title="title"
                     :author="author"
@@ -12,6 +17,8 @@
                     @updateDate="onUpdateDate"
                     @updateCelebrities="onUpdateCelebrities">
                 </edit-post-header>
+
+
 
                 <div class="post-section" v-for="(section, index) in sections">
                     <template v-if="section.type === 'title'">
@@ -140,7 +147,7 @@ import PostVideoLink from './../components/posts/PostVideoLink.vue';
 import PostSurvey from './../components/posts/PostSurvey.vue';
 import PostAssessment from './../components/posts/PostAssessment.vue';
 import PostSelection from './../components/posts/PostSelection.vue';
-
+import CheckBox from './../components/common/CheckBox.vue';
 import SideNews from './../../home/components/SideNews.vue';
 
 export default {
@@ -150,8 +157,8 @@ export default {
             title: '',
             author: '',
             date: new Date(),
-            sections: [
-            ]
+            publish: false,
+            sections: []
         }
     },
     components: {
@@ -164,7 +171,8 @@ export default {
         PostSurvey,
         PostAssessment,
         PostSelection,
-        SideNews
+        SideNews,
+        CheckBox,
     },
     methods: {
         addSection(type){
@@ -218,6 +226,7 @@ export default {
 
             //append header
             let sectionIndex = 0;
+
             postData.append('sections['+sectionIndex+'][type]', 'metaTitle');
             postData.append('sections['+sectionIndex+'][title]', this.title);
             postData.append('sections['+sectionIndex+'][author]', this.author);
@@ -248,9 +257,10 @@ export default {
             let url = '/createPost';
             let successMessage = 'Post was successfully added!';
             if(this.$route.params.id){
-              url = 'editPostCreateAllSections';
+              url = '/editPostCreateAllSections';
               successMessage = 'Post was successfully edited!';
               postData.append('id', this.$route.params.id);
+              postData.append('publish', this.publish ? 1 : 0);
             }
             axios({
                     method: 'post',
@@ -278,6 +288,7 @@ export default {
               .then(response => {
                 this.title = response.data.mainTitle;
                 this.author = response.data.author;
+                this.publish = response.data.publish;
                 this.date = new Date(response.data.date*1000);
                 if(response.data.sections){
                   let postSections = response.data.sections;
