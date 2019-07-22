@@ -2,107 +2,112 @@
   <div class="single-post">
     <div class="post-wrapper">
 
-      <single-post-example v-if="errorMessage" />
-      <div v-if="post" class="post-content">
+      <div class="post-content">
+        <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a>
+        <template v-if="errorMessage">
+          <p class="main-title">Post has no content!</p>
+        </template>
+        <template v-else>
 
-        <h1 class="main-title" v-if="post.data.post.mainTitle">
-          <type-writer once :text="post.data.post.mainTitle"/>
-        </h1>
-        <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
-          <img src="/img/icons/star-gradient.png" alt=" ">
-          הוסף למועדפים
-        </button>
-        <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
-          <img src="/img/icons/star-gradient.png" alt="">
-          הסר ממועדפים
-        </button>
-        <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
-          <img src="/img/icons/star-gradient.png" alt="">
-          הוסף למועדפים
-        </button>
+          <h1 class="main-title" v-if="post.data.post.mainTitle">
+            <type-writer once :text="post.data.post.mainTitle"/>
+          </h1>
+          <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+            <img src="/img/icons/star-gradient.png" alt=" ">
+            הוסף למועדפים
+          </button>
+          <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
+            <img src="/img/icons/star-gradient.png" alt="">
+            הסר ממועדפים
+          </button>
+          <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
+            <img src="/img/icons/star-gradient.png" alt="">
+            הוסף למועדפים
+          </button>
 
-        <div class="post-meta">
+          <div class="post-meta">
 
-          <div class="info">
-            <span class="author">{{ post.data.post.author }}</span>
-            <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
+            <div class="info">
+              <span class="author">{{ post.data.post.author }}</span>
+              <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
+
+            </div>
+            <share />
 
           </div>
-          <share />
 
-        </div>
+          <section :class="post.type + ' section'" v-in-viewport.once v-for="post in postData">
 
-        <section :class="post.type + ' section'" v-in-viewport.once v-for="post in postData">
+            <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
-          <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
+            <div v-if="post.type == 'content'" v-html="post.value"></div>
 
-          <div v-if="post.type == 'content'" v-html="post.value"></div>
+            <div v-if="post.type == 'image'">
+              <img :src="post.value" alt="">
+              <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
+            </div>
 
-          <div v-if="post.type == 'image'">
-            <img :src="post.value" alt="">
-            <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
+
+            <div ref="poll" v-if="post.type == 'survey'" class="poll">
+              <img :src="post.img" alt="">
+              <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+            </div>
+            <div v-else-if="post.type == 'compare'" class="poll">
+              <one-survey :data="post.value"/>
+            </div>
+            <div v-else-if="post.type == 'likableImage'" class="poll">
+              <like-survey :data="post.value"/>
+            </div>
+
+
+            <iframe
+              v-if="post.type == 'video'"
+              id="ytplayer"
+              type="text/html"
+              :src="youtubeEmbedLink(post.value)"
+              frameborder="0"
+            />
+            <!-- <template
+              v-if="post.type == 'video'"
+            >
+              {{post.value}}
+            </template> -->
+
+            <div v-if="post.type == 'imageWithText'">
+              <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
+              <h2 v-if="post.title !== 'null'">{{ post.title }}</h2>
+              <div v-if="post.content" v-html="post.content"></div>
+            </div>
+
+            <!-- <div v-if="post.type == ''"></div> -->
+
+          </section>
+          <div v-if="this.$env.mobile == true">
+            <div class="OUTBRAIN" :data-src="this.$route.query.page" data-widget-id="GS_6"></div>
           </div>
 
 
-          <div ref="poll" v-if="post.type == 'survey'" class="poll">
-            <img :src="post.img" alt="">
-            <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+          <nav v-if="false">
+
+            <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
+              <img src="/img/arrow-right.svg">
+              לכתבה הקודמת
+            </router-link>
+            <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
+              לכתבה הבאה
+              <img src="/img/arrow-left.svg">
+            </router-link>
+          </nav>
+
+
+
+          <div class="opinion">
+            <h2>מה חשבתם על הכתבה?</h2>
+            <div class="emoji-wrapper">
+              <emoji v-if="postId" :postId="postId" />
+            </div>
           </div>
-          <div v-else-if="post.type == 'compare'" class="poll">
-            <one-survey :data="post.value"/>
-          </div>
-          <div v-else-if="post.type == 'likableImage'" class="poll">
-            <like-survey :data="post.value"/>
-          </div>
-
-
-          <iframe
-            v-if="post.type == 'video'"
-            id="ytplayer"
-            type="text/html"
-            :src="youtubeEmbedLink(post.value)"
-            frameborder="0"
-          />
-          <!-- <template
-            v-if="post.type == 'video'"
-          >
-            {{post.value}}
-          </template> -->
-
-          <div v-if="post.type == 'imageWithText'">
-            <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
-            <h2 v-if="post.title">{{ post.title }}</h2>
-            <div v-if="post.content" v-html="post.content"></div>
-          </div>
-
-          <!-- <div v-if="post.type == ''"></div> -->
-
-        </section>
-        <div v-if="this.$env.mobile == true">
-          <div class="OUTBRAIN" :data-src="this.$route.query.page" data-widget-id="GS_6"></div>
-        </div>
-
-
-        <nav v-if="false">
-
-          <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
-            <img src="/img/arrow-right.svg">
-            לכתבה הקודמת
-          </router-link>
-          <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
-            לכתבה הבאה
-            <img src="/img/arrow-left.svg">
-          </router-link>
-        </nav>
-
-
-
-        <div class="opinion">
-          <h2>מה חשבתם על הכתבה?</h2>
-          <div class="emoji-wrapper">
-            <emoji v-if="postId" :postId="postId" />
-          </div>
-        </div>
+        </template>
 
       </div>
 
@@ -282,6 +287,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .back-btn{
+    font-size: 18px;
+    height: 40px;
+    padding: 0 20px 0 50px;
+    background: url('/img/icons/arrow-white-back.svg') no-repeat 18px center, #EB5757;
+    -webkit-background-size: 25px 18px;
+    background-size: 25px 18px;
+    margin-bottom: 10px;
+    margin-left: auto;
+  }
   .post-wrapper {
     display: flex;
     flex-direction: row;
@@ -316,10 +331,12 @@ export default {
     flex-grow:2;
     text-align: left;
   }
-  .post-content h1 {
+  .post-content .main-title {
     color:#F2C94C;
     margin-bottom: 16px;
     font-weight: 700;
+    font-size: 40px;
+    font-weight: bold;
   }
   .post-meta {
     display: flex;
@@ -618,7 +635,7 @@ export default {
     }
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     /* likes counter: 3 */
-    h1.main-title {
+    .main-title {
       color: #fff;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
       margin: -32px -16px;

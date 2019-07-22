@@ -2742,7 +2742,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -5609,6 +5608,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -5790,6 +5794,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, ".side-news-post[data-v-fff594f6] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  min-height: 110px;\n  border-bottom: 1px solid #E0E0E0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n  -webkit-transform: translateX(-100%);\n          transform: translateX(-100%);\n  opacity: 0;\n  height: 120px;\n}\n.side-news-post.in-viewport[data-v-fff594f6] {\n  opacity: 1;\n  -webkit-transform: translateX(0);\n          transform: translateX(0);\n}\n.side-news-post[data-v-fff594f6]:last-child {\n  border-bottom: 0;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.side-news-post .link-wrapper[data-v-fff594f6] {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  text-decoration: none;\n}\n.side-news-post .img[data-v-fff594f6] {\n  width: 120px;\n  min-width: 120px;\n  max-width: 120px;\n  height: 100%;\n  display: block;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.side-news-post .desc[data-v-fff594f6] {\n  padding-right: 10px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n.side-news-post .desc .title[data-v-fff594f6] {\n  font-weight: bold;\n  font-size: 18px;\n  line-height: 20px;\n  text-align: right;\n  color: #4F4F4F;\n}\n.side-news-post .desc .subtitle[data-v-fff594f6] {\n  padding-top: 10px;\n  font-weight: 300;\n  font-size: 12px;\n  line-height: 14px;\n  color: #4F4F4F;\n}\n@media (max-width: 450px) {\n.side-news-post .link-wrapper[data-v-fff594f6] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    border-bottom: 0;\n}\n.side-news-post .link-wrapper .img[data-v-fff594f6] {\n    height: 300px;\n    width: 100%;\n    max-width: unset;\n}\n.side-news-post .link-wrapper .desc[data-v-fff594f6] {\n    padding-right: 0;\n    padding-top: 10px;\n}\n}\n@media (max-width: 768px) {\n.side-news-post[data-v-fff594f6] {\n    height: unset;\n}\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".post-wrapper[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width: 1440px;\n  margin: 32px auto 0;\n}\n.post-content[data-v-ca107952] {\n  -webkit-box-flex: 2;\n          flex-grow: 2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-ca107952] {\n  color: #BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-ca107952] {\n  color: #333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-ca107952],\n.post-meta .info[data-v-ca107952] {\n  color: #333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-ca107952] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-ca107952] {\n  color: #333;\n}\nsection h2[data-v-ca107952] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-ca107952] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-ca107952] {\n  max-width: 50%;\n}\nsection.imageWithText img.right[data-v-ca107952] {\n  float: right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-ca107952] {\n  float: left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-ca107952] {\n  color: #333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-ca107952] {\n  width: 100%;\n  height: 450px;\n}\nsection.image p[data-v-ca107952] {\n  font-size: 16px;\n}\nsection.image p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-ca107952] {\n  /* margin-bottom: ; */\n  color: #4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-ca107952] {\n  margin-bottom: 0;\n  color: #333;\n  font-size: 36px;\n}\nsection.survey[data-v-ca107952] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding: 24px;\n}\nsection.survey > div[data-v-ca107952] {\n  max-width: 550px;\n}\n.post-content section[data-v-ca107952]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-ca107952] {\n  max-width: 600px;\n  color: #333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-ca107952] {\n  width: 100%;\n  padding: 0 24px;\n}\n.related-post[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-ca107952] {\n  text-decoration: none;\n}\n.related-post a[data-v-ca107952] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-ca107952] {\n  color: #333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-ca107952] {\n  padding-right: 16px;\n  color: #333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-ca107952] {\n  color: #333;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n  color: #828282;\n  font-size: 16px;\n}\n.share[data-v-ca107952] {\n  color: #333333;\n  -webkit-text-decoration-color: #333333;\n          text-decoration-color: #333333;\n}\n@media (max-width: 1024px) {\n.post-wrapper[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width: 768px) {\n.post-content h1[data-v-ca107952] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.imageWithText img.left[data-v-ca107952],\nsection.imageWithText img.right[data-v-ca107952] {\n    float: none;\n    margin-right: 0;\n    max-width: unset;\n}\n}\n@media (max-width: 550px) {\n.related-post[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-ca107952] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-ca107952] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-ca107952] {\n    padding: 12px 4px;\n}\n.post-wrapper[data-v-ca107952] {\n    padding: 0 8px;\n}\n.related-post-content[data-v-ca107952] {\n    padding: 0 4px;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n    text-align: center;\n}\n.related-post h3[data-v-ca107952] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-ca107952] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}", ""]);
 
 // exports
 
@@ -6366,25 +6389,6 @@ exports.push([module.i, "/**\n * Swiper 4.5.0\n * Most modern mobile touch slide
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.post-wrapper[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-ca107952] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.post-content nav[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-ca107952] {\n  color:#BDBDBD;\n  font-size: 18px;\n}\n.post-content h1[data-v-ca107952] {\n  color:#333333;\n  margin-bottom: 16px;\n}\n.post-meta[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.post-meta .info a[data-v-ca107952],\n.post-meta .info[data-v-ca107952] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-ca107952] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-ca107952] {\n  color:#333;\n}\nsection h2[data-v-ca107952] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n}\nsection.image img[data-v-ca107952] {\n  max-width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n}\nsection.imageWithText img[data-v-ca107952] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-ca107952] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-ca107952] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-ca107952] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-ca107952] {\n  width:100%;\n  height:450px;\n}\nsection.image p[data-v-ca107952] {\n  font-size: 16px;\n}\nsection.image p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-ca107952] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-ca107952]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-ca107952] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-ca107952] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:24px;\n}\nsection.survey > div[data-v-ca107952] {\n  max-width: 550px;\n}\n.opinion[data-v-ca107952] {\n}\n.post-content section[data-v-ca107952]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.img-subtext[data-v-ca107952] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-ca107952] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-ca107952] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n}\n.related-post[data-v-ca107952] {\n  text-decoration: none;\n}\n.related-post a[data-v-ca107952] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n}\n.related-post h3[data-v-ca107952] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-ca107952] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-ca107952] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 8px;\n}\n.related-post-meta .author[data-v-ca107952] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-ca107952] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.post-content h1[data-v-ca107952] {\n    font-size: 32px;\n    line-height: 32px;\n}\nsection.imageWithText img.left[data-v-ca107952],\n  section.imageWithText img.right[data-v-ca107952] {\n    float:none;\n    margin-right: 0;\n    max-width: unset;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-ca107952] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n}\n.related-post-meta[data-v-ca107952] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-ca107952] {\n    margin-bottom: 8px;\n}\nsection.survey[data-v-ca107952] {\n    padding:12px 4px;\n}\n.post-wrapper[data-v-ca107952] {\n    padding:0 8px;\n}\n.related-post-content[data-v-ca107952] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-ca107952] {\n    text-align: center;\n}\n.related-post h3[data-v-ca107952] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-ca107952] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/index/LeftColumn.vue?vue&type=style&index=0&id=a94489d6&lang=css&scoped=true& ***!
@@ -6454,7 +6458,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  /* display: none; */\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content h1[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 18px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.content[data-v-3e64b357] * {\n  max-width: 100%;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n  padding: 16px 0;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n  padding: 8px 0 !important;\n  margin: 0 1px !important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:-12px;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:-12px;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 100%;\n  height: 350px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  padding: 10px;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-posts .stars[data-v-3e64b357] {\n  display: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.opinion[data-v-3e64b357] {\n    padding: 0;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n.related-posts[data-v-3e64b357] {\n    position: relative;\n    margin-top: 32px;\n}\n.related-posts .stars[data-v-3e64b357] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width:100%;\n    /* height: 100%; */\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index:-1;\n}\n.related-posts[data-v-3e64b357]:before {\n    /* content:url('/img/stars-posts.svg');\n    width:100%;\n    height:100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-position: center;\n    background-size: 100% 100%;\n    background-repeat: no-repeat; */\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\nh1.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\n.related-post a[data-v-3e64b357] {\n    width:100%;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n.back-btn[data-v-3e64b357]{\n  font-size: 18px;\n  height: 40px;\n  padding: 0 20px 0 50px;\n  background: url('/img/icons/arrow-white-back.svg') no-repeat 18px center, #EB5757;\n  background-size: 25px 18px;\n  margin-bottom: 10px;\n  margin-left: auto;\n}\n.post-wrapper[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 24px;\n  max-width:1440px;\n  margin:32px auto 0;\n}\n.post-content[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  padding-left: 16px;\n}\n.post-content nav[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-bottom: 16px;\n}\n.post-content nav a[data-v-3e64b357] {\n  color:#FCD77E;\n  font-size: 18px;\n  font-weight: bold;\n}\n.post-content nav a img[data-v-3e64b357] {\n  /* display: none; */\n}\n.post-content nav .next-post[data-v-3e64b357] {\n  -webkit-box-flex:2;\n          flex-grow:2;\n  text-align: left;\n}\n.post-content .main-title[data-v-3e64b357] {\n  color:#F2C94C;\n  margin-bottom: 16px;\n  font-weight: 700;\n  font-size: 40px;\n  font-weight: bold;\n}\n.post-meta[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.poll img[data-v-3e64b357] {\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 0;\n}\n.post-meta .info a[data-v-3e64b357],\n.post-meta .info[data-v-3e64b357] {\n  color:#333;\n  font-size: 16px;\n}\n.post-meta .info .date[data-v-3e64b357] {\n  padding-right: 4px;\n  margin-right: 4px;\n  border-right: 1px solid #333;\n}\n.post-content section[data-v-3e64b357] {\n  margin-bottom: 16px;\n}\n.post-content[data-v-3e64b357] {\n  color:#333;\n}\nsection h2[data-v-3e64b357] {\n  padding-right: 6px;\n  border-right: 5px solid #F2C94C;\n  font-weight: 600;\n}\nsection.image img[data-v-3e64b357] {\n  max-width: 100%;\n  width:100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  margin-bottom: 12px;\n  display: block;\n}\nsection.image span[data-v-3e64b357] {\n  max-width:500px;\n  font-style: italic;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 18px;\n  color:#333;\n}\nsection.imageWithText img[data-v-3e64b357] {\n  max-width:50%;\n}\nsection.imageWithText img.right[data-v-3e64b357] {\n  float:right;\n  margin-left: 16px;\n}\nsection.imageWithText img.left[data-v-3e64b357] {\n  float:left;\n  margin-right: 16px;\n}\nsection.imageWithText h2[data-v-3e64b357] {\n  color:#333;\n  margin-bottom: 16px;\n}\nsection.video iframe[data-v-3e64b357] {\n  width:100%;\n  height:450px;\n}\nsection.content[data-v-3e64b357] * {\n  max-width: 100%;\n}\nsection.image p[data-v-3e64b357] {\n  font-size: 16px;\n}\nsection.image p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.text p[data-v-3e64b357] {\n  /* margin-bottom: ; */\n  color:#4F4F4F;\n  font-size: 18px;\n}\nsection.text p[data-v-3e64b357]:last-child {\n  margin-bottom: 0;\n}\nsection.sub-title h2[data-v-3e64b357] {\n  margin-bottom: 0;\n  color:#333;\n  font-size: 36px;\n}\nsection.survey[data-v-3e64b357] {\n  background: #FFFFFF;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);\n  margin-bottom: 24px;\n  padding:0 0 0;\n  border:4px solid #E4A913!important;\n}\nsection.survey[data-v-3e64b357] {\n  max-width: 550px;\n}\n.opinion[data-v-3e64b357] {\n  border: 4px solid;\n  -webkit-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n       -o-border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n          border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n  border-image-slice: 1;\n  padding: 16px 0;\n}\n.opinion h2[data-v-3e64b357] {\n  text-align: center;\n  font-weight: 700;\n}\n.post-content section[data-v-3e64b357]:last-of-type {\n  padding-bottom: 32px;\n  /* margin-top: 32px; */\n  border-bottom: 1px solid #BDBDBD;\n}\n.add-to-favourites[data-v-3e64b357] {\n  white-space: nowrap;\n  border-width: 0;\n  color: #F2C94C;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  font-size: 18px;\n  font-weight: 700;\n  background-color: #fff;\n  padding-right: 0;\n  margin-left: auto;\n}\n.add-to-favourites img[data-v-3e64b357] {\n  width: 24px;\n  height: 24px;\n  margin-left: 4px;\n  pointer-events: none;\n}\n.img-subtext[data-v-3e64b357] {\n  max-width: 600px;\n  color:#333;\n  font-style: italic;\n  margin-bottom: 0;\n}\n.related-posts[data-v-3e64b357] {\n  width: 100%;\n  padding:0 24px;\n}\n.related-post[data-v-3e64b357] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  margin-top: 24px;\n  text-decoration: none;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot-container {\n  margin-top: 0!important;\n  margin-bottom: 20px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot {\n  margin-top: 10px!important;;\n  padding: 7px!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-dot.VueCarousel-dot--active {\n  background-color: #FCD77E!important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-button {\n  -webkit-transform: scale(1.6) translateY(-50%);\n          transform: scale(1.6) translateY(-50%);\n  outline: none;\n  padding: 8px 0 !important;\n  margin: 0 1px !important;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev {\n  right:-12px;\n  left:unset;\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-prev img {\n  -webkit-transform:rotate(180deg);\n          transform:rotate(180deg);\n}\n.related-posts[data-v-3e64b357] .VueCarousel-navigation-next {\n  left:-12px;\n  right:unset;\n}\n.related-post img[data-v-3e64b357] {\n  width: 100%;\n  height: 350px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  padding: 10px;\n}\n.related-post a[data-v-3e64b357] {\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n}\n.related-posts .stars[data-v-3e64b357] {\n  display: none;\n}\n.related-post h3[data-v-3e64b357] {\n  color:#333;\n  -webkit-text-decoration-color: #333;\n          text-decoration-color: #333;\n  text-decoration: none;\n  font-size: 20px;\n  font-weight: 400;\n}\n.related-post-content[data-v-3e64b357] {\n  padding-right: 16px;\n  color:#333333;\n  padding-left: 16px;\n}\n.related-post-meta[data-v-3e64b357] {\n  color:#333;\n  display:-webkit-box;\n  display:flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  white-space: nowrap;\n  font-size: 14px;\n  margin-bottom: 0;\n}\n.related-post-meta .author[data-v-3e64b357] {\n  padding-right: 6px;\n  margin-right: 6px;\n  border-right: 1px solid #333;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n  color:#828282;\n  font-size: 16px;\n}\n.share[data-v-3e64b357] {\n  color:#333333;\n  -webkit-text-decoration-color:#333333;\n          text-decoration-color:#333333;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: none;\n}\n@media (max-width:1024px) {\n.post-wrapper[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width:768px) {\n.opinion[data-v-3e64b357] {\n    padding: 0;\n}\n.related-posts h2[data-v-3e64b357] {\n    display: block;\n    position: relative;\n    text-align: center;\n    width:100%;\n    font-size: 48px;\n    font-weight: bold;\n    color: #333;\n}\n.related-posts h2[data-v-3e64b357]:after {\n    content:'';\n    position: absolute;\n    background-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);\n    width:60px;\n    height:6px;\n    border-radius: 5px;\n    bottom:-10px;\n    left:50%;\n    -webkit-transform:translateX(-50%);\n            transform:translateX(-50%);\n}\n.related-posts[data-v-3e64b357] {\n    position: relative;\n    margin-top: 32px;\n}\n.related-posts .stars[data-v-3e64b357] {\n    display: block;\n    -o-object-fit: contain;\n       object-fit: contain;\n    width:100%;\n    /* height: 100%; */\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    pointer-events: none;\n    z-index:-1;\n}\n.related-posts[data-v-3e64b357]:before {\n    /* content:url('/img/stars-posts.svg');\n    width:100%;\n    height:100%;\n    position: absolute;\n    top:0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-position: center;\n    background-size: 100% 100%;\n    background-repeat: no-repeat; */\n}\n  /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */\n  /* likes counter: 3 */\n.main-title[data-v-3e64b357] {\n    color: #fff;\n    background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);\n    margin: -32px -16px;\n    text-align: center;\n    margin-top: -31px;\n    font-size: 26px;\n    padding: 32px 8px;\n    padding-bottom: 50px;\n}\n.banner[data-v-3e64b357] {\n    width:100%;\n    height: auto;\n    display: block;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    height:300px;\n}\n.post-meta .info[data-v-3e64b357] {\n    -webkit-transform: translateY(-70px);\n            transform: translateY(-70px);\n    color: #fff;\n    position: absolute;\n    width: 100%;\n    right: 0;\n    text-align: center;\n}\n.post-meta .info .date[data-v-3e64b357] {\n    border-color: #fff;\n}\n.add-to-favourites[data-v-3e64b357] {\n    margin-top: 30px;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.post-meta[data-v-3e64b357] {\n    -webkit-box-pack: end;\n            justify-content: flex-end;\n}\n  /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */\nsection.imageWithText[data-v-3e64b357] {\n    text-align: justify;\n}\nsection.content[data-v-3e64b357] {\n    text-align: justify;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 32px;\n    line-height: 32px;\n}\n.post-content[data-v-3e64b357] {\n    padding-left: 0;\n    width: 100%;\n}\n.opinion h2[data-v-3e64b357] {\n    text-align: center;\n}\nsection.imageWithText img.left[data-v-3e64b357],\n  section.imageWithText img.right[data-v-3e64b357] {\n    float:none;\n    margin-right: 0;\n    max-width: 100%;\n    margin-bottom: 8px;\n    margin-left: 0;\n    margin-right: 0;\n}\n}\n@media (max-width:550px) {\n.related-post[data-v-3e64b357] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: center;\n            align-items: center;\n    text-align: center;\n    flex-basis:100%;\n}\n.related-post-meta[data-v-3e64b357] {\n    -webkit-box-pack: center;\n            justify-content: center;\n}\n.related-post img[data-v-3e64b357] {\n    margin-bottom: 8px;\n}\n.related-post a[data-v-3e64b357] {\n    width:100%;\n}\nsection.survey[data-v-3e64b357] {\n    padding:0;\n}\n.post-wrapper[data-v-3e64b357] {\n    padding:0 16px;\n}\n.related-post-content[data-v-3e64b357] {\n    padding:0 4px;\n}\n.related-post-content .excerpt[data-v-3e64b357] {\n    text-align: center;\n}\n.related-post h3[data-v-3e64b357] {\n    font-size: 18px;\n    line-height: 18px;\n}\n.post-content h1[data-v-3e64b357] {\n    font-size: 28px;\n    line-height: 28px;\n}\n}\n.section[data-v-3e64b357] {\n  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;\n  -webkit-transform: scale(0.9);\n          transform: scale(0.9);\n  opacity: 0;\n}\n.section.in-viewport[data-v-3e64b357] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -37150,6 +37154,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--9-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/TextInput.vue?vue&type=style&index=0&id=12017e32&lang=scss&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/TextInput.vue?vue&type=style&index=0&id=12017e32&lang=scss&scoped=true& ***!
@@ -37999,36 +38033,6 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--9-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./MyAccount.vue?vue&type=style&index=0&id=4f97eb3c&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/views/MyAccount.vue?vue&type=style&index=0&id=4f97eb3c&lang=scss&scoped=true&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--8-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--8-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -47558,10 +47562,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "single-post-example" }, [
-      _c("a", { attrs: { href: "", onclick: "history.back()" } }, [
-        _vm._v("BACK")
-      ]),
-      _vm._v(" "),
       _c("h1", [_vm._v("Post have no content!")])
     ])
   }
@@ -51376,65 +51376,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    [
-      _c("div", { staticClass: "main-content" }, [
-        _c("div", { staticClass: "header" }, [
-          _c(
-            "button",
-            {
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.$router.go(-1)
-                }
+  return _c("main", [
+    _c("div", { staticClass: "main-content" }, [
+      _c("div", { staticClass: "header" }, [
+        _c(
+          "button",
+          {
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.$router.go(-1)
               }
-            },
-            [
-              _c(
-                "svg",
-                {
+            }
+          },
+          [
+            _c(
+              "svg",
+              {
+                attrs: {
+                  width: "25",
+                  height: "18",
+                  viewBox: "0 0 25 18",
+                  fill: "none",
+                  xmlns: "http://www.w3.org/2000/svg"
+                }
+              },
+              [
+                _c("path", {
                   attrs: {
-                    width: "25",
-                    height: "18",
-                    viewBox: "0 0 25 18",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    d:
+                      "M16.8449 0.270719C16.4924 -0.0902398 15.9376 -0.0902398 15.5851 0.270719C15.2446 0.619484 15.2446 1.19995 15.5851 1.5479L21.9727 8.08988H0.894592C0.40324 8.08988 0 8.48986 0 8.99309C0 9.49632 0.40324 9.90931 0.894592 9.90931H21.9727L15.5851 16.4391C15.2446 16.8001 15.2446 17.3813 15.5851 17.7293C15.9376 18.0902 16.4924 18.0902 16.8449 17.7293L24.7446 9.63859C25.0851 9.28983 25.0851 8.70936 24.7446 8.36141L16.8449 0.270719Z",
+                    fill: "#BDBDBD"
                   }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M16.8449 0.270719C16.4924 -0.0902398 15.9376 -0.0902398 15.5851 0.270719C15.2446 0.619484 15.2446 1.19995 15.5851 1.5479L21.9727 8.08988H0.894592C0.40324 8.08988 0 8.48986 0 8.99309C0 9.49632 0.40324 9.90931 0.894592 9.90931H21.9727L15.5851 16.4391C15.2446 16.8001 15.2446 17.3813 15.5851 17.7293C15.9376 18.0902 16.4924 18.0902 16.8449 17.7293L24.7446 9.63859C25.0851 9.28983 25.0851 8.70936 24.7446 8.36141L16.8449 0.270719Z",
-                      fill: "#BDBDBD"
-                    }
-                  })
-                ]
-              ),
-              _vm._v("\n        חזור\n      ")
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "hashtag" }, [
-            _c("img", { staticClass: "img", attrs: { src: _vm.img } }),
-            _vm._v(" "),
-            _c("div", { staticClass: "name" }, [
-              _vm._v("\n          " + _vm._s(_vm.name) + "\n        ")
-            ])
-          ])
-        ]),
+                })
+              ]
+            ),
+            _vm._v("\n        חזור\n      ")
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "coming-soon-text" }, [
-          _vm._v("\n      הודעת מערכת – יעלה בקרוב\n    ")
+        _c("div", { staticClass: "hashtag" }, [
+          _c("img", { staticClass: "img", attrs: { src: _vm.img } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "name" }, [
+            _vm._v("\n          " + _vm._s(_vm.name) + "\n        ")
+          ])
         ])
       ]),
       _vm._v(" "),
-      _c("side-news")
-    ],
-    1
-  )
+      _c("div", { staticClass: "coming-soon-text" }, [
+        _vm._v("\n      הודעת מערכת – יעלה בקרוב\n    ")
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52051,274 +52045,305 @@ var render = function() {
       "div",
       { staticClass: "post-wrapper" },
       [
-        _vm.errorMessage ? _c("single-post-example") : _vm._e(),
-        _vm._v(" "),
-        _vm.post
-          ? _c(
-              "div",
-              { staticClass: "post-content" },
-              [
-                _vm.post.data.post.mainTitle
-                  ? _c(
-                      "h1",
-                      { staticClass: "main-title" },
-                      [
-                        _c("type-writer", {
-                          attrs: {
-                            once: "",
-                            text: _vm.post.data.post.mainTitle
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.post.data.post.is_favourite == false &&
-                _vm.$root.is_user_logged_in != false
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "add-to-favourites",
-                        on: {
-                          click: function($event) {
-                            return _vm.addPostToFavourite(_vm.postId)
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: "/img/icons/star-gradient.png",
-                            alt: " "
-                          }
-                        }),
-                        _vm._v("\n        הוסף למועדפים\n      ")
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.post.data.post.is_favourite == true
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "add-to-favourites",
-                        on: {
-                          click: function($event) {
-                            return _vm.removeFromFavourites(_vm.postId)
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: "/img/icons/star-gradient.png",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v("\n        הסר ממועדפים\n      ")
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.$root.is_user_logged_in == false
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "add-to-favourites",
-                        on: { click: _vm.$root.$root.openReg }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: "/img/icons/star-gradient.png",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v("\n        הוסף למועדפים\n      ")
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "post-meta" },
-                  [
-                    _c("div", { staticClass: "info" }, [
-                      _c("span", { staticClass: "author" }, [
-                        _vm._v(_vm._s(_vm.post.data.post.author))
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "date" }, [
-                        _vm._v(
-                          _vm._s(
-                            _vm._f("formatDate")(
-                              new Date(_vm.post.data.post.date * 1000)
-                            )
-                          )
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("share")
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.postData, function(post) {
-                  return _c(
-                    "section",
-                    {
-                      directives: [
-                        {
-                          name: "in-viewport",
-                          rawName: "v-in-viewport.once",
-                          modifiers: { once: true }
-                        }
-                      ],
-                      class: post.type + " section"
-                    },
-                    [
-                      post.type == "title"
-                        ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "content"
-                        ? _c("div", {
-                            domProps: { innerHTML: _vm._s(post.value) }
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "image"
-                        ? _c("div", [
-                            _c("img", { attrs: { src: post.value, alt: "" } }),
-                            _vm._v(" "),
-                            post.description && post.description != "null"
-                              ? _c("span", {
-                                  domProps: {
-                                    innerHTML: _vm._s(post.description)
-                                  }
-                                })
-                              : _vm._e()
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "survey"
-                        ? _c(
-                            "div",
-                            {
-                              ref: "poll",
-                              refInFor: true,
-                              staticClass: "poll"
-                            },
-                            [
-                              _c("img", { attrs: { src: post.img, alt: "" } }),
-                              _vm._v(" "),
-                              _c(
-                                "vue-poll",
-                                _vm._b(
-                                  {
-                                    on: {
-                                      addvote: function($event) {
-                                        return _vm.addVote($event, post.id)
-                                      }
-                                    }
-                                  },
-                                  "vue-poll",
-                                  post.value,
-                                  false
-                                )
-                              )
-                            ],
-                            1
-                          )
-                        : post.type == "compare"
-                        ? _c(
-                            "div",
-                            { staticClass: "poll" },
-                            [_c("one-survey", { attrs: { data: post.value } })],
-                            1
-                          )
-                        : post.type == "likableImage"
-                        ? _c(
-                            "div",
-                            { staticClass: "poll" },
-                            [
-                              _c("like-survey", { attrs: { data: post.value } })
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "video"
-                        ? _c("iframe", {
+        _c(
+          "div",
+          { staticClass: "post-content" },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn-common btn-red back-btn",
+                attrs: { href: "" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.$router.go(-1)
+                  }
+                }
+              },
+              [_vm._v("לדף הקודם")]
+            ),
+            _vm._v(" "),
+            _vm.errorMessage
+              ? [
+                  _c("p", { staticClass: "main-title" }, [
+                    _vm._v("Post has no content!")
+                  ])
+                ]
+              : [
+                  _vm.post.data.post.mainTitle
+                    ? _c(
+                        "h1",
+                        { staticClass: "main-title" },
+                        [
+                          _c("type-writer", {
                             attrs: {
-                              id: "ytplayer",
-                              type: "text/html",
-                              src: _vm.youtubeEmbedLink(post.value),
-                              frameborder: "0"
+                              once: "",
+                              text: _vm.post.data.post.mainTitle
                             }
                           })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      post.type == "imageWithText"
-                        ? _c("div", [
-                            post.url
-                              ? _c("img", {
-                                  class: post.imagePosition,
-                                  attrs: { src: post.url, alt: post.title }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            post.title
-                              ? _c("h2", [_vm._v(_vm._s(post.title))])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            post.content
-                              ? _c("div", {
-                                  domProps: { innerHTML: _vm._s(post.content) }
-                                })
-                              : _vm._e()
-                          ])
-                        : _vm._e()
-                    ]
-                  )
-                }),
-                _vm._v(" "),
-                this.$env.mobile == true
-                  ? _c("div", [
-                      _c("div", {
-                        staticClass: "OUTBRAIN",
-                        attrs: {
-                          "data-src": this.$route.query.page,
-                          "data-widget-id": "GS_6"
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                false
-                  ? undefined
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "opinion" }, [
-                  _c("h2", [_vm._v("מה חשבתם על הכתבה?")]),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.post.data.post.is_favourite == false &&
+                  _vm.$root.is_user_logged_in != false
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "add-to-favourites",
+                          on: {
+                            click: function($event) {
+                              return _vm.addPostToFavourite(_vm.postId)
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/img/icons/star-gradient.png",
+                              alt: " "
+                            }
+                          }),
+                          _vm._v("\n          הוסף למועדפים\n        ")
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.post.data.post.is_favourite == true
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "add-to-favourites",
+                          on: {
+                            click: function($event) {
+                              return _vm.removeFromFavourites(_vm.postId)
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/img/icons/star-gradient.png",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v("\n          הסר ממועדפים\n        ")
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$root.is_user_logged_in == false
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "add-to-favourites",
+                          on: { click: _vm.$root.$root.openReg }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "/img/icons/star-gradient.png",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v("\n          הוסף למועדפים\n        ")
+                        ]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "emoji-wrapper" },
+                    { staticClass: "post-meta" },
                     [
-                      _vm.postId
-                        ? _c("emoji", { attrs: { postId: _vm.postId } })
-                        : _vm._e()
+                      _c("div", { staticClass: "info" }, [
+                        _c("span", { staticClass: "author" }, [
+                          _vm._v(_vm._s(_vm.post.data.post.author))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm._f("formatDate")(
+                                new Date(_vm.post.data.post.date * 1000)
+                              )
+                            )
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("share")
                     ],
                     1
-                  )
-                ])
-              ],
-              2
-            )
-          : _vm._e(),
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.postData, function(post) {
+                    return _c(
+                      "section",
+                      {
+                        directives: [
+                          {
+                            name: "in-viewport",
+                            rawName: "v-in-viewport.once",
+                            modifiers: { once: true }
+                          }
+                        ],
+                        class: post.type + " section"
+                      },
+                      [
+                        post.type == "title"
+                          ? _c("h2", [_vm._v(" " + _vm._s(post.value))])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        post.type == "content"
+                          ? _c("div", {
+                              domProps: { innerHTML: _vm._s(post.value) }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        post.type == "image"
+                          ? _c("div", [
+                              _c("img", {
+                                attrs: { src: post.value, alt: "" }
+                              }),
+                              _vm._v(" "),
+                              post.description && post.description != "null"
+                                ? _c("span", {
+                                    domProps: {
+                                      innerHTML: _vm._s(post.description)
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        post.type == "survey"
+                          ? _c(
+                              "div",
+                              {
+                                ref: "poll",
+                                refInFor: true,
+                                staticClass: "poll"
+                              },
+                              [
+                                _c("img", {
+                                  attrs: { src: post.img, alt: "" }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "vue-poll",
+                                  _vm._b(
+                                    {
+                                      on: {
+                                        addvote: function($event) {
+                                          return _vm.addVote($event, post.id)
+                                        }
+                                      }
+                                    },
+                                    "vue-poll",
+                                    post.value,
+                                    false
+                                  )
+                                )
+                              ],
+                              1
+                            )
+                          : post.type == "compare"
+                          ? _c(
+                              "div",
+                              { staticClass: "poll" },
+                              [
+                                _c("one-survey", {
+                                  attrs: { data: post.value }
+                                })
+                              ],
+                              1
+                            )
+                          : post.type == "likableImage"
+                          ? _c(
+                              "div",
+                              { staticClass: "poll" },
+                              [
+                                _c("like-survey", {
+                                  attrs: { data: post.value }
+                                })
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        post.type == "video"
+                          ? _c("iframe", {
+                              attrs: {
+                                id: "ytplayer",
+                                type: "text/html",
+                                src: _vm.youtubeEmbedLink(post.value),
+                                frameborder: "0"
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        post.type == "imageWithText"
+                          ? _c("div", [
+                              post.url
+                                ? _c("img", {
+                                    class: post.imagePosition,
+                                    attrs: { src: post.url, alt: post.title }
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              post.title !== "null"
+                                ? _c("h2", [_vm._v(_vm._s(post.title))])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              post.content
+                                ? _c("div", {
+                                    domProps: {
+                                      innerHTML: _vm._s(post.content)
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  this.$env.mobile == true
+                    ? _c("div", [
+                        _c("div", {
+                          staticClass: "OUTBRAIN",
+                          attrs: {
+                            "data-src": this.$route.query.page,
+                            "data-widget-id": "GS_6"
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  false
+                    ? undefined
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "opinion" }, [
+                    _c("h2", [_vm._v("מה חשבתם על הכתבה?")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "emoji-wrapper" },
+                      [
+                        _vm.postId
+                          ? _c("emoji", { attrs: { postId: _vm.postId } })
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ])
+                ]
+          ],
+          2
+        ),
         _vm._v(" "),
         this.$env.mobile == false ? _c("side-news") : _vm._e()
       ],
@@ -69278,7 +69303,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SinglePostExample_vue_vue_type_template_id_ca107952_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=template&id=ca107952&scoped=true&");
 /* harmony import */ var _SinglePostExample_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=script&lang=js& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& */ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -69320,19 +69345,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&":
-/*!****************************************************************************************************************************!*\
-  !*** ./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& ***!
-  \****************************************************************************************************************************/
+/***/ "./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&":
+/*!*****************************************************************************************************************************!*\
+  !*** ./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--8-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=css&scoped=true&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_8_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--9-2!../../../../../node_modules/sass-loader/lib/loader.js??ref--9-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/home/components/SinglePostExample.vue?vue&type=style&index=0&id=ca107952&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_9_2_node_modules_sass_loader_lib_loader_js_ref_9_3_node_modules_vue_loader_lib_index_js_vue_loader_options_SinglePostExample_vue_vue_type_style_index_0_id_ca107952_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

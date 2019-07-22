@@ -23,7 +23,7 @@
         <QuadPost :data="item" v-else/>
       </template> -->
     </div>
-    <side-news/>
+    <!-- <side-news/> -->
   </main>
 </template>
 

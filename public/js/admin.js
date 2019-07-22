@@ -2338,6 +2338,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=script&lang=js& ***!
@@ -2364,6 +2365,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+=======
+>>>>>>> dev-alex
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=script&lang=js& ***!
@@ -4001,8 +4004,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_posts_PostSurvey_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../components/posts/PostSurvey.vue */ "./resources/assets/js/admin/components/posts/PostSurvey.vue");
 /* harmony import */ var _components_posts_PostAssessment_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../components/posts/PostAssessment.vue */ "./resources/assets/js/admin/components/posts/PostAssessment.vue");
 /* harmony import */ var _components_posts_PostSelection_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../components/posts/PostSelection.vue */ "./resources/assets/js/admin/components/posts/PostSelection.vue");
+<<<<<<< HEAD
 /* harmony import */ var _components_common_CheckBox_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../components/common/CheckBox.vue */ "./resources/assets/js/admin/components/common/CheckBox.vue");
 /* harmony import */ var _home_components_SideNews_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../../home/components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
+=======
+/* harmony import */ var _home_components_SideNews_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../home/components/SideNews.vue */ "./resources/assets/js/home/components/SideNews.vue");
+>>>>>>> dev-alex
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -4142,6 +4149,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -4149,6 +4157,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+=======
+>>>>>>> dev-alex
 
 
 
@@ -4160,7 +4170,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev-alex
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4168,7 +4181,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       title: '',
       author: '',
       date: new Date(),
+<<<<<<< HEAD
       publish: false,
+=======
+>>>>>>> dev-alex
       sections: []
     };
   },
@@ -4182,8 +4198,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     PostSurvey: _components_posts_PostSurvey_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     PostAssessment: _components_posts_PostAssessment_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     PostSelection: _components_posts_PostSelection_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+<<<<<<< HEAD
     SideNews: _home_components_SideNews_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
     CheckBox: _components_common_CheckBox_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+=======
+    SideNews: _home_components_SideNews_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+>>>>>>> dev-alex
   },
   methods: {
     addSection: function addSection(type) {
@@ -4319,10 +4339,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var successMessage = 'Post was successfully added!';
 
       if (this.$route.params.id) {
+<<<<<<< HEAD
         url = '/editPostCreateAllSections';
         successMessage = 'Post was successfully edited!';
         postData.append('id', this.$route.params.id);
         postData.append('publish', this.publish ? 1 : 0);
+=======
+        url = 'editPostCreateAllSections';
+        successMessage = 'Post was successfully edited!';
+        postData.append('id', this.$route.params.id);
+>>>>>>> dev-alex
       }
 
       axios({
@@ -4355,7 +4381,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }).then(function (response) {
         _this2.title = response.data.mainTitle;
         _this2.author = response.data.author;
+<<<<<<< HEAD
         _this2.publish = response.data.publish;
+=======
+>>>>>>> dev-alex
         _this2.date = new Date(response.data.date * 1000);
 
         if (response.data.sections) {
@@ -5017,6 +5046,7 @@ exports.push([module.i, ".single-survey[data-v-0bb88f39] {\n  background: #FFFFF
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=style&index=0&id=dc2c6b40&lang=scss&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=style&index=0&id=dc2c6b40&lang=scss&scoped=true& ***!
@@ -5036,6 +5066,8 @@ exports.push([module.i, ".checkbox[data-v-dc2c6b40] {\n  display: -webkit-box;\n
 
 /***/ }),
 
+=======
+>>>>>>> dev-alex
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=style&index=0&id=b5a3eaa8&lang=scss&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=style&index=0&id=b5a3eaa8&lang=scss&scoped=true& ***!
@@ -23830,6 +23862,7 @@ if(false) {}
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=style&index=0&id=dc2c6b40&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=style&index=0&id=dc2c6b40&lang=scss&scoped=true& ***!
@@ -23860,6 +23893,8 @@ if(false) {}
 
 /***/ }),
 
+=======
+>>>>>>> dev-alex
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=style&index=0&id=b5a3eaa8&lang=scss&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--9-2!./node_modules/sass-loader/lib/loader.js??ref--9-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=style&index=0&id=b5a3eaa8&lang=scss&scoped=true& ***!
@@ -26494,6 +26529,7 @@ render._withStripped = true
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=template&id=dc2c6b40&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/CheckBox.vue?vue&type=template&id=dc2c6b40&scoped=true& ***!
@@ -26530,6 +26566,8 @@ render._withStripped = true
 
 /***/ }),
 
+=======
+>>>>>>> dev-alex
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=template&id=b5a3eaa8&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/common/ImageInput.vue?vue&type=template&id=b5a3eaa8&scoped=true& ***!
@@ -28098,6 +28136,7 @@ var render = function() {
           }
         },
         [
+<<<<<<< HEAD
           _vm.$route.params.id
             ? _c(
                 "check-box",
@@ -28114,6 +28153,8 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
+=======
+>>>>>>> dev-alex
           _c("edit-post-header", {
             attrs: {
               title: _vm.title,
@@ -46917,6 +46958,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/assets/js/admin/components/common/CheckBox.vue":
 /*!******************************************************************!*\
   !*** ./resources/assets/js/admin/components/common/CheckBox.vue ***!
@@ -47004,6 +47046,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+=======
+>>>>>>> dev-alex
 /***/ "./resources/assets/js/admin/components/common/ImageInput.vue":
 /*!********************************************************************!*\
   !*** ./resources/assets/js/admin/components/common/ImageInput.vue ***!
@@ -49588,7 +49632,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+=======
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/admin/admin.js */"./resources/assets/js/admin/admin.js");
+>>>>>>> dev-alex
 
 
 /***/ })
