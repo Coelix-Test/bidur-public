@@ -193,6 +193,7 @@ class MainController extends Controller
             foreach ($videos as $video) {
                 $fullPost['sections'][$video->order]['type'] = 'video';
                 $fullPost['sections'][$video->order]['value'] = $video->url;
+                $fullPost['sections'][$video->order]['description'] = $video->description;
             }
         }
 
@@ -397,7 +398,11 @@ class MainController extends Controller
 //        dd($postIds);
         if (isset($postIds) && !empty($postIds)){
             foreach ($postIds as $postId) {
-                $postsWithContent['data'][$postId] = $this->getContent($postId);
+              // табуляции бля
+              $kirill_spasibo = $this->getContent($postId);
+              if($kirill_spasibo->publish == 1) {
+                $postsWithContent['data'][$postId] = $kirill_spasibo;
+              }
             }
             return json_encode($postsWithContent);
 
@@ -412,7 +417,10 @@ class MainController extends Controller
         $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->orderBy('created_at')->take(6)->get();
 
         foreach ($hashtagPosts as $hashtagPost) {
-            $posts[] = Post::find($hashtagPost->postId);
+            $posts[] = Post::where([
+              [ 'id', '=', $hashtagPost->postId ],
+              [ 'publish', '=', '1' ],
+            ]);
         }
         foreach ($posts as $post) {
 //            dd($posts);

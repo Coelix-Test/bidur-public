@@ -361,11 +361,12 @@ class AdminController extends Controller
         }
     }
 
-    public function createPostAddVideo($postId, $url, $order){
+    public function createPostAddVideo($postId, $url, $description, $order){
         PostVideo::create([
             'postId' =>  $postId,
             'url' => $url,
-            'order' => $order
+            'description' => $description,
+            'order' => $order,
         ]);
     }
 
@@ -1195,6 +1196,7 @@ class AdminController extends Controller
             foreach ($videos as $video) {
                 $fullPost['sections'][$video->order]['type'] = 'video';
                 $fullPost['sections'][$video->order]['value'] = $video->url;
+                $fullPost['sections'][$video->order]['description'] = $video->description;
             }
         }
 
@@ -1314,7 +1316,8 @@ class AdminController extends Controller
             }
             elseif($section['type'] == 'video'){
                 $url = $section['value'];
-                $this->createPostAddVideo($this->post->id, $url, $key);
+                $description = $section['description'];
+                $this->createPostAddVideo($this->post->id, $url, $description, $key);
             }
             elseif($section['type'] == 'survey'){
 //                dd($files);
