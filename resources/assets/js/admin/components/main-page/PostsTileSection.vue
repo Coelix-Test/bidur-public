@@ -2,7 +2,7 @@
     <div class="wrapper posts-tile-section">
         <div class="section-content">
             <div v-for="(post, index) in selectedPosts" :key="index">
-                <p class="heading">{{post.label}}</p>
+                <p class="heading">Post {{index+1}}</p>
                 <searchable-input
                     class="searchable-input"
                     :deletable="false"

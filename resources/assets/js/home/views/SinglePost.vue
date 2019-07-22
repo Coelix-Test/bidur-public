@@ -290,8 +290,8 @@ export default {
   .back-btn{
     font-size: 18px;
     height: 40px;
-    padding: 0 20px 0 50px;
-    background: url('/img/icons/arrow-white-back.svg') no-repeat 18px center, #EB5757;
+    padding: 0 50px 0 20px;
+    background: url('/img/icons/arrow-white-back2.svg') no-repeat calc(100% - 18px) center, #EB5757;
     -webkit-background-size: 25px 18px;
     background-size: 25px 18px;
     margin-bottom: 10px;
