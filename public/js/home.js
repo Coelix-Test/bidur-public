@@ -3398,7 +3398,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
  // import Slick from 'vue-slick';
 
 
@@ -4958,6 +4957,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
 
 
 
@@ -6279,7 +6281,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: stretch;\n            align-items: stretch;\n    padding: 0 10px;\n}\n}\n@media (max-width: 768px) {\nmain .header .hashtag .name[data-v-38d9e614] {\n    font-size: 32px;\n}\n}", ""]);
+exports.push([module.i, "main[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding: 0 30px;\n  margin: 32px auto 0;\n  max-width: 1440px;\n}\nmain .header[data-v-38d9e614] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: start;\n          align-items: flex-start;\n  padding-bottom: 20px;\n}\nmain .header button[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 18px;\n  color: #BDBDBD;\n  background: transparent;\n  border: 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header button svg[data-v-38d9e614] {\n  margin-left: 10px;\n}\nmain .header .hashtag[data-v-38d9e614] {\n  padding-top: 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\nmain .header .hashtag .name[data-v-38d9e614] {\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  padding-right: 30px;\n}\nmain .header .hashtag .img[data-v-38d9e614] {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\nmain .main-content[data-v-38d9e614] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n}\nmain .coming-soon-text[data-v-38d9e614] {\n  display: block;\n  font-weight: bold;\n  font-size: 48px;\n  color: #333333;\n  margin: 30px 0;\n}\n@media (max-width: 992px) {\nmain[data-v-38d9e614] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    -webkit-box-align: stretch;\n            align-items: stretch;\n    padding: 0 10px;\n}\n}\n@media (max-width: 768px) {\nmain .header .hashtag .name[data-v-38d9e614] {\n    font-size: 32px;\n}\nmain .coming-soon-text[data-v-38d9e614] {\n    font-size: 30px;\n}\n}", ""]);
 
 // exports
 
@@ -48647,10 +48649,6 @@ var render = function() {
       _c("header-top-line"),
       _vm._v(" "),
       _c("div", { staticClass: "celebrities-container" }, [
-        _c("div", { staticClass: "celeb-coming-soon" }, [
-          _vm._v("הודעת מערכת – יעלה בקרוב")
-        ]),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "celebrities-slider-wrap" },
@@ -51379,66 +51377,57 @@ var render = function() {
   return _c(
     "main",
     [
-      _c(
-        "div",
-        { staticClass: "main-content" },
-        [
-          _c("div", { staticClass: "header" }, [
-            _c(
-              "button",
-              {
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.$router.go(-1)
-                  }
+      _c("div", { staticClass: "main-content" }, [
+        _c("div", { staticClass: "header" }, [
+          _c(
+            "button",
+            {
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.$router.go(-1)
                 }
-              },
-              [
-                _c(
-                  "svg",
-                  {
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  attrs: {
+                    width: "25",
+                    height: "18",
+                    viewBox: "0 0 25 18",
+                    fill: "none",
+                    xmlns: "http://www.w3.org/2000/svg"
+                  }
+                },
+                [
+                  _c("path", {
                     attrs: {
-                      width: "25",
-                      height: "18",
-                      viewBox: "0 0 25 18",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
+                      d:
+                        "M16.8449 0.270719C16.4924 -0.0902398 15.9376 -0.0902398 15.5851 0.270719C15.2446 0.619484 15.2446 1.19995 15.5851 1.5479L21.9727 8.08988H0.894592C0.40324 8.08988 0 8.48986 0 8.99309C0 9.49632 0.40324 9.90931 0.894592 9.90931H21.9727L15.5851 16.4391C15.2446 16.8001 15.2446 17.3813 15.5851 17.7293C15.9376 18.0902 16.4924 18.0902 16.8449 17.7293L24.7446 9.63859C25.0851 9.28983 25.0851 8.70936 24.7446 8.36141L16.8449 0.270719Z",
+                      fill: "#BDBDBD"
                     }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M16.8449 0.270719C16.4924 -0.0902398 15.9376 -0.0902398 15.5851 0.270719C15.2446 0.619484 15.2446 1.19995 15.5851 1.5479L21.9727 8.08988H0.894592C0.40324 8.08988 0 8.48986 0 8.99309C0 9.49632 0.40324 9.90931 0.894592 9.90931H21.9727L15.5851 16.4391C15.2446 16.8001 15.2446 17.3813 15.5851 17.7293C15.9376 18.0902 16.4924 18.0902 16.8449 17.7293L24.7446 9.63859C25.0851 9.28983 25.0851 8.70936 24.7446 8.36141L16.8449 0.270719Z",
-                        fill: "#BDBDBD"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v("\n        חזור\n      ")
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "hashtag" }, [
-              _c("img", { staticClass: "img", attrs: { src: _vm.img } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "name" }, [
-                _vm._v("\n          " + _vm._s(_vm.name) + "\n        ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.data, function(item, i) {
-            return [
-              !_vm.isQuad(i)
-                ? _c("DefaultPost", { attrs: { data: item } })
-                : _c("QuadPost", { attrs: { data: item } })
+                  })
+                ]
+              ),
+              _vm._v("\n        חזור\n      ")
             ]
-          })
-        ],
-        2
-      ),
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "hashtag" }, [
+            _c("img", { staticClass: "img", attrs: { src: _vm.img } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "name" }, [
+              _vm._v("\n          " + _vm._s(_vm.name) + "\n        ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "coming-soon-text" }, [
+          _vm._v("\n      הודעת מערכת – יעלה בקרוב\n    ")
+        ])
+      ]),
       _vm._v(" "),
       _c("side-news")
     ],

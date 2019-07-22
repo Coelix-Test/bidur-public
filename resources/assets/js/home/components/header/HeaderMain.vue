@@ -2,7 +2,6 @@
   <div class="header-main">
     <header-top-line></header-top-line>
     <div class="celebrities-container">
-      <div class="celeb-coming-soon">הודעת מערכת – יעלה בקרוב</div><!-- remove after coming soon -->
       <div class="celebrities-slider-wrap" >
         <swiper class="celebrities-slider" :options="swiperOptions" ref="celebritiesSwiper">
 
