@@ -2,7 +2,7 @@
     <div class="wrapper imagetext-component">
         <div class="imagetext-wrap" :class="directionClass">
             <div class="col-text">
-                <post-title v-if="title !== null"
+                <post-title v-if="title !== null && title !== 'null'"
                     class="title-block"
                     :index="index"
                     :value="title"

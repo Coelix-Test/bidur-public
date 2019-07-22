@@ -184,7 +184,7 @@ export default {
                     break;
                 case 'video':
                     // sectionData = {type: 'video', value: '', description: ''};
-                    sectionData = {type: 'video', value: ''};
+                    sectionData = {type: 'video', value: '', description: ''};
                     break;
                 case 'survey':
                     sectionData = {type: 'survey', image: '', title: '', answers: [] };

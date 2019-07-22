@@ -3659,6 +3659,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3674,6 +3678,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     index: {
       type: Number
+    },
+    description: {
+      type: String,
+      "default": ''
     }
   }
 });
@@ -4189,7 +4197,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           // sectionData = {type: 'video', value: '', description: ''};
           sectionData = {
             type: 'video',
-            value: ''
+            value: '',
+            description: ''
           };
           break;
 
@@ -5351,7 +5360,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-63266272] {\n  position: relative;\n}\n.wrapper input[data-v-63266272] {\n  font-size: 18px;\n  width: 100%;\n  margin-top: 15px;\n  padding-left: 50px;\n}\n.wrapper input[data-v-63266272]::-webkit-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::-moz-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]:-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper .delete-self[data-v-63266272] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 5px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-63266272] {\n  position: relative;\n}\n.wrapper input[data-v-63266272] {\n  font-size: 18px;\n  width: 100%;\n  margin-top: 15px;\n  padding-left: 50px;\n}\n.wrapper input[data-v-63266272]::-webkit-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::-moz-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]:-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[data-v-63266272]::placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[name=description][data-v-63266272] {\n  font-size: 18px;\n  width: 50%;\n  margin-top: 15px;\n  font-style: italic;\n  text-indent: 5px;\n}\n.wrapper input[name=description][data-v-63266272]::-webkit-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[name=description][data-v-63266272]::-moz-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[name=description][data-v-63266272]:-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[name=description][data-v-63266272]::-ms-input-placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper input[name=description][data-v-63266272]::placeholder {\n  font-style: italic;\n  color: #BDBDBD;\n}\n.wrapper .delete-self[data-v-63266272] {\n  cursor: pointer;\n  position: absolute;\n  left: 20px;\n  bottom: 5px;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n}", ""]);
 
 // exports
 
@@ -27337,7 +27346,7 @@ var render = function() {
         "div",
         { staticClass: "col-text" },
         [
-          _vm.title !== null
+          _vm.title !== null && _vm.title !== "null"
             ? _c("post-title", {
                 staticClass: "title-block",
                 attrs: { index: _vm.index, value: _vm.title },
@@ -27670,6 +27679,20 @@ var render = function() {
       on: {
         input: function($event) {
           return _vm.$emit("update:value", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      staticClass: "theme-input-text",
+      attrs: {
+        type: "text",
+        name: "description",
+        placeholder: "Add description"
+      },
+      on: {
+        input: function($event) {
+          return _vm.$emit("update:description", $event.target.value)
         }
       }
     }),
