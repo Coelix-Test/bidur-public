@@ -401,9 +401,9 @@ class MainController extends Controller
               // табуляции бля
               $kirill_spasibo = $this->getContent($postId);
               // исправь потом, а то я хз
-              if($kirill_spasibo['publish'] == 1 || $kirill_spasibo['publish'] == '1') {
+              // if($kirill_spasibo['publish'] == 1 || $kirill_spasibo['publish'] == '1') {
                 $postsWithContent['data'][$postId] = $kirill_spasibo;
-              }
+              // }
             }
             return json_encode($postsWithContent);
 
