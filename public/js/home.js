@@ -5704,9 +5704,10 @@ __webpack_require__.r(__webpack_exports__);
         answer: obj.value
       }).then(function (response) {});
     },
-    getYoutubeEmbedLink: function getYoutubeEmbedLink(url) {
+    youtubeEmbedLink: function youtubeEmbedLink(url) {
       var UrlObj = new URL(url);
-      var key = UrlObj.searchParams.get("watch");
+      var key = UrlObj.searchParams.get("v");
+      key = 'https://www.youtube.com/embed/' + key;
       return key;
     }
   },
@@ -52254,9 +52255,7 @@ var render = function() {
                             attrs: {
                               id: "ytplayer",
                               type: "text/html",
-                              src:
-                                "https://www.youtube.com/embed/" +
-                                _vm.getYoutubeEmbedLink(post.value),
+                              src: _vm.youtubeEmbedLink(post.value),
                               frameborder: "0"
                             }
                           })
