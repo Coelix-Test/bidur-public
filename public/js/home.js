@@ -72760,11 +72760,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/miroslaw/Documents/sources/php/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
-=======
-module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
->>>>>>> 6acb6e8cbb08b9b0ea75c5ed4f15d2bcffa37c68
 
 
 /***/ })
