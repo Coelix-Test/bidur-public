@@ -451,6 +451,7 @@ class MainController extends Controller
             $allInfo['author'] = '';
         }
         $allInfo['title'] = $post->metaTitle;
+        $allInfo['publish'] = $post->publish;
 
         if (!empty($time)){
             $allInfo['time'] = $time;
