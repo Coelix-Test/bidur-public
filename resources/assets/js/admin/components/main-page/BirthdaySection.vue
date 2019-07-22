@@ -3,7 +3,7 @@
         <image-input :value.sync="image"></image-input>
         <textarea v-model="text" name="description" class="text theme-textarea" placeholder="טקסט חופשי"></textarea>
         <div class="btn-wrap">
-            <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
+            <button @click="save" class="theme-btn theme-btn-red big-btn">פרסם</button>
         </div>
     </div>
 </template>
@@ -33,6 +33,14 @@ export default {
           alert('נשמר!');
         });
       }
+    },
+    created(){
+      axios
+        .post('/getMainBday')
+          .then(res => {
+            this.text = res.data.text;
+            this.image = res.data.img;
+          });
     }
 }
 </script>

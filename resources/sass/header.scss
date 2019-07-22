@@ -277,9 +277,23 @@
         margin: 0 auto;
         padding: 16px 0;
         max-width: 1440px;
+        position: relative;
+    }
+    .celeb-coming-soon{
+      position: absolute;//coming soon
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      font-weight: bold;
     }
     .celebrities-slider-wrap{
       position: relative;
+      opacity: .3;//coming soon
+      pointer-events: none;//coming soon
       .swiper-button-prev, .swiper-button-next{
         width: 20px;
         height: 20px;

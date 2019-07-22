@@ -9,7 +9,7 @@
         <h2>תמונת האינסטגרם המנצחת של היום</h2>
       </div>
 
-        <a :href="instagramData.link" class="insta-image-link">
+        <a href="https://www.instagram.com/israel_bidur/" class="insta-image-link">
           <img :src="instagramData.img" alt="">
         </a>
         <div class="insta-features">
@@ -22,7 +22,7 @@
               <img src="img/icons/insta-like.svg" alt="">
             </div>
         </div>
-        <a class="insta-btn" :href="instagramData.link" target="_blank">לעמוד האינסטגרם שלנו</a>
+        <a class="insta-btn" href="https://www.instagram.com/israel_bidur/" target="_blank">לעמוד האינסטגרם שלנו</a>
 
     </div>
   </div>
@@ -32,7 +32,6 @@
 export default {
   props : {
     data : {
-      requred : true,
 
     }
   },

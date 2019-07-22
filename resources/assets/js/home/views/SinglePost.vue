@@ -60,9 +60,14 @@
             v-if="post.type == 'video'"
             id="ytplayer"
             type="text/html"
-            :src="post.value"
+            :src="'https://www.youtube.com/embed/'+getYoutubeEmbedLink(post.value)"
             frameborder="0"
           />
+          <!-- <template
+            v-if="post.type == 'video'"
+          >
+            {{post.value}}
+          </template> -->
 
           <div v-if="post.type == 'imageWithText'">
             <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
@@ -237,6 +242,11 @@ export default {
           .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
             .then(response => {
             });
+    },
+    getYoutubeEmbedLink(url){
+      let UrlObj = new URL(url);
+      let key = UrlObj.searchParams.get("watch");
+      return key;
     }
   },
   created() {
