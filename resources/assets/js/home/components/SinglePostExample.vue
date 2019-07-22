@@ -1,6 +1,5 @@
 <template>
   <div class="single-post-example">
-    <a href="" onclick="history.back()">BACK</a>
     <h1>Post have no content!</h1>
 
   </div>
@@ -11,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   .post-wrapper {
     display: flex;
     flex-direction: row;
