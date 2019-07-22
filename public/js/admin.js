@@ -4115,7 +4115,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
-//
 
 
 
@@ -28270,9 +28269,7 @@ var render = function() {
               attrs: { type: "submit" }
             },
             [_vm._v("לשמור")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "div" }, [_vm._v("TEST")])
+          )
         ],
         2
       ),
