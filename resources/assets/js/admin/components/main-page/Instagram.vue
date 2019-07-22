@@ -4,15 +4,17 @@
     <div class="plate shadow-section">
       <image-input :value.sync="image"></image-input>
 
-      <div class="form">
+      <!-- <div class="form">
         <div class="input-section">
           <div class="heading">קישור לאינסטגרם</div>
           <input v-model="link" class="theme-textarea" type="text">
         </div>
-      </div>
+      </div> -->
+      <input v-model="link" class="theme-textarea" type="hidden">
+
 
       <div class="btn-wrap">
-        <button @click="save" class="theme-btn theme-btn-red big-btn">לשמור</button>
+        <button @click="save" class="theme-btn theme-btn-red big-btn">פרסם</button>
       </div>
     </div>
   </div>
@@ -24,7 +26,7 @@ export default {
   data(){
     return {
       image: '',
-      link: '',
+      link: 'https://www.instagram.com/israel_bidur/',
     }
   },
   components: {
@@ -44,6 +46,13 @@ export default {
         alert('נשמר!');
       });
     }
+  },
+  created() {
+    axios
+      .post('/getMainInsta')
+        .then(res => {
+          this.image = res.data.img;
+        });
   }
 }
 </script>
@@ -75,6 +84,7 @@ export default {
     display: flex;
     justify-content: center;
     padding-bottom: 40px;
+    margin-top: 30px;
   }
   .form {
     padding: 50px 70px;

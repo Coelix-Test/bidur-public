@@ -13,7 +13,7 @@
         </div>
         <div class="add-section" @click="select('comparablePhotos')">
           <img src="/img/icons/edit-post-selection.svg" alt="">
-          <span>להשוות</span>
+          <span>פרסם</span>
         </div>
       </div>
 
@@ -33,7 +33,7 @@
         v-else-if="selected == 'likableImage'"
       />
 
-      <button @click="save" class="theme-btn-red big-btn">לשמור</button>
+      <button @click="save" class="theme-btn-red big-btn">פרסם</button>
     </div>
   </div>
 </template>

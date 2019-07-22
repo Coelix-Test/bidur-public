@@ -78,10 +78,10 @@
                 </div>
 
                 <div class="add-section-buttons-line">
-                    <div class="add-section" @click="addSection('title')">
+                    <!-- <div class="add-section" @click="addSection('title')">
                         <img src="/img/icons/edit-post-title.svg" alt="">
                         <span>כותרת</span>
-                    </div>
+                    </div> -->
                     <div class="add-section" @click="addSection('text')">
                         <img src="/img/icons/edit-post-text.svg" alt="">
                         <span>טקסט</span>
@@ -156,7 +156,7 @@ export default {
     },
     components: {
         EditPostHeader,
-        PostTitle,
+        //PostTitle,
         PostText,
         PostImage,
         PostImageText,
@@ -320,6 +320,7 @@ export default {
     padding: 0 150px;
     height: 80px;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 .add-section-buttons-line{
     display: -webkit-flex;

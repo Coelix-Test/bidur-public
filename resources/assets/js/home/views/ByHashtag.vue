@@ -15,10 +15,13 @@
           </div>
         </div>
       </div>
-      <template v-for="(item, i) in data">
+      <div class="coming-soon-text">
+        הודעת מערכת – יעלה בקרוב
+      </div>
+      <!-- <template v-for="(item, i) in data">
         <DefaultPost :data="item" v-if="!isQuad(i)"/>
         <QuadPost :data="item" v-else/>
-      </template>
+      </template> -->
     </div>
     <side-news/>
   </main>
@@ -169,6 +172,15 @@ main {
     align-items: stretch;
     justify-content: flex-start;
   }
+
+  .coming-soon-text{
+    display: block;
+    font-weight: bold;
+    font-size: 48px;
+    color: #333333;
+    margin: 30px 0;
+  }
+
   @media(max-width: 992px) {
     flex-direction: column;
     align-items: stretch;
@@ -183,6 +195,9 @@ main {
           font-size: 32px;
         }
       }
+    }
+    .coming-soon-text{
+      font-size: 30px;
     }
   }
 }

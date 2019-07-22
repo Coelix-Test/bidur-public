@@ -30,7 +30,6 @@ import Surveys from './views/Surveys.vue';
 import Tags from './views/Tags.vue';
 import EditMainPage from './views/EditMainPage.vue';
 import Users from './views/Users.vue';
-import EditPost from './views/EditPost.vue';
 import Mails from './views/Mails.vue';
 
 const router = new VueRouter({
