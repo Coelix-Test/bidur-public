@@ -1,6 +1,10 @@
 <template>
-  <label class="checkbox">
-    <input type="checkbox" :checked="value ? true : false" @input="$emit('input', $event.target.value)">
+  <label class="check-box">
+    <input
+      type="checkbox"
+      @change="$emit('input', checked)"
+      v-model="checked"
+    >
     <div class="content">
       <slot/>
     </div>
@@ -11,13 +15,18 @@
 export default {
   props: {
     value: {}
+  },
+  data() {
+    return {
+      checked: this.value
+    };
   }
 }
 </script>
 
 <style lang="scss" scoped>
 
-.checkbox {
+.check-box {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

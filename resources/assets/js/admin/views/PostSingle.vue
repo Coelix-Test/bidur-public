@@ -368,4 +368,8 @@ export default {
 .selection-section{
     width: 75%;
 }
+
+.check-box {
+  align-self: flex-start;
+}
 </style>

@@ -76,8 +76,9 @@ export default {
         if(!data.length) {
           this.end = true;
         }
+        
         //if have no posts :
-        if(res.data[0].hashtagImg && res.data[0].hashtagName) {
+        if(!this.name) {
           this.img = res.data[0].hashtagImg;
           this.name = res.data[0].hashtagName;
         }

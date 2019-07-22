@@ -400,9 +400,10 @@ class MainController extends Controller
             foreach ($postIds as $postId) {
               // табуляции бля
               $kirill_spasibo = $this->getContent($postId);
-              if($kirill_spasibo->publish == 1) {
+              // исправь потом, а то я хз
+              // if($kirill_spasibo['publish'] == 1 || $kirill_spasibo['publish'] == '1') {
                 $postsWithContent['data'][$postId] = $kirill_spasibo;
-              }
+              // }
             }
             return json_encode($postsWithContent);
 
@@ -451,6 +452,7 @@ class MainController extends Controller
             $allInfo['author'] = '';
         }
         $allInfo['title'] = $post->metaTitle;
+        $allInfo['publish'] = $post->publish;
 
         if (!empty($time)){
             $allInfo['time'] = $time;
