@@ -60,7 +60,7 @@
             v-if="post.type == 'video'"
             id="ytplayer"
             type="text/html"
-            :src="'https://www.youtube.com/embed/'+getYoutubeEmbedLink(post.value)"
+            :src="youtubeEmbedLink(post.value)"
             frameborder="0"
           />
           <!-- <template
@@ -243,11 +243,12 @@ export default {
             .then(response => {
             });
     },
-    getYoutubeEmbedLink(url){
+    youtubeEmbedLink(url){
       let UrlObj = new URL(url);
-      let key = UrlObj.searchParams.get("watch");
+      let key = UrlObj.searchParams.get("v");
+      key = 'https://www.youtube.com/embed/' + key;
       return key;
-    }
+    },
   },
   created() {
 
