@@ -156,7 +156,7 @@ export default {
     },
     components: {
         EditPostHeader,
-        //PostTitle,
+        PostTitle,
         PostText,
         PostImage,
         PostImageText,
@@ -256,13 +256,14 @@ export default {
                     method: 'post',
                     url: url,
                     data: postData,
-                    config: { headers: {'Content-Type': 'multipart/form-data' }}
+                    config: { headers: { 'Content-Type': 'multipart/form-data' }}
                 })
                 .then(response => {
                     // console.log(response);
-                    // this.$route.push(document.location.origin+"/admin#/");
+                    this.$route.push('/');
                     // window.location.href = document.location.origin+"/admin#/?refresh=1";
                     alert(successMessage);
+
                     // document.location.reload(true);
                 })
                 .catch(error => {
@@ -320,7 +321,6 @@ export default {
     padding: 0 150px;
     height: 80px;
     margin-top: 30px;
-    margin-bottom: 30px;
 }
 .add-section-buttons-line{
     display: -webkit-flex;
