@@ -138,4 +138,4 @@ Route::post('/getUserData', 'AdminController@getUserData');
 
     Route::post('/getAllPostsPaginated', 'AdminController@getAllPostsPaginated');
 
-
+// getAllHashtags, getRecentPosts, getAllPostsByHashtag, getSelectedPosts, createPost, editPostCreateAllSections

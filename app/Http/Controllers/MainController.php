@@ -559,7 +559,9 @@ class MainController extends Controller
 
     public function getRecentPosts(){
 
-        $recentPosts = Post::orderBy('created_at', 'desc')->take(12)->get();
+        $recentPosts = Post::where('publish', 1)->orderBy('created_at', 'desc')->take(12)->get();
+
+        $postsForView = [];
 
         foreach ($recentPosts as $recentPost) {
             $postsForView[] = $this->getContent($recentPost->id);
