@@ -59,14 +59,14 @@
               <like-survey :data="post.value"/>
             </div>
 
-
-            <iframe
-              v-if="post.type == 'video'"
-              id="ytplayer"
-              type="text/html"
-              :src="youtubeEmbedLink(post.value)"
-              frameborder="0"
-            />
+            <template v-if="post.type == 'video'">
+              <iframe
+                type="text/html"
+                :src="youtubeEmbedLink(post.value)"
+                frameborder="0"
+              />
+              <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
+            </template>
             <!-- <template
               v-if="post.type == 'video'"
             >
@@ -376,13 +376,15 @@ export default {
     width:100%;
     object-fit: cover;
     margin-bottom: 12px;
+    margin-bottom: 0px;
     display: block;
   }
-  section.image span {
+  section.image span,
+  section.video span {
     max-width:500px;
     font-style: italic;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 18px;
     color:#333;
   }

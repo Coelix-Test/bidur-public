@@ -5,6 +5,11 @@
             :value="value"
             @input="$emit('update:value', $event.target.value)"/>
 
+        <input type="text" name="description" class="theme-input-text"
+            placeholder="Add description"
+            :value="description"
+            @input="$emit('update:description', $event.target.value)"/>
+
         <div class="delete-self" @click="$emit('deleteSection', index)"></div>
     </div>
 </template>
@@ -27,6 +32,10 @@ export default {
         },
         index: {
             type: Number
+        },
+        description: {
+            type: String,
+            default: ''
         }
     }
 }
@@ -41,6 +50,17 @@ export default {
             width: 100%;
             margin-top: 15px;
             padding-left: 50px;
+            &::placeholder{
+                font-style: italic;
+                color: $gray;
+            }
+        }
+        input[name="description"]{
+            font-size: 18px;
+            width: 50%;
+            margin-top: 15px;
+            font-style: italic;
+            text-indent: 5px;
             &::placeholder{
                 font-style: italic;
                 color: $gray;
