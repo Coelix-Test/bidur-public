@@ -646,6 +646,7 @@ export default {
       font-size: 26px;
       padding: 32px 8px;
       padding-bottom: 50px;
+      order: -1;
     }
     .banner {
       width:100%;
