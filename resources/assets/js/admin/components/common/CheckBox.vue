@@ -1,5 +1,5 @@
 <template>
-  <label class="checkbox">
+  <label class="check-box">
     <input
       type="checkbox"
       @change="$emit('input', checked)"
@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.checkbox {
+.check-box {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
