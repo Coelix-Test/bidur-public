@@ -242,6 +242,14 @@ class MainController extends Controller
                 $data['id'] = $compare->id;
                 $data['imageLeft'] = $compare->urlLeft;
                 $data['imageRight'] = $compare->urlRight;
+                $data['left'] = LikesForLeftAndRight::where([
+                  [ 'serviceId', '=', $compare->id ],
+                  [ 'value', '=', 'left' ]
+                  ])->count();
+                $data['right'] = LikesForLeftAndRight::where([
+                  [ 'serviceId', '=', $compare->id ],
+                  [ 'value', '=', 'right' ]
+                  ])->count();
                 $data['description'] = $compare->description;
 
                 $fullPost['sections'][$compare->order]['type'] = 'compare';

@@ -14,7 +14,7 @@
           </h1>
           <button class="add-to-favourites" @click.prevent="$router.go(-1)">
             <img src="/img/icons/star-gradient.png" alt=" ">
-            לדף הקודם
+            חזרה לעמוד הבית
           </button>
           <!-- <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
             <img src="/img/icons/star-gradient.png" alt=" ">
@@ -530,6 +530,7 @@ export default {
   }
   .related-post img {
     width: auto;
+    max-width: 100%;
     height: 420px;
     object-fit: cover;
     padding: 10px;
