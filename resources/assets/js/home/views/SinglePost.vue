@@ -494,7 +494,8 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
+    text-align: center;
     margin-top: 24px;
     text-decoration: none;
   }
@@ -528,8 +529,8 @@ export default {
     right:unset;
   }
   .related-post img {
-    width: 100%;
-    height: 350px;
+    width: auto;
+    height: 420px;
     object-fit: cover;
     padding: 10px;
   }
@@ -556,7 +557,7 @@ export default {
     color:#333;
     display:flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     white-space: nowrap;
     font-size: 14px;
