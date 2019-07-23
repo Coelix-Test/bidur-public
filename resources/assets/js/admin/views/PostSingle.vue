@@ -4,7 +4,7 @@
             <form class="col-9" @submit.prevent="submitPostData">
 
                 <check-box v-model="publish" v-if="$route.params.id">
-                  PUBLISH
+                  פרסם
                 </check-box>
 
                 <edit-post-header
