@@ -20,6 +20,11 @@ export default {
     return {
       checked: this.value ? true : false,
     };
+  },
+  watch: {
+    value(to) {
+      this.checked = to ? true : false;
+    }
   }
 }
 </script>
