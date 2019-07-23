@@ -7,11 +7,13 @@
             @input="$emit('update:description', $event.target.value)"/>
 
         <div class="delete-self" @click="$emit('deleteSection', index)"></div>
+        <move-section @move="$emit('move', $event)"/>
     </div>
 </template>
 
 <script>
 import VideoInput from './../common/VideoInput.vue';
+import MoveSection from './../common/MoveSection';
 export default {
     data: function(){
         return {
@@ -19,7 +21,8 @@ export default {
         }
     },
     components: {
-        VideoInput
+        VideoInput,
+        MoveSection,
     },
     props: {
         value : {

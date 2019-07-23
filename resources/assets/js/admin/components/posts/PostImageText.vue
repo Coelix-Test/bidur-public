@@ -19,6 +19,8 @@
             <div class="delete-self" @click="$emit('deleteSection', index)"></div>
             <div class="change-image-position" @click="updateImagePosition"></div>
         </div>
+
+        <move-section @move="$emit('move', $event)"/>
     </div>
 </template>
 
@@ -26,6 +28,7 @@
 import TextEditor from './../common/TextEditor.vue';
 import ImageInput from './../common/ImageInput.vue';
 import PostTitle from './PostTitle.vue';
+import MoveSection from './../common/MoveSection';
 
 export default {
     data: function(){
@@ -36,7 +39,8 @@ export default {
     components: {
         TextEditor,
         ImageInput,
-        PostTitle
+        PostTitle,
+        MoveSection,
     },
     props: {
         image: {
@@ -93,6 +97,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.imagetext-component {
+  position: relative;
+}
     .imagetext-wrap{
         display: -webkit-flex;
         display: -ms-flex;

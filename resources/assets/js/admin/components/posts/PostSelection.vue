@@ -9,18 +9,22 @@
           <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
+
+      <move-section @move="$emit('move', $event)"/>
   </div>
 </template>
 
 <script>
 import ImageInput from './../common/ImageInput.vue';
+import MoveSection from './../common/MoveSection';
 
 export default {
     data: function(){
         return {};
     },
     components: {
-        ImageInput
+        ImageInput,
+        MoveSection
     },
     props: {
         deletable: {

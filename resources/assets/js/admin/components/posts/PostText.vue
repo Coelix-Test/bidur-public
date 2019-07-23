@@ -4,11 +4,14 @@
         <div class="delete-wrap">
             <div class="delete-self" @click="$emit('deleteSection', index)"></div>
         </div>
+
+        <move-section @move="$emit('move', $event)"/>
     </div>
 </template>
 
 <script>
 import TextEditor from './../common/TextEditor.vue';
+import MoveSection from './../common/MoveSection';
 
 export default {
     data: function(){
@@ -17,7 +20,8 @@ export default {
         }
     },
     components: {
-        TextEditor
+        TextEditor,
+        MoveSection
     },
     props: {
         value : {
@@ -38,6 +42,7 @@ export default {
 
 <style lang="scss" scoped>
     .wrapper{
+      position: relative;
         .delete-wrap{
             position: relative;
             height: 50px;

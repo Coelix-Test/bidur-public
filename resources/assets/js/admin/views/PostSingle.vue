@@ -25,6 +25,7 @@
                         <post-title
                             :value.sync="section.value"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-title>
                     </template>
@@ -32,6 +33,7 @@
                         <post-text
                             :value.sync="section.value"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-text>
                     </template>
@@ -40,6 +42,7 @@
                             :value.sync="section.value"
                             :description.sync="section.description"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-image>
                     </template>
@@ -48,6 +51,7 @@
                             class="shadow-section"
                             v-bind.sync="section"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-image-text>
                     </template>
@@ -55,6 +59,7 @@
                         <post-video-link
                             v-bind.sync="section"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-video-link>
                     </template>
@@ -63,6 +68,7 @@
                             class="survey-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-survey>
                     </template>
@@ -71,6 +77,7 @@
                             class="assessment-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-assessment>
                     </template>
@@ -79,6 +86,7 @@
                             class="selection-section shadow-section"
                             v-bind.sync="section"
                             :index="index"
+                            @move="move(index, $event)"
                             @deleteSection="deleteSection">
                         </post-selection>
                     </template>
@@ -175,6 +183,19 @@ export default {
         CheckBox,
     },
     methods: {
+      move(index, dir) {
+        console.log(index, dir);
+        if(dir == 'top') {
+          if(index != 0) {
+            this.sections.move(index, index - 1)
+          }
+        }
+        else if(dir == 'bottom') {
+          if((this.sections.length - 1) > index) {
+            this.sections.move(index, index + 1)
+          }
+        }
+      },
         addSection(type){
             let sectionData = {};
             switch (type) {

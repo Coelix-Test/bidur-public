@@ -8,11 +8,15 @@
             @input="$emit('update:description', $event.target.value)"/>
 
         <div class="delete-self" @click="$emit('deleteSection', index)"></div>
+
+        <move-section @move="$emit('move', $event)"/>
     </div>
 </template>
 
 <script>
 import ImageInput from './../common/ImageInput.vue';
+
+import MoveSection from './../common/MoveSection';
 export default {
     data: function(){
         return {
@@ -20,7 +24,8 @@ export default {
         }
     },
     components: {
-        ImageInput
+        ImageInput,
+        MoveSection,
     },
     props: {
         value : {
