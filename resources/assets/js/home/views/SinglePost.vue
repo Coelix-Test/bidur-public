@@ -643,6 +643,7 @@ export default {
     /* likes counter: 3 */
     .main-title {
       color: #fff !important;
+      line-height: 1.05;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
       margin: -32px -16px;
       text-align: center;
@@ -674,11 +675,12 @@ export default {
     }
     .add-to-favourites {
       margin-top: 0px;
-      transform: translateY(30px);
     }
     .post-meta {
+      transform: translateY(-30px);
       justify-content: flex-end;
       margin-top: 0;
+      margin-bottom: -35px;
     }
     /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
@@ -743,7 +745,7 @@ export default {
     }
     .post-content h1 {
       font-size: 28px;
-      line-height: 28px;
+      line-height: 1.05;
     }
   }
 
