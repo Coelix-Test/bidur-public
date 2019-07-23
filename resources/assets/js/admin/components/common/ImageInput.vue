@@ -72,6 +72,7 @@ export default {
     margin-bottom: 0;
     width: 100%;
     cursor: pointer;
+    overflow: hidden;
   }
   label.empty{
     height: 400px;
