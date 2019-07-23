@@ -638,7 +638,7 @@ export default {
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     /* likes counter: 3 */
     .main-title {
-      color: #fff;
+      color: #fff !important;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
       margin: -32px -16px;
       text-align: center;
