@@ -18,8 +18,13 @@ export default {
   },
   data() {
     return {
-      checked: this.value
+      checked: this.value ? true : false,
     };
+  },
+  watch: {
+    value(to) {
+      this.checked = to ? true : false;
+    }
   }
 }
 </script>
