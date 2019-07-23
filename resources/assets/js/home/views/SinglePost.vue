@@ -680,7 +680,7 @@ export default {
       transform: translateY(-30px);
       justify-content: flex-end;
       margin-top: 0;
-      margin-bottom: -35px;
+      margin-bottom: -20px;
     }
     /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
