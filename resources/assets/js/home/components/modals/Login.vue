@@ -161,6 +161,15 @@ export default {
       }
     }
   }
+  @media (max-width: 768px){
+    height: 100%;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    .form{
+      padding-bottom: 0;
+    }
+  }
 }
 
 </style>

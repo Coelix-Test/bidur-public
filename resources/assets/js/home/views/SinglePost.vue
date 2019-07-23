@@ -3,7 +3,7 @@
     <div class="post-wrapper">
 
       <div class="post-content">
-        <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a>
+        <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
         <template v-if="errorMessage">
           <p class="main-title">Post has no content!</p>
         </template>
@@ -12,7 +12,11 @@
           <h1 class="main-title" v-if="post.data.post.mainTitle">
             <type-writer once :text="post.data.post.mainTitle"/>
           </h1>
-          <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+          <button class="add-to-favourites" @click.prevent="$router.go(-1)">
+            <img src="/img/icons/star-gradient.png" alt=" ">
+            חזרה לעמוד הבית
+          </button>
+          <!-- <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
             <img src="/img/icons/star-gradient.png" alt=" ">
             הוסף למועדפים
           </button>
@@ -23,7 +27,7 @@
           <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
             <img src="/img/icons/star-gradient.png" alt="">
             הוסף למועדפים
-          </button>
+          </button> -->
 
           <div class="post-meta">
 
@@ -490,7 +494,8 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
+    text-align: center;
     margin-top: 24px;
     text-decoration: none;
   }
@@ -524,8 +529,9 @@ export default {
     right:unset;
   }
   .related-post img {
-    width: 100%;
-    height: 350px;
+    width: auto;
+    max-width: 100%;
+    height: 420px;
     object-fit: cover;
     padding: 10px;
   }
@@ -552,7 +558,7 @@ export default {
     color:#333;
     display:flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     white-space: nowrap;
     font-size: 14px;
@@ -639,6 +645,7 @@ export default {
     /* likes counter: 3 */
     .main-title {
       color: #fff !important;
+      line-height: 1.05;
       background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
       margin: -32px -16px;
       text-align: center;
@@ -657,6 +664,7 @@ export default {
       height:300px;
     }
     .post-meta .info {
+      display: none;/*temp style */
       transform: translateY(-70px);
       color: #fff;
       position: absolute;
@@ -668,11 +676,13 @@ export default {
       border-color: #fff;
     }
     .add-to-favourites {
-      margin-top: 30px;
-      transform: translateY(30px);
+      margin-top: 0px;
     }
     .post-meta {
+      transform: translateY(-30px);
       justify-content: flex-end;
+      margin-top: 0;
+      margin-bottom: -20px;
     }
     /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
@@ -737,7 +747,7 @@ export default {
     }
     .post-content h1 {
       font-size: 28px;
-      line-height: 28px;
+      line-height: 1.05;
     }
   }
 

@@ -11,10 +11,22 @@
       <div class="left" ref="left">
         <img :src="data.imageLeft">
         <hearth-button @click="left"/>
+        <div class="precent-count-wrap">
+          <span class="percent-count">{{leftPercent}}%</span>
+          <div class="yellow-star">
+            <img src="/img/icons/star-yellow.svg" alt="">
+          </div>
+        </div>
       </div>
       <div class="right" ref="right">
         <img :src="data.imageRight">
         <hearth-button @click="right"/>
+        <div class="precent-count-wrap">
+          <span class="percent-count">{{rightPercent}}%</span>
+          <div class="yellow-star">
+            <img src="/img/icons/star-yellow.svg" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -73,6 +85,14 @@ export default {
 
       this.$refs.lightning.style.zIndex = 1;
       makeItRain(70, this.$refs.right);
+    }
+  },
+  computed: {
+    leftPercent(){
+      return Math.ceil( (this.data.left + 1) / (this.data.left + this.data.right) * 100);
+    },
+    rightPercent(){
+      return Math.ceil( (this.data.right + 1) / (this.data.left + this.data.right) * 100);
     }
   }
 }
@@ -143,6 +163,11 @@ export default {
         .hearth-button {
           display: none;
         }
+
+        .precent-count-wrap{
+          visibility: visible;
+          opacity: 1;
+        }
       }
     }
     .left {
@@ -158,6 +183,30 @@ export default {
         right: 50%;
         transform: translateX(50%) scale(1.1);
       }
+    }
+  }
+
+  .precent-count-wrap{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .25s ease-out;
+
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    svg{
+      width: 100%;
+      height: auto;
+    }
+    .percent-count{
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
     }
   }
 }
