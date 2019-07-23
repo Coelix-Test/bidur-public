@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      checked: this.value
+      checked: this.value ? true : false,
     };
   }
 }
