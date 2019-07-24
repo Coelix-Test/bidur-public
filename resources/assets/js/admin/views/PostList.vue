@@ -1,7 +1,10 @@
 <template>
   <div class="post-list">
-    <div class="search">
-      <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
+    <div class="post-list-nav">
+
+      <div class="search">
+        <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
+      </div>
     </div>
     <div class="posts-wrapper">
       <template v-for="(post, index) in posts" v-if="posts">

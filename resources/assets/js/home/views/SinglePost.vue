@@ -4,18 +4,22 @@
 
       <div class="post-content">
         <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
-        <template v-if="errorMessage">
-          <p class="main-title">Post has no content!</p>
-        </template>
-        <template v-else>
-
-          <h1 class="main-title" v-if="post.data.post.mainTitle">
-            <type-writer once :text="post.data.post.mainTitle"/>
-          </h1>
+        <div class="pre-title-row">
           <button class="add-to-favourites" @click.prevent="$router.go(-1)">
             <img src="/img/icons/star-gradient.png" alt=" ">
             חזרה לעמוד הבית
           </button>
+          <share v-if="!errorMessage" />
+        </div>
+
+        <template v-if="errorMessage">
+          <p class="main-title">Post has no content!</p>
+        </template>
+        <template v-else>
+          <h1 class="main-title" v-if="post.data.post.mainTitle">
+            <type-writer once :text="post.data.post.mainTitle"/>
+          </h1>
+
           <!-- <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
             <img src="/img/icons/star-gradient.png" alt=" ">
             הוסף למועדפים
@@ -34,9 +38,7 @@
             <div class="info">
               <span class="author">{{ post.data.post.author }}</span>
               <span class="date">{{  new Date(post.data.post.date*1000) | formatDate }}</span>
-
             </div>
-            <share />
 
           </div>
 
@@ -91,7 +93,7 @@
           </div>
 
 
-          <nav v-if="false">
+          <nav v-if="false"><!-- delete in future if not required -->
 
             <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
               <img src="/img/arrow-right.svg">
@@ -290,7 +292,11 @@ export default {
 
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+  .pre-title-row{
+    display: flex;
+    justify-content: space-between;
+  }
   .back-btn{
     font-size: 18px;
     height: 40px;
@@ -301,6 +307,28 @@ export default {
     margin-bottom: 10px;
     margin-left: auto;
   }
+  .add-to-favourites {
+    white-space: nowrap;
+    border-width: 0;
+    color: #F2C94C;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #fff;
+    padding-right: 0;
+    margin-left: auto;
+
+  }
+  .add-to-favourites img {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+    pointer-events: none;
+  }
+
   .post-wrapper {
     display: flex;
     flex-direction: row;
@@ -310,37 +338,46 @@ export default {
     max-width:1440px;
     margin:32px auto 0;
   }
+
   .post-content {
     flex-grow:2;
     display: flex;
     flex-direction: column;
     padding-left: 16px;
-  }
-  .post-content nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  .post-content nav a {
-    color:#FCD77E;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .post-content nav a img {
-    /* display: none; */
-  }
-  .post-content nav .next-post {
-    flex-grow:2;
-    text-align: left;
-  }
-  .post-content .main-title {
-    color:#F2C94C;
-    margin-bottom: 16px;
-    font-weight: 700;
-    font-size: 40px;
-    font-weight: bold;
+    color:#333;
+    nav{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      a{
+        color:#FCD77E;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .next-post{
+        flex-grow:2;
+        text-align: left;
+      }
+    }
+
+    .main-title {
+      color:#F2C94C;
+      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    section{
+      margin-bottom: 16px;
+      h2 {
+        padding-right: 6px;
+        border-right: 5px solid #F2C94C;
+        font-weight: 600;
+      }
+    }
   }
   .post-meta {
     display: flex;
@@ -348,33 +385,25 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    .info a,
+    .info{
+      color:#333;
+      font-size: 16px;
+    }
+    .info{
+      .date{
+        padding-right: 4px;
+        margin-right: 4px;
+        border-right: 1px solid #333;
+      }
+    }
   }
   .poll img {
     width:100%;
     object-fit: cover;
     margin-bottom: 0;
   }
-  .post-meta .info a,
-  .post-meta .info {
-    color:#333;
-    font-size: 16px;
-  }
-  .post-meta .info .date {
-    padding-right: 4px;
-    margin-right: 4px;
-    border-right: 1px solid #333;
-  }
-  .post-content section {
-    margin-bottom: 16px;
-  }
-  .post-content {
-    color:#333;
-  }
-  section h2 {
-    padding-right: 6px;
-    border-right: 5px solid #F2C94C;
-    font-weight: 600;
-  }
+
   section.image img {
     max-width: 100%;
     width:100%;
@@ -421,7 +450,6 @@ export default {
     margin-bottom: 0;
   }
   section.text p {
-    /* margin-bottom: ; */
     color:#4F4F4F;
     font-size: 18px;
   }
@@ -448,36 +476,15 @@ export default {
     border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
     border-image-slice: 1;
     padding: 16px 0;
+    h2{
+      text-align: center;
+      font-weight: 700;
+    }
   }
-  .opinion h2 {
-    text-align: center;
-    font-weight: 700;
-  }
+
   .post-content section:last-of-type {
     padding-bottom: 32px;
-    /* margin-top: 32px; */
     border-bottom: 1px solid #BDBDBD;
-  }
-  .add-to-favourites {
-    white-space: nowrap;
-    border-width: 0;
-    color: #F2C94C;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 18px;
-    font-weight: 700;
-    background-color: #fff;
-    padding-right: 0;
-    margin-left: auto;
-
-  }
-  .add-to-favourites img {
-    width: 24px;
-    height: 24px;
-    margin-left: 4px;
-    pointer-events: none;
   }
   .img-subtext {
     max-width: 600px;
@@ -628,33 +635,8 @@ export default {
       pointer-events: none;
       z-index:-1;
     }
-    .related-posts:before {
-      /* content:url('/img/stars-posts.svg');
-      width:100%;
-      height:100%;
-      position: absolute;
-      top:0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-position: center;
-      background-size: 100% 100%;
-      background-repeat: no-repeat; */
-    }
     /* ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА --> */
     /* likes counter: 3 */
-    .main-title {
-      color: #fff !important;
-      line-height: 1.05;
-      background: linear-gradient(294.72deg, #D3A01D 1.57%, #F2C94C 98.82%);
-      margin: -32px -16px;
-      text-align: center;
-      margin-top: -31px;
-      font-size: 26px;
-      padding: 32px 8px;
-      padding-bottom: 50px;
-      order: -1;
-    }
     .banner {
       width:100%;
       height: auto;
@@ -663,26 +645,8 @@ export default {
       object-position: center;
       height:300px;
     }
-    .post-meta .info {
-      display: none;/*temp style */
-      transform: translateY(-70px);
-      color: #fff;
-      position: absolute;
-      width: 100%;
-      right: 0;
-      text-align: center;
-    }
     .post-meta .info .date {
       border-color: #fff;
-    }
-    .add-to-favourites {
-      margin-top: 0px;
-    }
-    .post-meta {
-      transform: translateY(-30px);
-      justify-content: flex-end;
-      margin-top: 0;
-      margin-bottom: -20px;
     }
     /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
