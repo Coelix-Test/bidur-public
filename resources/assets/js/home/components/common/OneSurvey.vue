@@ -89,10 +89,10 @@ export default {
   },
   computed: {
     leftPercent(){
-      return Math.ceil( (this.data.left + 1) / (this.data.left + this.data.right) * 100);
+      return Math.ceil( (this.data.left + 1) / (this.data.left + this.data.right + 1) * 100);
     },
     rightPercent(){
-      return Math.ceil( (this.data.right + 1) / (this.data.left + this.data.right) * 100);
+      return Math.ceil( (this.data.right + 1) / (this.data.left + this.data.right + 1) * 100);
     }
   }
 }
