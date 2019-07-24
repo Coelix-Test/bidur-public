@@ -5,13 +5,13 @@
         <a href="#"
           class="btn-common"
           :class="filters.published ? 'btn-red' : 'btn-border-dark'"
-          @click="filters.published = true">
+          @click.prevent="filters.published = true">
           Published
         </a>
         <a href="#"
           class="btn-common"
           :class="!filters.published ? 'btn-red' : 'btn-border-dark'"
-          @click="filters.published = false">
+          @click.prevent="filters.published = false">
           Unpublished
         </a>
       </div>
@@ -138,8 +138,9 @@ export default {
   },
   computed: {
     filteredPosts(){
-      this.posts.filter(post => post.publish == this.filters.published);
-      return this.posts;
+      // this.posts.filter(post => post.publish == this.filters.published);
+      // return this.posts;
+      return this.posts.filter(post => post.post.publish == this.filters.published);
 
     }
   },

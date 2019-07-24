@@ -179,7 +179,7 @@ export default {
     width:100%;
     height:120px;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     margin-left: 0;
   }
   .latest-post-item p {

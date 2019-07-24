@@ -645,9 +645,6 @@ export default {
       object-position: center;
       height:300px;
     }
-    .post-meta .info .date {
-      border-color: #fff;
-    }
     /* <-- ЕБУЧИЕ КОСТЫЛИ ДЛЯ ЯИРА */
 
     section.imageWithText {
