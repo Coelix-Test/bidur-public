@@ -30,7 +30,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  right: -50px;
+  right: -40px;
   top: 50%;
   transform: translateY(-50%);
 

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <form class="col-9" @submit.prevent="submitPostData">
+            <form class="col-9 edit-post-content" @submit.prevent="submitPostData">
 
                 <check-box v-model="publish" v-if="$route.params.id">
                   פרסם
@@ -392,5 +392,11 @@ export default {
 
 .check-box {
   align-self: flex-start;
+}
+
+@media (max-width: 1560px){
+  .edit-post-content{
+    padding-right: 40px;
+  }
 }
 </style>
