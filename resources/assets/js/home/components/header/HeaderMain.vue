@@ -26,36 +26,35 @@
     <div class="run-stroke-wrap-wrap" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
       <div class="run-stroke-wrap" style="margin:0 auto;max-width:1440px;box-shadow:unset;">
         <ul class="run-stroke" >
-          <!-- <li v-for="post in postTitles">
+          <li v-for="post in postTitles">
             <router-link :to="'/post/'+post.id">
               {{post.title}}
             </router-link>
-
-          </li> -->
-          <li><router-link :to="{ name: 'single-post', params: { id: 1714 } }">הדוגמנית שון לוי בינלאומית</router-link></li>
+          </li>
+          <!-- <li><router-link :to="{ name: 'single-post', params: { id: 1714 } }">הדוגמנית שון לוי בינלאומית</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1713 } }">ההחוקים משתנים כל הפרטים על...</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1712 } }">איתי לוי מפציץ</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1721 } }">טיילור מלכוב לא עוצרת </router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1720 } }">שיר אלמליח מבריזה?</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1719 } }">הזוג החדש של הביצה</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1717 } }">כוכבת תאגד מתחתנת</router-link></li>
-          <li><router-link :to="{ name: 'single-post', params: { id: 1709 } }">רגע לפני ההופעה הגדולה ג'יי בלווין...</router-link></li>
+          <li><router-link :to="{ name: 'single-post', params: { id: 1709 } }">רגע לפני ההופעה הגדולה ג'יי בלווין...</router-link></li> -->
         </ul>
         <ul class="run-stroke hidden">
-          <!-- <li v-for="post in postTitles">
+          <li v-for="post in postTitles">
             <router-link :to="'/post/'+post.id">
               {{post.title}}
             </router-link>
 
-          </li> -->
-          <li><router-link :to="{ name: 'single-post', params: { id: 1714 } }">הדוגמנית שון לוי בינלאומית</router-link></li>
+          </li>
+          <!-- <li><router-link :to="{ name: 'single-post', params: { id: 1714 } }">הדוגמנית שון לוי בינלאומית</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1713 } }">ההחוקים משתנים כל הפרטים על...</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1712 } }">איתי לוי מפציץ</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1721 } }">טיילור מלכוב לא עוצרת </router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1720 } }">שיר אלמליח מבריזה?</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1719 } }">הזוג החדש של הביצה</router-link></li>
           <li><router-link :to="{ name: 'single-post', params: { id: 1717 } }">כוכבת תאגד מתחתנת</router-link></li>
-          <li><router-link :to="{ name: 'single-post', params: { id: 1709 } }">רגע לפני ההופעה הגדולה ג'יי בלווין...</router-link></li>
+          <li><router-link :to="{ name: 'single-post', params: { id: 1709 } }">רגע לפני ההופעה הגדולה ג'יי בלווין...</router-link></li> -->
         </ul>
       </div>
     </div>
