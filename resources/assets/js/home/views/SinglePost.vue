@@ -663,6 +663,12 @@ export default {
     .post-content {
       padding-left: 0;
       width: 100%;
+      .main-title{
+        text-align: center;
+      }
+      .post-meta{
+        justify-content: center;
+      }
     }
     .opinion h2 {
       text-align: center;

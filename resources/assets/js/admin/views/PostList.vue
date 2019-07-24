@@ -1,29 +1,44 @@
 <template>
   <div class="post-list">
     <div class="post-list-nav">
-
+      <div class="filter-by-status">
+        <a href="#"
+          class="btn-common"
+          :class="filters.published ? 'btn-red' : 'btn-border-dark'"
+          @click="filters.published = true">
+          Published
+        </a>
+        <a href="#"
+          class="btn-common"
+          :class="!filters.published ? 'btn-red' : 'btn-border-dark'"
+          @click="filters.published = false">
+          Unpublished
+        </a>
+      </div>
       <div class="search">
         <input type="text" @input="renderSearch" v-model="searchQuery" placeholder="">
       </div>
     </div>
     <div class="posts-wrapper">
-      <template v-for="(post, index) in posts" v-if="posts">
-        <div class="post" v-if="!isDeletedPost(post.post.id)" :key="post.post.id">
+      <template v-if="posts">
+        <template v-for="(post, index) in filteredPosts">
+          <div class="post" v-if="!isDeletedPost(post.post.id)" :key="post.post.id">
 
-          <h2>{{post.post.metaTitle}}</h2>
-          <div class="post-meta">
-            <span class="date">{{post.post.created_at | formatDate}}</span>
-            <span class="author">מאת {{post.post.author}}</span>
-            <span class="id">#{{post.post.id}}</span>
-          </div>
-          <div class="actions">
-            <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
-            <!-- <button @click="editPost(post.post.id)">edit</button> -->
-            <router-link :to="'/post/' + post.post.id">ערוך</router-link>
-            <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>
-          </div>
+            <h2>{{post.post.metaTitle}}</h2>
+            <div class="post-meta">
+              <span class="date">{{post.post.created_at | formatDate}}</span>
+              <span class="author">מאת {{post.post.author}}</span>
+              <span class="id">#{{post.post.id}}</span>
+            </div>
+            <div class="actions">
+              <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
+              <!-- <button @click="editPost(post.post.id)">edit</button> -->
+              <router-link :to="'/post/' + post.post.id">ערוך</router-link>
+              <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>
+            </div>
 
-        </div>
+          </div>
+        </template>
       </template>
       <div v-if="posts == null">
         פוסטים לא נמצאו!
@@ -43,6 +58,9 @@ export default {
       page: 0,
       loading: false,
       end: false,
+      filters: {
+        published: true,
+      }
     }
   },
   methods : {
@@ -118,13 +136,14 @@ export default {
       }
     },
   },
+  computed: {
+    filteredPosts(){
+      this.posts.filter(post => post.publish == this.filters.published);
+      return this.posts;
+
+    }
+  },
   created() {
-    // axios
-    //   .post('/getAllPosts')
-    //     .then(res => {
-    //       console.log(res.data);
-    //       this.posts = res.data;
-    //     });
     this.getPaginatedPosts();
   },
   mounted(){
@@ -141,8 +160,8 @@ export default {
     max-width:1440px;
     padding:0 24px;
     margin: 32px auto;
-      .search {
-        padding:0 24px 16px;
+      .post-list-nav {
+        padding:0 24px 12px;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -151,6 +170,16 @@ export default {
           padding:6px 16px;
           font-size: 16px;
           color:#333;
+          height: 40px;
+          border: 1px solid #ddd;
+          border-radius: 10px
+        }
+        .filter-by-status{
+          .btn-common{
+            height: 40px;
+            padding: 0 16px;
+            text-decoration: none;
+          }
         }
       }
       .posts-wrapper {

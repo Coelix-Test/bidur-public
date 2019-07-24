@@ -134,6 +134,7 @@ export default {
     pointer-events: none;
     z-index:-2;
     object-fit: cover;
+    object-position: top;
     transition:.3s;
   }
   .posts-column article .overlay {
