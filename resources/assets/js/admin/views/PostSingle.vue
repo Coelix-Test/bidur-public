@@ -206,8 +206,8 @@ export default {
         if(this.publish){
           //set current date as published
           this.date = new Date();
-          this.time.hour = moment(this.date).hours();
-          this.time.minute = moment(this.date).minutes();
+          this.time.hour = moment(this.date).format('HH');
+          this.time.minute = moment(this.date).format('mm');
         }
       },
       addSection(type){
