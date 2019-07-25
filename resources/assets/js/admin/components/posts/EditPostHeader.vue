@@ -18,6 +18,10 @@
                     :value="date"
                     :format="formatDate">
                 </datepicker>
+                <timepicker
+                  class="theme-input-text timepicker"
+                  :value.sync="time">
+                </timepicker>
             </div>
 
             <div class="ico-input author-input d-inline-flex align-items-center">
@@ -34,6 +38,8 @@
 <script>
 import EditPostCelebrities from './EditPostCelebrities.vue';
 import Datepicker from 'vuejs-datepicker';
+import VueTimepicker from 'vue2-timepicker';
+import Timepicker from '../common/Timepicker.vue';
 
 export default {
     data: function(){
@@ -50,13 +56,18 @@ export default {
         date: {
             type: Date
         },
+        time: {
+            type: Object
+        },
         celebrities: {
             type: Array
         }
     },
     components: {
         EditPostCelebrities,
-        Datepicker
+        Datepicker,
+        VueTimepicker,
+        Timepicker
     },
     methods: {
         onUpdateCelebrities(data) {
@@ -96,6 +107,13 @@ export default {
     .ico{
         margin-left: 14px;
     }
+}
+.timepicker::v-deep{
+  margin-right: 5px;
+  input{
+    width: 120px;
+    text-align: center;
+  }
 }
 @media(max-width: 1530px){
   .main-post-title{

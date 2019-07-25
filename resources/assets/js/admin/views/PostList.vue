@@ -6,13 +6,13 @@
           class="btn-common"
           :class="filters.published ? 'btn-red' : 'btn-border-dark'"
           @click.prevent="filters.published = true">
-          Published
+          פורסם
         </a>
         <a href="#"
           class="btn-common"
           :class="!filters.published ? 'btn-red' : 'btn-border-dark'"
           @click.prevent="filters.published = false">
-          Unpublished
+          טיוטה
         </a>
       </div>
       <div class="search">

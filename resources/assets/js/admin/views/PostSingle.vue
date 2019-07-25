@@ -3,7 +3,7 @@
         <div class="row">
             <form class="col-9 edit-post-content" @submit.prevent="submitPostData">
 
-                <check-box v-model="publish" v-if="$route.params.id">
+                <check-box @input="changePostStatus" v-if="$route.params.id" :value="this.publish">
                   פרסם
                 </check-box>
 
@@ -12,6 +12,7 @@
                     :author="author"
                     :celebrities="celebrities"
                     :date="date"
+                    :time.sync="time"
                     @updateTitle="onUpdateTitle"
                     @updateAuthor="onUpdateAuthor"
                     @updateDate="onUpdateDate"
@@ -165,6 +166,7 @@ export default {
             title: '',
             author: '',
             date: new Date(),
+            time: {hour: "00", minute: "00"},
             publish: false,
             sections: []
         }
@@ -196,111 +198,117 @@ export default {
           }
         }
       },
-        addSection(type){
-            let sectionData = {};
-            switch (type) {
-                case 'title':
-                    sectionData = {type: 'title', value: ''};
-                    break;
-                case 'text':
-                    sectionData = {type: 'text', value: ''};
-                    break;
-                case 'image':
-                    sectionData = {type: 'image', value: '', description: ''};
-                    break;
-                case 'imageWithText':
-                    sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
-                    break;
-                case 'video':
-                    // sectionData = {type: 'video', value: '', description: ''};
-                    sectionData = {type: 'video', value: '', description: ''};
-                    break;
-                case 'survey':
-                    sectionData = {type: 'survey', image: '', title: '', answers: [] };
-                    break;
-                case 'assessment':
-                    sectionData = {type: 'assessment', image: '', title: '' };
-                    break;
-                case 'selection':
-                    sectionData = {type: 'selection', image1: '', image2: '', title: '' };
-                    break;
-            }
-            this.sections.push(sectionData);
-        },
-        deleteSection(index){
-            this.sections = this.sections.filter((section, i) => i !== index);
-        },
-        onUpdateCelebrities(data){
-            this.celebrities = data;
-        },
-        onUpdateTitle(data){
-            this.title = data;
-        },
-        onUpdateDate(data){
-            this.date = data;
-        },
-        onUpdateAuthor(data){
-            this.author = data;
-        },
-        submitPostData(){
-            let postData = new FormData();
-
-            //append header
-            let sectionIndex = 0;
-
-            postData.append('sections['+sectionIndex+'][type]', 'metaTitle');
-            postData.append('sections['+sectionIndex+'][title]', this.title);
-            postData.append('sections['+sectionIndex+'][author]', this.author);
-            postData.append('sections['+sectionIndex+'][date]', this.date.getTime());
-            this.celebrities.forEach(celebrity => {
-                if(celebrity.id){
-                    postData.append('sections['+sectionIndex+'][celebrities][]', celebrity.id);
-                }
-            });
-            sectionIndex++;
-
-            //append sections
-            this.sections.forEach((section) => {
-                for (const [key, value] of Object.entries(section)) {
-                    if(Array.isArray(value)){
-                        value.forEach(item => {
-                            postData.append('sections['+sectionIndex+']['+key+'][]', item);
-                        });
-                    }
-                    else{
-                        postData.append('sections['+sectionIndex+']['+key+']', value);
-                    }
-                }
-                sectionIndex++;
-            });
-
-            //send ajax
-            let url = '/createPost';
-            let successMessage = 'Post was successfully added!';
-            if(this.$route.params.id){
-              url = '/editPostCreateAllSections';
-              successMessage = 'Post was successfully edited!';
-              postData.append('id', this.$route.params.id);
-              postData.append('publish', this.publish ? 1 : 0);
-            }
-            axios({
-                    method: 'post',
-                    url: url,
-                    data: postData,
-                    config: { headers: { 'Content-Type': 'multipart/form-data' }}
-                })
-                .then(response => {
-                    // console.log(response);
-                    this.$router.push('/');
-                    // window.location.href = document.location.origin+"/admin#/?refresh=1";
-                    alert(successMessage);
-
-                    // document.location.reload(true);
-                })
-                .catch(error => {
-                  alert('שגיאה, נראה שאחת התמונות לא הועלתה');
-                });
+      changePostStatus(){
+        this.publish = !this.publish;
+        if(this.publish){
+          //set current date as published
+          this.date = new Date();
+          this.time.hour = moment(this.date).hours();
+          this.time.minute = moment(this.date).minutes();
         }
+      },
+      addSection(type){
+        let sectionData = {};
+        switch (type) {
+            case 'title':
+                sectionData = {type: 'title', value: ''};
+                break;
+            case 'text':
+                sectionData = {type: 'text', value: ''};
+                break;
+            case 'image':
+                sectionData = {type: 'image', value: '', description: ''};
+                break;
+            case 'imageWithText':
+                sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
+                break;
+            case 'video':
+                // sectionData = {type: 'video', value: '', description: ''};
+                sectionData = {type: 'video', value: '', description: ''};
+                break;
+            case 'survey':
+                sectionData = {type: 'survey', image: '', title: '', answers: [] };
+                break;
+            case 'assessment':
+                sectionData = {type: 'assessment', image: '', title: '' };
+                break;
+            case 'selection':
+                sectionData = {type: 'selection', image1: '', image2: '', title: '' };
+                break;
+        }
+        this.sections.push(sectionData);
+      },
+      deleteSection(index){
+          this.sections = this.sections.filter((section, i) => i !== index);
+      },
+      onUpdateCelebrities(data){
+          this.celebrities = data;
+      },
+      onUpdateTitle(data){
+          this.title = data;
+      },
+      onUpdateDate(data){
+          this.date = data;
+      },
+      onUpdateAuthor(data){
+          this.author = data;
+      },
+      submitPostData(){
+          let postData = new FormData();
+
+          //append header
+          let sectionIndex = 0;
+
+          postData.append('sections['+sectionIndex+'][type]', 'metaTitle');
+          postData.append('sections['+sectionIndex+'][title]', this.title);
+          postData.append('sections['+sectionIndex+'][author]', this.author);
+          postData.append('sections['+sectionIndex+'][date]', this.date.getTime());
+          this.celebrities.forEach(celebrity => {
+              if(celebrity.id){
+                  postData.append('sections['+sectionIndex+'][celebrities][]', celebrity.id);
+              }
+          });
+          sectionIndex++;
+
+          //append sections
+          this.sections.forEach((section) => {
+              for (const [key, value] of Object.entries(section)) {
+                  if(Array.isArray(value)){
+                      value.forEach(item => {
+                          postData.append('sections['+sectionIndex+']['+key+'][]', item);
+                      });
+                  }
+                  else{
+                      postData.append('sections['+sectionIndex+']['+key+']', value);
+                  }
+              }
+              sectionIndex++;
+          });
+
+          //send ajax
+          let url = '/createPost';
+          let successMessage = 'Post was successfully added!';
+          if(this.$route.params.id){
+            url = '/editPostCreateAllSections';
+            successMessage = 'Post was successfully edited!';
+            postData.append('id', this.$route.params.id);
+            postData.append('publish', this.publish ? 1 : 0);
+          }
+          axios({
+                  method: 'post',
+                  url: url,
+                  data: postData,
+                  config: { headers: { 'Content-Type': 'multipart/form-data' }}
+              })
+              .then(response => {
+                  // console.log(response);
+                  this.$router.push('/');
+                  alert(successMessage);
+              })
+              .catch(error => {
+                alert('שגיאה, נראה שאחת התמונות לא הועלתה');
+              });
+      }
     },
     created() {
         if(this.$route.params.id) {
@@ -311,6 +319,8 @@ export default {
                 this.author = response.data.author;
                 this.publish = response.data.publish;
                 this.date = new Date(response.data.date*1000);
+                this.time.hour = moment(this.date).hours();
+                this.time.minute = moment(this.date).minutes();
                 if(response.data.sections){
                   let postSections = response.data.sections;
                   postSections = Object.keys(postSections).map(i => postSections[i]);
@@ -323,16 +333,6 @@ export default {
                     return {id: i.id, name: i.title};
                   });
                 }
-
-
-                // console.log(postSections);
-
-
-                // this.sections = [{type: 'image', value: '/images/postImages/7198581562426342.jpg', description: 'Description test'}];
-
-                // this.date = new Date();
-                // celebrities: [],
-                // sections
               });
         }
     },
