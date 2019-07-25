@@ -166,7 +166,10 @@ export default {
             title: '',
             author: '',
             date: new Date(),
-            time: {hour: "00", minute: "00"},
+            time: {
+              hour: moment(new Date()).format('HH'),
+              minute: moment(new Date()).format('mm')
+            },
             publish: false,
             sections: []
         }
@@ -319,8 +322,8 @@ export default {
                 this.author = response.data.author;
                 this.publish = response.data.publish;
                 this.date = new Date(response.data.date*1000);
-                this.time.hour = moment(this.date).hours();
-                this.time.minute = moment(this.date).minutes();
+                this.time.hour = moment(this.date).format('HH');
+                this.time.minute = moment(this.date).format('mm');
                 if(response.data.sections){
                   let postSections = response.data.sections;
                   postSections = Object.keys(postSections).map(i => postSections[i]);
