@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-anim">
     <!-- v-show -->
-    <Modal :class="{ hidden: !opened }" @close="close">
+    <Modal v-show  @close="close">
       <!-- <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video> -->
 
       <div class="cnt">
