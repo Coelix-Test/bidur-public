@@ -324,8 +324,8 @@ export default {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 400;
     background-color: #fff;
     padding-right: 0;
     margin-left: auto;
@@ -435,8 +435,8 @@ export default {
     max-width:500px;
     font-style: italic;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 17px;
     color:#333;
   }
   section.imageWithText img {
