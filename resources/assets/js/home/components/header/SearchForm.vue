@@ -1,8 +1,8 @@
 <template>
-  <form action="#" class="search-form" :class="{focused : 'active'}">
-    <div class="search-overlay"></div>
+  <form action="#" class="search-form">
+    <div class="search-overlay" @click="toggleSearch"></div>
     <div class="search-input-wrap">
-      <input type="text" class="search-input" placeholder="שופיח" @click="toggleSearch" @input="renderSearch($event.target.value)">
+      <input type="text" class="search-input" placeholder="שופיח" @click="toggleSearch" @input="renderSearch($event.target.value)" @blur="blur" >
       <ul class="results" v-show="results && focused">
         <li @click="closeSearch" v-for="post in results">
           <router-link  :to="'/post/'+post.post.id">{{ post.post.metaTitle }}</router-link>
@@ -27,7 +27,12 @@ export default {
     },
     closeSearch() {
       this.focused = false;
-      this.query = null;
+      this.query = '';
+    },
+    blur(){
+      setTimeout(() => {
+        this.focused = false;
+      },100);
     },
     renderSearch(value){
       this.query = value;
