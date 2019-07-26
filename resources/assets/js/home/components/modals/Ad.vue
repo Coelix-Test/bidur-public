@@ -6,7 +6,6 @@
 
       <div class="cnt">
         <Adsense
-          v-if="$store.getters['modals/ad/onceOpened']"
           data-ad-client="ca-pub-6511052822397382"
           data-ad-slot="3853489762"
         />
