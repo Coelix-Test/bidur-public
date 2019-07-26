@@ -40,7 +40,23 @@ export default {
     }
   },
   actions: {
+    open(context) {
+      var el = document.getElementById('ads');
+      var rest = document.getElementById('ads-rest');
 
+      el.classList.remove('closed')
+      rest.innerHTML = 3;
+      var sec = 0;
+      var interval = setInterval(() => {
+        sec++;
+        rest.innerHTML = 3 - sec;
+        console.log(sec);
+        if(sec >= 3) {
+          el.classList.add('closed');
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
   },
   getters: {
     canClose(state) {

@@ -11,7 +11,7 @@
 
     gtag('config', 'UA-131925839-1');
   </script>
-  
+
   <meta charset="UTF-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -38,6 +38,26 @@
         <div class="red ball"></div>
         <div class="yellow ball"></div>
         <div class="green ball"></div>
+      </div>
+    </div>
+
+    <div id="ads" class="closed">
+      <div id="ads-rest" class="a-row-center"></div>
+      <div id="ads-wrapper">
+        {{-- <div style="width: 100%; height: 100%; background: #000;">
+
+        </div> --}}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Between pages -->
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-6511052822397382"
+          data-ad-slot="9249316864"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
     </div>
 
