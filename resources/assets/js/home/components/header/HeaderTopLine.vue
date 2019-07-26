@@ -22,7 +22,7 @@
           </div>
 
           <div class="auth-btns">
-              <!-- <search-form class="search-form"></search-form> -->
+              <search-form class="search-form"></search-form>
 
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
@@ -138,7 +138,7 @@
           data-ad-client="ca-pub-6511052822397382"
           data-ad-slot="3961762360"
           data-ad-format="auto"
-          :data-full-width-responsive="true"
+
         />
       </div>
   </div><!-- top row end -->
@@ -197,6 +197,8 @@ export default {
   left:0;
   right:0;
   height: 90px;
+  overflow: hidden;
+  max-height: 90px;
   width:100%;
   z-index:2;
   background-color: #eee;
