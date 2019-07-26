@@ -87,7 +87,8 @@ router.beforeEach(async (to, from, next) => {
   // console.log(window.app, 'qweqweqwe');
 
   if(window.app && !env.TEST) {
-    store.dispatch('global/ad/open')
+    // store.commit('modals/ad/open')
+    store.dispatch('modals/ad/open')
   }
 
   next();

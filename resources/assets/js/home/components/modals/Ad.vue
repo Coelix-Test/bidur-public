@@ -114,25 +114,5 @@ export default {
     cursor: default;
     user-select: none;
   }
-
-  .skip {
-    border: 0;
-    background: transparent;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-  }
-
-  .mute {
-    border: 0;
-    background: transparent;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-  }
 }
 </style>
