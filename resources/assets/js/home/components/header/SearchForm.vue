@@ -3,8 +3,10 @@
     <div class="search-overlay"></div>
     <div class="search-input-wrap">
       <input type="text" class="search-input" placeholder="שופיח" @click="toggleSearch" @input="renderSearch($event.target.value)">
-      <ul class="results" v-show="results.length && focused">
-        <li v-for="post in results">result post</li>
+      <ul class="results" v-show="results && focused">
+        <li @click="closeSearch" v-for="post in results">
+          <router-link  :to="'/post/'+post.post.id">{{ post.post.metaTitle }}</router-link>
+        </li>
       </ul>
     </div>
   </form>
@@ -16,23 +18,27 @@ export default {
     return {
       focused: false,
       query: '',
-      results: []
+      results: false,
     };
   },
   methods: {
     toggleSearch(){
       this.focused = !this.focused;
     },
+    closeSearch() {
+      this.focused = false;
+      this.query = null;
+    },
     renderSearch(value){
       this.query = value;
-      if(this.query){
+      if(this.query && this.query.length > 2){
         axios
           .post('/postTitleSerach', {title : this.query})
           .then(res => {
             if(res.data.success != false) {
-              this.posts = res.data;
+              this.results = res.data;
             }else {
-              this.results = [];
+              this.results = false;
             }
           })
           .catch(error => this.results = []);
@@ -78,9 +84,9 @@ export default {
     z-index: 101;
     border: 1px solid #E0E0E0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-
+    overflow: hidden;
     max-height: 170px;
-    overflow: scroll;
+    overflow-y: scroll;
     li{
       padding: 3px 15px;
     }

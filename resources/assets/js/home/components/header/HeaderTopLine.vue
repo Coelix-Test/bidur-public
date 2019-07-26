@@ -22,7 +22,7 @@
           </div>
 
           <div class="auth-btns">
-              <!-- <search-form class="search-form"></search-form> -->
+              <search-form class="search-form"></search-form>
 
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
