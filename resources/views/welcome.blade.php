@@ -41,8 +41,8 @@
       </div>
     </div>
 
-    <div id="ads" class="closed">
-      <div id="ads-rest" class="a-row-center"></div>
+    <div id="ads" class="">
+      <div id="ads-rest" class="a-row-center">3</div>
       <div id="ads-wrapper">
         {{-- <div style="width: 100%; height: 100%; background: #000;">
 
