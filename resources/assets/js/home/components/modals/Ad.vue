@@ -61,43 +61,43 @@ export default {
 
 <style lang="scss" scoped>
 
-.modal {
-  &.fade-anim {
-    &-enter {
-      opacity: 0;
-      .cnt {
-        transform: scale(1.2);
-      }
-    }
-    &-enter-to {
-      opacity: 1;
-      .cnt {
-        transform: scale(1);
-      }
-    }
-
-    &-leave {
-      opacity: 1;
-      .cnt {
-        transform: scale(1);
-      }
-    }
-    &-leave-to {
-      opacity: 0;
-      .cnt {
-        transform: scale(1.2);
-      }
-    }
-
-    &-leave-active,
-    &-enter-active {
-      transition: opacity 0.3s ease;
-      .cnt {
-        transition: transform 0.3s ease;
-      }
-    }
-  }
-}
+// .modal {
+//   &.fade-anim {
+//     &-enter {
+//       opacity: 0;
+//       .cnt {
+//         transform: scale(1.2);
+//       }
+//     }
+//     &-enter-to {
+//       opacity: 1;
+//       .cnt {
+//         transform: scale(1);
+//       }
+//     }
+//
+//     &-leave {
+//       opacity: 1;
+//       .cnt {
+//         transform: scale(1);
+//       }
+//     }
+//     &-leave-to {
+//       opacity: 0;
+//       .cnt {
+//         transform: scale(1.2);
+//       }
+//     }
+//
+//     &-leave-active,
+//     &-enter-active {
+//       transition: opacity 0.3s ease;
+//       .cnt {
+//         transition: transform 0.3s ease;
+//       }
+//     }
+//   }
+// }
 
 .cnt {
   width: 100%;
