@@ -16,6 +16,13 @@
 
 <script>
 export default {
+  data(){
+    return {
+      focused: false,
+      query: '',
+      results: []
+    };
+  }
 }
 </script>
 
@@ -55,6 +62,9 @@ export default {
     z-index: 101;
     border: 1px solid #E0E0E0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+
+    max-height: 170px;
+    overflow: scroll;
     li{
       padding: 3px 15px;
     }
