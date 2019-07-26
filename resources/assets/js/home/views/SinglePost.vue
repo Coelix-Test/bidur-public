@@ -255,14 +255,20 @@ export default {
             });
     },
     youtubeEmbedLink(url){
-      let UrlObj = new URL(url);
-      let key = UrlObj.searchParams.get("v");
+      let regex = new RegExp("https://youtu.be/");
+      let key = '';
+      if(regex.test(url)){
+        key = url.replace('https://youtu.be/', '');
+      }
+      else{
+        let UrlObj = new URL(url);
+        key = UrlObj.searchParams.get("v");
+      }
       key = 'https://www.youtube.com/embed/' + key;
       return key;
     },
   },
   created() {
-
     this.sync(this.$route.params.id);
     this.postId = this.$route.params.id;
   },

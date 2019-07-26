@@ -1,14 +1,10 @@
 <template>
-  <form action="#" class="search-form">
+  <form action="#" class="search-form" :class="{focused : 'active'}">
     <div class="search-overlay"></div>
     <div class="search-input-wrap">
-      <input type="text" class="search-input" placeholder="שופיח">
-      <ul class="results">
-        <li>result post</li>
-        <li>result post</li>
-        <li>result post</li>
-        <li>result post</li>
-        <li>result post</li>
+      <input type="text" class="search-input" placeholder="שופיח" @click="toggleSearch" @input="renderSearch($event.target.value)">
+      <ul class="results" v-show="results.length && focused">
+        <li v-for="post in results">result post</li>
       </ul>
     </div>
   </form>
@@ -22,6 +18,26 @@ export default {
       query: '',
       results: []
     };
+  },
+  methods: {
+    toggleSearch(){
+      this.focused = !this.focused;
+    },
+    renderSearch(value){
+      this.query = value;
+      if(this.query){
+        axios
+          .post('/postTitleSerach', {title : this.query})
+          .then(res => {
+            if(res.data.success != false) {
+              this.posts = res.data;
+            }else {
+              this.results = [];
+            }
+          })
+          .catch(error => this.results = []);
+      }
+    }
   }
 }
 </script>
@@ -73,14 +89,17 @@ export default {
       text-decoration: none;
     }
   }
-}
-.search-overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background: transparent;
+
+  &.active{
+    .search-overlay{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      background: transparent;
+    }
+  }
 }
 </style>
