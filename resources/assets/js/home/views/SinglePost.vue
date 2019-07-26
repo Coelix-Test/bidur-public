@@ -17,7 +17,10 @@
         </template>
         <template v-else>
           <h1 class="main-title" v-if="post.data.post.mainTitle">
-            <type-writer once :text="post.data.post.mainTitle"/>
+            <font style="background: url(http://i361.photobucket.com/albums/oo54/crackysparkles/sparkles/ezgtilefinished.gif);-webkit-background-clip: text;background-clip:text;background-size:100% 100%;background-repeat:repeat;">
+              <type-writer once :text="post.data.post.mainTitle"/>
+            </font>
+
           </h1>
 
           <!-- <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
@@ -369,11 +372,19 @@ export default {
     }
 
     .main-title {
-      color:#F2C94C;
-      margin-bottom: 16px;
+      color:transparent;
+      margin-bottom: 4px;
       font-weight: 700;
       font-size: 40px;
       font-weight: bold;
+
+    }
+    .main-title font {
+      -webkit-background-clip : text;
+      background-clip: text;
+      background-size: contain!important;
+      background-repeat: repeat!important;
+      display: block;
     }
 
     section{
@@ -393,14 +404,15 @@ export default {
     justify-content: space-between;
     .info a,
     .info{
-      color:#333;
+      color:#F2C94C;
       font-size: 16px;
+      font-weight: 200;
     }
     .info{
       .date{
         padding-right: 4px;
         margin-right: 4px;
-        border-right: 1px solid #333;
+        border-right: 1px solid #F2C94C;
       }
     }
   }
@@ -668,6 +680,8 @@ export default {
       width: 100%;
       .main-title{
         text-align: center;
+        line-height: 28px;
+        font-size: 32px;
       }
       .post-meta{
         justify-content: center;
