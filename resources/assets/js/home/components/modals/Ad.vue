@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-anim">
     <!-- v-show -->
-    <Modal v-show  @close="close">
+    <Modal :class="{ hidden: !opened }" @close="close">
       <!-- <video ref="video" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" :muted="muted"></video> -->
 
       <div class="cnt">
@@ -100,6 +100,11 @@ export default {
 //   }
 // }
 
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cnt {
   width: 100%;
   height: 100%;
@@ -112,12 +117,6 @@ export default {
   justify-content: center;
 
   //e wqd sa d as dqwe
-  .modal {
-    &.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
   //qwe qwe dsa dsd qw d qwe
 
   video {
