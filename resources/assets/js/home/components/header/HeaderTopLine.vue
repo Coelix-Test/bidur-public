@@ -126,6 +126,7 @@
         		</div>
 
           </div>
+          <search-form-mob class="search-form-mob"></search-form-mob>
           <span class="header-text">הבית של הבידור הישראלי</span>
           <router-link :to="{ name: 'index'}" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
@@ -145,6 +146,7 @@
 
 <script>
 import SearchForm from './SearchForm.vue';
+import SearchFormMob from './SearchFormMob.vue';
 
 export default {
   data(){
@@ -155,7 +157,8 @@ export default {
     }
   },
   components: {
-    SearchForm
+    SearchForm,
+    SearchFormMob,
   },
   created() {
     axios

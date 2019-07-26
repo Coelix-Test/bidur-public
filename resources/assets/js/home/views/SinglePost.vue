@@ -687,6 +687,12 @@ export default {
     }
   }
   @media (max-width:550px) {
+    .post-wrapper{
+      margin-top: 17px;
+    }
+    .pre-title-row{
+      margin-bottom: 10px;
+    }
     .related-post {
       flex-direction: column;
       align-items: center;
