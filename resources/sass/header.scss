@@ -51,7 +51,7 @@
             }
         }
         .btn-common{
-            &:first-child{
+            &.btn-gold-gradient{
                 margin-right: auto;
             }
         }
@@ -145,7 +145,7 @@
         .btn-common{
             height: 35px;
             padding: 0 28px;
-            &:first-child{
+            &.btn-gold-gradient{
                 margin-left: 10px;
             }
         }

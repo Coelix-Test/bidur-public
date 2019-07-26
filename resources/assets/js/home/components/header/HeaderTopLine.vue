@@ -22,6 +22,8 @@
           </div>
 
           <div class="auth-btns">
+              <!-- <search-form class="search-form"></search-form> -->
+
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
                   <div class="my-account">
@@ -142,6 +144,8 @@
 </template>
 
 <script>
+import SearchForm from './SearchForm.vue';
+
 export default {
   data(){
     return {
@@ -149,6 +153,9 @@ export default {
       isLoggedIn: false,
       user: {},
     }
+  },
+  components: {
+    SearchForm
   },
   created() {
     axios
