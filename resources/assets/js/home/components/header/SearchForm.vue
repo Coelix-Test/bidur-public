@@ -4,8 +4,8 @@
     <div class="search-input-wrap">
       <input type="text" class="search-input" placeholder="שופיח" @click="toggleSearch" @input="renderSearch($event.target.value)">
       <ul class="results" v-show="results && focused">
-        <li v-for="post in results">
-          <router-link :to="'./post/'+post.post.id">{{ post.post.metaTitle }}</router-link>
+        <li @click="closeSearch" v-for="post in results">
+          <router-link  :to="'/post/'+post.post.id">{{ post.post.metaTitle }}</router-link>
         </li>
       </ul>
     </div>
@@ -25,6 +25,10 @@ export default {
     toggleSearch(){
       this.focused = !this.focused;
     },
+    closeSearch() {
+      this.focused = false;
+      this.query = null;
+    },
     renderSearch(value){
       this.query = value;
       if(this.query && this.query.length > 2){
@@ -33,7 +37,6 @@ export default {
           .then(res => {
             if(res.data.success != false) {
               this.results = res.data;
-              console.log(res.data);
             }else {
               this.results = false;
             }

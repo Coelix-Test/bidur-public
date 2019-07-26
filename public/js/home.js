@@ -3722,6 +3722,10 @@ __webpack_require__.r(__webpack_exports__);
     toggleSearch: function toggleSearch() {
       this.focused = !this.focused;
     },
+    closeSearch: function closeSearch() {
+      this.focused = false;
+      this.query = null;
+    },
     renderSearch: function renderSearch(value) {
       var _this = this;
 
@@ -3733,7 +3737,6 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           if (res.data.success != false) {
             _this.results = res.data;
-            console.log(res.data);
           } else {
             _this.results = false;
           }
@@ -49439,8 +49442,9 @@ var render = function() {
           _vm._l(_vm.results, function(post) {
             return _c(
               "li",
+              { on: { click: _vm.closeSearch } },
               [
-                _c("router-link", { attrs: { to: "./post/" + post.post.id } }, [
+                _c("router-link", { attrs: { to: "/post/" + post.post.id } }, [
                   _vm._v(_vm._s(post.post.metaTitle))
                 ])
               ],
