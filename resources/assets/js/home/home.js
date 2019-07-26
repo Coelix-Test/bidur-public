@@ -113,6 +113,8 @@ window.app = new Vue({
   }
 }).$mount('#home');
 
+// app.$store.dispatch('modals/ad/open');
+
 //TODO: DELETE AFTER HEADER REFACTOR
 // $('.header-main .celebrities-slider').slick({
 //   slidesToShow: 12,
