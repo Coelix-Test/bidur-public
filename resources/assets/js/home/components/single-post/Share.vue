@@ -71,7 +71,7 @@ export default {
   .text {
     color: #333333;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 16px;
     border: 0;
     background: transparent;
   }

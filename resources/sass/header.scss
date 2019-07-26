@@ -460,6 +460,7 @@
             }
             .logo-wrap{
                 width: 90px;
+                flex-shrink: 0;
                 padding: 4px 0 4px;
                 img{
                     width: 100%;
