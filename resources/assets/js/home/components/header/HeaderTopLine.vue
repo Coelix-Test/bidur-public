@@ -22,7 +22,7 @@
           </div>
 
           <div class="auth-btns">
-              <!-- <search-form class="search-form"></search-form> -->
+              <search-form class="search-form"></search-form>
 
               <template v-if="isLoggedIn">
                 <div class="my-account-wrap">
@@ -126,7 +126,7 @@
         		</div>
 
           </div>
-          <search-form-mob class="search-form-mob"></search-form-mob>
+          <!-- <search-form-mob class="search-form-mob"></search-form-mob> -->
           <span class="header-text">הבית של הבידור הישראלי</span>
           <router-link :to="{ name: 'index'}" class="logo-wrap">
             <img src="/img/logo-yellow.png" alt="">
