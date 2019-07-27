@@ -37,22 +37,19 @@
       <carousel
         v-if="posts"
         :rtl="true"
-        :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
+        :perPageCustom="[ [320, 1],[550, 1], [768, 2], [769, 3] ]"
         navigationEnabled
         navigationNextLabel="<img src='img/chevron-to-left.svg' />"
         navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
       >
         <slide v-for="(post, i) in posts" class="related-post" :key="post.id + '-' + i">
-          <router-link :to="'/post/'+post.id+'/#'">
-
-
+          <router-link :to="'/post/' + post.id">
             <img :src="post.img" alt="">
             <div class="related-post-content">
               <h3>{{ post.title }}</h3>
               <p class="related-post-meta">
                 <span class="author">{{post.author}}</span>
                 <span class="date">{{  new Date(post.time*1000) | formatDate }}</span>
-
               </p>
               <p class="excerpt">
                 {{ post.excerpt }}
