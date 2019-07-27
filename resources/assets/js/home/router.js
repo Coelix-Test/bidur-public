@@ -92,6 +92,10 @@ router.beforeEach(async (to, from, next) => {
     store.dispatch('modals/ad/open')
   }
 
+  if(to.name == 'single-post') {
+    window.scrollTo(0, 0)
+  }
+
   next();
 });
 
