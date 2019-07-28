@@ -3,8 +3,10 @@
     <div class="search-overlay" @click="toggleSearch"></div>
     <div class="search-input-wrap">
       <input type="text" class="search-input" placeholder="חיפוש"
-      ref="searchInput"
-       @input="renderSearch($event.target.value)" @blur="blur" >
+        ref="searchInput"
+        @input="renderSearch($event.target.value)"
+        @focus="toggleSearch"
+        @blur="blur" >
       <ul class="results" v-show="results && focused">
         <li @click="closeSearch" v-for="post in results">
           <router-link  :to="'/post/'+post.post.id">{{ post.post.metaTitle }}</router-link>
@@ -26,7 +28,6 @@ export default {
   methods: {
     toggleSearch(){
       this.focused = !this.focused;
-      //this.$refs.searchInput.focus();
     },
     closeSearch() {
       this.focused = false;
