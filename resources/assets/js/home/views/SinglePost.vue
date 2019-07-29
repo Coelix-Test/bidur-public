@@ -125,6 +125,10 @@
 
       <side-news v-if="this.$env.mobile == false" />
     </div>
+    <div ref="outbrainContainer">
+      <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_3"></div>
+
+    </div>
     <div class="related-posts">
       <img src="/img/stars-posts.svg" alt="" class="stars">
       <h2>חדשות נוספות</h2>
@@ -186,6 +190,11 @@ export default {
       relevantPosts : [],
       postContentSections : null,
       postId : null,
+    }
+  },
+  computed: {
+    curPageLink(){
+      return window.location.href;
     }
   },
   methods : {
@@ -294,9 +303,14 @@ export default {
     TypeWriter,
   },
   mounted() {
-    let els = this.$el.getElementsByTagName('p');
+    //let els = this.$el.getElementsByTagName('p');
 
     // console.log(els);
+    let scriptEl = document.createElement('script');
+    scriptEl.setAttribute('type', 'text/javascript');
+    scriptEl.setAttribute('async', 'async');
+    scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
+    this.$refs.outbrainContainer.appendChild(scriptEl);
   }
 }
 
@@ -494,7 +508,7 @@ section.survey {
   border: 4px solid;
   border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
   border-image-slice: 1;
-  padding: 16px 0;
+  padding: 25px 0;
   h2{
     text-align: center;
     font-weight: 700;

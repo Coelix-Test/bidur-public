@@ -89,6 +89,12 @@ export default {
     .selection-component-container{
         padding: 29px 20px 100px;
         position: relative;
+        .image{
+            .upload-btn{
+                width: 85%;
+                height: 55px;
+            }
+        }
     }
     .selection-title{
         width: 82%;
@@ -136,14 +142,4 @@ export default {
         bottom: 25px;
         left: 25px;
     }
-</style>
-<style lang="scss">
-.selection-component-container{
-    .image{
-        .upload-btn{
-            width: 85%;
-            height: 55px;
-        }
-    }
-}
 </style>
