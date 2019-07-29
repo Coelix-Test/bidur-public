@@ -6120,7 +6120,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".search-form[data-v-5df6a4ba] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.search-form .search-input-wrap[data-v-5df6a4ba] {\n  position: relative;\n  max-width: 280px;\n  width: 100%;\n}\n.search-form input[data-v-5df6a4ba] {\n  width: 100%;\n  height: 35px;\n  background: #FFFFFF;\n  border: 1px solid #E0E0E0;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);\n  border-radius: 50px;\n  padding: 0 20px 0 32px;\n  background: url(\"/img/icons/search-yellow.svg\") no-repeat 14px center;\n  background-size: 18px;\n  position: relative;\n  z-index: 101;\n}\n.search-form .results[data-v-5df6a4ba] {\n  border-radius: 5px;\n  background: #fff;\n  position: absolute;\n  top: calc(100% + 2px);\n  width: 100%;\n  z-index: 101;\n  border: 1px solid #E0E0E0;\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);\n  overflow: hidden;\n  max-height: 170px;\n  overflow-y: scroll;\n}\n.search-form .results li[data-v-5df6a4ba] {\n  padding: 3px 15px;\n}\n.search-form .results a[data-v-5df6a4ba] {\n  color: #4F4F4F;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".search-form[data-v-5df6a4ba] {\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  padding: 0 20px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.search-form .search-input-wrap[data-v-5df6a4ba] {\n  position: relative;\n  max-width: 280px;\n  width: 100%;\n}\n.search-form input[data-v-5df6a4ba] {\n  width: 100%;\n  height: 35px;\n  background: #FFFFFF;\n  border: 1px solid #E0E0E0;\n  box-sizing: border-box;\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);\n  border-radius: 50px;\n  padding: 0 20px 0 32px;\n  background: url(\"/img/icons/search-yellow.svg\") no-repeat 14px center;\n  background-size: 18px;\n  position: relative;\n  z-index: 101;\n}\n.search-form .results[data-v-5df6a4ba] {\n  border-radius: 5px;\n  background: #fff;\n  position: absolute;\n  top: calc(100% + 2px);\n  width: 100%;\n  z-index: 101;\n  border: 1px solid #E0E0E0;\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);\n  overflow: hidden;\n  max-height: 170px;\n  overflow-y: scroll;\n}\n.search-form .results li[data-v-5df6a4ba] {\n  padding: 3px 15px;\n  border-bottom: 1px solid #f2f2f2;\n}\n.search-form .results li[data-v-5df6a4ba]:last-child {\n  border-bottom: 0;\n}\n.search-form .results li[data-v-5df6a4ba]:hover {\n  background: #f2f2f2;\n}\n.search-form .results a[data-v-5df6a4ba] {\n  color: #4F4F4F;\n  text-decoration: none;\n  display: block;\n}", ""]);
 
 // exports
 
@@ -72780,7 +72780,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Program Files\OSPanel\domains\newspaper\resources\assets\js\home\home.js */"./resources/assets/js/home/home.js");
+module.exports = __webpack_require__(/*! /Users/a.skuropatov/sites/newspaper/resources/assets/js/home/home.js */"./resources/assets/js/home/home.js");
 
 
 /***/ })

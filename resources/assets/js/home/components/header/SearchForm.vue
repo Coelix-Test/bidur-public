@@ -98,10 +98,21 @@ export default {
     overflow-y: scroll;
     li{
       padding: 3px 15px;
+      border-bottom: 1px solid #f2f2f2;
+      &:nth-child(2n){
+        //background: #f2f2f2;
+      }
+      &:last-child{
+        border-bottom: 0;
+      }
+      &:hover{
+        background: #f2f2f2;
+      }
     }
     a{
       color: $dark;
       text-decoration: none;
+      display: block;
     }
   }
 
