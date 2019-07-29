@@ -13,4 +13,4 @@
     </div>
     <div class="bottom-line"></div>
 </footer>
-<script type="text/javascript" async="async" src="//widgets.outbrain.com/outbrain.js"></script>
+<!-- <script type="text/javascript" async="async" src="//widgets.outbrain.com/outbrain.js"></script> -->
