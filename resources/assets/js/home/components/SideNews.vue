@@ -9,7 +9,10 @@
       />
     </div>
 
-    <div class="OUTBRAIN banner" data-src="DROP_PERMALINK_HERE" data-widget-id="GS_1"></div>
+    <div class="banner" ref="scriptContainer">
+      <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_1"></div>
+
+    </div>
 
     <div class="block">
       <side-news-post
@@ -31,6 +34,11 @@ export default {
       data: []
     };
   },
+  computed: {
+    curPageLink(){
+      return window.location.href;
+    }
+  },
   components: {
     SideNewsPost,
   },
@@ -38,7 +46,14 @@ export default {
     axios.post('/getRecentPosts').then(res => {
       this.data = res.data;
     });
-  }
+  },
+  mounted(){
+    let scriptEl = document.createElement('script');
+    scriptEl.setAttribute('type', 'text/javascript');
+    scriptEl.setAttribute('async', 'async');
+    scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
+    this.$refs.scriptContainer.appendChild(scriptEl);
+  },
 }
 </script>
 
