@@ -117,18 +117,22 @@
               <emoji v-if="postId" :postId="postId" />
             </div>
           </div>
+
+
         </template>
 
       </div>
 
-
-
       <side-news v-if="this.$env.mobile == false" />
     </div>
-    <div ref="outbrainContainer">
-      <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_3"></div>
 
+    <div class="post-wrapper">
+      <div ref="outbrainContainer" class="w-100">
+        <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_3"></div>
+
+      </div>
     </div>
+
     <div class="related-posts">
       <img src="/img/stars-posts.svg" alt="" class="stars">
       <h2>חדשות נוספות</h2>
