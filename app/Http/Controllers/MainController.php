@@ -564,7 +564,7 @@ class MainController extends Controller
         $surveyId = $request->get('surveyId');
         $answerNumber = $request->get('answer');
 
-        $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber+1)->first();
+        $variant = SurveyAnswerVariant::where('surveyId', $surveyId)->where('order', $answerNumber)->first();
 
 
         SurveyAnswers::create([
