@@ -200,7 +200,9 @@ class AdminController extends Controller
             }elseif ($section['type'] == 'selection'){
                 $leftFile = $files['sections'][$key]['image1'];
                 $rightFile = $files['sections'][$key]['image2'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+                $leftDesc = $section['leftDescription'];
+                $rightDesc = $section['rightDescription'];
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key);
             }elseif ($section['type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
@@ -370,7 +372,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $flagLeft = null, $flagRight = null){
+    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $leftDesc, $rightDesc, $flagLeft = null, $flagRight = null){
         //remember about the rtl, left is right, right is left, dont mess up
         if ($flagLeft && $flagRight){
             $finalLeft = $leftFile;
@@ -410,6 +412,8 @@ class AdminController extends Controller
                 'urlLeft' => $finalLeft,
                 'urlRight' => $finalRight,
                 'order' => $order,
+                'descriptionRight' => $rightDesc,
+                'descriptionLeft' => $leftDesc,
             ]);
         }elseif(isset($finalLeft)){
             SelectOne::create([
@@ -418,6 +422,8 @@ class AdminController extends Controller
                 'urlLeft' => $finalLeft,
                 'urlRight' => '/images/postImages/'.$rightName,
                 'order' => $order,
+                'descriptionRight' => $rightDesc,
+                'descriptionLeft' => $leftDesc,
             ]);
         }elseif (isset($finalRight)){
             SelectOne::create([
@@ -426,6 +432,8 @@ class AdminController extends Controller
                 'urlLeft' => '/images/postImages/'.$leftName,
                 'urlRight' => $finalRight,
                 'order' => $order,
+                'descriptionRight' => $rightDesc,
+                'descriptionLeft' => $leftDesc,
             ]);
         }else{
             SelectOne::create([
@@ -434,6 +442,8 @@ class AdminController extends Controller
                 'urlLeft' => '/images/postImages/'.$leftName,
                 'urlRight' => '/images/postImages/'.$rightName,
                 'order' => $order,
+                'descriptionRight' => $rightDesc,
+                'descriptionLeft' => $leftDesc,
             ]);
         }
     }
@@ -1363,19 +1373,21 @@ class AdminController extends Controller
 //                dd($files);
             }
             elseif ($section['type'] == 'selection'){
-
+                $leftDesc = $section['leftDescription'];
+                $rightDesc = $section['rightDescription'];
                 if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
                     $rightFile = $files['sections'][$key]['image1'];
-                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key);
+
+                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key, $leftDesc, $rightDesc);
                 }elseif (isset($files['sections'][$key]['image1'])){ //только правая
                     $rightFile = $files['sections'][$key]['image1'];
-                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, true, false);
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, $leftDesc, $rightDesc, true, false);
                 }elseif (isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
-                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $key, false, true);
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $key, $leftDesc, $rightDesc, false, true);
                 }else{
-                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, true, true);
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, $leftDesc, $rightDesc, true, true);
                 }
             }
             elseif ($section['type'] == 'assessment'){
