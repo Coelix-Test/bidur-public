@@ -1251,6 +1251,8 @@ class AdminController extends Controller
                 $fullPost['sections'][$compare->order]['id']     = $compare->id;
                 $fullPost['sections'][$compare->order]['image1'] = $compare->urlLeft;
                 $fullPost['sections'][$compare->order]['image2'] = $compare->urlRight;
+                $fullPost['sections'][$compare->order]['descriptionLeft'] = $compare->descriptionLeft;
+                $fullPost['sections'][$compare->order]['descriptionRight'] = $compare->descriptionRight;
                 $fullPost['sections'][$compare->order]['title']  = $compare->description;
                 unset($data);
             }
