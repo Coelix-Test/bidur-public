@@ -17,6 +17,7 @@
             <img src="/img/icons/star-yellow.svg" alt="">
           </div>
         </div>
+        <span class="img-caption">{{data.descriptionLeft}}</span>
       </div>
       <div class="right" ref="right">
         <img :src="data.imageRight">
@@ -27,6 +28,7 @@
             <img src="/img/icons/star-yellow.svg" alt="">
           </div>
         </div>
+        <span class="img-caption">{{data.descriptionRight}}</span>
       </div>
     </div>
   </div>
@@ -106,7 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   position: relative;
   border: 4px solid;
   border-image: linear-gradient(278.13deg, #87682C 0%, #FCD77E 100%);
@@ -118,6 +120,13 @@ export default {
     text-align: center;
     padding-bottom: 50px;
     padding-top: 50px;
+  }
+  .img-caption{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333;
   }
 
   .body {
