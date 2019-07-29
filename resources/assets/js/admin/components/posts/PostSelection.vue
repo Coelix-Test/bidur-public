@@ -6,12 +6,16 @@
       <div class="images-row">
           <div class="image-wrap">
             <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
-            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור">
+            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+              :value="rightDescription"
+              @input="$emit('update:rightDescription', $event.target.value)">
           </div>
           <div class="delimiter"></div>
           <div class="image-wrap">
             <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
-            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור">
+            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+              :value="leftDescription"
+              @input="$emit('update:leftDescription', $event.target.value)">
           </div>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
@@ -51,6 +55,14 @@ export default {
             default: function(){
                 return '';
             }
+        },
+        leftDescription: {
+            type: String,
+            default: ''
+        },
+        rightDescription: {
+            type: String,
+            default: ''
         },
         title: {
             type: String,

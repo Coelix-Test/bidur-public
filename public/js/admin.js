@@ -3657,6 +3657,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3686,6 +3690,14 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return '';
       }
+    },
+    leftDescription: {
+      type: String,
+      "default": ''
+    },
+    rightDescription: {
+      type: String,
+      "default": ''
     },
     title: {
       type: String,
@@ -4577,6 +4589,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             type: 'selection',
             image1: '',
             image2: '',
+            leftDescription: '',
+            rightDescription: '',
             title: ''
           };
           break;
@@ -28935,7 +28949,16 @@ var render = function() {
             _vm._v(" "),
             _c("input", {
               staticClass: "theme-input-text w-100 image-caption",
-              attrs: { type: "text", placeholder: "תיאור" }
+              attrs: { type: "text", placeholder: "תיאור" },
+              domProps: { value: _vm.rightDescription },
+              on: {
+                input: function($event) {
+                  return _vm.$emit(
+                    "update:rightDescription",
+                    $event.target.value
+                  )
+                }
+              }
             })
           ],
           1
@@ -28955,7 +28978,16 @@ var render = function() {
             _vm._v(" "),
             _c("input", {
               staticClass: "theme-input-text w-100 image-caption",
-              attrs: { type: "text", placeholder: "תיאור" }
+              attrs: { type: "text", placeholder: "תיאור" },
+              domProps: { value: _vm.leftDescription },
+              on: {
+                input: function($event) {
+                  return _vm.$emit(
+                    "update:leftDescription",
+                    $event.target.value
+                  )
+                }
+              }
             })
           ],
           1
