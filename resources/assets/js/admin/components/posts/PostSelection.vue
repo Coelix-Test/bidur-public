@@ -4,9 +4,15 @@
           <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
       </div>
       <div class="images-row">
-          <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
+          <div class="image-wrap">
+            <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
+            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור">
+          </div>
           <div class="delimiter"></div>
-          <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
+          <div class="image-wrap">
+            <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
+            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור">
+          </div>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
 
@@ -89,12 +95,18 @@ export default {
     .selection-component-container{
         padding: 29px 20px 100px;
         position: relative;
-        .image{
+        .image::v-deep{
             .upload-btn{
                 width: 85%;
                 height: 55px;
             }
         }
+    }
+    .image-caption{
+      margin-top: 15px;
+      height: 35px;
+      font-style: italic;
+      font-size: 16px;
     }
     .selection-title{
         width: 82%;
@@ -124,7 +136,7 @@ export default {
             -webkit-background-size: 26px 46px;
             background-size: 26px 46px;
         }
-        &>.image{
+        &>.image-wrap{
             width: 43%;
             flex-shrink: 0;
         }
