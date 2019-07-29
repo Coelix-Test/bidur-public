@@ -5,9 +5,21 @@
       <div class="post-content">
         <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
         <div class="pre-title-row">
-          <button class="add-to-favourites" @click.prevent="$router.go(-1)">
+          <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
             <img src="/img/icons/star-gradient.png" alt=" ">
             חזרה לעמוד הבית
+          </button> -->
+          <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+            <img src="/img/icons/star-gradient.png" alt=" ">
+            הוסף למועדפים
+          </button>
+          <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
+            <img src="/img/icons/star-gradient.png" alt="">
+            הסר ממועדפים
+          </button>
+          <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
+            <img src="/img/icons/star-gradient.png" alt="">
+            הוסף למועדפים
           </button>
           <share v-if="!errorMessage" />
         </div>
@@ -23,18 +35,7 @@
 
           </h1>
 
-          <!-- <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
-            <img src="/img/icons/star-gradient.png" alt=" ">
-            הוסף למועדפים
-          </button>
-          <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
-            <img src="/img/icons/star-gradient.png" alt="">
-            הסר ממועדפים
-          </button>
-          <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
-            <img src="/img/icons/star-gradient.png" alt="">
-            הוסף למועדפים
-          </button> -->
+
 
           <div class="post-meta">
 
