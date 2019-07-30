@@ -247,7 +247,6 @@ class AdminController extends Controller
         if (isset($flag)){
             $fimalImage = $file;
         }else{
-
             if($image) {
                 $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/images/postImages');
@@ -1343,9 +1342,9 @@ class AdminController extends Controller
 //                dd($files);
                 $title = $section['title'];
                 if (isset($files['sections'][$key]['image'])){
-                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $section['description'], $key,$files['sections'][$key]['image'] );
                 }else{
-                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$section['image'], true );
+                    $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $section['description'], $key,$section['image'], true );
                 }
             }
             elseif ($section['type'] == 'image'){
@@ -1366,6 +1365,7 @@ class AdminController extends Controller
                         $section['title'],
                         $section['text'],
                         $section['imagePosition'],
+                        $section['description'],
                         $key
                     );
                 }else{
