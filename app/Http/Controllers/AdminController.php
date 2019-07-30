@@ -175,7 +175,7 @@ class AdminController extends Controller
             }
             elseif($section['type'] == 'video'){
                 $url = $section['value'];
-                $this->createPostAddVideo($this->post->id, $url, $key);
+                $this->createPostAddVideo($this->post->id, $url, $section['description'], $key);
             }
             elseif($section['type'] == 'survey'){
 //                dd($files);
@@ -372,7 +372,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $order, $leftDesc, $rightDesc, $flagLeft = null, $flagRight = null){
+    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $leftDesc, $rightDesc, $order, $flagLeft = null, $flagRight = null){
         //remember about the rtl, left is right, right is left, dont mess up
         if ($flagLeft && $flagRight){
             $finalLeft = $leftFile;
