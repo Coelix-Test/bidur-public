@@ -7,15 +7,15 @@
           <div class="image-wrap">
             <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
             <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
-              :value="descriptionRight"
-              @input="$emit('update:descriptionRight', $event.target.value)">
+              :value="rightDescription"
+              @input="$emit('update:rightDescription', $event.target.value)">
           </div>
           <div class="delimiter"></div>
           <div class="image-wrap">
             <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
             <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
-              :value="descriptionLeft"
-              @input="$emit('update:descriptionLeft', $event.target.value)">
+              :value="leftDescription"
+              @input="$emit('update:leftDescription', $event.target.value)">
           </div>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
@@ -56,11 +56,11 @@ export default {
                 return '';
             }
         },
-        descriptionLeft: {
+        leftDescription: {
             type: String,
             default: ''
         },
-        descriptionRight: {
+        rightDescription: {
             type: String,
             default: ''
         },
