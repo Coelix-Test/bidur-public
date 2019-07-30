@@ -1,6 +1,7 @@
 <template>
   <div class="like-survey">
     <img :src="data.imgUrl">
+    <div class="img-caption">{{data.description}}</div>
     <div class="body" ref="body">
       <div class="title">
         {{ data.description }}
@@ -13,12 +14,12 @@
               <path d="M89.2769 0L118.883 52.5271L177.988 64.4527L137.181 108.842L144.104 168.739L89.2769 143.646L34.4501 168.739L41.3726 108.842L0.565292 64.4527L59.6704 52.5271L89.2769 0Z" fill="url(#paint0_linear)"/>
               <defs>
                 <linearGradient id="paint0_linear" x1="-10.8636" y1="-2.51701e-05" x2="104.602" y2="233.072" gradientUnits="userSpaceOnUse">
-                <stop offset="0.177083" stop-color="#F9DD4A"/>
-                <stop offset="0.265625" stop-color="#F97B4A"/>
-                <stop offset="0.515625" stop-color="#C6278D"/>
-                <stop offset="0.703125" stop-color="#7151CB"/>
-                <stop offset="0.864583" stop-color="#4200FF"/>
-              </linearGradient>
+                  <stop offset="0.177083" stop-color="#F9DD4A"/>
+                  <stop offset="0.265625" stop-color="#F97B4A"/>
+                  <stop offset="0.515625" stop-color="#C6278D"/>
+                  <stop offset="0.703125" stop-color="#7151CB"/>
+                  <stop offset="0.864583" stop-color="#4200FF"/>
+                </linearGradient>
               </defs>
             </svg>
           </div>
@@ -171,6 +172,15 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 630px;
+  }
+  .img-caption{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333;
+    text-align: center;
+    padding: 5px 20px 0;
   }
   .body {
     display: flex;
