@@ -226,7 +226,6 @@ export default {
                 sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
                 break;
             case 'video':
-                // sectionData = {type: 'video', value: '', description: ''};
                 sectionData = {type: 'video', value: '', description: ''};
                 break;
             case 'survey':

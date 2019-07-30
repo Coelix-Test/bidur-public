@@ -4573,7 +4573,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           break;
 
         case 'video':
-          // sectionData = {type: 'video', value: '', description: ''};
           sectionData = {
             type: 'video',
             value: '',
