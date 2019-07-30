@@ -236,7 +236,7 @@ export default {
                 sectionData = {type: 'assessment', image: '', title: '' };
                 break;
             case 'selection':
-                sectionData = {type: 'selection', image1: '', image2: '', title: '' };
+                sectionData = {type: 'selection', image1: '', image2: '', leftDescription: '', rightDescription: '', title: '' };
                 break;
         }
         this.sections.push(sectionData);
