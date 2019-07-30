@@ -1380,16 +1380,16 @@ class AdminController extends Controller
                 if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
                     $rightFile = $files['sections'][$key]['image1'];
-
-                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $key, $leftDesc, $rightDesc);
+//                    createPostAddSelection($postId, $leftFile, $rightFile, $description, $leftDesc, $rightDesc, $order, $flagLeft = null, $flagRight = null)
+                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key);
                 }elseif (isset($files['sections'][$key]['image1'])){ //только правая
                     $rightFile = $files['sections'][$key]['image1'];
-                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $key, $leftDesc, $rightDesc, true, false);
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $leftDesc, $rightDesc, $key, true, false);
                 }elseif (isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
-                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $key, $leftDesc, $rightDesc, false, true);
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $leftDesc, $rightDesc, $key,  false, true);
                 }else{
-                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $key, $leftDesc, $rightDesc, true, true);
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $leftDesc, $rightDesc, $key,true, true);
                 }
             }
             elseif ($section['type'] == 'assessment'){
