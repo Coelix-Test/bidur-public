@@ -180,7 +180,7 @@ class AdminController extends Controller
             elseif($section['type'] == 'survey'){
 //                dd($files);
                 $title = $section['title'];
-                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $key,$files['sections'][$key]['image'] );
+                $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $section['description'], $key,$files['sections'][$key]['image'] );
             }
             elseif ($section['type'] == 'image'){
 //                    dd($files['sections'][$key]['value']);
@@ -194,6 +194,7 @@ class AdminController extends Controller
                     $section['title'],
                     $section['text'],
                     $section['imagePosition'],
+                    $section['description'],
                     $key
                 );
 //                dd($files);
@@ -280,7 +281,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order, $flag = null){
+    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $description, $order, $flag = null){
         if (isset($flag)){
             $finalImage = $file;
         }else{
@@ -298,7 +299,8 @@ class AdminController extends Controller
                 'title' => $title,
                 'imagePosition' => $imagePosition,
                 'content' => $text,
-                'order' => $order
+                'order' => $order,
+                'description' => $description
             ]);
         }else{
             PostImageAndText::create([
@@ -307,13 +309,14 @@ class AdminController extends Controller
                 'title' => $title,
                 'imagePosition' => $imagePosition,
                 'content' => $text,
-                'order' => $order
+                'order' => $order,
+                'description' => $description
             ]);
         }
 
     }
 
-    public function createPostAddSurvey($variants, $title, $postId, $order, $image, $flag = null){
+    public function createPostAddSurvey($variants, $title, $postId, $description, $order, $image, $flag = null){
         if ($flag){
             $finalImage = $image;
         }else{
@@ -332,6 +335,7 @@ class AdminController extends Controller
                 'order' => $order,
                 'question' => $title,
                 'image' => $finalImage,
+                'description' => $description
             ]);
         }else{
             if (\Auth::check() == false){
@@ -341,6 +345,7 @@ class AdminController extends Controller
                     'order' => $order,
                     'question' => $title,
                     'image' => '/images/postImages/'.$name,
+                    'description' => $description
                 ]);
             }else{
                 $survey = Survey::create([
@@ -349,6 +354,7 @@ class AdminController extends Controller
                     'order' => $order,
                     'question' => $title,
                     'image' => '/images/postImages/'.$name,
+                    'description' => $description
                 ]);
             }
         }
@@ -1222,6 +1228,7 @@ class AdminController extends Controller
                 $fullPost['sections'][$section->order]['image'] = $section->url;
                 $fullPost['sections'][$section->order]['imagePosition'] = $section->imagePosition;
                 $fullPost['sections'][$section->order]['text'] = $section->content;
+                $fullPost['sections'][$section->order]['text'] = $section->description;
             }
         }
 
@@ -1231,6 +1238,7 @@ class AdminController extends Controller
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers['type'] = 'survey';
                 $questionsWithAnswers['image'] = $survey->image;
+                $questionsWithAnswers['description'] = $survey->description;
 
                 $questionsWithAnswers['title'] = $survey->question;
                 $questionsWithAnswers['id'] = $survey->id;
