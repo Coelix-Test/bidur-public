@@ -229,7 +229,7 @@ export default {
                 sectionData = {type: 'video', value: '', description: ''};
                 break;
             case 'survey':
-                sectionData = {type: 'survey', image: '', title: '', answers: [] };
+                sectionData = {type: 'survey', image: '', title: '', answers: [], description: '' };
                 break;
             case 'assessment':
                 sectionData = {type: 'assessment', image: '', title: '', description: '' };

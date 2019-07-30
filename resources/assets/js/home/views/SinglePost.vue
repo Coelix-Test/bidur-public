@@ -60,7 +60,8 @@
 
             <div ref="poll" v-if="post.type == 'survey'" class="poll">
               <img :src="post.img" alt="">
-              <vue-poll v-bind="post.value" @addvote="addVote($event, post.id)"/>
+              <div class="img-caption">תיאור תמונה</div>
+              <vue-poll class="vue-poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
             </div>
             <div v-else-if="post.type == 'compare'" class="poll">
               <one-survey :data="post.value"/>
@@ -439,6 +440,21 @@ export default {
   width:100%;
   object-fit: cover;
   margin-bottom: 0;
+}
+.poll .img-caption{
+  text-align: center;
+  padding-top: 5px;
+  color: #fff;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
+}
+.vue-poll::v-deep{
+  .qst{
+    padding-top: 20px;
+  }
 }
 
 section.image img {

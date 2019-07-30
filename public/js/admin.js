@@ -4585,7 +4585,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             type: 'survey',
             image: '',
             title: '',
-            answers: []
+            answers: [],
+            description: ''
           };
           break;
 
