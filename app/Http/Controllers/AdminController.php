@@ -1227,7 +1227,7 @@ class AdminController extends Controller
                 $fullPost['sections'][$section->order]['image'] = $section->url;
                 $fullPost['sections'][$section->order]['imagePosition'] = $section->imagePosition;
                 $fullPost['sections'][$section->order]['text'] = $section->content;
-                $fullPost['sections'][$section->order]['text'] = $section->description;
+                $fullPost['sections'][$section->order]['description'] = $section->description;
             }
         }
 
