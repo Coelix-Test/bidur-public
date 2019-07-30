@@ -170,6 +170,7 @@ export default {
   border-image-slice: 1;
   img {
     object-fit: cover;
+    object-position: top;
     width: 100%;
     height: 630px;
   }

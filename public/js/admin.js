@@ -28731,7 +28731,7 @@ var render = function() {
           domProps: { value: _vm.description },
           on: {
             input: function($event) {
-              return _vm.$emit("update:descriptionRight", $event.target.value)
+              return _vm.$emit("update:description", $event.target.value)
             }
           }
         }),
@@ -29081,7 +29081,7 @@ var render = function() {
           domProps: { value: _vm.description },
           on: {
             input: function($event) {
-              return _vm.$emit("update:descriptionRight", $event.target.value)
+              return _vm.$emit("update:description", $event.target.value)
             }
           }
         }),
