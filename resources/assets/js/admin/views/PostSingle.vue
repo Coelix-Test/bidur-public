@@ -233,7 +233,7 @@ export default {
                 sectionData = {type: 'survey', image: '', title: '', answers: [] };
                 break;
             case 'assessment':
-                sectionData = {type: 'assessment', image: '', title: '' };
+                sectionData = {type: 'assessment', image: '', title: '', description: '' };
                 break;
             case 'selection':
                 sectionData = {type: 'selection', image1: '', image2: '', leftDescription: '', rightDescription: '', title: '' };

@@ -2,16 +2,19 @@
   <div class="wrapper survey-component-container">
       <image-input class="image" :value="image" @update:value="updateImage"></image-input>
       <div class="survey-container">
-          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="survey-title">
-          <div class="answers-list">
-              <div v-for="(answer, index) in answers" class="answer-item">
-                  <input type="text" class="answer-title" :value="answer"  @input="editAnswer(index, $event.target.value)" placeholder="תשובה">
-                  <div class="delete-answer delete-btn" @click="deleteAnswer(index)"></div>
-              </div>
-              <div class="add-new-answer" @click="addAnswer">
-                  הוסף תשובה
-              </div>
-          </div>
+        <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+          :value="description"
+          @input="$emit('update:descriptionRight', $event.target.value)">
+        <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="survey-title">
+        <div class="answers-list">
+            <div v-for="(answer, index) in answers" class="answer-item">
+                <input type="text" class="answer-title" :value="answer"  @input="editAnswer(index, $event.target.value)" placeholder="תשובה">
+                <div class="delete-answer delete-btn" @click="deleteAnswer(index)"></div>
+            </div>
+            <div class="add-new-answer" @click="addAnswer">
+                הוסף תשובה
+            </div>
+        </div>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
       <move-section @move="$emit('move', $event)"/>
@@ -46,6 +49,10 @@ export default {
             }
         },
         title: {
+            type: String,
+            default: ''
+        },
+        description: {
             type: String,
             default: ''
         },
@@ -98,8 +105,14 @@ export default {
         margin-left: auto;
 
     }
+    .image-caption{
+      margin-bottom: 15px;
+      height: 35px;
+      font-style: italic;
+      font-size: 16px;
+    }
     .image{
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
     .survey-title{
         width: 100%;

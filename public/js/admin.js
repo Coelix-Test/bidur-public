@@ -3391,6 +3391,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3416,6 +3419,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     title: {
+      type: String,
+      "default": ''
+    },
+    description: {
       type: String,
       "default": ''
     }
@@ -3772,6 +3779,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3797,6 +3807,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     title: {
+      type: String,
+      "default": ''
+    },
+    description: {
       type: String,
       "default": ''
     },
@@ -4580,7 +4594,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           sectionData = {
             type: 'assessment',
             image: '',
-            title: ''
+            title: '',
+            description: ''
           };
           break;
 
@@ -5643,7 +5658,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".survey-component-container[data-v-72d2e1b5] {\n  padding-bottom: 100px;\n  position: relative;\n}\n.assessment-title[data-v-72d2e1b5] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image[data-v-72d2e1b5] {\n  margin-bottom: 16px;\n}\n.title[data-v-72d2e1b5] {\n  width: 100%;\n  padding: 4px 8px;\n  color: #333333;\n  font-size: 34px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  text-align: center;\n}\n.delete-btn[data-v-72d2e1b5] {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n  cursor: pointer;\n}\n.delete-self[data-v-72d2e1b5] {\n  bottom: 25px;\n  left: 25px;\n}", ""]);
+exports.push([module.i, ".survey-component-container[data-v-72d2e1b5] {\n  padding-bottom: 100px;\n  position: relative;\n}\n.assessment-title[data-v-72d2e1b5] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image-caption[data-v-72d2e1b5] {\n  margin-bottom: 15px;\n  height: 35px;\n  font-style: italic;\n  font-size: 16px;\n}\n.image[data-v-72d2e1b5] {\n  margin-bottom: 16px;\n}\n.title[data-v-72d2e1b5] {\n  width: 100%;\n  padding: 4px 8px;\n  color: #333333;\n  font-size: 34px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n  text-align: center;\n}\n.delete-btn[data-v-72d2e1b5] {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n  cursor: pointer;\n}\n.delete-self[data-v-72d2e1b5] {\n  bottom: 25px;\n  left: 25px;\n}", ""]);
 
 // exports
 
@@ -5738,7 +5753,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".survey-component-container[data-v-28322bcd] {\n  padding-bottom: 100px;\n  position: relative;\n}\n.survey-container[data-v-28322bcd] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image[data-v-28322bcd] {\n  margin-bottom: 50px;\n}\n.survey-title[data-v-28322bcd] {\n  width: 100%;\n  padding: 4px 10px;\n  color: #333333;\n  font-size: 34px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n}\n.answers-list[data-v-28322bcd] {\n  margin-top: 20px;\n}\n.delete-btn[data-v-28322bcd] {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n  cursor: pointer;\n}\n.answer-item[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  position: relative;\n  width: 85%;\n  height: 58px;\n  overflow: hidden;\n  padding-left: 50px;\n  margin: 20px 0;\n  border-bottom-left-radius: 50px;\n  border-top-left-radius: 50px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  background: #FFFFFF;\n}\n.answer-item input[data-v-28322bcd] {\n  height: 100%;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border: none;\n}\n.answer-item .delete-answer[data-v-28322bcd] {\n  left: 20px;\n  top: 14px;\n}\n.answer-item[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 14px;\n  margin-left: 20px;\n  height: 100%;\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+1):before {\n  background: url(\"/img/icons/answer-gradient-1.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+2):before {\n  background: url(\"/img/icons/answer-gradient-2.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+3):before {\n  background: url(\"/img/icons/answer-gradient-3.svg\");\n}\n.add-new-answer[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n  margin-top: 30px;\n}\n.add-new-answer[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 38px;\n  height: 38px;\n  background: url(\"/img/icons/plus-in-red-circle.svg\") no-repeat center;\n  background-size: cover;\n  margin-left: 12px;\n}\n.delete-self[data-v-28322bcd] {\n  bottom: 25px;\n  left: 25px;\n}", ""]);
+exports.push([module.i, ".survey-component-container[data-v-28322bcd] {\n  padding-bottom: 100px;\n  position: relative;\n}\n.survey-container[data-v-28322bcd] {\n  width: 82%;\n  margin-right: auto;\n  margin-left: auto;\n}\n.image-caption[data-v-28322bcd] {\n  margin-bottom: 15px;\n  height: 35px;\n  font-style: italic;\n  font-size: 16px;\n}\n.image[data-v-28322bcd] {\n  margin-bottom: 20px;\n}\n.survey-title[data-v-28322bcd] {\n  width: 100%;\n  padding: 4px 10px;\n  color: #333333;\n  font-size: 34px;\n  font-weight: 700;\n  border: 1px solid #E0E0E0;\n  border-radius: 3px;\n}\n.answers-list[data-v-28322bcd] {\n  margin-top: 20px;\n}\n.delete-btn[data-v-28322bcd] {\n  position: absolute;\n  width: 30px;\n  height: 30px;\n  background: url(\"/img/icons/trash.svg\") no-repeat center;\n  background-size: 20px 26px;\n  cursor: pointer;\n}\n.answer-item[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  position: relative;\n  width: 85%;\n  height: 58px;\n  overflow: hidden;\n  padding-left: 50px;\n  margin: 20px 0;\n  border-bottom-left-radius: 50px;\n  border-top-left-radius: 50px;\n  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);\n  background: #FFFFFF;\n}\n.answer-item input[data-v-28322bcd] {\n  height: 100%;\n  -webkit-box-flex: 1;\n          flex-grow: 1;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  border: none;\n}\n.answer-item .delete-answer[data-v-28322bcd] {\n  left: 20px;\n  top: 14px;\n}\n.answer-item[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 14px;\n  margin-left: 20px;\n  height: 100%;\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+1):before {\n  background: url(\"/img/icons/answer-gradient-1.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+2):before {\n  background: url(\"/img/icons/answer-gradient-2.svg\");\n}\n.answer-item[data-v-28322bcd]:nth-child(3n+3):before {\n  background: url(\"/img/icons/answer-gradient-3.svg\");\n}\n.add-new-answer[data-v-28322bcd] {\n  display: -ms-flex;\n  display: -webkit-box;\n  display: flex;\n  -ms-align-items: center;\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n  margin-top: 30px;\n}\n.add-new-answer[data-v-28322bcd]:before {\n  content: \"\";\n  display: inline-block;\n  width: 38px;\n  height: 38px;\n  background: url(\"/img/icons/plus-in-red-circle.svg\") no-repeat center;\n  background-size: cover;\n  margin-left: 12px;\n}\n.delete-self[data-v-28322bcd] {\n  bottom: 25px;\n  left: 25px;\n}", ""]);
 
 // exports
 
@@ -28711,6 +28726,17 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "assessment-title" }, [
         _c("input", {
+          staticClass: "theme-input-text w-100 image-caption",
+          attrs: { type: "text", placeholder: "תיאור" },
+          domProps: { value: _vm.description },
+          on: {
+            input: function($event) {
+              return _vm.$emit("update:descriptionRight", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
           staticClass: "title",
           attrs: { type: "text", placeholder: "כותרת" },
           domProps: { value: _vm.title },
@@ -29050,6 +29076,17 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "survey-container" }, [
         _c("input", {
+          staticClass: "theme-input-text w-100 image-caption",
+          attrs: { type: "text", placeholder: "תיאור" },
+          domProps: { value: _vm.description },
+          on: {
+            input: function($event) {
+              return _vm.$emit("update:descriptionRight", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
           staticClass: "survey-title",
           attrs: { type: "text", placeholder: "כותרת" },
           domProps: { value: _vm.title },
@@ -29091,7 +29128,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "add-new-answer", on: { click: _vm.addAnswer } },
-              [_vm._v("\n                הוסף תשובה\n            ")]
+              [_vm._v("\n              הוסף תשובה\n          ")]
             )
           ],
           2

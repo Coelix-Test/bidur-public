@@ -2,7 +2,10 @@
   <div class="wrapper survey-component-container">
       <image-input class="image" :value="image" @update:value="updateImage"></image-input>
       <div class="assessment-title">
-          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
+        <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+          :value="description"
+          @input="$emit('update:descriptionRight', $event.target.value)">
+        <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
 
@@ -39,7 +42,11 @@ export default {
         title: {
             type: String,
             default: ''
-        }
+        },
+        description: {
+            type: String,
+            default: ''
+        },
     },
     methods: {
         updateImage(image){
@@ -82,6 +89,12 @@ export default {
         margin-right: auto;
         margin-left: auto;
 
+    }
+    .image-caption{
+      margin-bottom: 15px;
+      height: 35px;
+      font-style: italic;
+      font-size: 16px;
     }
     .image{
         margin-bottom: 16px;
