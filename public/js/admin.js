@@ -3698,11 +3698,11 @@ __webpack_require__.r(__webpack_exports__);
         return '';
       }
     },
-    descriptionLeft: {
+    leftDescription: {
       type: String,
       "default": ''
     },
-    descriptionRight: {
+    rightDescription: {
       type: String,
       "default": ''
     },
@@ -28976,11 +28976,11 @@ var render = function() {
             _c("input", {
               staticClass: "theme-input-text w-100 image-caption",
               attrs: { type: "text", placeholder: "תיאור" },
-              domProps: { value: _vm.descriptionRight },
+              domProps: { value: _vm.rightDescription },
               on: {
                 input: function($event) {
                   return _vm.$emit(
-                    "update:descriptionRight",
+                    "update:rightDescription",
                     $event.target.value
                   )
                 }
@@ -29005,11 +29005,11 @@ var render = function() {
             _c("input", {
               staticClass: "theme-input-text w-100 image-caption",
               attrs: { type: "text", placeholder: "תיאור" },
-              domProps: { value: _vm.descriptionLeft },
+              domProps: { value: _vm.leftDescription },
               on: {
                 input: function($event) {
                   return _vm.$emit(
-                    "update:descriptionLeft",
+                    "update:leftDescription",
                     $event.target.value
                   )
                 }
