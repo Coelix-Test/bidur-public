@@ -206,7 +206,7 @@ class AdminController extends Controller
                 $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key);
             }elseif ($section['type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
-                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'], $key);
             }
         }
         return json_encode(['success' => true]);
@@ -453,7 +453,7 @@ class AdminController extends Controller
         }
     }
 
-    public function createPostAddSingleLikablePhoto($postId, $file, $description, $order, $flag = null){
+    public function createPostAddSingleLikablePhoto($postId, $file, $title, $description, $order, $flag = null){
         if ($flag){
             $finalImage = $file;
         }else{
@@ -468,16 +468,18 @@ class AdminController extends Controller
         if(isset($finalImage)){
             SingleLikableImage::create([
                 'postId' => $postId,
-                'description' => $description,
+                'description' => $title,
                 'url' => $finalImage,
                 'order' => $order,
+                'description_image' => $description
             ]);
         }else{
             SingleLikableImage::create([
                 'postId' => $postId,
-                'description' => $description,
+                'description' => $title,
                 'url' => '/images/postImages/'.$name,
                 'order' => $order,
+                'description_image' => $description
             ]);
         }
     }
@@ -1275,6 +1277,7 @@ class AdminController extends Controller
                 $fullPost['sections'][$likableImage->order]['type'] = 'assessment';
                 $fullPost['sections'][$likableImage->order]['image'] = $likableImage->url;
                 $fullPost['sections'][$likableImage->order]['title'] = $likableImage->description;
+                $fullPost['sections'][$likableImage->order]['title'] = $likableImage->description_mage;
                 unset($data);
             }
         }
@@ -1403,9 +1406,9 @@ class AdminController extends Controller
             elseif ($section['type'] == 'assessment'){
                 if (isset($files['sections'][$key]['image'])){
                     $file = $files['sections'][$key]['image'];
-                    $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $key);
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'],$key);
                 }else{
-                    $this->createPostAddSingleLikablePhoto($this->post->id, $section['image'], $section['title'], $key, true);
+                    $this->createPostAddSingleLikablePhoto($this->post->id, $section['image'], $section['title'], $section['description'], $key, true);
                 }
 
             }
