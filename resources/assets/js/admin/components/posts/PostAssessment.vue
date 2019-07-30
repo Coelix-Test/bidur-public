@@ -4,7 +4,7 @@
       <div class="assessment-title">
         <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
           :value="description"
-          @input="$emit('update:descriptionRight', $event.target.value)">
+          @input="$emit('update:description', $event.target.value)">
         <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>

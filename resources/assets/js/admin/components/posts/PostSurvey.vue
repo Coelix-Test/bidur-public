@@ -4,7 +4,7 @@
       <div class="survey-container">
         <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
           :value="description"
-          @input="$emit('update:descriptionRight', $event.target.value)">
+          @input="$emit('update:description', $event.target.value)">
         <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="survey-title">
         <div class="answers-list">
             <div v-for="(answer, index) in answers" class="answer-item">
