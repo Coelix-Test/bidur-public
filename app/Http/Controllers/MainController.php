@@ -219,6 +219,7 @@ class MainController extends Controller
                 $questions = $survey->getAllVariants;
                 $questionsWithAnswers[$survey->order]['type'] = 'survey';
                 $questionsWithAnswers[$survey->order]['img'] = $survey->image;
+                $questionsWithAnswers[$survey->order]['description'] = $survey->description;
 //                $questionsWithAnswers[$survey->order]['value']['showResults'] = $flag;
                 $questionsWithAnswers[$survey->order]['value']['question'] = $survey->question;
                 $questionsWithAnswers[$survey->order]['id'] = $survey->id;
