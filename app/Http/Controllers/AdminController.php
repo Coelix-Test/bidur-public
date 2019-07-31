@@ -194,7 +194,6 @@ class AdminController extends Controller
                     $section['title'],
                     $section['text'],
                     $section['imagePosition'],
-                    $section['description'],
                     $key
                 );
 //                dd($files);
@@ -280,7 +279,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $description, $order, $flag = null){
+    public function createPostAddImageWithText($postId, $file, $title, $text, $imagePosition, $order, $flag = null){
         if (isset($flag)){
             $finalImage = $file;
         }else{
@@ -299,7 +298,6 @@ class AdminController extends Controller
                 'imagePosition' => $imagePosition,
                 'content' => $text,
                 'order' => $order,
-                'description' => $description
             ]);
         }else{
             PostImageAndText::create([
@@ -309,7 +307,6 @@ class AdminController extends Controller
                 'imagePosition' => $imagePosition,
                 'content' => $text,
                 'order' => $order,
-                'description' => $description
             ]);
         }
 
@@ -1229,7 +1226,6 @@ class AdminController extends Controller
                 $fullPost['sections'][$section->order]['image'] = $section->url;
                 $fullPost['sections'][$section->order]['imagePosition'] = $section->imagePosition;
                 $fullPost['sections'][$section->order]['text'] = $section->content;
-                $fullPost['sections'][$section->order]['description'] = $section->description;
             }
         }
 
@@ -1368,7 +1364,6 @@ class AdminController extends Controller
                         $section['title'],
                         $section['text'],
                         $section['imagePosition'],
-                        $section['description'],
                         $key
                     );
                 }else{
