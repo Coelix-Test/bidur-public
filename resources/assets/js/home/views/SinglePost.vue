@@ -60,7 +60,7 @@
 
             <div ref="poll" v-if="post.type == 'survey'" class="poll">
               <img :src="post.img" alt="">
-              <div class="img-caption">תיאור תמונה</div>
+              <div class="img-caption">{{post.description}}</div>
               <vue-poll class="vue-poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
             </div>
             <div v-else-if="post.type == 'compare'" class="poll">

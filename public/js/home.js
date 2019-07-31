@@ -52246,7 +52246,7 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "img-caption" }, [
-                                  _vm._v("תיאור תמונה")
+                                  _vm._v(_vm._s(post.description))
                                 ]),
                                 _vm._v(" "),
                                 _c(
