@@ -5828,7 +5828,7 @@ __webpack_require__.r(__webpack_exports__);
       makeItRain(70, this.$refs.poll);
       axios.post('/addSurveyVote', {
         surveyId: id,
-        answer: obj.value
+        answer: obj.value + 1
       }).then(function (response) {});
     },
     youtubeEmbedLink: function youtubeEmbedLink(url) {

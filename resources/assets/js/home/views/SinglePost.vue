@@ -268,7 +268,7 @@ export default {
     addVote(obj, id){
       makeItRain(70, this.$refs.poll);
         axios
-          .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+          .post('/addSurveyVote',{ surveyId : id, answer : obj.value+1 })
             .then(response => {
             });
     },
