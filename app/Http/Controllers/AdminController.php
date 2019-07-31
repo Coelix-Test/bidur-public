@@ -1273,7 +1273,7 @@ class AdminController extends Controller
                 $fullPost['sections'][$likableImage->order]['type'] = 'assessment';
                 $fullPost['sections'][$likableImage->order]['image'] = $likableImage->url;
                 $fullPost['sections'][$likableImage->order]['title'] = $likableImage->description;
-                $fullPost['sections'][$likableImage->order]['title'] = $likableImage->description_mage;
+                $fullPost['sections'][$likableImage->order]['description'] = $likableImage->description_image;
                 unset($data);
             }
         }
