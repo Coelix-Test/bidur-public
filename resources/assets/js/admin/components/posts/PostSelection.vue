@@ -119,6 +119,7 @@ export default {
       height: 35px;
       font-style: italic;
       font-size: 16px;
+      text-indent: 5px;
     }
     .selection-title{
         width: 82%;
