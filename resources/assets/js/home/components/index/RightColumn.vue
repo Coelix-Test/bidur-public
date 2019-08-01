@@ -211,7 +211,9 @@ export default {
     font-family: 'Levin', 'Assistant', sans-serif;
 
     @media(max-width: 767px) {
-      font-size: 18px;
+      &::v-deep {
+        font-size: 18px !important;
+      }
     }
   }
 
@@ -231,7 +233,7 @@ export default {
     width:100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    // object-position: top;
   }
   .birthdayPost > img,
   .confetti {
