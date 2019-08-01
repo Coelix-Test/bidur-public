@@ -130,8 +130,6 @@ class AdminController extends Controller
 
     }
 
-
-
     // gets all the titles and ids for the line in the header
     public function getAllPostTitles(){
         $posts = Post::all();

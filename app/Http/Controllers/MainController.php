@@ -853,6 +853,29 @@ class MainController extends Controller
     }
 
 
+    public function getMainPageOptimized(){
+        $admin = new AdminController();
+        $recentPosts            = $this->getRecentPosts();
+        $selectedPosts          = $this->getSelectedPosts();
+        $serviceForDesktop      = $this->getServiceForMainPage();
+        $serviceForMobile       = $this->getServiceForMainPageSecond();
+        $insta                  = $this->showInsta();
+        $birthday               = $this->showBday();
+        $hashtags               = $admin->getAllHashtags();
+        $user                   = $admin->getUserData();
+
+        $data['recentPosts']    = $recentPosts;
+        $data['selectedPosts']  = $selectedPosts;
+        $data['serviceDesktop'] = $serviceForDesktop;
+        $data['serviceMobile']  = $serviceForMobile;
+        $data['instagram']      = $insta;
+        $data['birthday']       = $birthday;
+        $data['hashtags']       = $hashtags;
+        $data['user']           = $user;
+
+        return json_encode($data);
+    }
+
     // ************************ TRASH BIN *******************************//
     //                                                                   //
     //                                                                   //
