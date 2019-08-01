@@ -208,7 +208,11 @@ export default {
     text-align: right;
     z-index:5;
     padding-left:32px;
-    font-family: 'Levin','Assistant',sans-serif;
+    font-family: 'Levin', 'Assistant', sans-serif;
+
+    @media(max-width: 767px) {
+      font-size: 18px;
+    }
   }
 
   .birthdayPost .overlay {
@@ -227,6 +231,7 @@ export default {
     width:100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
   }
   .birthdayPost > img,
   .confetti {
