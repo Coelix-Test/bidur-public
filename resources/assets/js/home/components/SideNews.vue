@@ -9,10 +9,10 @@
       />
     </div>
 
-    <div class="banner" ref="scriptContainer">
+    <!-- <div class="banner" ref="scriptContainer">
       <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_1"></div>
 
-    </div>
+    </div> -->
 
     <div class="block">
       <side-news-post
@@ -55,11 +55,11 @@ export default {
     }
   },
   mounted(){
-    let scriptEl = document.createElement('script');
-    scriptEl.setAttribute('type', 'text/javascript');
-    scriptEl.setAttribute('async', 'async');
-    scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
-    this.$refs.scriptContainer.appendChild(scriptEl);
+    // let scriptEl = document.createElement('script');
+    // scriptEl.setAttribute('type', 'text/javascript');
+    // scriptEl.setAttribute('async', 'async');
+    // scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
+    // this.$refs.scriptContainer.appendChild(scriptEl);
   },
 }
 </script>

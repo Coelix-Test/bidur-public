@@ -1,6 +1,6 @@
 <template>
   <div class="single-post">
-    <div class="post-wrapper">
+    <div v-if="post" class="post-wrapper">
 
       <div class="post-content">
         <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
