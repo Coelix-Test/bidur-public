@@ -173,7 +173,8 @@ class MainController extends Controller
         }
         $contents = $post->getAllContents;
         if (isset($contents[0])){
-            $fullPost['excerpt'] = substr($contents[0]->contentText, 0, 50);
+//            dd(substr(strip_tags($contents[0]->contentText), 0, 50));
+            $fullPost['excerpt'] = substr(strip_tags($contents[0]->contentText), 0, 50);
             foreach ($contents as $content) {
                 $fullPost['sections'][$content->order]['type'] = 'content';
                 $fullPost['sections'][$content->order]['value'] = $content->contentText;
