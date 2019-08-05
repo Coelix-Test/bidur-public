@@ -245,13 +245,16 @@ export default {
                var proms = [];
               for(let i =0;i < this.hashtags.length;i++) {
                 proms.push(axios
-                  .post('/getAllRelevantPosts', {hashtag_id: this.hashtags[i],})
+                  .post('/getAllRelevantPosts', {
+                      hashtag_id: this.hashtags[i],
+                      postId: id
+                    })
                     .then(response => {
                       this.relevantPosts = response.data;
                     }))
               }
             } else {
-              axios.post('/getRecentPosts').then(res => {
+              axios.post('/getRecentPosts', {postId: id}).then(res => {
                 this.relevantPosts = res.data.splice(0,6);
               });
             }
