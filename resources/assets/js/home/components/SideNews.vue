@@ -9,10 +9,7 @@
       />
     </div>
 
-    <!-- <div class="banner" ref="scriptContainer">
-      <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_1"></div>
-
-    </div> -->
+    <outbrain-sidebar-ad></outbrain-sidebar-ad>
 
     <div class="block">
       <side-news-post
@@ -27,6 +24,7 @@
 
 <script>
 import SideNewsPost from './SideNewsPost.vue'
+import OutbrainSidebarAd from './outbrain/OutbrainSidebarAd.vue'
 
 export default {
   data() {
@@ -34,13 +32,9 @@ export default {
       data: []
     };
   },
-  computed: {
-    curPageLink(){
-      return window.location.href;
-    }
-  },
   components: {
     SideNewsPost,
+    OutbrainSidebarAd
   },
   created() {
     if(this.$route.name === 'single-post'){
@@ -53,13 +47,6 @@ export default {
         this.data = res.data;
       });
     }
-  },
-  mounted(){
-    // let scriptEl = document.createElement('script');
-    // scriptEl.setAttribute('type', 'text/javascript');
-    // scriptEl.setAttribute('async', 'async');
-    // scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
-    // this.$refs.scriptContainer.appendChild(scriptEl);
   },
 }
 </script>
