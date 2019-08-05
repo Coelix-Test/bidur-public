@@ -3924,12 +3924,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     setDurations: function setDurations() {
-      $('.bdConfetty path').each(function (index) {
+      var paths = document.querySelectorAll('.bdConfetty path');
+      console.log(paths);
+
+      for (var i = 0; i < paths.length; i++) {
         var min = 2,
             max = 5;
-        $(this).css('animation-delay', Math.random() * (-max + min) - min + 's');
-        $(this).css('animation-duration', (Math.random() * (max - min) + min) * 2.5 + 's');
-      });
+        paths[i].style.animationDelay = Math.random() * (-max + min) - min + 's';
+        paths[i].style.animationDuration = (Math.random() * (max - min) + min) * 2.5 + 's';
+      } // document.querySelector('.bdConfetty path').each(function(index){
+      //
+      // });
+
     }
   },
   mounted: function mounted() {
@@ -72486,14 +72492,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************************!*\
   !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue ***!
   \***********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ConfettiFallSvg_vue_vue_type_template_id_16827099_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=template&id=16827099&scoped=true&");
 /* harmony import */ var _ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=script&lang=js& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ConfettiFallSvg_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _ConfettiFallSvg_vue_vue_type_style_index_0_id_16827099_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true& */ "./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=style&index=0&id=16827099&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -72525,7 +72532,7 @@ component.options.__file = "resources/assets/js/home/components/index/ConfettiFa
 /*!************************************************************************************************!*\
   !*** ./resources/assets/js/home/components/index/ConfettiFallSvg.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
