@@ -49,26 +49,20 @@
       </div>
     </div>
 
-    <div id="ads">
+    {{-- <div id="ads">
       <div id="ads-rest" class="a-row-center">3</div>
       <div id="ads-wrapper">
         <!-- Between pages -->
-        {{-- <div style="width: 100%; height: 100%; background: #000;">
-
-        </div> --}}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins
-          class="adsbygoogle"
-          style="display:block; width: 100%; height: 100%;"
-          data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="9249316864"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
+        <!-- Between pages -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:400px;height:400px"
+             data-ad-client="ca-pub-6511052822397382"
+             data-ad-slot="9249316864"></ins>
         <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
+             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-      </div>
+      </div> --}}
     </div>
 
     <script src="/js/home.js" charset="utf-8"></script>
