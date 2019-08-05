@@ -205,8 +205,8 @@ export default {
           { vmid: 'description', name: 'description', content: this.post.data.post.excerpt },
           { vmid: 'og:description', property: 'og:description', content: this.post.data.post.excerpt },
           { vmid: 'og:title', property: 'og:title', content: this.post.data.post.mainTitle },
-          { vmid: 'og:url', property: 'og:url', content: 'https://www.israel-bidur.co.il/#'+this.$route.fullPath },
-          { vmid: 'og:image', property: 'og:image', content: this.post.data.post.preview },
+          { vmid: 'og:url', property: 'og:url', content: window.location.origin+'/#'+this.$route.fullPath },
+          { vmid: 'og:image', property: 'og:image', content: window.location.origin+'/#'+this.post.data.post.preview },
         ]
       }
     }
