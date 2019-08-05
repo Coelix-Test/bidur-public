@@ -183,6 +183,7 @@ class MainController extends Controller
 
         $images = $post->getAllImages;
         if (isset($images[0])){
+            $fullPost['preview'] = $images[0]->url;
             foreach ($images as $image) {
                 $fullPost['sections'][$image->order]['type'] = 'image';
                 $fullPost['sections'][$image->order]['value'] = $image->url;
