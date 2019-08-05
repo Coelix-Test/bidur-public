@@ -43,9 +43,16 @@ export default {
     SideNewsPost,
   },
   created() {
-    axios.post('/getRecentPosts').then(res => {
-      this.data = res.data;
-    });
+    if(this.$route.name === 'single-post'){
+      axios.post('/getRecentPosts', {postId: this.$route.params.id}).then(res => {
+        this.data = res.data;
+      });
+    }
+    else{
+      axios.post('/getRecentPosts').then(res => {
+        this.data = res.data;
+      });
+    }
   },
   mounted(){
     let scriptEl = document.createElement('script');

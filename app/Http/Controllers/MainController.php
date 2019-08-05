@@ -580,8 +580,8 @@ class MainController extends Controller
 
     }
 
-    public function getRecentPosts(Request $request = null){
-        if ($request){
+    public function getRecentPosts(Request $request){
+        if ($request->get('postId') !== null){
             $postId = $request->get('postId');
             $recentPosts = Post::where('publish', 1)->where('id', '!=', $postId)->orderBy('created_at', 'desc')->take(12)->get();
 
