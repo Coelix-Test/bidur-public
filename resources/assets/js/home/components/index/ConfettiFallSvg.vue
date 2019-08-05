@@ -54,7 +54,6 @@ export default {
   methods: {
     setDurations(){
       let paths = document.querySelectorAll('.bdConfetty path');
-      console.log(paths);
       for(let i = 0; i < paths.length; i++){
         const min = 2,
               max = 5;
