@@ -426,12 +426,14 @@ class MainController extends Controller
 
     public function getAllRelevantPosts(Request $request){
         $hashtagId = $request->get('hashtag_id');
+        $postId = $request->get('postId');
         $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->orderBy('created_at')->take(6)->get();
 
         foreach ($hashtagPosts as $hashtagPost) {
             $posts[] = Post::where([
-              [ 'id', '=', $hashtagPost->postId ],
-              [ 'publish', '=', '1' ],
+                [ 'id', '=', $hashtagPost->postId ],
+                [ 'publish', '=', '1' ],
+                [ 'id', '!=', $postId]
             ]);
         }
         foreach ($posts as $post) {
