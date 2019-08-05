@@ -110,75 +110,11 @@ window.app = new Vue({
     setTimeout(function() {
       preloader.remove();
     }, 300);
+
+    // if(this.$route.name === 'single-post'){
+    //
+    // }
   }
 }).$mount('#home');
 
 // app.$store.dispatch('modals/ad/open');
-
-//TODO: DELETE AFTER HEADER REFACTOR
-// $('.header-main .celebrities-slider').slick({
-//   slidesToShow: 12,
-//   slidesToScroll: 12,
-//   dots: false,
-//   arrows: true,
-//   rtl: true,
-//   infinite: true,
-//   initialSlide: 2,
-//   responsive: [
-//       {
-//       breakpoint: 1500,
-//       settings: {
-//         slidesToShow: 10,
-//         slidesToScroll: 10
-//       }
-//     },
-//     {
-//       breakpoint: 1367,
-//       settings: {
-//         slidesToShow: 9,
-//         slidesToScroll: 9
-//       }
-//     },
-//     {
-//       breakpoint: 1200,
-//       settings: {
-//         slidesToShow: 8,
-//         slidesToScroll: 8
-//       }
-//     },
-//     {
-//       breakpoint: 1024,
-//       settings: {
-//         slidesToShow: 7,
-//         slidesToScroll: 7
-//       }
-//     },
-//     {
-//         breakpoint: 991,
-//         settings: {
-//             arrows: false,
-//             centerMode: true,
-//             variableWidth: true,
-//             slidesToShow: 1,
-//             slidesToScroll: 3,
-//         }
-//     }
-//
-//     // {
-//     //     breakpoint: 991,
-//     //     settings: "unslick"
-//     // }
-//   ]
-// });
-
-//TODO: DELETE AFTER HEADER REFACTOR
-//auth buttons
-// $('.register-popup-trigger').on('click', function(e){
-//     e.preventDefault();
-//     app.openReg();
-// });
-//
-// $('.login-popup-trigger').on('click', function(e){
-//     e.preventDefault();
-//     app.openLogin();
-// });

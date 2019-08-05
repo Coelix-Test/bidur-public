@@ -127,12 +127,7 @@
       <side-news v-if="this.$env.mobile == false" />
     </div>
 
-    <div class="post-wrapper">
-      <div ref="outbrainContainer" class="w-100">
-        <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_3"></div>
-
-      </div>
-    </div>
+    <outbrain-bottom-ad></outbrain-bottom-ad>
 
     <div class="related-posts">
       <img src="/img/stars-posts.svg" alt="" class="stars">
@@ -181,6 +176,7 @@ import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel'
 import LikeSurvey from './../components/common/LikeSurvey'
 import OneSurvey from './../components/common/OneSurvey'
+import OutbrainBottomAd from './../components/outbrain/OutbrainBottomAd.vue'
 
 export default {
   data() {
@@ -323,16 +319,13 @@ export default {
     LikeSurvey,
     OneSurvey,
     TypeWriter,
+    OutbrainBottomAd
   },
   mounted() {
     //let els = this.$el.getElementsByTagName('p');
 
     // console.log(els);
-    let scriptEl = document.createElement('script');
-    scriptEl.setAttribute('type', 'text/javascript');
-    scriptEl.setAttribute('async', 'async');
-    scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
-    this.$refs.outbrainContainer.appendChild(scriptEl);
+
   }
 }
 
