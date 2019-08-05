@@ -2,17 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
-import Ads from 'vue-google-adsense'
 // import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 import moment from 'moment'
 
 Vue.use(require('vue-script2'))
-
-Vue.use(Ads.Adsense)
-Vue.use(Ads.InArticleAdsense)
-Vue.use(Ads.InFeedAdsense)
-
 
 window.makeItRain = async function(n, append) {
 
@@ -49,15 +43,10 @@ Vue.directive('in-viewport', InViewportDirective);
 Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 
 require('./bootstrap');
-window.$ = window.jQuery = require('jquery');
-require('magnific-popup/dist/jquery.magnific-popup.js');
-require('slick-carousel/slick/slick.min.js');
-require('wowjs');
 moment.locale('he');
 // TimeAgo.addLocale(en);
 // const timeAgo = new TimeAgo('en-US');
 // console.log(timeAgo.format(new Date()));
-// this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
 
 
 Vue.config.devtools = true;
@@ -117,4 +106,8 @@ window.app = new Vue({
   }
 }).$mount('#home');
 
+<<<<<<< HEAD
 // app.$store.dispatch('modals/ad/open');
+=======
+store.dispatch('modals/ad/open');
+>>>>>>> c44b2fbb7b8f1b516edb520a50e756a1e0a03c89

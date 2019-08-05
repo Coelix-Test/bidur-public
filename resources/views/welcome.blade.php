@@ -15,20 +15,20 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
   {{-- ADSENSE BOTTOM AD --}}
-  <script>
+  {{-- <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-6511052822397382",
       enable_page_level_ads: true,
       overlays: { bottom: true }
     });
-  </script>
+  </script> --}}
 
   <meta charset="UTF-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  {{-- <link href="{{ asset('css/admin.css') }}" rel="stylesheet"> --}}
+  <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
   <link href="{{ asset('css/home.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    {{-- <div id="ads" class="closed">
+    <div id="ads">
       <div id="ads-rest" class="a-row-center">3</div>
       <div id="ads-wrapper">
         <!-- Between pages -->
@@ -67,7 +67,7 @@
           (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
-    </div> --}}
+    </div>
 
     <script src="/js/home.js" charset="utf-8"></script>
 </body>
