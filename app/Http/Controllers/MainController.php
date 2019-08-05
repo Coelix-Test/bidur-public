@@ -173,6 +173,8 @@ class MainController extends Controller
         }
         $contents = $post->getAllContents;
         if (isset($contents[0])){
+//            dd(substr(strip_tags($contents[0]->contentText), 0, 50));
+            $fullPost['excerpt'] = substr(strip_tags($contents[0]->contentText), 0, 50);
             foreach ($contents as $content) {
                 $fullPost['sections'][$content->order]['type'] = 'content';
                 $fullPost['sections'][$content->order]['value'] = $content->contentText;
@@ -181,6 +183,7 @@ class MainController extends Controller
 
         $images = $post->getAllImages;
         if (isset($images[0])){
+            $fullPost['preview'] = $images[0]->url;
             foreach ($images as $image) {
                 $fullPost['sections'][$image->order]['type'] = 'image';
                 $fullPost['sections'][$image->order]['value'] = $image->url;
@@ -433,7 +436,7 @@ class MainController extends Controller
             $posts[] = Post::where([
                 [ 'id', '=', $hashtagPost->postId ],
                 [ 'publish', '=', '1' ],
-                [ 'id', '!=', $postId]
+                [ 'id', '!=', $postId],
             ]);
         }
         foreach ($posts as $post) {
@@ -580,8 +583,8 @@ class MainController extends Controller
 
     }
 
-    public function getRecentPosts(Request $request = null){
-        if ($request){
+    public function getRecentPosts(Request $request){
+        if ($request->get('postId') !== null){
             $postId = $request->get('postId');
             $recentPosts = Post::where('publish', 1)->where('id', '!=', $postId)->orderBy('created_at', 'desc')->take(12)->get();
 
