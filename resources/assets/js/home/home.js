@@ -100,14 +100,6 @@ window.app = new Vue({
       preloader.remove();
     }, 300);
 
-    // if(this.$route.name === 'single-post'){
-    //
-    // }
+    this.$store.dispatch('modals/ad/open');
   }
 }).$mount('#home');
-
-<<<<<<< HEAD
-// app.$store.dispatch('modals/ad/open');
-=======
-store.dispatch('modals/ad/open');
->>>>>>> c44b2fbb7b8f1b516edb520a50e756a1e0a03c89
