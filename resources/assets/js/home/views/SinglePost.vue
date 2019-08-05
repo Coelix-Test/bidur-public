@@ -197,6 +197,20 @@ export default {
       postId : null,
     }
   },
+  metaInfo () {
+    if(this.post){
+      return {
+        title: this.post.data.post.mainTitle,
+        meta: [
+          { vmid: 'description', name: 'description', content: this.post.data.post.excerpt },
+          { vmid: 'og:description', property: 'og:description', content: this.post.data.post.excerpt },
+          { vmid: 'og:title', property: 'og:title', content: this.post.data.post.mainTitle },
+          { vmid: 'og:url', property: 'og:url', content: 'https://www.israel-bidur.co.il/#'+this.$route.fullPath },
+          { vmid: 'og:image', property: 'og:image', content: this.post.data.post.preview },
+        ]
+      }
+    }
+  },
   computed: {
     curPageLink(){
       return window.location.href;
