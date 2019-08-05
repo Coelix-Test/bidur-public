@@ -426,12 +426,14 @@ class MainController extends Controller
 
     public function getAllRelevantPosts(Request $request){
         $hashtagId = $request->get('hashtag_id');
+        $postId = $request->get('postId');
         $hashtagPosts = HashtagPosts::where('hashtagId', $hashtagId)->orderBy('created_at')->take(6)->get();
 
         foreach ($hashtagPosts as $hashtagPost) {
             $posts[] = Post::where([
-              [ 'id', '=', $hashtagPost->postId ],
-              [ 'publish', '=', '1' ],
+                [ 'id', '=', $hashtagPost->postId ],
+                [ 'publish', '=', '1' ],
+                [ 'id', '!=', $postId]
             ]);
         }
         foreach ($posts as $post) {
@@ -578,9 +580,14 @@ class MainController extends Controller
 
     }
 
-    public function getRecentPosts(){
+    public function getRecentPosts(Request $request = null){
+        if ($request){
+            $postId = $request->get('postId');
+            $recentPosts = Post::where('publish', 1)->where('id', '!=', $postId)->orderBy('created_at', 'desc')->take(12)->get();
 
-        $recentPosts = Post::where('publish', 1)->orderBy('created_at', 'desc')->take(12)->get();
+        }else{
+            $recentPosts = Post::where('publish', 1)->orderBy('created_at', 'desc')->take(12)->get();
+        }
 
         $postsForView = [];
 
@@ -852,6 +859,29 @@ class MainController extends Controller
         return json_encode(['success' => false, 'message' => 'Login please']);
     }
 
+
+    public function getMainPageOptimized(){
+        $admin = new AdminController();
+        $recentPosts            = $this->getRecentPosts();
+        $selectedPosts          = $this->getSelectedPosts();
+        $serviceForDesktop      = $this->getServiceForMainPage();
+        $serviceForMobile       = $this->getServiceForMainPageSecond();
+        $insta                  = $this->showInsta();
+        $birthday               = $this->showBday();
+        $hashtags               = $admin->getAllHashtags();
+        $user                   = $admin->getUserData();
+
+        $data['recentPosts']    = $recentPosts;
+        $data['selectedPosts']  = $selectedPosts;
+        $data['serviceDesktop'] = $serviceForDesktop;
+        $data['serviceMobile']  = $serviceForMobile;
+        $data['instagram']      = $insta;
+        $data['birthday']       = $birthday;
+        $data['hashtags']       = $hashtags;
+        $data['user']           = $user;
+
+        return json_encode($data);
+    }
 
     // ************************ TRASH BIN *******************************//
     //                                                                   //

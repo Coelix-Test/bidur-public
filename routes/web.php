@@ -78,7 +78,7 @@ Route::post('/checkPassword', 'MainController@checkPassword');
 Route::post('/changePassword', 'MainController@changePassword');
 Route::post('/changePersonalInfo', 'MainController@changePersonalInfo');
 
-
+Route::post('/getMainPageOptimized',   'MainController@getMainPageOptimized');
 
 //admin
 Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');

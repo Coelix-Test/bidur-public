@@ -130,8 +130,6 @@ class AdminController extends Controller
 
     }
 
-
-
     // gets all the titles and ids for the line in the header
     public function getAllPostTitles(){
         $posts = Post::all();
@@ -142,6 +140,7 @@ class AdminController extends Controller
                 $titles[(int)$key]['id'] = $post->id;
             }
         }
+
         return json_encode($titles);
     }
 
@@ -1666,7 +1665,7 @@ class AdminController extends Controller
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);
     }
-
+    
 
 
 }
