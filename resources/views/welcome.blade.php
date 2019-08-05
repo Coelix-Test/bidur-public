@@ -49,10 +49,9 @@
       </div>
     </div>
 
-    {{-- <div id="ads">
+    <div id="ads">
       <div id="ads-rest" class="a-row-center">3</div>
       <div id="ads-wrapper">
-        <!-- Between pages -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Between pages -->
         <ins class="adsbygoogle"
@@ -62,7 +61,7 @@
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-      </div> --}}
+      </div>
     </div>
 
     <script src="/js/home.js" charset="utf-8"></script>
