@@ -578,9 +578,14 @@ class MainController extends Controller
 
     }
 
-    public function getRecentPosts(){
+    public function getRecentPosts(Request $request = null){
+        if ($request){
+            $postId = $request->get('postId');
+            $recentPosts = Post::where('publish', 1)->where('id', '!=', $postId)->orderBy('created_at', 'desc')->take(12)->get();
 
-        $recentPosts = Post::where('publish', 1)->orderBy('created_at', 'desc')->take(12)->get();
+        }else{
+            $recentPosts = Post::where('publish', 1)->orderBy('created_at', 'desc')->take(12)->get();
+        }
 
         $postsForView = [];
 

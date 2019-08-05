@@ -140,6 +140,7 @@ class AdminController extends Controller
                 $titles[(int)$key]['id'] = $post->id;
             }
         }
+
         return json_encode($titles);
     }
 
@@ -1664,7 +1665,7 @@ class AdminController extends Controller
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);
     }
-
+    
 
 
 }
