@@ -25,7 +25,7 @@
     </div><!-- celebrities row end-->
     <div class="run-stroke-wrap-wrap" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
       <div class="run-stroke-wrap" style="margin:0 auto;max-width:1440px;box-shadow:unset;">
-        <ul class="run-stroke" >
+        <ul class="run-stroke" ref="runStroke" >
           <li v-for="post in postTitles">
             <router-link :to="'/post/'+post.id">
               {{post.title}}
@@ -116,17 +116,15 @@ export default {
     getAllPostTitles(){
       axios.post('/getRecentPosts')
           .then(response => {
-            // console.log(response.data);
+            
             this.postTitles = response.data;
-
-            //TODO REFACTOR
-            setTimeout(() => {
-              var strokeWidth = $('.run-stroke').width();
+            this.$nextTick(() => {
+              var strokeWidth = this.$refs.runStroke.clientWidth;
               var strokeSpeed = 70;//20px per second
               var strokeAnimDuration = strokeWidth / strokeSpeed;
 
-              $('.run-stroke').css('animation','animStroke '+strokeAnimDuration+'s linear infinite');
-            }, 200);
+              this.$refs.runStroke.style.animation = 'animStroke '+strokeAnimDuration+'s linear infinite';
+            });
 
           });
     },
