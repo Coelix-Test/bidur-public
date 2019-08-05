@@ -43,7 +43,7 @@ export default {
     SideNewsPost,
   },
   created() {
-    axios.post('/getRecentPosts').then(res => {
+    axios.post('/getRecentPosts', {postId: id}).then(res => {
       this.data = res.data;
     });
   },
