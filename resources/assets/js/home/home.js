@@ -99,7 +99,7 @@ window.app = new Vue({
     setTimeout(function() {
       preloader.remove();
     }, 300);
+
+    this.$store.dispatch('modals/ad/open');
   }
 }).$mount('#home');
-
-store.dispatch('modals/ad/open');
