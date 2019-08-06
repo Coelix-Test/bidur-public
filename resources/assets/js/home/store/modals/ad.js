@@ -20,7 +20,7 @@ export default {
       var rest = document.getElementById('ads-rest');
 
       context.commit('open');
-      el.classList.remove('closed')
+      el.classList.remove('closed', 'animate')
       rest.innerHTML = 3;
       var sec = 0;
       var interval = setInterval(() => {
@@ -28,7 +28,10 @@ export default {
         rest.innerHTML = 3 - sec;
         if(sec >= 3) {
           context.commit('close');
-          el.classList.add('closed');
+          el.classList.add('animate');
+          setTimeout(function () {
+            el.classList.add('closed');
+          }, 300);
           clearInterval(interval);
         }
       }, 1000);

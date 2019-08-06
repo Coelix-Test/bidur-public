@@ -53,12 +53,16 @@
 export default {
   methods: {
     setDurations(){
-      $('.bdConfetty path').each(function(index){
+      let paths = document.querySelectorAll('.bdConfetty path');
+      for(let i = 0; i < paths.length; i++){
         const min = 2,
               max = 5;
-        $(this).css('animation-delay', (Math.random() * (-max + min) - min)+'s');
-        $(this).css('animation-duration', (Math.random() * (max - min) + min)*2.5+'s');
-      });
+        paths[i].style.animationDelay = (Math.random() * (-max + min) - min) + 's';
+        paths[i].style.animationDuration = (Math.random() * (max - min) + min) * 2.5 + 's';
+      }
+      // document.querySelector('.bdConfetty path').each(function(index){
+      //
+      // });
     }
   },
   mounted(){

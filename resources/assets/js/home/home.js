@@ -2,17 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
-import Ads from 'vue-google-adsense'
 // import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 import moment from 'moment'
 
 Vue.use(require('vue-script2'))
-
-Vue.use(Ads.Adsense)
-Vue.use(Ads.InArticleAdsense)
-Vue.use(Ads.InFeedAdsense)
-
 
 window.makeItRain = async function(n, append) {
 
@@ -49,15 +43,10 @@ Vue.directive('in-viewport', InViewportDirective);
 Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 
 require('./bootstrap');
-window.$ = window.jQuery = require('jquery');
-require('magnific-popup/dist/jquery.magnific-popup.js');
-require('slick-carousel/slick/slick.min.js');
-require('wowjs');
 moment.locale('he');
 // TimeAgo.addLocale(en);
 // const timeAgo = new TimeAgo('en-US');
 // console.log(timeAgo.format(new Date()));
-// this.$env.mobile - это что бы узнавать с джс мобайл или нет (Леха)
 
 
 Vue.config.devtools = true;
@@ -110,75 +99,7 @@ window.app = new Vue({
     setTimeout(function() {
       preloader.remove();
     }, 300);
+
+    this.$store.dispatch('modals/ad/open');
   }
 }).$mount('#home');
-
-// app.$store.dispatch('modals/ad/open');
-
-//TODO: DELETE AFTER HEADER REFACTOR
-// $('.header-main .celebrities-slider').slick({
-//   slidesToShow: 12,
-//   slidesToScroll: 12,
-//   dots: false,
-//   arrows: true,
-//   rtl: true,
-//   infinite: true,
-//   initialSlide: 2,
-//   responsive: [
-//       {
-//       breakpoint: 1500,
-//       settings: {
-//         slidesToShow: 10,
-//         slidesToScroll: 10
-//       }
-//     },
-//     {
-//       breakpoint: 1367,
-//       settings: {
-//         slidesToShow: 9,
-//         slidesToScroll: 9
-//       }
-//     },
-//     {
-//       breakpoint: 1200,
-//       settings: {
-//         slidesToShow: 8,
-//         slidesToScroll: 8
-//       }
-//     },
-//     {
-//       breakpoint: 1024,
-//       settings: {
-//         slidesToShow: 7,
-//         slidesToScroll: 7
-//       }
-//     },
-//     {
-//         breakpoint: 991,
-//         settings: {
-//             arrows: false,
-//             centerMode: true,
-//             variableWidth: true,
-//             slidesToShow: 1,
-//             slidesToScroll: 3,
-//         }
-//     }
-//
-//     // {
-//     //     breakpoint: 991,
-//     //     settings: "unslick"
-//     // }
-//   ]
-// });
-
-//TODO: DELETE AFTER HEADER REFACTOR
-//auth buttons
-// $('.register-popup-trigger').on('click', function(e){
-//     e.preventDefault();
-//     app.openReg();
-// });
-//
-// $('.login-popup-trigger').on('click', function(e){
-//     e.preventDefault();
-//     app.openLogin();
-// });

@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Meta from 'vue-meta';
 // import Multiguard from 'vue-router-multiguard';
 
 import store from './store';
 Vue.use(VueRouter);
+Vue.use(Meta);
 
 // import auth from './auth';
 // import account from './account';
@@ -88,7 +90,7 @@ router.beforeEach(async (to, from, next) => {
   // console.log(window.app, 'qweqweqwe');
 
   if(window.app) {
-    // store.dispatch('modals/ad/open')
+    store.dispatch('modals/ad/open')
   }
 
   if(to.name == 'single-post') {

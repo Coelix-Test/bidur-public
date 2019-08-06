@@ -1,6 +1,6 @@
 <template>
   <div class="single-post">
-    <div class="post-wrapper">
+    <div v-if="post" class="post-wrapper">
 
       <div class="post-content">
         <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
@@ -127,12 +127,7 @@
       <side-news v-if="this.$env.mobile == false" />
     </div>
 
-    <div class="post-wrapper">
-      <div ref="outbrainContainer" class="w-100">
-        <div class="OUTBRAIN" :data-src="curPageLink" data-widget-id="GS_3"></div>
-
-      </div>
-    </div>
+    <outbrain-bottom-ad></outbrain-bottom-ad>
 
     <div class="related-posts">
       <img src="/img/stars-posts.svg" alt="" class="stars">
@@ -181,6 +176,7 @@ import SideNews from './../components/SideNews.vue'
 import { Carousel, Slide } from 'vue-carousel'
 import LikeSurvey from './../components/common/LikeSurvey'
 import OneSurvey from './../components/common/OneSurvey'
+import OutbrainBottomAd from './../components/outbrain/OutbrainBottomAd.vue'
 
 export default {
   data() {
@@ -195,6 +191,20 @@ export default {
       relevantPosts : [],
       postContentSections : null,
       postId : null,
+    }
+  },
+  metaInfo () {
+    if(this.post){
+      return {
+        title: this.post.data.post.mainTitle,
+        meta: [
+          { vmid: 'description', name: 'description', content: this.post.data.post.excerpt },
+          { vmid: 'og:description', property: 'og:description', content: this.post.data.post.excerpt },
+          { vmid: 'og:title', property: 'og:title', content: this.post.data.post.mainTitle },
+          { vmid: 'og:url', property: 'og:url', content: window.location.origin+'/#'+this.$route.fullPath },
+          { vmid: 'og:image', property: 'og:image', content: window.location.origin+'/#'+this.post.data.post.preview },
+        ]
+      }
     }
   },
   computed: {
@@ -309,16 +319,13 @@ export default {
     LikeSurvey,
     OneSurvey,
     TypeWriter,
+    OutbrainBottomAd
   },
   mounted() {
     //let els = this.$el.getElementsByTagName('p');
 
     // console.log(els);
-    let scriptEl = document.createElement('script');
-    scriptEl.setAttribute('type', 'text/javascript');
-    scriptEl.setAttribute('async', 'async');
-    scriptEl.setAttribute('src', '//widgets.outbrain.com/outbrain.js');
-    this.$refs.outbrainContainer.appendChild(scriptEl);
+
   }
 }
 
