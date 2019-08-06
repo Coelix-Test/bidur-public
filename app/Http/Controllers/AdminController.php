@@ -1133,16 +1133,38 @@ class AdminController extends Controller
         $fifthPostId = $request->get(   'fifthPostId');
         $sixthPostId = $request->get(   'sixthPostId');
         // truncate MEANS "TO EMPTY"
+
+        $seventhPostId = $request->get(   'seventhPostId');
+        $eighthPostId = $request->get(   'eighthPostId');
+        $ninthPostId = $request->get(   'ninthPostId');
+        $tenthPostId = $request->get(   'tenthPostId');
         MainSection::truncate();
-        MainSection::create([
-            'id' => 1,
-            'first' => $mainPostId,
-            'second' => $secondPostId,
-            'third' => $thirdPostId,
-            'fourth' => $fourthPostId,
-            'fifth' => $fifthPostId,
-            'sixth' => $sixthPostId,
-        ]);
+        if (isset($secondPostId) && isset($eighthPostId) && isset($ninthPostId) && isset($tenthPostId)){
+            MainSection::create([
+                'id' => 1,
+                'first' => $mainPostId,
+                'second' => $secondPostId,
+                'third' => $thirdPostId,
+                'fourth' => $fourthPostId,
+                'fifth' => $fifthPostId,
+                'sixth' => $sixthPostId,
+                'seven' => $seventhPostId,
+                'eight' => $eighthPostId,
+                'nine' => $ninthPostId,
+                'ten' => $tenthPostId
+            ]);
+        }else{
+            MainSection::create([
+                'id' => 1,
+                'first' => $mainPostId,
+                'second' => $secondPostId,
+                'third' => $thirdPostId,
+                'fourth' => $fourthPostId,
+                'fifth' => $fifthPostId,
+                'sixth' => $sixthPostId,
+            ]);
+        }
+
     }
 
 
