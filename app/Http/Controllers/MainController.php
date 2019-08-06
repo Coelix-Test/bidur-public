@@ -882,8 +882,8 @@ class MainController extends Controller
         $serviceForMobile       = $this->getServiceForMainPageSecond();
         $insta                  = $this->showInsta();
         $birthday               = $this->showBday();
-        $hashtags               = $admin->getAllHashtags();
-        $user                   = $admin->getUserData();
+//        $hashtags               = $admin->getAllHashtags();
+//        $user                   = $admin->getUserData();
 
 //        $data['recentPosts']    = $recentPosts;
         $data['selectedPosts']  = $selectedPosts;
@@ -891,8 +891,8 @@ class MainController extends Controller
         $data['serviceMobile']  = $serviceForMobile;
         $data['instagram']      = $insta;
         $data['birthday']       = $birthday;
-        $data['hashtags']       = $hashtags;
-        $data['user']           = $user;
+//        $data['hashtags']       = $hashtags;
+//        $data['user']           = $user;
 
         return json_encode($data);
     }
