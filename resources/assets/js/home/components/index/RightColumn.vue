@@ -1,18 +1,20 @@
 <template>
   <div class="right-column">
-    <article v-in-viewport.once class="birthdayPost">
-      <!-- <confetti-svg class="confetti"></confetti-svg> -->
-      <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
-      <img v-if="birthdayPost" class="hat" src="img/hat2.svg" alt="">
-      <img v-if="birthdayPost" class="gifts" src="img/GIFTBOX2.svg" alt="">
+    <article v-if="birthdayPost && birthdayPost.visible" v-in-viewport.once class="birthdayPost">
+      <template>
+        <!-- <confetti-svg class="confetti"></confetti-svg> -->
+        <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
+        <img class="hat" src="img/hat2.svg" alt="">
+        <img class="gifts" src="img/GIFTBOX2.svg" alt="">
 
-      <type-writer class="h2" v-if="birthdayPost" :text="birthdayPost.text"></type-writer>
-      <div v-if="birthdayPost" class="bdayInner">
-        <div class="overlay">
-          <confetti-svg class="confetti"></confetti-svg>
+        <type-writer class="h2" :text="birthdayPost.text"></type-writer>
+        <div class="bdayInner">
+          <div class="overlay">
+            <confetti-svg class="confetti"></confetti-svg>
+          </div>
+          <img :src="birthdayPost.img" alt="">
         </div>
-        <img :src="birthdayPost.img" alt="">
-      </div>
+      </template>
     </article>
     <ul v-in-viewport.once v-if="posts" class="posts">
       <li v-for="post in posts">

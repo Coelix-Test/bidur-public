@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- <right-column class="v-in-viewport once" v-if="rightPosts.length" :data="rightPosts" /> -->
+    <right-column v-if="rightPosts.length" :data="rightPosts" />
     <left-column v-if="leftPosts.length" :data="leftPosts" />
     <right-column-bot />
     <left-column-bot />
