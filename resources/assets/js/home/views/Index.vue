@@ -18,14 +18,14 @@ import RecentPostsMobile from './../components/index/RecentPostsMobile.vue';
 export default {
   data() {
     return  {
-      getAllPosts : null,
-      postRandomIds : [],
-      randomPosts : [],
-      randomPost : '',
-      leftPosts : [],
-      rightPosts : [],
-      latestPosts : [],
-      windowWidth : document.documentElement.clientWidth
+      getAllPosts: null,
+      postRandomIds: [],
+      randomPosts: [],
+      randomPost: '',
+      leftPosts: [],
+      rightPosts: [],
+      latestPosts: [],
+      windowWidth: document.documentElement.clientWidth
     }
   },
   methods : {
@@ -35,11 +35,11 @@ export default {
     //get pinned posts
     axios
       .post('/getSelectedPosts')
-        .then(response => {
-          let postData = response.data;
-          this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
-          this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1]);
-        });
+      .then(response => {
+        let postData = response.data;
+        this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
+        this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1]);
+      });
 
  },
  components : {

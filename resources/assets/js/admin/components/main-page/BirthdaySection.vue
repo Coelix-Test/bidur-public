@@ -38,6 +38,7 @@ export default {
     },
     save() {
       var data = new FormData();
+      this.visible = true;
       data.append('image', this.image);
       data.append('text', this.text);
       data.append('visible', this.visible);
