@@ -881,7 +881,7 @@ class MainController extends Controller
         $serviceForDesktop      = $this->getServiceForMainPage();
         $serviceForMobile       = $this->getServiceForMainPageSecond();
         $insta                  = $this->showInsta();
-        $birthday               = $this->showBday();
+        $birthday               = $admin->getMainBday();
 //        $hashtags               = $admin->getAllHashtags();
 //        $user                   = $admin->getUserData();
 
