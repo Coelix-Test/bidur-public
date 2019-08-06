@@ -537,11 +537,29 @@ class AdminController extends Controller
         ]);
     }
 
+    public function toggleHappyBirthday(){
+        $happyHirthday = HappyBirthsday::find(1);
+        if ($happyHirthday->visible == 1){
+            $happyHirthday->visible = 0;
+            $status = false;
+        }else{
+            $happyHirthday->visible = 1;
+            $status = true;
+        }
+        $happyHirthday->save();
+        return response()->json(['success' => true, 'status' => $status]);
+    }
+
     //stored in the table always by the 1st id
     public function getMainBday(){
         $happy = HappyBirthsday::find(1);
         $data['img'] = $happy->img;
         $data['text'] = $happy->text;
+        if ($happy->visible == 1){
+            $data['visible'] = true;
+        }else{
+            $data['visible'] = false;
+        }
         return json_encode($data);
     }
 

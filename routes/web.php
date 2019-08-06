@@ -137,5 +137,6 @@ Route::post('/getUserData', 'AdminController@getUserData');
     Route::post('/tagNameSearch', 'AdminController@tagNameSearch');
 
     Route::post('/getAllPostsPaginated', 'AdminController@getAllPostsPaginated');
+    Route::post('/toggleHappyBirthday', 'AdminController@toggleHappyBirthday');
 
 // getAllHashtags, getRecentPosts, getAllPostsByHashtag, getSelectedPosts, createPost, editPostCreateAllSections
