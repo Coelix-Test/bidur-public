@@ -493,12 +493,23 @@ class MainController extends Controller
         $fourth = Post::where('id', $section->fourth)->first();
         $fifth = Post::where('id', $section->fifth)->first();
         $sixth = Post::where('id', $section->sixth)->first();
+        $seven = Post::where('id', $section->seven)->first();
+        $eight = Post::where('id', $section->eight)->first();
+        $nine = Post::where('id', $section->nine)->first();
+        $ten = Post::where('id', $section->ten)->first();
+
         $data[1] = $this->getContent($first->id);
         $data[2] = $this->getContent($second->id);
         $data[3] = $this->getContent($third->id);
         $data[4] = $this->getContent($fourth->id);
         $data[5] = $this->getContent($fifth->id);
         $data[6] = $this->getContent($sixth->id);
+        if (isset($seven) && isset($eight) && isset($nine) && isset($ten)){
+            $data[7] = $this->getContent($seven->id);
+            $data[8] = $this->getContent($eight->id);
+            $data[9] = $this->getContent($nine->id);
+            $data[10] = $this->getContent($ten->id);
+        }
         return json_encode($data, JSON_FORCE_OBJECT);
     }
 
@@ -865,7 +876,7 @@ class MainController extends Controller
 
     public function getMainPageOptimized(){
         $admin = new AdminController();
-        $recentPosts            = $this->getRecentPosts();
+//        $recentPosts            = $this->getRecentPosts();
         $selectedPosts          = $this->getSelectedPosts();
         $serviceForDesktop      = $this->getServiceForMainPage();
         $serviceForMobile       = $this->getServiceForMainPageSecond();
@@ -874,7 +885,7 @@ class MainController extends Controller
         $hashtags               = $admin->getAllHashtags();
         $user                   = $admin->getUserData();
 
-        $data['recentPosts']    = $recentPosts;
+//        $data['recentPosts']    = $recentPosts;
         $data['selectedPosts']  = $selectedPosts;
         $data['serviceDesktop'] = $serviceForDesktop;
         $data['serviceMobile']  = $serviceForMobile;
