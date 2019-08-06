@@ -14,15 +14,5 @@
     <div class="bottom-line"></div>
 </footer>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Mobile Ad Bottom -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:400px;height:200px"
-     data-ad-client="ca-pub-6511052822397382"
-     data-ad-slot="3961762360"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 
 <!-- <script type="text/javascript" async="async" src="//widgets.outbrain.com/outbrain.js"></script> -->
