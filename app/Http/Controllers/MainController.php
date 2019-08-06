@@ -886,11 +886,11 @@ class MainController extends Controller
 //        $user                   = $admin->getUserData();
 
 //        $data['recentPosts']    = $recentPosts;
-        $data['selectedPosts']  = $selectedPosts;
-        $data['serviceDesktop'] = $serviceForDesktop;
-        $data['serviceMobile']  = $serviceForMobile;
-        $data['instagram']      = $insta;
-        $data['birthday']       = $birthday;
+        $data['selectedPosts']  = json_encode($selectedPosts);
+        $data['serviceDesktop'] = json_encode($serviceForDesktop);
+        $data['serviceMobile']  = json_encode($serviceForMobile);
+        $data['instagram']      = json_encode($insta);
+        $data['birthday']       = json_encode($birthday);
 //        $data['hashtags']       = $hashtags;
 //        $data['user']           = $user;
 
