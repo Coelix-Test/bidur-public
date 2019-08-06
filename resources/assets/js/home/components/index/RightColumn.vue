@@ -1,25 +1,20 @@
 <template>
   <div class="right-column">
-    <article v-if="birthdayPost && birthdayPost.visible" v-in-viewport.once class="birthdayPost">
-      <template>
-        <!-- <confetti-svg class="confetti"></confetti-svg> -->
-        <!-- <img class="conftetti" src="img/happyBdayConfetti.svg" alt=""> -->
-        <img class="hat" src="img/hat2.svg" alt="">
-        <img class="gifts" src="img/GIFTBOX2.svg" alt="">
-
-        <type-writer class="h2" :text="birthdayPost.text"></type-writer>
-        <div class="bdayInner">
-          <div class="overlay">
-            <confetti-svg class="confetti"></confetti-svg>
-          </div>
-          <img :src="birthdayPost.img" alt="">
+    <article v-if="birthsday.visible" v-in-viewport.once class="birthdayPost">
+      <img class="hat" src="img/hat2.svg" alt="">
+      <img class="gifts" src="img/GIFTBOX2.svg" alt="">
+      <type-writer class="h2" :text="birthsday.text"></type-writer>
+      <div class="bdayInner">
+        <div class="overlay">
+          <confetti-svg class="confetti"></confetti-svg>
         </div>
-      </template>
+        <img :src="birthsday.img" alt="">
+      </div>
     </article>
     <ul v-in-viewport.once v-if="posts" class="posts">
       <li v-for="post in posts">
         <div class="background-square"></div>
-        <router-link class="post" :to="'/post/'+post.id">
+        <router-link class="post" :to="'/post/' + post.id">
           <div class="overlay"></div>
 
           <img :src="post.img" alt="">
@@ -41,52 +36,17 @@ import ConfettiSvg from './ConfettiFallSvg.vue';
 import TypeWriter from './../common/TypeWriter.vue';
 
 export default {
-  props : {
-    data : {
-      requred: true,
-    }
-  },
   components: {
     ConfettiSvg,
     TypeWriter
   },
-  data() {
-    return {
-      posts : this.data,
-      birthdayPost : null
+  computed: {
+    birthsday() {
+      return this.$store.getters['main-page/birthsday'];
+    },
+    posts() {
+      return this.$store.getters['main-page/selectedPosts'].map((n, i) => i > 1);
     }
-  },
-  created() {
-    axios
-      .post('/getMainBday')
-        .then(res => {
-          this.birthdayPost = res.data;
-          this.$root.fuck_this_shit = res.data.visible;
-        }).catch(error => {
-          // console.log('No birthday post!');
-          // TODO: put ads instead of birthday post
-          document.querySelector('.birthdayPost').style.backgroundColor = '#eee';
-        });
-  },
-  watch : {
-    birthdayPost : function() {
-      // let i = 0;
-      // let firstPostTitle = this.birthdayPost.text;
-      // let speed = 50;
-      // document.getElementsByClassName('typewriter')[0].innerHTML = '';
-      // function typeWriter() {
-      //
-      //   if (i < firstPostTitle.length) {
-      //     document.getElementsByClassName('typewriter')[0].innerHTML += firstPostTitle.charAt(i);
-      //     i++;
-      //     setTimeout(typeWriter, speed);
-      //   }
-      // };
-      // typeWriter();
-    }
-  },
-  mounted() {
-
   }
 }
 </script>

@@ -1,10 +1,13 @@
 <template>
   <div class="home">
-    <right-column v-if="rightPosts.length" :data="rightPosts" />
-    <left-column v-if="leftPosts.length" :data="leftPosts" />
-    <right-column-bot />
-    <left-column-bot />
-    <recent-posts-mobile v-if="windowWidth < 768" />
+    <template v-if="$store.getters['main-page/loaded']">
+      <right-column/>
+      <left-column/>
+      <right-column-bot />
+      <left-column-bot />
+    </template>
+
+    <recent-posts-mobile v-if="$env.MOBILE" />
   </div>
 </template>
 
@@ -18,37 +21,24 @@ import RecentPostsMobile from './../components/index/RecentPostsMobile.vue';
 export default {
   data() {
     return  {
-      getAllPosts: null,
-      postRandomIds: [],
-      randomPosts: [],
-      randomPost: '',
-      leftPosts: [],
-      rightPosts: [],
-      latestPosts: [],
-      windowWidth: document.documentElement.clientWidth
+
     }
   },
-  methods : {
+  methods: {
 
   },
   created() {
-    //get pinned posts
-    axios
-      .post('/getSelectedPosts')
-      .then(response => {
-        let postData = response.data;
-        this.leftPosts = Object.entries(postData).slice(0,2).map(entry => entry[1]);
-        this.rightPosts = Object.entries(postData).slice(2,6).map(entry => entry[1]);
-      });
-
- },
- components : {
-   RightColumn,
-   LeftColumn,
-   LeftColumnBot,
-   RightColumnBot,
-   RecentPostsMobile
- }
+    if(!this.$store.getters['main-page/loaded']) {
+      this.$store.dispatch('main-page/updateData');
+    }
+  },
+  components: {
+    RightColumn,
+    LeftColumn,
+    LeftColumnBot,
+    RightColumnBot,
+    RecentPostsMobile
+  }
 }
 </script>
 
