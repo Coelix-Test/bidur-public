@@ -61,6 +61,7 @@ export default {
       .post('/getMainBday')
         .then(res => {
           this.birthdayPost = res.data;
+          this.$root.fuck_this_shit = res.data.visible;
         }).catch(error => {
           // console.log('No birthday post!');
           // TODO: put ads instead of birthday post

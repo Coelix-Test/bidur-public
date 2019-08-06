@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       currentPageUrl : null,
+      fuck_this_shit: false,
     }
   },
   components: {

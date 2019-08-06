@@ -1,6 +1,6 @@
 <template>
-  <div class="left-column-bot">
 
+  <div class="left-column-bot" :class="{ 'get-down': !$root.fuck_this_shit }">
     <div v-if="instagramData" class="instagram-post">
       <div class="heading">
         <div class="insta-logo">
@@ -64,6 +64,9 @@ export default {
     border-radius: 20px;
     box-shadow: 0 0 16px rgba(0,0,0,0.2);
     transform: translateY(-64px);
+    &.get-down {
+      transform: translateY(0);
+    }
   }
   .left-column-bot.in-viewport {
     transform: translateY(0);
