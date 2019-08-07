@@ -2,11 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
+import VueLazyload from 'vue-lazyload'
 // import TimeAgo from 'javascript-time-ago'
 // import en from 'javascript-time-ago/locale/en'
 import moment from 'moment'
 
-Vue.use(require('vue-script2'))
+Vue.use(require('vue-script2'));
+Vue.use(VueLazyload);
 
 window.makeItRain = async function(n, append) {
 
@@ -42,7 +44,7 @@ window.env = require('./env').default;
 Vue.directive('in-viewport', InViewportDirective);
 Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 
-require('./bootstrap');
+window.axios = require('axios');
 moment.locale('he');
 // TimeAgo.addLocale(en);
 // const timeAgo = new TimeAgo('en-US');

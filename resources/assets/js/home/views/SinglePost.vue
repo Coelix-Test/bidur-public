@@ -53,13 +53,13 @@
             <div v-if="post.type == 'content'" v-html="post.value"></div>
 
             <div v-if="post.type == 'image'">
-              <img :src="post.value" alt="">
+              <img v-lazy="post.value" alt="">
               <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
             </div>
 
 
             <div ref="poll" v-if="post.type == 'survey'" class="poll">
-              <img :src="post.img" alt="">
+              <img v-lazy="post.img" alt="">
               <div class="img-caption">{{post.description}}</div>
               <vue-poll class="vue-poll" v-bind="post.value" @addvote="addVote($event, post.id)"/>
             </div>
@@ -85,7 +85,7 @@
             </template> -->
 
             <div v-if="post.type == 'imageWithText'">
-              <img v-if="post.url" :class="post.imagePosition" :src="post.url" :alt="post.title">
+              <img v-if="post.url" :class="post.imagePosition" v-lazy="post.url" :alt="post.title">
               <h2 v-if="post.title !== 'null'">{{ post.title }}</h2>
               <div v-if="post.content" v-html="post.content"></div>
             </div>
@@ -141,10 +141,8 @@
         navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
       >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
-          <router-link :to="'/post/'+post.id+'/'">
-
-
-            <img :src="post.img" alt="">
+          <router-link :to="'/post/'+post.id + '/'">
+            <img v-lazy="post.img">
             <div class="related-post-content">
               <h3>{{ post.title }}</h3>
               <p class="related-post-meta">
