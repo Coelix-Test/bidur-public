@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper posts-tile-section">
     <div class="section-content">
-      <div v-for="(post, index) in selectedPosts" :key="index">
+      <div v-for="(post, index) in values" :key="index">
         <p class="heading">Post {{index + 1}}</p>
         <searchable-input
           class="searchable-input"
