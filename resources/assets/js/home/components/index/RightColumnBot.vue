@@ -4,7 +4,7 @@
     <surveys v-if="!$env.MOBILE"/>
     <!-- <surveys mobile/> -->
 
-    <div class="latest-posts" v-if="$env.MOBILE" >
+    <div class="latest-posts" v-if="!$env.MOBILE" >
       <h2>חדשות נוספות</h2>
 
       <carousel
