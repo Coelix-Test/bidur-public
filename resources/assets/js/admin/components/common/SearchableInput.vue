@@ -14,26 +14,26 @@
 <script>
 export default {
     props: {
-        options: {
-            type: Array
-        },
-        deletable: {
-            type: Boolean,
-            default: true
-        },
-        placeholder: {
-            type: String,
-            default: ''
-        },
-        label: {
-          default: 'name'
-        },
-        val: {
-          default: 'id',
-        },
-        value: {
+      options: {
+        type: Array
+      },
+      deletable: {
+        type: Boolean,
+        default: true
+      },
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      label: {
+        default: 'name'
+      },
+      val: {
+        default: 'id',
+      },
+      value: {
 
-        }
+      }
     },
     data() {
       //console.log(this.value);

@@ -1,11 +1,10 @@
-
 <template>
   <div class="right-column-bot">
 
-    <surveys v-if="this.$env.mobile == false"/>
+    <surveys v-if="!$env.MOBILE"/>
     <!-- <surveys mobile/> -->
 
-    <div class="latest-posts" v-if="windowWidth > 768" >
+    <div class="latest-posts" v-if="$env.MOBILE" >
       <h2>חדשות נוספות</h2>
 
       <carousel
@@ -27,7 +26,7 @@
                 <h3>{{ post.title }}</h3>
               <p>
                 <span class="author">{{post.author}}</span>
-                <span class="post-date">{{ new Date(post.time*1000) | formatDate }}</span>
+                <span class="post-date">{{ new Date(post.time * 1000) | formatDate }}</span>
               </p>
             </div>
           </router-link>
@@ -42,20 +41,13 @@ import { Carousel, Slide } from 'vue-carousel';
 import Surveys from './Surveys';
 
 export default {
-  props : {
-    data : {
-      requred: true,
-    },
-  },
   data() {
     return {
       posts: [],
-      windowWidth : document.documentElement.clientWidth,
     }
   },
   created() {
     axios.post('/getRecentPosts').then(res => {
-      // console.log(res.data);
       this.posts = res.data;
     });
   },

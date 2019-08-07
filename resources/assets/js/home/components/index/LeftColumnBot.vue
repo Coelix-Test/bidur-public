@@ -1,7 +1,7 @@
 <template>
 
-  <div class="left-column-bot" :class="{ 'get-down': !$root.fuck_this_shit }">
-    <div v-if="instagramData" class="instagram-post">
+  <div class="left-column-bot" :class="{ 'get-down': !$store.getters['main-page/birthday'].visible }">
+    <div class="instagram-post">
       <div class="heading">
         <div class="insta-logo">
           <img src="img/insta-full-logo.svg" alt="">
@@ -10,7 +10,7 @@
       </div>
 
         <a href="https://www.instagram.com/israel_bidur/" class="insta-image-link">
-          <img :src="instagramData.img" alt="">
+          <img :src="data.img" alt="">
         </a>
         <div class="insta-features">
             <div class="right">
@@ -30,27 +30,11 @@
 
 <script>
 export default {
-  props : {
-    data : {
-
+  computed: {
+    data() {
+      return this.$store.getters['main-page/instagram'];
     }
   },
-  data() {
-    return {
-      posts : [],
-      instagramData : null,
-    }
-  },
-  created() {
-    axios
-      .post('/getMainInsta')
-        .then(res => {
-          this.instagramData = res.data;
-        });
-  },
-  mounted() {
-
-  }
 }
 </script>
 
