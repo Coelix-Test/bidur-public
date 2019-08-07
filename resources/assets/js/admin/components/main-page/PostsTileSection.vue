@@ -77,10 +77,10 @@ export default {
         fourthPostId: this.values[3].id,
         fifthPostId: this.values[4].id,
         sixthPostId: this.values[5].id,
-        seventhPostId: this.additional_values[0].id,
-        eighthPostId: this.additional_values[1].id,
-        ninthPostId: this.additional_values[2].id,
-        tenthPostId: this.additional_values[3].id,
+        seventhPostId: this.additional_values[0] ? this.additional_values[0].id : null,
+        eighthPostId: this.additional_values[1] ? this.additional_values[1].id : null,
+        ninthPostId: this.additional_values[2] ? this.additional_values[2].id : null,
+        tenthPostId: this.additional_values[3] ? this.additional_values[3].id : null,
       }).then(response => {
         alert('נשמר!');
       });
