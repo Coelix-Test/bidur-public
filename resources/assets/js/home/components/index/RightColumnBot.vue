@@ -20,7 +20,7 @@
         :perPageCustom="[[320, 1], [768, 2], [769, 3]]"
       >
         <slide v-for="post in posts" class="latest-post-item" :key="post.id">
-          <router-link :to="'/post/'+post.id">
+          <router-link :to="'/post/' + post.id">
             <img :src="post.img" alt="">
             <div class="content">
                 <h3>{{ post.title }}</h3>
