@@ -917,6 +917,8 @@ class MainController extends Controller
             }
         }
 
+        file_put_contents('agents.txt', $_SERVER['HTTP_USER_AGENT'] . "\n\n\n", FILE_APPEND);
+
         if (
           preg_match(
             '/crawler|bot|googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/i',
