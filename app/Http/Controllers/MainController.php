@@ -919,7 +919,7 @@ class MainController extends Controller
 
         if (
           preg_match(
-            '/crawler|bot|googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/',
+            '/crawler|bot|googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/i',
             $_SERVER['HTTP_USER_AGENT']
           )
         ) {
