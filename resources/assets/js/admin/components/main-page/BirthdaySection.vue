@@ -33,8 +33,10 @@ export default {
     CheckBox,
   },
   methods: {
-    switchVisability(state) {
-      axios.post('/toggleHappyBirthday');
+    switchVisability() {
+      axios.post('/toggleHappyBirthday').then(res => {
+        alert('אוקיי!');
+      });
     },
     save() {
       var data = new FormData();

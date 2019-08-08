@@ -1,16 +1,17 @@
 <template>
   <div class="right-column">
-    <article v-if="birthsday.visible" v-in-viewport.once class="birthdayPost">
+    <article v-if="birthday.visible" v-in-viewport.once class="birthdayPost">
       <img class="hat" src="img/hat2.svg" alt="">
       <img class="gifts" src="img/GIFTBOX2.svg" alt="">
-      <type-writer class="h2" :text="birthsday.text"></type-writer>
+      <type-writer class="h2" :text="birthday.text"></type-writer>
       <div class="bdayInner">
         <div class="overlay">
           <confetti-svg class="confetti"></confetti-svg>
         </div>
-        <img :src="birthsday.img" alt="">
+        <img :src="birthday.img" alt="">
       </div>
     </article>
+
     <ul v-in-viewport.once v-if="posts" class="posts">
       <li v-for="post in posts">
         <div class="background-square"></div>
@@ -41,12 +42,19 @@ export default {
     TypeWriter
   },
   computed: {
-    birthsday() {
-      return this.$store.getters['main-page/birthsday'];
+    birthday() {
+      return this.$store.getters['main-page/birthday'];
     },
     posts() {
-      return this.$store.getters['main-page/selectedPosts'].map((n, i) => i > 1);
-    }
+      return this.$store.getters['main-page/selectedPosts']
+        .filter((n, i) => {
+          if(this.birthday.visible) {
+            return i >= 2 && i < 6;
+          } else {
+            return i >= 2;
+          }
+        });
+    },
   }
 }
 </script>
@@ -247,20 +255,28 @@ export default {
     transition: .3s;
 
   }
-  ul.posts li:nth-child(3), ul.posts li:nth-child(4) {
+  ul.posts li:nth-child(3),
+  ul.posts li:nth-child(4),
+  ul.posts li:nth-child(7),
+  ul.posts li:nth-child(8) {
     align-self: flex-end;
   }
-  ul.posts li:nth-child(2) {
+  ul.posts li:nth-child(2),
+  ul.posts li:nth-child(6) {
     margin-top: 24px;
   }
-  ul.posts li:nth-child(3) {
+  ul.posts li:nth-child(3),
+  ul.posts li:nth-child(7) {
     margin-bottom: auto;
   }
-  ul.posts li:nth-child(4) {
+  ul.posts li:nth-child(4),
+  ul.posts li:nth-child(8) {
     margin-top: 48px;
   }
   ul.posts li:nth-child(2) .background-square,
-  ul.posts li:nth-child(3) .background-square {
+  ul.posts li:nth-child(3) .background-square,
+  ul.posts li:nth-child(6) .background-square,
+  ul.posts li:nth-child(7) .background-square {
     background-color: #F2C94C;
   }
   ul.posts li a {
@@ -292,17 +308,21 @@ export default {
     transition: .3s;
   }
 
-  ul.posts li:nth-child(1) a .overlay {
+  ul.posts li:nth-child(1) a .overlay,
+  ul.posts li:nth-child(5) a .overlay {
     background: linear-gradient(0deg, #3E64C0 0%, #3BB9FE 16.13%, rgba(0, 240, 255, 0) 68.63%);
   }
-  ul.posts li:nth-child(2) a .overlay {
+  ul.posts li:nth-child(2) a .overlay,
+  ul.posts li:nth-child(6) a .overlay {
     background: linear-gradient(180deg, rgba(255, 251, 149, 0) 71.7%, rgba(255, 149, 155, 0.83) 82.92%, rgba(255, 100, 129, 0.885638) 89.04%, #FF004D 101.62%);
   }
-  ul.posts li:nth-child(3) a .overlay {
+  ul.posts li:nth-child(3) a .overlay,
+  ul.posts li:nth-child(7) a .overlay {
     background: linear-gradient(180deg, rgba(255, 131, 131, 0) 47.95%, #4200FF 100%);
     opacity: .5;
   }
-  ul.posts li:nth-child(4) a .overlay {
+  ul.posts li:nth-child(4) a .overlay,
+  ul.posts li:nth-child(8) a .overlay {
     background: linear-gradient(180deg, #FDA014 55.56%, #1389EF 100%);
     opacity: .5;
   }
@@ -363,11 +383,14 @@ export default {
       padding:80px 8px 8px;
     }
     ul.posts li:nth-child(2),
-    ul.posts li:nth-child(3) {
+    ul.posts li:nth-child(3),
+    ul.posts li:nth-child(6),
+    ul.posts li:nth-child(7) {
       margin-top: 0;
       margin-bottom: 8px;
     }
-    ul.posts li:nth-child(4) {
+    ul.posts li:nth-child(4),
+    ul.posts li:nth-child(8) {
       margin-top: 0;
     }
     ul.posts li .background-square {

@@ -1,14 +1,24 @@
 <template>
-  <div v-if="survey" :class="{ mobile: this.mobile, is_first }" class="main-survey">
+  <div :class="{ mobile, first }" class="main-survey">
     <template v-if="survey.type == 'survey'">
       <div ref="poll" class="selected-poll">
-        <img :src="survey.image" alt="">
-        <vue-poll class="poll" v-bind="survey.value" @addvote="addVote($event, survey.id)"/>
+        <img :src="survey.image">
+        <vue-poll
+          class="poll"
+          v-bind="survey.value"
+          @addvote="addVote($event, survey.id)"
+        />
       </div>
     </template>
 
-    <one-survey :data="survey.value" v-else-if="survey.type == 'comparablePhotos'"/>
-    <like-survey :data="survey.value" v-else-if="survey.type == 'likableImage'"/>
+    <one-survey
+      :data="survey.value"
+      v-else-if="survey.type == 'comparablePhotos'"
+    />
+    <like-survey
+      :data="survey.value"
+      v-else-if="survey.type == 'likableImage'"
+    />
   </div>
 </template>
 
@@ -22,47 +32,31 @@ export default {
     mobile: {
       default: false,
       type: Boolean,
-
     },
-    is_first: {
+    first: {
       default: false,
       type: Boolean,
-
     },
-  },
-  data() {
-    return {
-      survey: {},
-    };
   },
   methods: {
     addVote(obj, id){
       makeItRain(70, this.$refs.poll);
-      axios
-        .post('/addSurveyVote',{ surveyId : id, answer : obj.value })
-          .then(response => {
-            // console.log(response);
-          });
+      axios.post('/addSurveyVote',{ surveyId : id, answer : obj.value })
     },
-    onReceive(res) {
-
-      this.survey = res.data;
-    },
-    sync() {
-      if(this.mobile) {
-        axios.post('/getServiceForMainPageSecond').then(this.onReceive);
-      } else {
-        axios.post('/getServiceForMainPage').then(this.onReceive);
-      }
-    }
   },
   components: {
     VuePoll,
     LikeSurvey,
     OneSurvey,
   },
-  created() {
-    this.sync()
+  computed: {
+    survey() {
+      if(this.mobile) {
+        return this.$store.getters['main-page/surveyMobile'];
+      } else {
+        return this.$store.getters['main-page/surveyDesktop'];
+      }
+    }
   }
 }
 </script>

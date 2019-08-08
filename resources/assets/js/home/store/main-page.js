@@ -17,6 +17,7 @@ export default {
       return axios
         .post('/getMainPageOptimized')
         .then(res => {
+          res.data.selectedPosts = Object.values(res.data.selectedPosts);
           context.commit('saveData', res.data);
         })
         .catch(err => {
@@ -28,7 +29,7 @@ export default {
     }
   },
   getters: {
-    birthsday(state) {
+    birthday(state) {
       return state.data.birthday;
     },
     instagram(state) {
@@ -38,10 +39,10 @@ export default {
       return state.data.selectedPosts;
     },
     surveyMobile(state) {
-      return state.data.serviceDesktop;
+      return state.data.serviceMobile;
     },
     surveyDesktop(state) {
-      return state.data.serviceMobile;
+      return state.data.serviceDesktop;
     },
     loaded(state) {
       return state.loaded;

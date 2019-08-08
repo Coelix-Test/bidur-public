@@ -21,7 +21,9 @@ Route::get('/test2', 'AdminController@addAllRandoms');
 
 
 //user routes
-Route::get('/', 'PostController@getMainPage');
+Route::get('/', function () {
+  readfile('../resources/views/app.html');
+});
 Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
 
 Auth::routes();
