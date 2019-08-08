@@ -157,8 +157,12 @@ class MainController extends Controller
         return $finalAllPosts;
     }
 
-    public function showSinglePost($unique_string){
-        $post = Post::where('share_string', $unique_string)->first();
+    public function showSinglePost($id){
+        try{
+            $post = Post::findOrFail($id);
+        }catch (\Exception $e){
+            return ['success' => false, 'message' => 'no post found'];//not found
+        }
         $fullPost['mainTitle'] = $post->metaTitle;
         $titles = $post->getAllTitles;
         if (isset($titles[0])){
@@ -302,6 +306,7 @@ class MainController extends Controller
         }else{
             $fullPost['is_favourite'] = false;
         }
+        $fullPost['share_string'] = $post->share_string;
 
 
         return json_encode(['post' => $fullPost, 'nextPost' => $nextPostId, 'previousPost' => $previousPostId]);
@@ -477,7 +482,6 @@ class MainController extends Controller
             $allInfo['rating'] = '';
         }
         $allInfo['id'] = $post->id;
-        $allInfo['uniqueString'] = $post->share_string;
 
         return $allInfo;
     }
@@ -892,6 +896,28 @@ class MainController extends Controller
 //        $data['user']           = $user;
 
         return json_encode($data);
+    }
+
+    public function getPostBlade($share_string){
+        $post = Post::where('share_string', $share_string)->first();
+        $fullPost = $this->showSinglePost($post->id);
+
+        $fullPost = json_decode($fullPost, true);
+        foreach ($fullPost['post']['sections'] as $key => $section) {
+            if ($section['type'] == 'content'){
+                $fullPost['post']['sections'][$key]['value'] = strip_tags(html_entity_decode($section['value']));
+            }
+            if ($section['type'] == 'video'){
+                if (strpos($section['value'], '?v=') != false){
+                    $str = substr(substr($section['value'], strpos($section['value'], '?v='), '100'), '3', 100);
+                }else{
+                    $str = substr(substr($section['value'], strpos($section['value'], '.be/'), '100'), '4', 100);
+                }
+                $fullPost['post']['sections'][$key]['value'] = $str;
+            }
+        }
+//        dd($fullPost);
+        return view('postForShare', ['post' => $fullPost]);
     }
 
     // ************************ TRASH BIN *******************************//
