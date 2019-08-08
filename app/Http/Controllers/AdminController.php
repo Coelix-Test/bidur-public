@@ -214,12 +214,18 @@ class AdminController extends Controller
         //parsing js timestamp
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
+        $random = substr(hash('md5', random_int(0, 100000)),'1', '8');
+        $samePost = Post::where('share_string', $random)->first();
+        if (!empty($samePost)){
+            return json_encode(['success' => false, 'message' => 'rty again']);
+        }
 
         $post = Post::create([
             'author' => $author,
             'hot' => "true",
             'metaTitle' => $metaTitle,
             'created_at' => $date,
+            'share_string' => $random,
         ]);
         if (isset($hashtags)){
             foreach ($hashtags as $hashtag) {
@@ -1134,10 +1140,10 @@ class AdminController extends Controller
         $sixthPostId = $request->get(   'sixthPostId');
         // truncate MEANS "TO EMPTY"
 
-        $seventhPostId = $request->get(   'seventhPostId');
-        $eighthPostId = $request->get(   'eighthPostId');
-        $ninthPostId = $request->get(   'ninthPostId');
-        $tenthPostId = $request->get(   'tenthPostId');
+        $seventhPostId = $request->get('seventhPostId');
+        $eighthPostId = $request->get('eighthPostId');
+        $ninthPostId = $request->get('ninthPostId');
+        $tenthPostId = $request->get('tenthPostId');
         MainSection::truncate();
         if (isset($secondPostId) && isset($eighthPostId) && isset($ninthPostId) && isset($tenthPostId)){
             MainSection::create([
@@ -1705,7 +1711,20 @@ class AdminController extends Controller
         $data['rightImage'] = $section->urlRight;
         return json_encode($data);
     }
-    
 
-
+    public function addAllRandoms(){
+        $posts = Post::all();
+        foreach ($posts as $post) {
+            $flag = false;
+            while ($flag == false){
+                $random = substr(hash('md5', random_int(0, 100000)),'1', '8');
+                $samePost = Post::where('share_string', $random)->first();
+                if (empty($samePost)){
+                    $flag = true;
+                }
+            }
+            $post->share_string = $random;
+            $post->save();
+        }
+    }
 }

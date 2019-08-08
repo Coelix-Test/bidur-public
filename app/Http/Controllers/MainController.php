@@ -157,12 +157,8 @@ class MainController extends Controller
         return $finalAllPosts;
     }
 
-    public function showSinglePost($id){
-        try{
-            $post = Post::findOrFail($id);
-        }catch (\Exception $e){
-            return ['success' => false, 'message' => 'no post found'];//not found
-        }
+    public function showSinglePost($unique_string){
+        $post = Post::where('share_string', $unique_string)->first();
         $fullPost['mainTitle'] = $post->metaTitle;
         $titles = $post->getAllTitles;
         if (isset($titles[0])){

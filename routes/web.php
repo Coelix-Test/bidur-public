@@ -15,7 +15,7 @@
 Route::get('/test', function (){
     return view('test');
 });
-Route::get('/test2', 'AdminController@testExel');
+Route::get('/test2', 'AdminController@addAllRandoms');
 //Route::post('/test/{id}', 'MainController@getRecentPosts')->name('test');
 
 
@@ -45,7 +45,7 @@ Route::post('/getMainInsta', 'InstaController@show')->name('get-main-instagram')
 
 Route::post('/getInfoOnPostForMain', 'MainController@getInfoOnPostForMain'); //1
 Route::post('/getAllPosts', 'MainController@getAllPostsWithAllFilters'); //2
-Route::post('/post/{id}', 'MainController@showSinglePost')->name('get-post-contents'); //3
+Route::post('/share/{unique_string}', 'MainController@showSinglePost')->name('get-post-contents'); //3
 Route::post('/getAllPostsByHashtag', 'MainController@getAllPostsByHashtag')->name('get-posts-by-hashtag');
 Route::post('/getAllRelevantPosts', 'MainController@getAllRelevantPosts');
 Route::post('/getSelectedPosts', 'MainController@getSelectedPosts');
