@@ -8,16 +8,18 @@
     <title>Document</title>
 </head>
 <body>
-
-<h1>{{$post['post']['mainTitle']}}</h1>
-@foreach($post['post']['sections'] as $section)
-    @if($section['type'] == 'content')
-        <p>{{$section['value']}}</p>
+<article>
+    <h1>{{$post['post']['mainTitle']}}</h1>
+    @foreach($post['post']['sections'] as $section)
+        @if($section['type'] == 'content')
+            <p>{{$section['value']}}</p>
         @elseif($section['type'] == 'image')
-        <img src="{{$section['value']}}" alt="image">
+            <img src="{{$section['value']}}" alt="{{$section['description']}}">
         @elseif($section['type'] == 'video')
-        <iframe src="https://www.youtube.com/embed/{{$section['value']}}"></iframe>
-    @endif
-@endforeach
+            <iframe src="https://www.youtube.com/embed/{{$section['value']}}"></iframe>
+        @endif
+    @endforeach
+</article>
+
 </body>
 </html>
