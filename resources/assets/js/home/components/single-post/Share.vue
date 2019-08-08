@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     copy() {
-      navigator.clipboard.writeText(this.link);
+      navigator.clipboard.writeText(this.url);
       app.$modal.show(Copied, {}, {
         adaptive: true,
         width: 300,
