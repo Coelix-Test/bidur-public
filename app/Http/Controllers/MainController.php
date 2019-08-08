@@ -917,10 +917,14 @@ class MainController extends Controller
             }
         }
 
-        if (preg_match('/googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/',
-            $_SERVER['HTTP_USER_AGENT'])){
-            return view('postForShare', ['post' => $fullPost]);
-        }else{
+        if (
+          preg_match(
+            '/googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/',
+            $_SERVER['HTTP_USER_AGENT']
+          )
+        ) {
+            return view('postForShare', [ 'post' => $fullPost, 'id' => $post->id ]);
+        } else {
             return redirect(\URL::to('/#/post/'.$post->id));
         }
     }

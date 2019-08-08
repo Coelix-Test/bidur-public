@@ -1,26 +1,26 @@
 <template>
   <div class="wrapper selection-component-container">
-      <div class="selection-title">
-          <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
+    <div class="selection-title">
+      <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
+    </div>
+    <div class="images-row">
+      <div class="image-wrap">
+        <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
+        <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+          :value="rightDescription"
+          @input="$emit('update:rightDescription', $event.target.value)">
       </div>
-      <div class="images-row">
-          <div class="image-wrap">
-            <image-input class="image" :value="image1" @update:value="updateImage1"></image-input>
-            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
-              :value="rightDescription"
-              @input="$emit('update:rightDescription', $event.target.value)">
-          </div>
-          <div class="delimiter"></div>
-          <div class="image-wrap">
-            <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
-            <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
-              :value="leftDescription"
-              @input="$emit('update:leftDescription', $event.target.value)">
-          </div>
+      <div class="delimiter"></div>
+      <div class="image-wrap">
+        <image-input class="image" :value="image2" @update:value="updateImage2"></image-input>
+        <input type="text" class="theme-input-text w-100 image-caption" placeholder="תיאור"
+          :value="leftDescription"
+          @input="$emit('update:leftDescription', $event.target.value)">
       </div>
-      <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
+    </div>
+    <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
 
-      <move-section @move="$emit('move', $event)"/>
+    <move-section v-if="moveble" @move="$emit('move', $event)"/>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ import ImageInput from './../common/ImageInput.vue';
 import MoveSection from './../common/MoveSection';
 
 export default {
-    data: function(){
+    data(){
         return {};
     },
     components: {
@@ -37,6 +37,10 @@ export default {
         MoveSection
     },
     props: {
+      moveble: {
+        default: true,
+        type: Boolean,
+      },
         deletable: {
           default: true,
           type: Boolean,

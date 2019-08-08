@@ -17,7 +17,7 @@
         </div>
       </div>
       <div v-if="deletable" class="delete-self delete-btn" @click="$emit('deleteSection', index)"></div>
-      <move-section @move="$emit('move', $event)"/>
+      <move-section v-if="moveble" @move="$emit('move', $event)"/>
 
   </div>
 </template>
@@ -35,6 +35,10 @@ export default {
         MoveSection
     },
     props: {
+      moveble: {
+        default: true,
+        type: Boolean,
+      },
         deletable: {
           default: true,
           type: Boolean,

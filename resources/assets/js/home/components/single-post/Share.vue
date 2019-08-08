@@ -23,9 +23,24 @@
           <input readonly type="text" :value="url">
         </div>
         <div class="shareLinks">
-          <a :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`" target="_blank"><img src="/img/icons/social-facebook-colored.svg" alt=""></a>
-          <a :href="`whatsapp://send?text=${encodeURIComponent(url)}`" target="_blank"><img src="/img/whatsApp.svg" alt=""></a>
-          <a :href="`https://telegram.me/share/url?url=${encodeURIComponent(url)}&text=בדוק את זה!`" target="_blank"><img src="/img/icons/social-telegram-colored.svg" alt=""></a>
+          <a
+            :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`"
+            target="_blank"
+          >
+            <img src="/img/icons/social-facebook-colored.svg">
+          </a>
+          <a
+            :href="`whatsapp://send?text=${encodeURIComponent(url)}`"
+            target="_blank"
+          >
+            <img src="/img/whatsApp.svg">
+          </a>
+          <a
+            :href="`https://telegram.me/share/url?url=${encodeURIComponent(url)}&text=בדוק את זה!`"
+            target="_blank"
+          >
+            <img src="/img/icons/social-telegram-colored.svg">
+          </a>
         </div>
       </div>
     </transition>
@@ -37,6 +52,9 @@ import Copied from './../modals/Copied.vue'
 import ClickOutside from 'vue-click-outside'
 
 export default {
+  props: {
+    link: {}
+  },
   data() {
     return {
       opened: false,
@@ -47,7 +65,7 @@ export default {
   },
   methods: {
     copy() {
-      navigator.clipboard.writeText(this.url);
+      navigator.clipboard.writeText(this.link);
       app.$modal.show(Copied, {}, {
         adaptive: true,
         width: 300,
@@ -58,7 +76,7 @@ export default {
   },
   computed: {
     url() {
-      return window.location;
+      return this.$env.URL + '/share/' + this.link;
     }
   }
 }

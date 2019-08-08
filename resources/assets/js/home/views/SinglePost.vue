@@ -21,7 +21,8 @@
             <img src="/img/icons/star-gradient.png" alt="">
             הוסף למועדפים
           </button>
-          <share v-if="!errorMessage" />
+
+          <share v-if="!errorMessage" :link="post.data.post.share_string"/>
         </div>
 
         <template v-if="errorMessage">
