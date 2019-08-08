@@ -477,6 +477,7 @@ class MainController extends Controller
             $allInfo['rating'] = '';
         }
         $allInfo['id'] = $post->id;
+        $allInfo['uniqueString'] = $post->share_string;
 
         return $allInfo;
     }
