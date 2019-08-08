@@ -916,8 +916,13 @@ class MainController extends Controller
                 $fullPost['post']['sections'][$key]['value'] = $str;
             }
         }
-//        dd($fullPost);
-        return view('postForShare', ['post' => $fullPost]);
+
+        if (preg_match('/googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator/',
+            $_SERVER['HTTP_USER_AGENT'])){
+            return view('postForShare', ['post' => $fullPost]);
+        }else{
+            return redirect(\URL::to('/#/post/'.$post->id));
+        }
     }
 
     // ************************ TRASH BIN *******************************//
