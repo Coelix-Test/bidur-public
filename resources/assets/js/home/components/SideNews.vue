@@ -41,8 +41,7 @@ export default {
       axios.post('/getRecentPosts', {postId: this.$route.params.id}).then(res => {
         this.data = res.data;
       });
-    }
-    else{
+    } else{
       axios.post('/getRecentPosts').then(res => {
         this.data = res.data;
       });
