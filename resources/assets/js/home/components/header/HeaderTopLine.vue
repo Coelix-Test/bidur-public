@@ -133,14 +133,6 @@
           </router-link>
 
       </div>
-      <!-- <div v-if="this.$env.mobile" class="fixedMobileAd">
-        <InFeedAdsense
-          data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="3961762360"
-          data-ad-format="auto"
-
-        />
-      </div> -->
   </div><!-- top row end -->
 </template>
 
