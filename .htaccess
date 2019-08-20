@@ -1,4 +1,4 @@
-#<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
 RewriteEngine On
 
@@ -25,13 +25,15 @@ RewriteRule ^ public/index.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^(\/admin)|(\/share)|(\/api)$
+RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api$
 RewriteRule ^(.*)$ public/app.html [L,NC]
 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ public/$1 [L,NC]
 
 # RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteCond %{REQUEST_FILENAME} !-f
 # RewriteRule ^(.*)$ public/index.php [L,NC]
 
-#</IfModule>
+# </IfModule>
