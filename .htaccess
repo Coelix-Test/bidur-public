@@ -27,7 +27,7 @@ RewriteRule ^(.*)$ public/$1 [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api$
+RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api
 RewriteRule ^(.*)$ app.html [L,NC]
 
 # RewriteCond %{REQUEST_FILENAME} !-d
