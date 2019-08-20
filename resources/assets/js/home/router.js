@@ -53,7 +53,12 @@ const routes = [
     path: '/edit-profile',
     component: EditProfile,
     name: 'edit-profile',
-  }
+  },
+  {
+    path: '/view/post/:id',
+    component: SinglePost,
+    name: 'post-viewer',
+  },
 ];
 
 // routes.push(auth);

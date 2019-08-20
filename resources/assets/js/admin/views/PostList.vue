@@ -24,14 +24,14 @@
         <template v-for="(post, index) in filteredPosts">
           <div class="post" v-if="!isDeletedPost(post.post.id)" :key="post.post.id">
 
-            <h2>{{post.post.metaTitle}}</h2>
+            <h2>{{ post.post.metaTitle }}</h2>
             <div class="post-meta">
-              <span class="date">{{post.post.created_at | formatDate}}</span>
+              <span class="date">{{ post.post.created_at | formatDate }}</span>
               <span class="author">מאת {{post.post.author}}</span>
-              <span class="id">#{{post.post.id}}</span>
+              <span class="id">#{{ post.post.id }}</span>
             </div>
             <div class="actions">
-              <a :href="'.#/post/'+post.post.id" target="_blank">צפייה</a>
+              <a :href="'/view/post/' + post.post.id" target="_blank">צפייה</a>
               <!-- <button @click="editPost(post.post.id)">edit</button> -->
               <router-link :to="'/post/' + post.post.id">ערוך</router-link>
               <button v-if="post.is_in_main_section == null" @click.prevent="deletePost(post.post.id)">מחק כתבה</button>

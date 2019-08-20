@@ -257,6 +257,15 @@ export default {
       return axios
         .post('/api/post/' + id)
         .then(response => {
+
+          const res = response;
+          const data = res.data;
+
+          if(!data.visible && this.$route.name == 'post-viewer') {
+            this.$router.replace('/');
+            return;
+          }
+
           this.post = response;
           this.errorMessage = false;
           this.postId = id;

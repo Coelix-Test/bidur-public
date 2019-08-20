@@ -288,7 +288,7 @@ export default {
           });
 
           //send ajax
-          let url = '/createPost';
+          let url = '/api/createPost';
           let successMessage = 'Post was successfully added!';
           if(this.$route.params.id){
             url = '/api/editPostCreateAllSections';
@@ -297,19 +297,19 @@ export default {
             postData.append('publish', this.publish ? 1 : 0);
           }
           axios({
-                  method: 'post',
-                  url: url,
-                  data: postData,
-                  config: { headers: { 'Content-Type': 'multipart/form-data' }}
-              })
-              .then(response => {
-                  // console.log(response);
-                  this.$router.push('/');
-                  alert(successMessage);
-              })
-              .catch(error => {
-                alert('שגיאה, נראה שאחת התמונות לא הועלתה');
-              });
+            method: 'post',
+            url: url,
+            data: postData,
+            config: { headers: { 'Content-Type': 'multipart/form-data' }}
+          })
+          .then(response => {
+              // console.log(response);
+              this.$router.push('/');
+              alert(successMessage);
+          })
+          .catch(error => {
+            alert('שגיאה, נראה שאחת התמונות לא הועלתה');
+          });
       }
     },
     created() {
