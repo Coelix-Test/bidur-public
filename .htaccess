@@ -23,14 +23,12 @@ RewriteRule ^ public/index.php [L]
 # RewriteCond %{REQUEST_URI} !(^/admin)
 # RewriteRule ^(.*)$ public/index.php [L,NC]
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api$
-RewriteRule ^(.*)$ public/app.html [L,NC]
+RewriteRule ^(.*)$ public/$1 [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ public/$1 [L,NC]
+RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api$
+RewriteRule ^(.*)$ app.html [L,NC]
 
 # RewriteCond %{REQUEST_FILENAME} !-d
 # RewriteCond %{REQUEST_FILENAME} !-f
