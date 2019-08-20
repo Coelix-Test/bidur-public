@@ -49,7 +49,7 @@ export default {
   },
   mounted() {
     axios
-      .post('/showAllAdmins')
+      .post('/api/showAllAdmins')
         .then(response => {
           this.users = response.data;
           console.log(this.users);
@@ -58,7 +58,7 @@ export default {
   methods : {
     updateUser(id, name, email, phone) {
       axios
-        .post('/editAdmin', { userId : id, email : email, name : name , phone : phone})
+        .post('/api/editAdmin', { userId : id, email : email, name : name , phone : phone})
           .then(res => {
             this.users = res.data;
             alert('User saved');
@@ -68,7 +68,7 @@ export default {
       let result = confirm('מחק משתמש?');
       if(result == true) {
         axios
-          .post('/deleteAdmin', { userId : id})
+          .post('/api/deleteAdmin', { userId : id})
             .then(res => {
               this.users = res.data;
             });
@@ -76,14 +76,14 @@ export default {
     },
     makeUserAdmin(id) {
       axios
-        .post('/makeUserAdmin', { userId : id})
+        .post('/api/makeUserAdmin', { userId : id})
           .then(res => {
             this.users = res.data;
           });
     },
     renderSearch() {
       axios
-        .post('/userSearch', { search : this.searchQuery })
+        .post('/api/userSearch', { search : this.searchQuery })
           .then(res => {
             if(res.data.success != false) {
               this.users = res.data;

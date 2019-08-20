@@ -38,7 +38,7 @@ export default {
       data.append('imageUrl', this.image);
       data.append('linkToInsta', this.link);
 
-      axios.post('/createInsta', data, {
+      axios.post('/api/createInsta', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

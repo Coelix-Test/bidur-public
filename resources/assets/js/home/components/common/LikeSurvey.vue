@@ -113,7 +113,7 @@ export default {
       this.$refs['dislike'].classList.add('not_active');
       makeItRain(70, this.$refs.body);
       axios
-        .post('/likeSinglePhoto', { serviceId: this.data.id })
+        .post('/api/likeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
           });
     },
@@ -129,7 +129,7 @@ export default {
       this.$refs['like'].classList.add('not_active');
       makeItRain(70, this.$refs.body);
       axios
-        .post('/dislikeSinglePhoto', { serviceId: this.data.id })
+        .post('/api/dislikeSinglePhoto', { serviceId: this.data.id })
           .then(res => {
             // console.log(res);
           });

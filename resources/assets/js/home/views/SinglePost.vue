@@ -3,22 +3,16 @@
     <div v-if="post" class="post-wrapper">
 
       <div class="post-content">
-        <!-- <a href="" class="btn-common btn-red back-btn" @click.prevent="$router.go(-1)">לדף הקודם</a> -->
         <div class="pre-title-row">
           <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
             <img src="/img/icons/star-gradient.png" alt=" ">
             חזרה לעמוד הבית
           </button> -->
-          <button v-if="post.data.post.is_favourite == false && $root.is_user_logged_in != false" class="add-to-favourites" @click="addPostToFavourite(postId)">
+          <button
+            class="add-to-favourites"
+            @click="addPostToFavourite(postId)"
+          >
             <img src="/img/icons/star-gradient.png" alt=" ">
-            הוסף למועדפים
-          </button>
-          <button v-if="post.data.post.is_favourite == true" class="add-to-favourites" @click="removeFromFavourites(postId)">
-            <img src="/img/icons/star-gradient.png" alt="">
-            הסר ממועדפים
-          </button>
-          <button v-if="$root.is_user_logged_in == false" class="add-to-favourites" @click="$root.$root.openReg">
-            <img src="/img/icons/star-gradient.png" alt="">
             הוסף למועדפים
           </button>
 
@@ -35,8 +29,6 @@
             </font>
 
           </h1>
-
-
 
           <div class="post-meta">
 
@@ -57,7 +49,6 @@
               <img v-lazy="post.value" alt="">
               <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
             </div>
-
 
             <div ref="poll" v-if="post.type == 'survey'" class="poll">
               <img v-lazy="post.img" alt="">
@@ -95,17 +86,25 @@
 
           </section>
           <div v-if="this.$env.mobile == true">
-            <div class="OUTBRAIN" :data-src="this.$route.query.page" data-widget-id="GS_6"></div>
+            <div class="OUTBRAIN" :data-src="$route.query.page" data-widget-id="GS_6"></div>
           </div>
 
 
           <nav v-if="false"><!-- delete in future if not required -->
 
-            <router-link v-if="prevPostId" class="prev-post"  :to="'/post/' + prevPostId">
+            <router-link
+              v-if="prevPostId"
+              class="prev-post"
+              :to="'/post/' + prevPostId"
+            >
               <img src="/img/arrow-right.svg">
               לכתבה הקודמת
             </router-link>
-            <router-link v-if="nextPostId" class="next-post"  :to="'/post/'+nextPostId">
+            <router-link
+              v-if="nextPostId"
+              class="next-post"
+              :to="'/post/'+nextPostId"
+            >
               לכתבה הבאה
               <img src="/img/arrow-left.svg">
             </router-link>
@@ -125,7 +124,7 @@
 
       </div>
 
-      <side-news v-if="this.$env.mobile == false" />
+      <side-news v-if="!$env.MOBILE" />
     </div>
 
     <outbrain-bottom-ad></outbrain-bottom-ad>
@@ -211,22 +210,38 @@ export default {
       return window.location.href;
     }
   },
-  methods : {
+  methods: {
     addPostToFavourite(id) {
-      axios
-        .post('/addPostToFavourite',{postId : id})
-          .then( res=>{
-            // console.log(res.data);
-            alert('הוסף פוסט למועדפים!');
-          });
+
+      if(this.$root.is_user_logged_in) {
+        if(!this.post.data.post.is_favourite) {
+          axios
+            .post('/api/addPostToFavourite', { postId: id })
+            .then( res => {
+              // console.log(res.data);
+              alert('הוסף פוסט למועדפים!');
+            });
+        } else {
+          axios
+            .post('/api/removeFromFavourites', { postId: id })
+            .then( res => {
+              // console.log(res.data);
+              alert('הוסף פוסט למועדפים!');
+            });
+        }
+
+      } else {
+        this.$root.openReg();
+      }
+
     },
     removeFromFavourites(id) {
       axios
-        .post('/deletePostFromFavourites',{ postId : id})
-          .then(res => {
-            // console.log(res);
-            alert('פוסט נמחק מהמועדפים!');
-          });
+        .post('/api/deletePostFromFavourites',{ postId: id })
+        .then(res => {
+          // console.log(res);
+          alert('פוסט נמחק מהמועדפים!');
+        });
     },
     changePost($event, id) {
       event.preventDefault()
@@ -240,57 +255,56 @@ export default {
     sync(id) {
       this.postData = [];
       return axios
-        .post('/post/'+id)
-          .then(response => {
-            this.post = response;
-            this.errorMessage = false;
-            this.postId = id;
-            this.postData = this.post.data.post.sections;
-            this.postTitle = this.postData[1].value;
-            this.hashtags = this.post.data.post.hashtags;
+        .post('/api/post/' + id)
+        .then(response => {
+          this.post = response;
+          this.errorMessage = false;
+          this.postId = id;
+          this.postData = this.post.data.post.sections;
+          this.postTitle = this.postData[1].value;
+          this.hashtags = this.post.data.post.hashtags;
 
-             if(this.hashtags != null) {
-               var relevantPosts = [];
-               var proms = [];
-              for(let i =0;i < this.hashtags.length;i++) {
-                proms.push(axios
-                  .post('/getAllRelevantPosts', {
-                      hashtag_id: this.hashtags[i],
-                      postId: id
-                    })
-                    .then(response => {
-                      this.relevantPosts = response.data;
-                    }))
-              }
-            } else {
-              axios.post('/getRecentPosts', {postId: id}).then(res => {
-                this.relevantPosts = res.data.splice(0,6);
-              });
+          if(this.hashtags != null) {
+            var relevantPosts = [];
+            var proms = [];
+            for(let i = 0; i < this.hashtags.length; i++) {
+              proms.push(
+                axios
+                  .post('/api/getAllRelevantPosts', {
+                    hashtag_id: this.hashtags[i],
+                    postId: id
+                  })
+                  .then(response => {
+                    this.relevantPosts = response.data;
+                  })
+              )
             }
-            this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
-            this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
-            window.scrollTo(0,0);
-          })
-          .catch(error => {
-            console.log('error');
-            this.errorMessage = true;
-            this.post = false;
-          });
+          } else {
+            axios.post('/api/getRecentPosts', { postId: id }).then(res => {
+              this.relevantPosts = res.data.splice(0,6);
+            });
+          }
+          this.prevPostId = (response.data.previousPost) ? response.data.previousPost.toString() : false ;
+          this.nextPostId = (response.data.nextPost) ? response.data.nextPost.toString() : false ;
+          window.scrollTo(0,0);
+        })
+        .catch(error => {
+          console.error('Error fetching post');
+          this.errorMessage = true;
+          this.post = false;
+        });
     },
     addVote(obj, id){
       makeItRain(70, this.$refs.poll);
         axios
-          .post('/addSurveyVote',{ surveyId : id, answer : obj.value+1 })
-            .then(response => {
-            });
+          .post('/api/addSurveyVote',{ surveyId : id, answer : obj.value+1 })
     },
     youtubeEmbedLink(url){
       let regex = new RegExp("https://youtu.be/");
       let key = '';
-      if(regex.test(url)){
+      if(regex.test(url)) {
         key = url.replace('https://youtu.be/', '');
-      }
-      else{
+      } else {
         let UrlObj = new URL(url);
         key = UrlObj.searchParams.get("v");
       }

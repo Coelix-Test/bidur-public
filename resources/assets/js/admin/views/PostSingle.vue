@@ -291,7 +291,7 @@ export default {
           let url = '/createPost';
           let successMessage = 'Post was successfully added!';
           if(this.$route.params.id){
-            url = '/editPostCreateAllSections';
+            url = '/api/editPostCreateAllSections';
             successMessage = 'Post was successfully edited!';
             postData.append('id', this.$route.params.id);
             postData.append('publish', this.publish ? 1 : 0);
@@ -315,7 +315,7 @@ export default {
     created() {
         if(this.$route.params.id) {
             // TODO: get all post info by ajax
-            axios.post('/showEditablePostContent', {id: this.$route.params.id})
+            axios.post('/api/showEditablePostContent', {id: this.$route.params.id})
               .then(response => {
                 this.title = response.data.mainTitle;
                 this.author = response.data.author;

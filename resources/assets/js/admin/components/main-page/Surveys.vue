@@ -105,32 +105,32 @@ export default {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post(this.mobile ? '/addNewComparisonSecond' : '/createNewComparison', data, {
+        axios.post(this.mobile ? '/api/addNewComparisonSecond' : '/api/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
           alert('נשמר!');
         });
-        // axios.post('/showCompareFromMain');
+        // axios.post('/api/showCompareFromMain');
       }
       else if(this.selected == 'likableImage') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post(this.mobile ? '/addSinglePhotoSecond' : '/createSinglePhoto', data, {
+        axios.post(this.mobile ? '/api/addSinglePhotoSecond' : '/api/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         }).then(res => {
           alert('נשמר!');
         });
-        // axios.post('/showSinglePhotoFromMain');
+        // axios.post('/api/showSinglePhotoFromMain');
       }
       else if(this.selected == 'survey') {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post(this.mobile ? '/addNewSurveyToMainSecond' : '/addNewSurveyToMain', data, {
+        axios.post(this.mobile ? '/api/addNewSurveyToMainSecond' : '/api/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -142,9 +142,9 @@ export default {
   },
   created() {
     if(!this.mobile) {
-      axios.post('/getServiceForMainPage').then(this.onReceive);
+      axios.post('/api/getServiceForMainPage').then(this.onReceive);
     } else {
-      axios.post('/getServiceForMainPageSecond').then(this.onReceive)
+      axios.post('/api/getServiceForMainPageSecond').then(this.onReceive)
     }
   }
 }

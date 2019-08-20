@@ -54,7 +54,7 @@ export default {
     },
     sync(id, append = false) {
       this.loading = true;
-      return axios.post('/getAllPostsByHashtag', {
+      return axios.post('/api/getAllPostsByHashtag', {
         hashtag_id: id,
         page: this.page,
       }).then(res => {
@@ -76,7 +76,7 @@ export default {
         if(!data.length) {
           this.end = true;
         }
-        
+
         //if have no posts :
         if(!this.name) {
           this.img = res.data[0].hashtagImg;

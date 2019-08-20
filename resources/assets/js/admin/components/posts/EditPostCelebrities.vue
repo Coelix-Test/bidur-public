@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         getCelebrities: function(){
-            axios.post('/getAllHashtags')
+            axios.post('/api/getAllHashtags')
                 .then(response => {
                     response.data.forEach((item, i) => {
                         delete item.img;

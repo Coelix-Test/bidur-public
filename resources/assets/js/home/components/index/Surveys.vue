@@ -41,7 +41,7 @@ export default {
   methods: {
     addVote(obj, id){
       makeItRain(70, this.$refs.poll);
-      axios.post('/addSurveyVote',{ surveyId : id, answer : obj.value })
+      axios.post('/api/addSurveyVote',{ surveyId : id, answer : obj.value })
     },
   },
   components: {

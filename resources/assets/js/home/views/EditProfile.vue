@@ -54,7 +54,7 @@ export default {
   },
   created() {
     axios
-      .post('/getPersonalInfo')
+      .post('/api/getPersonalInfo')
         .then(res => {
 
           if(res.data.success == false) {
@@ -68,7 +68,7 @@ export default {
     updatePersonalInfo(e) {
       e.preventDefault();
       axios
-        .post('/changePersonalInfo',{ name : this.userData.name, phone : this.userData.phone})
+        .post('/api/changePersonalInfo',{ name : this.userData.name, phone : this.userData.phone})
           .then(res => {
               // console.log(res);
               if(res.data.success == true) {
@@ -83,12 +83,12 @@ export default {
       let confirmPass = this.confirmPass;
       if(newPass === confirmPass && newPass != null && newPass.length >= 5) {
         axios
-          .post('/checkPassword', { oldPassword : oldPass })
+          .post('/api/checkPassword', { oldPassword : oldPass })
             .then(res => {
               // console.log(res);
               if(res.data.success == true) {
                 axios
-                  .post('/changePassword',{ password : newPass })
+                  .post('/api/changePassword',{ password : newPass })
                     .then(res=>{
                        // console.log(res);
                        alert('סיסמא שונתה!');

@@ -28,4 +28,4 @@ mix.webpackConfig({
 	},
 });
 
-mix.browserSync('newspaper.test');
+// mix.browserSync('newspaper.test');

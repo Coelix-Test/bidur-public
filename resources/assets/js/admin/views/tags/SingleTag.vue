@@ -73,7 +73,7 @@ export default {
     deleteTag : function (id,e) {
       e.preventDefault();
       axios
-        .post('/deleteHashtag',{
+        .post('/api/deleteHashtag',{
           id: id,
         })
          .then((response) => {
@@ -92,7 +92,7 @@ export default {
       sendData.append('text', this.tagName);
 
       axios
-        .post('/updateHashtag',sendData,{
+        .post('/api/updateHashtag',sendData,{
           headers : {'Content-Type': 'multipart/form-data'}
         })
         .then((response) => {

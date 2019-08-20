@@ -77,7 +77,7 @@ export default {
         sendData.append('image', this.surveyImage);
 
         axios
-          .post('/editSurveyEditImage',sendData,{
+          .post('/api/editSurveyEditImage',sendData,{
             headers : {'Content-Type': 'multipart/form-data'}
           })
           .then(res => {
@@ -85,7 +85,7 @@ export default {
           });
       }
         axios
-          .post('/editSurvey',{survey : this.survey})
+          .post('/api/editSurvey',{survey : this.survey})
             .then(res => {
               console.log(res);
             });

@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     switchVisability() {
-      axios.post('/toggleHappyBirthday').then(res => {
+      axios.post('/api/toggleHappyBirthday').then(res => {
         alert('אוקיי!');
       });
     },
@@ -44,7 +44,7 @@ export default {
       data.append('image', this.image);
       data.append('text', this.text);
       data.append('visible', this.visible);
-      axios.post('/createHappyBirthday', data, {
+      axios.post('/api/createHappyBirthday', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

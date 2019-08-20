@@ -50,7 +50,7 @@ export default {
   },
   created() {
     axios
-      .post('/getAllFavourites',{page : 0})
+      .post('/api/getAllFavourites',{page : 0})
         .then(res => {
           this.favoritePosts = res.data;
         }).catch(error => {
@@ -60,12 +60,12 @@ export default {
   methods : {
     removeFromFavourites(id) {
       axios
-        .post('/deletePostFromFavourites',{ postId : id})
+        .post('/api/deletePostFromFavourites',{ postId : id})
           .then(res => {
             // console.log(res);
             // alert('Post deleted from favourites!');
             axios
-              .post('/getAllFavourites',{page : 0})
+              .post('/api/getAllFavourites',{page : 0})
                 .then(res => {
                   this.favoritePosts = res.data;
                 }).catch(error => {

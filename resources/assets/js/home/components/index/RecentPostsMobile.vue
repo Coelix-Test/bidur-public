@@ -79,7 +79,7 @@ export default {
     }
   },
   created() {
-    axios.post('/getRecentPosts').then(res => {
+    axios.post('/api/getRecentPosts').then(res => {
       this.posts = res.data;
     });
     // axios.post('/getServiceForMainPageSecond').then(res => {

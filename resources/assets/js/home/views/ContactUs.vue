@@ -74,7 +74,7 @@ export default {
     sendMail(e) {
       e.preventDefault();
       axios
-        .post('/sendMail',this.mailContent)
+        .post('/api/sendMail',this.mailContent)
           .then(res => {
             // console.log(res);
             if(res.data.success == true) {

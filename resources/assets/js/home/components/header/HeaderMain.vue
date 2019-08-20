@@ -107,16 +107,16 @@ export default {
   },
   methods: {
     getAllHashtags(){
-      axios.post('/getAllHashtags')
+      axios.post('/api/getAllHashtags')
           .then(response => {
             this.hashtags = response.data;
 
           });
     },
     getAllPostTitles(){
-      axios.post('/getRecentPosts')
+      axios.post('/api/getRecentPosts')
           .then(response => {
-            
+
             this.postTitles = response.data;
             this.$nextTick(() => {
               var strokeWidth = this.$refs.runStroke.clientWidth;

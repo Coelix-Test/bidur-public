@@ -47,7 +47,7 @@ export default {
       this.query = value;
       if(this.query && this.query.length > 2){
         axios
-          .post('/postTitleSerach', {title : this.query})
+          .post('/api/postTitleSerach', {title : this.query})
           .then(res => {
             if(res.data.success != false) {
               this.results = res.data;

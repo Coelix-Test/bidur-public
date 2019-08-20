@@ -71,7 +71,7 @@ export default {
       let result = confirm('למחוק את הפוסט?');
       if(result == true) {
         axios
-          .post('/deletePost',{id : id})
+          .post('/api/deletePost', { id : id })
             .then(res => {
                 if(res.data.success){
                     this.deletedPostsCount++;
@@ -85,7 +85,7 @@ export default {
     },
     renderSearch() {
       axios
-        .post('/postTitleSerach', {title : this.searchQuery})
+        .post('/api/postTitleSerach', {title : this.searchQuery})
           .then(res => {
             if(res.data.success != false) {
               this.posts = res.data;
@@ -98,7 +98,7 @@ export default {
     },
     getPaginatedPosts(append = false) {
       this.loading = true;
-      return axios.post('/getAllPostsPaginated', {
+      return axios.post('/api/getAllPostsPaginated', {
         page: this.page,
         deletedCounter: this.deletedPostsCount
       }).then(res => {

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="emojis" class="emoji">
+  <div v-if="processed" class="emoji">
     <!-- <button @click="select" class="item" id="dislike">
       <img src="/img/emoji-7.svg">
       <div class="num">{{ emojis.dislike }}</div>
@@ -18,13 +18,13 @@
     <button @click="select" class="item" id="cry">
       <img src="/img/emoji-4.svg">
       <span>מעפן</span>
-      <div class="num">{{ emojis.cry }}</div>
+      <div class="num">{{ processed.cry }}</div>
     </button>
 
     <button @click="select" class="item" id="wow" >
       <img src="/img/emoji-3.svg">
       <span>נחמד</span>
-      <div class="num">{{ emojis.wow }}</div>
+      <div class="num">{{ processed.wow }}</div>
     </button>
 
     <!-- <button @click="select" class="item" id="laugh">
@@ -35,7 +35,7 @@
     <button @click="select" class="item" id="love">
       <img src="/img/emoji-1.svg">
       <span>עפתי</span>
-      <div class="num">{{ emojis.love }}</div>
+      <div class="num">{{ processed.love }}</div>
     </button>
   </div>
 </template>
@@ -76,24 +76,33 @@ export default {
         this.preventClick = true;
         let emote = item.target.id
         axios
-          .post('/addReaction',{ reaction : emote , postId : this.postId })
-            .then(response => {
-              axios
-                .post('/getReaction',{ postId : this.postId})
-                  .then(response => {
-                    this.emojis = response.data;
-                    item.target.classList.add('is_active');
-                  });
-            });
+          .post('/api/addReaction',{ reaction : emote , postId : this.postId })
+          .then(response => {
+            axios
+              .post('/api/getReaction',{ postId : this.postId})
+              .then(response => {
+                this.emojis = response.data;
+                item.target.classList.add('is_active');
+              });
+          });
       }
 
     },
     sync(postId) {
       axios
-        .post('/getReaction',{ postId : postId})
-          .then(response => {
-            this.emojis = response.data;
-          });
+        .post('/api/getReaction', { postId: postId })
+        .then(res => {
+          this.emojis = res.data;
+        });
+    }
+  },
+  computed: {
+    processed() {
+      let emo = { ...this.emojis };
+      for (let i in emo) {
+        emo[i] *= 2;
+      }
+      return emo;
     }
   }
 }

@@ -71,7 +71,7 @@ export default {
 
       e.preventDefault();
 
-      axios.post('/login', {
+      axios.post('/api/login', {
         email: this.email,
         password: this.pass,
       }).then(res => {

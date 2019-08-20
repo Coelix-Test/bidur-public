@@ -154,7 +154,7 @@ export default {
   },
   created() {
     axios
-      .post('/getUserData')
+      .post('/api/getUserData')
         .then(res => {
           if(res.data.login == true) {
             this.isLoggedIn = true;
@@ -167,7 +167,7 @@ export default {
   methods : {
     logout() {
       axios
-        .get('/logout')
+        .get('/api/logout')
           .then(res => {
             document.location.reload(true);
           });

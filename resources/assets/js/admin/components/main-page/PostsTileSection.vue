@@ -45,12 +45,12 @@ export default {
   },
   methods: {
     getAllPostTitles(){
-      axios.post('/getAllPostTitles').then(res => {
+      axios.post('/api/getAllPostTitles').then(res => {
         this.posts = Object.values(res.data);
       });
     },
     getSelectedPosts(){
-      axios.post('/getSelectedPosts').then(res => {
+      axios.post('/api/getSelectedPosts').then(res => {
         this.values = Object
           .values(res.data)
           .filter((n, i) => i < 6);
@@ -70,7 +70,7 @@ export default {
       // console.log(post);
     },
     save() {
-      axios.post('/editMainPagePosts', {
+      axios.post('/api/editMainPagePosts', {
         mainPostId: this.values[0].id,
         secondPostId: this.values[1].id,
         thirdPostId: this.values[2].id,

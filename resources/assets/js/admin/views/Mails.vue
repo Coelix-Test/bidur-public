@@ -26,7 +26,7 @@ export default {
   },
   created() {
     axios
-      .post('/getAllMails')
+      .post('/api/getAllMails')
         .then(res => {
           this.mails = res.data;
         })
@@ -35,7 +35,7 @@ export default {
     deleteMessage(id) {
       console.log(id);
       axios
-        .post('/deleteMail',{id : id})
+        .post('/api/deleteMail',{id : id})
           .then(res => {
             console.log(res.data);
             this.mails = res.data;

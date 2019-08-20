@@ -66,7 +66,7 @@ export default {
         data.append('text', this.tagName);
 
         axios
-          .post('/addHashtag', data, {
+          .post('/api/addHashtag', data, {
             headers : {'Content-Type': 'multipart/form-data'}
           })
           .then((response) => {

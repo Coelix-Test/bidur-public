@@ -1340,6 +1340,7 @@ class AdminController extends Controller
         $currentId = $request->get('id');
         $post = Post::find($currentId);
         $currentCreatedAt = $post->created_at;
+        $share = $post->share_string;
 //        dd($request);
 
         Post::where('id', $currentId)->delete();

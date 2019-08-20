@@ -79,7 +79,7 @@ export default {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
         data.append('rightImage', this.selection.image2);
-        axios.post('/createNewComparison', data, {
+        axios.post('/api/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -90,7 +90,7 @@ export default {
       else if(this.selected == 'assessment') {
         data.append('title', this.ass.title);
         data.append('image', this.ass.image);
-        axios.post('/createSinglePhoto', data, {
+        axios.post('/api/createSinglePhoto', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -102,7 +102,7 @@ export default {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
         data.append('answers', JSON.stringify(this.survey.answers));
-        axios.post('/addNewSurveyToMain', data, {
+        axios.post('/api/addNewSurveyToMain', data, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

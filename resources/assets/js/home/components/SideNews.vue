@@ -38,11 +38,11 @@ export default {
   },
   created() {
     if(this.$route.name === 'single-post'){
-      axios.post('/getRecentPosts', {postId: this.$route.params.id}).then(res => {
+      axios.post('/api/getRecentPosts', {postId: this.$route.params.id}).then(res => {
         this.data = res.data;
       });
     } else{
-      axios.post('/getRecentPosts').then(res => {
+      axios.post('/api/getRecentPosts').then(res => {
         this.data = res.data;
       });
     }

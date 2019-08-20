@@ -25,7 +25,7 @@ export default {
   },
   created() {
     axios
-      .post('/getAllSurveys',{ title : 0 })
+      .post('/api/getAllSurveys',{ title : 0 })
         .then(res => {
           this.surveys = res.data;
         })
@@ -33,7 +33,7 @@ export default {
   methods : {
     renderSearch() {
       axios
-        .post('/getAllSurveys', { title : this.searchQuery })
+        .post('/api/getAllSurveys', { title : this.searchQuery })
           .then(res => {
             if(res.data.success != false) {
               this.surveys = res.data;

@@ -15,7 +15,7 @@ export default {
   actions: {
     updateData(context) {
       return axios
-        .post('/getMainPageOptimized')
+        .post('/api/getMainPageOptimized')
         .then(res => {
           res.data.selectedPosts = Object.values(res.data.selectedPosts);
           context.commit('saveData', res.data);

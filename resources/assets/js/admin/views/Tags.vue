@@ -53,13 +53,13 @@ export default {
   },
   mounted() {
    axios
-     .post('/getAllHashtags')
+     .post('/api/getAllHashtags')
      .then(response => (this.tags = response.data));
  },
  methods : {
    renderSearch() {
      axios
-       .post('/tagNameSearch', { title : this.searchQuery })
+       .post('/api/tagNameSearch', { title : this.searchQuery })
          .then(res => {
            if(res.data.success != false) {
              this.tags = res.data;

@@ -61,7 +61,7 @@ export default {
         el.classList.add('none');
       }, 500);
 
-      axios.post('/likeForSelectOne', {
+      axios.post('/api/likeForSelectOne', {
         position: 'left',
         serviceId: this.data.id,
       });
@@ -80,7 +80,7 @@ export default {
         el.classList.add('none');
       }, 500);
 
-      axios.post('/likeForSelectOne', {
+      axios.post('/api/likeForSelectOne', {
         position: 'right',
         serviceId: this.data.id,
       });

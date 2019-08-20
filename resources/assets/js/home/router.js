@@ -18,7 +18,6 @@ import ContactUs from './views/ContactUs.vue'
 import MyAccount from './views/MyAccount.vue'
 import EditProfile from './views/EditProfile.vue'
 
-
 const routes = [
   {
     path: '/',
@@ -62,7 +61,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  // mode: 'history',
+  mode: env.STAGE == 'prod' ? 'history' : 'hash',
 });
 
 router.beforeEach(async (to, from, next) => {
