@@ -574,22 +574,24 @@ class AdminController extends Controller
         $leftFlag = true;
         $rightFlag = true;
         $leftImage = $request->file('leftImage');
-        if (isset($leftImage)){
+        $descriptionLeft = $request->get('descriptionLeft');
+        $descriptionRight = $request->get('descriptionRight');
+        if ($request->hasFile('leftImage')) {
             $leftName = rand(0,999999).time().'.'.$leftImage->getClientOriginalExtension();
             $destinationPath = public_path('/images/compare');
             $leftImage->move($destinationPath, $leftName);
 
-        }else{
+        } else {
             $currentLeftName = $request->get('leftImage');
-            $rightFlag = false;
+            $leftFlag = false;
         }
 
         $rightImage = $request->file('rightImage');
-        if (isset($rightImage)){
+        if ($request->hasFile('rightImage')) {
             $rightName = rand(0,999999).time().'.'.$rightImage->getClientOriginalExtension();
             $destinationPath = public_path('/images/compare');
             $rightImage->move($destinationPath, $rightName);
-        }else{
+        } else {
             $currentRightName = $request->get('rightImage');
             $rightFlag = false;
         }
@@ -617,6 +619,9 @@ class AdminController extends Controller
                 'urlRight' => '/images/compare/'.$rightName,
                 'urlLeft' => '/images/compare/'.$leftName,
                 'description' => $request->get('title'),
+                'descriptionRight' => $descriptionRight,
+                'descriptionLeft' => $descriptionLeft,
+                'type' => $request->get('type'),
                 'postId' => 0,
                 'order' => 0,
             ]);
@@ -626,6 +631,9 @@ class AdminController extends Controller
                 'urlRight' => '/images/compare/'.$rightName,
                 'urlLeft' => $currentLeftName,
                 'description' => $request->get('title'),
+                'descriptionRight' => $descriptionRight,
+                'descriptionLeft' => $descriptionLeft,
+                'type' => $request->get('type'),
                 'postId' => 0,
                 'order' => 0,
             ]);
@@ -634,17 +642,26 @@ class AdminController extends Controller
                 'urlRight' => $currentRightName,
                 'urlLeft' => '/images/compare/'.$leftName,
                 'description' => $request->get('title'),
+                'descriptionRight' => $descriptionRight,
+                'descriptionLeft' => $descriptionLeft,
+                'type' => $request->get('type'),
                 'postId' => 0,
                 'order' => 0,
             ]);
         }else{
-            SelectOne::create([
+
+            $kek = SelectOne::create([
                 'urlRight' => $currentRightName,
                 'urlLeft' => $currentLeftName,
                 'description' => $request->get('title'),
+                'type' => $request->get('type'),
+                'descriptionRight' => $descriptionRight,
+                'descriptionLeft' => $descriptionLeft,
                 'postId' => 0,
                 'order' => 0,
             ]);
+
+            dd($kek);
         }
 
         return ['success' => true];

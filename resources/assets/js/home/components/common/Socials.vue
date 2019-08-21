@@ -38,7 +38,7 @@ export default {
 
   .socials-btn {
     display: block;
-    bottom: 54px;
+    bottom: 10px;
     position: fixed;
     width: 48px;
     height: 48px;

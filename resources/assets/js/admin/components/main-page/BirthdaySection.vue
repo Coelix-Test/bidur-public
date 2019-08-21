@@ -55,7 +55,7 @@ export default {
   },
   created(){
     axios
-      .post('/getMainBday')
+      .post('/api/getMainBday')
       .then(res => {
         this.text = res.data.text;
         this.image = res.data.img;

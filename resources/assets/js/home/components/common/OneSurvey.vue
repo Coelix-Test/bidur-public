@@ -91,10 +91,14 @@ export default {
   },
   computed: {
     leftPercent(){
-      return Math.ceil( (this.data.left + 1) / (this.data.left + this.data.right + 1) * 100);
+      const left = this.data.left ? this.data.left : this.data.likesForLeft;
+      const right = this.data.right ? this.data.right : this.data.likesForRight;
+      return Math.ceil( (left + 1) / (left + right + 1) * 100);
     },
     rightPercent(){
-      return Math.ceil( (this.data.right + 1) / (this.data.left + this.data.right + 1) * 100);
+      const left = this.data.left ? this.data.left : this.data.likesForLeft;
+      const right = this.data.right ? this.data.right : this.data.likesForRight;
+      return Math.ceil( (right + 1) / (left + right + 1) * 100);
     }
   }
 }

@@ -246,13 +246,14 @@ class MainController extends Controller
                 $data['id'] = $compare->id;
                 $data['imageLeft'] = $compare->urlLeft;
                 $data['imageRight'] = $compare->urlRight;
+                $data['type'] = $compare->type;
                 $data['descriptionLeft'] = $compare->descriptionLeft;
                 $data['descriptionRight'] = $compare->descriptionRight;
-                $data['left'] = LikesForLeftAndRight::where([
+                $data['likesForLeft'] = LikesForLeftAndRight::where([
                   [ 'serviceId', '=', $compare->id ],
                   [ 'value', '=', 'left' ]
                   ])->count();
-                $data['right'] = LikesForLeftAndRight::where([
+                $data['likesForRight'] = LikesForLeftAndRight::where([
                   [ 'serviceId', '=', $compare->id ],
                   [ 'value', '=', 'right' ]
                   ])->count();
@@ -280,6 +281,7 @@ class MainController extends Controller
         }
 
         $fullPost['author'] = $post->author;
+        $fullPost['publish'] = $post->publish ? true : false;
         $fullPost['date'] = $post->created_at->timestamp;
 
         $hashtags = HashtagPosts::where('postId', $post->id)->get();
@@ -660,10 +662,13 @@ class MainController extends Controller
                 $data['value']['description'] = $section->description;
                 $data['value']['imageLeft'] = $section->urlLeft;
                 $data['value']['imageRight'] = $section->urlRight;
+                $data['value']['descriptionLeft'] = $section->descriptionLeft;
+                $data['value']['descriptionRight'] = $section->descriptionRight;
                 $likesForLeft = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'left')->count();
                 $likesForRight = LikesForLeftAndRight::where('serviceId', $section->id)->where('value', 'right')->count();
                 $data['value']['likesForLeft'] = $likesForLeft;
-                $data['value']['likesForLeft'] = $likesForRight;
+                $data['value']['likesForRight'] = $likesForRight;
+                $data['value']['type'] = $section->type;
                 return json_encode($data);
             }
             elseif ($section->getTable() == 'single_likable_image'){

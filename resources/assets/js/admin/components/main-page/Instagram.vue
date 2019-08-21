@@ -49,7 +49,7 @@ export default {
   },
   created() {
     axios
-      .post('/getMainInsta')
+      .post('/api/getMainInsta')
         .then(res => {
           this.image = res.data.img;
         });

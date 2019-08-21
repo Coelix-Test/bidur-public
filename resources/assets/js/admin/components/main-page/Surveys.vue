@@ -2,6 +2,7 @@
   <div class="surveys">
     <h2 class="heading">{{ this.mobile ? 'Mobile' : '' }} Surveys</h2>
     <div class="plate shadow-section">
+
       <div class="types">
         <div class="add-section" @click="select('survey')">
           <img src="/img/icons/edit-post-survey.svg" alt="">
@@ -21,16 +22,19 @@
         v-bind.sync="selection"
         :deletable="false"
         v-if="selected == 'comparablePhotos'"
+        :moveble="false"
       />
       <PostSurvey
         v-bind.sync="survey"
         :deletable="false"
         v-else-if="selected == 'survey'"
+        :moveble="false"
       />
       <PostAssessment
         v-bind.sync="ass"
         :deletable="false"
         v-else-if="selected == 'likableImage'"
+        :moveble="false"
       />
 
       <button @click="save" class="theme-btn-red big-btn">פרסם</button>
@@ -56,7 +60,10 @@ export default {
       selection: {
         image1: '',
         image2: '',
+        leftDescription: '',
+        rightDescription: '',
         title: '',
+        type: '',
       },
       survey: {
         title: '',
@@ -81,6 +88,10 @@ export default {
         this.selection.title = res.data.value.description;
         this.selection.image1 = res.data.value.imageLeft;
         this.selection.image2 = res.data.value.imageRight;
+        this.selection.leftDescription = res.data.value.descriptionLeft;
+        this.selection.rightDescription = res.data.value.descriptionRight;
+        this.selection.image2 = res.data.value.imageRight;
+        this.selection.type = res.data.value.type;
       }
       else if(res.data.type == 'likableImage') {
         this.ass.title = res.data.value.description;
@@ -104,7 +115,10 @@ export default {
       if(this.selected == 'comparablePhotos') {
         data.append('title', this.selection.title);
         data.append('leftImage', this.selection.image1);
+        data.append('descriptionLeft', this.selection.leftDescription);
+        data.append('descriptionRight', this.selection.rightDescription);
         data.append('rightImage', this.selection.image2);
+        data.append('type', this.selection.type);
         axios.post(this.mobile ? '/api/addNewComparisonSecond' : '/api/createNewComparison', data, {
           headers: {
             'Content-Type': 'multipart/form-data'

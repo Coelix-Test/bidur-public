@@ -261,8 +261,9 @@ export default {
           const res = response;
           const data = res.data;
 
-          if(!data.visible && this.$route.name != 'post-viewer') {
-            console.log(data);
+          console.log(data);
+
+          if(!data.post.publish && this.$route.name != 'post-viewer') {
             this.$router.replace('/');
             return;
           }
