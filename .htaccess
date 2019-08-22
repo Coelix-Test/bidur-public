@@ -8,12 +8,12 @@ RewriteRule ^ public/index.php [L]
 RewriteRule ^(.*)$ public/$1 [NC]
 
 # RewriteCond %{HTTP_USER_AGENT} WhatsApp|telegram|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare [NC,OR]
-RewriteCond %{REQUEST_URI} ^\/post\/ [NC]
-RewriteRule ^(.*)$ bots/$1 [L,NC]
+# RewriteCond %{REQUEST_URI} ^\/post\/ [NC]
+# RewriteRule ^(.*)$ bots/$1 [L,NC]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api
+RewriteCond %{REQUEST_URI} !^\/admin|\/share|\/api|\/bots
 RewriteRule ^(.*)$ app.html [L,NC]
 
 </IfModule>
