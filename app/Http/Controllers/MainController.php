@@ -936,6 +936,29 @@ class MainController extends Controller
         }
     }
 
+
+    public function showPostForBots($id) {
+      $post = Post::where('id', $id)->first();
+      $fullPost = $this->showSinglePost($id);
+
+      $fullPost = json_decode($fullPost, true);
+      foreach ($fullPost['post']['sections'] as $key => $section) {
+        if ($section['type'] == 'content'){
+          $fullPost['post']['sections'][$key]['value'] = strip_tags(html_entity_decode($section['value']));
+        }
+        if ($section['type'] == 'video'){
+          if (strpos($section['value'], '?v=') != false){
+            $str = substr(substr($section['value'], strpos($section['value'], '?v='), '100'), '3', 100);
+          }else{
+            $str = substr(substr($section['value'], strpos($section['value'], '.be/'), '100'), '4', 100);
+          }
+          $fullPost['post']['sections'][$key]['value'] = $str;
+        }
+      }
+
+      return view('postForShare', [ 'post' => $fullPost, 'id' => $id ]);
+    }
+
     // ************************ TRASH BIN *******************************//
     //                                                                   //
     //                                                                   //

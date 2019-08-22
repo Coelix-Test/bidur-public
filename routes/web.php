@@ -18,6 +18,11 @@ Route::get('/', function () {
   readfile('app.html');
 });
 Route::get('/share/{share_string}', 'MainController@getPostBlade');
+
+Route::group([ 'prefix' => 'bots' ], function() {
+  Route::get('/post/{id}', 'MainController@showPostForBots');
+});
+
 Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
 
 Route::group([ 'prefix' => 'api' ], function() {
