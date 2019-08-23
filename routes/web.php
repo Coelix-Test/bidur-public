@@ -12,7 +12,7 @@
 */
 
 //testing routes
-Route::get('/test2', 'AdminController@addAllRandoms');
+Route::get('/api/test2', 'AdminController@addAllRandoms');
 
 Route::get('/', function () {
   readfile('app.html');
