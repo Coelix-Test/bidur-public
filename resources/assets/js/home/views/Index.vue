@@ -1,6 +1,8 @@
 <template>
   <div class="home">
+
     <template v-if="$store.getters['main-page/loaded']">
+      <top-section/>
       <right-column/>
       <left-column/>
       <right-column-bot />
@@ -16,6 +18,7 @@ import RightColumn from './../components/index/RightColumn.vue';
 import LeftColumn from './../components/index/LeftColumn.vue';
 import LeftColumnBot from './../components/index/LeftColumnBot.vue';
 import RightColumnBot from './../components/index/RightColumnBot.vue';
+import TopSection from './../components/index/TopSection.vue';
 import RecentPostsMobile from './../components/index/RecentPostsMobile.vue';
 
 export default {
@@ -37,7 +40,8 @@ export default {
     LeftColumn,
     LeftColumnBot,
     RightColumnBot,
-    RecentPostsMobile
+    RecentPostsMobile,
+    TopSection,
   }
 }
 </script>

@@ -64,9 +64,6 @@
 
 <script>
 import HeaderTopLine from './HeaderTopLine.vue';
-// import Slick from 'vue-slick';
-import 'swiper/dist/css/swiper.css';
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 export default {
   data(){
@@ -102,8 +99,6 @@ export default {
   },
   components: {
     HeaderTopLine,
-    swiper,
-    swiperSlide
   },
   methods: {
     getAllHashtags(){

@@ -4,7 +4,9 @@ import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
 import VueLazyload from 'vue-lazyload'
 import moment from 'moment'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+Vue.use(VueAwesomeSwiper)
 Vue.use(require('vue-script2'));
 Vue.use(VueLazyload);
 
@@ -43,6 +45,7 @@ Vue.use(VueModal, { dynamic: true, injectModalsContainer: true });
 
 import './env';
 import axios from 'axios';
+import 'swiper/dist/css/swiper.css'
 
 moment.locale('he');
 

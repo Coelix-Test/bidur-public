@@ -37,6 +37,7 @@ export default {
 .socials {
 
   .socials-btn {
+    z-index: 1000;
     display: block;
     bottom: 10px;
     position: fixed;

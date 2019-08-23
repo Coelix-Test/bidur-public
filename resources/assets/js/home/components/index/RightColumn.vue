@@ -47,13 +47,7 @@ export default {
     },
     posts() {
       return this.$store.getters['main-page/selectedPosts']
-        .filter((n, i) => {
-          if(this.birthday.visible) {
-            return i >= 2 && i < 6;
-          } else {
-            return i >= 2;
-          }
-        });
+        .filter((n, i) => i >= 2 && i < 6);
     },
   }
 }
