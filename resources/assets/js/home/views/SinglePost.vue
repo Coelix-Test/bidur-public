@@ -137,8 +137,8 @@
         :rtl="true"
         :perPageCustom="[[320, 1],[550, 1], [768, 2], [769, 3]]"
         navigationEnabled
-        navigationNextLabel="<img src='img/chevron-to-left.svg' />"
-        navigationPrevLabel="<img src='img/chevron-to-left.svg' />"
+        navigationNextLabel="<img src='/img/chevron-to-left.svg' />"
+        navigationPrevLabel="<img src='/img/chevron-to-left.svg' />"
       >
         <slide v-for="(post, i) in relevantPosts" class="related-post" :key="post.id + '-' + i">
           <router-link :to="'/post/'+post.id + '/'">
