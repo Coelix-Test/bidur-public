@@ -21,7 +21,7 @@
 
         <div class="post-section" v-for="(section, index) in sections">
           <post-title
-            v-if="section.type === 'title'"
+            v-if="section.section_type === 'title'"
             :value.sync="section.value"
             :index="index"
             @move="move(index, $event)"
@@ -29,7 +29,7 @@
             :key="section.uuid"
           ></post-title>
           <post-text
-            v-else-if="section.type === 'text'"
+            v-else-if="section.section_type === 'text'"
             :value.sync="section.value"
             :index="index"
             @move="move(index, $event)"
@@ -37,7 +37,7 @@
             :key="section.uuid"
           ></post-text>
           <post-image
-            v-else-if="section.type === 'image'"
+            v-else-if="section.section_type === 'image'"
             :value.sync="section.value"
             :description.sync="section.description"
             :index="index"
@@ -46,7 +46,7 @@
             :key="section.uuid"
           ></post-image>
           <post-image-text
-            v-else-if="section.type === 'imageWithText'"
+            v-else-if="section.section_type === 'imageWithText'"
             class="shadow-section"
             v-bind.sync="section"
             :index="index"
@@ -55,7 +55,7 @@
             :key="section.uuid"
           ></post-image-text>
           <post-video-link
-            v-else-if="section.type === 'video'"
+            v-else-if="section.section_type === 'video'"
             v-bind.sync="section"
             :index="index"
             @move="move(index, $event)"
@@ -63,7 +63,7 @@
             :key="section.uuid"
           ></post-video-link>
           <post-survey
-            v-else-if="section.type === 'survey'"
+            v-else-if="section.section_type === 'survey'"
             class="survey-section shadow-section"
             v-bind.sync="section"
             :index="index"
@@ -74,14 +74,14 @@
           <post-assessment
             class="assessment-section shadow-section"
             v-bind.sync="section"
-            v-else-if="section.type === 'assessment'"
+            v-else-if="section.section_type === 'assessment'"
             :index="index"
             @move="move(index, $event)"
             @deleteSection="deleteSection"
             :key="section.uuid"
           ></post-assessment>
           <post-selection
-            v-else-if="section.type === 'selection'"
+            v-else-if="section.section_type === 'selection'"
             class="selection-section shadow-section"
             v-bind.sync="section"
             :index="index"
@@ -212,29 +212,29 @@ export default {
         let sectionData = {};
         switch (type) {
           case 'title':
-            sectionData = {type: 'title', value: ''};
+            sectionData = {section_type: 'title', value: ''};
             break;
           case 'text':
-            sectionData = {type: 'text', value: ''};
+            sectionData = {section_type: 'text', value: ''};
             break;
           case 'image':
-            sectionData = {type: 'image', value: '', description: ''};
+            sectionData = {section_type: 'image', value: '', description: ''};
             break;
           case 'imageWithText':
-            sectionData = {type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
+            sectionData = {section_type: 'imageWithText', image: '', title: '', text: '', imagePosition: 'left'};
             break;
           case 'video':
-            sectionData = {type: 'video', value: '', description: ''};
+            sectionData = {section_type: 'video', value: '', description: ''};
             break;
           case 'survey':
-            sectionData = {type: 'survey', image: '', title: '', answers: [], description: '' };
+            sectionData = {section_type: 'survey', image: '', title: '', answers: [], description: '' };
             break;
           case 'assessment':
-            sectionData = {type: 'assessment', image: '', title: '', description: '' };
+            sectionData = {section_type: 'assessment', image: '', title: '', description: '' };
             break;
           case 'selection':
             sectionData = {
-              type: 'selection',
+              section_type: 'selection',
               image1: '',
               image2: '',
               leftDescription: '',
@@ -268,7 +268,7 @@ export default {
         //append header
         let sectionIndex = 0;
 
-        postData.append('sections['+sectionIndex+'][type]', 'metaTitle');
+        postData.append('sections['+sectionIndex+'][section_type]', 'metaTitle');
         postData.append('sections['+sectionIndex+'][title]', this.title);
         postData.append('sections['+sectionIndex+'][author]', this.author);
         postData.append('sections['+sectionIndex+'][date]', this.date.getTime());

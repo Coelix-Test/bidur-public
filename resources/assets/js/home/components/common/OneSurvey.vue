@@ -10,7 +10,8 @@
 
       <div class="left" ref="left">
         <img :src="data.imageLeft">
-        <hearth-button @click="left"/>
+        <hearth-button v-if="data.type == 'like'" @click="left"/>
+        <dislike-button v-else-if="data.type == 'dislike'" @click="left"/>
         <div class="precent-count-wrap">
           <span class="percent-count">{{leftPercent}}%</span>
           <div class="yellow-star">
@@ -21,7 +22,8 @@
       </div>
       <div class="right" ref="right">
         <img :src="data.imageRight">
-        <hearth-button @click="right"/>
+        <hearth-button v-if="data.type == 'like'" @click="right"/>
+        <dislike-button v-else-if="data.type == 'dislike'" @click="right"/>
         <div class="precent-count-wrap">
           <span class="percent-count">{{rightPercent}}%</span>
           <div class="yellow-star">
@@ -36,6 +38,7 @@
 
 <script>
 import HearthButton from './HearthButton'
+import DislikeButton from './DislikeButton'
 
 export default {
   props: {
@@ -48,6 +51,7 @@ export default {
   },
   components: {
     HearthButton,
+    DislikeButton,
   },
   methods: {
     left() {

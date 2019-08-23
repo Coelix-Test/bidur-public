@@ -450,6 +450,7 @@ class MainController extends Controller
     }
 
     public function getContent($id){
+
         $post = Post::find($id);
         $thumbnail = $post->getAllImages()->first();
 
@@ -507,12 +508,26 @@ class MainController extends Controller
         $data[4] = $this->getContent($fourth->id);
         $data[5] = $this->getContent($fifth->id);
         $data[6] = $this->getContent($sixth->id);
-        if (isset($seven) && isset($eight) && isset($nine) && isset($ten)){
-            $data[7] = $this->getContent($seven->id);
-            $data[8] = $this->getContent($eight->id);
-            $data[9] = $this->getContent($nine->id);
-            $data[10] = $this->getContent($ten->id);
+
+        if($seven) {
+          $data[7] = [
+            'data' => $this->getContent($seven->id),
+            'meta' => [
+              'comment_one' => $section->comment_seven_1,
+              'comment_two' => $section->comment_seven_2,
+            ]
+          ];
         }
+        if($eight) {
+          $data[8] = $this->getContent($eight->id);
+        }
+        if($nine) {
+          $data[9] = $this->getContent($nine->id);
+        }
+        if($ten) {
+          $data[10] = $this->getContent($ten->id);
+        }
+
         return json_encode($data, JSON_FORCE_OBJECT);
     }
 

@@ -151,7 +151,7 @@ class AdminController extends Controller
         $files = $request->allFiles();
 
         foreach ($sections as $key => $section) {
-            if ($section['type'] == 'metaTitle'){
+            if ($section['section_type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
 
                 $hashtags = null;
@@ -163,30 +163,30 @@ class AdminController extends Controller
                 $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
 
             }
-            elseif($section['type'] == 'text'){
+            elseif($section['section_type'] == 'text'){
                 $content = $section['value'];
 //                dd($content);
                 $this->createPostAddContent($this->post->id, $content, $key);
             }
-            elseif($section['type'] == 'title'){
+            elseif($section['section_type'] == 'title'){
                 $title = $section['value'];
                 $this->createPostAddTitle($this->post->id, $title, $key);
             }
-            elseif($section['type'] == 'video'){
+            elseif($section['section_type'] == 'video'){
                 $url = $section['value'];
                 $this->createPostAddVideo($this->post->id, $url, $section['description'], $key);
             }
-            elseif($section['type'] == 'survey'){
+            elseif($section['section_type'] == 'survey'){
 //                dd($files);
                 $title = $section['title'];
                 $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $section['description'], $key,$files['sections'][$key]['image'] );
             }
-            elseif ($section['type'] == 'image'){
+            elseif ($section['section_type'] == 'image'){
 //                    dd($files['sections'][$key]['value']);
 
                 $this->createPostAddImage($this->post->id, $files['sections'][$key]['value'], $section['description'], $key);
             }
-            elseif ($section['type'] == 'imageWithText'){
+            elseif ($section['section_type'] == 'imageWithText'){
                 $this->createPostAddImageWithText(
                     $this->post->id,
                     $files['sections'][$key]['image'],
@@ -196,13 +196,13 @@ class AdminController extends Controller
                     $key
                 );
 //                dd($files);
-            }elseif ($section['type'] == 'selection'){
+            }elseif ($section['section_type'] == 'selection'){
                 $leftFile = $files['sections'][$key]['image1'];
                 $rightFile = $files['sections'][$key]['image2'];
                 $leftDesc = $section['leftDescription'];
                 $rightDesc = $section['rightDescription'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key);
-            }elseif ($section['type'] == 'assessment'){
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['title']);
+            }elseif ($section['section_type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'], $key);
             }
@@ -379,7 +379,18 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createPostAddSelection($postId, $leftFile, $rightFile, $description, $leftDesc, $rightDesc, $order, $flagLeft = null, $flagRight = null){
+    public function createPostAddSelection(
+      $postId,
+      $leftFile,
+      $rightFile,
+      $description,
+      $leftDesc,
+      $rightDesc,
+      $order,
+      $type,
+      $flagLeft = null,
+      $flagRight = null
+    ){
         //remember about the rtl, left is right, right is left, dont mess up
         if ($flagLeft && $flagRight){
             $finalLeft = $leftFile;
@@ -419,6 +430,7 @@ class AdminController extends Controller
                 'urlLeft' => $finalLeft,
                 'urlRight' => $finalRight,
                 'order' => $order,
+                'type' => $type,
                 'descriptionRight' => $rightDesc,
                 'descriptionLeft' => $leftDesc,
             ]);
@@ -429,6 +441,7 @@ class AdminController extends Controller
                 'urlLeft' => $finalLeft,
                 'urlRight' => '/images/postImages/'.$rightName,
                 'order' => $order,
+                'type' => $type,
                 'descriptionRight' => $rightDesc,
                 'descriptionLeft' => $leftDesc,
             ]);
@@ -439,6 +452,7 @@ class AdminController extends Controller
                 'urlLeft' => '/images/postImages/'.$leftName,
                 'urlRight' => $finalRight,
                 'order' => $order,
+                'type' => $type,
                 'descriptionRight' => $rightDesc,
                 'descriptionLeft' => $leftDesc,
             ]);
@@ -449,6 +463,7 @@ class AdminController extends Controller
                 'urlLeft' => '/images/postImages/'.$leftName,
                 'urlRight' => '/images/postImages/'.$rightName,
                 'order' => $order,
+                'type' => $type,
                 'descriptionRight' => $rightDesc,
                 'descriptionLeft' => $leftDesc,
             ]);
@@ -650,7 +665,7 @@ class AdminController extends Controller
             ]);
         }else{
 
-            $kek = SelectOne::create([
+            SelectOne::create([
                 'urlRight' => $currentRightName,
                 'urlLeft' => $currentLeftName,
                 'description' => $request->get('title'),
@@ -660,8 +675,6 @@ class AdminController extends Controller
                 'postId' => 0,
                 'order' => 0,
             ]);
-
-            dd($kek);
         }
 
         return ['success' => true];
@@ -1148,47 +1161,39 @@ class AdminController extends Controller
         }
     }
 
-    public function editMainPagePosts(Request $request){
-        $mainPostId = $request->get(    'mainPostId');
-        $secondPostId = $request->get(  'secondPostId');
-        $thirdPostId = $request->get(   'thirdPostId');
-        $fourthPostId = $request->get(  'fourthPostId');
-        $fifthPostId = $request->get(   'fifthPostId');
-        $sixthPostId = $request->get(   'sixthPostId');
-        // truncate MEANS "TO EMPTY"
+  public function editMainPagePosts(Request $request){
+    $mainPostId = $request->get(    'mainPostId');
+    $secondPostId = $request->get(  'secondPostId');
+    $thirdPostId = $request->get(   'thirdPostId');
+    $fourthPostId = $request->get(  'fourthPostId');
+    $fifthPostId = $request->get(   'fifthPostId');
+    $sixthPostId = $request->get(   'sixthPostId');
+    // truncate MEANS "TO EMPTY"
 
-        $seventhPostId = $request->get('seventhPostId');
-        $eighthPostId = $request->get('eighthPostId');
-        $ninthPostId = $request->get('ninthPostId');
-        $tenthPostId = $request->get('tenthPostId');
-        MainSection::truncate();
-        if (isset($secondPostId) && isset($eighthPostId) && isset($ninthPostId) && isset($tenthPostId)){
-            MainSection::create([
-                'id' => 1,
-                'first' => $mainPostId,
-                'second' => $secondPostId,
-                'third' => $thirdPostId,
-                'fourth' => $fourthPostId,
-                'fifth' => $fifthPostId,
-                'sixth' => $sixthPostId,
-                'seven' => $seventhPostId,
-                'eight' => $eighthPostId,
-                'nine' => $ninthPostId,
-                'ten' => $tenthPostId
-            ]);
-        }else{
-            MainSection::create([
-                'id' => 1,
-                'first' => $mainPostId,
-                'second' => $secondPostId,
-                'third' => $thirdPostId,
-                'fourth' => $fourthPostId,
-                'fifth' => $fifthPostId,
-                'sixth' => $sixthPostId,
-            ]);
-        }
+    $seventhPostId = $request->get('seventhPostId');
+    $eighthPostId = $request->get('eighthPostId');
+    $ninthPostId = $request->get('ninthPostId');
+    $tenthPostId = $request->get('tenthPostId');
+    MainSection::truncate();
 
-    }
+    MainSection::create([
+      'id' => 1,
+      'first' => $mainPostId,
+      'second' => $secondPostId,
+      'third' => $thirdPostId,
+      'fourth' => $fourthPostId,
+      'fifth' => $fifthPostId,
+      'sixth' => $sixthPostId,
+      'seven' => $seventhPostId,
+      'eight' => $eighthPostId,
+      'nine' => $ninthPostId,
+      'ten' => $tenthPostId,
+
+      'comment_seven_1' => $request->get('comment_seven_1'),
+      'comment_seven_2' => $request->get('comment_seven_2'),
+    ]);
+
+  }
 
 
 
@@ -1243,7 +1248,7 @@ class AdminController extends Controller
         }
         if (isset($titles[0])){
             foreach ($titles as $title) {
-                $fullPost['sections'][$title->order]['type'] = 'title';
+                $fullPost['sections'][$title->order]['section_type'] = 'title';
                 $fullPost['sections'][$title->order]['value'] = $title->titleText;
             }
         }
@@ -1253,7 +1258,7 @@ class AdminController extends Controller
         $contents = $post->getAllContents;
         if (isset($contents[0])){
             foreach ($contents as $content) {
-                $fullPost['sections'][$content->order]['type'] = 'text';
+                $fullPost['sections'][$content->order]['section_type'] = 'text';
                 $fullPost['sections'][$content->order]['value'] = $content->contentText;
             }
         }
@@ -1261,7 +1266,7 @@ class AdminController extends Controller
         $images = $post->getAllImages;
         if (isset($images[0])){
             foreach ($images as $image) {
-                $fullPost['sections'][$image->order]['type'] = 'image';
+                $fullPost['sections'][$image->order]['section_type'] = 'image';
                 $fullPost['sections'][$image->order]['value'] = $image->url;
                 $fullPost['sections'][$image->order]['description'] = $image->description;
             }
@@ -1270,7 +1275,7 @@ class AdminController extends Controller
         $videos = $post->getAllVideos;
         if (isset($videos[0])){
             foreach ($videos as $video) {
-                $fullPost['sections'][$video->order]['type'] = 'video';
+                $fullPost['sections'][$video->order]['section_type'] = 'video';
                 $fullPost['sections'][$video->order]['value'] = $video->url;
                 $fullPost['sections'][$video->order]['description'] = $video->description;
             }
@@ -1279,7 +1284,7 @@ class AdminController extends Controller
         $imagesWithTexts = $post->getAllImagesWithTexts;
         if (isset($imagesWithTexts[0])){
             foreach ($imagesWithTexts as $section) {
-                $fullPost['sections'][$section->order]['type'] = 'imageWithText';
+                $fullPost['sections'][$section->order]['section_type'] = 'imageWithText';
                 if (!empty($section->title)){
                     $fullPost['sections'][$section->order]['title'] = $section->title;
                 }else{
@@ -1295,7 +1300,7 @@ class AdminController extends Controller
         if (isset($surveys[0])){
             foreach ($surveys as $key => $survey) {
                 $questions = $survey->getAllVariants;
-                $questionsWithAnswers['type'] = 'survey';
+                $questionsWithAnswers['section_type'] = 'survey';
                 $questionsWithAnswers['image'] = $survey->image;
                 $questionsWithAnswers['description'] = $survey->description;
 
@@ -1314,10 +1319,11 @@ class AdminController extends Controller
         if (isset($compares[0])){
             foreach ($compares as $compare) {
 
-                $fullPost['sections'][$compare->order]['type'] = 'selection';
+                $fullPost['sections'][$compare->order]['section_type'] = 'selection';
                 $fullPost['sections'][$compare->order]['id']     = $compare->id;
                 $fullPost['sections'][$compare->order]['image1'] = $compare->urlLeft;
                 $fullPost['sections'][$compare->order]['image2'] = $compare->urlRight;
+                $fullPost['sections'][$compare->order]['type'] = $compare->type;
                 $fullPost['sections'][$compare->order]['leftDescription'] = $compare->descriptionLeft;
                 $fullPost['sections'][$compare->order]['rightDescription'] = $compare->descriptionRight;
                 $fullPost['sections'][$compare->order]['title']  = $compare->description;
@@ -1332,7 +1338,7 @@ class AdminController extends Controller
                 $data['imgUrl'] = $likableImage->url;
                 $data['description'] = $likableImage->description;
 
-                $fullPost['sections'][$likableImage->order]['type'] = 'assessment';
+                $fullPost['sections'][$likableImage->order]['section_type'] = 'assessment';
                 $fullPost['sections'][$likableImage->order]['image'] = $likableImage->url;
                 $fullPost['sections'][$likableImage->order]['title'] = $likableImage->description;
                 $fullPost['sections'][$likableImage->order]['description'] = $likableImage->description_image;
@@ -1374,7 +1380,7 @@ class AdminController extends Controller
         $files = $request->allFiles();
 
         foreach ($sections as $key => $section) {
-            if ($section['type'] == 'metaTitle'){
+            if ($section['section_type'] == 'metaTitle'){
                 $metaTitle  = $section['title'];
 
                 $hashtags = null;
@@ -1386,21 +1392,21 @@ class AdminController extends Controller
                 $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId);
 
             }
-            elseif($section['type'] == 'text'){
+            elseif($section['section_type'] == 'text'){
                 $content = $section['value'];
 //                dd($content);
                 $this->createPostAddContent($this->post->id, $content, $key);
             }
-            elseif($section['type'] == 'title'){
+            elseif($section['section_type'] == 'title'){
                 $title = $section['value'];
                 $this->createPostAddTitle($this->post->id, $title, $key);
             }
-            elseif($section['type'] == 'video'){
+            elseif($section['section_type'] == 'video'){
                 $url = $section['value'];
                 $description = $section['description'];
                 $this->createPostAddVideo($this->post->id, $url, $description, $key);
             }
-            elseif($section['type'] == 'survey'){
+            elseif($section['section_type'] == 'survey'){
 //                dd($files);
                 $title = $section['title'];
                 if (isset($files['sections'][$key]['image'])){
@@ -1409,7 +1415,7 @@ class AdminController extends Controller
                     $this->createPostAddSurvey($section['answers'], $title, $this->post->id, $section['description'], $key,$section['image'], true );
                 }
             }
-            elseif ($section['type'] == 'image'){
+            elseif ($section['section_type'] == 'image'){
 
 //                    dd($files['sections'][$key]['value']);
                 if (isset($files['sections'][$key]['value'])){
@@ -1418,7 +1424,7 @@ class AdminController extends Controller
                     $this->createPostAddImage($this->post->id, $section['value'], $section['description'], $key, true);
                 }
             }
-            elseif ($section['type'] == 'imageWithText'){
+            elseif ($section['section_type'] == 'imageWithText'){
 
                 if (isset($files['sections'][$key]['image'])){
                     $this->createPostAddImageWithText(
@@ -1443,25 +1449,25 @@ class AdminController extends Controller
 
 //                dd($files);
             }
-            elseif ($section['type'] == 'selection'){
+            elseif ($section['section_type'] == 'selection'){
                 $leftDesc = $section['leftDescription'];
                 $rightDesc = $section['rightDescription'];
                 if (isset($files['sections'][$key]['image1']) && isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
                     $rightFile = $files['sections'][$key]['image1'];
 //                    createPostAddSelection($postId, $leftFile, $rightFile, $description, $leftDesc, $rightDesc, $order, $flagLeft = null, $flagRight = null)
-                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key);
+                    $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['type']);
                 }elseif (isset($files['sections'][$key]['image1'])){ //только правая
                     $rightFile = $files['sections'][$key]['image1'];
-                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $leftDesc, $rightDesc, $key, true, false);
+                    $this->createPostAddSelection($this->post->id, $section['image2'], $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['type'], true, false);
                 }elseif (isset($files['sections'][$key]['image2'])){
                     $leftFile = $files['sections'][$key]['image2'];
-                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $leftDesc, $rightDesc, $key,  false, true);
+                    $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $leftDesc, $rightDesc, $key, $section['type'], false, true);
                 }else{
-                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $leftDesc, $rightDesc, $key,true, true);
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $leftDesc, $rightDesc, $section['type'], $key,true, true);
                 }
             }
-            elseif ($section['type'] == 'assessment'){
+            elseif ($section['section_type'] == 'assessment'){
                 if (isset($files['sections'][$key]['image'])){
                     $file = $files['sections'][$key]['image'];
                     $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'],$key);

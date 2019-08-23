@@ -22,6 +22,10 @@
           label="title"
           v-model="additional_values[index]"
         />
+        <template v-if="index == 0">
+          <input type="text" v-model="comment_seven_1" placeholder="First comment">
+          <input type="text" v-model="comment_seven_2" placeholder="Second comment">
+        </template>
       </div>
       <button @click="save" class="theme-btn theme-btn-red big-btn">פרסם</button>
     </div>
@@ -38,15 +42,21 @@ export default {
       values: [],
       additional_values: [],
       posts: [],
+      comment_seven_1: '',
+      comment_seven_2: '',
     };
   },
   components: {
     SearchableInput
   },
   methods: {
-    getAllPostTitles(){
+    getAllPostTitles() {
       axios.post('/api/getAllPostTitles').then(res => {
         this.posts = Object.values(res.data);
+        this.posts.unshift({
+          title: 'None',
+          id: null,
+        })
       });
     },
     getSelectedPosts(){
@@ -62,6 +72,10 @@ export default {
         if(!this.additional_values.length) {
           this.additional_values = new Array(4).map(n => null);
         }
+
+        this.comment_seven_1 = this.additional_values[0].meta.comment_one,
+        this.comment_seven_2 = this.additional_values[0].meta.comment_two,
+        this.additional_values[0] = this.additional_values[0].data;
 
         this.selectedPosts = Object.values(res.data);
       });
@@ -81,6 +95,8 @@ export default {
         eighthPostId: this.additional_values[1] ? this.additional_values[1].id : null,
         ninthPostId: this.additional_values[2] ? this.additional_values[2].id : null,
         tenthPostId: this.additional_values[3] ? this.additional_values[3].id : null,
+        comment_seven_1: this.comment_seven_1,
+        comment_seven_2: this.comment_seven_2,
       }).then(response => {
         alert('נשמר!');
       });
