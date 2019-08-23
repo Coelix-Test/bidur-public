@@ -201,7 +201,16 @@ class AdminController extends Controller
                 $rightFile = $files['sections'][$key]['image2'];
                 $leftDesc = $section['leftDescription'];
                 $rightDesc = $section['rightDescription'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['type']);
+                $this->createPostAddSelection(
+                  $this->post->id,
+                  $leftFile,
+                  $rightFile, 
+                  $section['title'],
+                  $leftDesc,
+                  $rightDesc,
+                  $key,
+                  $section['type']
+                );
             }elseif ($section['section_type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'], $key);
