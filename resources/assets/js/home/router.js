@@ -94,7 +94,7 @@ router.beforeEach(async (to, from, next) => {
   // console.log(window.app, 'qweqweqwe');
 
   if(window.app) {
-    // store.dispatch('modals/ad/open')
+    store.dispatch('modals/ad/open')
   }
 
   if(to.name == 'single-post') {

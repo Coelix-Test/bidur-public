@@ -22,6 +22,8 @@
       </div>
     </template>
 
+    <img v-if="loading" src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="">
+
     <div class="new">
       <image-input
         @update:value="updateImage"
@@ -43,6 +45,7 @@ export default {
       hashtags: [],
       hashtag: null,
       image: null,
+      loading: false,
     };
   },
   components: {
@@ -77,12 +80,18 @@ export default {
       });
     },
     create() {
+
+      if(this.loading) return ;
+
       let data = new FormData();
       data.append('file', this.image);
       data.append('hashtag_id', this.hashtag.id);
 
+      this.loading = true;
+
       return axios.post('/api/insta-slider', data).then(res => {
         this.updateSliders();
+        this.loading = false;
         return res;
       });
     }
