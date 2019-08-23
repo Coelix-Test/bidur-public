@@ -8,7 +8,7 @@ RewriteRule ^ public/index.php [L]
 RewriteRule ^(.*)$ public/$1 [NC]
 
 RewriteCond %{REQUEST_URI} ^\/post\/ [NC]
-RewriteCond %{HTTP_USER_AGENT} WhatsApp|telegram|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare [NC]
+RewriteCond %{HTTP_USER_AGENT} WhatsApp|telegram|facebookexternalhit|twitterbot|linkedinbot|outbrain|pinterest|slackbot|vkShare [NC]
 RewriteRule ^(.*)$ /bots%{REQUEST_URI} [L,NC,R=301]
 
 RewriteCond %{REQUEST_FILENAME} !-d
