@@ -24,6 +24,9 @@
                 <li>
                     <router-link :to="{ name: 'mails' }">מיילים</router-link>
                 </li>
+                <li>
+                    <router-link :to="{ name: 'insta-slider' }">Instagram Sliders</router-link>
+                </li>
             </ul>
         </nav>
 
@@ -75,8 +78,8 @@
                 display: flex;
                 text-decoration: none;
                 color: #333;
-                font-size: 18px;
-                width: 185px;
+                font-size: 16px;
+                padding: 0 20px;
                 height: 50px;
                 -ms-align-items: center;
                 align-items: center;

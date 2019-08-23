@@ -24,20 +24,20 @@
     </div> -->
 
     <swiper
-      v-if="data.length"
+      v-if="slider.length"
       :options="{
         slidesPerView: 1,
         loop: true,
       }"
     >
-      <swiper-slide v-for="item in data" :key="item.id">
-        <img class="banner" :src="item.img">
+      <swiper-slide v-for="item in slider" :key="item.id">
+        <img class="banner" :src="item.image">
         <div class="banner-shad">
 
         </div>
-        <div class="title">
+        <!-- <div class="title">
           {{ item.title }}
-        </div>
+        </div> -->
       </swiper-slide>
     </swiper>
 
@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       data: [],
+      slider: [],
       name: '',
       img: '',
       page: 0,
@@ -73,6 +74,13 @@ export default {
     // isQuad(index) {
     //   return (index + 1) % 3 == 0;
     // },
+    updateSlider(id) {
+      return axios
+        .get('/api/insta-slider/hashtag/' + id)
+        .then(res => {
+          this.slider = res.data;
+        });
+    },
     sync(id, append = false) {
       this.loading = true;
       return axios.post('/api/getAllPostsByHashtag', {
@@ -121,12 +129,14 @@ export default {
   },
   created() {
     this.sync(this.$route.params.id);
+    this.updateSlider(this.$route.params.id);
   },
   beforeRouteUpdate(to, from, next) {
     this.page = 0;
     this.loading = false;
     this.end = false;
     this.sync(to.params.id);
+    this.updateSlider(to.params.id);
     next();
   },
   mounted() {

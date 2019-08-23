@@ -29,7 +29,7 @@ export default {
     value : {
       type: [ String, File ],
       default: function(){
-        return '';
+        return null;
       }
     }
   },
@@ -40,6 +40,7 @@ export default {
     onFileChange(file){
       this.fileToBase64(file);
       this.$emit('update:value', file);
+
     },
     fileToBase64(file){
       let reader = new FileReader();

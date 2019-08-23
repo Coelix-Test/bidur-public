@@ -240,7 +240,7 @@ export default {
               leftDescription: '',
               rightDescription: '',
               title: '',
-              type: '',
+              type: 'like',
             };
             break;
         }

@@ -201,7 +201,7 @@ class AdminController extends Controller
                 $rightFile = $files['sections'][$key]['image2'];
                 $leftDesc = $section['leftDescription'];
                 $rightDesc = $section['rightDescription'];
-                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['title']);
+                $this->createPostAddSelection($this->post->id, $leftFile, $rightFile, $section['title'], $leftDesc, $rightDesc, $key, $section['type']);
             }elseif ($section['section_type'] == 'assessment'){
                 $file = $files['sections'][$key]['image'];
                 $this->createPostAddSingleLikablePhoto($this->post->id, $file, $section['title'], $section['description'], $key);
@@ -1464,7 +1464,7 @@ class AdminController extends Controller
                     $leftFile = $files['sections'][$key]['image2'];
                     $this->createPostAddSelection($this->post->id, $leftFile, $section['image1'], $section['title'], $leftDesc, $rightDesc, $key, $section['type'], false, true);
                 }else{
-                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $leftDesc, $rightDesc, $section['type'], $key,true, true);
+                    $this->createPostAddSelection($this->post->id, $section['image1'], $section['image2'], $section['title'], $leftDesc, $rightDesc, $key, $section['type'], true, true);
                 }
             }
             elseif ($section['section_type'] == 'assessment'){

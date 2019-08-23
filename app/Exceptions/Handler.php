@@ -44,8 +44,33 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
+     public function render($request, Exception $exception)
+     {
+
+       // Changed default error handler for better experience
+       if($exception instanceof \App\Exceptions\InvalidInputException) {
+         return $exception->render($request);
+       }
+       elseif($exception instanceof \Illuminate\Validation\ValidationException) {
+         $errors = $exception->errors();
+
+         foreach ($errors as $i => $err) {
+           $errors[$i] = $err[0];
+         }
+
+         return response()->json([
+           'err' => $errors,
+         ], 400);
+       }
+       else {
+         // if(array_search(env('APP_ENV'), [ 'local', 'dev', 'test' ]) !== FALSE) {
+           return parent::render($request, $exception);
+         // } else {
+         //   return response()->json([
+         //     'err' => 'Server error, try later'
+         //   ], 500);
+         // }
+       }
+
+     }
 }

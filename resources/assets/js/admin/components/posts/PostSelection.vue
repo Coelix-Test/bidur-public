@@ -2,15 +2,19 @@
   <div class="wrapper selection-component-container">
     <div class="selection-title">
       <input type="text" placeholder="כותרת" :value="title" @input="$emit('update:title', $event.target.value)" class="title">
-      <select
-        class=""
-        @input="$emit('update:type', $event.target.value)"
-        :value="type"
-      >
-        <option value="like">Like</option>
-        <option value="dislike">Dislike</option>
-        <option value="default">Default</option>
-      </select>
+      <div class="type-selector">
+        <div class="text">
+          סוג הסקר:
+        </div>
+        <select
+          @input="$emit('update:type', $event.target.value)"
+          :value="type"
+        >
+          <option value="like">Like</option>
+          <option value="dislike">Dislike</option>
+          <!-- <option value="default">Default</option> -->
+        </select>
+      </div>
     </div>
     <div class="images-row">
       <div class="image-wrap">
@@ -129,6 +133,12 @@ export default {
                 height: 55px;
             }
         }
+    }
+    .type-selector {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
     }
     .image-caption{
       margin-top: 15px;

@@ -48,13 +48,14 @@ import Tags from './views/Tags.vue';
 import EditMainPage from './views/EditMainPage.vue';
 import Users from './views/Users.vue';
 import Mails from './views/Mails.vue';
+import InstaSlider from './views/InstaSlider.vue';
 
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'posts', component: PostList },
     { name: 'post-new', path: '/post/new', component: PostSingle },
     { name: 'post-edit', path: '/post/:id', component: PostSingle },
-
+    { path: '/insta-slider', name: 'insta-slider', component: InstaSlider },
     { path: '/surveys', name: 'surveys', component: Surveys },
     { name: 'mails', path: '/mails', component: Mails },
     { path: '/tags', name: 'tags', component: Tags },

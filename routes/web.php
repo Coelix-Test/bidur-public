@@ -139,6 +139,10 @@ Route::group([ 'prefix' => 'api' ], function() {
   Route::post('/userSearch', 'AdminController@userSearch');
   Route::post('/tagNameSearch', 'AdminController@tagNameSearch');
 
+  Route::post('/insta-slider', 'InstaSliderController@store');
+  Route::delete('/insta-slider/{id}', 'InstaSliderController@remove');
+  Route::get('/insta-slider/hashtag/{hashtag_id}', 'InstaSliderController@getByInsta');
+
   Route::post('/getAllPostsPaginated', 'AdminController@getAllPostsPaginated');
   Route::post('/toggleHappyBirthday', 'AdminController@toggleHappyBirthday');
 });
