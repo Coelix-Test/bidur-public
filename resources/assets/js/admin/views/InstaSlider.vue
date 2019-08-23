@@ -54,7 +54,9 @@ export default {
     },
     sync() {
       return axios.post('/api/getAllHashtags').then(res => {
+        this.hashtag = res.data[0];
         this.hashtags = res.data;
+        this.updateSliders();
       });
     },
     updateSliders() {
