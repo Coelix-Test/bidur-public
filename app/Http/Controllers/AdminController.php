@@ -132,7 +132,7 @@ class AdminController extends Controller
 
     // gets all the titles and ids for the line in the header
     public function getAllPostTitles(){
-        $posts = Post::all();
+        $posts = Post::where([])->orderBy('id', 'desc')->limit(200)->get();
         foreach ($posts as $key => $post) {
             $titleObject = $post->metaTitle;
             if (!empty($titleObject)){
@@ -204,7 +204,7 @@ class AdminController extends Controller
                 $this->createPostAddSelection(
                   $this->post->id,
                   $leftFile,
-                  $rightFile, 
+                  $rightFile,
                   $section['title'],
                   $leftDesc,
                   $rightDesc,
@@ -1004,32 +1004,31 @@ class AdminController extends Controller
         }
         return json_encode(['success' => true]);
     }
-    public function getAllSurveys(){
+  public function getAllSurveys(){
 
-        $allSurveys = Survey::orderBy('created_at', 'desc')->get();
+    $allSurveys = Survey::orderBy('created_at', 'desc')->limit(100)->get();
 
-
-        if ($allSurveys->isEmpty()){
-            return json_encode(['success' => false]);
-        }
-        foreach ($allSurveys as $key => $survey) {
-            $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
-            foreach ($variants as $variant) {
-                $data['id'] = $variant->id;
-                $data['variant'] = $variant->question;
-                $data['order'] = $variant->order;
-                $data['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
-                $allVariants[] = $data;
-            }
-            $all[$key]['survey'] = $survey;
-            if (isset($allVariants)){
-                $all[$key]['variants'] = $allVariants;
-            }
-            unset($data);
-            unset($allVariants);
-        }
-        return json_encode($all);
+    if ($allSurveys->isEmpty()){
+      return json_encode(['success' => false]);
     }
+    foreach ($allSurveys as $key => $survey) {
+      $variants = SurveyAnswerVariant::where('surveyId', $survey->id)->orderBy('order')->get();
+      foreach ($variants as $variant) {
+        $data['id'] = $variant->id;
+        $data['variant'] = $variant->question;
+        $data['order'] = $variant->order;
+        $data['votes'] = SurveyAnswers::where('answer', $variant->id)->count();
+        $allVariants[] = $data;
+      }
+      $all[$key]['survey'] = $survey;
+      if (isset($allVariants)){
+        $all[$key]['variants'] = $allVariants;
+      }
+      unset($data);
+      unset($allVariants);
+    }
+    return json_encode($all);
+  }
 
 
     public function editSurvey(Request $request){
@@ -1200,6 +1199,7 @@ class AdminController extends Controller
 
       'comment_seven_1' => $request->get('comment_seven_1'),
       'comment_seven_2' => $request->get('comment_seven_2'),
+      'comment_eight_1' => $request->get('comment_eight_1'),
     ]);
 
   }

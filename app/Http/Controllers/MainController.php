@@ -519,7 +519,12 @@ class MainController extends Controller
           ];
         }
         if($eight) {
-          $data[8] = $this->getContent($eight->id);
+          $data[8] = [
+            'data' => $this->getContent($eight->id),
+            'meta' => [
+              'comment_one' => $section->comment_eight_1,
+            ]
+          ];
         }
         if($nine) {
           $data[9] = $this->getContent($nine->id);

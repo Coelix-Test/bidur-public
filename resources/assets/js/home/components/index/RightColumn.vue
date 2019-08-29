@@ -112,7 +112,7 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     color: #fff;
-    height:500px;
+    height: auto;
     /* overflow: hidden; */
     /* background-color: rgba(100,100,100,0.7); */
     opacity: 0;
@@ -184,11 +184,11 @@ export default {
 
   .birthdayPost .overlay {
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    border:4px solid #F2C94C;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 4px solid #F2C94C;
     animation: rotateAnim 5s ease infinite;
 
   }

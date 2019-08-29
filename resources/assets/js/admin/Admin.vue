@@ -50,21 +50,22 @@
             display: flex;
             list-style-type: none;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 5px;
             padding: 0;
             margin: 0;
             overflow: hidden;
             li{
+              padding: 5px;
                 position: relative;
                 border-left: 1px solid transparent;
                 &:after{
                     content: '';
                     display: block;
                     width: 1px;
-                    height: 34px;
-                    background: #333;
+                    height: calc(100% - 32px);
+                    background: #000;
                     position: absolute;
-                    top: 7px;
+                    top: 14px;
                     left: -1px;
                 }
                 &:last-child{
@@ -75,6 +76,7 @@
                 }
             }
             a{
+              border-radius: 5px;
                 display: flex;
                 text-decoration: none;
                 color: #333;

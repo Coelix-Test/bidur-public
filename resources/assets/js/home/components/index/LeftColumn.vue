@@ -11,7 +11,7 @@
         </p>
       </router-link>
     </article>
-    <surveys v-if="$env.mobile" is_first />
+    <surveys v-if="$env.MOBILE" is_first />
     <article v-in-viewport.once class="second">
       <router-link :to="'/post/' + secondPost.id">
         <div class="overlay"></div>

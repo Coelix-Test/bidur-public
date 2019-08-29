@@ -3,8 +3,17 @@
     <router-link :to="'/post/' + posts[0].data.id" class="post first">
       <div class="contain">
         <img :src="posts[0].data.img">
-        <div class="stars"></div>
       </div>
+
+      <div class="stars">
+        <div class="stars-top layer">
+
+        </div>
+        <div class="stars-bot layer">
+
+        </div>
+      </div>
+
       <div class="max-title">
         {{ posts[0].meta.comment_one }}
       </div>
@@ -13,16 +22,18 @@
           {{ posts[0].data.title }}
         </div>
         <div class="sub">
-          {{ posts[0].meta.comment_two }}
+          {{ posts[0].data.author }} |
+          {{ new Date(posts[0].data.time * 1000) | formatDate }}
         </div>
       </div>
     </router-link>
-    <router-link :to="'/post/' + posts[1].id" class="second post">
-      <img :src="posts[1].img">
+    <router-link :to="'/post/' + posts[1].data.id" class="second post">
+      <img :src="posts[1].data.img">
       <div class="header">
         <div class="bg">
           <div class="title">
-            {{ posts[1].title }}
+            <span class="dynamic">{{ posts[1].meta.comment_one }}</span> -
+            <span class="static">ישראל אוגלבו</span>
           </div>
         </div>
       </div>
@@ -69,18 +80,26 @@ $border_radius: 0;
     &.second {
       height: calc(100% - 100px);
       margin-right: 10px;
+      padding-top: 100px;
       .header {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100px;
-        background: linear-gradient(286.5deg, #C09135 3.48%, #FCD77E 99.52%);
+        background: linear-gradient(322.69deg, #8E2DE2 21.47%, #5105EC 85.38%);
         border-radius: $border_radius $border_radius 0 0;
         .title {
           color: #fff;
           font-weight: bold;
           font-size: 44px;
+
+          .static {
+
+          }
+          .dynamic {
+            font-weight: 300;
+          }
         }
         .bg {
           background-image: url(/img/top-section-first-bg.png);
@@ -101,9 +120,12 @@ $border_radius: 0;
     &.first {
       height: calc(100% - 20px);
       margin-left: 10px;
-      background: linear-gradient(286.5deg, #8E2DE2 3.48%, #4A00E0 99.52%);
-      padding: 70px 10px;
+      background: #D6A642;
+      padding: 70px 0;
       padding-bottom: 90px;
+      border: 20px solid;
+      border-image: linear-gradient(286.5deg, #E9C37B 3.48%, #FFE29B 99.52%);
+      border-image-slice: 1;
       .max-title {
         font-weight: bold;
         font-size: 50px;
@@ -148,17 +170,33 @@ $border_radius: 0;
         width: 100%;
         height: 100%;
         position: relative;
-        .stars {
+      }
+
+      .stars {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        .layer {
           position: absolute;
-          top: 0;
           left: 0;
           width: 100%;
           height: 100%;
 
-          background-position: bottom;
           background-repeat: no-repeat;
-          background-image: url(/img/stars-bg-top.svg);
-          background-size: cover;
+          background-size: contain;
+
+          &.stars-top {
+            top: 0;
+            background-image: url(/img/stars-top-top.png);
+            background-position: top;
+          }
+          &.stars-bot {
+            bottom: 0;
+            background-position: bottom;
+            background-image: url(/img/stars-top-bot.png);
+          }
         }
       }
     }

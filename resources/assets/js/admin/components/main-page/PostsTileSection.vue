@@ -26,6 +26,9 @@
           <input type="text" v-model="comment_seven_1" placeholder="First comment">
           <input type="text" v-model="comment_seven_2" placeholder="Second comment">
         </template>
+        <template v-else-if="index == 1">
+          <input type="text" v-model="comment_eight_1" placeholder="First comment">
+        </template>
       </div>
       <button @click="save" class="theme-btn theme-btn-red big-btn">פרסם</button>
     </div>
@@ -44,6 +47,7 @@ export default {
       posts: [],
       comment_seven_1: '',
       comment_seven_2: '',
+      comment_eight_1: '',
     };
   },
   components: {
@@ -73,9 +77,12 @@ export default {
           this.additional_values = new Array(4).map(n => null);
         }
 
-        this.comment_seven_1 = this.additional_values[0].meta.comment_one,
-        this.comment_seven_2 = this.additional_values[0].meta.comment_two,
+        this.comment_seven_1 = this.additional_values[0].meta.comment_one;
+        this.comment_seven_2 = this.additional_values[0].meta.comment_two;
         this.additional_values[0] = this.additional_values[0].data;
+
+        this.comment_eight_1 = this.additional_values[1].meta.comment_one;
+        this.additional_values[1] = this.additional_values[1].data;
 
         this.selectedPosts = Object.values(res.data);
       });
@@ -97,6 +104,7 @@ export default {
         tenthPostId: this.additional_values[3] ? this.additional_values[3].id : null,
         comment_seven_1: this.comment_seven_1,
         comment_seven_2: this.comment_seven_2,
+        comment_eight_1: this.comment_eight_1,
       }).then(response => {
         alert('נשמר!');
       });
