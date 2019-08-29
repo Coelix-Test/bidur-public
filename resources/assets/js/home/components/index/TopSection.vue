@@ -34,7 +34,7 @@
         <div class="bg">
           <div class="title">
             <span class="dynamic">{{ posts[1].meta.comment_one }}</span> -
-            <span class="static">ישראל אוגלבו</span>
+            <span class="static">פריצת השבוע</span>
           </div>
         </div>
       </div>
@@ -238,6 +238,9 @@ $border_radius: 0;
           .sub {
             font-size: 15px;
           }
+        }
+        .max-title {
+          font-size: 38px;
         }
       }
 

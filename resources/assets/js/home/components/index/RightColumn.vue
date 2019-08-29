@@ -433,7 +433,6 @@ export default {
       margin-bottom: 0;
     }
     .birthdayPost {
-      height: 200px;
       margin-bottom: 16px;
     }
     ul.posts li {
