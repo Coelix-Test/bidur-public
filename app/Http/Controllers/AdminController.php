@@ -1171,37 +1171,45 @@ class AdminController extends Controller
 
   public function editMainPagePosts(Request $request){
 
-    $mainPostId = $request->get(    'mainPostId');
-    $secondPostId = $request->get(  'secondPostId');
-    $thirdPostId = $request->get(   'thirdPostId');
-    $fourthPostId = $request->get(  'fourthPostId');
-    $fifthPostId = $request->get(   'fifthPostId');
-    $sixthPostId = $request->get(   'sixthPostId');
-    // truncate MEANS "TO EMPTY"
+    try {
+      $mainPostId = $request->get(    'mainPostId');
+      $secondPostId = $request->get(  'secondPostId');
+      $thirdPostId = $request->get(   'thirdPostId');
+      $fourthPostId = $request->get(  'fourthPostId');
+      $fifthPostId = $request->get(   'fifthPostId');
+      $sixthPostId = $request->get(   'sixthPostId');
+      // truncate MEANS "TO EMPTY"
 
-    $seventhPostId = $request->get('seventhPostId');
-    $eighthPostId = $request->get('eighthPostId');
-    $ninthPostId = $request->get('ninthPostId');
-    $tenthPostId = $request->get('tenthPostId');
-    MainSection::truncate();
+      $seventhPostId = $request->get('seventhPostId');
+      $eighthPostId = $request->get('eighthPostId');
+      $ninthPostId = $request->get('ninthPostId');
+      $tenthPostId = $request->get('tenthPostId');
+      MainSection::truncate();
 
-    MainSection::create([
-      'id' => 1,
-      'first' => $mainPostId,
-      'second' => $secondPostId,
-      'third' => $thirdPostId,
-      'fourth' => $fourthPostId,
-      'fifth' => $fifthPostId,
-      'sixth' => $sixthPostId,
-      'seven' => $seventhPostId,
-      'eight' => $eighthPostId,
-      'nine' => $ninthPostId,
-      'ten' => $tenthPostId,
+      MainSection::create([
+        'id' => 1,
+        'first' => $mainPostId,
+        'second' => $secondPostId,
+        'third' => $thirdPostId,
+        'fourth' => $fourthPostId,
+        'fifth' => $fifthPostId,
+        'sixth' => $sixthPostId,
+        'seven' => $seventhPostId,
+        'eight' => $eighthPostId,
+        'nine' => $ninthPostId,
+        'ten' => $tenthPostId,
 
-      'comment_seven_1' => $request->get('comment_seven_1'),
-      'comment_seven_2' => $request->get('comment_seven_2'),
-      'comment_eight_1' => $request->get('comment_eight_1'),
-    ]);
+        'comment_seven_1' => $request->get('comment_seven_1'),
+        'comment_seven_2' => $request->get('comment_seven_2'),
+        'comment_eight_1' => $request->get('comment_eight_1'),
+      ]);
+    } catch (\Exception $e) {
+      MainSection::create([
+        'id' => 1,
+      ]);
+      throw $e;
+    }
+
 
   }
 
