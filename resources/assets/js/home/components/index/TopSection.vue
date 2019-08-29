@@ -33,8 +33,8 @@
       <div class="header">
         <div class="bg">
           <div class="title">
-            <span class="dynamic">{{ posts[1].meta.comment_one }}</span> -
-            <span class="static">פריצת השבוע</span>
+            <span class="static">פריצת השבוע</span> -
+            <span class="dynamic">{{ posts[1].meta.comment_one }}</span>
           </div>
         </div>
       </div>
@@ -100,10 +100,11 @@ $border_radius: 0;
           white-space: nowrap;
 
           .static {
-
+            font-weight: 300;
           }
           .dynamic {
-            font-weight: 300;
+            //font-weight: 300;
+
           }
         }
         .bg {
@@ -231,6 +232,9 @@ $border_radius: 0;
       height: 500px !important;
 
       &.first {
+        border: 7px solid;
+        border-image: linear-gradient(286.5deg, #E9C37B 3.48%, #FFE29B 99.52%);
+        border-image-slice: 1;
         .title {
           .main {
             font-size: 30px;
@@ -247,8 +251,8 @@ $border_radius: 0;
       &.second {
         .header {
           .bg {
-            background-position: right;
-            background-size: auto 100%;
+            background-position: top;
+            background-size: 100%;
           }
         }
         .title {
