@@ -244,7 +244,7 @@ $border_radius: 0;
           }
         }
         .max-title {
-          font-size: 38px;
+          font-size: 32px;
         }
       }
 
