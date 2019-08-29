@@ -1,3 +1,5 @@
+const sec_num = 5;
+
 export default {
   namespaced: true,
   state: {
@@ -21,12 +23,12 @@ export default {
 
       context.commit('open');
       el.classList.remove('closed', 'animate')
-      rest.innerHTML = 3;
+      rest.innerHTML = sec_num;
       var sec = 0;
       var interval = setInterval(() => {
         sec++;
-        rest.innerHTML = 3 - sec;
-        if(sec >= 3) {
+        rest.innerHTML = sec_num - sec;
+        if(sec >= sec_num) {
           context.commit('close');
           el.classList.add('animate');
           setTimeout(function () {
