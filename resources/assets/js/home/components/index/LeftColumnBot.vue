@@ -47,10 +47,6 @@ export default {
     padding:24px 0 0;
     border-radius: 20px;
     box-shadow: 0 0 16px rgba(0,0,0,0.2);
-    transform: translateY(-64px);
-    &.get-down {
-      transform: translateY(0);
-    }
   }
   .left-column-bot.in-viewport {
     transform: translateY(0);
