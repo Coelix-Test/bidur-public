@@ -15,7 +15,7 @@
       </div>
 
       <div class="max-title">
-        {{ posts[0].meta.comment_one }}
+        מגזין סופ"ש
       </div>
       <div class="title">
         <div class="main">

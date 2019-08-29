@@ -1548,6 +1548,12 @@ class AdminController extends Controller
             if ($post->id == $mainSection->sixth){
                 $finalAllPosts[$key]['is_in_main_section'] = true;
             }
+            if ($post->id == $mainSection->seven){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
+            if ($post->id == $mainSection->eight){
+                $finalAllPosts[$key]['is_in_main_section'] = true;
+            }
         }
         return json_encode($finalAllPosts);
 

@@ -502,12 +502,41 @@ class MainController extends Controller
         $nine = Post::where('id', $section->nine)->first();
         $ten = Post::where('id', $section->ten)->first();
 
-        $data[1] = $this->getContent($first->id);
-        $data[2] = $this->getContent($second->id);
-        $data[3] = $this->getContent($third->id);
-        $data[4] = $this->getContent($fourth->id);
-        $data[5] = $this->getContent($fifth->id);
-        $data[6] = $this->getContent($sixth->id);
+        if($first) {
+          $data[1] = $this->getContent($first->id);
+        } else {
+          $data[1] = null;
+        }
+
+        if($second) {
+          $data[2] = $this->getContent($second->id);
+        } else {
+          $data[2] = null;
+        }
+
+        if($third) {
+          $data[3] = $this->getContent($third->id);
+        } else {
+          $data[3] = null;
+        }
+
+        if($fourth) {
+          $data[4] = $this->getContent($fourth->id);
+        } else {
+          $data[4] = null;
+        }
+
+        if($fifth) {
+          $data[5] = $this->getContent($fifth->id);
+        } else {
+          $data[5] = null;
+        }
+
+        if($sixth) {
+          $data[6] = $this->getContent($sixth->id);
+        } else {
+          $data[6] = null;
+        }
 
         if($seven) {
           $data[7] = [
@@ -517,7 +546,10 @@ class MainController extends Controller
               'comment_two' => $section->comment_seven_2,
             ]
           ];
+        } else {
+          $data[7] = null;
         }
+
         if($eight) {
           $data[8] = [
             'data' => $this->getContent($eight->id),
@@ -525,13 +557,21 @@ class MainController extends Controller
               'comment_one' => $section->comment_eight_1,
             ]
           ];
+        } else {
+          $data[8] = null;
         }
-        if($nine) {
-          $data[9] = $this->getContent($nine->id);
-        }
-        if($ten) {
-          $data[10] = $this->getContent($ten->id);
-        }
+
+        // if($nine) {
+        //   $data[9] = $this->getContent($nine->id);
+        // } else {
+        //   $data[9] = null;
+        // }
+        //
+        // if($ten) {
+        //   $data[10] = $this->getContent($ten->id);
+        // } else {
+        //   $data[10] = null;
+        // }
 
         return json_encode($data, JSON_FORCE_OBJECT);
     }
