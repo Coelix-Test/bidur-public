@@ -162,7 +162,7 @@ $border_radius: 0;
           line-height: 1;
           color: #fff;
           font-weight: 800;
-          font-size: 44px;
+          font-size: 32px;
           text-decoration: none;
 
           text-overflow: ellipsis;
@@ -187,7 +187,7 @@ $border_radius: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(360deg, #3E64C0 0%, rgba(174, 174, 174, 0) 58.88%);
+          //background: linear-gradient(360deg, #3E64C0 0%, rgba(174, 174, 174, 0) 58.88%);
         }
       }
 
