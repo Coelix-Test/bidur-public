@@ -1171,7 +1171,7 @@ class AdminController extends Controller
 
   public function editMainPagePosts(Request $request){
 
-    //try {
+    try {
       $mainPostId = $request->get(    'mainPostId');
       $secondPostId = $request->get(  'secondPostId');
       $thirdPostId = $request->get(   'thirdPostId');
@@ -1203,12 +1203,12 @@ class AdminController extends Controller
         'comment_seven_2' => $request->get('comment_seven_2'),
         'comment_eight_1' => $request->get('comment_eight_1'),
       ]);
-    // } catch (\Exception $e) {
-    //   MainSection::create([
-    //     'id' => 1,
-    //   ]);
-    //   throw $e;
-    // }
+    } catch (\Exception $e) {
+      MainSection::create([
+        'id' => 1,
+      ]);
+      throw $e;
+    }
 
 
   }
