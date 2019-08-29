@@ -3,6 +3,7 @@
     <router-link :to="'/post/' + posts[0].data.id" class="post first">
       <div class="contain">
         <img :src="posts[0].data.img">
+        <div class="bg"></div>
       </div>
 
       <div class="stars">
@@ -120,7 +121,7 @@ $border_radius: 0;
     &.first {
       height: calc(100% - 20px);
       margin-left: 10px;
-      background: #D6A642;
+      background: #E4C176;
       padding: 70px 0;
       padding-bottom: 90px;
       border: 20px solid;
@@ -170,6 +171,15 @@ $border_radius: 0;
         width: 100%;
         height: 100%;
         position: relative;
+
+        .bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(360deg, #3E64C0 0%, rgba(174, 174, 174, 0) 58.88%);
+        }
       }
 
       .stars {
