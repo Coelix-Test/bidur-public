@@ -229,6 +229,23 @@ $border_radius: 0;
     .post {
       margin: 20px 0 !important;
       height: 500px !important;
+
+      &.first {
+        .title {
+          .main {
+            font-size: 30px;
+          }
+          .sub {
+            font-size: 15px;
+          }
+        }
+      }
+
+      &.second {
+        .title {
+          font-size: 30px !important;
+        }
+      }
     }
   }
 
