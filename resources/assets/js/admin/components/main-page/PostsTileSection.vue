@@ -3,7 +3,7 @@
     <div class="section-content">
       <div v-for="(post, index) in values" :key="index">
         <p v-if="index == 7" class="heading">פריצת השבוע</p>
-        <p v-if="index == 6" class="heading">מגזין סופ"ש</p>
+        <p v-else-if="index == 6" class="heading">מגזין סופ"ש</p>
         <p v-else class="heading">Post {{ index + 1 }}</p>
         <searchable-input
           class="searchable-input"
