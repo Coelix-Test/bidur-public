@@ -2,7 +2,9 @@
   <div class="wrapper posts-tile-section">
     <div class="section-content">
       <div v-for="(post, index) in values" :key="index">
-        <p class="heading">Post {{index + 1}}</p>
+        <p v-if="index == 7" class="heading">פריצת השבוע</p>
+        <p v-if="index == 6" class="heading">מגזין סופ"ש</p>
+        <p v-else class="heading">Post {{ index + 1 }}</p>
         <searchable-input
           class="searchable-input"
           :deletable="false"
@@ -64,7 +66,7 @@ export default {
         if(this.values[7]) {
           this.comment_eight_1 = this.values[7].meta.comment_one;
           this.values[7] = this.values[7].data;
-        }  
+        }
 
         this.values = this.values.map(n => n ? n : {
           title: 'None',
