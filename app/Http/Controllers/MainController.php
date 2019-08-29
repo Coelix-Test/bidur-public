@@ -491,6 +491,7 @@ class MainController extends Controller
 
     public function getSelectedPosts(){
         $section = MainSection::where('id', 1)->first();
+
         $first = Post::where('id', $section->first)->first();
         $second = Post::where('id', $section->second)->first();
         $third = Post::where('id', $section->third)->first();
@@ -503,43 +504,43 @@ class MainController extends Controller
         $ten = Post::where('id', $section->ten)->first();
 
         if($first) {
-          $data[1] = $this->getContent($first->id);
+          $data[0] = $this->getContent($first->id);
+        } else {
+          $data[0] = null;
+        }
+
+        if($second) {
+          $data[1] = $this->getContent($second->id);
         } else {
           $data[1] = null;
         }
 
-        if($second) {
-          $data[2] = $this->getContent($second->id);
+        if($third) {
+          $data[2] = $this->getContent($third->id);
         } else {
           $data[2] = null;
         }
 
-        if($third) {
-          $data[3] = $this->getContent($third->id);
+        if($fourth) {
+          $data[3] = $this->getContent($fourth->id);
         } else {
           $data[3] = null;
         }
 
-        if($fourth) {
-          $data[4] = $this->getContent($fourth->id);
+        if($fifth) {
+          $data[4] = $this->getContent($fifth->id);
         } else {
           $data[4] = null;
         }
 
-        if($fifth) {
-          $data[5] = $this->getContent($fifth->id);
+        if($sixth) {
+          $data[5] = $this->getContent($sixth->id);
         } else {
           $data[5] = null;
         }
 
-        if($sixth) {
-          $data[6] = $this->getContent($sixth->id);
-        } else {
-          $data[6] = null;
-        }
-
         if($seven) {
-          $data[7] = [
+          $data[6] = [
             'data' => $this->getContent($seven->id),
             'meta' => [
               'comment_one' => $section->comment_seven_1,
@@ -547,18 +548,18 @@ class MainController extends Controller
             ]
           ];
         } else {
-          $data[7] = null;
+          $data[6] = null;
         }
 
         if($eight) {
-          $data[8] = [
+          $data[7] = [
             'data' => $this->getContent($eight->id),
             'meta' => [
               'comment_one' => $section->comment_eight_1,
             ]
           ];
         } else {
-          $data[8] = null;
+          $data[7] = null;
         }
 
         // if($nine) {

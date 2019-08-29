@@ -49,14 +49,14 @@ export default {
         }
     },
     computed: {
-        filtered() {
-            if(this.query.length) {
-                return this.options.filter(n => (new RegExp(this.query, 'i')).test(n[this.label]));
-            } else {
-                return this.options;
-            }
-
+      filtered() {
+        if(this.query && this.query.length) {
+          return this.options.filter(n => (new RegExp(this.query, 'i')).test(n[this.label]));
+        } else {
+          return this.options;
         }
+
+      }
     }
 }
 </script>

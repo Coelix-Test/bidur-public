@@ -11,22 +11,11 @@
           label="title"
           v-model="values[index]"
         />
-      </div>
-      <div v-for="(post, index) in additional_values" :key="index + 7">
-        <p class="heading">Post {{index + 7}}</p>
-        <searchable-input
-          class="searchable-input"
-          :deletable="false"
-          :placeholder="'Type post name'"
-          :options="posts"
-          label="title"
-          v-model="additional_values[index]"
-        />
-        <template v-if="index == 0">
+        <template v-if="index == 6">
           <input type="text" v-model="comment_seven_1" placeholder="First comment">
           <input type="text" v-model="comment_seven_2" placeholder="Second comment">
         </template>
-        <template v-else-if="index == 1">
+        <template v-else-if="index == 7">
           <input type="text" v-model="comment_eight_1" placeholder="First comment">
         </template>
       </div>
@@ -43,7 +32,6 @@ export default {
     return {
       selectedPosts: [],
       values: [],
-      additional_values: [],
       posts: [],
       comment_seven_1: '',
       comment_seven_2: '',
@@ -65,24 +53,23 @@ export default {
     },
     getSelectedPosts(){
       axios.post('/api/getSelectedPosts').then(res => {
-        this.values = Object
-          .values(res.data)
-          .filter((n, i) => i < 6);
+        this.values = Object.values(res.data);
 
-        this.additional_values = Object
-          .values(res.data)
-          .filter((n, i) => i >= 6);
-
-        if(!this.additional_values.length) {
-          this.additional_values = new Array(4).map(n => null);
+        if(this.values[6]) {
+          this.comment_seven_1 = this.values[6].meta.comment_one;
+          this.comment_seven_2 = this.values[6].meta.comment_two;
+          this.values[6] = this.values[6].data;
         }
 
-        this.comment_seven_1 = this.additional_values[0].meta.comment_one;
-        this.comment_seven_2 = this.additional_values[0].meta.comment_two;
-        this.additional_values[0] = this.additional_values[0].data;
+        if(this.values[7]) {
+          this.comment_eight_1 = this.values[7].meta.comment_one;
+          this.values[7] = this.values[7].data;
+        }  
 
-        this.comment_eight_1 = this.additional_values[1].meta.comment_one;
-        this.additional_values[1] = this.additional_values[1].data;
+        this.values = this.values.map(n => n ? n : {
+          title: 'None',
+          id: null,
+        });
 
         this.selectedPosts = Object.values(res.data);
       });
@@ -91,17 +78,20 @@ export default {
       // console.log(post);
     },
     save() {
+
+      const values = this.values.map(n => n.id ? n.id : null);
+
       axios.post('/api/editMainPagePosts', {
-        mainPostId: this.values[0].id,
-        secondPostId: this.values[1].id,
-        thirdPostId: this.values[2].id,
-        fourthPostId: this.values[3].id,
-        fifthPostId: this.values[4].id,
-        sixthPostId: this.values[5].id,
-        seventhPostId: this.additional_values[0] ? this.additional_values[0].id : null,
-        eighthPostId: this.additional_values[1] ? this.additional_values[1].id : null,
-        ninthPostId: this.additional_values[2] ? this.additional_values[2].id : null,
-        tenthPostId: this.additional_values[3] ? this.additional_values[3].id : null,
+        mainPostId: values[0],
+        secondPostId: values[1],
+        thirdPostId: values[2],
+        fourthPostId: values[3],
+        fifthPostId: values[4],
+        sixthPostId: values[5],
+        seventhPostId: values[6],
+        eighthPostId: values[7],
+        // ninthPostId: values[2],
+        // tenthPostId: values[3],
         comment_seven_1: this.comment_seven_1,
         comment_seven_2: this.comment_seven_2,
         comment_eight_1: this.comment_eight_1,

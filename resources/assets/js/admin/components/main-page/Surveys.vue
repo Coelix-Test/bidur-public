@@ -207,7 +207,8 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    padding: 10px;
     .add-section{
       background: #F2F2F2;
       font-size: 14px;
