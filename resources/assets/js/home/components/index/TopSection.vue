@@ -245,6 +245,12 @@ $border_radius: 0;
       }
 
       &.second {
+        .header {
+          .bg {
+            background-position: right;
+            background-size: auto 100%;
+          }
+        }
         .title {
           font-size: 30px !important;
         }
