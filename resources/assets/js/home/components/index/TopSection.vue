@@ -95,6 +95,10 @@ $border_radius: 0;
           font-weight: bold;
           font-size: 44px;
 
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+
           .static {
 
           }
@@ -159,6 +163,10 @@ $border_radius: 0;
           font-weight: 800;
           font-size: 44px;
           text-decoration: none;
+
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
         }
         .sub {
           color: #fff;
@@ -210,14 +218,17 @@ $border_radius: 0;
         }
       }
     }
+
+    height: 600px;
   }
 
   @media(max-width: 767px) {
     flex-direction: column;
     padding: 8px;
+    height: auto;
     .post {
       margin: 20px 0 !important;
-
+      height: 500px !important;
     }
   }
 
