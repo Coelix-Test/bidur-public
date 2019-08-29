@@ -248,6 +248,12 @@ export default {
   .posts-column article.second {
     margin-top: 8px;
   }
+  .posts-column article:nth-child(3) .overlay  {
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+    opacity: 0.2;
+  }
   /* .posts-column article:nth-child(1) {
     height:250px;
   } */
