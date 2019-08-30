@@ -51,6 +51,11 @@ export default {
   border: 20px solid;
   border-image: linear-gradient(286.5deg, #E9C37B 3.48%, #FFE29B 99.52%);
   border-image-slice: 1;
+
+  &:hover {
+    text-decoration: none;
+  }
+  
   .max-title {
     font-weight: bold;
     font-size: 50px;
