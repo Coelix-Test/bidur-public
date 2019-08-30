@@ -1,7 +1,7 @@
 <template>
   <div class="left-column posts-column">
     <surveys v-if="$env.MOBILE" is_first />
-    <article v-in-viewport.once class="first" >
+    <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
         <div class="overlay"></div>
         <img :src="firstPost.img" alt="">
@@ -12,7 +12,7 @@
         </p>
       </router-link>
     </article>
-    <article v-in-viewport.once class="second">
+    <article v-if="!!secondPost" v-in-viewport.once class="second">
       <router-link :to="'/post/' + secondPost.id">
         <div class="overlay"></div>
         <img :src="secondPost.img">

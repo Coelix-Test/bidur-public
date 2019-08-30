@@ -167,7 +167,9 @@ $border_radius: 0;
 
           text-overflow: ellipsis;
           overflow: hidden;
-          white-space: nowrap;
+          text-align: center;
+          padding: 0 10px;
+          //white-space: nowrap;
         }
         .sub {
           color: #fff;
@@ -229,7 +231,7 @@ $border_radius: 0;
     height: auto;
     .post {
       margin: 20px 0 !important;
-      height: 500px !important;
+      height: auto;
 
       &.first {
         border: 7px solid;
@@ -259,6 +261,12 @@ $border_radius: 0;
           font-size: 30px !important;
         }
       }
+    }
+  }
+
+  @media (max-width: 556px){
+    .top-section .post.first .title .main{
+      font-size: 26px;
     }
   }
 
