@@ -239,7 +239,7 @@ $border_radius: 0;
         border-image-slice: 1;
         .title {
           .main {
-            font-size: 30px;
+            font-size: 26px;
           }
           .sub {
             font-size: 15px;
