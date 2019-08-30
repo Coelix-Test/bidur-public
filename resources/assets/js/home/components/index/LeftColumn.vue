@@ -54,6 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.first{
+  margin-top: 15px;
+}
 .left-column {
   flex-basis:50%;
   padding-right:8px;
