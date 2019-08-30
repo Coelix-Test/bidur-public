@@ -1,7 +1,7 @@
 <template>
-  <div class="left-column posts-column">
+  <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
     <surveys v-if="$env.MOBILE" is_first />
-    <article v-in-viewport.once class="first" >
+    <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
         <div class="overlay"></div>
         <img :src="firstPost.img" alt="">
@@ -12,7 +12,7 @@
         </p>
       </router-link>
     </article>
-    <article v-in-viewport.once class="second">
+    <article v-if="!!secondPost" v-in-viewport.once class="second">
       <router-link :to="'/post/' + secondPost.id">
         <div class="overlay"></div>
         <img :src="secondPost.img">
@@ -41,12 +41,22 @@ export default {
     },
     secondPost() {
       return this.$store.getters['main-page/selectedPosts'][1];
+    },
+    isNotEmptyOnDesktop(){
+      if(this.$env.MOBILE)
+        return true;
+      else{
+        return (this.firstPost || this.secondPost);
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.first{
+  margin-top: 15px;
+}
 .left-column {
   flex-basis:50%;
   padding-right:8px;

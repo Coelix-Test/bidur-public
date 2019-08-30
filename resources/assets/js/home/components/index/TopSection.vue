@@ -37,6 +37,12 @@ export default {
     padding: 8px;
   }
 
+  @media (max-width: 556px){
+    .top-section .post.first .title .main{
+      font-size: 26px;
+    }
+  }
+
 }
 
 </style>
