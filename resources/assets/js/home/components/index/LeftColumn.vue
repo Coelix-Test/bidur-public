@@ -1,5 +1,5 @@
 <template>
-  <div class="left-column posts-column">
+  <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
     <surveys v-if="$env.MOBILE" is_first />
     <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
@@ -41,6 +41,13 @@ export default {
     },
     secondPost() {
       return this.$store.getters['main-page/selectedPosts'][1];
+    },
+    isNotEmptyOnDesktop(){
+      if(this.$env.MOBILE)
+        return true;
+      else{
+        return (this.firstPost || this.secondPost);
+      }
     }
   }
 }
