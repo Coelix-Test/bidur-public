@@ -35,6 +35,7 @@ export default {
   @media(max-width: 767px) {
     flex-direction: column;
     padding: 8px;
+    order: 10;//remove in future
   }
 
   @media (max-width: 556px){
