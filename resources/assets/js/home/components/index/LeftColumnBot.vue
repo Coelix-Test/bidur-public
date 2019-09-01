@@ -9,20 +9,20 @@
         <h2>תמונת האינסטגרם המנצחת של היום</h2>
       </div>
 
-        <a href="https://www.instagram.com/israel_bidur/" class="insta-image-link">
-          <img :src="data.img" alt="">
-        </a>
-        <div class="insta-features">
-            <div class="right">
-              <img src="img/icons/save.svg" alt="">
-            </div>
-            <div class="left">
-              <img src="img/icons/direct.svg" alt="">
-              <img src="img/icons/comments.svg" alt="">
-              <img src="img/icons/insta-like.svg" alt="">
-            </div>
-        </div>
-        <a class="insta-btn" href="https://www.instagram.com/israel_bidur/" target="_blank">לעמוד האינסטגרם שלנו</a>
+      <a href="https://www.instagram.com/israel_bidur/" class="insta-image-link">
+        <img :src="data.img" alt="">
+      </a>
+      <div class="insta-features">
+          <div class="right">
+            <img src="img/icons/save.svg" alt="">
+          </div>
+          <div class="left">
+            <img src="img/icons/direct.svg" alt="">
+            <img src="img/icons/comments.svg" alt="">
+            <img src="img/icons/insta-like.svg" alt="">
+          </div>
+      </div>
+      <a class="insta-btn" href="https://www.instagram.com/israel_bidur/" target="_blank">לעמוד האינסטגרם שלנו</a>
 
     </div>
   </div>

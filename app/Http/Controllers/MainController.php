@@ -999,6 +999,11 @@ class MainController extends Controller
 
 
     public function showPostForBots($id) {
+
+      if(!preg_match("WhatsApp|telegram|facebookexternalhit|twitterbot|linkedinbot|outbrain|pinterest|slackbot|vkShare", $SERVER['HTTP_USER_AGENT'])) {
+        return redirect('post/' . $id);
+      }
+
       $post = Post::where('id', $id)->first();
       $fullPost = $this->showSinglePost($id);
 
