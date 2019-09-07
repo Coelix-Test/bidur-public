@@ -2,12 +2,12 @@
   <div class="home">
 
     <template v-if="$store.getters['main-page/loaded']">
-      <top-section/>
+      <top-section v-if="!showBottom"/>
       <right-column/>
       <left-column/>
       <right-column-bot />
       <left-column-bot />
-      <!-- <top-section/> -->
+      <top-section v-if="showBottom"/>
     </template>
 
     <recent-posts-mobile v-if="$env.MOBILE" />
@@ -32,6 +32,7 @@ export default {
 
   },
   created() {
+    this.showBottom = new Date().getDay() == 7;
     if(!this.$store.getters['main-page/loaded']) {
       this.$store.dispatch('main-page/updateData');
     }
