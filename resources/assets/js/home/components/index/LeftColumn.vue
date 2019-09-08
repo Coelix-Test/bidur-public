@@ -1,6 +1,5 @@
 <template>
   <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
-    <surveys v-if="$env.MOBILE" is_first />
     <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
         <div class="overlay"></div>
@@ -23,6 +22,7 @@
         </p>
       </router-link>
     </article>
+    <surveys v-if="$env.MOBILE" is_first />
   </div>
 </template>
 
