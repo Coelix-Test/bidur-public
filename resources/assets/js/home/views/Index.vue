@@ -32,7 +32,7 @@ export default {
 
   },
   created() {
-    this.showBottom = new Date().getDay() == 7;
+    this.showBottom = new Date().getDay() == 0;
     if(!this.$store.getters['main-page/loaded']) {
       this.$store.dispatch('main-page/updateData');
     }
