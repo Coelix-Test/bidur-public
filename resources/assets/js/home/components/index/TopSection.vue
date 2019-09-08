@@ -35,8 +35,8 @@ export default {
   @media(max-width: 767px) {
     flex-direction: column;
     padding: 8px;
-    // order: 5;//remove in future
-    // margin-bottom: -20px;//temp shit
+    order: 5; //remove in future
+    margin-bottom: -20px; //temp shit
   }
 
   @media (max-width: 556px){
