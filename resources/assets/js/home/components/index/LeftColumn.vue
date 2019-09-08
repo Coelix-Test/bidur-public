@@ -257,6 +257,7 @@ export default {
   }
   .posts-column article.second {
     margin-top: 8px;
+    margin-bottom: 8px;
   }
   .posts-column article:nth-child(3) .overlay  {
     background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
