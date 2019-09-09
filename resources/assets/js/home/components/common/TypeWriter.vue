@@ -1,5 +1,5 @@
 <template>
-  <span>{{textToShow}}</span>
+  <span ref="span">{{textToShow}}</span>
 </template>
 
 <script>
@@ -30,6 +30,11 @@ export default {
           setTimeout(this.typeWriter, this.pause);
         }
       } else {
+
+        //force browser to redraw element (bug on post page)
+        this.$refs.span.style.display = 'none';
+        setTimeout(this.$refs.span.style.display = 'block', 10);
+
         if(!this.once) {
           this.textToShow = '';
           setTimeout(this.typeWriter, this.speed);
