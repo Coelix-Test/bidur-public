@@ -745,6 +745,7 @@ class MainController extends Controller
                 $data['type'] = 'survey';
                 $data['id'] = $section->id;
                 $data['image'] = $section->image;
+                $data['description'] = $section->description;
                 $data['value']['question'] = $section->question;
                 $variants = SurveyAnswerVariant::where('surveyId', $section->id)->get();
                 foreach ($variants as $variant) {

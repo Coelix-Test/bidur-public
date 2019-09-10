@@ -69,6 +69,7 @@ export default {
         title: '',
         answers: [],
         image: '',
+        description: '',
       },
       ass: {
         title: '',
@@ -99,6 +100,7 @@ export default {
       }
       else if(res.data.type == 'survey') {
         this.survey.title = res.data.value.question;
+        this.survey.description = res.data.description;
         this.survey.image = res.data.image;
         this.survey.answers = res.data.value.answers.map(n => {
           return n.text;
@@ -143,6 +145,7 @@ export default {
       else if(this.selected == 'survey') {
         data.append('title', this.survey.title);
         data.append('image', this.survey.image);
+        data.append('description', this.survey.description);
         data.append('answers', JSON.stringify(this.survey.answers));
         axios.post(this.mobile ? '/api/addNewSurveyToMainSecond' : '/api/addNewSurveyToMain', data, {
           headers: {

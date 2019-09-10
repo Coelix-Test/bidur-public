@@ -3,6 +3,7 @@
     <template v-if="survey.type == 'survey'">
       <div ref="poll" class="selected-poll">
         <img :src="survey.image">
+        <div class="img-caption">{{survey.description}}</div>
         <vue-poll
           class="poll"
           v-bind="survey.value"
@@ -62,6 +63,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.selected-poll{
+  .img-caption{
+    text-align: center;
+    padding-top: 5px;
+    color: #fff;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    background: linear-gradient(270deg, #E4A913 0%, #EED074 99.53%);
+  }
+}
 .main-survey.is_first {
   border: 4px solid;
   border-image: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);

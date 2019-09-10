@@ -893,6 +893,7 @@ class AdminController extends Controller
 
     public function addNewSurveyToMain(Request $request){
         $title = $request->get('title');
+        $description = $request->get('description');
         $answers = json_decode($request->get('answers'));
 
         $flag = true;
@@ -925,7 +926,8 @@ class AdminController extends Controller
                 'authorId' => 1,
                 'order' => 1,
                 'question' => $title,
-                'image' => '/images/compare/'.$name
+                'image' => '/images/compare/'.$name,
+                'description' => $description
             ]);
         }else{
             $survey = Survey::create([
@@ -933,7 +935,8 @@ class AdminController extends Controller
                 'authorId' => 1,
                 'order' => 1,
                 'question' => $title,
-                'image' => $currentSurveyImage
+                'image' => $currentSurveyImage,
+                'description' => $description
             ]);
         }
 
