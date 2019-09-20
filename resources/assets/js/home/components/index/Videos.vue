@@ -29,6 +29,7 @@
 								{{ item.title }}
 							</p>
 							<div class="time">
+								{{ item.author }} |
 								{{ new Date(item.created_at) | formatDate }}
 							</div>
 						</div>
@@ -203,7 +204,7 @@ export default {
 
 		.VueCarousel-slide {
 			position: relative;
-			max-height: 400px;
+			max-height: 500px;
 			video {
 				height: 100%;
 				width: 100%;

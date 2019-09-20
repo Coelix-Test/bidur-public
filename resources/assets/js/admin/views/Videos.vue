@@ -26,6 +26,7 @@
 		<vs-row vs-type="flex">
 			<vs-col vs-type="flex" vs-justify="center" vs-w="4">
 				<vs-upload
+					ref="qwe"
 					style="width: 215px; height: 215px; overflow: hidden;"
 					text="Uplaod thumbnail"
 					@change="updateThumbnail"
@@ -45,7 +46,8 @@
 			<vs-col vs-type="flex" vs-align="center" vs-justify="center" vs-w="4">
 				<div class="end-container">
 					<vs-input label-placeholder="Title" v-model="title"/>
-					<vs-input-number v-model="order_num" label="Order"/>
+					<vs-input label-placeholder="Author" v-model="author"/>
+					<!-- <vs-input-number v-model="order_num" label="Order"/> -->
 					<vs-button
 						icon="cloud_upload"
 						type="line"
@@ -68,15 +70,16 @@ export default {
       thumbnail: null,
 			video: null,
 			title: '',
+			author: '',
 			order_num: 0,
     };
   },
   methods: {
     updateThumbnail(path, file) {
-      this.thumbnail = file[0];
+      this.thumbnail = file[file.length - 1];
     },
 		updateVideo(path, file) {
-      this.video = file[0];
+      this.video = file[file.length - 1];
     },
     sync() {
       return axios.get('/api/admin/video').then(res => {
@@ -97,6 +100,7 @@ export default {
       data.append('video', this.video);
 			data.append('thumbnail', this.thumbnail);
       data.append('title', this.title);
+			data.append('author', this.author);
 			data.append('order_num', this.order_num);
 
       return axios.post('/api/admin/video', data, {

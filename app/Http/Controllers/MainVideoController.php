@@ -14,7 +14,12 @@ class MainVideoController extends Controller
 
     $item = new MainVideo();
 
+		if(!$request->author) {
+			throw new InvalidInputException('No author specified');
+		}
+
 		$item->title = $request->title;
+		$item->author = $request->author;
 		$item->order_num = $request->order_num;
 
     if($request->hasFile('thumbnail')) {
