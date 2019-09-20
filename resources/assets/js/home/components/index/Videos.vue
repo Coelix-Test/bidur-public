@@ -137,13 +137,15 @@ export default {
 
 		.background {
 			position: absolute;
-			left: 0;
+			left: 50%;
+			transform: translateX(-50%);
 			top: 0;
 			width: 100%;
 			height: auto;
 			z-index: 20;
 			pointer-events: none;
 			user-select: none;
+			min-width: 450px;
 
 			img {
 				width: 100%;
@@ -235,6 +237,15 @@ export default {
 					.name {
 						font-weight: bold;
 						font-size: 36px;
+						line-height: 100%;
+						text-align: center;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						max-width: 100%;
+						padding: 0 50px;
+						margin: 0;
+						width: 100%;
 					}
 					.time {
 						font-size: 18px;
