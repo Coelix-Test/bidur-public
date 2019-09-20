@@ -8,7 +8,7 @@
 				ישראל בידור VOD
 			</div>
 		</div>
-		<div @click="toggle" class="body">
+		<div class="body">
 
 			<carousel
 				ref="carousel"
@@ -17,7 +17,11 @@
         rtl
         :paginationEnabled="false"
       >
-        <slide v-for="item in $store.getters['main-page/videos']" :key="item.id">
+        <slide
+					v-for="item in $store.getters['main-page/videos']"
+					:key="item.id"
+					@slide-click="toggle"
+				>
 					<video :src="item.video" ref="video" :poster="item.thumbnail" loop/>
 					<div class="overlay">
 						<div class="info">
@@ -137,10 +141,12 @@ export default {
 			width: 100%;
 			height: auto;
 			z-index: 20;
+			pointer-events: none;
+			user-select: none;
 
 			img {
 				width: 100%;
-				pointer-events: none;
+
 			}
 		}
 		.name {
@@ -177,6 +183,8 @@ export default {
 			width: 100px;
 			height: 100px;
 			z-index: 11;
+			background: transparent;
+			border: 0;
 
 			display: flex;
 			align-items: center;
