@@ -2,14 +2,12 @@
   <div class="home">
 
     <template v-if="$store.getters['main-page/loaded']">
-
-      <!-- <top-section/> -->
+      <top-section/>
       <right-column/>
       <left-column/>
       <right-column-bot />
       <left-column-bot />
-      <top-section/>
-
+      <!-- <top-section/> -->
     </template>
 
     <recent-posts-mobile v-if="$env.MOBILE"/>
