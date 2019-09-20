@@ -175,6 +175,10 @@ export default {
 		align-items: center;
 		justify-content: center;
 
+		.VueCarousel {
+			width: 100%;
+		}
+
 		.play-btn {
 			position: absolute;
 			left: 50%;
