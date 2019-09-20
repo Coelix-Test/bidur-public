@@ -1,14 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Meta from 'vue-meta';
-// import Multiguard from 'vue-router-multiguard';
 
 import store from './store';
 Vue.use(VueRouter);
 Vue.use(Meta);
-
-// import auth from './auth';
-// import account from './account';
 
 import Index from './views/Index.vue';
 import SinglePost from './views/SinglePost.vue'
@@ -61,37 +57,12 @@ const routes = [
   },
 ];
 
-// routes.push(auth);
-// routes.push(account);
-
 const router = new VueRouter({
   routes,
   mode: env.STAGE == 'prod' ? 'history' : 'hash',
 });
 
 router.beforeEach(async (to, from, next) => {
-  // if(!store.state.user.loaded) {
-  //   console.log(store.getters.token);
-  //   if(store.state.user.token) {
-  //
-  //     await app.$http.get('/user/info', {
-  //       headers: {
-  //         'Authorization': store.state.user.token
-  //       }
-  //     }).then(res => {
-  //       axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.user.token;
-  //       store.state.user.data = res.data;
-  //       store.state.user.logged = true;
-  //     }).catch(res => {
-  //       store.state.user.logged = false;
-  //     });
-  //   } else {
-  //     store.state.user.logged = false;
-  //   }
-  //   store.state.user.loaded = true;
-  // }
-
-  // console.log(window.app, 'qweqweqwe');
 
   if(window.app) {
     store.dispatch('modals/ad/open')

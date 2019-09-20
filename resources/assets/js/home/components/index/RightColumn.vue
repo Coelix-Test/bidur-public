@@ -25,7 +25,7 @@
               {{ post.author }}
             </span>
             <span class="post-date">
-              {{  new Date(post.time*1000) | formatDate }}
+              {{ new Date(post.time*1000) | formatDate }}
             </span>
           </p>
         </router-link>

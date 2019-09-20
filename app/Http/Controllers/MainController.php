@@ -20,6 +20,7 @@ use App\Survey;
 use App\SurveyAnswers;
 use App\SurveyAnswerVariant;
 use App\User;
+use App\Http\Controllers\MainVideoController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -944,6 +945,7 @@ class MainController extends Controller
 
     public function getMainPageOptimized(){
         $admin = new AdminController();
+				$main_videos = new MainVideoController();
 //        $recentPosts            = $this->getRecentPosts();
         $selectedPosts          = $this->getSelectedPosts();
         $serviceForDesktop      = $this->getServiceForMainPage();
@@ -959,6 +961,7 @@ class MainController extends Controller
         $data['serviceMobile']  = json_decode($serviceForMobile, true);
         $data['instagram']      = json_decode($insta, true);
         $data['birthday']       = json_decode($birthday, true);
+				$data['videos']       = $main_videos->index();
 //        $data['hashtags']       = $hashtags;
 //        $data['user']           = $user;
 

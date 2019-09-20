@@ -145,4 +145,19 @@ Route::group([ 'prefix' => 'api' ], function() {
 
   Route::post('/getAllPostsPaginated', 'AdminController@getAllPostsPaginated');
   Route::post('/toggleHappyBirthday', 'AdminController@toggleHappyBirthday');
+
+	Route::prefix('video')->group(function () {
+		Route::get('/', 'MainVideoController@index');
+	});
+
+	Route::prefix('admin')->group(function () {
+		Route::prefix('video')->group(function () {
+
+			Route::delete('/{video}', 'MainVideoController@remove');
+			Route::post('/', 'MainVideoController@store');
+			Route::get('/', 'MainVideoController@indexAdmin');
+
+		});
+	});
+
 });

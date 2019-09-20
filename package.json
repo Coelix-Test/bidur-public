@@ -31,6 +31,7 @@
         "animate.css": "^3.7.2",
         "javascript-time-ago": "^2.0.1",
         "magnific-popup": "^1.1.0",
+        "material-icons": "^0.3.1",
         "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
         "slick-carousel": "^1.8.1",
@@ -50,6 +51,7 @@
         "vue-transmit": "^9.0.0-alpha.11",
         "vue2-timepicker": "^0.1.4",
         "vuejs-datepicker": "^1.6.1",
+        "vuesax": "^3.10.4",
         "vuex": "^3.1.1",
         "wowjs": "^1.1.3"
     }

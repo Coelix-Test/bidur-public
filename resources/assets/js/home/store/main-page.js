@@ -44,6 +44,9 @@ export default {
     surveyDesktop(state) {
       return state.data.serviceDesktop;
     },
+		videos(state) {
+      return state.data.videos;
+    },
     loaded(state) {
       return state.loaded;
     },

@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import moment from 'moment'
+import Vuesax from 'vuesax'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
+Vue.use(Vuesax, { rtl: true })
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -10,6 +12,8 @@ Vue.use(VueRouter);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import 'vuesax/dist/vuesax.css' //Vuesax styles
+import 'material-icons/iconfont/material-icons.css';
 
 Array.prototype.move = function(old_index, new_index) {
    while (old_index < 0) {
@@ -49,6 +53,7 @@ import EditMainPage from './views/EditMainPage.vue';
 import Users from './views/Users.vue';
 import Mails from './views/Mails.vue';
 import InstaSlider from './views/InstaSlider.vue';
+import Videos from './views/Videos.vue';
 
 const router = new VueRouter({
   routes: [
@@ -56,6 +61,7 @@ const router = new VueRouter({
     { name: 'post-new', path: '/post/new', component: PostSingle },
     { name: 'post-edit', path: '/post/:id', component: PostSingle },
     { path: '/insta-slider', name: 'insta-slider', component: InstaSlider },
+		{ path: '/videos', name: 'videos', component: Videos },
     { path: '/surveys', name: 'surveys', component: Surveys },
     { name: 'mails', path: '/mails', component: Mails },
     { path: '/tags', name: 'tags', component: Tags },
@@ -84,7 +90,6 @@ Vue.filter('formatDate', function (value) {
 import Admin from './Admin.vue';
 
 const app = new Vue({
-  //el: '#admin',
   router,
   components: {
     Admin

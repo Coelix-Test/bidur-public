@@ -1,37 +1,40 @@
 <template>
-    <div id="admin-wrap">
-        <nav class="admin-nav">
-            <div class="title">מערכת ניהול - ישראל בידור</div>
-            <ul class="nav-menu">
-                <li>
-                    <router-link :to="{ name: 'edit-main-page' }">עמוד ראשי</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'post-new' }">פוסט חדש</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'posts' }">כל הפוסטים</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'surveys' }">שאלונים</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'users' }">משתמשים</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'tags' }">תגים</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'mails' }">מיילים</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'insta-slider' }">Instagram Sliders</router-link>
-                </li>
-            </ul>
-        </nav>
+  <div id="admin-wrap">
+    <nav class="admin-nav">
+      <div class="title">מערכת ניהול - ישראל בידור</div>
+      <ul class="nav-menu">
+        <li>
+          <router-link :to="{ name: 'edit-main-page' }">עמוד ראשי</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'post-new' }">פוסט חדש</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'posts' }">כל הפוסטים</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'surveys' }">שאלונים</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'users' }">משתמשים</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'tags' }">תגים</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'mails' }">מיילים</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'insta-slider' }">Instagram Sliders</router-link>
+        </li>
+				<li>
+          <router-link :to="{ name: 'videos' }">Videos</router-link>
+        </li>
+      </ul>
+    </nav>
 
-        <router-view class="admin-content" id="admin_content" :key="$route.path"></router-view>
-    </div>
+    <router-view class="admin-content" id="admin_content" :key="$route.path"></router-view>
+  </div>
 </template>
 
 <style lang="scss">
