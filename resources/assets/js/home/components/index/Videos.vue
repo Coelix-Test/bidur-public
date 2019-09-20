@@ -207,6 +207,7 @@ export default {
 		.VueCarousel-slide {
 			position: relative;
 			max-height: 500px;
+	    min-height: 350px;
 			video {
 				height: 100%;
 				width: 100%;
