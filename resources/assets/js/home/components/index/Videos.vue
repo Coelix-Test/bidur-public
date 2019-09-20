@@ -1,5 +1,5 @@
 <template>
-  <div class="videos" v-if="$store.getters['main-page/videos']">
+  <div class="videos" v-if="$store.getters['main-page/videos'].length">
 		<div class="header">
 			<div class="background">
 				<img src="/img/videos-stars-bg.svg">
