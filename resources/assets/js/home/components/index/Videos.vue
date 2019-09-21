@@ -239,7 +239,7 @@ export default {
 						font-weight: bold;
 						font-size: 36px;
 						line-height: 100%;
-						overflow: hidden;
+						text-align: center;
 						max-width: 100%;
 						padding: 0 50px;
 						margin: 0;
