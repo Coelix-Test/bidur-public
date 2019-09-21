@@ -12,7 +12,10 @@
         </p>
       </router-link>
     </article>
-    <article v-if="!!secondPost" v-in-viewport.once class="second">
+
+		<Videos/>
+
+    <!-- <article v-if="!!secondPost" v-in-viewport.once class="second">
       <router-link :to="'/post/' + secondPost.id">
         <div class="overlay"></div>
         <img :src="secondPost.img">
@@ -22,19 +25,21 @@
           <span class="post-date">{{ new Date(secondPost.time * 1000) | formatDate }}</span>
         </p>
       </router-link>
-    </article>
+    </article> -->
     <!-- <surveys v-if="$env.MOBILE" is_first /> -->
   </div>
 </template>
 
 <script>
-import TypeWriter from './../common/TypeWriter.vue';
-import Surveys from './Surveys';
+import TypeWriter from './../common/TypeWriter'
+import Surveys from './Surveys'
+import Videos from './Videos'
 
 export default {
   components: {
     TypeWriter,
     Surveys,
+		Videos,
   },
   computed: {
     firstPost() {

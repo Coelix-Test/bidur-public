@@ -16,6 +16,9 @@
 				@page-change="onPageChange"
         rtl
         :paginationEnabled="false"
+				@touchstart.native="$event => $event.preventDefault()"
+				@touchmove.native="$event => $event.preventDefault()"
+    		@touchend.native="$event => $event.preventDefault()"
       >
         <slide
 					v-for="item in $store.getters['main-page/videos']"
@@ -104,9 +107,6 @@ export default {
 
 			e.stopPropagation();
 		},
-		onChange(e) {
-			console.log(e);
-		}
 	},
 	created() {
 		this.page = 0;
@@ -206,11 +206,11 @@ export default {
 
 		.VueCarousel-slide {
 			position: relative;
-			max-height: 500px;
-	    min-height: 350px;
+			padding-bottom: 100%;
 			video {
 				height: 100%;
 				width: 100%;
+				position: absolute;
 				object-fit: cover;
 			}
 
@@ -247,9 +247,16 @@ export default {
 						padding: 0 50px;
 						margin: 0;
 						width: 100%;
+
+						@media(max-width: 767px) {
+							font-size: 24px;
+						}
 					}
 					.time {
 						font-size: 18px;
+						@media(max-width: 767px) {
+							font-size: 16px;
+						}
 					}
 				}
 			}

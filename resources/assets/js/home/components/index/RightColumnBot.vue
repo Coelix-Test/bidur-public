@@ -3,20 +3,17 @@
 
     <surveys v-if="!$env.MOBILE"/>
 		<latest-posts v-if="!$env.MOBILE"/>
-		<videos/>
 
   </div>
 </template>
 
 <script>
-import Surveys from './Surveys';
-import Videos from './Videos';
-import LatestPosts from './LatestPosts';
+import Surveys from './Surveys'
+import LatestPosts from './LatestPosts'
 
 export default {
   components: {
     Surveys,
-		Videos,
 		LatestPosts,
   },
   methods: {

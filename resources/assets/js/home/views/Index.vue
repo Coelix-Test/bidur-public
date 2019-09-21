@@ -21,7 +21,6 @@ import LeftColumnBot from './../components/index/LeftColumnBot';
 import RightColumnBot from './../components/index/RightColumnBot';
 import TopSection from './../components/index/TopSection';
 import RecentPostsMobile from './../components/index/RecentPostsMobile';
-import Videos from './../components/index/Videos';
 
 export default {
   data() {
@@ -44,7 +43,6 @@ export default {
     RightColumnBot,
     RecentPostsMobile,
     TopSection,
-		Videos,
   }
 }
 </script>
