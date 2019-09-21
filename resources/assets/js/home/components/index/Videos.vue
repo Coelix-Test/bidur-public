@@ -239,9 +239,6 @@ export default {
 						font-weight: bold;
 						font-size: 36px;
 						line-height: 100%;
-						text-align: center;
-						text-overflow: ellipsis;
-						white-space: nowrap;
 						overflow: hidden;
 						max-width: 100%;
 						padding: 0 50px;
