@@ -1,5 +1,8 @@
 <template>
-  <div class="top-section">
+  <div
+		class="top-section"
+		:class="{ 'is-sunday': $store.getters['main-page/isSunday'] }"
+	>
 
     <TopSectionFirst/>
     <TopSectionSecond/>
@@ -16,7 +19,6 @@ export default {
     TopSectionFirst,
     TopSectionSecond,
   },
-
 }
 </script>
 
@@ -35,8 +37,11 @@ export default {
   @media(max-width: 767px) {
     flex-direction: column;
     padding: 8px;
-    // order: 5; // remove in future
-    // margin-bottom: -20px; // temp shit
+
+		&.is-sunday {
+			order: 5; // remove in future
+	    margin-bottom: -20px; // temp shit
+		}
   }
 
   @media (max-width: 556px){

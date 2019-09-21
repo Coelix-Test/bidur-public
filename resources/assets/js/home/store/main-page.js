@@ -50,5 +50,8 @@ export default {
     loaded(state) {
       return state.loaded;
     },
+		isSunday() {
+			return new Date().getDay() == 0;
+		}
   }
 };;

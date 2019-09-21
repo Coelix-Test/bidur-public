@@ -1,6 +1,11 @@
 <template>
   <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
-    <surveys v-if="$env.MOBILE" is_first />
+
+    <surveys
+			v-if="$env.MOBILE && !$store.getters['main-page/isSunday']"
+			is_first
+		/>
+
     <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
         <div class="overlay"></div>
@@ -15,6 +20,7 @@
 
 		<Videos/>
 
+		<!-- ASKED TO REMOVE -->
     <!-- <article v-if="!!secondPost" v-in-viewport.once class="second">
       <router-link :to="'/post/' + secondPost.id">
         <div class="overlay"></div>
@@ -26,7 +32,11 @@
         </p>
       </router-link>
     </article> -->
-    <!-- <surveys v-if="$env.MOBILE" is_first /> -->
+
+    <surveys
+			v-if="$env.MOBILE && $store.getters['main-page/isSunday']"
+			is_first
+		/>
   </div>
 </template>
 

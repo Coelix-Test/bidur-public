@@ -2,12 +2,12 @@
   <div class="home">
 
     <template v-if="$store.getters['main-page/loaded']">
-      <top-section/>
+      <top-section v-if="!$store.getters['main-page/isSunday']"/>
       <right-column/>
       <left-column/>
       <right-column-bot />
       <left-column-bot />
-      <!-- <top-section/> -->
+      <top-section v-if="$store.getters['main-page/isSunday']"/>
     </template>
 
     <recent-posts-mobile v-if="$env.MOBILE"/>
@@ -43,7 +43,7 @@ export default {
     RightColumnBot,
     RecentPostsMobile,
     TopSection,
-  }
+  },
 }
 </script>
 
