@@ -51,7 +51,13 @@ export default {
       return state.loaded;
     },
 		isSunday() {
-			return new Date().getDay() == 0;
+      //generate integer including getDay of the week and hours
+      let now = new Date().getDay() * 100 + new Date().getHours();
+      //posts go up in Friday(5) at 11 am
+      let limit1 = 511;
+      // then go down in Sunday(0) 11 am
+      let limit2 = 11;
+			return (now < limit1) && (now > limit2);
 		}
   }
 };;
