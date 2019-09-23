@@ -206,7 +206,7 @@ export default {
 
 		.VueCarousel-slide {
 			position: relative;
-			padding-bottom: 100%;
+			padding-bottom: calc(100% + 120px);
 			video {
 				height: 100%;
 				width: 100%;
