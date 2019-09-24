@@ -555,17 +555,28 @@ class AdminController extends Controller
         return $this->getAllHashtags();
     }
 
-    public function addHappyBirthday(Request $request){
-        HappyBirthsday::truncate();
-        $image = $request->file('image');
-        $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/happyBirthday');
-        $image->move($destinationPath, $name);
-        HappyBirthsday::create([
-            'text' => $request->get('text'),
-            'img' => '/images/happyBirthday/'.$name,
-        ]);
+  public function addHappyBirthday(Request $request){
+    HappyBirthsday::truncate();
+
+    if ($request->hasFile('image')) {
+      $image = $request->file('image');
+      $name = rand(0,999999).time().'.'.$image->getClientOriginalExtension();
+      $destinationPath = public_path('/images/happyBirthday');
+      $image->move($destinationPath, $name);
+
+      HappyBirthsday::create([
+        'text' => $request->get('text'),
+        'img' => '/images/happyBirthday/'.$name,
+      ]);
+    } else {
+      HappyBirthsday::create([
+        'text' => $request->get('text'),
+        'img' => $request->get('image')
+      ]);
     }
+
+
+  }
 
     public function toggleHappyBirthday(){
         $happyHirthday = HappyBirthsday::find(1);
