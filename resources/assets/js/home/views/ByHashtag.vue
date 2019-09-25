@@ -24,20 +24,22 @@
     </div> -->
 
     <swiper
-      v-if="slider.length"
+      v-if="data.length"
       :options="{
         slidesPerView: 1,
         loop: true,
       }"
     >
-      <swiper-slide v-for="item in slider" :key="item.id">
-        <img class="banner" :src="item.image">
+      <swiper-slide v-for="item in data" :key="item.id">
+        <img class="banner" :src="item.img">
         <div class="banner-shad">
 
         </div>
-        <!-- <div class="title">
-          {{ item.title }}
-        </div> -->
+        <div class="title">
+          <router-link :to="'/post/' + item.id">
+						{{ item.title }}
+					</router-link>
+        </div>
       </swiper-slide>
     </swiper>
 
@@ -129,14 +131,14 @@ export default {
   },
   created() {
     this.sync(this.$route.params.id);
-    this.updateSlider(this.$route.params.id);
+    // this.updateSlider(this.$route.params.id);
   },
   beforeRouteUpdate(to, from, next) {
     this.page = 0;
     this.loading = false;
     this.end = false;
     this.sync(to.params.id);
-    this.updateSlider(to.params.id);
+    // this.updateSlider(to.params.id);
     next();
   },
   mounted() {
@@ -186,13 +188,18 @@ main {
         background-image: linear-gradient(to top, #87682C 0%, transparent 100%);
       }
 
-      .title {
+      .title a {
         position: absolute;
         bottom: 30px;
         font-size: 24px;
         font-weight: bold;
         color: #fff;
         left: 30px;
+
+				color: #fff;
+				&:hover {
+					text-decoration: none;
+				}
       }
     }
   }
@@ -263,7 +270,9 @@ main {
     .header {
       .hashtag {
         .name {
+
           font-size: 32px;
+
         }
       }
     }

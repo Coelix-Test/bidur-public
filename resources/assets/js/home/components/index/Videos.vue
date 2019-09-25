@@ -185,7 +185,7 @@ export default {
 		.play-btn {
 			position: absolute;
 			left: 50%;
-			top: 50%;
+			top: calc(50% - 60px);
 			transform: translate(-50%, -50%);
 			width: 100px;
 			height: 100px;
@@ -206,9 +206,9 @@ export default {
 
 		.VueCarousel-slide {
 			position: relative;
-			padding-bottom: calc(100% + 120px);
+			padding-bottom: calc(56% + 120px);
 			video {
-				height: 100%;
+				height: calc(100% - 120px);
 				width: 100%;
 				position: absolute;
 				object-fit: cover;
