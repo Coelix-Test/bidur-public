@@ -237,12 +237,13 @@ class AdminController extends Controller
             'share_string' => $random,
         ]);
         if (isset($hashtags)){
-            foreach ($hashtags as $hashtag) {
-                HashtagPosts::create([
-                    'hashtagId' => $hashtag,
-                    'postId' => $post->id,
-                ]);
-            }
+					HashtagPosts::where('postId', '=', $post->id)->delete();
+          foreach ($hashtags as $hashtag) {
+            HashtagPosts::create([
+                'hashtagId' => $hashtag,
+                'postId' => $post->id,
+            ]);
+          }
         }
         return $post;
     }
