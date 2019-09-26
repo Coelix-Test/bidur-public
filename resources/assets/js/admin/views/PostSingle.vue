@@ -263,6 +263,9 @@ export default {
         this.author = data;
       },
       submitPostData(){
+
+				if(this.sent) return;
+
         let postData = new FormData();
 
         //append header
@@ -302,20 +305,23 @@ export default {
           postData.append('id', this.$route.params.id);
           postData.append('publish', this.publish ? 1 : 0);
         }
+
+				this.sent = true;
+
         axios({
           method: 'post',
           url: url,
           data: postData,
-          config: { headers: { 'Content-Type': 'multipart/form-data' }}
-        })
-        .then(response => {
+          config: { headers: { 'Content-Type': 'multipart/form-data' } }
+        }).then(response => {
           // console.log(response);
           this.$router.push('/');
           alert(successMessage);
-        })
-        .catch(error => {
+        }).catch(error => {
           alert('שגיאה, נראה שאחת התמונות לא הועלתה');
-        });
+        }).finally(() => {
+					this.sent = false;
+				});
       }
     },
     created() {
