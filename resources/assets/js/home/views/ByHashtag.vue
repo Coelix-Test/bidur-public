@@ -97,17 +97,21 @@ export default {
           var data = Object.values(res.data.data);
         }
 
-        if(append) {
-          this.data.push(...data);
-        } else {
-          this.data = data;
-          this.name = res.data.hashtagName;
-          this.img = res.data.hashtagImg;
-        }
+        // if(append) {
+        //   this.data.push(...data);
+        // } else {
+        //   this.data = data;
+        //   this.name = res.data.hashtagName;
+        //   this.img = res.data.hashtagImg;
+        // }
 
-        if(!data.length) {
-          this.end = true;
-        }
+        // if(!data.length) {
+        //   this.end = true;
+        // }
+
+        this.data = data;
+        this.name = res.data.hashtagName;
+        this.img = res.data.hashtagImg;
 
         //if have no posts :
         if(!this.name) {
