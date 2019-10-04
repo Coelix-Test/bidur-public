@@ -84,6 +84,7 @@ export default {
         });
     },
     sync(id, append = false) {
+      this.data = [];
       this.loading = true;
       return axios.post('/api/getAllPostsByHashtag', {
         hashtag_id: id,
