@@ -18,13 +18,13 @@
     <button @click="select" class="item" id="cry">
       <img src="/img/emoji-4.svg">
       <span>מעפן</span>
-      <div class="num">{{ emojis.cry }}</div>
+      <div class="num">{{ percent.cry }}%</div>
     </button>
 
     <button @click="select" class="item" id="wow" >
       <img src="/img/emoji-3.svg">
       <span>נחמד</span>
-      <div class="num">{{ emojis.wow }}</div>
+      <div class="num">{{ percent.wow }}%</div>
     </button>
 
     <!-- <button @click="select" class="item" id="laugh">
@@ -35,7 +35,7 @@
     <button @click="select" class="item" id="love">
       <img src="/img/emoji-1.svg">
       <span>עפתי</span>
-      <div class="num">{{ emojis.love }}</div>
+      <div class="num">{{ percent.love }}%</div>
     </button>
   </div>
 </template>
@@ -94,17 +94,23 @@ export default {
       axios
         .post('/api/getReaction', { postId: postId })
         .then(res => {
-          for (var i in res.data) {
-            console.log(res.data[i]);
-
-            res.data[i] = res.data[i] * 4;
+          for (const key in res.data) {
+            res.data[key] = parseInt(res.data[key]);
           }
           this.emojis = res.data;
         });
     }
   },
   computed: {
+    percent() {
+      const total_num = this.emojis.wow + this.emojis.cry + this.emojis.love;
 
+      return {
+        wow: ((this.emojis.wow / total_num) * 100).toFixed(1),
+        cry: ((this.emojis.cry / total_num) * 100).toFixed(1),
+        love: ((this.emojis.love / total_num) * 100).toFixed(1),
+      };
+    },
   }
 }
 </script>

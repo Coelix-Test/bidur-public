@@ -63,6 +63,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+::v-deep {
+  .vue-poll {
+    .votes {
+      display: none;
+    }
+  }
+}
+
 .selected-poll{
   .img-caption{
     text-align: center;
@@ -108,7 +117,4 @@ export default {
 @media(max-width:768px) {
 
 }
-
-
-
 </style>

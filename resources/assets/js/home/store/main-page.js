@@ -50,10 +50,12 @@ export default {
     loaded(state) {
       return state.loaded;
     },
+    // isSetDown (Alias)
+    // sometimes it works an hour late (???)
 		isSunday() {
-      //generate integer including getDay of the week and hours
+      // generate integer including getDay of the week and hours
       let now = new Date().getDay() * 100 + new Date().getHours();
-      //posts go up in Friday(5) at 11 am
+      // posts go up in Friday(5) at 11 am
       let limit1 = 511;
       // then go down in Sunday(0) 11 am
       let limit2 = 11;
