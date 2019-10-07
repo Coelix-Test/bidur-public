@@ -33,7 +33,7 @@
 							</p>
 							<div class="time">
 								{{ item.author }} |
-								{{ new Date(item.created_at.replace(/-/g, '/')) | formatDate }}
+								{{ new Date(item.created_at.replace(' ', 'T')) | formatDate }}
 							</div>
 						</div>
 						<button v-if="!is_play" type="button" class="play-btn">
