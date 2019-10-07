@@ -822,6 +822,10 @@ section.survey {
   }
 }
 
+.main-title {
+  color: #E4A913 !important;
+}
+
 // .section {
 //   transition: opacity 0.5s ease, transform 0.5s ease;
 //   transform: scale(0.9);

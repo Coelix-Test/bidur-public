@@ -1,5 +1,5 @@
 <template>
-  <span ref="span">{{textToShow}}</span>
+  <span class="--type-writer" ref="span">{{textToShow}}</span>
 </template>
 
 <script>
