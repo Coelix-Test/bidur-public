@@ -356,6 +356,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+::v-deep {
+  .vue-poll {
+    .votes {
+      display: none;
+    }
+  }
+}
+
 .pre-title-row{
   display: flex;
   justify-content: space-between;
