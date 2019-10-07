@@ -30,7 +30,7 @@
 						<div class="info">
 							<p class="name">
 								{{ item.title }}
-							</p>
+							</p> 
 							<div class="time">
 								{{ item.author }} |
 								{{ new Date(item.created_at.replace(' ', 'T')) | formatDate }}
