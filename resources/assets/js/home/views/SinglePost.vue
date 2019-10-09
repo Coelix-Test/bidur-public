@@ -24,7 +24,7 @@
         </template>
         <template v-else>
           <h1 class="main-title" v-if="post.data.post.mainTitle">
-            <font style="background: url(http://i361.photobucket.com/albums/oo54/crackysparkles/sparkles/ezgtilefinished.gif);-webkit-background-clip: text;background-clip:text;background-size:100% 100%;background-repeat:repeat;">
+            <font style="background: url(/img/gold-kek.gif);-webkit-background-clip: text;background-clip:text;background-size:100% 100%;background-repeat:repeat;">
               <type-writer once :text="post.data.post.mainTitle"/>
             </font>
 
@@ -822,9 +822,10 @@ section.survey {
   }
 }
 
-.main-title {
-  color: #E4A913 !important;
-}
+// UNCOMMENT IN CASE IF GIF WILL STOP WORKING
+// .main-title {
+//   color: #E4A913 !important;
+// }
 
 // .section {
 //   transition: opacity 0.5s ease, transform 0.5s ease;
