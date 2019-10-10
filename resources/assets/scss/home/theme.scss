@@ -141,7 +141,8 @@
 
   &.closed {
     z-index: -9999;
-    left: 100%;
+    left: 1000%;
+    display: none;
   }
 
   &-wrapper {
