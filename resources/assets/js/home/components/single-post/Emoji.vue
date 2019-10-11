@@ -105,10 +105,14 @@ export default {
     percent() {
       const total_num = this.emojis.wow + this.emojis.cry + this.emojis.love;
 
+      let wow = parseInt((this.emojis.wow / total_num) * 100);
+      let cry = parseInt((this.emojis.cry / total_num) * 100);
+      let love = parseInt((this.emojis.love / total_num) * 100);
+
       return {
-        wow: ((this.emojis.wow / total_num) * 100).toFixed(1),
-        cry: ((this.emojis.cry / total_num) * 100).toFixed(1),
-        love: ((this.emojis.love / total_num) * 100).toFixed(1),
+        wow: wow ? wow : 0,
+        cry: cry ? cry : 0,
+        love: love ? love : 0,
       };
     },
   }

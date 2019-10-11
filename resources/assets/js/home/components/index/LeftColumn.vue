@@ -59,9 +59,9 @@ export default {
       return this.$store.getters['main-page/selectedPosts'][1];
     },
     isNotEmptyOnDesktop(){
-      if(this.$env.MOBILE)
+      if(this.$env.MOBILE) {
         return true;
-      else{
+      } else {
         return (this.firstPost || this.secondPost);
       }
     }

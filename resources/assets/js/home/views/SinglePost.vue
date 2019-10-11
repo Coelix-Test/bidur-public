@@ -25,7 +25,7 @@
         <template v-else>
           <h1 class="main-title" v-if="post.data.post.mainTitle">
             <font style="background: url(/img/gold-kek.gif);-webkit-background-clip: text;background-clip:text;background-size:100% 100%;background-repeat:repeat;">
-              <type-writer once :text="post.data.post.mainTitle"/>
+              {{ post.data.post.mainTitle }}
             </font>
 
           </h1>
