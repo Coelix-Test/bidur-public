@@ -31,9 +31,9 @@ export default {
         }
       } else {
 
-        //force browser to redraw element (bug on post page)
+        // force browser to redraw element (bug on post page)
         this.$refs.span.style.display = 'none';
-        setTimeout(this.$refs.span.style.display = 'block', 10);
+        setTimeout(() => this.$refs.span.style.display = 'block', 10);
 
         if(!this.once) {
           this.textToShow = '';
@@ -48,7 +48,9 @@ export default {
   watch: {
     text() {
       this.textToShow = '';
-      this.typeWriter();
+      this.$nextTick(() => {
+        this.typeWriter();
+      });
     }
   }
 }

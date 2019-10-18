@@ -5,6 +5,14 @@
 	>
 
     <TopSectionFirst/>
+
+    <Adsense
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="1853214598"
+      data-ad-format="fluid"
+      data-ad-layout-key="-fb+5w+4e-db+86"
+    />
+
     <TopSectionSecond/>
 
   </div>
@@ -37,6 +45,7 @@ export default {
   @media(max-width: 767px) {
     flex-direction: column;
     padding: 8px;
+    align-items: stretch;
 
 		&.is-sunday {
 			order: 5; // remove in future

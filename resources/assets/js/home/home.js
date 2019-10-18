@@ -1,14 +1,17 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import InViewportDirective from 'vue-in-viewport-directive'
 import VueModal from 'vue-js-modal'
 import VueLazyload from 'vue-lazyload'
 import moment from 'moment'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueAds from 'vue-google-adsense'
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(require('vue-script2'));
 Vue.use(VueLazyload);
+Vue.use(VueAds.Adsense)
+// Vue.use(VueAds.InArticleAdsense)
+// Vue.use(VueAds.InFeedAdsense)
 
 // window.env = require('./env').default;
 
@@ -38,7 +41,7 @@ Vue.filter('formatDate', function (value) {
   if (value) {
     return moment(String(value)).fromNow();
   }
-})
+});
 
 window.app = new Vue({
   router: router,
