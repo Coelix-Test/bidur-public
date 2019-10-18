@@ -3,6 +3,13 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <top-section v-if="!$store.getters['main-page/isSunday']"/>
+      <Adsense
+        v-if="!$env.MOBILE"
+        data-ad-client="ca-pub-6511052822397382"
+        data-ad-slot="1853214598"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+      />
       <right-column/>
       <left-column/>
       <right-column-bot />
@@ -47,7 +54,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .home {
   max-width: 1440px;
   margin:16px auto 32px;
@@ -57,6 +64,9 @@ export default {
   flex-wrap:wrap;
   align-items: flex-start;
   overflow:hidden;
+}
+.adswrapper {
+  width: 100%;
 }
 @media (max-width:768px) {
   .home {
@@ -178,4 +188,5 @@ export default {
     text-align: center;
   }
 }
+
 </style>
