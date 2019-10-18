@@ -3,13 +3,13 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <top-section v-if="!$store.getters['main-page/isSunday']"/>
-      <Adsense
+      <!-- <Adsense
         v-if="!$env.MOBILE"
         data-ad-client="ca-pub-6511052822397382"
         data-ad-slot="6776876742"
         data-ad-format="fluid"
         data-ad-layout-key="-fb+5w+4e-db+86"
-      />
+      /> -->
       <right-column/>
       <left-column/>
       <right-column-bot />
