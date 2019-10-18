@@ -2,6 +2,13 @@
   <div class="single-post">
     <div v-if="post" class="post-wrapper">
 
+      <Adsense
+        data-ad-client="ca-pub-6511052822397382"
+        data-ad-slot="2993992173"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+      />
+
       <div class="post-content">
         <div class="pre-title-row">
           <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
