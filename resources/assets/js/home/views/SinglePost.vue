@@ -412,7 +412,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   padding: 0 24px;
   max-width:1440px;
   margin:32px auto 0;
