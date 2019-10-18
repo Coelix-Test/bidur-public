@@ -7,7 +7,7 @@
     <TopSectionFirst/>
 
     <Adsense
-      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-client="ca-pub-6511052822397382"
       data-ad-slot="1853214598"
       data-ad-format="fluid"
       data-ad-layout-key="-fb+5w+4e-db+86"
