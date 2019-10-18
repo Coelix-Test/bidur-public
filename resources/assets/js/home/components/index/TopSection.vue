@@ -7,6 +7,7 @@
     <TopSectionFirst/>
 
     <Adsense
+      v-if="$env.MOBILE"
       data-ad-client="ca-pub-6511052822397382"
       data-ad-slot="1853214598"
       data-ad-format="fluid"

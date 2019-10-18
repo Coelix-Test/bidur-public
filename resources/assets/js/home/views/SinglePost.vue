@@ -2,14 +2,15 @@
   <div class="single-post">
     <div v-if="post" class="post-wrapper">
 
-      <Adsense
-        data-ad-client="ca-pub-6511052822397382"
-        data-ad-slot="2993992173"
-        data-ad-format="fluid"
-        data-ad-layout-key="-fb+5w+4e-db+86"
-      />
-
       <div class="post-content">
+
+        <Adsense
+          data-ad-client="ca-pub-6511052822397382"
+          data-ad-slot="2993992173"
+          data-ad-format="fluid"
+          data-ad-layout-key="-fb+5w+4e-db+86"
+        />
+
         <div class="pre-title-row">
           <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
             <img src="/img/icons/star-gradient.png" alt=" ">
@@ -46,7 +47,15 @@
 
           </div>
 
-          <section :class="post.type + ' section'" v-for="post in postData">
+          <section :class="post.type + ' section'" v-for="(post, index) in postData">
+
+            <Adsense
+              v-if="index % 3 === 0"
+              data-ad-client="ca-pub-6511052822397382"
+              data-ad-slot="6203335135"
+              data-ad-format="fluid"
+              data-ad-layout-key="-fb+5w+4e-db+86"
+            />
 
             <h2 v-if="post.type == 'title'"> {{ post.value }}</h2>
 
@@ -95,6 +104,14 @@
           <div v-if="this.$env.mobile == true">
             <div class="OUTBRAIN" :data-src="$route.query.page" data-widget-id="GS_6"></div>
           </div>
+
+
+          <Adsense
+            data-ad-client="ca-pub-6511052822397382"
+            data-ad-slot="6889730840"
+            data-ad-format="fluid"
+            data-ad-layout-key="-fb+5w+4e-db+86"
+          />
 
 
           <nav v-if="false"><!-- delete in future if not required -->
@@ -412,7 +429,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
   padding: 0 24px;
   max-width:1440px;
   margin:32px auto 0;
@@ -422,6 +438,7 @@ export default {
   flex-grow:2;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   padding-left: 16px;
   color:#333;
   nav{
@@ -506,6 +523,15 @@ export default {
     padding-top: 20px;
   }
 }
+
+.post-content {
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 
 section.image img {
   max-width: 100%;
