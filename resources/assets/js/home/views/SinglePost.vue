@@ -4,12 +4,22 @@
 
       <div class="post-content">
 
-        <Adsense
-          data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="2993992173"
-          data-ad-format="fluid"
-          data-ad-layout-key="-fb+5w+4e-db+86"
-        />
+        <div class="ad-wrapper" v-if="!closed_top_ad">
+          <Adsense
+            data-ad-client="ca-pub-6511052822397382"
+            data-ad-slot="2993992173"
+            data-ad-format="fluid"
+            data-ad-layout-key="-fb+5w+4e-db+86"
+          />
+
+          <transition name="cool">
+            <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 1.15689L18.8406 0L10 8.82369L1.15941 0L0 1.15689L8.84059 9.98065L0 18.8037L1.15941 19.9606L10 11.1375L18.8406 19.9606L20 18.8037L11.1588 9.98065L20 1.15689Z" fill="white"/>
+              </svg>
+            </button>
+          </transition>
+        </div>
 
         <div class="pre-title-row">
           <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
@@ -213,6 +223,8 @@ export default {
       relevantPosts : [],
       postContentSections : null,
       postId : null,
+      closed_top_ad: false,
+      can_close_top_ad: false,
     }
   },
   metaInfo () {
@@ -373,7 +385,9 @@ export default {
     //let els = this.$el.getElementsByTagName('p');
 
     // console.log(els);
-
+    setTimeout(() => {
+      this.can_close_top_ad = true;
+    }, 5000);
   }
 }
 
@@ -852,6 +866,65 @@ section.survey {
   .post-content h1 {
     font-size: 28px;
     line-height: 1.05;
+  }
+}
+
+
+.ad-wrapper {
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  padding: 20px 0;
+  position: relative;
+  
+  .adswrapper {
+    background: #eee;
+  }
+
+  .close-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    background: linear-gradient(to left, #F6AB62 1%, #B63E8E 41%, #3F5EFB 90%);
+    border: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    &.cool-enter {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    &.cool-enter-to {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &.cool-leave {
+      transform: scale(1);
+      opacity: 1;
+    }
+    &.cool-leave-to {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    &.cool-leave-active,
+    &.cool-enter-active {
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
   }
 }
 
