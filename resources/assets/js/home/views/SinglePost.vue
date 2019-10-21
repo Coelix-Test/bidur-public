@@ -142,6 +142,7 @@
               לכתבה הבאה
               <img src="/img/arrow-left.svg">
             </router-link>
+            
           </nav>
 
 

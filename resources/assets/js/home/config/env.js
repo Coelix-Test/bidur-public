@@ -6,7 +6,7 @@ const env = {
   MOBILE: (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1),
 }
 
-if(/localhost/.test(window.location.href)) {
+if(/localhost|127.0.0.1/.test(window.location.href)) {
   env.STAGE = 'dev';
 } else {
   env.STAGE = 'prod';

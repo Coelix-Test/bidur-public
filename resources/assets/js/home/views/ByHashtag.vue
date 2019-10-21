@@ -31,15 +31,15 @@
       }"
     >
       <swiper-slide v-for="item in data" :key="item.id">
-        <img class="banner" :src="item.img">
-        <div class="banner-shad">
+        <router-link :to="'/post/' + item.id">
+          <img class="banner" :src="item.img">
+          <div class="banner-shad">
 
-        </div>
-        <div class="title">
-          <router-link :to="'/post/' + item.id">
-						{{ item.title }}
-					</router-link>
-        </div>
+          </div>
+          <div class="title">
+            {{ item.title }}
+          </div>
+        </router-link>
       </swiper-slide>
     </swiper>
 
@@ -168,14 +168,24 @@ main {
 
   .swiper-container {
     width: 100%;
-    height: 600px;
     padding: 50px 0;
     .swiper-slide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 30px;
+
+      padding-bottom: 100%;
+
+      > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+        padding: 0 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
       .banner {
         width: 100%;
@@ -193,7 +203,7 @@ main {
         background-image: linear-gradient(to top, #87682C 0%, transparent 100%);
       }
 
-      .title a {
+      .title {
         position: absolute;
         bottom: 30px;
         font-size: 24px;
