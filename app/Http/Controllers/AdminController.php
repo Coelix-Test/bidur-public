@@ -1547,7 +1547,10 @@ class AdminController extends Controller
 
     public function postTitleSerach(Request $request){
         $title = $request->get('title');
-        $posts = Post::where('metaTitle', $title)->orWhere('metaTitle', 'like', '%'.$title.'%')->get();
+        $posts = Post::where('metaTitle', $title)
+            ->orWhere('metaTitle', 'like', '%'.$title.'%')
+            ->orWhere('author', 'like', '%'.$title.'%')
+            ->get();
         if ($posts->isEmpty()){
             return json_encode(['success' => false]);
         }
