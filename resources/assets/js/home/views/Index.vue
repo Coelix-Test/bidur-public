@@ -2,7 +2,7 @@
   <div class="home">
 
     <template v-if="$store.getters['main-page/loaded']">
-      <top-section v-if="!$store.getters['main-page/isSunday']"/>
+      <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
       <!-- <Adsense
         v-if="!$env.MOBILE"
         data-ad-client="ca-pub-6511052822397382"
@@ -14,7 +14,7 @@
       <left-column/>
       <right-column-bot />
       <left-column-bot />
-      <top-section v-if="$store.getters['main-page/isSunday']"/>
+      <!-- <top-section v-if="$store.getters['main-page/isSunday']"/> -->
     </template>
 
     <recent-posts-mobile v-if="$env.MOBILE"/>
