@@ -1,10 +1,11 @@
 <template>
   <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
 
-    <surveys
+    <!-- ASKED TO MOVE SURVEY DOWN -->
+    <!-- <surveys
 			v-if="$env.MOBILE && !$store.getters['main-page/isSunday']"
 			is_first
-		/>
+		/> -->
 
     <article v-if="!!firstPost" v-in-viewport.once class="first" >
       <router-link :to="'/post/' + firstPost.id">
@@ -33,8 +34,14 @@
       </router-link>
     </article> -->
 
-    <surveys
+    <!-- ASKED TO MOVE SURVEY DOWN -->
+    <!-- <surveys
 			v-if="$env.MOBILE && $store.getters['main-page/isSunday']"
+			is_first
+		/> -->
+    <!-- ASKED TO MOVE SURVEY DOWN -->
+    <surveys
+			v-if="$env.MOBILE"
 			is_first
 		/>
   </div>
