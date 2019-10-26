@@ -997,7 +997,7 @@ class MainController extends Controller
         ) {
             return view('postForShare', [ 'post' => $fullPost, 'id' => $post->id ]);
         } else {
-            return redirect(\URL::to('/#/post/'.$post->id));
+            return redirect(\URL::to('/post/'.$post->id));
         }
     }
 
