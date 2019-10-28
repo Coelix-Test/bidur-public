@@ -37,7 +37,7 @@
           <share v-if="!errorMessage" :link="post.data.post.share_string"/>
         </div>
 
-        <share-socials/>
+        <share-socials :link="post.data.post.share_string"/>
 
         <template v-if="errorMessage">
           <p class="main-title">Post has no content!</p>
