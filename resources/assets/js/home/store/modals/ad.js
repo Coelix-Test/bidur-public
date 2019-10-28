@@ -18,8 +18,8 @@ export default {
   },
   actions: {
     open(context) {
-      var el = document.getElementById('ads');
-      var rest = document.getElementById('ads-rest');
+      var el = document.getElementById('adsss');
+      var rest = document.getElementById('adsss-rest');
 
       context.commit('open');
       el.classList.remove('closed', 'animate')
