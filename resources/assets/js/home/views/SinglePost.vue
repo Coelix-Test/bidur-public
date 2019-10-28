@@ -37,6 +37,8 @@
           <share v-if="!errorMessage" :link="post.data.post.share_string"/>
         </div>
 
+        <share-socials/>
+
         <template v-if="errorMessage">
           <p class="main-title">Post has no content!</p>
         </template>
@@ -203,6 +205,7 @@
 import VuePoll from 'vue-poll'
 import TypeWriter from './../components/common/TypeWriter.vue'
 import Share from './../components/single-post/Share.vue'
+import ShareSocials from './../components/single-post/ShareSocials.vue'
 import Emoji from './../components/single-post/Emoji.vue'
 import SinglePostExample from './../components/SinglePostExample.vue'
 import SideNews from './../components/SideNews.vue'
@@ -376,6 +379,7 @@ export default {
     Slide,
     SinglePostExample,
     Share,
+    ShareSocials,
     Emoji,
     LikeSurvey,
     OneSurvey,

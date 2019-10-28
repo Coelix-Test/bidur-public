@@ -22,26 +22,6 @@
           </button>
           <input readonly type="text" :value="url">
         </div>
-        <div class="shareLinks">
-          <a
-            :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`"
-            target="_blank"
-          >
-            <img src="/img/icons/social-facebook-colored.svg">
-          </a>
-          <a
-            :href="`whatsapp://send?text=${encodeURIComponent(url)}`"
-            target="_blank"
-          >
-            <img src="/img/whatsApp.svg">
-          </a>
-          <a
-            :href="`https://telegram.me/share/url?url=${encodeURIComponent(url)}&text=בדוק את זה!`"
-            target="_blank"
-          >
-            <img src="/img/icons/social-telegram-colored.svg">
-          </a>
-        </div>
       </div>
     </transition>
   </div>
@@ -66,7 +46,7 @@ export default {
   methods: {
     copy() {
       navigator.clipboard.writeText(this.url);
-      app.$modal.show(Copied, {}, {
+      this.$modal.show(Copied, {}, {
         adaptive: true,
         width: 300,
         height: 'auto',
@@ -160,20 +140,6 @@ export default {
         background: #EB5757;
         width: 36px;
         border-radius: 0 3px 3px 0;
-      }
-    }
-
-    .shareLinks {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding-top: 8px;
-      a {
-        img {
-          width:40px;
-          height: 40px;
-          margin: 0 8px;
-        }
       }
     }
   }
