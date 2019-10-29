@@ -5,16 +5,22 @@
       <div class="post-content">
 
         <div class="ad-wrapper" v-if="!closed_top_ad">
-          <Adsense
+          <!-- <Adsense
             data-ad-client="ca-pub-6511052822397382"
             data-ad-slot="2993992173"
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
-          />
+          /> -->
+
+          <img 
+            style="height: auto;width: 100%;" 
+            src="/img/banners/300X250_Israel_Tiktok_01.jpg" 
+            alt=""
+          >
 
           <transition name="cool">
             <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
-              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="80%" height="80%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 1.15689L18.8406 0L10 8.82369L1.15941 0L0 1.15689L8.84059 9.98065L0 18.8037L1.15941 19.9606L10 11.1375L18.8406 19.9606L20 18.8037L11.1588 9.98065L20 1.15689Z" fill="white"/>
               </svg>
             </button>
@@ -61,7 +67,7 @@
 
           <section :class="post.type + ' section'" v-for="(post, index) in postData">
 
-            <Adsense
+            <Adsense 
               v-if="index % 3 === 0"
               data-ad-client="ca-pub-6511052822397382"
               data-ad-slot="6203335135"
@@ -156,6 +162,13 @@
             </div>
           </div>
 
+
+          <img 
+            style="width:100%;height:auto;margin-top:40px;" 
+            src="/img/banners/320X100_Israel_Tiktok_01.jpg" 
+            alt=""
+            v-if="$env.MOBILE"
+          >
 
         </template>
 
@@ -893,7 +906,7 @@ section.survey {
     width: 40px;
     height: 40px;
     top: 10px;
-    left: 10px;
+    right: 10px;
     border-radius: 50%;
     background: linear-gradient(to left, #F6AB62 1%, #B63E8E 41%, #3F5EFB 90%);
     border: 0;
