@@ -4,7 +4,7 @@
 
       <div class="post-content">
 
-        <div class="ad-wrapper" v-if="!closed_top_ad">
+        <div class="ad-wrapper" v-if="!closed_top_ad && $env.MOBILE">
           <!-- <Adsense
             data-ad-client="ca-pub-6511052822397382"
             data-ad-slot="2993992173"
