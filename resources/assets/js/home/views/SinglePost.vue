@@ -12,11 +12,13 @@
             data-ad-layout-key="-fb+5w+4e-db+86"
           /> -->
 
-          <img 
-            style="height: auto;width: 100%;" 
-            src="/img/banners/300X250_Israel_Tiktok_01.jpg" 
-            alt=""
-          >
+          <a href="https://2207.kupat.co.il/show/tiktok">
+            <img 
+              style="height: auto;width: 100%;" 
+              src="/img/banners/300X250_Israel_Tiktok_01.jpg" 
+              alt=""
+            >
+          </a>
 
           <transition name="cool">
             <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
@@ -162,13 +164,14 @@
             </div>
           </div>
 
-
-          <img 
-            style="width:100%;height:auto;margin-top:40px;" 
-            src="/img/banners/320X100_Israel_Tiktok_01.jpg" 
-            alt=""
-            v-if="$env.MOBILE"
-          >
+          <a href="https://2207.kupat.co.il/show/tiktok">
+            <img 
+              style="width:100%;height:auto;margin-top:40px;" 
+              src="/img/banners/320X100_Israel_Tiktok_01.jpg" 
+              alt=""
+              v-if="$env.MOBILE"
+            >
+          </a>
 
         </template>
 
