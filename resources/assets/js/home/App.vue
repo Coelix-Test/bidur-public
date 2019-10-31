@@ -2,7 +2,7 @@
   <main>
     <header-main/>
     <router-view/>
-    <socials/>
+    <!-- <socials/> -->
   </main>
 </template>
 
