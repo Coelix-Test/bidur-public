@@ -2,7 +2,13 @@
     <div class="wrapper">
         <editor
             api-key="tl9l4lbf7vc1pkaj7rcvtgcbsyymlwho2yesntfwtw1rjsw1"
-            :init="{statusbar: false, directionality: 'rtl',language: 'he_IL',language_url : '/js/tinymce/langs/he_IL.js'}"
+            :init="{
+                statusbar: false, 
+                directionality: 'rtl',
+                plugins: 'print preview fullpage powerpaste searchreplace autolink link',
+                language: 'he_IL',
+                language_url : '/js/tinymce/langs/he_IL.js'
+            }"
             :initial-value="value"
             @onBlur="onBlur">
         </editor>
