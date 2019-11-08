@@ -162,7 +162,10 @@ class AdminController extends Controller
                 $date       = $section['date'];
                 $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
 
+                
+
             }
+            
             elseif($section['section_type'] == 'text'){
                 $content = $section['value'];
 //                dd($content);
@@ -223,10 +226,14 @@ class AdminController extends Controller
         //parsing js timestamp
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
-        $random = substr(hash('md5', random_int(0, 100000)),'1', '8');
-        $samePost = Post::where('share_string', $random)->first();
-        if (!empty($samePost)){
-            return json_encode(['success' => false, 'message' => 'rty again']);
+        
+        $flag = false;
+        while ($flag == false){
+            $random = substr(hash('md5', random_int(0, 100000)),'1', '8');
+            $samePost = Post::where('share_string', $random)->first();
+            if (empty($samePost)){
+                $flag = true;
+            }
         }
 
         $post = Post::create([
@@ -1422,7 +1429,7 @@ class AdminController extends Controller
                 }
                 $author     = $section['author'];
                 $date       = $section['date'];;
-                $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId);
+                $this->post = $this->editPostHeaderMeta($metaTitle, $hashtags, $author, $date, $currentId, $share);
 
             }
             elseif($section['section_type'] == 'text'){
@@ -1519,7 +1526,7 @@ class AdminController extends Controller
 
     }
 
-    public function editPostHeaderMeta($metaTitle, $hashtags,  $author, $date, $id){
+    public function editPostHeaderMeta($metaTitle, $hashtags,  $author, $date, $id, $share = null){
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
 
@@ -1529,6 +1536,7 @@ class AdminController extends Controller
             'hot' => "false",
             'metaTitle' => $metaTitle,
             'created_at' => $date,
+            'share_string' => $share,
         ]);
 //        dd($post);
         HashtagPosts::where('postId', $post->id)->delete();
