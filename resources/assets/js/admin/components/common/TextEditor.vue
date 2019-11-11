@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <editor
-            api-key="tl9l4lbf7vc1pkaj7rcvtgcbsyymlwho2yesntfwtw1rjsw1"
+            api-key="jbx3k23ait4px5lhnh1pptbqgidawba0f9qn3ew53ktdcj20"
             :init="{
                 statusbar: false, 
                 directionality: 'rtl',

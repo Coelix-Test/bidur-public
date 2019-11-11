@@ -77,6 +77,6 @@ window.app = new Vue({
       preloader.remove();
     }, 300);
 
-    this.$store.dispatch('modals/ad/open');
+    // this.$store.dispatch('modals/ad/open');
   }
 }).$mount('#home');

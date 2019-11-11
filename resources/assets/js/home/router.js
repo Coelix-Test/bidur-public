@@ -65,7 +65,7 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
 
   if(window.app) {
-    store.dispatch('modals/ad/open')
+    // store.dispatch('modals/ad/open')
   }
 
   if(to.name == 'single-post') {
