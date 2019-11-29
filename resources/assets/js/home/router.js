@@ -13,7 +13,6 @@ import AboutUs from './views/AboutUs.vue'
 import ContactUs from './views/ContactUs.vue'
 import MyAccount from './views/MyAccount.vue'
 import EditProfile from './views/EditProfile.vue'
-import NewYearSurvey from './views/NewYearSurvey'
 
 const routes = [
   {
@@ -55,11 +54,6 @@ const routes = [
     path: '/view/post/:id',
     component: SinglePost,
     name: 'post-viewer',
-  },
-  {
-    path: '/new-year-survey',
-    component: NewYearSurvey,
-    name: 'new-year-survey',
   },
 ];
 

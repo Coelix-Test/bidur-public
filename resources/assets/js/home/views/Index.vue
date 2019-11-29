@@ -10,7 +10,6 @@
         data-ad-format="fluid"
         data-ad-layout-key="-fb+5w+4e-db+86"
       /> -->
-      <HappyNewYearSurvey/>
       <right-column/>
       <left-column/>
       <right-column-bot />
@@ -29,7 +28,6 @@ import LeftColumnBot from './../components/index/LeftColumnBot';
 import RightColumnBot from './../components/index/RightColumnBot';
 import TopSection from './../components/index/TopSection';
 import RecentPostsMobile from './../components/index/RecentPostsMobile';
-import HappyNewYearSurvey from './../components/index/HappyNewYearSurvey.vue';
 
 export default {
   data() {
@@ -52,7 +50,6 @@ export default {
     RightColumnBot,
     RecentPostsMobile,
     TopSection,
-    HappyNewYearSurvey,
   },
 }
 </script>
