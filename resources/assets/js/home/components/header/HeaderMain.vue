@@ -1,7 +1,7 @@
 <template>
   <div class="header-main">
     <header-top-line></header-top-line>
-    <div class="celebrities-container">
+    <!-- <div class="celebrities-container">
       <div class="celebrities-slider-wrap" >
         <swiper class="celebrities-slider" :options="swiperOptions" ref="celebritiesSwiper">
 
@@ -22,7 +22,8 @@
         <div class="swiper-button-next" slot="button-next"></div>
 
       </div>
-    </div><!-- celebrities row end-->
+    </div> -->
+    <!-- celebrities row end-->
     <div class="run-stroke-wrap-wrap" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
       <div class="run-stroke-wrap" style="margin:0 auto;max-width:1440px;box-shadow:unset;">
         <ul class="run-stroke" ref="runStroke" >

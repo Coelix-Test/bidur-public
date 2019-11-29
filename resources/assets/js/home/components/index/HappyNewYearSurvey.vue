@@ -1,14 +1,20 @@
 <template>
-  <div class="happy-new-year-survey">
-    <router-link to="/new-year-survey">
-      <img src="/img/BANNER.png">
-    </router-link>
+  <div class="happy-new-year-survey" @click="go">
+    <img src="/img/BANNER.png">
   </div>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    go() {
+      if(!this.$root.is_user_logged_in) {
+        this.$root.openLogin();
+      } else {
+        this.$router.push('/new-year-survey');
+      }
+    }
+  }
 }
 </script>
 
@@ -17,7 +23,8 @@ export default {
 .happy-new-year-survey {
   img {
     width: 100%;
-    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
   }
 }
 
