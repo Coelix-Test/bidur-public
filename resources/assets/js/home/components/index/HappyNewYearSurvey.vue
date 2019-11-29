@@ -24,7 +24,7 @@ export default {
 .happy-new-year-survey {
   img {
     width: 100%;
-    min-height: 200px;
+    min-height: 150px;
     object-fit: cover;
   }
 }
