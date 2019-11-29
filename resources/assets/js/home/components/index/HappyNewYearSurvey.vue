@@ -1,6 +1,7 @@
 <template>
   <div class="happy-new-year-survey" @click="go">
-    <img src="/img/BANNER.png">
+    <img v-if="$env.MOBILE" src="/img/BANNER1.svg">
+    <img v-else src="/img/BANNER.png">
   </div>
 </template>
 

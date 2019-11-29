@@ -24,7 +24,11 @@
       </div>
     </div> -->
     <!-- celebrities row end-->
-    <div class="run-stroke-wrap-wrap" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <div 
+      class="run-stroke-wrap-wrap" 
+      :style="{ 'margin-top': $env.MOBILE ? '50px' : '' }" 
+      style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);"
+    >
       <div class="run-stroke-wrap" style="margin:0 auto;max-width:1440px;box-shadow:unset;">
         <ul class="run-stroke" ref="runStroke" >
           <li v-for="post in postTitles">
