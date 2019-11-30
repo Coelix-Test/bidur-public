@@ -58,7 +58,10 @@
       <label ref="agreement" class="checkbox">
         <input v-model="agreement" class="th-checkbox" type="checkbox">
         <div class="label">
-          אני מסכים לתנאי השימוש באתר
+          אני מסכים 
+          <a href="/doc.pdf">
+            לתנאי השימוש באתר
+          </a>
         </div>
       </label>
       <button class="th-btn th-btn-gold" type="submit">הרשמה</button>
