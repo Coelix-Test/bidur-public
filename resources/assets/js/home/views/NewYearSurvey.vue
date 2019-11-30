@@ -12,7 +12,7 @@ export default {
 
 iframe {
   width: 100%;
-  height: 800px;
+  height: 1000px;
 }
 
 </style>

@@ -22,7 +22,6 @@ export default {
 <style lang="scss" scoped>
 
 .happy-new-year-survey {
-  margin-bottom: 10px;
   img {
     width: 100%;
     min-height: 150px;
