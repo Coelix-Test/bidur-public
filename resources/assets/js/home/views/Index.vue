@@ -10,7 +10,7 @@
         data-ad-format="fluid"
         data-ad-layout-key="-fb+5w+4e-db+86"
       /> -->
-      <!-- <HappyNewYearSurvey/> -->
+      <HappyNewYearSurvey/>
       <right-column/>
       <left-column/>
       <right-column-bot />
