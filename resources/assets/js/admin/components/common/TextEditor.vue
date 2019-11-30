@@ -5,7 +5,7 @@
             :init="{
                 statusbar: false, 
                 directionality: 'rtl',
-                plugins: 'link',
+                plugins: 'print preview fullpage powerpaste searchreplace autolink link',
                 language: 'he_IL',
                 language_url : '/js/tinymce/langs/he_IL.js'
             }"
