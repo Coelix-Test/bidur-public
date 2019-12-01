@@ -3,7 +3,7 @@
     <close @close="$emit('close')"/>
     <form @submit="submit" class="form">
       <div class="title">
-        היה בקשר איתנו
+        השארת פרטים
       </div>
  
 
@@ -13,7 +13,7 @@
         class="th-input"
         v-model="email"
         autocomplete="email"
-        placeholder="מייל"
+        placeholder="מספר טלפון"
       >
         <input
         type="text"
@@ -21,7 +21,7 @@
         required
         class="th-input"
         v-model="phone"
-        placeholder="מכשיר טלפון"
+        placeholder="כתובת מייל"
       >
       
         
@@ -33,7 +33,7 @@
          </a></div>
       </label>
 
-      <button class="th-btn th-btn-gold" type="submit">הרשמו לניוזלטר</button>
+      <button class="th-btn th-btn-gold" type="submit">לשלב הבא!</button>
     
       
     </form>
@@ -52,7 +52,7 @@ export default {
     return {
       email: '',
       phone: '',
-      agreement: false,
+      agreement: true,
       timeout: false,
       err: '',
     };
