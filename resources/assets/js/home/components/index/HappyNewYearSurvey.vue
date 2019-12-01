@@ -9,11 +9,12 @@
 export default {
   methods: {
     go() {
-      if(!this.$root.is_user_logged_in) {
-        this.$root.openLogin();
-      } else {
-        this.$router.push('/new-year-survey');
-      }
+       this.$root.openSubcribe();
+      // if(!this.$root.is_user_logged_in) {
+      //   this.$root.openLogin();
+      // } else {
+      //   this.$router.push('/new-year-survey');
+      // }
     }
   }
 }

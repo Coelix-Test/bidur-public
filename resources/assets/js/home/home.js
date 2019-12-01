@@ -36,6 +36,7 @@ import store from './store';
 import App from './App.vue';
 import Login from './components/modals/Login.vue';
 import Reg from './components/modals/Reg.vue';
+import Subcribe from './components/modals/Subcribe.vue';
 
 Vue.filter('formatDate', function (value) {
   if (value) {
@@ -66,7 +67,18 @@ window.app = new Vue({
         transition: 'modal-anim',
         // overlayTransition: 'modal-bg-anim',
       })
-    }
+    },
+    openSubcribe() {
+    	this.$modal.show(Subcribe, {}, {
+    		adaptive: true,
+    		width: this.$env.mobile ? '90%' : 600,
+    		height: this.$env.mobile ? '90%' : 'auto',
+    		scrollable: true,
+    		transition: 'modal-anim',
+    		// overlayTransition: 'modal-bg-anim',
+    	})
+    },
+
   },
   mounted() {
     var preloader = document.getElementById('preloader');
