@@ -26,6 +26,8 @@ Route::group([ 'prefix' => 'bots' ], function() {
 Route::get('/admin', 'AdminController@showAdmin')->middleware('admin');
 
 Route::group([ 'prefix' => 'api' ], function() {
+  //new letter subcribe
+  Route::post('/subcribe','NewsLetterController@store');
   Route::post('/getRecentPosts', 'MainController@getRecentPosts')->name('get-recent-posts');
 
   Auth::routes();
@@ -160,4 +162,5 @@ Route::group([ 'prefix' => 'api' ], function() {
 		});
 	});
 
+  
 });
