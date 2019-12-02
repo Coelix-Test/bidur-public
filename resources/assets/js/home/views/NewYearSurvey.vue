@@ -1,6 +1,6 @@
 <template>
   <iframe 
-    :src="'http://survey.israelbidur.coelix.online/index.php?user=' + $root.user.id" 
+    :src="'http://survey.israelbidur.coelix.online/index.php?user=' + $root.UUID" 
     frameborder="0"
   ></iframe>
 </template>

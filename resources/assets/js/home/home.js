@@ -83,6 +83,17 @@ window.app = new Vue({
   data() {
     return {
       is_user_logged_in: false,
+      UUID: '',
+    }
+  },
+  created() {
+    // Гавно ебаное
+    const uuid = localStorage.getItem('uuid');
+    if(!uuid) {
+      this.UUID = UUID();
+      localStorage.setItem('uuid', this.UUID);
+    } else {
+      this.UUID = uuid;
     }
   },
   mounted() {
