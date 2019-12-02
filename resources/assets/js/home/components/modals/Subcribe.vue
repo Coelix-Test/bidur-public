@@ -17,11 +17,10 @@
       >
       <input
         type="text"
-        autocomplete="tel"
         required
         class="th-input"
         v-model="phone"
-        placeholder="מספר טלפון"
+        placeholder="מספר טלפוןשם מלא"
       >
       
         
