@@ -6,13 +6,12 @@
         השארת פרטים
       </div>
  
-
       <input
         type="text"
         required
         class="th-input"
         v-model="email"
-        placeholder="מספר טלפוןשם מלא"
+        placeholder="שם מלא"
       >
       <input
         type="text"
