@@ -7,23 +7,22 @@
       </div>
  
 
-     <input
-        type="email"
-        required
-        class="th-input"
-        v-model="email"
-        autocomplete="email"
-        placeholder="כתובת מייל"
-      >
       <input
         type="text"
         required
         class="th-input"
-        v-model="phone"
+        v-model="email"
         placeholder="מספר טלפוןשם מלא"
       >
+      <input
+        type="text"
+        autocomplete="tel"
+        required
+        class="th-input"
+        v-model="phone"
+        placeholder="מספר טלפון"
+      >
       
-        
       <div v-if="err.length" class="err">{{ err }}</div>
       <label ref="agreement" class="checkbox">
         <input v-model="agreement" class="th-checkbox" type="checkbox">
