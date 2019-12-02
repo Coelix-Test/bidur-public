@@ -13,7 +13,7 @@
         class="th-input"
         v-model="email"
         autocomplete="email"
-        placeholder="מספר טלפון"
+        placeholder="כתובת מייל"
       >
         <input
         type="text"
@@ -21,7 +21,7 @@
         required
         class="th-input"
         v-model="phone"
-        placeholder="כתובת מייל"
+        placeholder="מספר טלפון"
       >
       
         
