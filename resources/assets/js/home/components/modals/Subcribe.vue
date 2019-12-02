@@ -161,8 +161,10 @@ export default {
 
   @media(max-width: 992px) {
     padding-top: 40px;
+    height: 100%;
     .form {
       justify-content: center;
+      height: 100%;
       .title {
         font-size: 32px;
       }
