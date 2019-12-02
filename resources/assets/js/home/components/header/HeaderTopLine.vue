@@ -160,8 +160,9 @@ export default {
             this.isLoggedIn = true;
             console.log();
           }
-          this.$root.is_user_logged_in = res.data.login;
           this.user = res.data.data;
+          this.$root.is_user_logged_in = res.data.login;
+          this.$root.user = this.user;
         });
   },
   methods : {

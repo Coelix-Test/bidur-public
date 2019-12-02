@@ -1,5 +1,8 @@
 <template>
-  <iframe src="http://survey.israelbidur.coelix.online/index.php" frameborder="0"></iframe>
+  <iframe 
+    :src="'http://survey.israelbidur.coelix.online/index.php?user=' + $root.user.id" 
+    frameborder="0"
+  ></iframe>
 </template>
 
 <script>
@@ -12,7 +15,7 @@ export default {
 
 iframe {
   width: 100%;
-  height: 1000px;
+  height: 800px;
 }
 
 </style>

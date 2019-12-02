@@ -68,6 +68,11 @@ window.app = new Vue({
       })
     }
   },
+  data() {
+    return {
+      is_user_logged_in: false,
+    }
+  },
   mounted() {
     var preloader = document.getElementById('preloader');
 
