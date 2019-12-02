@@ -15,7 +15,7 @@
         autocomplete="email"
         placeholder="כתובת מייל"
       >
-        <input
+      <input
         type="text"
         autocomplete="tel"
         required
@@ -162,6 +162,7 @@ export default {
   @media(max-width: 992px) {
     padding-top: 40px;
     .form {
+      justify-content: center;
       .title {
         font-size: 32px;
       }
