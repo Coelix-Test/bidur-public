@@ -20,6 +20,7 @@
         class="th-input"
         v-model="phone"
         placeholder="מספר טלפון"
+        min="10"
       >
       
       <div v-if="err.length" class="err">{{ err }}</div>
