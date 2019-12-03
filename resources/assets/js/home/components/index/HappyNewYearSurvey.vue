@@ -9,7 +9,12 @@
 export default {
   methods: {
     go() {
-       this.$root.openSubcribe();
+
+      //open subscribe form
+      //this.$root.openSubcribe();
+      this.$router.push('/new-year-survey');
+
+
       // if(!this.$root.is_user_logged_in) {
       //   this.$root.openLogin();
       // } else {
