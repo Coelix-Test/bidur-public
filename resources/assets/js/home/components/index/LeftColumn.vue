@@ -24,10 +24,13 @@
         v-if="$env.MOBILE"
         data-ad-client="ca-pub-6511052822397382"
         data-ad-slot="1853214598"
-        data-ad-format="fluid"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
         data-ad-layout-key="-fb+5w+4e-db+86"
       />
     </div>
+
+
 
 		<Videos/>
 
