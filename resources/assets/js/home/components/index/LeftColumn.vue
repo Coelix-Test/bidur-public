@@ -19,6 +19,16 @@
       </router-link>
     </article>
 
+    <div class="add-cont" v-if="$env.MOBILE">
+      <Adsense
+        v-if="$env.MOBILE"
+        data-ad-client="ca-pub-6511052822397382"
+        data-ad-slot="1853214598"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+      />
+    </div>
+
 		<Videos/>
 
 		<!-- ASKED TO REMOVE -->
@@ -77,6 +87,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.add-cont{
+  margin-bottom: 8px;
+}
 .first{
   margin-top: 15px;
 }

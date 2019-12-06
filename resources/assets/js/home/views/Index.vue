@@ -13,15 +13,6 @@
       <HappyNewYearSurvey/>
       <right-column/>
       <left-column/>
-      <template v-if="$env.MOBILE">
-        <Adsense
-          v-if="$env.MOBILE"
-          data-ad-client="ca-pub-6511052822397382"
-          data-ad-slot="1853214598"
-          data-ad-format="fluid"
-          data-ad-layout-key="-fb+5w+4e-db+86"
-        />
-      </template>
       <right-column-bot />
       <left-column-bot />
       <!-- <top-section v-if="$store.getters['main-page/isSunday']"/> -->
