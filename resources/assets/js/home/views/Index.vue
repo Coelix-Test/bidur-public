@@ -4,7 +4,6 @@
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
       <Adsense
-        v-if="!$env.MOBILE"
         data-ad-client="ca-pub-6511052822397382"
         data-ad-slot="6776876742"
         data-ad-format="fluid"
