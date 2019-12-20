@@ -7,7 +7,7 @@
           <div class="name"><span>שם :</span> {{mail.name}} </div>
           <div class="email"><span>דוא"ל :</span> {{mail.email}} </div>
           <div class="phone"><span>מספר טלפון :</span> {{mail.phone}} </div>
-          <div class="date"><span>תאריך</span>{{mail.date}}</div>
+          <div class="date"><span>תאריך :</span>{{mail.date}}</div>
         </div>
         <div class="message">
           <div>הודעה :</div>
