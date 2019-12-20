@@ -1254,7 +1254,7 @@ class AdminController extends Controller
             $email = $mail->email;
             $phone = $mail->phone;
             $message = $mail->message;
-            $date = $mail->created_at->format('Y-m-d H:i:s');
+            $date = $mail->created_at->format('d-m-Y H:i:s');
             $data[] = [
                 'id' => $id,
                 'name' => $name,
