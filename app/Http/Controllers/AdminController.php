@@ -162,10 +162,10 @@ class AdminController extends Controller
                 $date       = $section['date'];
                 $this->post = $this->createPostHeaderMeta($metaTitle, $hashtags, $author, $date);
 
-                
+
 
             }
-            
+
             elseif($section['section_type'] == 'text'){
                 $content = $section['value'];
 //                dd($content);
@@ -226,7 +226,7 @@ class AdminController extends Controller
         //parsing js timestamp
         $date = $date/1000;
         $date = Carbon::createFromTimestamp($date)->toDateTimeString();
-        
+
         $flag = false;
         while ($flag == false){
             $random = substr(hash('md5', random_int(0, 100000)),'1', '8');
@@ -1254,12 +1254,14 @@ class AdminController extends Controller
             $email = $mail->email;
             $phone = $mail->phone;
             $message = $mail->message;
+            $date = $mail->created_at;
             $data[] = [
                 'id' => $id,
                 'name' => $name,
                 'email' => $email,
                 'phone' => $phone,
                 'message' => $message,
+                'date' => $date
             ];
         }
         if (!empty($data)){
