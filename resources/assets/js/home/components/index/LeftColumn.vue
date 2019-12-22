@@ -19,7 +19,7 @@
       </router-link>
     </article>
 
-    <div class="add-cont" v-if="$env.MOBILE">
+    <div class="add-cont ddaud" v-if="$env.MOBILE">
       <Adsense
         v-if="$env.MOBILE"
         style="height: 180px;"
