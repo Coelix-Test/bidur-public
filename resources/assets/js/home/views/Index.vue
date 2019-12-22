@@ -8,6 +8,7 @@
         data-ad-client="ca-pub-6511052822397382"
         data-ad-slot="1853214598"
         data-ad-format="fluid"
+        style="height: 180px;"
         data-ad-layout-key="-fb+5w+4e-db+86"
       />
       <!-- <HappyNewYearSurvey/> -->
