@@ -7,7 +7,7 @@
     <!-- flying icon -->
     <router-link :to="{name: 'single-post', params: { id: 2435 }}"
       class="flying-icon-vod">
-      <img src="/images/vodsvg.svg" alt="">
+      <img src="/img/banners/vodsvg.svg" alt="">
     </router-link>
   </main>
 </template>

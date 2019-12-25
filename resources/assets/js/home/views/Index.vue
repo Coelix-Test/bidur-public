@@ -5,7 +5,7 @@
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
       <router-link :to="{name: 'single-post', params: { id: 2435 }}"
         class="top-banner">
-        <img src="/images/mp-banner.jpg" alt="">
+        <img src="/img/banners/mp-banner.jpg" alt="">
       </router-link>
 
       <Adsense
