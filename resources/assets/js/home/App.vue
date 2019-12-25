@@ -3,6 +3,12 @@
     <header-main/>
     <router-view/>
     <!-- <socials/> -->
+
+    <!-- flying icon -->
+    <router-link :to="{name: 'single-post', params: { id: 2435 }}"
+      class="flying-icon-vod">
+      <img src="/images/vodsvg.svg" alt="">
+    </router-link>
   </main>
 </template>
 
@@ -27,7 +33,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.flying-icon-vod{
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 62px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  z-index: 2147483646;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
 main {
   flex-grow: 1;
 }

@@ -13,9 +13,9 @@
           /> -->
 
           <a href="https://2207.kupat.co.il/show/tiktok">
-            <img 
-              style="height: auto;width: 100%;" 
-              src="/img/banners/300X250_Israel_Tiktok_01.jpg" 
+            <img
+              style="height: auto;width: 100%;"
+              src="/img/banners/300X250_Israel_Tiktok_01.jpg"
               alt=""
             >
           </a>
@@ -69,7 +69,7 @@
 
           <section :class="post.type + ' section'" v-for="(post, index) in postData">
 
-            <Adsense 
+            <Adsense
               v-if="index % 3 === 0"
               data-ad-client="ca-pub-6511052822397382"
               data-ad-slot="6203335135"
@@ -152,7 +152,7 @@
               לכתבה הבאה
               <img src="/img/arrow-left.svg">
             </router-link>
-            
+
           </nav>
 
 
@@ -165,9 +165,9 @@
           </div>
 
           <a href="https://2207.kupat.co.il/show/tiktok">
-            <img 
-              style="width:100%;height:auto;margin-top:40px;" 
-              src="/img/banners/320X100_Israel_Tiktok_01.jpg" 
+            <img
+              style="width:100%;height:auto;margin-top:40px;"
+              src="/img/banners/320X100_Israel_Tiktok_01.jpg"
               alt=""
               v-if="$env.MOBILE"
             >
@@ -600,9 +600,17 @@ section.imageWithText h2 {
   color:#333;
   margin-bottom: 16px;
 }
+section.video{
+  position: relative;
+  padding-top: 56.25%;
+}
+
 section.video iframe {
-  width:100%;
-  height:450px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 section.content::v-deep * {
   max-width: 100%;
@@ -899,7 +907,7 @@ section.survey {
 
   padding: 20px 0;
   position: relative;
-  
+
   .adswrapper {
     background: #eee;
   }

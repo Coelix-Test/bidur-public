@@ -3,6 +3,11 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
+      <router-link :to="{name: 'single-post', params: { id: 2435 }}"
+        class="top-banner">
+        <img src="/images/mp-banner.jpg" alt="">
+      </router-link>
+
       <Adsense
         v-if="$env.MOBILE"
         data-ad-client="ca-pub-6511052822397382"
@@ -72,11 +77,24 @@ export default {
 .adswrapper {
   width: 100%;
 }
+.top-banner{
+  width: 100%;
+  display: block;
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
 @media (max-width:768px) {
   .home {
     flex-direction:column;
     padding: 0 0 48px;
     margin-bottom: 0;
+  }
+  .top-banner{
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 16px;
   }
 
 }
