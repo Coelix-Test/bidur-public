@@ -5,7 +5,7 @@
     <!-- <socials/> -->
 
     <!-- flying icon -->
-    <router-link :to="{name: 'single-post', params: { id: 2435 }}"
+    <router-link to="/view/post/2435"
       class="flying-icon-vod">
       <img src="/img/banners/vodsvg.svg" alt="">
     </router-link>
@@ -38,9 +38,9 @@ export default {
   top: auto;
   left: auto;
   bottom: 62px;
-  right: 10px;
-  width: 50px;
-  height: 50px;
+  right: 0px;
+  width: 70px;
+  height: 70px;
   z-index: 2147483646;
   img{
     width: 100%;
