@@ -99,11 +99,13 @@
             </div>
 
             <template v-if="post.type == 'video'">
-              <iframe
-                type="text/html"
-                :src="youtubeEmbedLink(post.value)"
-                frameborder="0"
-              />
+              <div class="video-wrap">
+                <iframe
+                  type="text/html"
+                  :src="youtubeEmbedLink(post.value)"
+                  frameborder="0"
+                />
+              </div>
               <span v-if="post.description && post.description != 'null'" v-html="post.description"></span>
             </template>
             <!-- <template
@@ -600,9 +602,11 @@ section.imageWithText h2 {
   color:#333;
   margin-bottom: 16px;
 }
-section.video{
+
+section.video .video-wrap{
   position: relative;
   padding-top: 56.25%;
+  width: 100%;
 }
 
 section.video iframe {

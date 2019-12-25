@@ -3,10 +3,10 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
-      <router-link :to="{name: 'single-post', params: { id: 2435 }}"
+      <!-- <router-link :to="{name: 'single-post', params: { id: 2435 }}"
         class="top-banner">
         <img src="/img/banners/mp-banner.jpg" alt="">
-      </router-link>
+      </router-link> -->
 
       <Adsense
         v-if="$env.MOBILE"
@@ -94,7 +94,7 @@ export default {
   .top-banner{
     padding-left: 8px;
     padding-right: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 
 }
