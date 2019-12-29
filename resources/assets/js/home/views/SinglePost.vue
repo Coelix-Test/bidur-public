@@ -12,13 +12,7 @@
             data-ad-layout-key="-fb+5w+4e-db+86"
           /> -->
 
-          <!-- <a href="https://2207.kupat.co.il/show/tiktok">
-            <img 
-              style="height: auto;width: 100%;" 
-              src="/img/banners/300X250_Israel_Tiktok_01.jpg" 
-              alt=""
-            >
-          </a> -->
+        
 
           <transition name="cool">
             <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
