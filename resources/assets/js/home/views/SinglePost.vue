@@ -12,7 +12,6 @@
             data-ad-layout-key="-fb+5w+4e-db+86"
           /> -->
 
-
           <transition name="cool">
             <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
               <svg width="80%" height="80%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
