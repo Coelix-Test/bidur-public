@@ -4,13 +4,13 @@
 
       <div class="post-content">
 
-        <div class="ad-wrapper" v-if="!closed_top_ad && $env.MOBILE">
-          <!-- <Adsense
+        <!-- <div class="ad-wrapper" v-if="!closed_top_ad && $env.MOBILE">
+          <Adsense
             data-ad-client="ca-pub-6511052822397382"
             data-ad-slot="2993992173"
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
-          /> -->
+          />
 
           <transition name="cool">
             <button v-if="can_close_top_ad" width="20" height="20" @click="closed_top_ad = true" class="close-btn">
@@ -19,7 +19,7 @@
               </svg>
             </button>
           </transition>
-        </div>
+        </div> -->
 
         <div class="pre-title-row">
           <!-- <button class="add-to-favourites" @click.prevent="$router.go(-1)">
@@ -158,14 +158,14 @@
             </div>
           </div>
 
-          <a href="https://2207.kupat.co.il/show/tiktok">
+          <!-- <a href="https://2207.kupat.co.il/show/tiktok">
             <img
               style="width:100%;height:auto;margin-top:40px;"
               src="/img/banners/320X100_Israel_Tiktok_01.jpg"
               alt=""
               v-if="$env.MOBILE"
             >
-          </a>
+          </a> -->
 
         </template>
 
