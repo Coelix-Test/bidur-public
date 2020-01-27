@@ -151,12 +151,12 @@
 
 
 
-          <div class="opinion">
+          <!-- <div class="opinion">
             <h2>מה חשבתם על הכתבה?</h2>
             <div class="emoji-wrapper">
               <emoji v-if="postId" :postId="postId" />
             </div>
-          </div>
+          </div> -->
 
           <!-- <a href="https://2207.kupat.co.il/show/tiktok">
             <img
