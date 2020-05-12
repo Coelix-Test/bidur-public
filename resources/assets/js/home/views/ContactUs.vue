@@ -5,7 +5,7 @@
       <p class="info">
         <a href="#"><span class="icon"><img src="img/icons/location.svg" alt=""></span>דבורה הנביאה  תל אביב-יפו</a>
         <a href="mailto:office@israelbidur.co.il"><span class="icon"><img src="img/icons/mail.svg" alt=""></span>office@israelbidur.co.il</a>
-        <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>0505435701</a>
+        <!-- <a href="tel:+380631189234"><span class="icon"><img src="img/icons/phone.svg" alt=""></span>0505435701</a> -->
       </p>
       <div class="contact-form">
         <h2>יש לכם שאלה? שלחו לנו הודעה!</h2>
