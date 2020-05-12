@@ -408,8 +408,6 @@ export default {
   },
   mounted() {
     //let els = this.$el.getElementsByTagName('p');
-    window.fbq('init', '444548093078624');
-    window.fbq('track', 'PageView');
 
     // console.log(els);
     setTimeout(() => {
