@@ -172,6 +172,7 @@
       </div>
 
       <side-news v-if="!$env.MOBILE" />
+
     </div>
 
     <outbrain-bottom-ad></outbrain-bottom-ad>
@@ -380,6 +381,11 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     this.postId = to.params.id;
+
+    if(to.params.id === 2557){
+      console.log('fb pix post');
+    }
+
     next();
   },
   components : {
@@ -398,6 +404,8 @@ export default {
   },
   mounted() {
     //let els = this.$el.getElementsByTagName('p');
+    window.fbq('init', '444548093078624');
+    window.fbq('track', 'PageView');
 
     // console.log(els);
     setTimeout(() => {
