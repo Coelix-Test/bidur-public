@@ -305,6 +305,14 @@ export default {
     },
     sync(id) {
       this.postData = [];
+
+      if(id == 2557){
+        console.log('fb pix post2');
+        window.fbq('init', '444548093078624');
+        window.fbq('track', 'PageView');
+
+      }
+
       return axios
         .post('/api/post/' + id)
         .then(response => {
@@ -381,10 +389,6 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.sync(to.params.id);
     this.postId = to.params.id;
-
-    if(to.params.id === 2557){
-      console.log('fb pix post');
-    }
 
     next();
   },
