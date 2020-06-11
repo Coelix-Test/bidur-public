@@ -3,10 +3,10 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
-      <router-link to="/view/post/2435"
+      <a href="http://israelbidurmusic.co.il"
         class="top-banner">
-        <img src="/img/banners/mp-banner.jpg" alt="">
-      </router-link>
+        <img src="/img/banners/music.jpeg" alt="">
+      </a>
 
       <Adsense
         v-if="$env.MOBILE"
