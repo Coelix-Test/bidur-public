@@ -4,7 +4,7 @@
           <div class="menu-col-wrap">
               <div class="logo-wrap">
                   <router-link :to="{ name: 'index'}">
-                      <img src="/img/logo-yellow.png" alt="">
+                      <img src="/img/new-logo-yellow.png" alt="">
                   </router-link>
               </div>
               <ul class="menu-list menu">
@@ -76,7 +76,7 @@
         					<ul id="menu-primary-menu" class="menu">
                     <li class="menu-item">
                       <router-link :to="{ name: 'index'}">
-                        <img src="/img/logo-yellow.png" width="200px" alt="">
+                        <img src="/img/new-logo-yellow.png" width="200px" alt="">
                       </router-link>
                     </li>
         						<li class="menu-item">
@@ -129,7 +129,7 @@
           <search-form-mob class="search-form-mob"></search-form-mob>
           <span class="header-text">הבית של הבידור הישראלי</span>
           <router-link :to="{ name: 'index'}" class="logo-wrap">
-            <img src="/img/logo-yellow.png" alt="">
+            <img src="/img/new-logo-yellow.png" alt="">
           </router-link>
 
       </div>
