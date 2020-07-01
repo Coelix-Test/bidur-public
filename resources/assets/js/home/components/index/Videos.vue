@@ -5,7 +5,7 @@
 				<img src="/img/videos-stars-bg.svg">
 			</div>
 			<div class="name">
-				ישראל בידור VOD
+				<img src="/img/IB_Site_Buuner_YouTube_Logo2.png">
 			</div>
 		</div>
 		<div class="body">
@@ -133,7 +133,7 @@ export default {
 		position: relative;
 		padding: 10px 0;
 		width: 100%;
-		background: linear-gradient(303.94deg, #EDB72A 6.16%, #FDD55D 99.09%);
+		background: linear-gradient(303.94deg, #FF0000 6.16%, #8B0000  99.09%);
 
 		.background {
 			position: absolute;
@@ -164,6 +164,9 @@ export default {
 
 			@media(max-width: 767px) {
 				font-size: 30px;
+			}
+			img {
+				width: 193px;
 			}
 		}
 	}
