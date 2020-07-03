@@ -3,7 +3,7 @@
 
     <div class="ad">
       <a href="https://beachingbody.com/shop/" target="_blank">
-        <img src="/img/ad/adv.jpeg">
+        <img v-bind:src="selectedImage">
       </a>
     </div>
 
@@ -36,6 +36,8 @@ import OutbrainSidebarAd from './outbrain/OutbrainSidebarAd.vue'
 export default {
   data() {
     return {
+      images : ['/img/ad/adv.jpeg','/img/ad/adv2.jfif','/img/ad/adv3.jfif'],
+      selectedImage,
       data: []
     };
   },
@@ -44,6 +46,10 @@ export default {
     OutbrainSidebarAd
   },
   created() {
+
+    const idx = Math.floor(Math.random() * this.images.length);
+    this.selectedImage = this.images[idx]
+
     if(this.$route.name === 'single-post'){
       axios.post('/api/getRecentPosts', {postId: this.$route.params.id}).then(res => {
         this.data = res.data;
