@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       images : ['/img/ad/adv.jpeg','/img/ad/adv2.jfif','/img/ad/adv3.jfif'],
-      selectedImage,
+      selectedImage : '/img/ad/adv.jpeg',
       data: []
     };
   },
