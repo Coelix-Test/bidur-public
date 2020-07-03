@@ -1,5 +1,10 @@
 <template>
   <div :class="{ mobile, first }" class="main-survey">
+    <div>
+      <a target="_blank" href="https://beachingbody.com/shop/">
+        <img src="img/banners/adbanner.jpeg">
+      </a>
+    </div>
     <template v-if="survey.type == 'survey'">
       <div ref="poll" class="selected-poll">
         <img :src="survey.image">
