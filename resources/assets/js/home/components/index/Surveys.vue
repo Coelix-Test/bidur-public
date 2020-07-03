@@ -1,6 +1,6 @@
 <template>
   <div :class="{ mobile, first }" class="main-survey">
-    <div>
+    <div class="adbanner">
       <a target="_blank" href="https://beachingbody.com/shop/">
         <img src="img/banners/adbanner.jpeg">
       </a>
@@ -76,7 +76,9 @@ export default {
     }
   }
 }
-
+.adbanner img{
+  width: 100%;
+}
 .selected-poll{
   .img-caption{
     text-align: center;
