@@ -3,7 +3,7 @@
 
     <div class="ad">
       <a href="https://beachingbody.com/shop/" target="_blank">
-        <img src="{{  $env.URL + '/img/ad/adv.jpeg' }}">
+        <img src="/img/ad/adv.jpeg">
       </a>
     </div>
 
