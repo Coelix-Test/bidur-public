@@ -1,5 +1,12 @@
 <template>
   <section class="side-news">
+
+    <div class="ad">
+      <a href="https://beachingbody.com/shop/" target="_blank">
+        <img src="img/ad/adv.jpeg">
+      </a>
+    </div>
+
     <div class="block">
       <side-news-post
         v-for="(item, i) in data"
@@ -52,6 +59,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.ad img{
+  width : 100%;
+}
 .side-news {
   display: flex;
   flex-direction: column;
