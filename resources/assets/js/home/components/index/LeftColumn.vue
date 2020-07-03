@@ -1,5 +1,12 @@
 <template>
+  
   <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
+
+    <div class="ad">
+      <a href="https://beachingbody.com/shop/" target="_blank">
+        <img src="img/ad/adh.jpeg">
+      </a>
+    </div>
 
     <!-- ASKED TO MOVE SURVEY DOWN -->
     <!-- <surveys
@@ -88,6 +95,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ad img{
+  width : 100%;
+}
 .add-cont{
   margin-bottom: 8px;
 }
