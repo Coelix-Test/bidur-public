@@ -5,7 +5,8 @@ import VueLazyload from 'vue-lazyload'
 import moment from 'moment'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueAds from 'vue-google-adsense'
-
+import VueYouTubeEmbed from 'vue-youtube-embed'
+Vue.use(VueYouTubeEmbed)
 Vue.use(VueAwesomeSwiper)
 Vue.use(require('vue-script2'));
 Vue.use(VueLazyload);

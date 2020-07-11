@@ -1,5 +1,19 @@
 <template>
-  <div class="videos" v-if="$store.getters['main-page/videos'].length">
+	<div class="videos">
+		<div class="header">
+			<div class="background">
+				<img src="/img/videos-stars-bg.svg">
+			</div>
+			<div class="name">
+				<img src="/img/IB_Site_Buuner_YouTube_Logo2.png">
+			</div>
+		</div>
+		<div class="body">
+			<youtube video-id="9V2xRCbcwcw"></youtube>
+
+		</div>
+	</div>
+  <!-- <div class="videos" v-if="$store.getters['main-page/videos'].length">
 		<div class="header">
 			<div class="background">
 				<img src="/img/videos-stars-bg.svg">
@@ -62,12 +76,11 @@
 				</button>
 			</div>
 		</div>
-  </div>
+  </div> -->
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-
 export default {
 	data() {
 		return {
