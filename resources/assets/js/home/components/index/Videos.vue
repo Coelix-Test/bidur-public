@@ -8,8 +8,8 @@
 				<img src="/img/IB_Site_Buuner_YouTube_Logo2.png">
 			</div>
 		</div>
-		<div class="body">
-			<youtube video-id="9V2xRCbcwcw"></youtube>
+		<div class="body video-body">
+			<youtube video-id="9V2xRCbcwcw" player-width="100%"></youtube>
 
 		</div>
 	</div>
@@ -183,7 +183,9 @@ export default {
 			}
 		}
 	}
-
+	.video-body div{
+		width:  100%;
+	}
 	.body {
 		position: relative;
 		flex-grow: 1;
