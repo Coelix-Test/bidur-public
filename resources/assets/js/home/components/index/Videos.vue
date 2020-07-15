@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="body video-body">
-			<youtube video-id="9V2xRCbcwcw" player-width="100%"></youtube>
+			<youtube video-id="DZI0_6RJPtE" player-width="100%"></youtube>
 
 		</div>
 	</div>
