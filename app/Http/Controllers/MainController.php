@@ -962,8 +962,11 @@ class MainController extends Controller
         $data['instagram']      = json_decode($insta, true);
         $data['birthday']       = json_decode($birthday, true);
 				$data['videos']       = $main_videos->index();
-//        $data['hashtags']       = $hashtags;
-//        $data['user']           = $user;
+        //        $data['hashtags']       = $hashtags;
+        //        $data['user']           = $user;
+
+        $mainSection = \App\MainSection::first()->only('youtube_video_id');
+        $data['youtubeVideoId'] = $mainSection['youtube_video_id'];
 
         return json_encode($data);
     }

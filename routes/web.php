@@ -157,7 +157,12 @@ Route::group([ 'prefix' => 'api' ], function() {
 
 			Route::delete('/{video}', 'MainVideoController@remove');
 			Route::post('/', 'MainVideoController@store');
-			Route::get('/', 'MainVideoController@indexAdmin');
+      Route::get('/', 'MainVideoController@indexAdmin');
+      
+      //get youtube video id 
+      Route::get('/get-youtube-video-id', 'MainVideoController@getYoutubeVideoId');
+      //update youtube video id
+      Route::post('/youtube-video-id/update', 'MainVideoController@updateYoutubeVideoId');
 
 		});
 	});

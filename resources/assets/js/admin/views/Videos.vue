@@ -1,6 +1,24 @@
 <template>
   <main>
+	  
+	  <div class="container border p-2 m-2">
+		  	<vs-row vs-type="flex">
+				<vs-col vs-type="flex" vs-align="center" vs-justify="center" vs-w="12">
+					<vs-input v-model="youtubeVideoId" label-placeholder="Write Youtube id here"/>
 
+					<br>
+					<vs-button
+						title="Update Youtube Video Id"
+						type="line"
+						@click="updateYoutubeVideoId"
+						size="large"
+					>Update Youtube Video Id</vs-button>
+
+				</vs-col>
+
+			</vs-row>
+
+	  </div>
 		<div class="cards-container">
 			<vs-card v-for="item in data" :key="item.id" class="card">
 	      <div slot="header">
@@ -72,9 +90,20 @@ export default {
 			title: '',
 			author: '',
 			order_num: 0,
+			youtubeVideoId : null,
     };
   },
   methods: {
+	  getYoutubeVideoId(){
+ 			return axios.get('/api/admin/video/get-youtube-video-id').then(res => {
+        		this.youtubeVideoId = res.data.data.id;
+      		});
+	  },
+	  updateYoutubeVideoId(){
+		   axios.post('/api/admin/video/youtube-video-id/update',{ id : this.youtubeVideoId }).then(res => {
+				alert('Video updated successfully');
+			});
+	  },
     updateThumbnail(path, file) {
       this.thumbnail = file[file.length - 1];
     },
@@ -127,7 +156,8 @@ export default {
     }
   },
   created() {
-    this.sync();
+	this.sync();
+	this.getYoutubeVideoId();
   },
 }
 </script>

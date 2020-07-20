@@ -47,6 +47,9 @@ export default {
 		videos(state) {
       return state.data.videos;
     },
+    youtubeVideoId(state){
+      return state.data.youtubeVideoId;
+    },
     loaded(state) {
       return state.loaded;
     },

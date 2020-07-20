@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="body video-body">
-			<youtube video-id="DZI0_6RJPtE" player-width="100%"></youtube>
+			<youtube :video-id="$store.getters['main-page/youtubeVideoId']" player-width="100%"></youtube>
 
 		</div>
 	</div>
@@ -85,6 +85,7 @@ export default {
 	data() {
 		return {
 			is_play: false,
+			youtubeVideoId : null
 		};
 	},
 	components: {

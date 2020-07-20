@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\MainVideo;
 use Illuminate\Http\Request;
 use App\Exceptions\InvalidInputException;
+use MainSection;
 
 class MainVideoController extends Controller
 {
@@ -65,5 +66,27 @@ class MainVideoController extends Controller
 
   public function index() {
     return MainVideo::all();
+  }
+
+  //get youtube video id 
+  public function getYoutubeVideoId()
+  {
+    $youTubeVideoId = \App\MainSection::first()->pluck('youtube_video_id');
+    return response()->json(['data' => [
+      'id' => $youTubeVideoId
+    ]]);
+  }
+
+  //update youtube video column
+  public function updateYoutubeVideoId(Request $request)
+  {
+    //vars
+    $youTubeVideoId = $request->id;
+    
+    $section = \App\MainSection::first();
+    $section->youtube_video_id = $youTubeVideoId;
+    $section->save();
+
+    return response()->json(['success' => true, 'message' => 'Youtube video id updated succesfully']);
   }
 }
