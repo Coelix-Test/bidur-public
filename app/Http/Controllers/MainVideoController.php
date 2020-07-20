@@ -81,9 +81,10 @@ class MainVideoController extends Controller
   public function updateYoutubeVideoId(Request $request)
   {
     //vars
-    $youTubeVideoId = $request->id[0];
+    $youTubeVideoId = $request->id;
     
     $section = \App\MainSection::first();
+    if(is_array($youTubeVideoId))  $youTubeVideoId = $youTubeVideoId[0];
     $section->youtube_video_id = $youTubeVideoId;
     $section->save();
 
