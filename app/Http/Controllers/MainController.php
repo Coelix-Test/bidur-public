@@ -965,8 +965,8 @@ class MainController extends Controller
         //        $data['hashtags']       = $hashtags;
         //        $data['user']           = $user;
 
-        $mainSection = \App\MainSection::first()->only('youtube_video_id');
-        $data['youtubeVideoId'] = $mainSection['youtube_video_id'];
+        $settings = \DB::table('settings')->first();
+        $data['youtubeVideoId'] = $settings->youtube_video_id;
 
         return json_encode($data);
     }

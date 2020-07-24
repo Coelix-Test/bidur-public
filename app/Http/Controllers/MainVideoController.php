@@ -71,22 +71,22 @@ class MainVideoController extends Controller
   //get youtube video id 
   public function getYoutubeVideoId()
   {
-    $youTubeVideoId = \App\MainSection::first()->pluck('youtube_video_id');
+    $settings = \DB::table('settings')->first();
     return response()->json(['data' => [
-      'id' => $youTubeVideoId
+      'id' => $settings->youtube_video_id
     ]]);
   }
 
+  
   //update youtube video column
   public function updateYoutubeVideoId(Request $request)
   {
     //vars
     $youTubeVideoId = $request->id;
     
-    $section = \App\MainSection::first();
+    $section = \DB::table('settings')->first();
     if(is_array($youTubeVideoId))  $youTubeVideoId = $youTubeVideoId[0];
-    $section->youtube_video_id = $youTubeVideoId;
-    $section->save();
+    \DB::table('settings')->update(['youtube_video_id' => $youTubeVideoId]);
 
     return response()->json(['success' => true, 'message' => 'Youtube video id updated succesfully']);
   }
