@@ -36,8 +36,8 @@ import OutbrainSidebarAd from './outbrain/OutbrainSidebarAd.vue'
 export default {
   data() {
     return {
-      images : ['/img/ad/adv.jpeg','/img/ad/adv2.jfif','/img/ad/adv3.jfif'],
-      selectedImage : '/img/ad/adv.jpeg',
+      images : ['/img/ad/ad1v2.jpeg','/img/ad/ad2v2.jpeg','/img/ad/ad3v2.jpeg'],
+      selectedImage : '/img/ad/ad1v2.jpeg',
       data: []
     };
   },
