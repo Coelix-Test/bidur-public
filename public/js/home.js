@@ -43501,7 +43501,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("iframe", {
     attrs: {
-      src: "http://1-survey.israelbidur.coelix.online/",
+      src: "https://survey.israelbidur.coelix.online/",
       frameborder: "0"
     }
   })
