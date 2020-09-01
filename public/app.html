@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta property="fb:pages" content="353719708444460" />
   <meta name="description" content="ברוכים הבאים לעולם הבידור הישראלי. כל העדכונים הכי חמים של תעשיית הבידור - במקום אחד.">
-
+  <meta name="ob:image" content="">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131923033-1"></script>
   <script>
@@ -138,5 +138,14 @@
     <!-- </div> -->
 
     <script src="/js/home.js?ver=1700220620" charset="utf-8"></script>
+    <script>
+       var url = window.location.href;
+        url = url.split("/");
+        if(url.find(function(segment){
+          return segment == "2020";
+        })){
+          document.querySelector("meta[name='ob:image']").setAttribute('content','https://survey.israelbidur.coelix.online/images/meta.jpg')
+        }
+    </script>
 </body>
 </html>
