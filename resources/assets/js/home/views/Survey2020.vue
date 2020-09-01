@@ -6,8 +6,21 @@
 </template>
 
 <script>
-export default {
 
+export default {
+   name: 'App',
+    metaInfo: {
+      title: 'Survey',
+      meta: [
+            { 
+                name : 'meta-image',
+                content: 'https://survey.israelbidur.coelix.online/images/meta.jpg',
+                htmlAttrs: {
+                    property : 'og:image'
+                }
+            }
+        ]
+    }
 }
 </script>
 
