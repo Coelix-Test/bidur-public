@@ -63,7 +63,7 @@ const routes = [
 		name: "new-year-survey"
 	},
 	{
-		path: "/survey2020",
+		path: "/2020",
 		component: Survey2020,
 		name: "survey2020"
 	}
