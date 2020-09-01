@@ -169,3 +169,5 @@ Route::group([ 'prefix' => 'api' ], function() {
 
   
 });
+
+Route::view('survey2020', 'survey2020');
