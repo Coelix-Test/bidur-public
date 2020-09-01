@@ -5,10 +5,10 @@
     <!-- <socials/> -->
 
     <!-- flying icon -->
-    <router-link to="/view/post/2435"
+    <!-- <router-link to="/view/post/2435"
       class="flying-icon-vod">
       <img src="/img/banners/vodsvg.svg" alt="">
-    </router-link>
+    </router-link> -->
   </main>
 </template>
 
