@@ -2,11 +2,11 @@
   
   <div class="left-column posts-column" v-if="isNotEmptyOnDesktop">
 
-    <div class="ad">
+    <!-- <div class="ad">
       <a href="https://beachingbody.com/shop/" target="_blank">
         <img src="img/ad/adh.jpeg">
       </a>
-    </div>
+    </div> -->
 
     <!-- ASKED TO MOVE SURVEY DOWN -->
     <!-- <surveys
