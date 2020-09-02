@@ -13,11 +13,8 @@ export default {
       title: 'Survey',
       meta: [
             { 
-                name : 'meta-image',
-                content: 'https://survey.israelbidur.coelix.online/images/meta.jpg',
-                htmlAttrs: {
-                    property : 'og:image'
-                }
+                content: 'img/meta.jpg',
+                property : 'og:image'
             }
         ]
     }
