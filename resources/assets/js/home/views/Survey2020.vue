@@ -10,7 +10,7 @@
 export default {
    name: 'App',
     metaInfo: {
-      title: 'Survey',
+      title: 'Survey 2020',
       meta: [
             { 
                 content: 'img/meta.jpg',
