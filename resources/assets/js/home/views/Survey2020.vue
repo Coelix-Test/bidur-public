@@ -36,6 +36,13 @@ export default {
     }
 }
 
+@media screen and (max-width: 480px) and (min-height: 751px) {
+  iframe {
+    width: 100%;
+    height: 715px;
+  }
+}
+
 </style>
 <style lang="scss">
 </style>
