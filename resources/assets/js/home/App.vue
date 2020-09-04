@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :class="mainClass">
     <header-main/>
     <router-view/>
     <!-- <socials/> -->
@@ -25,6 +25,15 @@ export default {
   components: {
     HeaderMain,
     Socials
+  },
+  computed: {
+    mainClass(){
+      const className = '';
+      if(this.$route.name === 'survey2020'){
+        className = 'survey-page';
+      }
+      return className;
+    }
   },
   created() {
     this.currentPageUrl = window.location.href;
@@ -72,5 +81,19 @@ main {
 .anim-leave-active {
   transform-origin: center top;
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 992px){
+  .survey-page + #footer_main{
+    margin-top: -8px;
+    .contact-line{
+      display: none;
+    }
+  }
+  .survey-page{
+    flex-grow: 0 !important;
+  }
 }
 </style>

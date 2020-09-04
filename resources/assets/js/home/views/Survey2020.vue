@@ -38,15 +38,4 @@ export default {
 
 </style>
 <style lang="scss">
-@media (max-width: 992px){
-  #footer_main{
-    margin-top: -8px;
-    .contact-line{
-      display: none;
-    }
-  }
-  main{
-    flex-grow: 0 !important;
-  }
-}
 </style>
