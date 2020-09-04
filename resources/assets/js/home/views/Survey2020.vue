@@ -39,7 +39,7 @@ export default {
 @media screen and (max-width: 480px) and (min-height: 710px) {
   iframe {
     width: 100%;
-    height: 715px;
+    height: 735px;
   }
 }
 
