@@ -1,5 +1,5 @@
 <template>
-  <main :class="mainClass">
+  <main :class="{ 'survey-page' :  isSurvey}">
     <header-main/>
     <router-view/>
     <!-- <socials/> -->
@@ -27,12 +27,8 @@ export default {
     Socials
   },
   computed: {
-    mainClass(){
-      const className = '';
-      if(this.$route.name === 'survey2020'){
-        className = 'survey-page';
-      }
-      return className;
+    isSurvey(){
+      return this.$route.name === 'survey2020';
     }
   },
   created() {
