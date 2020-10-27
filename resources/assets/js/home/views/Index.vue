@@ -3,7 +3,7 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
-      <a href="/2020"
+      <a href="https://israelbidurmusic.co.il"
         class="top-banner">
         <img src="/img/banners/music2.png" alt="">
       </a>
