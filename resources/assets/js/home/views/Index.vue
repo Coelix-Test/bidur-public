@@ -5,7 +5,7 @@
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
       <a href="https://survey.israel-bidur.co.il/"
         class="top-banner">
-        <img src="/img/banners/banner3.png" alt="">
+        <img src="/img/banners/banner4.png" alt="">
       </a>
 
       <Adsense
