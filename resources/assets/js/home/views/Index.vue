@@ -3,9 +3,9 @@
 
     <template v-if="$store.getters['main-page/loaded']">
       <!-- <top-section v-if="!$store.getters['main-page/isSunday']"/> -->
-      <a href="https://survey.israel-bidur.co.il/"
+      <a href="https://israelbidurmusic.co.il/"
         class="top-banner">
-        <img src="/img/banners/banner4.png" alt="">
+        <img src="/img/banners/banner5.png" alt="">
       </a>
 
       <Adsense
